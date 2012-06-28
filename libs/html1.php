@@ -35,20 +35,20 @@ function get_category_name($cat_id) {
 }
 
 
-function who_voted($storyid, $avatar_size){
+function who_voted($storyid, $avatar_size, $condition='>0'){
 	// this returns who voted for a story
 	// eventually add support for filters (only show friends, etc)	
 	global $db;
 	if (!is_numeric($storyid)) die();
 
-	$sql = 'SELECT ' . table_votes . '.*, ' . table_users . '.* FROM ' . table_votes . ' INNER JOIN ' . table_users . ' ON ' . table_votes . '.vote_user_id = ' . table_users . '.user_id WHERE (((' . table_votes . '.vote_value)>0) AND ((' . table_votes . '.vote_link_id)='.$storyid.') AND (' . table_votes . '.vote_type= "links")) AND user_level<>"god" AND user_level<>"Spammer"';
-	//echo $sql;
+	$sql = "SELECT user_login, user_email
+			FROM " . table_votes . " 
+			INNER JOIN " . table_users . " ON vote_user_id=user_id 
+			WHERE vote_value $condition AND vote_link_id=$storyid AND vote_type='links' AND user_level NOT IN('god','Spammer')";
 	$voters = $db->get_results($sql);
 	$voters = object_2_array($voters);
-	foreach($voters as $key => $val){
+	foreach($voters as $key => $val)
 		$voters[$key]['Avatar_ImgSrc'] = get_avatar($avatar_size, "", $val['user_login'], $val['user_email']);
-	}
-
 	return $voters;	
 }
 
