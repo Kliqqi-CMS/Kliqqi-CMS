@@ -11,9 +11,6 @@ float: left;
 float: right;
 }
 
-#reg_usernamecheckitvalue {}
-#reg_emailcheckitvalue {}
-
 #nav {
 border-top: 1px solid #dedede;
 border-bottom: 1px solid #dedede;
@@ -332,4 +329,11 @@ font-size:0.85em;
 .group_description {
 
 }
+
+/************** REGISTER ***************/
+#reg_usernamecheckitvalue {}
+#reg_emailcheckitvalue {}
+.register-wrapper {}
+.register-left {margin:0 0 0 8px;}
+.register-right{margin:0 0 0 8px;}
 

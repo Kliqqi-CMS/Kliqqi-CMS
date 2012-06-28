@@ -1,53 +1,84 @@
-{checkActionsTpl location="tpl_pligg_register_start"}
-<div class="leftwrapper">
+﻿<div class="register-wrapper">
 
-<div class="register-left">
-<form action="{$URL_register}" method="post" id="thisform">
-
-	<h2>{#PLIGG_Visual_Register_Username#}:</h2>
-	{if isset($form_username_error)}{ foreach value=error from=$form_username_error }<br /><div class="error">{$error}</div><br />{ /foreach }<br />{/if}
-	<input type="text" name="reg_username" id="reg_username" value="{if isset($reg_username)}{$reg_username}{/if}" size="25" tabindex="10" maxlength="32"/>
-	<span id="checkit-reg-username"><input type="button" name="reg-checkbutton1" id="reg-checkbutton1" value="{#PLIGG_Visual_Register_Verify#}" onclick="checkfield('username', this.form, this.form.reg_username)" class="btn" tabindex="11" /></span><br/><span id="reg_usernamecheckitvalue"></span>
-
-	<br />
+	<div class="span4 register-left">
+		<h2>{#PLIGG_Visual_Register_Description_Title#}</h2>
+		<p>{#PLIGG_Visual_Register_Description_Paragraph#}
+			<ul>
+				{#PLIGG_Visual_Register_Description_Points#}
+			</ul>
+		</p>
+	</div>
 	
-	<h2>{#PLIGG_Visual_Register_Email#}:</h2>
-	{if isset($form_email_error)}{ foreach value=error from=$form_email_error }<br /><div class="error">{$error}</div><br />{ /foreach }<br />{/if}
-	{#PLIGG_Visual_Register_Lowercase#}<br />
-	<input type="text" id="reg_email" name="reg_email" value="{if isset($reg_email)}{$reg_email}{/if}" size="25" tabindex="12" maxlength="128"/>
-	<span id="checkit-reg-pass"><input type="button" name="reg-checkbutton2" id="reg-checkbutton2" value="{#PLIGG_Visual_Register_Verify#}" onclick="checkfield('email', this.form, this.form.reg_email)" class="btn" tabindex="13" /></span><br/><span id="reg_emailcheckitvalue"></span>
-	
-	<br />
-	
-	<h2>{#PLIGG_Visual_Register_Password#}:</h2>
-	{if isset($form_password_error)}{ foreach value=error from=$form_password_error }<br /><div class="error">{$error}</div><br />{ /foreach }<br />{/if}
+	<div class="span5 register-right">
+		{checkActionsTpl location="tpl_pligg_register_start"}
+		<form action="{$URL_register}" class="form-horizontal" method="post" id="thisform">
 
-	{#PLIGG_Visual_Register_FiveChar#}<br />
-	<input type="password" id="reg_password" name="reg_password" value="{if isset($reg_password)}{$reg_password}{/if}" size="25" tabindex="14"/>
+			<div class="control-group">
+				<label class="control-label">{#PLIGG_Visual_Register_Username#}</label>
+				<div class="controls">
+					{if isset($form_username_error)}
+						{ foreach value=error from=$form_username_error }
+							<div class="alert">
+								<button class="close" data-dismiss="alert">×</button>
+								{$error}
+							</div>
+						{ /foreach }
+					{/if}
+					<input type="text" name="reg_username" class="input-medium" id="reg_username" value="{if isset($reg_username)}{$reg_username}{/if}" size="25" tabindex="10" maxlength="32"/>
+					<span id="checkit-reg-username"><input type="button" name="reg-checkbutton1" id="reg-checkbutton1" value="{#PLIGG_Visual_Register_Verify#}" onclick="checkfield('username', this.form, this.form.reg_username)" class="btn" tabindex="11" /></span><br/><span id="reg_usernamecheckitvalue"></span>
+				</div>
+			</div>
+			  
+			<div class="control-group">
+				<label class="control-label">{#PLIGG_Visual_Register_Email#}</label>
+				<div class="controls">
+					{if isset($form_email_error)}
+						{ foreach value=error from=$form_email_error }
+							<div class="alert">
+								<button class="close" data-dismiss="alert">×</button>
+								{$error}
+							</div>
+						{ /foreach }
+					{/if}
+					<input type="text" class="input-medium" id="reg_email" name="reg_email" value="{if isset($reg_email)}{$reg_email}{/if}" tabindex="12" maxlength="128"/>
+					<span id="checkit-reg-pass"><input type="button" name="reg-checkbutton2" id="reg-checkbutton2" value="{#PLIGG_Visual_Register_Verify#}" onclick="checkfield('email', this.form, this.form.reg_email)" class="btn" tabindex="13" /></span><br/><span id="reg_emailcheckitvalue"></span>
+					<p class="help-inline">{#PLIGG_Visual_Register_Lowercase#}</p>
+				</div>
+			</div>
 
-	<br /><br />
+			<div class="control-group">
+				<label class="control-label">{#PLIGG_Visual_Register_Password#}</label>
+				<div class="controls">
+					{if isset($form_password_error)}
+						{ foreach value=error from=$form_password_error }
+							<div class="alert">
+								<button class="close" data-dismiss="alert">×</button>
+								{$error}
+							</div>
+						{ /foreach }
+					{/if}
+					<input type="password" class="input-medium" id="reg_password" name="reg_password" value="{if isset($reg_password)}{$reg_password}{/if}" size="25" tabindex="14"/>
+					<p class="help-inline">{#PLIGG_Visual_Register_FiveChar#}</p>
+				</div>
+			</div>
+			
+			<div class="control-group">
+				<label class="control-label">{#PLIGG_Visual_Register_Verify_Password#}</label>
+				<div class="controls">
+					<input type="password" class="input-medium" id="reg_verify" name="reg_password2" value="{if isset($reg_password2)}{$reg_password2}{/if}" size="25" tabindex="15"/>
+				</div>
+			</div>
 
-	<h2>{#PLIGG_Visual_Register_Verify_Password#}: </h2>
-	<input type="password" id="reg_verify" name="reg_password2" value="{if isset($reg_password2)}{$reg_password2}{/if}" size="25" tabindex="15"/>
+			{if isset($register_step_1_extra)}
+				{$register_step_1_extra}
+			{/if}
+			<div class="form-actions">
+				<input type="submit" name="submit" value="{#PLIGG_Visual_Register_Create_User#}" class="btn btn-primary" tabindex="16" />
+				<input type="hidden" name="regfrom" value="full" />
+			</div>
+		</form>
+	</div>
 
-	{if isset($register_step_1_extra)}
-		<br /><br />
-		{$register_step_1_extra}
-	{/if}
-	
-	<input type="submit" name="submit" value="{#PLIGG_Visual_Register_Create_User#}" class="btn" tabindex="16" />
-	<input type="hidden" name="regfrom" value="full"/>
-</form>
+	 {checkActionsTpl location="tpl_pligg_register_end"}
+
 </div>
-
-<div class="register-right">
-	<h2>{#PLIGG_Visual_Register_Description_Title#}</h2>
-	<p>{#PLIGG_Visual_Register_Description_Paragraph#}
-	<ul>
-		{#PLIGG_Visual_Register_Description_Points#}
-	</ul>
-	</p>
-</div>
-
-</div>
-    {checkActionsTpl location="tpl_pligg_register_end"}
