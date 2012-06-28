@@ -169,7 +169,7 @@ PLIGG_Visual_Story_RegisterHere = "here"
 PLIGG_Visual_Story_RelatedStory = "Related Links"
 PLIGG_Visual_Story_Who_Voted = "Who Voted"
 PLIGG_Visual_Story_Comments = "Comments"
-PLIGG_Visual_Story_WhoVoted = "Who Voted for this Story"
+PLIGG_Visual_Story_WhoVoted = "Who Upvoted this Story"
 PLIGG_Visual_Comment_Send = "Submit a Comment"
 PLIGG_Visual_Comment_NoHTML = "HTML is disabled"
 PLIGG_Visual_Comment_Submit = "Submit Comment"
@@ -1070,4 +1070,10 @@ PLIGG_Visual_Email_Tell_A_Friend = "Here is a link to the story: "
 // Start 1.2.1 Language File
 PLIGG_Visual_AdminPanel_Subcategory_Move = "Move sub-categories up a level"
 PLIGG_Visual_AdminPanel_Subcategory_Delete = "Delete sub-categories"
-// End 1.2.2 Language File
+
+// Start 2.0.0 Language File
+PLIGG_Visual_Story_Who_Upvoted = "Who Upvoted"
+PLIGG_Visual_Story_Who_Downvoted = "Who Downvoted"
+PLIGG_Visual_Story_Who_Downvoted_Story = "Who Downvoted this Story"
+
+// End 2.0.0 Language File

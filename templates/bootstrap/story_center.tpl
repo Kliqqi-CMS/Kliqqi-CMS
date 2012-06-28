@@ -2,7 +2,8 @@
 
 <ul class="nav nav-tabs" id="storytabs">
 	<li class="active"><a data-toggle="tab" href="#comments">{#PLIGG_Visual_Story_Comments#}</a></li>
-	<li><a data-toggle="tab" href="#who_voted">{#PLIGG_Visual_Story_WhoVoted#}</a></li>
+	<li><a data-toggle="tab" href="#who_voted">{#PLIGG_Visual_Story_Who_Upvoted#}</a></li>
+	<li><a data-toggle="tab" href="#who_downvoted">{#PLIGG_Visual_Story_Who_Downvoted#}</a></li>
 	{if count($related_story) neq 0}<li><a data-toggle="tab" href="#related">{#PLIGG_Visual_Story_RelatedStory#}</a></li>{/if}
 	{checkActionsTpl location="tpl_pligg_story_tab_end"}
 </ul>
@@ -12,6 +13,7 @@
 $(function () {
 	$('#storytabs a[href="#comments"]').tab('show');
 	$('#storytabs a[href="#who_voted"]').tab('show');
+	$('#storytabs a[href="#who_downvoted"]').tab('show');
 	$('#storytabs a[href="#related"]').tab('show');
 })
 </script>
@@ -44,17 +46,33 @@ $(function () {
 	<div class="tab-pane fade" id="who_voted">
 		<h3>{#PLIGG_Visual_Story_WhoVoted#}</h3>
 		{checkActionsTpl location="tpl_pligg_story_who_voted_start"}
-		<div class="whovotedwrapper">
+		<div class="whovotedwrapper whoupvoted">
 			<ul>
-				{section name=nr loop=$voter}
+				{section name=upvote loop=$voter}
 					<li>
-						{if $UseAvatars neq "0"}<a href="{$URL_user, $voter[nr].user_login}"><img src="{$voter[nr].Avatar_ImgSrc}" alt="" align="top" title="{$voter[nr].user_login}" /></a>{/if} 
-						{if $UseAvatars eq "0"}<a href="{$URL_user, $voter[nr].user_login}">{$voter[nr].user_login}</a>{/if}
+						{if $UseAvatars neq "0"}<a href="{$URL_user, $voter[upvote].user_login}"><img src="{$voter[upvote].Avatar_ImgSrc}" alt="" align="top" title="{$voter[upvote].user_login}" /></a>{/if} 
+						{if $UseAvatars eq "0"}<a href="{$URL_user, $voter[upvote].user_login}">{$voter[upvote].user_login}</a>{/if}
 					</li>
 				{/section}
 			</ul>
 		</div>
 		{checkActionsTpl location="tpl_pligg_story_who_voted_end"}
+	</div>
+	
+	<div class="tab-pane fade" id="who_downvoted">
+		<h3>{#PLIGG_Visual_Story_Who_Downvoted_Story#}</h3>
+		{checkActionsTpl location="tpl_pligg_story_who_downvoted_start"}
+		<div class="whovotedwrapper whodownvoted">
+			<ul>
+				{section name=downvote loop=$downvoter}
+					<li>
+						{if $UseAvatars neq "0"}<a href="{$URL_user, $downvoter[downvote].user_login}"><img src="{$downvoter[downvote].Avatar_ImgSrc}" alt="" align="top" title="{$downvoter[downvote].user_login}" /></a>{/if} 
+						{if $UseAvatars eq "0"}<a href="{$URL_user, $downvoter[downvote].user_login}">{$downvoter[downvote].user_login}</a>{/if}
+					</li>
+				{/section}
+			</ul>
+		</div>
+		{checkActionsTpl location="tpl_pligg_story_who_downvoted_end"}
 	</div>
 
 
@@ -65,8 +83,8 @@ $(function () {
 			<ol>
 				{* The next line checks how many related stories there are.  If there are fewer than 10 it will set the return loop to a smaller number. *}
 				{if count($related_story) > 10}{assign var="related_count" value="10"}{else}{assign var="related_count" value=$related_story}{/if}
-				{section name=nr loop=$related_count}
-					<li><a href = "{$related_story[nr].url}">{$related_story[nr].link_title}</a></li> 
+				{section name=related loop=$related_count}
+					<li><a href = "{$related_story[related].url}">{$related_story[related].link_title}</a></li> 
 				{/section}
 			</ol>
 			{checkActionsTpl location="tpl_pligg_story_related_end"}

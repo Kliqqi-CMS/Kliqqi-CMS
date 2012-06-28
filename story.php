@@ -140,7 +140,8 @@ if(is_numeric($requestID)) {
 
 	// for show who voted
 	$main_smarty->assign('user_url', getmyurl('userblank', ""));
-	$main_smarty->assign('voter', who_voted($id, 'small'));
+	$main_smarty->assign('voter', who_voted($id, 'large', '>0'));
+	$main_smarty->assign('downvoter', who_voted($id, 'large', '<0'));
 
 	// misc smarty
 	$main_smarty->assign('Enable_Comment_Voting', Enable_Comment_Voting);

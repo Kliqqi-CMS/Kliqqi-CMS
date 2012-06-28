@@ -35,7 +35,7 @@ function get_category_name($cat_id) {
 }
 
 
-function who_voted($storyid, $avatar_size, $condition='>0'){
+function who_voted($storyid, $avatar_size, $condition){
 	// this returns who voted for a story
 	// eventually add support for filters (only show friends, etc)	
 	global $db;
@@ -44,7 +44,7 @@ function who_voted($storyid, $avatar_size, $condition='>0'){
 	$sql = "SELECT user_login, user_email
 			FROM " . table_votes . " 
 			INNER JOIN " . table_users . " ON vote_user_id=user_id 
-			WHERE vote_value $condition AND vote_link_id=$storyid AND vote_type='links' AND user_level NOT IN('god','Spammer')";
+			WHERE vote_value $condition AND vote_link_id=$storyid AND vote_type='links' AND user_level NOT IN('Spammer')";
 	$voters = $db->get_results($sql);
 	$voters = object_2_array($voters);
 	foreach($voters as $key => $val)
