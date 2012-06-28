@@ -281,10 +281,26 @@ class Comment {
 	}
 	/////
 	
+	function remove_vote($user=0, $value=10) {
+		require_once(mnminclude.'votes.php');
+		if(!is_numeric($this->id)){return false;}
+	
+		$vote = new Vote;
+		$vote->type='comments';
+		$vote->user=$user;
+		$vote->link=$this->id;
+		$vote->value=$value;
+		$vote->remove();
+
+		$vote = new Vote;
+		$vote->type='comments';
+		$vote->link=$this->id;
+		$this->votes=$vote->count();
+	}
+	
 	function insert_vote($user=0, $value=10) {
 		global $anon_karma;
 		require_once(mnminclude.'votes.php');
-
 		if(!is_numeric($this->id)){return false;}
 
 		$vote = new Vote;

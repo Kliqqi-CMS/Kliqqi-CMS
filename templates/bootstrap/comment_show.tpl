@@ -6,17 +6,17 @@
 			{if $UseAvatars neq "0"}<a href="{$user_view_url}"><img src="{$Avatar_ImgSrc}" align="absmiddle" class="avatar" alt="{$user_username}" title="{$user_username}" /></a>{/if}      
 			{if $Enable_Comment_Voting eq 1}
 				<br />
-				{if $comment_user_vote_count eq 0 && $current_userid neq $comment_author}
+				{*if $comment_user_vote_count eq 0 && $current_userid neq $comment_author*}
 					<span id="ratebuttons-{$comment_id}">	  
 						<a href="javascript:{$link_shakebox_javascript_voten}" style='text-decoration:none;'>- </a> 
 						<a id="cvote-{$comment_id}" style='text-decoration: none;'>{$comment_votes}</a> 
 						<a href="javascript:{$link_shakebox_javascript_votey}" style='text-decoration:none;'> +</a> 
 					</span>
-				{/if}
+				{*/if*}
 			{/if}
 		</div>
 		<div class="comment-right span7" id="wholecomment{$comment_id}">
-			{if $isadmin eq 1 || $current_userid eq $comment_author }{if $hide_comment_edit neq 'yes'}
+			{if $hide_comment_edit neq 'yes'}
 				<div class="btn-group pull-right">
 					<a class="btn dropdown-toggle" data-toggle="dropdown" href="#">
 					  <i class="icon-info-sign"></i> {#PLIGG_Visual_Admin_Links#}
@@ -32,7 +32,7 @@
 						{/if}
 					</ul>
 				</div>
-			{/if}{/if}
+			{/if}
 			<p class="comment-data">
 				<span class="comment-author">
 					{if $is_anonymous}{#PLIGG_Visual_Comment_Manage_Unregistered#}{/if} <a href="{$user_view_url}">{$user_username}</a><!-- {if $user_rank neq ''} (#{$user_rank}){/if} -->

@@ -50,6 +50,7 @@ if(isset($_POST['id'])){
 		error('Invalid vote value');
 	}
 
+	$votes = $comment->remove_vote($current_user->user_id, -$value);
 	$votes = $comment->insert_vote($current_user->user_id, $value);
 
 	$comment->votes = $votes;
