@@ -1,0 +1,261 @@
+/* Pligg Admin Panel CSS */
+body {
+padding-top:0;
+padding-bottom:0;
+}
+
+.navbar-inner {
+border-radius:0;
+}
+
+#htmlElement {
+padding: 10px;
+background-color: #000;
+}
+
+img.floatimageleft {float:left;margin:0px 12px 0px 0;}
+img.floatimageright {float:right;margin:0px 12px 0px 12px;}
+
+.floatleft {float:left;margin:0px 12px 0px 0;}
+.floatright {float:right;margin:0px 12px 0px 12px;}
+
+.altlink{
+cursor:pointer;
+}
+
+.tablesort th {background: #619acb;}
+.reverse_sort {background: #5688b3 url(../images/arrow_up.gif) no-repeat top left;}
+.forward_sort {background: #619acb url(../images/arrow_down.gif) no-repeat top left;}
+.greyhighlight {background-color:#F3F3F3;padding:5px;border:1px dashed #DBDBDB;}
+
+.bigbutton {padding:4px;font-size:15px;}
+
+.admintitle {
+margin:2px 10px 4px 0;
+padding-left:2px;
+border-bottom:1px solid #619ACB;
+font-size:16px;
+font-weight:bold;
+}
+
+.help {
+float:right;
+position:inline;
+}
+
+.help-block, .help-inline {
+font-size:0.8em;
+}
+
+.help-inline {
+padding:0 0 0 1px;
+}
+
+legend {
+	margin-bottom:8px;
+}
+
+select,
+textarea,
+input[type="text"],
+input[type="password"],
+input[type="datetime"],
+input[type="datetime-local"],
+input[type="date"],
+input[type="month"],
+input[type="time"],
+input[type="week"],
+input[type="number"],
+input[type="email"],
+input[type="url"],
+input[type="search"],
+input[type="tel"],
+input[type="color"],
+.uneditable-input {
+/* Remove the space beneath input fields */
+margin-bottom:0;
+}
+
+/* HEADER */
+.search-query {
+box-sizing:content-box;
+-moz-box-sizing:content-box;
+}
+
+/* SIDEBAR */
+.sidebar-nav {
+    padding: 9px 0;
+}
+
+.accordion {
+	margin:10px 0;
+}
+
+.accordion-group {
+	margin-bottom:5px;
+}
+.accordion-group {
+overflow:hidden;
+}
+.accordion-heading .accordion-toggle {
+	padding:5px 15px;
+}
+
+.accordion-heading {
+    position: relative;
+	height:35px;
+	
+	/* Background Fallback */
+	  background-color: #696969;
+	  /* Safari 4-5, Chrome 1-9 */
+	  background: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#434343), to(#696969));
+	  /* Safari 5.1, Chrome 10+ */
+	  background: -webkit-linear-gradient(center top, #696969, #434343);
+	  /* Firefox 3.6+ */
+	  background: -moz-linear-gradient(top, #696969, #434343);
+	  /* IE 10 */
+	  background: -ms-linear-gradient(top, #696969, #434343);
+	  /* Opera 11.10+ */
+	  background: -o-linear-gradient(top, #696969, #434343);
+}
+.nav-list > li > a, .nav-list .nav-header {
+text-shadow:0 1px 0 #505050;
+}
+.nav .nav-header {
+color:#ffffff;
+}
+
+.accordion-heading-title {
+display:block;
+float:left;
+}
+.accordion-heading-alert {
+display:block;
+float:right;
+margin:8px 14px 0 0;
+text-align:center;
+height:15px;
+background:#939393;
+/* Inner Shadow */
+	box-shadow:inset 0 0 6px #484848;
+	-moz-box-shadow:inset 0 0 6px #484848;
+}
+.badge{
+border-radius: 6px 6px 6px 6px;
+min-width: 16px;
+padding: 1px 3px 2px;
+text-align: center;
+}
+.badge-gray {
+background:#939393;
+}
+.accordion-heading-alert a {
+color:#ffffff;
+text-decoration:none;
+}
+.accordion-heading-alert a:hover {
+text-decoration:underline;
+}
+
+.accordion-body {
+	background:#ffffff;
+}
+
+.accordion-inner > li > a {
+  margin-left: -15px;
+  margin-right: -15px;
+  text-shadow: 0 1px 0 rgba(255, 255, 255, 0.5);
+}
+.accordion-inner > li > a {
+  padding: 3px 15px;
+}
+.accordion-inner > .active > a,
+.accordion-inner > .active > a:hover {
+  color: #ffffff;
+  text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.2);
+  background-color: #0088cc;
+}
+.accordion-inner [class^="icon-"] {
+  margin-right: 2px;
+}
+
+.accordion-inner {
+  margin-left: 0;
+  list-style: none;
+}
+.accordion-inner > li > a {
+  display: block;
+}
+.accordion-inner > li > a:hover {
+  text-decoration: none;
+  background-color: #eeeeee;
+}
+.accordion-inner > .pull-right {
+  float: right;
+}
+
+/* HEADER */
+.logo {position:absolute;float:left;margin:27px 0 8px 0;}
+
+/* Category Manager */
+#basic-accordian{
+padding:5px;
+width:775px;
+z-index:2;
+}
+
+.accordion_headings{
+padding:5px;
+background:#629acb;
+color:#FFFFFF;
+border:1px solid #FFF;
+cursor:pointer;
+font-weight:bold;
+}
+
+.accordion_headings:hover{
+background:#0a508a;
+}
+
+.accordion_child{
+padding:15px;
+background:#EEE;
+}
+
+.header_highlight{
+background:#0a508a;
+}
+.deletecategory {
+background:#FDFFCF;
+float:left;
+width:600px;
+border:1px solid #E1E3AB;
+padding:8px;
+margin:25px 0 10px 0px;
+}
+
+/* Admin Config */
+.admin_config {
+float:left;
+width:200px;
+margin:0 0 15px 0;
+padding:0;
+}
+.admin_config table tr td {
+border-top:1px solid #DFDFDF;
+border-right:1px solid #bbb;
+border-bottom:1px solid #bbb;
+border-left:1px solid #DFDFDF;
+background:#f9f9f9;
+padding:5px 6px;
+}
+.admin_config_content {
+margin:0 0 0 0;
+padding:0;
+}
+
+/* STORY MANAGEMENT */
+.table-striped tbody tr:nth-child(2n+1) td, .table-striped tbody tr:nth-child(2n+1) th {background:none;}
+.tr_moderated {
+background:#fffdbd;
+}
