@@ -1,0 +1,1 @@
+<li><a href="{$my_pligg_base}/modules/admin_help_english/docs/welcome.html" class="colorbox_iframeadminhelp" title="Help">Admin Help English</a></li>

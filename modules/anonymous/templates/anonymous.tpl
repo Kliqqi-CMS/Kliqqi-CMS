@@ -1,0 +1,1 @@
+{config_load file=anonymous_pligg_lang_conf}

@@ -1,0 +1,8 @@
+## Rename this file to .htaccess if you don't
+## want people viewing your tpl files
+
+<files ~ "\.tpl$">
+order deny,allow
+allow from none
+deny from all
+</files>

@@ -1,0 +1,433 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<link rel="stylesheet" type="text/css" href="./templates/admin/css/fraxi.css" media="screen" />
+	<link rel="icon" href="./favicon.ico" type="image/x-icon" />
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	
+	<title>Pligg Readme</title>
+
+</head>
+<body>
+		
+<div id="header">
+	<div class="logo"><img src="./templates/admin/images/logo.gif" alt="Pligg CMS" title="Pligg CMS"/></div>
+	<div id="head-nav">
+		<ul class="nav-menu">
+			<li><a href="./readme.html" class="navcur" name="top" title="Readme" >Readme</a></li>
+			<li><a href="./install/install.php" class="nav" title="Install">Install</a></li>
+			<li><a href="./install/upgrade.php" class="nav" title="Upgrade">Upgrade</a></li>
+			<li><a href="./install/troubleshooter.php" class="nav" title="Troubleshooter">Troubleshooter</a></li>
+			<li><a href="./admin/" class="nav" title="Admin">Admin</a></li>
+			<li><a href="./" class="nav" title="Home">Home</a></li>
+		</ul>
+		<div id="navbar">
+			Please read this document in its entirety before installing or upgrading Pligg.
+		</div>
+	</div>
+</div>
+<div style="clear:both;"></div>
+
+
+<div class="sidebar">
+	<div id="slider" style="position:absolute;width:94%;left:0px;top:0px;background:#FFFFFF;border:2px solid #619ACB">
+		<h3>Readme Shortcuts</h3>
+		<div id="side-stories" class="side-box">
+			<ul>
+				<li><a href="#install">Installation</a></li>
+				<li><a href="#backup">Backup</a></li>
+				<li><a href="#upgrade">Upgrade</a></li>
+				<li><a href="#support">Support</a></li>
+				<li><a href="#credits">Credits</a></li>
+			</ul>
+		</div>
+		
+		<h3>Pligg CMS Links</h3>
+		<div id="side-stories" class="side-box">
+			<ul>
+				<li><a href="http://pligg.com/">Pligg Homepage</a></li>
+				<li><a href="http://forums.pligg.com/">Pligg Forums</a></li>
+				<li><a href="http://forums.pligg.com/project.php?projectid=1">Bug Report</a></li>
+				<li><a href="http://pligg.com/pro/">Pligg Shop</a></li>
+				<li><a href="http://forums.pligg.com/donate/">Donate to Pligg</a></li>
+			</ul>
+		</div>
+	</div>
+	<script type="text/javascript"><!--
+	/* Script by: www.jtricks.com
+	 * Version: 20071017
+	 * Latest version:
+	 * www.jtricks.com/javascript/navigation/floating.html
+	 */
+	var floatingMenuId = 'slider';
+	var floatingMenu =
+	{
+		targetY: 0,
+
+		hasInner: typeof(window.innerWidth) == 'number',
+		hasElement: typeof(document.documentElement) == 'object'
+			&& typeof(document.documentElement.clientWidth) == 'number',
+
+		menu:
+			document.getElementById
+			? document.getElementById(floatingMenuId)
+			: document.all
+			  ? document.all[floatingMenuId]
+			  : document.layers[floatingMenuId]
+	};
+
+	floatingMenu.move = function ()
+	{
+		floatingMenu.menu.style.left = floatingMenu.nextX + 'px';
+		floatingMenu.menu.style.top = floatingMenu.nextY + 'px';
+	}
+
+	floatingMenu.computeShifts = function ()
+	{
+		var de = document.documentElement;
+
+		floatingMenu.shiftX =  
+			floatingMenu.hasInner  
+			? pageXOffset  
+			: floatingMenu.hasElement  
+			  ? de.scrollLeft  
+			  : document.body.scrollLeft;  
+		if (floatingMenu.targetX < 0)
+		{
+			floatingMenu.shiftX +=
+				floatingMenu.hasElement
+				? de.clientWidth
+				: document.body.clientWidth;
+		}
+
+		floatingMenu.shiftY = 
+			floatingMenu.hasInner
+			? pageYOffset
+			: floatingMenu.hasElement
+			  ? de.scrollTop
+			  : document.body.scrollTop;
+		if (floatingMenu.targetY < 0)
+		{
+			if (floatingMenu.hasElement && floatingMenu.hasInner)
+			{
+				// Handle Opera 8 problems
+				floatingMenu.shiftY +=
+					de.clientHeight > window.innerHeight
+					? window.innerHeight
+					: de.clientHeight
+			}
+			else
+			{
+				floatingMenu.shiftY +=
+					floatingMenu.hasElement
+					? de.clientHeight
+					: document.body.clientHeight;
+			}
+		}
+	}
+
+	floatingMenu.calculateCornerX = function()
+	{
+		if (floatingMenu.targetX != 'center')
+			return floatingMenu.shiftX + floatingMenu.targetX;
+
+		var width = parseInt(floatingMenu.menu.offsetWidth);
+
+		var cornerX =
+			floatingMenu.hasElement
+			? (floatingMenu.hasInner
+			   ? pageXOffset
+			   : document.documentElement.scrollLeft) + 
+			  (document.documentElement.clientWidth - width)/2
+			: document.body.scrollLeft + 
+			  (document.body.clientWidth - width)/2;
+		return cornerX;
+	};
+
+	floatingMenu.calculateCornerY = function()
+	{
+		if (floatingMenu.targetY != 'center')
+			return floatingMenu.shiftY + floatingMenu.targetY;
+
+		var height = parseInt(floatingMenu.menu.offsetHeight);
+
+		// Handle Opera 8 problems
+		var clientHeight = 
+			floatingMenu.hasElement && floatingMenu.hasInner
+			&& document.documentElement.clientHeight 
+				> window.innerHeight
+			? window.innerHeight
+			: document.documentElement.clientHeight
+
+		var cornerY =
+			floatingMenu.hasElement
+			? (floatingMenu.hasInner  
+			   ? pageYOffset
+			   : document.documentElement.scrollTop) + 
+			  (clientHeight - height)/2
+			: document.body.scrollTop + 
+			  (document.body.clientHeight - height)/2;
+		return cornerY;
+	};
+
+	floatingMenu.doFloat = function()
+	{
+		var stepX, stepY;
+
+		floatingMenu.computeShifts();
+
+		var cornerX = floatingMenu.calculateCornerX();
+
+		var stepX = (cornerX - floatingMenu.nextX) * .07;
+		if (Math.abs(stepX) < .5)
+		{
+			stepX = cornerX - floatingMenu.nextX;
+		}
+
+		var cornerY = floatingMenu.calculateCornerY();
+
+		var stepY = (cornerY - floatingMenu.nextY) * .07;
+		if (Math.abs(stepY) < .5)
+		{
+			stepY = cornerY - floatingMenu.nextY;
+		}
+
+		if (Math.abs(stepX) > 0 ||
+			Math.abs(stepY) > 0)
+		{
+			floatingMenu.nextX += stepX;
+			floatingMenu.nextY += stepY;
+			floatingMenu.move();
+		}
+
+		setTimeout('floatingMenu.doFloat()', 20);
+	};
+
+	// addEvent designed by Aaron Moore
+	floatingMenu.addEvent = function(element, listener, handler)
+	{
+		if(typeof element[listener] != 'function' || 
+		   typeof element[listener + '_num'] == 'undefined')
+		{
+			element[listener + '_num'] = 0;
+			if (typeof element[listener] == 'function')
+			{
+				element[listener + 0] = element[listener];
+				element[listener + '_num']++;
+			}
+			element[listener] = function(e)
+			{
+				var r = true;
+				e = (e) ? e : window.event;
+				for(var i = element[listener + '_num'] -1; i >= 0; i--)
+				{
+					if(element[listener + i](e) == false)
+						r = false;
+				}
+				return r;
+			}
+		}
+
+		//if handler is not already stored, assign it
+		for(var i = 0; i < element[listener + '_num']; i++)
+			if(element[listener + i] == handler)
+				return;
+		element[listener + element[listener + '_num']] = handler;
+		element[listener + '_num']++;
+	};
+
+	floatingMenu.init = function()
+	{
+		floatingMenu.initSecondary();
+		floatingMenu.doFloat();
+	};
+
+	// Some browsers init scrollbars only after
+	// full document load.
+	floatingMenu.initSecondary = function()
+	{
+		floatingMenu.computeShifts();
+		floatingMenu.nextX = floatingMenu.calculateCornerX();
+		floatingMenu.nextY = floatingMenu.calculateCornerY();
+		floatingMenu.move();
+	}
+
+	if (document.layers)
+		floatingMenu.addEvent(window, 'onload', floatingMenu.init);
+	else
+	{
+		floatingMenu.init();
+		floatingMenu.addEvent(window, 'onload',
+			floatingMenu.initSecondary);
+	}
+
+	//--></script>
+</div> <!-- End Sidebar and Sideitems -->
+		
+<div id="main_content">
+	<div class="bluerndcontent">
+		<div class="instructions">
+
+			<h1>Pligg Content Management System</h1>
+			<hr />
+			
+			<h2><a href="#install" name="install">Installation</a></h2>
+			<p><strong>Requirements:</strong> Pligg requires a modern version of PHP and MySQL and some PHP functions. To test if your server is capable of running Pligg please view the <a href="./install/troubleshooter.php">Troubleshooter</a>. If any elements appear in red on that page you may have a problem with either installing or running Pligg.</p>
+			
+			<ol>
+				<li>Create a mysql database. If you are unfamiliar with how to create a mysql database, please contact your web host or search their support site. Please pay careful attention when creating a database and write down your database name, username, password, and host somewhere.</li>
+				<li>Rename the /language/lang_english.conf.default file to lang_english.conf. Same instructions apply to any other language file that you might use that are located in the /languages directory.</li>
+				<li>Rename the file approvedips.txt.default to approvedips.txt</li>
+				<li>Rename the file bannedips.txt.default to bannedips.txt</li>
+				<li>Rename the file settings.php.default to settings.php</li>
+				<li>Rename the file local-antispam.txt.default to local-antispam.txt</li>
+				<li>Rename the /libs/dbconnect.php.default file to dbconnect.php</li>
+				<li>Upload the files to your server.</li>
+				<li>CHMOD 755 the following directories and files. If you experience any errors try 777.
+					<ul>
+						<li>/admin/backup/</li>
+						<li>/avatars/groups_uploaded/</li>
+						<li>/avatars/user_uploaded/</li>
+						<li>/cache/</li>
+						<li>/cache/admin_c/</li>
+						<li>/cache/templates_c/</li>
+						<li>/languages/ (And all of the files contained in this folder should be CHMOD 777)</li>
+						<li>approvedips.txt</li>
+						<li>bannedips.txt</li>
+						<li>local-antispam.txt</li>
+					</ul>
+				</li>
+				<li>CHMOD 666 the following files
+					<ul>
+						<li>/libs/dbconnect.php</li>
+						<li>settings.php</li>
+					</ul>
+				</li>
+				
+				<li>Open /install/index.php in your web browser. If you are reading this document after you uploaded it to your server, click on the install link at the top of the page.
+					<ul>
+						<li>Select a language from the list. </li>
+						<li>Fill out your database name, username, password, host, and your desired table prefix.</li>
+						<li>Create an admin account. Please write down the login credentials for future reference.</li>
+						<li>Make sure there are no error messages! If you see an error message, or if installation fails, create a new thread on the <a href="http://forums.pligg.com/">Pligg forums</a></li>
+					</ul>
+				</li>
+				
+				<li>Delete your /install folder.</li>
+
+				<li>CHMOD 644 libs/dbconnect.php</li>
+
+				<li>Open /index.php</li>
+
+				<li>Log in to the admin account using the credentials generated during the install process.</li>
+				<li>Log in to the admin panel ( /admin ).</li>
+				<li>Configure your Pligg site to your liking. Don't forget to use the Modify Language page to change your site's name.</li> 
+			</ol>
+			<br />
+	
+			<hr />
+			<h2><a href="#backup" name="backup">Backup</a></h2>
+			<ol>
+				<li>Log into your site as admin</li>
+				<li>Click on admin panel link</li>
+				<li>Click on File and MySQL backup link</li>
+				<li>Backup your files (and avatars) and your database</li>
+				<li>Download the backup .zip files to your computer</li>
+				<li>Delete the files from the backup manager</li>
+			</ol>
+			<br />
+			
+			<hr />
+			<h2><a href="#upgrade" name="upgrade">Upgrading</a></h2>
+			<code>
+			Please be sure to <strong>make a backup of your MySQL databases	and files before upgrading</strong> to the latest version of Pligg. Some upgrades might require that you upgrade your MySQL database, so please make backups whenever upgrading.<br />
+			These instructions do not support upgrading your template. Template upgrades require manual changes and should be carefully handled by the template author.<br />
+			The directions below are recommendations that we have come up with to mininimize the number of problems that might come from upgrading your site.
+			</code>
+			<ol>
+				<li>Backup your MySQL database</li>
+				<li>Backup your old Pligg CMS files.</li>
+				<li>Rename your template folder so that the data is not overwritted by upgrade files. If you use a template name that is not included with Pligg, skip this step.</li>
+				<li> Disable all of the modules from your admin panel. <br />
+				You will need to re-enable them after upgrade.</li>
+				<li>Delete all of the files from your server EXCEPT:
+				   <ol>
+				   <li>/avatars/ (entire directory)</li>
+				   <li>/libs/dbconnect.php</li>
+				   <li>/.htaccess</li>
+				   <li>/favicon.ico</li>
+				   <li>/settings.php</li>
+				   </ol>
+				</li>
+				<li>Upload all of the new files to your server. <br />
+				If you are able to I suggest uploading a zip file to the server and extracting it server-side. This will minimize the chances of files being corrupted during FTP transfer, which is a common issue.<br />
+				<li>Confirm that the CHMOD permissions for the following files or directories are all set to 777.</li>
+					<ul>
+						<li>settings.php</li>
+						<li>/admin/backup/</li>
+						<li>/avatars/groups_uploaded/</li>
+						<li>/avatars/user_uploaded/</li>
+						<li>/cache/</li>
+						<li>/cache/admin_c/</li>
+						<li>/cache/templates_c/</li>
+						<li>/languages/</li>
+						<li>/languages/lang_english.conf</li>
+					</ul>
+				</li>
+				<li>Run the upgrade from /install/upgrade.php<br />
+				If there are no error messages, delete the /install directory from your web server.</li>
+				<li>Log in as a "god" level user.<br />
+				In some cases you may already be logged in from your previous version of Pligg.</li>
+				<li>Either update your template to work with the latest version or navigate to /admin/admin_config.php?page=Template and change the template name to "wistie"</li>
+				<li>Re-activate the disabled modules from step 4, navigate to /admin/admin_modules.php</li>
+			</ol>
+			<br />
+			
+			<hr />
+			<h2><a href="#support" name="support">Support</a></h2>
+			<p>Pligg is an Open source project, but that doesn't stop us from having a rock-solid support team. Pliggers from all across the world are watching the forum 24 hours a day helping each other out. If you have any questions, ideas, modifications or bugs to discuss please let us know through the Pligg forum.</p>
+			<p>Creating a forum account is also important because it allows you to download additional free templates and modules from Pligg.com. Not only can you download free files, but you can keep track of updates for your modules and templates by marking them as "installed". You will then be notified automatically when a developer updates any of your installed files.</p>
+			
+			<hr />
+			<h2><a href="#credits" name="credits">Credits</a></h2>
+			<p>This code was originally written by Ricardo Galli for the open source project known as <a href="http://www.meneame.net">Meneame</a>.</p>
+			<p>Many thanks to those who donated time and money to the Pligg project. Without their support we wouldn't be able to keep this project alive. If you are interested in becoming a part of the development team please contact us through the forum.</p>
+			<p><strong>A special thank you to all of the Pligg developers and translators.</strong></p>
+			
+			<hr />
+			<h2><a href="#license" name="license">License</a></h2>
+			<p>Pligg's source code is published under the <a href="http://www.affero.org/oagpl.html">Affero General Public License</a>. You can view the license in the file LICENSE.txt and in the default "About" page that is included when you install Pligg.</p>
+			
+			<hr />
+			<h2>Questions / Comments?</h2>
+			<p>Support questions should be posted as a thread on the <a href="http://www.pligg.com/forum/">Pligg Forum</a></p>
+			<p>Please report security flaws to the <a href="http://www.pligg.com/contact.php">Security Issue Contact Form</a> on pligg.com. Please don't contact us directly for any other purposes.</p>
+			<p>If you would like to translate Pligg to another language you can <a href="http://www.pligg.com/blog/translate/">apply to do so here</a>, and please join the <a href="http://groups.google.com/group/pligg-translators">Translate Pligg Group</a> on Google Groups.</p>
+			
+
+			<br />
+
+		</div>
+	</div>
+</div>
+
+<div id="footer-wrap">
+	<div class="footer">
+		<div class="rss-feeds">
+			<h1>Pligg CMS RSS Feeds</h1>
+			<ul>
+				<li><a href="http://pligg.com/blog/feed/" target="_blank">Blog</a></li>
+				<li><a href="http://twitter.com/statuses/user_timeline/6024362.rss" target="_blank">Twitter</a></li>
+				<li><a href="http://forums.pligg.com/external.php" target="_blank">Forum</a></li>
+			</ul>
+		</div>
+	</div>
+	<div id="about">
+		<h3><a href="http://forums.pligg.com/">Help!</a></h3>
+		<br /><div class="design">For support and additional free downloads to enhance your Pligg install please visit <a href="http://www.pligg.com">Pligg.com</a> and the <a href="http://forums.pligg.com">Pligg Forum.</a></div>
+		<br>
+	</div>
+</div>
+
+</body>
+</html>

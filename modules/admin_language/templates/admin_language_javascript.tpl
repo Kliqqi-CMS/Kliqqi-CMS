@@ -1,0 +1,1 @@
+{if $modulename eq "admin_language"}<script src="./modules/admin_language/js/simpleedit.js" type="text/javascript"></script>{/if}

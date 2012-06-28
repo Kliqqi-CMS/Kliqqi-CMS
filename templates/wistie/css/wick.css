@@ -1,0 +1,38 @@
+/*
+WICK: Web Input Completion Kit
+http://wick.sourceforge.net/
+Copyright (c) 2004, Christopher T. Holland,
+All rights reserved.
+*/
+
+.floater {
+bottom:0;
+right:0;
+display:none;
+}
+
+.floater td {
+background-color:white;
+color:black;
+padding-right: 10px; 
+}
+
+.matchedSmartInputItem {
+font-size:0.8em;
+padding: 3px 5px 3px 8px;
+margin:0;
+cursor:pointer;
+display: inline;
+}
+
+.selectedSmartInputItem {
+color:white;
+background-color:#11A3AC;
+}
+
+#smartInputResults {
+padding:0;
+margin-top:-9px;
+margin-bottom:4px;
+font-size:15px;
+}

@@ -1,0 +1,2 @@
+URL: http://spellerpages.sourceforge.net/index.html
+Version: 0.5.1

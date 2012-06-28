@@ -1,0 +1,1 @@
+<li><a href="{$my_pligg_base}/templates/admin/help/welcome.html">Hello World</a></li>

@@ -1,0 +1,46 @@
+<style type="text/css">
+h2 {font-size:22px;padding:0;margin:5px 0;}
+h3 {font-size:18px;padding:0;margin:8px 0 5px 0;}
+pre {background:#eee;border:1px solid #bbb;padding:4px;}
+p {padding:0;margin:0;font-size:14px;}
+</style>
+
+<div style="margin:10px;">
+<h2>Status Update Module</h2>
+<p>
+<strong>Created by:</strong> DB and Yankidank<br />
+<strong>Created on:</strong> September 12, 2009<br />
+<strong>Last Updated:</strong> December 28, 2010<br />
+<strong>Requires:</strong> None<br />
+</p>
+
+<h3>Description</h3>
+<p>
+This module will allow users to post status updates. This is a feature similar to how Twitter or Facebook allow users to submit micro-blog entries, smaller messages to let others know what you are up to. The module integrates into the Pligg user profile page and has the ability to automatically display status updates when a user submits a story or comment.
+</p>
+
+<h3>Installation</h3>
+<p>Install the module from your Pligg admin module page. Then configure it from the settings link found on the module page or admin homepage. The settings page for this module contains a lot of instructions at the bottom of the settings page explaining what each input field or configuration value does.</p>
+<hr />
+<p><strong>URL Method 2</strong><br />
+Using URL Method 2, permalink URLs will look like domain.com/status/123. If you are using URL Method 2 (SEO) and you are using Pligg 1.0.1 or below you will need to add a new line to your .htaccess file in order for permalinks to work. If you are using Pligg CMS 1.0.2 or above this line has already been added to the htaccess.default file that comes with Pligg for your convenience.<br />
+Add the line below to your .htaccess file after: ##### URL Method 2 Begin #####<br />
+<pre>RewriteRule ^status/([0-9]+)/?$ modules/status/status.php?id=$1 [L]</pre>
+</p>
+
+<h3>Usage</h3>
+<p>The module will install itself to the user profile page by default, although this setting can easilly be changed to other locations from the module settings page. To use the module you must be logged into an account, you should then navigate to your own profile page. From there you will see a status input text field followed by all of your friends status updates.</p>
+<p>
+If you would like to direct a message toward another user just use the format @username somewhere within your status update. If you would like to direct a message to all of the members who are in a group that you belong to format the message like this: !group name. Lastly, if you are a God-level admin user you are able to send messages to all user's status update page by using *all. God-level admins can also message user level groups by using an asterisk in front of the user level name. For example *normal, *admin, and *god.
+</p>
+<p>
+You can direct messages to multiple users in a single status update, but you are limited to only directing to 1 group and 1 user level at a time. You can use a combination of groups and user level commands in the same status update, for example "!group name and *normal message" will send a status update to members belonging to either the group "group name" or the normal user level group. Remember that in order to send a message to a group you must belong to that group.
+</p>
+
+<h3>Revision History</h3>
+<p>
+v1.2 2010/12/28 - Security fixes<br />
+v0.1 2009/09/12 - First version<br />
+</p>
+
+</div>

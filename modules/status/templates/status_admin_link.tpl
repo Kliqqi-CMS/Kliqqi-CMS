@@ -1,0 +1,1 @@
+<li><a href="{$my_pligg_base}/module.php?module=status" {if $modulename eq "status"}class="navcur"{else}class="nav"{/if} >status Module</a></li>

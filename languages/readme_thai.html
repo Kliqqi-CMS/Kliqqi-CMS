@@ -1,0 +1,460 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+	<link rel="stylesheet" type="text/css" href="../templates/admin/css/fraxi.css" media="screen">
+	<meta name="Language" content="en-us">
+	
+	<title>Pligg โปรดอ่าน</title>
+	<link rel="icon" href="../favicon.ico" type="image/x-icon"/>			
+	
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" /></head>
+<body>
+<div class="logo"><img src="../templates/admin/images/logo.gif" alt="Pligg CMS" title="Pligg CMS"/></div>
+
+<div id="body-wrap">
+	<div id="header">
+		<div id="head-nav">
+			<ul class="nav-menu">
+				<li><a href="../readme.html" class="navcur" name="top" title="Readme" >โปรดอ่าน</a></li>
+				<li><a href="../install/install.php" class="nav" title="Install">ติดตั้ง</a></li>
+				<li><a href="../install/upgrade.php" class="nav" title="Upgrade">อัพเกรด</a></li>
+				<li><a href="../install/troubleshooter.php" class="nav" title="Troubleshooter">ปัญหาที่พบบ่อย</a></li>
+				<li><a href="../admin/" class="nav" title="Admin">ผู้ดูแล</a></li>
+				<li><a href="../" class="nav" title="Home">หน้าแรก</a></li>
+			</ul>
+			<div id="navbar">
+				กรุณาอ่านรายละเอียดต่างๆ ในเอกสารด้านล่างนี้ ก่อนที่จะทำการติดตั้ง หรืออัพเกรด Pligg.
+			</div>
+		</div>
+	</div>
+	<div style="clear:both;"></div>
+	<div id="body-contents">
+		<div class="sidebar">
+			<div id="slider" style="position:absolute;width:94%;left:0px;top:0px;background:#FFFFFF;border:2px solid #619ACB">
+				<h3>เมนูลัด</h3>
+				<div id="side-stories" class="side-box">
+					<ul>
+						<li><a href="#install">การติดตั้ง</a></li>
+						<li><a href="#backup">สำรองข้อมูล</a></li>
+						<li><a href="#upgrade">อัพเกรด</a></li>
+						<li><a href="#support">การช่วยเหลือ</a></li>
+						<li><a href="#credit">เครดิต</a></li>
+					</ul>
+				</div>
+				
+			    <h3>ลิงก์ของ Pligg</h3>
+				<div id="side-stories" class="side-box">
+					<ul>
+						<li><a href="http://www.pligg.com/">เว็บ Pligg</a></li>
+                        <li><a href="http://forums.pligg.com/">เว็บบอร์ด Pligg</a></li>
+                        <li><a href="http://forums.pligg.com/projects.html">แจ้งบั๊ก</a></li>
+						<li><a href="http://www.pligg.com/employment/">งานที่ Pligg</a></li>
+                        <li><a href="http://www.pligg.com/pro/">Pligg Shop</a></li>
+						<li><a href="http://www.pligg.com/donate/">บริจาคให้ Pligg</a></li>
+					</ul>
+				</div>
+			</div>
+<script type="text/javascript"><!--
+/* Script by: www.jtricks.com
+ * Version: 20071017
+ * Latest version:
+ * www.jtricks.com/javascript/navigation/floating.html
+ */
+var floatingMenuId = 'slider';
+var floatingMenu =
+{
+    targetY: 0,
+
+    hasInner: typeof(window.innerWidth) == 'number',
+    hasElement: typeof(document.documentElement) == 'object'
+        && typeof(document.documentElement.clientWidth) == 'number',
+
+    menu:
+        document.getElementById
+        ? document.getElementById(floatingMenuId)
+        : document.all
+          ? document.all[floatingMenuId]
+          : document.layers[floatingMenuId]
+};
+
+floatingMenu.move = function ()
+{
+    floatingMenu.menu.style.left = floatingMenu.nextX + 'px';
+    floatingMenu.menu.style.top = floatingMenu.nextY + 'px';
+}
+
+floatingMenu.computeShifts = function ()
+{
+    var de = document.documentElement;
+
+    floatingMenu.shiftX =  
+        floatingMenu.hasInner  
+        ? pageXOffset  
+        : floatingMenu.hasElement  
+          ? de.scrollLeft  
+          : document.body.scrollLeft;  
+    if (floatingMenu.targetX < 0)
+    {
+        floatingMenu.shiftX +=
+            floatingMenu.hasElement
+            ? de.clientWidth
+            : document.body.clientWidth;
+    }
+
+    floatingMenu.shiftY = 
+        floatingMenu.hasInner
+        ? pageYOffset
+        : floatingMenu.hasElement
+          ? de.scrollTop
+          : document.body.scrollTop;
+    if (floatingMenu.targetY < 0)
+    {
+        if (floatingMenu.hasElement && floatingMenu.hasInner)
+        {
+            // Handle Opera 8 problems
+            floatingMenu.shiftY +=
+                de.clientHeight > window.innerHeight
+                ? window.innerHeight
+                : de.clientHeight
+        }
+        else
+        {
+            floatingMenu.shiftY +=
+                floatingMenu.hasElement
+                ? de.clientHeight
+                : document.body.clientHeight;
+        }
+    }
+}
+
+floatingMenu.calculateCornerX = function()
+{
+    if (floatingMenu.targetX != 'center')
+        return floatingMenu.shiftX + floatingMenu.targetX;
+
+    var width = parseInt(floatingMenu.menu.offsetWidth);
+
+    var cornerX =
+        floatingMenu.hasElement
+        ? (floatingMenu.hasInner
+           ? pageXOffset
+           : document.documentElement.scrollLeft) + 
+          (document.documentElement.clientWidth - width)/2
+        : document.body.scrollLeft + 
+          (document.body.clientWidth - width)/2;
+    return cornerX;
+};
+
+floatingMenu.calculateCornerY = function()
+{
+    if (floatingMenu.targetY != 'center')
+        return floatingMenu.shiftY + floatingMenu.targetY;
+
+    var height = parseInt(floatingMenu.menu.offsetHeight);
+
+    // Handle Opera 8 problems
+    var clientHeight = 
+        floatingMenu.hasElement && floatingMenu.hasInner
+        && document.documentElement.clientHeight 
+            > window.innerHeight
+        ? window.innerHeight
+        : document.documentElement.clientHeight
+
+    var cornerY =
+        floatingMenu.hasElement
+        ? (floatingMenu.hasInner  
+           ? pageYOffset
+           : document.documentElement.scrollTop) + 
+          (clientHeight - height)/2
+        : document.body.scrollTop + 
+          (document.body.clientHeight - height)/2;
+    return cornerY;
+};
+
+floatingMenu.doFloat = function()
+{
+    var stepX, stepY;
+
+    floatingMenu.computeShifts();
+
+    var cornerX = floatingMenu.calculateCornerX();
+
+    var stepX = (cornerX - floatingMenu.nextX) * .07;
+    if (Math.abs(stepX) < .5)
+    {
+        stepX = cornerX - floatingMenu.nextX;
+    }
+
+    var cornerY = floatingMenu.calculateCornerY();
+
+    var stepY = (cornerY - floatingMenu.nextY) * .07;
+    if (Math.abs(stepY) < .5)
+    {
+        stepY = cornerY - floatingMenu.nextY;
+    }
+
+    if (Math.abs(stepX) > 0 ||
+        Math.abs(stepY) > 0)
+    {
+        floatingMenu.nextX += stepX;
+        floatingMenu.nextY += stepY;
+        floatingMenu.move();
+    }
+
+    setTimeout('floatingMenu.doFloat()', 20);
+};
+
+// addEvent designed by Aaron Moore
+floatingMenu.addEvent = function(element, listener, handler)
+{
+    if(typeof element[listener] != 'function' || 
+       typeof element[listener + '_num'] == 'undefined')
+    {
+        element[listener + '_num'] = 0;
+        if (typeof element[listener] == 'function')
+        {
+            element[listener + 0] = element[listener];
+            element[listener + '_num']++;
+        }
+        element[listener] = function(e)
+        {
+            var r = true;
+            e = (e) ? e : window.event;
+            for(var i = element[listener + '_num'] -1; i >= 0; i--)
+            {
+                if(element[listener + i](e) == false)
+                    r = false;
+            }
+            return r;
+        }
+    }
+
+    //if handler is not already stored, assign it
+    for(var i = 0; i < element[listener + '_num']; i++)
+        if(element[listener + i] == handler)
+            return;
+    element[listener + element[listener + '_num']] = handler;
+    element[listener + '_num']++;
+};
+
+floatingMenu.init = function()
+{
+    floatingMenu.initSecondary();
+    floatingMenu.doFloat();
+};
+
+// Some browsers init scrollbars only after
+// full document load.
+floatingMenu.initSecondary = function()
+{
+    floatingMenu.computeShifts();
+    floatingMenu.nextX = floatingMenu.calculateCornerX();
+    floatingMenu.nextY = floatingMenu.calculateCornerY();
+    floatingMenu.move();
+}
+
+if (document.layers)
+    floatingMenu.addEvent(window, 'onload', floatingMenu.init);
+else
+{
+    floatingMenu.init();
+    floatingMenu.addEvent(window, 'onload',
+        floatingMenu.initSecondary);
+}
+
+//--></script>
+
+	    </div> <!-- End Sidebar and Sideitems -->
+
+			<div class="bluerndcontent">
+			<fieldset>
+			<h1>Pligg Content Management System</h1>
+			<hr />
+			
+			<h2><a name="install">การติดตั้ง</a></h2>
+			<br />
+			<p><strong>สิ่งที่จำเป็นต้องมี:</strong><br />
+				<ul>
+					<li>ทักษะพื้นฐานเรื่อง FTP</li>
+					<li>PHP 4.3.0 หรือเวอร์ชั่นสูงกว่านี้</li>
+					<li>ฐานข้อมูล MySQL</li>
+				</ul>
+			</p>
+			
+			<br />
+			
+			<ol>
+				<li>สร้างฐานข้อมูล. ถ้าคุณไม่รู้ว่าจะสร้างฐานข้อมูลยังไง, กรุณาติดต่อเว็บโฮสติ้งของคุณหรือค้นหาในเว็บช่วยเหลือของโฮสติ้งที่ใช้อยู่. ระมัดระวังเวลาสร้างฐานข้อมูลใหม่พร้อมกับบันทึกชื่อฐานข้อมูล ผู้ใช้และรหัสผ่านเอาไว้ด้วย.</li>
+				<li>เปลี่ยนชื่อ settings.php.default เป็น settings.php. และทำเหมือนกันกับไฟล์ /libs/dbconnect.php.default ด้วย.</li>
+				<li>อัพโหลดไฟล์ขึ้นเซิร์ฟเวอร์.</li>
+				<li>CHMOD 755 โฟลเดอร์ต่อไปนี้, ถ้ามีข้อผิดพลาดให้ลองใช้ 777.
+					<ul>
+						<li>/admin/backup/</li>
+						<li>/avatars/groups_uploaded/</li>
+						<li>/avatars/user_uploaded/</li>
+						<li>/cache/</li>
+						<li>/cache/admin_c/</li>
+						<li>/cache/templates_c/</li>
+						<li>/languages/ (และไฟล์ทั้งหมดข้างในโฟลเดอร์นี้ก็ควรจะ CHMOD เป็น 777)</li>
+					</ul>
+				</li>
+				<li>ไฟล์ต่อไปนี้
+					<ul>
+						<li>/libs/dbconnect.php</li>
+						<li>bannedips.txt</li>
+						<li>settings.php</li>
+					</ul>
+				</li>
+				
+				<li>ไปที่ /install/index.php. ถ้าคุณกำลังอ่านเอกสารนี้ในขณะที่ได้อัพโหลดไฟล์ขึ้นไปแล้ว, คลิ๊กปุ่มติดตั้งทางด้านบนของหน้านี้.
+					<ul>
+						<li>เลือกภาษาจากรายการ. </li>
+						<li>กรอกชื่อฐานข้อมูล, ชื่อผู้ใช้, รหัสผ่าน, โฮสต์, และคำนำหน้าตารางที่ต้องการ.</li>
+						<li>สร้างบัญชีผู้ดูแล. กรุณาจดบันทึกข้อมูลการล็อกอินเอาไว้กันลืม และเผื่อต้องใช้ในอนาคต.</li>
+						<li>ดูแน่ใจว่าไม่มีข้อความแสดงข้อผิดพลาดแสดง!</li>
+					</ul>
+				</li>
+				
+				<li>ลบโฟลเดอร์ /install ทิ้ง.</li>
+
+				<li>CHMOD ไฟล์นี้ libs/dbconnect.php เป็น 644</li>
+
+				<li>ไปที่ /index.php</li>
+
+				<li>เข้าสู่ระบบผู้ดูแลโดยใช้ข้อมูลที่เราสร้างในขั้นตอนการติดตั้ง.<br />
+				<li>เข้าสู่หน้าต่างผู้ดูแล ( /admin ) และคุณจะพบกับหน้าต่างต้อนรับพร้อมแนะนำข้อมูลเกี่ยวกับ Pligg.</li>
+				<li>ตั้งค่าเว็บ Pligg ของคุณตามใจชอบ. อย่าลืมที่จะแก้ไฟล์ภาษา เพื่อเปลี่ยนชื่อเว็บของคุณ.</li> 
+			</ol>
+			
+			<br />
+			<h2><a name="backup">สำรองข้อมูล</a></h2>
+			<br />
+			<ol>
+				<li>เข้าสู่ระบบด้วยบัญชีผู้ดูแล</li>
+				<li>คลิ๊กลิงก์แอดมินพาแนล</li>
+				<li>คลิ๊กที่ลิงก์ File and MySQL backup</li>
+				<li>สำรองไฟล์ของคุณ (และ อวาตาร์) และฐานข้อมูลของคุณ</li>
+				<li>ดาวน์โหลดไฟล์สำรองข้อมูลในรูปแบบ .zip ไปเก็บไว้บนเครื่องคอมพิวเตอร์</li>
+				<li>ลบไฟล์ทั้งหมดจากส่วนจัดการสำรองข้อมูล</li>
+			</ol>
+
+			<br />
+			<h2><a name="upgrade">อับเกรด</a></h2>
+
+			<code>
+			ต้องมั่นใจว่า <strong>สำรองฐานข้อมูล MySQL และไฟล์ทั้งหมดก่อนอัพเกรด</strong> ไปสู่เวอร์ชั่นล่าสุดของ Pligg. การอัพเกรดบางส่วนอาจจะต้องการให้คุณอัพเกรดฐานข้อมูลด้วย, ดังนั้นกรุณาสำรองข้อมูลทุกครั้งที่มีการอัพเกรด.<br />
+			วิธีการต่อไปนี้ไม่ได้ช่วยอัพเกรดเทมเพลตให้คุณ. คุณจำเป็นต้องอัพเกรดเทมเพลตด้วยตัวเองและควรจะทำด้วยความระมัดระวังโดยผู้สร้างเทมเพลต.
+			</code>
+			<ol>
+				<li>สำรองฐานข้อมูล</li>
+				<li>สำรองไฟล์เก่าบนเซิร์ฟเวอร์</li>
+				<li>อัพโหลดไฟล์ /install/index.html ไปไว้ที่เว็บ Pligg.<br />
+				ในเซิร์ฟเวอร์ทั่วไป, นี่จะเป็นการเตือนผู้ใช้ว่าคุณกำลังทำการอัพเกรดเว็บไซต์.</li>
+				<li>ยกเลิกการใช้งานโมดูลทั้งหมดในส่วนของผู้ดูแล. <br />
+				คุณจำเป็นต้องเปิดการใช้งานใหม่หลังจากอัพเกรดแล้ว.</li>
+				<li>ลบไฟล์ทั้งหมดออกจากเซิร์ฟเวอร์ ยกเว้น:
+				   <ol>
+				   <li>/libs/dbconnect.php</li>
+				   <li>/settings.php</li>
+				   <li>โฟลเดอร์เทมเพลต 9.9.5 ของคุณ</li>
+				   <li>ไฟล์ index.html อันใหม่ที่เพิ่งจะอัพโหลดไปเมื่อสักครู่</li>
+				   </ol>
+				</li>
+				<li>อัพโหลดไฟล์ของเวอร์ชั่น 1.0 ทั้งหมดไปไว้บนเซิร์ฟเวอร์. <br />
+				ถ้าคุณสามารถทำได้ ฉันแนะนำให้คุณอัพโหลดไฟล์ zip ไปที่เซิร์ฟเวอร์แล้วค่อยแตกไฟล์ที่หลัง. <br />
+				นี่เป็นวิธีที่เร็วที่สุด ซึ่งได้พิสูจน์มาแล้ว.</li>
+				<li>แน่ใจว่าได้ CHMOD ไฟล์และโฟลเดอร์ต่างๆ ต่อไปนี้เป็น 777 แล้ว. 
+					<ul>
+						<li>settings.php</li>
+						<li>/admin/backup/</li>
+						<li>/avatars/groups_uploaded/</li>
+						<li>/avatars/user_uploaded/</li>
+						<li>/cache/</li>
+						<li>/cache/admin_c/</li>
+						<li>/cache/templates_c/</li>
+						<li>/languages/</li>
+						<li>/languages/lang_english.conf</li>
+					</ul>
+				</li>
+				<li>เรียกไฟล์ี่ /install/upgrade.php<br />
+				ถ้าไม่มีข้อความแสดงข้อผิดพลาด, ให้ลบโฟลเดอร์ /install บนเซิร์ฟเวอร์ทิ้งไปเลย.</li>
+				<li>เข้าสู่ระบบโดยใช้บัญชีระดับ "god".<br />
+				ในบางกรณี คุณอาจจะได้ล็อกอินไปแล้วจาก Pligg เวอร์ชั่นก่อน.</li>
+				<li>และอัพเดทไฟล์เทมเพลตเพื่อให้ทำงานได้กับเวอร์ชั่นล่าสุดหรือไปที่ /admin/admin_config.php?page=Template และเปลี่ยนชื่อเทมเพลตเป็น "wistie"</li>
+				<li>เปิดใช้งานโมดูลที่ถูกยกเลิกไปในขั้นตอนที่ 4 ใหม่, ไปที่ /admin/admin_modules.php</li>
+				<li>หลังจากแน่ใจว่าทุกอย่างทำงานได้ดีแล้ว, ให้ลบ /index.html จากขั้นตอนที่ 2 ทิ้ง และตอนนี้คุณทำเสร็จแล้ว!</li>
+			</ol>
+
+			<br />
+			<h2><a name="support">การช่วยเหลือ</a></h2>
+			<br />
+			<p>Pligg เป็น Open source project, แต่นั่นไม่ได้หยุดเราไม่ให้มีทีมที่ดีได้. Pliggers จากทั่วทุกมุมโลกเฝ้าดูเว็บบอร์ดตลอด 24 ชั่วโมงต่อวัน คอยช่วยเหลือซึ่งกันและกัน. ถ้าคุณมีคำถามอะไร, ไอเดีย, วิธีปรับแต่ง หรือบั๊ก ที่จะคุยกัน กรุณาโพสต์ที่เว็บบอร์ดของ Pligg.</p><br />
+			<p>สร้างบัญชีเว็บบอร์ดเป็นสิ่งสำคัญ เพราะจะช่วยให้คุณสามารถดาวน์โหลดเทมเพลตและโมดูลฟรีๆ มากมายจาก Pligg.com. ไม่ใช่แค่ได้ดาวน์โหลด, แต่คุณยังได้ติดตามการอัพเดทเทมเพลตและโมดูลใหม่ๆ ได้เสมอโดยการกดปุ่ม "installed". คุณจะได้รับการแจ้งเตือนโดยอัตโนมัติเมื่อผู้พัฒนาได้มีการอัพเดทไฟล์.</p><br />
+			<p>การช่วยเหลือในอีกรูปแบบนึงสามารถพบได้ในส่วนของผู้ดูแล. ถ้าคุณติดตั้งโมดูล Admin Help English คุณก็จะพบกับไอคอนเครื่องหมายคำถามสีฟ้าอันเล็กๆ <img src="./modules/admin_help_english/css/images/help.gif"> ในหน้าต่างของผู้ดูแลทางขวามือบน. ถ้าคลิ๊กที่ไอคอนนี้ คุณจะพบกับข้อมูลต่างๆ พร้อมคำอธิบายเกี่ยวกับหน้าที่คุณอยู่ ทำให้คุณเข้าใจมากขึ้นพร้อมกับคำจำกัดความต่างๆ ของ Pligg.</p>			
+			
+			<br />
+			<h2><a name="credit">เครดิต</a></h2>
+			<br />
+			<p>โค็ดดั้งเดิมถูกเขียนขึ้นโดย Ricardo Galli สำหรับ open source project ที่รู้จักกันในนาม <a href="http://www.meneame.net">Meneame</a>.<br />
+			โค็ดนี้ถูกแปลเป็นภาษาอังกฤษและปรับปรุงโดยทีมผู้พัฒนาหลายคนซึ่งมีชื่ออยู่ทางด้านล่าง.</p>
+			
+			<p>ขอบคุณทุกท่านที่เสียสละเวลาและเงินให้กับ Pligg project. ถ้าปราศจากการสนับสนุนของพวกเขาเหล่านั้น เราก็คงไม่สามารถพัฒนาโปรเจ็คต์นี้ต่อไปได้. <br />
+			ถ้าคุณสนใจที่จะเข้ามาเป็นส่วนนึงของทีมพัฒนา กรุณาติดต่อเราผ่านทางเว็บบอร์ด.</p>
+			<br />
+			
+			 <strong>ขอบคุณเป็นพิเศษสำหรับผู้พัฒนาที่มีรายนามดังต่อไปนี้:</strong><br />
+			 <ul>
+				<li>Yankidank</li>
+				<li>ChuckRoast</li>
+				<li>Peppolone</li>
+				<li>AnAlienHolakres3</li>
+				<li>Dollars5</li>
+				<li>Redwine</li>
+				<li>Savant</li>
+				<li>Simon</li>
+				<li>Cent</li>
+				<li>Jitgos</li>
+				<li>Kbeeveer46</li>
+				<li>AshDigg</li>
+				<li>Beatniak</li>
+				<li>Davemackey</li>
+				<li>Simon</li>
+			 </ul>
+			 <br />
+			<h2><a name="license">ลิขสิทธ์</a></h2>
+			<p>ซอร์สโค็ดของ Pligg ถูกเผยแพร่ภายใต้ <a href="http://www.affero.org/oagpl.html">Affero General Public License</a>.<br />
+			คุณสามารถดูข้อความลิขสิทธ์ได้ในไฟล์ LICENSE.txt.</p>
+			
+			<br />
+			<h2>คำถาม / คำแนะนำ?</h2>
+			<p>ควรโพสต์คำถามต่างๆ ที่ <a href="http://www.pligg.com/forum/">เว็บบอร์ด Pligg</a></p>
+			<p>กรุณาแจ้งปัญหาด้านความปลอดภัยที่ <a href="http://www.pligg.com/contact.php">ช่องทางการติดต่อสำหรับเรื่องความปลอดภัย</a> ในเว็บ pligg.com.</p>
+			<p>ถ้าคุณต้องการแปล Pligg เป็นภาษาต่างๆ  คุณสามารถ <a href="http://www.pligg.com/blog/translate/">สมัครได้ที่นี่</a>, หรือมาร่วมกลุ่ม <a href="http://groups.google.com/group/pligg-translators">Translate Pligg Group</a> ใน Google Groups.</p>
+			<br />
+			
+		</fieldset>	
+		</div>
+
+		<div id="footer-wrap">
+			<div class="footer">
+				<div class="rss-feeds">
+				<h1>Pligg RSS Feeds</h1>
+				<ul>
+					<li><a href="http://www.pligg.com/blog/feed/" target="_blank">บล็อก</a></li>
+					<li><a href="http://twitter.com/statuses/user_timeline/6024362.rss" target="_blank">SVN</a></li>
+					<li><a href="http://forums.pligg.com/external.php" target="_blank">เว็บบอร์ด</a></li>
+				</ul>
+				</div>
+			</div>
+			<div id="about">
+			<h3><a href="http://forums.pligg.com/" target="_blank">ช่วยเหลือ!</a></h3>
+			<br /><div class="design">สำหรับความช่วยเหลือและการดาวน์โหลดฟรี เพื่อปรับปรุงเว็บคุณให้ดีขึ้น กรุณาเยี่ยมชม <a href="http://www.pligg.com">Pligg.com</a> และที่ <a href="http://forums.pligg.com">เว็บบอร์ด Pligg.</a></div>
+			<br>
+			</div>
+		</div>
+
+	</div>
+</div>
+
+  </body>
+</html>

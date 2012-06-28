@@ -1,0 +1,151 @@
+/* Status Update Module CSS */
+.status_update {
+margin:0 10px;
+}
+
+.error_message {
+padding:10px;
+margin:5px 0 0 0;
+color:#B50220;
+border:1px solid #C7C78E;
+background:#FFFFD1;
+}
+.user_level {
+color:#478302;
+}
+.status_clear {
+clear:both;
+}
+.status_search {
+
+}
+.status_search h4 {}
+.status_search_title {
+margin: 10px 0pt;
+color:#4270BC;
+font-size: 14px;
+}
+.status_search_form {
+
+}
+#status_search {
+
+}
+.status_search_noresults {
+font-weight:bold;
+}
+.status_search_input {
+width: 200px;
+padding:2px;
+float:left;
+margin-bottom:10px;
+}
+.status_search_submission {
+margin:0 0 0 10px;
+float: left;
+}
+.status_seperator {
+margin:0;padding:0;
+width:100%;
+height:1px;
+background:#ccc;
+}
+.status_submit {
+margin: 10px 0px;
+}
+.status_submit_title h4 {}
+.status_submit_title {
+margin: 10px 0pt;
+color:#4270BC;
+font-size: 14px;
+}
+.status_submit_form {
+
+}
+.status_submit_input {
+width: 80%;
+height: 50px;
+}
+.status_submit_submission {
+margin: 14px 25px 14px 0;
+padding: 5px;
+width: 100px;
+float: right;
+}
+.status_friend_updates {
+
+}
+.status_friend_updates_title {
+margin: 10px 0pt;
+color:#4270BC;
+font-size: 14px;"
+}
+.status_friend_updates_title h4 {
+}
+.status_message_content_wrapper{
+padding: 5px;
+border: 1px solid #bbb;
+}
+.status_message_wrapper{
+margin: 0px 0px 15px 0;
+}
+.status_message_tools {
+margin: 0pt;
+float: right;
+font-size: 10px;
+}
+.status_message_stats {
+border-bottom: 1px solid #bbb;
+margin: 0pt;
+padding: 0pt 0pt 4px;
+}
+.status_message_stats a{
+text-decoration:none;
+}
+.status_message_username {
+float:left;
+margin-right:10px;
+font-weight:bold;
+}
+.status_message_avatar {
+margin: 0pt 5px 0pt 0pt;
+float: left;
+border:0;
+}
+.status_message_time {
+float:left;
+}
+.status_message_content {
+margin: 0pt;
+padding: 4px;
+}
+.status_reply {
+margin: 10px;
+padding: 0pt;
+}
+.status_reply h4{
+
+}
+.status_reply_form {
+margin: 10px;
+padding: 0pt;
+}
+.status_reply_textarea {
+
+}
+.status_reply_submit {
+margin: 10px 0px 0px 0px;
+}
+
+/* Settings Page */
+.user_profile_status_settings {
+margin:15px 0 5px 0;
+}
+
+.status_label {
+display: block;
+}
+.friends_status_list {
+margin:0px 0px 0px 35px;
+}
+

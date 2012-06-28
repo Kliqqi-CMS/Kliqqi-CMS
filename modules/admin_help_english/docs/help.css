@@ -1,0 +1,130 @@
+/* General */
+* {
+	vertical-align: baseline;
+	font-weight: inherit;
+	font-family: inherit;
+	font-style: inherit;
+	font-size: 100%;
+	outline: 0;
+	padding: 0;
+	margin: 0;
+	}
+
+body {
+    color:#333;
+    font: 87%/1.4 Arial, Tahoma, Verdana, Sans-Serif;
+    font-weight: normal;
+    background:#fff;
+}
+
+a {font-weight:bold;color:#5a82aa;text-decoration:none;}
+hr {margin-top:4px;}
+p {line-height:1.1em;font-size:0.95em;margin:5px 10px 10px 0;}
+
+.clear {clear:both}
+
+.highlight {background:#fbffbd;padding:0 2px 0 2px;}
+.highlight a {color:#333;text-decoration:none;font-weight:normal;}
+
+.biglink {margin:15px 25px 0 25px;padding:5px 5px 1px 5px;background:#F3F3F3;border:#ccc 1px dashed;}
+.biglink a {text-decoration:none;font-weight:bold;}
+.biglink p {padding-left:10px;font-size:1.2em;}
+
+/* Layout */
+#wrapper {margin:11px;}
+
+.help {float:right;padding:10px 15px 15px 15px;}
+.floatleft {float:left;margin:10px 15px 15px 15px;}
+
+.note {background:#eee;padding:5px;border:1px dashed #bbb;margin-bottom:5px;}
+.note h3 {color:#c8c8c7;text-align:right;float:left;margin-right:10px;padding: 6px 5px 5px 6px;border-right:1px dotted #bbb;}
+
+/* Titles  and Fonts */
+h1,h2,h3,h4 {font-weight:bold;}
+
+h1 {font-size:1.8em;color:#739dc2;}
+h2 {font-size:1.6em;color:#999;border-bottom:1px dashed #739dc2;}
+h3 {font-size:1.3em;color:#999;}
+h4 {font-size:1.2em;color:#999;}
+
+/* Forms */
+.backbutton {background:#fff;font-weight:bold;width:80px;height:25px;float:right;margin:0px 0px 4px 5px;}
+.nextbutton {background:#fff;font-weight:bold;width:80px;height:25px;float:right;margin:0px 0px 4px 5px;}
+
+option {padding:2px;background:#fdffdb;padding-left:10px;}
+
+label {
+	width:90px;
+	height:25px;
+	margin-top:3px;
+	margin-right:8px;
+	padding-top:5px;
+	float:left;
+	display: block;
+	font-size: 115%;
+	font-weight: normal;
+	color:#333;
+	text-align:right;
+}
+.form {
+	margin:0;
+	padding:0;
+}
+
+#leftSide {
+	width:360px;
+	padding-top:5px;
+	float:left;
+}
+
+.div_texbox {
+	width:220px;
+	float:left;
+	height:30px;
+	margin-top:3px;
+	padding-top:5px;
+	padding-bottom:3px;
+	padding-left:5px;
+}
+
+.textbox {
+	width:200px;
+	color: #999999;
+	padding:3px 3px 3px 3px;
+	border:1px solid #bbb;
+}
+.textbox:focus, .textbox:hover {
+	background-color:#fdffdb;
+}
+
+.buttons {
+	background: #fdffdb;
+	font-size:12px; 
+	color: #333; 
+	padding: 6px 14px;
+	border-width: 2px;
+	border-style: solid;
+	border-color: #b7b7b7;
+	text-decoration: none;
+	text-transform:uppercase;
+	font-weight:bold;
+}
+.buttonright {float:right;margin-right:60px;}
+
+
+/* List */
+.step {float:left;text-align:right;width:140px;font-size:1.3em;margin-left:-40px;}
+
+ul {margin-left:0;padding-left:1em;color:#333;margin-bottom:25px;}
+
+ol {list-style:none;margin-left:0;padding-right:.8em;color:#739dc2;margin-bottom:25px;}
+
+.ordered ol {list-style:decimal;margin-left:25px;color:#333;margin-bottom:15px;}
+
+.listwrap ol li {list-style: decimal inside;color:#333;margin-left:20px;font-size:0.95em;}
+
+.number {color:#bbb;border-bottom:dotted 1px #bbb;margin-left:58px;}
+
+.step-description {margin-left:105px;}
+
+

@@ -1,0 +1,143 @@
+############### About  ###################
+Script name : Pligg API (mini)
+Version : 0.1 
+Developer : Thawatchai Fhaipolsan (powerpc)
+Email : inside3d at hotmail.com
+Website : http://www.jum.name
+Forum : http://forum.articles-host.com
+Download pligg api website at http://api.jum.name
+Release date : 09/27/08
+
+About: http://pligg.com/blog/1596/pligg-cms-api/
+
+############ Installation  ###############
+1. Config Pligg API by edit api.php
+$status = 2; // 1 = 'discard', 2 = 'queued', 3 = 'published'
+$autovote = 1; // 0 = no vote, 1 = auto vote
+$filter = 1; // 0 = not filter (fast), 1 = filter (slow)
+
+2. Remove lines 14 AND 332 labeled: REMOVE TO ACTIVATE .
+We added these lines to protect sites that don't want an API.
+
+3. Test api by access http://yourdomain.com/3rdparty/API/api.php you will get
+Pligg API Version 0.1
+Powered by Jum.name
+
+############## How to use  ################
+Method
+
+    * List - get category list in XML format
+    * Login - log in to pligg
+    * Ping - check website online status
+    * Post - add a new bookmark
+    * Version - get Pligg API version
+
+-List
+
+http://yourdomain.com/3rdparty/API/api.php?fn=list
+
+Return pligg category list in XML file format.
+
+Arguments
+
+&username={USERNAME}
+(required) the username of pligg site.
+
+&password={PASSWORD}
+(required) the password of pligg site.
+
+Example Response
+
+If success
+<?xml version="1.0" encoding="UTF-8"?>
+<categorylist>
+    <cate>
+        <id>1</id>
+        <name>Automative</name>
+    </cate>
+    <cate>
+        <id>2</id>
+        <name>Finance</name>
+    </cate>
+</categorylist>
+
+-Login
+
+http://yourdomain.com/3rdparty/API/api.php?fn=login
+
+Return user id for the user, if login fails it will return 0
+
+Arguments
+
+&username={USERNAME}
+(required) the username of pligg site.
+
+&password={PASSWORD}
+(required) the password of pligg site.
+
+Example Response
+
+If success
+User ID Number (ex. 1)
+
+If failure
+0
+
+-Ping
+
+http://yourdomain.com/3rdparty/API/api.php?fn=ping
+
+Return status of pligg website.
+
+Example Response
+
+If success
+Active
+
+-Post
+
+http://yourdomain.com/3rdparty/API/api.php?fn=post
+
+Post new bookmark to Pligg site
+
+Arguments
+
+&username={USERNAME}
+(required) the username of pligg site.
+
+&password={PASSWORD}
+(required) the password of pligg site.
+
+&url={URL}
+(required) the url of content do you want to bookmark.
+
+&category={CATEGORY ID}
+(required) the category id from pligg site, retrive by list method.
+
+&title={TITLE}
+(required) the title of story being submitted.
+
+&content={CONTENT}
+(required) the content for the story being submitted.
+
+&tags={TAG}
+(required) tags for the story separated by commas ( , )
+
+Example Response
+
+If success
+Submit complete!
+
+If failure
+Duplicated Story!!!
+
+-Version
+
+http://yourdomain.com/3rdparty/API/api.php?fn=version
+
+Return Pligg API version installed on website. 
+
+Example Response
+
+If success
+Pligg API Version 0.1

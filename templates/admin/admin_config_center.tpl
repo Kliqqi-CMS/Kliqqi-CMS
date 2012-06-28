@@ -1,0 +1,3 @@
+{php}
+	dowork();
+{/php}
