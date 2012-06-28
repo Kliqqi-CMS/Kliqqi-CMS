@@ -2,73 +2,41 @@
 <html dir="{#PLIGG_Visual_Language_Direction#}" xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
 <head>
 
-{if $pagename eq "admin_users"}{literal}
-	<script language="javascript" type="text/javascript">
-		parent.$.fn.colorbox.close()
-	</script>
-{/literal}{/if}
-
 	{checkActionsTpl location="tpl_pligg_admin_head_start"}
-	<link rel="stylesheet" type="text/css" href="{$my_pligg_base}/templates/admin/css/fraxi.css" media="screen">
+
+	<link rel="stylesheet" type="text/css" href="{$my_pligg_base}/templates/admin/css/bootstrap.css" media="screen">
+	<link rel="stylesheet" type="text/css" href="{$my_pligg_base}/templates/admin/css/bootstrap-responsive.css" media="screen">
+	<link rel="stylesheet" type="text/css" href="{$my_pligg_base}/templates/{$the_template}/css/jquery.pnotify.css" media="screen" />
+	<link rel="stylesheet" type="text/css" href="{$my_pligg_base}/templates/admin/css/style.css" media="screen">
 	{checkForCss}
 	
 	<meta name="Language" content="en-us">
 	<meta name="Robots" content="none">
-	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />	
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	
 	<title>{#PLIGG_Visual_Name#} Admin Panel</title>
 	<link rel="icon" href="{$my_pligg_base}/favicon.ico" type="image/x-icon"/>	
-	
-	<!--[if lte IE 6]><link rel="stylesheet" href="{$my_pligg_base}/templates/admin/css/ie6.css" type="text/css" media="all" /><![endif]-->
 
-	<script type='text/javascript' src='{$my_pligg_base}/templates/admin/js/zebrastripe.js'></script>
-	
-	{if $pagename eq "admin_categories" || $modulename eq "admin_language" || $modulename eq "rss_import" || $pagename eq "admin_config"}
-		<script type='text/javascript' src='{$my_pligg_base}/templates/admin/js/simpleedit.js'></script>
-		<script type='text/javascript' src='{$my_pligg_base}/templates/admin/js/move.js'></script>
-		<script type='text/javascript' src='{$my_pligg_base}/templates/admin/js/accordian.pack.js'></script>
-	{/if}
+	<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+	<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.18/jquery-ui.min.js"></script>
 
-	{checkActionsTpl location="tpl_pligg_admin_head_end"}
+	<script type="text/javascript" src="{$my_pligg_base}/templates/admin/js/jquery/jquery.easing.1.3.js"></script>
+	<script type="text/javascript" src="{$my_pligg_base}/templates/admin/js/jquery/jquery.coda-slider-2.0.js"></script> 
+	<script type="text/javascript" src="{$my_pligg_base}/templates/admin/js/jquery/jquery.pnotify.js"></script>
+	<script type="text/javascript" src="{$my_pligg_base}/templates/admin/js/jquery/jquery.masonry.min.js"></script>
+	<script type="text/javascript" src="{$my_pligg_base}/templates/admin/js/bootstrap.js"></script>
 
-	{if $pagename neq "admin_categories"}
-		<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js"></script> 
-	{/if}
-	
 	{if $pagename eq "admin_index"}
-		<link type="text/css" href="../templates/admin/css/jquery.ui.theme.css" rel="stylesheet" /> 
-		<link type="text/css" href="../templates/admin/css/admin_home.css" rel="stylesheet" />
-		<script type="text/javascript" src="../templates/admin/js/jquery.ui.core.js"></script> 
-		<script type="text/javascript" src="../templates/admin/js/jquery.ui.widget.js"></script> 
-		<script type="text/javascript" src="../templates/admin/js/jquery.ui.mouse.js"></script> 
-		<script type="text/javascript" src="../templates/admin/js/jquery.ui.sortable.js"></script>
-		
-		<link type="text/css" href="../templates/admin/css/coda-slider-2.0.css" rel="stylesheet" media="screen" /> 
-		<script type="text/javascript" src="../templates/admin/js/jquery.easing.1.3.js"></script>
-		<script type="text/javascript" src="../templates/admin/js/jquery.coda-slider-2.0.js"></script> 
+		<script type="text/javascript" src="{$my_pligg_base}/templates/admin/js/jquery/jquery.ui.widget.js"></script> 
+		<script type="text/javascript" src="{$my_pligg_base}/templates/admin/js/jquery/jquery.ui.mouse.js"></script> 
+		<script type="text/javascript" src="{$my_pligg_base}/templates/admin/js/jquery/jquery.ui.sortable.js"></script>
+		<link type="text/css" href="{$my_pligg_base}/templates/admin/css/jquery.ui.theme.css" rel="stylesheet" /> 
+		<link type="text/css" href="{$my_pligg_base}/templates/admin/css/admin_home.css" rel="stylesheet" />		
+		<link type="text/css" href="{$my_pligg_base}/templates/admin/css/coda-slider-2.0.css" rel="stylesheet" media="screen" />
 	{/if}
 	
-	{if $pagename neq "admin_categories"}
-	<!-- START Colorbox Lightbox -->
-		<link media="screen" rel="stylesheet" href="{$my_pligg_base}/templates/admin/css/colorbox.css" />
-		<script src="{$my_pligg_base}/templates/admin/js/jquery.colorbox.js"></script>
-		{literal}
-		<script>
-			$(document).ready(function(){
-				//Examples of how to assign the ColorBox event to elements
-				$("a[rel='colorbox_image_1']").colorbox();
-				$("a[rel='colorbox_image_2']").colorbox({transition:"fade"});
-				$("a[rel='colorbox_image_3']").colorbox({transition:"none", width:"75%", height:"75%"});
-				$("a[rel='colorbox_image_4']").colorbox({slideshow:true});
-				$(".colorbox_ajax").colorbox();
-				$(".colorbox_iframe1").colorbox({iframe:true, innerWidth:425, innerHeight:344});
-				$(".colorbox_iframe2").colorbox({width:"80%", height:"80%", iframe:true});
-				$(".colorbox_inline").colorbox({width:"50%", inline:true, href:"#inline_example1"});
-			});
-		</script>
-		{/literal}
-	<!-- END Colorbox Lightbox -->
-	{/if}
+	<script src="{$my_pligg_base}/templates/admin/js/simpleedit.js" type="text/javascript"></script>
 	
 	{if $pagename eq "admin_index"}
 		{literal}
@@ -132,119 +100,269 @@
 		</script>
 		{/literal}
 	{/if}
+	
+	{checkActionsTpl location="tpl_pligg_admin_head_end"}
 
 </head>
 <body dir="{#PLIGG_Visual_Language_Direction#}">
 {checkActionsTpl location="tpl_pligg_admin_body_start"}
-<div id="header">
-	<div class="logo"><a href="{$my_pligg_base}/"><img src="{$my_pligg_base}/templates/admin/images/logo.gif" alt="Pligg CMS" title="Pligg CMS"/></a></div>
-	<div id="head-nav">
-		<ul class="nav-menu">
-			<li><a href="{$my_pligg_base}/admin/admin_index.php" {if $pagename eq "admin_index"}class="navcur"{else}class="nav"{/if}>{#PLIGG_Visual_AdminPanel#}</a></li>
-			<li><a href="{$my_pligg_base}/admin/admin_links.php" {if $pagename eq "admin_categories" || $pagename eq "admin_comments" || $pagename eq "admin_links" || $pagename eq "admin_users" || $pagename eq "admin_user_validate" || $pagename eq "admin_page"}class="navcur"{else}class="nav"{/if} >{#PLIGG_Visual_AdminPanel_Manage_Nav#}</a></li> 
-			<li><a href="{$my_pligg_base}/admin/admin_config.php" {if $pagename eq "admin_config"}class="navcur"{else}class="nav"{/if} >{#PLIGG_Visual_AdminPanel_Configure#}</a></li>
-			<li><a href="{$my_pligg_base}/admin/admin_modules.php" {if $pagename eq "admin_modules"}class="navcur"{else}class="nav"{/if} >{#PLIGG_Visual_AdminPanel_Modules_Nav#}</a></li>
-			<li><a href="{$my_pligg_base}/admin/admin_widgets.php" {if $pagename eq "admin_widgets"}class="navcur"{else}class="nav"{/if} >{#PLIGG_Visual_AdminPanel_Widgets_Nav#}</a></li>
-			<li><a href="{$my_pligg_base}/admin/admin_editor.php" {if $pagename eq "admin_editor"}class="navcur"{else}class="nav"{/if} >{#PLIGG_Visual_AdminPanel_Template_Nav#}</a></li>
-			{checkActionsTpl location="tpl_header_admin_links"}
-			<li><a href="{$my_pligg_base}/" class="nav">{#PLIGG_Visual_Home#}</a></li>
-		</ul>
-		<div id="navbar">
-			  <a href="{$my_pligg_base}/">{#PLIGG_Visual_Home#}</a> &rsaquo; <a href="{$my_pligg_base}/admin/admin_index.php">{#PLIGG_Visual_AdminPanel#}</a> &rsaquo; 
-			  {if $pagename eq "admin_backup"}{#PLIGG_Visual_AdminPanel_Backup#}{/if}
-			  {if $module eq "captcha"}{#PLIGG_Visual_AdminPanel_Captcha#}{/if}
-			  {if $pagename eq "admin_categories" || $pagename eq "admin_categories_tasks"}{#PLIGG_Visual_AdminPanel_Categories#}{/if}
-			  {if $pagename eq "admin_comments"}{#PLIGG_Visual_AdminPanel_Comments#}{/if}
-			  {if $pagename eq "admin_config"}{#PLIGG_Visual_AdminPanel_Configure#}{/if}
-			  {if $pagename eq "admin_index"}{#PLIGG_Visual_AdminPanel_Home#}{/if}
-			  {if $module eq "admin_language"}{#PLIGG_Visual_AdminPanel_Language#}{/if}
-			  {if $pagename eq "admin_modules"}{#PLIGG_Visual_AdminPanel_Modules_Nav#}{/if}
-			  {if $pagename eq "admin_widgets"}{#PLIGG_Visual_AdminPanel_Widgets_Nav#}{/if}
-			  {if $pagename eq "admin_page"}{#PLIGG_Visual_AdminPanel_Pages#}{/if}
-			  {if $pagename eq "admin_links"}{#PLIGG_Visual_AdminPanel_News#}{/if}
-			  {if $pagename eq "admin_editor"}{#PLIGG_Visual_AdminPanel_Template_Nav#}{/if}
-			  {if $pagename eq "admin_users"}{#PLIGG_Visual_AdminPanel_Users#}{/if}
-			  {if $pagename eq "admin_group"}{#PLIGG_Visual_AdminPanel_Groups#}{/if}
-			  {checkActionsTpl location="tpl_pligg_admin_breadcrumbs"}
+<div class="navbar">
+    <div class="navbar-inner">
+        <div class="container-fluid">
+			<!-- .btn-navbar is used as the toggle for collapsed navbar content -->
+			<a data-target=".nav-collapse" data-toggle="collapse" class="btn btn-navbar">
+				<span class="icon-bar"></span>
+				<span class="icon-bar"></span>
+				<span class="icon-bar"></span>
+			</a>
+			
+			<!-- Be sure to leave the brand out there if you want it shown -->
+			<a class="brand" href="{$my_pligg_base}/admin/admin_index.php">{#PLIGG_Visual_AdminPanel#} Panel</a>
+			
+			<!-- .pull-right pushes content to the right side -->
+			<div class="pull-right">
+				<ul class="nav">
+					<li><a href="{$URL_logout}">{#PLIGG_Visual_Logout#}</a></li>
+				</ul>
+				{*
+				<form name="vbform" method="post" action="http://forums.pligg.com/search.php?do=process&forumchoice=-1&searchdate=-1" class="navbar-search pull-left">
+					<input type="text" placeholder="Search" class="search-query input-medium" name="query">
+				</form>
+				*}
+			</div>
+			
+			<!-- Everything you want hidden at 940px or less, place within here -->
+			<div class="nav-collapse">
+				<ul class="nav">
+					<li><a href="http://forums.pligg.com/">Pligg CMS Support</a></li>
+					<li><a href="{$my_pligg_base}/">{#PLIGG_Visual_Home#}</a></li>
+					{checkActionsTpl location="tpl_header_admin_links"}
+				</ul>
+			</div><!--/.nav-collapse -->
+        </div>
+	</div>
+</div>
+	
+	
+<div class="container-fluid">
+    <div class="row-fluid">
+        <div class="span3">
+			<div class="well sidebar-nav">
+				<ul class="nav nav-list">
+					<div id="AdminAccordion" class="accordion">
+						
+						<div class="accordion-group">
+							<div class="accordion-heading">
+								<span class="accordion-heading-title">
+									<a href="#CollapseManage" data-parent="#AdminAccordion" data-toggle="collapse" class="accordion-toggle">
+										<li class="nav-header"><img src="{$my_pligg_base}/templates/admin/images/manage.png" width="16px" height="16px" /> {#PLIGG_Visual_AdminPanel_Manage_Nav#}</li>
+									</a>
+								</span>
+								<span class="badge accordion-heading-alert">
+									14
+								</span>
+							</div>
+							<div class="accordion-body collapse in" id="CollapseManage">
+								<div class="accordion-inner">
+									<li{if $pagename eq "admin_links"} class="active"{/if}><a href="{$my_pligg_base}/admin/admin_links.php">Submissions <span class="pull-right badge badge-gray">10</span></a></li> 
+									<li{if $pagename eq "admin_comments"} class="active"{/if}><a href="{$my_pligg_base}/admin/admin_comments.php">Comments <span class="pull-right badge badge-gray">3</span></a></li> 
+									<li{if $pagename eq "admin_users" || $pagename eq "admin_user_validate"} class="active"{/if}><a href="{$my_pligg_base}/admin/admin_users.php">Users</a></li> 
+									<li{if $pagename eq "admin_group"} class="active"{/if}><a href="{$my_pligg_base}/admin/admin_group.php">Groups <span class="pull-right badge badge-gray">1</span></a></li> 
+									<li{if $pagename eq "admin_page" || $pagename eq "edit_page" || $pagename eq "submit_page"} class="active"{/if}><a href="{$my_pligg_base}/admin/admin_page.php">Pages</a></li> 
+									<li{if $pagename eq "admin_categories" || $pagename eq "admin_categories_tasks"} class="active"{/if}><a href="{$my_pligg_base}/admin/admin_categories.php">Categories</a></li> 
+								</div>
+							</div>
+						</div>
+						
+						<div class="accordion-group">
+							<div class="accordion-heading">
+								<a href="#CollapseSettings" data-parent="#AdminAccordion" data-toggle="collapse" class="accordion-toggle">
+									<li class="nav-header"><img src="{$my_pligg_base}/templates/admin/images/configure.png" width="16px" height="16px" /> Settings</li>
+								</a>
+							</div>
+							{*  Sample of hidden accordion. No "in" class, and height set to 0px *}
+							<div class="accordion-body collapse" style="height: 0px;" id="CollapseSettings">
+								<div class="accordion-inner">
+									<li{if $pagename eq "admin_config" && $templatelite.get.page eq "Anonymous"} class="active"{/if}><a href="{$my_pligg_base}/admin/admin_config.php?page=Anonymous">Anonymous</a></li>
+									<li{if $pagename eq "admin_config" && $templatelite.get.page eq "AntiSpam"} class="active"{/if}><a href="{$my_pligg_base}/admin/admin_config.php?page=AntiSpam">AntiSpam</a></li>
+									<li{if $pagename eq "admin_config" && $templatelite.get.page eq "Avatars"} class="active"{/if}><a href="{$my_pligg_base}/admin/admin_config.php?page=Avatars">Avatars</a></li>
+									<li{if $pagename eq "admin_config" && $templatelite.get.page eq "Comments"} class="active"{/if}><a href="{$my_pligg_base}/admin/admin_config.php?page=Comments">Comments</a></li>
+									<li{if $pagename eq "admin_config" && $templatelite.get.page eq "Groups"} class="active"{/if}><a href="{$my_pligg_base}/admin/admin_config.php?page=Groups">Groups</a></li>
+									<li{if $pagename eq "admin_config" && $templatelite.get.page eq "Live"} class="active"{/if}><a href="{$my_pligg_base}/admin/admin_config.php?page=Live">Live</a></li>
+									<li{if $pagename eq "admin_config" && $templatelite.get.page eq "Location Installed"} class="active"{/if}><a href="{$my_pligg_base}/admin/admin_config.php?page=Location Installed">Location Installed</a></li>
+									<li{if $pagename eq "admin_config" && $templatelite.get.page eq "Misc"} class="active"{/if}><a href="{$my_pligg_base}/admin/admin_config.php?page=Misc">Miscellaneous</a></li>
+									<li{if $pagename eq "admin_config" && $templatelite.get.page eq "OutGoing"} class="active"{/if}><a href="{$my_pligg_base}/admin/admin_config.php?page=OutGoing">OutGoing</a></li>
+									<li{if $pagename eq "admin_config" && $templatelite.get.page eq "SEO"} class="active"{/if}><a href="{$my_pligg_base}/admin/admin_config.php?page=SEO">SEO</a></li>
+									<li{if $pagename eq "admin_config" && $templatelite.get.page eq "Story"} class="active"{/if}><a href="{$my_pligg_base}/admin/admin_config.php?page=Story">Story</a></li>
+									<li{if $pagename eq "admin_config" && $templatelite.get.page eq "Submit"} class="active"{/if}><a href="{$my_pligg_base}/admin/admin_config.php?page=Submit">Submit</a></li>
+									<li{if $pagename eq "admin_config" && $templatelite.get.page eq "Tags"} class="active"{/if}><a href="{$my_pligg_base}/admin/admin_config.php?page=Tags">Tags</a></li>
+									<li{if $pagename eq "admin_config" && $templatelite.get.page eq "Voting"} class="active"{/if}><a href="{$my_pligg_base}/admin/admin_config.php?page=Voting">Voting</a></li>
+									{checkActionsTpl location="tpl_pligg_admin_navtabs_end"}
+								</div>
+							</div>
+						</div>
+						
+						<div class="accordion-group">
+							<div class="accordion-heading">
+								<a href="#CollapseTemplate" data-parent="#AdminAccordion" data-toggle="collapse" class="accordion-toggle">
+									<li class="nav-header"><img src="{$my_pligg_base}/templates/admin/images/template.png" width="16px" height="16px" /> Template</li>
+								</a>
+							</div>
+							<div class="accordion-body collapse in" id="CollapseTemplate">
+								<div class="accordion-inner">
+									<li{if $pagename eq "admin_config" && $templatelite.get.page eq "Template"} class="active"{/if}><a href="{$my_pligg_base}/admin/admin_config.php?page=Template">Template Settings</a></li>
+									<li{if $pagename eq "admin_editor"} class="active"{/if}><a href="{$my_pligg_base}/admin/admin_editor.php">{#PLIGG_Visual_AdminPanel_Template_Nav#} Editor</a></li>
+								</div>
+							</div>
+						</div>
+						
+						<div class="accordion-group">
+							<div class="accordion-heading">
+								<span class="accordion-heading-title">
+									<a href="#CollapseModules" data-parent="#AdminAccordion" data-toggle="collapse" class="accordion-toggle">
+										<li class="nav-header"><img src="{$my_pligg_base}/templates/admin/images/module.png" width="16px" height="16px" /> Modules</li>
+									</a>
+								</span>
+								<span class="badge accordion-heading-alert">
+									<a href="{$my_pligg_base}/admin/admin_modules.php">2</a>
+								</span>
+							</div>
+							<div class="accordion-body collapse in" id="CollapseModules">
+								<div class="accordion-inner">
+									<li{if $pagename eq "admin_modules"}{php} if ($_GET["status"] == ""){ echo ' class="active"'; } {/php}{/if}><a href="{$my_pligg_base}/admin/admin_modules.php" {if $pagename eq "admin_modules"}class="active"{/if} >{#PLIGG_Visual_AdminPanel_Modules_Nav#} <span class="pull-right badge badge-gray">2</span></a></li> 
+									{checkActionsTpl location="tpl_header_admin_main_links"}
+								</div>
+							</div>
+						</div>
+						
+						<div class="accordion-group">
+							<div class="accordion-heading">
+								<span class="accordion-heading-title">
+									<a href="#CollapseWidgets" data-parent="#AdminAccordion" data-toggle="collapse" class="accordion-toggle">
+										<li class="nav-header"><img src="{$my_pligg_base}/templates/admin/images/widgets.png" width="16px" height="16px" /> Widgets</li>
+									</a>
+								</span>
+								<span class="badge accordion-heading-alert">
+									<a href="{$my_pligg_base}/admin/admin_widgets.php">1</a>
+								</span>
+							</div>
+							<div class="accordion-body collapse in" id="CollapseWidgets">
+								<div class="accordion-inner">
+									<li><a href="{$my_pligg_base}/admin/admin_widgets.php" {if $pagename eq "admin_widgets"}class="active"{/if} >Installed {#PLIGG_Visual_AdminPanel_Widgets_Nav#} <span class="pull-right badge badge-gray">1</span></a></li> 
+									<li><a href="{$my_pligg_base}/admin/admin_widgets.php?status=uninstalled" {if $pagename eq "admin_widgets"}class="active"{/if} >Uninstalled {#PLIGG_Visual_AdminPanel_Widgets_Nav#}</a></li>
+								</div>
+							</div>
+						</div>
+						
+					</div>
+				</ul>
+			</div>
 		</div>
-	</div>
-</div>
-<div style="clear:both;"></div>
+		<div class="span9">
+			<div class="row-fluid">
+				
+				{*
+				<ul class="breadcrumb">
+					<li><a href="{$my_pligg_base}/">{#PLIGG_Visual_Home#}</a> <span class="divider">/</span></li> <li><a href="{$my_pligg_base}/admin/admin_index.php">{#PLIGG_Visual_AdminPanel#}</a>  <span class="divider">/</span></li>
+					{if $pagename eq "admin_backup"}<li class="active">{#PLIGG_Visual_AdminPanel_Backup#}</li>{/if}
+					{if $module eq "captcha"}<li class="active">{#PLIGG_Visual_AdminPanel_Captcha#}</li>{/if}
+					{if $pagename eq "admin_categories" || $pagename eq "admin_categories_tasks"}<li class="active">{#PLIGG_Visual_AdminPanel_Categories#}</li>{/if}
+					{if $pagename eq "admin_comments"}<li class="active">{#PLIGG_Visual_AdminPanel_Comments#}</li>{/if}
+					{if $pagename eq "admin_config"}<li class="active">{#PLIGG_Visual_AdminPanel_Configure#}</li>{/if}
+					{if $pagename eq "admin_index"}<li class="active">{#PLIGG_Visual_AdminPanel_Home#}</li>{/if}
+					{if $modulename eq "admin_language"}<li class="active">{#PLIGG_Visual_AdminPanel_Language#}</li>{/if}
+					{if $pagename eq "admin_modules"}<li class="active">{#PLIGG_Visual_AdminPanel_Modules_Nav#}</li>{/if}
+					{if $pagename eq "admin_widgets"}<li class="active">{#PLIGG_Visual_AdminPanel_Widgets_Nav#}</li>{/if}
+					{if $pagename eq "admin_page"}<li class="active">{#PLIGG_Visual_AdminPanel_Pages#}</li>{/if}
+					{if $pagename eq "admin_links"}<li class="active">{#PLIGG_Visual_AdminPanel_News#}</li>{/if}
+					{if $pagename eq "admin_editor"}<li class="active">{#PLIGG_Visual_AdminPanel_Template_Nav#}</li>{/if}
+					{if $pagename eq "admin_users"}<li class="active">{#PLIGG_Visual_AdminPanel_Users#}</li>{/if}
+					{if $pagename eq "admin_group"}<li class="active">{#PLIGG_Visual_AdminPanel_Groups#}</li>{/if}
+					{checkActionsTpl location="tpl_pligg_admin_breadcrumbs"}
+				</ul>
+				*}
+				
+				<div id="main_content">
+					<div class="bluerndcontent">
+						{checkActionsTpl location="tpl_pligg_admin_legend_before"}
+						{include file=$tpl_center.".tpl"}
+						{* Start Pagination *}
+							{if ($pagename eq "admin_users" && $templatelite.get.mode=='') || $pagename eq "admin_comments" || $pagename eq "admin_links" || $pagename eq "admin_user_validate"}	
+								{php} 
+								Global $db, $main_smarty, $rows, $offset, $URLMethod;
+								$oldURLMethod=$URLMethod;
+								$URLMethod=1;
+								$pagesize=get_misc_data('pagesize');
+								do_pages($rows, $pagesize ? $pagesize : 30, $the_page); 
+								$URLMethod=$oldURLMethod;
+								{/php}
+							{/if} 
+						{* End Pagination *}
+						{checkActionsTpl location="tpl_pligg_admin_legend_after"}
 
-{if $pagename eq "admin_links" || $pagename eq "admin_users" || $pagename eq "admin_comments" || $pagename eq "admin_categories" || $pagename eq "admin_categories_tasks" || $pagename eq "admin_page" || $pagename eq "edit_page" || $pagename eq "submit_page" || $pagename eq "admin_group"}
-	<div class="tab-nav-spacing"><div class="tab-nav">
-		<ul>
-			{checkActionsTpl location="tpl_pligg_admin_navtabs_start"}
-			<li {if $pagename eq "admin_links"}class="cur"{/if}><span><a href="{$my_pligg_base}/admin/admin_links.php">{#PLIGG_Visual_AdminPanel_News#}</a></span></li>
-			<li {if $pagename eq "admin_users"}class="cur"{/if}><span><a href="{$my_pligg_base}/admin/admin_users.php">{#PLIGG_Visual_AdminPanel_Users#}</a></span></li>
-			<li {if $pagename eq "admin_comments"}class="cur"{/if}><span><a href="{$my_pligg_base}/admin/admin_comments.php">{#PLIGG_Visual_AdminPanel_Comments#}</a></span></li>
-			<li {if $pagename eq "admin_categories" || $pagename eq "admin_categories_tasks"}class="cur"{/if}><span><a href="{$my_pligg_base}/admin/admin_categories.php">{#PLIGG_Visual_AdminPanel_Categories#}</a></span></li>
-			<li {if $pagename eq "admin_page" || $pagename eq "edit_page" || $pagename eq "submit_page"}class="cur"{/if}><span><a href="{$my_pligg_base}/admin/admin_page.php">{#PLIGG_Visual_AdminPanel_Pages#}</a></span></li>
-			<li {if $pagename eq "admin_group"}class="cur"{/if}><span><a href="{$my_pligg_base}/admin/admin_group.php">{#PLIGG_Visual_AdminPanel_Groups#}</a></span></li>
-			{checkActionsTpl location="tpl_pligg_admin_navtabs_end"}
-		</ul>
-	</div></div>
-{/if}
+					</div>
+				</div>
+				{checkActionsTpl location="tpl_pligg_admin_body_end"}
+			</div><!-- /row-fluid -->
+		</div><!-- /span9 -->
+	</div><!-- /row-fluid -->
+	
+	<hr />
+	<footer>
+		<p>Powered by <a href="http://www.pligg.com/">Pligg CMS</a></p>
+	</footer>
+	
+</div><!-- /container-fluid -->
 
-{if $pagename eq "admin_modules"}
-	<div class="tab-nav-spacing"><div class="tab-nav">
-		<ul>
-			<li {if $pagename eq "admin_modules" && $templatelite.get.status ne "uninstalled"}class="cur"{/if}><span><a href="{$my_pligg_base}/admin/admin_modules.php">{#PLIGG_Visual_Modules_Installed#}</a></span></li>
-			<li {if $pagename eq "admin_modules" && $templatelite.get.status eq "uninstalled"}class="cur"{/if}><span><a href="{$my_pligg_base}/admin/admin_modules.php?status=uninstalled">{#PLIGG_Visual_Modules_Uninstalled#}</a></span></li>
-		</ul>
-	</div></div>
-{/if}
+{* JavaScript to prevent the carousel function from automatically changing content *}
+{literal}
+	<script type='text/javascript'>//<![CDATA[ 
+	$(window).load(function(){
+		$(function() {
+			$('.carousel').each(function(){
+				$(this).carousel({
+					interval: false
+				});
+			});
+		});
+	});//]]>  
+	</script>
+{/literal}
 
-{if $pagename eq "admin_widgets"}
-	<div class="tab-nav-spacing"><div class="tab-nav">
-		<ul>
-			<li {if $templatelite.get.status ne "uninstalled"}class="cur"{/if}><span><a href="{$my_pligg_base}/admin/admin_widgets.php">{#PLIGG_Visual_Widgets_Installed#}</a></span></li>
-			<li {if $templatelite.get.status eq "uninstalled"}class="cur"{/if}><span><a href="{$my_pligg_base}/admin/admin_widgets.php?status=uninstalled">{#PLIGG_Visual_Widgets_Uninstalled#}</a></span></li>
-		</ul>
-	</div></div>
-{/if}
+{* JavaScript to allow multiple sidebar accordions to be open *}
+{literal}
+	<script type='text/javascript'>//<![CDATA[ 
+	$(window).load(function(){
+	$('.collapse').collapse({
+		toggle: false
+	});
 
-<div style="clear:both;"></div>
-<div class="demo" id="main_content">
-	<div class="bluerndcontent">
-		{checkActionsTpl location="tpl_pligg_admin_legend_before"}
-		{include file=$tpl_center.".tpl"}
-		{* Start Pagination *}
-			{if ($pagename eq "admin_users" && $templatelite.get.mode!='view') || $pagename eq "admin_comments" || $pagename eq "admin_links" || $pagename eq "admin_user_validate"}	
-				<br />
-				{php} 
-				Global $db, $main_smarty, $rows, $offset, $URLMethod;
-				$oldURLMethod=$URLMethod;
-				$URLMethod=1;
-				$pagesize=get_misc_data('pagesize');
-				do_pages($rows, $pagesize ? $pagesize : 30, $the_page); 
-				$URLMethod=$oldURLMethod;
-				{/php}
-			{/if} 
-		{* End Pagination *}
-		{checkActionsTpl location="tpl_pligg_admin_legend_after"}
+	//$(".collapse").collapse()
 
-	</div>
-</div>
+	});//]]>  
+	</script>
+{/literal}
 
-<div id="footer-wrap">
-	<div class="footer">
-		<div class="rss-feeds">
-		<h1>Pligg RSS Feeds</h1>
-		<ul>
-			<li><a href="http://www.pligg.com/blog/feed/" target="_blank">Blog</a></li>
-			<li><a href="http://twitter.com/statuses/user_timeline/6024362.rss" target="_blank">Twitter</a></li>
-			<li><a href="http://forums.pligg.com/external.php" target="_blank">Forum</a></li>
-		</ul>
-		</div>
-	</div>
-	<div id="about">
-	<h3><a href="http://forums.pligg.com/" target="_blank">{#PLIGG_Visual_AdminPanel_Help#}!</a></h3>
-	<br /><div class="design">{#PLIGG_Visual_AdminPanel_Help_1#} <a href="http://www.pligg.com">Pligg.com</a> {#PLIGG_Visual_AdminPanel_Help_2#} <a href="http://forums.pligg.com">Pligg Forum.</a></div>
-	<br>
-	</div>
-</div>
+{literal}
+	<script type="text/javascript">
+		$(document).ready(function() {
+		// https://gist.github.com/1688900
+		// Support for AJAX loaded modal window.
+		// Focuses on first input textbox after it loads the window.
+			$('[data-toggle="modal"]').click(function(e) {
+				e.preventDefault();
+				var href = $(this).attr('href');
+				if (href.indexOf('#') == 0) {
+					$(href).modal('open');
+				} else {
+					$.get(href, function(data) {
+						$('<div class="modal" >' + data + '</div>').modal();
+					}).success(function() { $('input:text:visible:first').focus(); });
+				}
+			});
+		});
+	</script>
+{/literal}
 
-{checkActionsTpl location="tpl_pligg_admin_body_end"}
 </body>
 </html>

@@ -1,7 +1,6 @@
 {checkActionsTpl location="tpl_admin_widgets_top"}
 
 {php}
-
 global $db, $main_smarty;	
 
 if(isset($_REQUEST['action'])){
@@ -12,178 +11,211 @@ if(isset($_REQUEST['action'])){
 	
 if($action == 'main' || $action == 'disable' || $action == 'enable'){
 
-
-	echo '<h1><img src="'.my_pligg_base.'/templates/admin/images/manage_widgets.gif" align="absmiddle"/> '.$main_smarty->get_config_vars('PLIGG_Visual_AdminPanel_Widget_Management').' </h1>';
-	echo '<p> '.$main_smarty->get_config_vars('PLIGG_Visual_AdminPanel_Widget_Description').'</p>';
+	echo '<legend>'.$main_smarty->get_config_vars('PLIGG_Visual_AdminPanel_Widget_Management').' </legend>';
+	echo '<p>'.$main_smarty->get_config_vars('PLIGG_Visual_AdminPanel_Widget_Description').'</p>';
 	
-	if ($_GET["status"] == ""){
-		echo '<form name="bulk_moderate" method="post">';
-		echo '<div style="float:right;margin:5px 2px 8px 0;"><input type="submit" name="submit" value="'.$main_smarty->get_config_vars('PLIGG_Visual_AdminPanel_Apply_Changes').'" class="log2" /></div><br style="clear:both;" />';
-
-		// pagename
-		define('pagename', 'admin_widgets_installed'); 
-		$main_smarty->assign('pagename', pagename);
-		echo '<table class="stripes" cellpadding="0" cellspacing="0" border="0">';
-		echo '<tr><th>Details</th><th width="75px" style="text-align:center;">Enabled</th><th width="75px" style="text-align:center;">Uninstall</th></tr>';	
-		$widgets = $db->get_results('SELECT * from ' . table_widgets . ' order by name asc;');
-		if($widgets){
-			foreach($widgets as $widget) {
-			    if (file_exists(mnmpath . '/widgets/' . $widget->folder))
-			    {
-				echo '<tr>';
-				echo '<td><a href = "?action=readme&widget=' . $widget->folder . '">' . $widget->name . '</a> (Version ' . $widget->version . ')';
-				// echo '<br />' . $widget_info['desc'] . '';
-				
-				$versionupdate = '';
-				if(isset($widget_info['update_url'])){
-					$updateurl  = $widget_info['update_url'];					   
-					$versionupdate = safe_file_get_contents($updateurl);
-				}
-				
-				if (preg_match('/(\d+[\d\.]+)/',$versionupdate,$m) && $m[1] != $widget->latest_version){
-					$versionupdate = $m[1];
-					$db->query($sql="UPDATE `". table_widgets . "` SET `latest_version`='$versionupdate' WHERE `id`='{$widget->id}'");
-				}else{
-					$versionupdate = $widget->latest_version;
-				}
-				
-				if ($versionupdate > 0){
-					if(isset($widget_info['homepage_url'])){
-						$homepage_url = $widget_info['homepage_url'];
-						echo " (<a href='" . $homepage_url . "' target='_blank'>Upgrade $versionupdate</a>)";
-					}
-				}
-				
-				if($widget_info = include_widget_settings($widget->folder)){
-				
-					$description =  $widget_info['desc'];
-					if($description != ''){
-						echo '<br />' . $description;
-					}
-
-					if(isset($widget_info['requires'])){
-						$requires = $widget_info['requires'];
-						if(is_array($requires)){
-							echo '<br /><strong>Requires:</strong> ';
-							foreach($requires as $requirement){
-								if(check_for_enabled_widget($requirement[0], $requirement[1])){
-									echo '<img style="position:relative;top:1px;" src="'.my_pligg_base.'/templates/admin/images/icon_share_true.gif" alt="Pass" /> ';
-								} else {
-									echo '<img style="position:relative;top:1px;" src="'.my_pligg_base.'/templates/admin/images/icon_share_false.gif" alt="Fail" /> ';
-								}
-								echo '' . $requirement[0] . ' Version ' . $requirement[1] .' &nbsp;&nbsp; ';
-							}
-						}
-					}
-					
-					echo '</td>';
-				} else {
-						echo '<td></td>';
-				}
-				
-				echo '<td style="text-align:center;">';
-				echo "<input type=\"hidden\" name=\"enabled[{$widget->id}]\" id=\"enabled_{$widget->id}\" value=\"{$widget->enabled}\">";
-				echo "<input type='checkbox' onclick='document.getElementById(\"enabled_{$widget->id}\").value=this.checked ? 1 : 0;' ";
-				if($widget->enabled)
-					echo "checked";
-				echo ">";
-				echo '</td><td>';
-				echo '<a href = "?action=remove&widget=' . $widget->name . '"><img src="../templates/admin/images/module_uninstall.gif" alt="'.$main_smarty->get_config_vars('PLIGG_Visual_AdminPanel_widget_Remove').'" /></a>';
-				echo '</td></tr>';
-			    }
-			}
-		} else {
-			echo '<h3>There are no widgets installed!</h3>';
+	echo '	<ul id="widgettabs" class="nav nav-tabs">';
+		if ($_GET["status"] != 'uninstalled'){
+			echo '<li class="active"><a href="#installed" data-toggle="tab">Installed</a></li>';
+			echo '<li><a href="#uninstalled" data-toggle="tab">Uninstalled</a></li>';
+		}else{
+			echo '<li><a href="#installed" data-toggle="tab">Installed</a></li>';
+			echo '<li class="active"><a href="#uninstalled" data-toggle="tab">Uninstalled</a></li>';
 		}
-		echo '</table>';
-		echo '<div style="float:right;margin:8px 2px 15px 0;"><input type="submit" name="submit" value="'.$main_smarty->get_config_vars('PLIGG_Visual_AdminPanel_Apply_Changes').'" class="log2" /></div>';
-		echo '</form>';
-
-
-
-	}elseif ($_GET["status"] == 'uninstalled'){
-
-		echo '<br /><table class="stripes" cellpadding="0" cellspacing="0" border="0">';
-		echo '<tr><th>Details</th><th width="75px" style="text-align:center;">Install</th></tr>';	
-		
-		// find all the folders in the widgets folder
-		$dir = '../widgets/';
-		if (is_dir($dir)) {
-		   if ($dh = opendir($dir)) {
-			   while (($file = readdir($dh)) !== false) {
-					if(is_dir($dir . $file)){
-						if($file != '.' && $file != '..'){
-							$foundfolders[] = $file;
-						}
-					}
-			   }
-			   closedir($dh);
-		   }
-		}
-		
-
-		// For each of the folders found, make sure they're not already in the database
-		$widgets = $db->get_results('SELECT * from ' . table_widgets . ' order by name asc;');
-		if($widgets){
-			foreach($widgets as $widget) {
-				if(isset($foundfolders) && is_array($foundfolders)){
-					foreach($foundfolders as $key => $value){
-						if ($widget->folder == $value){
-							unset($foundfolders[$key]);
-						}
-					}
-				}
-			}		
-		}		
-
-		if(isset($foundfolders) && is_array($foundfolders)){
-			asort($foundfolders);
-			foreach($foundfolders as $key => $value){
-				
-				$text = '';
-				if($widget_info = include_widget_settings($value)){
-					$text[] = $widget_info['desc'];
-					$version = $widget_info['version'];
-					$name = $widget_info['name'];
-					
-					if(file_exists('../widgets/' . $widget->folder . '/' . $widget->folder . '_readme.htm')){
-						echo '<tr><td><a href = "?action=readme&widget=' . $value . '">' . $name . '</a> ( Version '.$version.' )';
-					} else {
-						echo '<tr><td><strong>' . $name . '</strong> ( Version '.$version.' )';
-					}
-
-					if(is_array($text)){
-						foreach($text as $tex){echo '<br />'.$tex;}
-					}
-					
-					if(isset($widget_info['requires'])){
-						$requires = $widget_info['requires'];
-						if(is_array($requires)){
-							echo '<br /><strong>Requires:</strong> ';
-							foreach($requires as $requirement){
-								if(check_for_enabled_widget($requirement[0], $requirement[1])){
-									echo '<img style="position:relative;top:1px;" src="'.my_pligg_base.'/templates/admin/images/icon_share_true.gif" alt="Pass" /> ';
-								} else {
-									echo '<img style="position:relative;top:1px;" src="'.my_pligg_base.'/templates/admin/images/icon_share_false.gif" alt="Fail" /> ';
-								}
-								echo '' . $requirement[0] . ' Version ' . $requirement[1] .' &nbsp;&nbsp; ';
-							}
-						}
-					}
-					echo '</td><td><a href = "?action=install&widget=' . $value . '"><img src="'.my_pligg_base.'/templates/admin/images/module_install.gif" alt="Install" /></a></td></tr>';
-				}
-			}
-		} else {
-			// This is where folders are found but don't have the install file.
-			echo '<strong>No uninstalled widgets found!</strong><br />';
-		}
+	echo '	</ul>';
+	
+	// Tab Wrapper
+	echo '	<div class="tab-content" id="tabbed">';
+	
+	// Install tab status
+	if ($_GET["status"] != 'uninstalled'){
+		echo '<div id="installed" class="active tab-pane fade in">';
+	}else{
+		echo '<div id="installed" class="tab-pane fade in">';
 	}
+	
+	echo '<form name="bulk_moderate" method="post">';
+	echo '<div class="apply_widgets"><input type="submit" class="btn btn-primary" name="submit" value="'.$main_smarty->get_config_vars('PLIGG_Visual_AdminPanel_Apply_Changes').'" /></div>';
+	echo '<br />';
+	echo '<table class="table table-bordered table-striped">';
+	echo '<thead><tr><th style="text-align:center;">Enabled</th><th>Details</th><th>Homepage</th><th>Uninstall</th></tr></thead></tbody>';	
+	$widgets = $db->get_results('SELECT * from ' . table_widgets . ' order by name asc;');
+	if($widgets){
+		foreach($widgets as $widget) {
+			if (file_exists(mnmpath . '/widgets/' . $widget->folder))
+			{
+			echo '<tr>';
+			echo '<td style="text-align:center;vertical-align:middle;">';
+			echo "<input type=\"hidden\" name=\"enabled[{$widget->id}]\" id=\"enabled_{$widget->id}\" value=\"{$widget->enabled}\">";
+			echo "<input type='checkbox' onclick='document.getElementById(\"enabled_{$widget->id}\").value=this.checked ? 1 : 0;' ";
+			if($widget->enabled)
+				echo "checked";
+			echo ">";
+			echo '</td>';
+			echo '<td><a href = "?action=readme&widget=' . $widget->folder . '">' . $widget->name . '</a> (Version ' . $widget->version . ')';
+			// echo '<br />' . $widget_info['desc'] . '';
+			
+			$versionupdate = '';
+			if(isset($widget_info['update_url'])){
+				$updateurl  = $widget_info['update_url'];					   
+				$versionupdate = safe_file_get_contents($updateurl);
+			}
+			
+			if (preg_match('/(\d+[\d\.]+)/',$versionupdate,$m) && $m[1] != $widget->latest_version){
+				$versionupdate = $m[1];
+				$db->query($sql="UPDATE `". table_widgets . "` SET `latest_version`='$versionupdate' WHERE `id`='{$widget->id}'");
+			}else{
+				$versionupdate = $widget->latest_version;
+			}
+			
+			if ($versionupdate > 0){
+				if(isset($widget_info['homepage_url'])){
+					$homepage_url = $widget_info['homepage_url'];
+					echo " <a class='btn ' href='" . $homepage_url . "' target='_blank'>Upgrade $versionupdate</a>";
+				}
+			}
+			
+			if($widget_info = include_widget_settings($widget->folder)){
+			
+				$description =  $widget_info['desc'];
+				if($description != ''){
+					echo '<br />' . $description;
+				}
+
+				if(isset($widget_info['requires'])){
+					$requires = $widget_info['requires'];
+					if(is_array($requires)){
+						echo '<br /><strong>Requires:</strong> ';
+						foreach($requires as $requirement){
+							if(check_for_enabled_widget($requirement[0], $requirement[1])){
+								echo '<img style="position:relative;top:1px;" src="'.my_pligg_base.'/templates/admin/images/icon_share_true.gif" alt="Pass" /> ';
+							} else {
+								echo '<img style="position:relative;top:1px;" src="'.my_pligg_base.'/templates/admin/images/icon_share_false.gif" alt="Fail" /> ';
+							}
+							echo '' . $requirement[0] . ' Version ' . $requirement[1] .' &nbsp;&nbsp; ';
+						}
+					}
+				}
+				
+				echo '</td>';
+			} else {
+					echo '<td></td>';
+			}
+			
+			if(isset($widget_info['homepage_url']) && $widget_info['homepage_url'] != ''){
+				$homepage_url = $widget_info['homepage_url'];
+				echo '<td style="text-align:center;vertical-align:middle;"><a class="btn " href="' . $homepage_url . '">Homepage</a></td>';
+			} else {
+				echo '<td></td>';
+			}
+			
+			echo '<td style="text-align:center;vertical-align:middle;">';
+			echo '<a class="btn btn-danger btn-mini" href="?action=remove&widget=' . $widget->name . '">'.$main_smarty->get_config_vars('PLIGG_Visual_AdminPanel_Module_Remove').'</a>';
+			echo '</td></tr>';
+			}
+		}
+	} else {
+		echo '<h3>There are no widgets installed!</h3>';
+	}
+	echo '</tbody></table>';
+	echo '<div class="apply_widgets"><input type="submit" class="btn btn-primary" name="submit" value="'.$main_smarty->get_config_vars('PLIGG_Visual_AdminPanel_Apply_Changes').'" /></div>';
+	echo '</form>';
+	// End installed wrapper
+	echo '</div>';
+
+	// Uninstall tab status
+	if ($_GET["status"] == 'uninstalled'){
+		echo '<div id="uninstalled" class="active tab-pane fade in">';
+	}else{
+		echo '<div id="uninstalled" class="tab-pane fade in">';
+	}
+
+	echo '<table class="table table-bordered table-striped">';
+	echo '<thead><tr><th>Details</th><th style="text-align:center;">Install</th></tr></thead><tbody>';	
+	
+	// find all the folders in the widgets folder
+	$dir = '../widgets/';
+	if (is_dir($dir)) {
+	   if ($dh = opendir($dir)) {
+		   while (($file = readdir($dh)) !== false) {
+				if(is_dir($dir . $file)){
+					if($file != '.' && $file != '..'){
+						$foundfolders[] = $file;
+					}
+				}
+		   }
+		   closedir($dh);
+	   }
+	}
+	
+
+	// For each of the folders found, make sure they're not already in the database
+	$widgets = $db->get_results('SELECT * from ' . table_widgets . ' order by name asc;');
+	if($widgets){
+		foreach($widgets as $widget) {
+			if(isset($foundfolders) && is_array($foundfolders)){
+				foreach($foundfolders as $key => $value){
+					if ($widget->folder == $value){
+						unset($foundfolders[$key]);
+					}
+				}
+			}
+		}		
+	}		
+
+	if(isset($foundfolders) && is_array($foundfolders)){
+		asort($foundfolders);
+		foreach($foundfolders as $key => $value){
+			
+			$text = '';
+			if($widget_info = include_widget_settings($value)){
+				$text[] = $widget_info['desc'];
+				$version = $widget_info['version'];
+				$name = $widget_info['name'];
+				
+				if(file_exists('../widgets/' . $widget->folder . '/' . $widget->folder . '_readme.htm')){
+					echo '<tr><td><a href="?action=readme&widget=' . $value . '">' . $name . '</a> ( Version '.$version.' )';
+				} else {
+					echo '<tr><td><strong>' . $name . '</strong> ( Version '.$version.' )';
+				}
+
+				if(is_array($text)){
+					foreach($text as $tex){echo '<br />'.$tex;}
+				}
+				
+				if(isset($widget_info['requires'])){
+					$requires = $widget_info['requires'];
+					if(is_array($requires)){
+						echo '<br /><strong>Requires:</strong> ';
+						foreach($requires as $requirement){
+							if(check_for_enabled_widget($requirement[0], $requirement[1])){
+								echo '<img style="position:relative;top:1px;" src="'.my_pligg_base.'/templates/admin/images/icon_share_true.gif" alt="Pass" /> ';
+							} else {
+								echo '<img style="position:relative;top:1px;" src="'.my_pligg_base.'/templates/admin/images/icon_share_false.gif" alt="Fail" /> ';
+							}
+							echo '' . $requirement[0] . ' Version ' . $requirement[1] .' &nbsp;&nbsp; ';
+						}
+					}
+				}
+				echo '</td><td style="text-align:center;vertical-align:middle;"><a class="btn btn-success btn-mini" href="?action=install&widget=' . $value . '">Install</a></td></tr>';
+			}
+		}
+	} else {
+		// This is where folders are found but don't have the install file.
+		echo '<strong>No uninstalled widgets found!</strong><br />';
+	}
+	echo '</tbody></table>';
+	// End the uninstalled module wrapper
+	echo '</div>';
+	
+	// End tab wrapper
+	echo '</div>';
 }
 
 if($action == 'readme'){
 	$widget = sanitize($_REQUEST['widget'],3);
-	echo '<h1><img src="'.my_pligg_base.'/templates/admin/images/manage_widgets.gif" align="absmiddle"/> '.$main_smarty->get_config_vars('PLIGG_Visual_AdminPanel_Widget_Readme').'</h1>';
-	echo '<a href="'.my_pligg_base.'/admin/admin_widgets.php">'.$main_smarty->get_config_vars('PLIGG_Visual_AdminPanel_Widget_Return').'</a><br /><hr />';
+	echo '<legend><img src="'.my_pligg_base.'/templates/admin/images/manage_widgets.gif" align="absmiddle"/> '.$main_smarty->get_config_vars('PLIGG_Visual_AdminPanel_Widget_Readme').'</legend>';
+	echo '<a href="'.my_pligg_base.'/admin/admin_widgets.php"><i class="icon-arrow-left"></i> '.$main_smarty->get_config_vars('PLIGG_Visual_AdminPanel_Widget_Return').'</a><br /><hr />';
 	
 	if(file_exists('../widgets/' . $widget . '/' . $widget . '_readme.htm')){
 		include_once('../widgets/' . $widget . '/' . $widget . '_readme.htm');	
@@ -235,4 +267,3 @@ function safe_file_get_contents($url,$redirect=0)
 }
 
 {/php}
-</table>

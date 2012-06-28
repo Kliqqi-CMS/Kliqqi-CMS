@@ -41,8 +41,6 @@ function dowork(){
 			if(isset($_REQUEST['page'])){
 				$config->var_page = $_REQUEST['page'];
 				$config->showpage();
-			}else{
-				$config->listpages();
 			}
 		}
 		if($action == "save"){

@@ -1,23 +1,56 @@
-<h1><img src="{$my_pligg_base}/templates/admin/images/page.gif" align="absmiddle" /> {#PLIGG_Visual_AdminPanel_Page_Edit#}</h1>
+<legend>{#PLIGG_Visual_AdminPanel_Page_Edit#}</legend>
 
-<p style="width:99%;margin:0 0 10px 0;padding:5px 8px;border:1px solid #bbb;background:#eee;font-size:14px;"><a href="{$my_base_url}{$my_pligg_base}/page.php?page={$page_url}" target="_blank">Visit {$page_title} Page</a></p>
+<a class="btn" href="{$my_base_url}{$my_pligg_base}/page.php?page={$page_url}" target="_blank">Visit {$page_title} Page</a>
+<br /><br />
 
-<form action="" method="POST" id="thisform">
-	<label>{#PLIGG_Visual_AdminPanel_Page_Submit_Title#}: </label><input type="text" name="page_title" id="page_title" size="66" value="{$page_title}"/>
-	<br />
-	<label>{#PLIGG_Visual_AdminPanel_Page_Submit_URL#}: </label><input type="text" name="page_url" id="page_url" size="66" value="{$page_url}"/>
-	<br />
-	<label>{#PLIGG_Visual_AdminPanel_Page_Submit_Keywords#} : </label><input type="text" name="page_keywords" id="page_keywords" size="66" value="{$page_keywords}"/>
-	<br />
-	<label>{#PLIGG_Visual_AdminPanel_Page_Submit_Description#} : </label><input type="text" name="page_description" id="page_description" size="66" value="{$page_description}"/>
-	<br />
-	<label>{#PLIGG_Visual_AdminPanel_Page_HTML#}</label>
-	<br />
-	<textarea id="textarea-1" name="page_content" class="page_content" rows="30" style="width:100%">{$page_content|htmlspecialchars}</textarea>
-	<div class="submitbuttonfloat">
-	<br />
-		<input type="submit" name="submit" value="{#PLIGG_Visual_AdminPanel_Page_Submit#}" class="log2" />
+<form action="" class="form-horizontal" method="POST" id="thisform">
+
+	<div class="control-group">
+		<label class="control-label">{#PLIGG_Visual_AdminPanel_Page_Submit_Title#}</label>
+		<div class="controls">
+			<input type="text" name="page_title" id="page_title" class="span7"value="{$page_title}"/>
+			<p class="help-inline">This will appear in the &lt;title&gt; tag and breadcrumb area.</p>
+		</div>
 	</div>
+	
+	<div class="control-group">
+		<label class="control-label">{#PLIGG_Visual_AdminPanel_Page_Submit_URL#}</label>
+		<div class="controls">
+			<input type="text" name="page_url" id="page_url" class="span7"value="{$page_url}"/>
+			<p class="help-inline">Define the URL value (ex. about-us). If left blank, this will be generated for you.</p>
+		</div>
+	</div>
+	
+	<div class="control-group">
+		<label class="control-label">{#PLIGG_Visual_AdminPanel_Page_Submit_Keywords#}</label>
+		<div class="controls">
+			<input type="text" name="page_keywords" id="page_keywords" class="span7"value="{$page_keywords}"/>
+			<p class="help-inline">This value is used for the meta keywords tag. Enter keywords separated by commas.</p>
+		</div>
+	</div>
+	
+	<div class="control-group">
+		<label class="control-label">{#PLIGG_Visual_AdminPanel_Page_Submit_Description#}</label>
+		<div class="controls">
+			<input type="text" name="page_description" id="page_description" class="span7"value="{$page_description}"/>
+			<p class="help-inline">This value is used for the meta description tag.</p>
+		</div>
+	</div>
+	
+	<div class="control-group">
+		<label class="control-label">Page Content</label>
+		<div class="controls">
+			<textarea id="textarea-1" name="page_content" class="page_content" rows="30" style="width:95%;">{$page_content|htmlspecialchars}</textarea>
+			<span class="help-inline">{#PLIGG_Visual_AdminPanel_Page_HTML#}</span>
+			{#PLIGG_Visual_AdminPanel_Page_Smarty#}
+		</div>
+	</div>
+
+	<div class="form-actions">
+		<input type="submit" class="btn btn-primary" name="submit" value="{#PLIGG_Visual_AdminPanel_Page_Submit#}" />
+		<button class="btn" ONCLICK="history.go(-1)">Cancel</button>
+	</div>
+
 	<input type="hidden" name="process" value="edit_page" />
 	<input type="hidden" name="randkey" value="{$randkey}" />
 	<input type="hidden" name="link_id" value="{$link_id}" />

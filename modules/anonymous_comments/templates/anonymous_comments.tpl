@@ -21,13 +21,13 @@
 *}
 		<label>{#PLIGG_Anonymous_Comment_NoHTML#}</label><br clear="all" />
 		<textarea name="comment_content" id="comment" rows="6" cols="60"/>{if isset($TheComment)}{$TheComment}{/if}</textarea><br />
-		{if $Spell_Checker eq 1}<input type="button" name="spelling" value="{#PLIGG_Anonymous_Comment_Check_Spelling#}" class="log2" onClick="openSpellChecker('comment');"/>{/if}
+		{if $Spell_Checker eq 1}<input type="button" name="spelling" value="{#PLIGG_Anonymous_Comment_Check_Spelling#}" class="btn" onClick="openSpellChecker('comment');"/>{/if}
 		<br/>
 		{if isset($register_step_1_extra)}
 			<br />
 			{$register_step_1_extra}
 		{/if}
-		<input type="submit" name="submit" value="{#PLIGG_Anonymous_Comment_Submit#}" class="log2" />
+		<input type="submit" name="submit" value="{#PLIGG_Anonymous_Comment_Submit#}" class="btn" />
 		<input type="hidden" name="process" value="newcomment" />
 		<input type="hidden" name="randkey" value="{$randkey}" />
 		<input type="hidden" name="link_id" value="{$link_id}" />

@@ -494,7 +494,6 @@ if (!$errors) {
 			) ENGINE =MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci";
 		$db->query($sql);
 		$db->query("INSERT INTO `".table_widgets."` VALUES (1, 'Admin Panel Tools', 0.1, 0, 'panel_tools', 1, 'left', 4, '')");
-		$db->query("INSERT INTO `".table_widgets."` VALUES (2, 'Module Settings', 0.1, 0, 'module_settings', 1, 'left', 3, '')");
 		$db->query("INSERT INTO `".table_widgets."` VALUES (3, 'Statistics', 0.1, 0, 'statistics', 1, 'left', 1, '')");
 		$db->query("INSERT INTO `".table_widgets."` VALUES (4, 'Pligg CMS', 0.1, 0, 'pligg_cms', 1, 'right', 5, '')");
 		$db->query("INSERT INTO `".table_widgets."` VALUES (5, 'Pligg News', 0.1, 0, 'pligg_news', 1, 'right', 6, '')");

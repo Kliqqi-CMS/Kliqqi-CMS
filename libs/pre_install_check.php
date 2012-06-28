@@ -24,7 +24,7 @@ if(!defined('mnminclude')){header('Location: ../404error.php');die();}
 	
 			if (sizeof($errors)) {	
 				$output = '';
-				echo "<body style='background:#fff url(./templates/admin/images/pre_install.png) repeat-x top center;'><ol style='width:600px;'><h1 style='color:#fff;margin-top:25px;margin-bottom:35px;'> No Installation Detected!</h1><p><strong>Haven't set up your Pligg site yet?</strong><br />Please fix the errors below and proceed to the <a href='./readme.html'>Pligg Readme</a> or the <a href='./install/'>Pligg Installation</a> which will attempt to rename the .default files for you.</p><div style='position:absolute;bottom:0;left:0;width:100%;height:40px;font-size:20px;text-align:center;'><a style='color:#000;' href='http://www.pligg.com'>Pligg CMS</a></div>";
+				echo "<body><ol style='width:600px;'><h1 style='color:#fff;margin-top:25px;margin-bottom:35px;'> No Installation Detected!</h1><p><strong>Haven't set up your Pligg site yet?</strong><br />Please fix the errors below and proceed to the <a href='./readme.html'>Pligg Readme</a> or the <a href='./install/'>Pligg Installation</a> which will attempt to rename the .default files for you.</p><div style='position:absolute;bottom:0;left:0;width:100%;height:40px;font-size:20px;text-align:center;'><a style='color:#000;' href='http://www.pligg.com'>Pligg CMS</a></div>";
 				foreach ($errors as $error) {
 					$output.="<li style='font-size:34px'> </li> $error \n";
 					$output.='<div style="background:#CC0000;color:#fff;font-weight:bold;margin:0 20px;padding:10px;">Please fix the above error, install halted!</div><br />';

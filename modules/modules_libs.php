@@ -125,7 +125,7 @@ function check_module_requirements($requires)
 	if(is_array($requires)){
 		foreach($requires as $requirement){
 			if(!check_for_enabled_module($requirement[0], $requirement[1])){
-				die('This module requires ' . $requirement[0] . ' version ' . $requirement[1] . ' or greater');
+				die('This module requires <a href="' . $requirement[2] . '">' . $requirement[0] . '</a> version ' . $requirement[1] . ' or greater');
 			}
 		}
 	}

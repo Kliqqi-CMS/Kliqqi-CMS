@@ -8,7 +8,7 @@ function show_edit(id)
 {
     editme = document.getElementById('editme'+id);
     showme = document.getElementById('showme'+id);
-    editme.style.display='none';
+    // editme.style.display='none';
     showme.style.display='';
     is_number_valid[id] = true;
 }

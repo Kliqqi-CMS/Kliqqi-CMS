@@ -1,3 +1,3 @@
 {config_load file=admin_language_lang_conf}
-<img src="{$my_pligg_base}/templates/admin/images/manage_lang.gif" align="absmiddle"/> <a href="{$my_pligg_base}/module.php?module=admin_language">{#PLIGG_Admin_Language#}</a><br/>
+<li{if $modulename eq "admin_language"} class="active"{/if}><a href="{$my_pligg_base}/module.php?module=admin_language">{* <img src="{$my_pligg_base}/templates/admin/images/manage_lang.gif" align="absmiddle"/> *}{#PLIGG_Admin_Language#}</a></li>
 {config_load file=admin_language_pligg_lang_conf}

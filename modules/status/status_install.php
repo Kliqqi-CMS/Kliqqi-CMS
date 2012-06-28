@@ -49,7 +49,7 @@
 		misc_data_update('status_show_permalin', '1');
 		misc_data_update('status_permalinks', '1');
 		misc_data_update('status_inputonother', '1');
-		misc_data_update('status_place', 'tpl_pligg_profile_info_end');
+		misc_data_update('status_place', 'tpl_pligg_profile_tab_insert');
 		misc_data_update('status_clock', '12');
 		misc_data_update('status_results', '10');
 		misc_data_update('status_max_chars', '1200');

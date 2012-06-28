@@ -762,14 +762,14 @@ class Link {
 		return $vote->count_all($value);
 	}
 
-	function votes($user) {
+	function votes($user, $value="> 0") {
 		require_once(mnminclude.'votes.php');
 
 		$vote = new Vote;
 		$vote->type='links';
 		$vote->user=$user;
 		$vote->link=$this->id;
-		return $vote->count();
+		return $vote->count($value);
 	}
 
 	function reports($user) {

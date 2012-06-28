@@ -290,7 +290,7 @@ order allow,deny
 deny from all
 </files>
 
-<files ~ "\.(tpl|txt)$">
+<files ~ "\.(tpl|log)$">
 order deny,allow
 allow from none
 deny from all

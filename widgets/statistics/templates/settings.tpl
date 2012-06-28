@@ -29,6 +29,6 @@
 	</p>
 	<br />
 	<p style="margin:0 0 5px 8px;">
-		<input type = "submit" value="{#PLIGG_Statistics_Widget_Save#}">
+		<input type="submit" class="btn btn-primary" value="{#PLIGG_Statistics_Widget_Save#}">
 	</p>
 </form>

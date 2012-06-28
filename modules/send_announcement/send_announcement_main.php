@@ -30,7 +30,7 @@ function sendannouncement_showpage(){
 	$navwhere['link1'] = getmyurl('admin', '');
 	$navwhere['text2'] = "Send Announcement";
 	$main_smarty->assign('navbar_where', $navwhere);
-	$main_smarty->assign('posttitle', " / " . $main_smarty->get_config_vars('PLIGG_Visual_Header_AdminPanel'));
+	$main_smarty->assign('posttitle', "Send Annoucement");
 	// breadcrumbs
 	
 	$main_smarty->assign('tpl_center', send_announcement_tpl_path . 'sendannouncement');

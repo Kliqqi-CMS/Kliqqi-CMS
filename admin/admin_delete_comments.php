@@ -1,4 +1,4 @@
-<?php
+﻿<?php
 include_once('../Smarty.class.php');
 $main_smarty = new Smarty;
 
@@ -53,17 +53,32 @@ $result = mysql_query($sql_query);
 $num_rows = mysql_num_rows($result);
 while($comment = mysql_fetch_object($result))
         delete_comment($comment->comment_id);
-echo '<div style="padding:8px;margin:14px 2px;border:1px solid #bbb;background:#eee;">';
-echo '	<h2 style="font-size: 18px;margin:0;padding:0;border-bottom:1px solid #629ACB;">'. $num_rows. ' '.$main_smarty->get_config_vars("PLIGG_Visual_AdminPanel_Discarded_Comments_Removed").'</h2>';
-
-$query = "OPTIMIZE TABLE comments";
-mysql_query($query);
-if (mysql_error()){
-	echo '	<p style=\'font:13px arial, "Lucida Grande","Lucida Sans Unicode",Tahoma,Verdana,sans-serif;\'>'.mysql_error().'</p>';
-}else{
-	echo '	<p style=\'font:13px arial, "Lucida Grande","Lucida Sans Unicode",Tahoma,Verdana,sans-serif;\'>'.$main_smarty->get_config_vars("PLIGG_Visual_AdminPanel_Discarded_Comments_Removed_Message").'</p>';
-}
-echo '	<p style=\'font:13px arial, "Lucida Grande","Lucida Sans Unicode",Tahoma,Verdana,sans-serif;\'><a style="color:#094F89;" href="admin_index.php" onclick="parent.$.fn.colorbox.close(); return false;">'.$main_smarty->get_config_vars("PLIGG_Visual_AdminPanel_Return_Comment_Management").'</a></p>';
-echo '</div>';
-
 ?>
+<html>
+<head>
+	<link rel="stylesheet" type="text/css" href="../templates/admin/css/bootstrap.css" media="screen">
+</head>
+<body>
+<div class="modal-header">
+	<a class="close" data-dismiss="modal">×</a>
+	<h3><?php echo $main_smarty->get_config_vars('PLIGG_Visual_AdminPanel_Discarded_Comments_Removed') ?></h3>
+</div>
+<div class="modal-body">
+	<?php 
+	$query = "OPTIMIZE TABLE comments";
+	mysql_query($query);
+	if (mysql_error()){
+		echo '<p>'.mysql_error().'</p>';
+	}else{
+		echo '<p><strong>'.$num_rows.'</strong> '.$main_smarty->get_config_vars("PLIGG_Visual_AdminPanel_Discarded_Comments_Removed_Message").'</p>';
+	}
+
+
+	?>
+</div>
+<div class="modal-footer">
+	<a class="btn btn-primary" data-dismiss="modal">Close</a>
+	<!-- <?php echo $main_smarty->get_config_vars('PLIGG_Visual_AdminPanel_Return_Comment_Management') ?> -->
+</div>
+</body>
+</html>

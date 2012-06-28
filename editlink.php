@@ -49,7 +49,7 @@ if ($link) {
 		// DB 11/11/08
 		if ($current_user->user_level != "god" && $current_user->user_level != "admin" && limit_time_to_edit!=0 && (time()-$link->date)/60 > edit_time_limit)
 		{
-			echo "<br /><br />" . sprintf($main_smarty->get_config_vars('PLIGG_Visual_EditLink_Timeout'),edit_time_limit) . "<br/ ><br /><a href=".my_base_url.my_pligg_base.">".$main_smarty->get_config_vars('PLIGG_Visual_Name')." home</a>";
+			echo "<br /><br />" . sprintf($main_smarty->get_config_vars('PLIGG_Visual_EditLink_Timeout'),edit_time_limit) . "<br/ ><br /><a href=".my_base_url.my_pligg_base.">".$main_smarty->get_config_vars('PLIGG_Visual_Name')." </a>";
 			exit;
 		}
 		/////
@@ -128,14 +128,14 @@ if ($link) {
 			$linkres->tags = tags_normalize_string(stripslashes(sanitize($_POST['tags'], 3)));
 			if(sanitize($_POST['summarytext'], 3) == ""){
 				$linkres->link_summary = utf8_substr(sanitize($_POST['bodytext'], 4, $Story_Content_Tags_To_Allow), 0, StorySummary_ContentTruncate - 1);
-				$linkres->link_summary = close_tags(str_replace("\n", "<br />", $linkres->link_summary));	
+				//$linkres->link_summary = close_tags(str_replace("\n", "<br />", $linkres->link_summary));	
 			} else {
 				$linkres->link_summary = sanitize($_POST['summarytext'], 4, $Story_Content_Tags_To_Allow);
-				$linkres->link_summary = close_tags(str_replace("\n", "<br />", $linkres->link_summary));
+				//$linkres->link_summary = close_tags(str_replace("\n", "<br />", $linkres->link_summary));
 				if(utf8_strlen($linkres->link_summary) > StorySummary_ContentTruncate){
 					loghack('SubmitAStory-SummaryGreaterThanLimit', 'username: ' . sanitize($_POST["username"], 3).'|email: '.sanitize($_POST["email"], 3), true);
 					$linkres->link_summary = utf8_substr($linkres->link_summary, 0, StorySummary_ContentTruncate - 1);
-					$linkres->link_summary = close_tags(str_replace("\n", "<br />", $linkres->link_summary));
+					//$linkres->link_summary = close_tags(str_replace("\n", "<br />", $linkres->link_summary));
 				}
 			}
 
@@ -156,7 +156,7 @@ if ($link) {
     	$linkres->link_field14 = sanitize($_POST['link_field14'], 4, $Story_Content_Tags_To_Allow); 
     	$linkres->link_field15 = sanitize($_POST['link_field15'], 4, $Story_Content_Tags_To_Allow); 
     	// Steef 2k7-07 security fix end --------------------------------------------------------------
-      $linkres->content = str_replace("\n", "<br />", $linkres->content);
+     // $linkres->content = str_replace("\n", "<br />", $linkres->content);
 
 			if (link_errors($linkres)) {
 				return;
@@ -184,10 +184,11 @@ if ($link) {
 			$linkres->id=$link_id;
 			$linkres->read();
 			$link_title = $linkres->title;
-			$link_content = str_replace("<br />", "\n", $linkres->content);
+			$link_content = $linkres->content;
+			//$link_content = str_replace("<br />", "\n", $linkres->content);
 			$link_category=$linkres->category;
 			$link_summary = $linkres->link_summary;
-			$link_summary = str_replace("<br />", "\n", $link_summary);
+			//$link_summary = str_replace("<br />", "\n", $link_summary);
 			
 			$main_smarty->assign('enable_tags', Enable_Tags);
 			$main_smarty->assign('submit_url', $linkres->url);
@@ -237,7 +238,7 @@ if ($link) {
 					{
 						$tag_array[] = trim($word);
 					}
-					$tags_words = implode(", ", $tag_array);					
+					$tags_words = implode(", ", $tag_array);
 					$tags_url = urlencode($linkres->tags);
 					$main_smarty->assign('tags_words', $tags_words);
 					$main_smarty->assign('tags_url', $tags_url);
@@ -254,7 +255,7 @@ if ($link) {
 			$main_smarty = do_sidebar($main_smarty);
 
 			// show the template
-			$main_smarty->assign('storylen', utf8_strlen(str_replace("<br />", "\n", $link_content)));
+			//$main_smarty->assign('storylen', utf8_strlen(str_replace("<br />", "\n", $link_content)));
 			$main_smarty->assign('tpl_extra_fields', $the_template . '/submit_extra_fields');
 			$main_smarty->assign('tpl_center', $the_template . '/editlink_edit_center');
 			$main_smarty->display($the_template . '/pligg.tpl');

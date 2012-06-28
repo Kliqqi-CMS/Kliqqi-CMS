@@ -69,19 +69,16 @@ function dowork(){
 	if($canIhaveAccess == 1)
 	{
 		if(is_writable('../settings.php') == 0){
-			die("Error: settings.php is not writeable.");
+			die("<div class='alert'>Error: settings.php is not writeable.</div>");
 		}
 		
 		$action = isset($_REQUEST['action']) && sanitize($_REQUEST['action'], 3) != '' ? sanitize($_REQUEST['action'], 3) : "view";
 		
 		if($action == "view"){
 			$config = new pliggconfig;
-			$config->listpages();
 			if(isset($_REQUEST['page'])){
 				$config->var_page = sanitize($_REQUEST['page'], 3);
 				$config->showpage();
-#			}else{
-#				$config->listpages();
 			}
 		}
 		

@@ -15,6 +15,6 @@
 	</p>
 	<br />
 	<p>
-		<input type = "submit" value="{#PLIGG_Products_Widget_Save#}">
+		<input type="submit" class="btn btn-primary" value="{#PLIGG_Products_Widget_Save#}">
 	</p>
 </form>

@@ -194,19 +194,19 @@ if($canIhaveAccess == 1)
 			$user=new User();
 			$user->username = sanitize($_GET["user"], 3);
 			if(!$user->read()) {
-				echo "invalid user";
+				echo "Invalid User";
 				die;
 			}
-
+			
 			// module system hook
 			$vars = '';
 			check_actions('admin_users_view', $vars);
-
+			
 			// show the template
 			$main_smarty->assign('tpl_center', '/admin/user_show_center');
 			$main_smarty->display($template_dir . '/admin/admin.tpl');
 		}
-
+		
 		if (sanitize($_GET["mode"], 3) == "edit"){ // edit user
 			// code to prevent CSRF
 				// doesn't matter if a token exists. if we're viewing this page, just
@@ -239,7 +239,10 @@ if($canIhaveAccess == 1)
 			$user=new User();
 			$user->username = sanitize($_GET["user"], 3);
 			if(!$user->read()) {
-				echo "Invalid User";
+				$user = sanitize($_GET["user"], 3);
+				$main_smarty->assign('user', $user);
+				$main_smarty->assign('tpl_center', '/admin/user_doesnt_exist_center');
+				$main_smarty->display($template_dir . '/admin/admin.tpl');
 				die;
 			}
 
@@ -344,7 +347,7 @@ if($canIhaveAccess == 1)
 						$password);
 
 					$headers = 'From: ' . $main_smarty->get_config_vars("PLIGG_PassEmail_From") . "\r\n";
-					$headers .= "Content-type: text/plain; charset=utf-8\r\n";
+					$headers .= "Content-type: text/html; charset=utf-8\r\n";
 
 					mail($to, $subject, $body, $headers);
 	

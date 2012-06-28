@@ -19,43 +19,26 @@ class pliggconfig {
 	var $var_desc = '';
 	var $EditInPlaceCode = '';
 
-	function listpages(){
-		global $db, $main_smarty;
-		$sql = "Select var_page from " . table_config . " group by var_page;";
-		$configs = $db->get_col($sql);
-		if ($configs) {
-			echo "<div class='admin_config'><h1><img src=\"".my_pligg_base."/templates/admin/images/manage_config.gif\" align='absmiddle' /> ". $main_smarty->get_config_vars('PLIGG_Visual_AdminPanel_Configure')."</h1><table style=border:none>";
-			foreach($configs as $config_id) {
-				if($config_id != "Hidden"){
-					echo '<tr><td onClick="document.location.href=\'?page='.$config_id.'\';" style="cursor:pointer;cursor:hand"><a href = "?page='.$config_id.'">'.translate($config_id).'</a></tr></td>';
-				}	
-			}
-			echo '</table></div>';
-		} else {
-			echo translate("nothing found");
-		}
-		
-	}
-
 	function showpage(){
 		global $db, $my_pligg_base;
 		
 		?>
-			
 			<div class="admin_config_content">
-			<style type="text/css">
-				.eip_editable { background-color: #ff9; padding: 3px; }
-				.eip_savebutton { background-color: #36f; color: #fff; }
-				.eip_cancelbutton { background-color: #000; color: #fff; }
-				.eip_saving { background-color: #903; color: #fff; padding: 3px; }
-				.eip_empty { color: #afafaf; }
-				.emptytext {padding:0px 5px 0px 5px;border-top:2px solid #828177;border-left:2px solid #828177;border-bottom:1px solid #B0B0B0;border-right:1px solid #B0B0B0;background:#F5F5F5;}
-			</style>
 		<?php
 
 		$sql = "Select * from " . table_config . " where var_page = '$this->var_page'";
 		$configs = $db->get_results($sql);
 		if ($configs) {
+			global $db, $main_smarty;
+			echo '<table class="table table-bordered table-striped">';
+			echo '<thead><tr>';
+			echo '<th>Title</th>';
+			echo '<th>'.$main_smarty->get_config_vars(PLIGG_Visual_Config_Description).'</th>';
+			echo '<th style="min-width:120px">'.$main_smarty->get_config_vars(PLIGG_Visual_Config_Value).'</th>';
+			echo '<th style="width:120px;">'.$main_smarty->get_config_vars(PLIGG_Visual_Config_Default_Value).'</th>';
+			echo '<th style="width:120px;">'.$main_smarty->get_config_vars(PLIGG_Visual_Config_Expected_Values).'</th>';
+			echo '</tr></thead><tbody>';
+			
 			foreach($configs as $config) {
 //				$this->var_id=$config_id;
 //				$this->read();
@@ -64,6 +47,7 @@ class pliggconfig {
 				$this->print_summary();
 //				$EditInPlaceCode .= $this->EditInPlaceCode;
 			}
+			echo '</tbody></table>';
 		} else {
 			echo "No Configuration Tables Found";
 		}
@@ -104,60 +88,60 @@ class pliggconfig {
 	function print_summary(){
 		global $db, $main_smarty;
 
-		echo '<span id = var_'.$this->var_id.'_span><form onsubmit="return false">';
-		echo "<fieldset><legend><b>".translate($this->var_title)."</b></legend>";
-		echo $main_smarty->get_config_vars(PLIGG_Visual_Config_Description).": ".translate($this->var_desc)."<br>";
+		echo '<span id="var_'.$this->var_id.'_span"><form onsubmit="return false">';
+		echo '<tr>';
+		echo "<td>".translate($this->var_title)."</td>";
+		echo "<td>".translate($this->var_desc)."</td><td>";
 		
-		if($this->var_name == '$my_base_url'){echo translate("It looks like this should be set to")." <b>"."http://" . $_SERVER["HTTP_HOST"]."</b><br>";}
+		if($this->var_name == '$my_base_url'){echo translate("It looks like this should be set to")." <strong>"."http://" . $_SERVER["HTTP_HOST"]."</strong><br>";}
 		
 		if($this->var_name == '$my_pligg_base'){
 			$pos = strrpos($_SERVER["SCRIPT_NAME"], "/admin/");
 			$path = substr($_SERVER["SCRIPT_NAME"], 0, $pos);
-			if ($path == "/" || $path == ""){$path = translate("nothing - just leave it blank");}
-			echo translate("It looks like this should be set to")." <b>".$path."</b><br>";
+			if ($path == "/" || $path == ""){$path = translate("Nothing - Leave it blank");}
+			echo translate("It looks like this should be set to")." <strong>".$path."</strong><br>";
 		}
 		
-		echo '<b>'.$main_smarty->get_config_vars(PLIGG_Visual_Config_Value).':</b> <span class="emptytext" id="editme' .$this->var_id. '" onclick="show_edit('.$this->var_id.')">'.htmlentities($this->var_value,ENT_QUOTES,'UTF-8').'</span>';
-		echo '<span id="showme' .$this->var_id. '" style="display:none;">';
+		echo '<input class="span emptytext" id="editme' .$this->var_id. '" onclick="show_edit('.$this->var_id.')" value="'.htmlentities($this->var_value,ENT_QUOTES,'UTF-8').'">';
+		echo '<span class="emptytext" id="showme' .$this->var_id. '" style="display:none;">';
 		if (preg_match('/^\s*(.+),\s*(.+) or (.+)\s*$/',$this->var_optiontext,$m))
 		{
 		    echo "<select name=\"var_value\">";
 		    for($ii=1; $ii<=3; $ii++)
 			echo "<option value='{$m[$ii]}' ".($m[$ii]==$this->var_value ? "selected" : "").">{$m[$ii]}</option>";
-		    echo "</select>";
+		    echo "</select><br />";
 		}
 		elseif (preg_match('/^\s*(.+[^\/])\s*\/\s*([^\/].+)\s*$/',$this->var_optiontext,$m) ||
 		    preg_match('/^\s*(.+) or (.+)\s*$/',$this->var_optiontext,$m))
 		{
 		    if (preg_match('/^(\d+)\s*=\s*(.+)$/',$m[1],$m1) && 
 			preg_match('/^(\d+)\s*=\s*(.+)$/',$m[2],$m2))
-		    	echo "<select name=\"var_value\"><option value='{$m1[1]}' ".($m1[1]==$this->var_value ? "selected" : "").">{$m1[2]}</option><option value='{$m2[1]}' ".($m2[1]==$this->var_value ? "selected" : "").">{$m2[2]}</option></select>";
+		    	echo "<select name=\"var_value\"><option value='{$m1[1]}' ".($m1[1]==$this->var_value ? "selected" : "").">{$m1[2]}</option><option value='{$m2[1]}' ".($m2[1]==$this->var_value ? "selected" : "").">{$m2[2]}</option></select><br />";
 		    else
-		    	echo "<select name=\"var_value\"><option value='{$m[1]}' ".($m[1]==$this->var_value ? "selected" : "").">{$m[1]}</option><option value='{$m[2]}' ".($m[2]==$this->var_value ? "selected" : "").">{$m[2]}</option></select>";
+		    	echo "<select name=\"var_value\"><option value='{$m[1]}' ".($m[1]==$this->var_value ? "selected" : "").">{$m[1]}</option><option value='{$m[2]}' ".($m[2]==$this->var_value ? "selected" : "").">{$m[2]}</option></select><br />";
 		}
 		elseif (preg_match('/^\s*(\d+)\s*-\s*(\d+)\s*$/',$this->var_optiontext,$m))
 		{
 		    echo "<select name=\"var_value\">";
 		    for ($ii=$m[1]; $ii<=$m[2]; $ii++)
 			echo "<option value='$ii' ".($ii==$this->var_value ? "selected" : "").">$ii</option>";
-		    echo "</select>";
+		    echo "</select><br />";
 		}
 		else
 		{
-		    echo "<input type=\"text\" name=\"var_value\" value=\"".htmlentities($this->var_value,ENT_QUOTES,'UTF-8')."\" ";
-		    if (strpos($this->var_optiontext,'number')===0)
-		    {
-			$min = preg_match('/at least (\d+)/',$this->var_optiontext,$m) ? $m[1] : 0;
-			echo "size='5' onblur='check_number({$this->var_id},this,$min)'";
+		    echo "<input type=\"text\" class='span edit_input' name=\"var_value\" value=\"".htmlentities($this->var_value,ENT_QUOTES,'UTF-8')."\" ";
+		    if (strpos($this->var_optiontext,'number')===0) {
+				$min = preg_match('/at least (\d+)/',$this->var_optiontext,$m) ? $m[1] : 0;
+				echo "size='5' onblur='check_number({$this->var_id},this,$min)'";
 	 	    }
 		    echo '>';
 		}
-		echo "<br><input type=\"submit\" value=\"Save\" onclick=\"save_changes({$this->var_id},this.form)\">";
-		echo "<input type=\"reset\" value=\"Cancel\" onclick=\"hide_edit({$this->var_id})\"></span><br>";
-		echo $main_smarty->get_config_vars(PLIGG_Visual_Config_Default_Value).": {$this->var_defaultvalue}<br>";
-		echo $main_smarty->get_config_vars(PLIGG_Visual_Config_Default_Value).": {$this->var_optiontext}";
+		echo "<input style='margin:4px 4px 0 0;' type=\"submit\" class=\"btn btn-primary\" value=\"Save\" onclick=\"save_changes({$this->var_id},this.form)\">";
+		echo "<input style='margin-top:3px;' type=\"reset\" class=\"btn\" value=\"Cancel\" onclick=\"hide_edit({$this->var_id})\"></span></td>";
+		echo "<td>{$this->var_defaultvalue}</td>";
+		echo "<td>{$this->var_optiontext}</td>";
 		echo '<input type = "hidden" name = "var_id" value = "'.$this->var_id.'">';
-		echo "</fieldset></form></span>";
+		echo "</td></tr></form></span>";
 //		$this->EditInPlaceCode = "EditInPlace.makeEditable( {type: 'text', action: 'save', id: 'editme" .$this->var_id. "',	save_url: 'admin_config.php'} );";		
 		
 	}
@@ -186,7 +170,7 @@ class pliggconfig {
 					if(fwrite($handle, $line . "\n")) {
 			
 					} else {
-						echo "<b>Could not write to '$filename' file</b>";
+						echo "<strong>Could not write to '$filename' file</strong>";
 					}
 				}				
 			}
@@ -205,7 +189,7 @@ class pliggconfig {
 			}
 
 		} else {
-			echo "<b>Could not open '$filename' file for writing</b>";
+			echo "<strong>Could not open '$filename' file for writing</strong>";
 		}
 	}
 }

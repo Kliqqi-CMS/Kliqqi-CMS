@@ -97,8 +97,6 @@ if($_GET['action'] == 'remove'){
 	$widget = $db->escape(sanitize($_REQUEST['widget'],3));
 	$sql = "SELECT * FROM " . table_widgets . " WHERE `name` = '" . $widget . "';";
 	$row = $db->get_row($sql);
-#	if(($widget_info = include_module_settings($row->folder)) && $widget_info['uninstall'])
-#		@eval($widget_info['uninstall'].'();');
 
 	$sql = "Delete from " . table_widgets . " where `name` = '" . $widget . "';";
 	//echo $sql;

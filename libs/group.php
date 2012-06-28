@@ -1,4 +1,4 @@
-<?php
+﻿<?php
 function joinGroup($group_id,$privacy)
 {
 	global $db, $current_user,$main_smarty,$the_template,$my_base_url,$my_pligg_base;
@@ -309,29 +309,39 @@ function member_display($requestID)
 			$group_member_url = getmyurl('user', $member_name);
 			$group_member_avatar = get_avatar('large', "", "", "", $member_user_id);
 			
-			$member_display .= '<a href="' . $group_member_url . '" class="group_member"><img src="' . $group_member_avatar . '" alt="' . $member_name . '" border="0" align="absmiddle" /> ' . $member_name . '</a>';
+			$member_display .= '<tr><td><a href="' . $group_member_url . '" class="group_member"><img src="' . $group_member_avatar . '" alt="' . $member_name . '" align="absmiddle" /></a></td><td><a href="' . $group_member_url . '" class="group_member">' . $member_name . '</a></td>';
 			if($gcreator == $current_user->user_id)
 			{
-			    if ($memberid->member_status=='active')
-			    {
-				if($member_user_id == $current_user->user_id)
-					$member_display .= '<span id="groupadminlinksbutton"> <a href="javascript://" onclick=\'var replydisplay=document.getElementById("ls_groupadminlinks-'.$index.'").style.display ? "" : "none";document.getElementById("ls_groupadminlinks-'.$index.'").style.display = replydisplay;\'>'.$change_role.'</a></span><br/>';
-				else
-					$member_display .= '<span id="groupadminlinksbutton"> <a href="javascript://" onclick=\'var replydisplay=document.getElementById("ls_groupadminlinks-'.$index.'").style.display ? "" : "none";document.getElementById("ls_groupadminlinks-'.$index.'").style.display = replydisplay;\'>'.$change_role.'</a> <a href="'.my_base_url . my_pligg_base . '/join_group.php?activate=false&group_id='.$requestID.'&user_id='.$member_user_id.'">Freeze</a></span><br/>';
-			    }
-			    else
-				$member_display .= '<span id="groupadminlinksbutton"> <a href="'.my_base_url . my_pligg_base . '/join_group.php?activate=true&group_id='.$requestID.'&user_id='.$member_user_id.'">Activate</a></span><br/>';
+			    if ($memberid->member_status=='active') {
+					if($member_user_id == $current_user->user_id) {
+						$main_smarty->assign('is_group_admin', 'true');
+						$member_display .= '<td>'.$member_role.'</td><td><a class="btn" href="#groupadminlinks-'.$index.'" data-toggle="modal"><i class="icon-edit" title="'.$change_role.'"></i> Edit</a></td><td>&nbsp;</td>';
+					} else {
+						$member_display .= '<td>'.$member_role.'</td><td><a class="btn" href="#groupadminlinks-'.$index.'" data-toggle="modal"><i class="icon-edit" title="'.$change_role.'"></i> Edit</a></td><td><a class="btn btn-danger" href="'.my_base_url . my_pligg_base . '/join_group.php?activate=false&group_id='.$requestID.'&user_id='.$member_user_id.'"><i class="icon-white icon-flag"></i> Deactivate</a></td>';
+					}
+					$member_display .= '<div class="modal hide fade" id="groupadminlinks-'.$index.'" style="display: none;">
+						<div class="modal-header">
+							<button data-dismiss="modal" class="close" type="button">×</button>
+							<h3>Group User Management</h3>
+						</div>
+						<div class="modal-body">
+							<a class="btn" href="'.$member_adminchange_url.'">'.$role_admin.'</a> 
+							<a class="btn" href="'.$member_normalchange_url.'">'.$role_normal.'</a> 
+							<a class="btn" href="'.$member_moderatorchange_url.'">'.$role_moderator.'</a> 
+							<hr />
+							<a class="btn btn-warning" href="'.$member_flaggedchange_url.'">'.$role_flagged.'</a> 
+							<a class="btn btn-danger" href="'.$member_bannedchange_url.'">'.$role_banned.'</a>
+						</div>
+						<div class="modal-footer">
+							<a data-dismiss="modal" class="btn btn-primary" href="#">Close</a>
+						</div>
+					</div>';
+				} else {
+					$member_display .= '<td>&nbsp;</td><td>&nbsp;</td><td><a class="btn btn-success" href="'.my_base_url . my_pligg_base . '/join_group.php?activate=true&group_id='.$requestID.'&user_id='.$member_user_id.'"><i class="icon-white icon-flag"></i> Activate</a></td>';
+				}
 			}
-			$member_display .= '<span id="ls_groupadminlinks-'.$index.'" style="display:none">
-					<span class="rolelinks" id="ls_groupadminlinks-'.$index.'">
-						<a href="'.$member_adminchange_url.'">'.$role_admin.'</a>
-						<a href="'.$member_normalchange_url.'">'.$role_normal.'</a>
-						<a href="'.$member_moderatorchange_url.'">'.$role_moderator.'</a>
-						<a href="'.$member_flaggedchange_url.'">'.$role_flagged.'</a>
-						<a href="'.$member_bannedchange_url.'">'.$role_banned.'</a>
-					</span>
-				</span><br/><br/>';
 				$index=$index+1;
+			echo '</tr>';
 		}
 	}
 		//echo $member_display;
@@ -502,7 +512,6 @@ function group_print_summary($requestID)
 		//check group admin
 		global $current_user;
 		if($current_user->user_id == $group_creator){$main_smarty->assign('is_group_admin', 1);}
-		
 		
 		//language
 		$lang_Created_By = $main_smarty->get_config_vars("PLIGG_Visual_Group_Created_By");

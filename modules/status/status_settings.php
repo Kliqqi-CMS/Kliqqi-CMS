@@ -2,7 +2,7 @@
 // the path to the module. the probably shouldn't be changed unless you rename the status folder(s)
 define('status_path', my_pligg_base . '/modules/status/');
 
-// the path to the module. the probably shouldn't be changed unless you rename the status folder(s)
+// the path to the module. the probably shouldn't be changed unless you rename the module_store folder(s)
 	if(!defined('lang_loc')){
 		// determine if we're in root or another folder like admin
 			$pos = strrpos($_SERVER["SCRIPT_NAME"], "/");
@@ -15,14 +15,15 @@ define('status_path', my_pligg_base . '/modules/status/');
 				define('lang_loc', '.');
 			}
 	}
-
-define('status_lang_conf', '/modules/status/lang.conf');
+	
+define('status_lang_conf', lang_loc . '/modules/status/lang.conf');
 define('status_pligg_lang_conf', lang_loc . "/languages/lang_" . pligg_language . ".conf");
 
 // the path to the modules templates. the probably shouldn't be changed unless you rename the status folder(s)
 define('status_tpl_path', '../modules/status/templates/');
 
 $status_places = array(
+"tpl_pligg_profile_tab_insert",
 "tpl_pligg_profile_start",
 "tpl_user_center_just_below_header",
 "tpl_user_center",

@@ -5,9 +5,9 @@ function get_new_messages(){
 
 	global $main_smarty, $the_template, $current_user;
    
-	 // Method for identifying modules rather than pagename
-    define('modulename_sm', 'simple_messaging');
-    $main_smarty->assign('modulename_sm', modulename_sm);
+	// Method for identifying modules rather than pagename
+	define('modulename', 'simple_messaging');
+    $main_smarty->assign('modulename', modulename);
 
 	// get the new messages
 		if ($current_user->user_id > 0) {
@@ -48,16 +48,21 @@ function get_new_messages(){
 
 function simple_messaging_showpage(){
     global $main_smarty, $the_template, $current_user, $db;
-    // Method for identifying modules rather than pagename
-    define('modulename_sm', 'simple_messaging');
-    $main_smarty->assign('modulename_sm', modulename_sm);
+    
+	// Method for identifying modules rather than pagename
+	define('modulename', 'simple_messaging');
+    $main_smarty->assign('modulename', modulename);
 
 	if(isset($_REQUEST['view'])){$view = sanitize($_REQUEST['view'], 3);}else{$view='';}
 
 	$navwhere['text1'] = 'Messaging';
 	$navwhere['link1'] = URL_simple_messaging_inbox;
 
-	if($view == 'inbox'){		
+	if($view == 'inbox'){	
+	
+		define('modulename_sm', 'simple_messaging_inbox');
+		$main_smarty->assign('modulename_sm', modulename_sm);
+		
 		$message = new KMessaging(true);
 		$array = $message->GetAllMesseges(5, $current_user->user_id);
 		if(is_array($array)){
@@ -113,6 +118,10 @@ function simple_messaging_showpage(){
 	
 	
 	if($view == 'sent'){
+	
+		define('modulename_sm', 'simple_messaging_sent');
+		$main_smarty->assign('modulename_sm', modulename_sm);
+		
 		define('modulepage', 'simple_messaging_sent'); 
 		$message = new KMessaging(true);
 		$array = $message->GetAllMesseges(5, '', $current_user->user_id);
@@ -169,6 +178,9 @@ function simple_messaging_showpage(){
 
 	if($view == 'compose'){
 
+		define('modulename_sm', 'simple_messaging_compose');
+		$main_smarty->assign('modulename_sm', modulename_sm);
+
 		if(isset($_REQUEST['return'])){$return = sanitize($_REQUEST['return'], 3);}else{$return='';}
 		$main_smarty->assign('return', $return);
 
@@ -194,6 +206,9 @@ function simple_messaging_showpage(){
 
 	if($view == 'send'){
 
+		define('modulename_sm', 'simple_messaging_send');
+		$main_smarty->assign('modulename_sm', modulename_sm);
+		
 		$main_smarty = do_sidebar($main_smarty, $navwhere);
 		$main_smarty->assign('posttitle', "Inbox");
 		
@@ -220,9 +235,9 @@ function simple_messaging_showpage(){
 		$message = new KMessaging(true);
 		$msg_result = $message->SendMessege($msg_subject,$msg_body,$msg_from_ID,$msg_to_ID,0);
 		if ($msg_result != 0){
-$main_smarty->config_load(simple_messaging_lang_conf);
-//print 'PLIGG_MESSAGING_Error_'.$msg_result;
-//print $main_smarty->get_config_vars('PLIGG_MESSAGING_Error_'.$msg_result);
+			$main_smarty->config_load(simple_messaging_lang_conf);
+			//print 'PLIGG_MESSAGING_Error_'.$msg_result;
+			//print $main_smarty->get_config_vars('PLIGG_MESSAGING_Error_'.$msg_result);
 
 			$main_smarty->assign('message', $main_smarty->get_config_vars('PLIGG_MESSAGING_Error_'.$msg_result));
 			$main_smarty->config_load(simple_messaging_pligg_lang_conf);
@@ -246,6 +261,9 @@ $main_smarty->config_load(simple_messaging_lang_conf);
 
 	if($view == "viewmsg"){
 
+		define('modulename_sm', 'simple_messaging_viewmsg');
+		$main_smarty->assign('modulename_sm', modulename_sm);
+		
 		if(isset($_REQUEST['msg_id'])){$msg_id = sanitize($_REQUEST['msg_id'], 3);}else{$msg_id='';}
 		$main_smarty->assign('msg_id', $msg_id);
 
@@ -270,6 +288,9 @@ $main_smarty->config_load(simple_messaging_lang_conf);
 	
 	if($view == "viewsentmsg"){
 
+		define('modulename_sm', 'simple_messaging_viewsentmsg');
+		$main_smarty->assign('modulename_sm', modulename_sm);
+		
 		if(isset($_REQUEST['msg_id'])){$msg_id = sanitize($_REQUEST['msg_id'], 3);}else{$msg_id='';}
 		$main_smarty->assign('msg_id', $msg_id);
 
@@ -288,6 +309,9 @@ $main_smarty->config_load(simple_messaging_lang_conf);
 	}
 
 	if($view == "delmsg"){
+
+		define('modulename_sm', 'simple_messaging_delmsg');
+		$main_smarty->assign('modulename_sm', modulename_sm);
 		
 		if(isset($_REQUEST['msg_id'])){$msg_id = sanitize($_REQUEST['msg_id'], 3);}else{$msg_id='';}
 
@@ -301,6 +325,9 @@ $main_smarty->config_load(simple_messaging_lang_conf);
 
 	if($view == "reply"){
 
+		define('modulename_sm', 'simple_messaging_reply');
+		$main_smarty->assign('modulename_sm', modulename_sm);
+		
 		if(isset($_REQUEST['msg_id'])){$msg_id = sanitize($_REQUEST['msg_id'], 3);}else{$msg_id='';}
 		$main_smarty->assign('msg_id', $msg_id);
 
@@ -329,8 +356,8 @@ function messaging_get_message_details($msgID){
 	global $db, $current_user, $main_smarty;
 	
 	// Method for identifying modules rather than pagename
-	define('modulename_sm', 'simple_messaging'); 
-	$main_smarty->assign('modulename_sm', modulename_sm);
+	define('modulename', 'simple_messaging');
+	$main_smarty->assign('modulename', modulename);
 
 	if (!is_numeric($msgID)) die("Wrong ID");
 	

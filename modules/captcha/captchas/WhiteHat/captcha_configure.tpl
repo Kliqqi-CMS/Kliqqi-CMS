@@ -1,10 +1,5 @@
-<br />
-<h2>Whitehat Captcha Settings</h2>
-<br />
-<p>This captcha method is based on the code from <a href="http://www.white-hat-web-design.co.uk/articles/php-captcha.php" target="_blank">Web Design and SEO Optimisation Services</a>.</p>
-
+<legend>Whitehat Captcha Settings</legend>
+<p>This captcha method is based on the code from <a href="http://www.white-hat-web-design.co.uk/blog/php-captcha-security-images/" target="_blank">White Hat Web Design</a>.</p>
+<p>There is nothing to configure for this captcha.</p>
 <hr />
-
-There is nothing to configure for this captcha.
-<br />
-<a href="{$URL_captcha}">Return to the Captcha Settings Page</a>
+<a href="{$URL_captcha}" class="btn">Return to the Captcha Settings Page</a>

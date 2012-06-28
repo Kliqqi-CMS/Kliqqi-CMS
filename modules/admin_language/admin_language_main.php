@@ -43,13 +43,13 @@ function admin_language_showpage(){
 		
 							if(fwrite($handle, $line)) {
 							} else {
-								echo "<b>Could not write to '$filename' file</b>";
+								echo "<strong>Could not write to '$filename' file</strong>";
 							}
 						}
 						fclose($handle);
 						//header('Location: admin_modifylanguage.php');
 					} else {
-						echo "<b>Could not open '$filename' file for writing</b>";
+						echo "<strong>Could not open '$filename' file for writing</strong>";
 					}
 	
 			echo $returnVal;
@@ -69,14 +69,13 @@ function admin_language_showpage(){
 		$section = "x";
 		$lastsection = "";
 	
-		$tabA = "&nbsp;&nbsp;&nbsp;&nbsp;";
 		if(isset($_GET["mode"]))
 		{
 			if($_GET["mode"] == "edit")
 			{
 				$outputHtml[] = "<form>";
 				$outputHtml[] = "<table class='listing'>";
-				$outputHtml[] = "Editing <b>" . sanitize($_GET["edit"],1) . "</b><br /><br />";
+				$outputHtml[] = "Editing <strong>" . sanitize($_GET["edit"],1) . "</strong><br /><br />";
 				foreach ($lines as $line_num => $line) {
 					if(substr($line, 0, 2) != "//")
 					{
@@ -88,10 +87,10 @@ function admin_language_showpage(){
 								$y = trim(substr($line, $x + 1, 10000));
 								$y = str_replace('"', "", $y);
 								$outputHtml[] = "Current Value: " . $y . "<br />";
-								$outputHtml[] = '<input type = "hidden" name = "edit" value = "'.$_GET["edit"].'">';
-								$outputHtml[] = '<input type = "hidden" name = "mode" value = "save">';
-								$outputHtml[] = '<input name = "newvalue" value = "'.$y.'" size=75><br />';
-								$outputHtml[] = '<input type = "submit" name = "save" value = "save" class = "log2">';
+								$outputHtml[] = '<input type="hidden" name="edit" value="'.$_GET["edit"].'">';
+								$outputHtml[] = '<input type="hidden" name="mode" value="save">';
+								$outputHtml[] = '<input name="newvalue" value="'.$y.'"><br />';
+								$outputHtml[] = '<input type="submit" name="save" value="Save" class="btn btn-primary">';
 							}
 						}
 					}
@@ -102,7 +101,7 @@ function admin_language_showpage(){
 //print_r($_GET);		
 //print "New: ".js_urldecode($_GET["newvalue"]);
 				$_GET["newvalue"] = js_urldecode($_GET["newvalue"]);
-				$outputHtml[] = "saving <b>" . $_GET["edit"] . "</b><br />";
+				$outputHtml[] = "Saving <strong>" . $_GET["edit"] . "</strong><br />";
 	
 				$filename = './languages/lang_'.pligg_language.'.conf';
 				if($handle = fopen($filename, 'w')) {
@@ -126,14 +125,14 @@ function admin_language_showpage(){
 						if(fwrite($handle, $line)) {
 	
 						} else {
-							$outputHtml[] = "<b>Could not write to '$filename' file</b>";
+							$outputHtml[] = "<strong>Could not write to '$filename' file</strong>";
 						}
 					}
 					fclose($handle);
 					exit;
 //					header('Location: admin_modifylanguage.php');
 				} else {
-					$outputHtml[] = "<b>Could not open '$filename' file for writing</b>";
+					$outputHtml[] = "<strong>Could not open '$filename' file for writing</strong>";
 				}
 	
 			}
@@ -141,7 +140,9 @@ function admin_language_showpage(){
 		else 
 		{
 			$outputHtml = array();
-			$outputHtml[] = '<table id="mytable" class="listing">';
+			
+			$outputHtml[] = '<table class="table table-bordered table-striped" style="font-size:1.0em;">';
+			
 			foreach ($lines as $line_num => $line) {
 				if(substr($line, 0, 2) == "//")
 				{
@@ -156,7 +157,7 @@ function admin_language_showpage(){
 					if ($x === false){}else
 					{
 						$y = strpos($line, "</TITLE>");
-						$outputHtml[] = "<tr><td bgcolor = BFBFBF><b>Title:</b>" . substr($line, $x + 7, $y) . "</td></tr>";
+						$outputHtml[] = "Reading from the <strong>" . substr($line, $x + 7, $y) . "</strong> language file.<br /><br />";
 					}
 	
 					$x = strpos($line, "<SECTION>");
@@ -167,10 +168,9 @@ function admin_language_showpage(){
 						if ($section != $lastsection)
 						{
 							$lastsection = $section;
-							$outputHtml[] = '<tr id="row_ASDFGHJK"><td></td></tr>';
-							$outputHtml[] = '<tr id="row_ASDFGHJK"><td></td></tr>';
-							$outputHtml[] = '<tr id="row_ASDFGHJK"><td></td></tr>';
-							$outputHtml[] = '<tr id="row_ASDFGHJK"><th><b>Section</b>: ' . $section . '</th></tr>';
+							$outputHtml[] = '</tbody>';
+							$outputHtml[] = '<thead><tr class="section_head"><th colspan="2">' . $section . '</th></tr></thead>';
+							$outputHtml[] = '<tbody>';
 						}
 					}
 					$x = strpos($line, "<VERSION>");
@@ -192,28 +192,30 @@ function admin_language_showpage(){
 					if (strlen(trim($line)) > 2)
 					{
 						$x = strpos($line, "=");
-						$outputHtml[] = '<tr id = "row_' . str_replace('"', '', trim(substr($line, $x + 1, 10000))) . '"><td><form onsubmit="return false"><fieldset>';
+						$outputHtml[] = '';
+						// ID in the next line is used for the search filter
+						$outputHtml[] = '<tr id = "row_' . str_replace('"', '', trim(substr($line, $x + 1, 10000))) . '">';
 						$grey = "grey1";
-						$outputHtml[] = "<b>" . $tabA . trim(substr($line, 0, $x));
-						$outputHtml[] = "</b><br />";
-						$outputHtml[] = "" . $tabA . $tabA;
+						$outputHtml[] = "<td style='width:240px;'><div style='width:240px;word-wrap:break-word;'>" . trim(substr($line, 0, $x));
+						$outputHtml[] = "</div></td><td>";
 						$ID = trim(substr($line, 0, $x));
 						$VALUE = htmlspecialchars(trim(substr(stripslashes($line), $x + 1, 10000)," \t\n\r\0\"\'"));
 //						$VALUE = htmlspecialchars(str_replace('"', '', trim(substr($line, $x + 1, 10000))));
 						if(function_exists("iconv") && detect_encoding($VALUE)!='utf-8')
 				    		    $VALUE = iconv('','UTF-8//IGNORE',$VALUE);
-						$outputHtml[] = "Value: <span class=\"emptytext\" id=\"editme$ID\" onclick=\"show_edit('$ID')\">$VALUE</span>";
+					    $outputHtml[] = "<form style='margin:0;' onsubmit=\"return false\">";
+						$outputHtml[] = "<input type=\"text\" name=\"var_value\" class=\"span edit_input\" style=\"margin:0;\" id=\"editme$ID\" onclick=\"show_edit('$ID')\" value=\"$VALUE\">";
 						$outputHtml[] = "<span id=\"showme$ID\" style=\"display:none;\">";
-					        $outputHtml[] = "<input type=\"text\" name=\"var_value\" value=\"$VALUE\">";
-				 		$outputHtml[] = "<br><div style='margin:5px 0 0 75px;'><input type=\"submit\" value=\"Save\" onclick=\"save_changes('$ID',this.form)\">";
-						$outputHtml[] = "<input type=\"reset\" value=\"Cancel\" onclick=\"hide_edit('$ID')\"></span></div><br>";
-						$outputHtml[] = "</fieldset></form>";
+						$outputHtml[] = "<input type=\"text\" name=\"var_value\" class=\"span edit_input\" style=\"margin:0;\" value=\"$VALUE\">";
+				 		$outputHtml[] = "<input type=\"submit\" style=\"margin-top:5px;\" class=\"btn btn-primary\" value=\"Save\" onclick=\"save_changes('$ID',this.form)\">";
+						$outputHtml[] = "<input type=\"reset\" style=\"margin-top:5px;\" class=\"btn\"value=\"Cancel\" onclick=\"hide_edit('$ID')\">";
+						$outputHtml[] = "</span></form>";
 						$outputHtml[] = "</td></tr>";
 					}
 				}
 			}
 		}
-		$outputHtml[] = "</table>";
+		$outputHtml[] = "</tbody></table>";
 		$main_smarty->assign('outputHtml', $outputHtml);
 
 		// breadcrumbs
@@ -256,10 +258,10 @@ function Message( $message, $good )
 {
 	global $outputHtml;
 	if ( $good )
-		$yesno = '<b><font color="green">Yes</font></b>';
+		$yesno = '<strong><font color="green">Yes</font></strong>';
 	else
 	{
-		$yesno = '<b><font color="red">No</font></b>';
+		$yesno = '<strong><font color="red">No</font></strong>';
 		$outputHtml[] = $message .'</td><td>'. $yesno .'<br />';
 	}
 }

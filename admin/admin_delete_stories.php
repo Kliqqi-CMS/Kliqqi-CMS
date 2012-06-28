@@ -1,4 +1,4 @@
-<?php
+﻿<?php
 include_once('../Smarty.class.php');
 $main_smarty = new Smarty;
 
@@ -81,10 +81,18 @@ if (!mysql_query($query)) error_page(mysql_error());
 $query="DELETE FROM " . table_tag_cache;
 if (!mysql_query($query)) {error_page(mysql_error());}
 
-echo '<div style="padding:8px;margin:14px 2px;border:1px solid #bbb;background:#eee;">';
-
-echo '	<h2 style="font-size: 18px;margin:0;padding:0;border-bottom:1px solid #629ACB;">'. $num_rows. ' '.$main_smarty->get_config_vars("PLIGG_Visual_AdminPanel_Discarded_Stories_Removed").'</h2>';
-
+?>
+<html>
+<head>
+	<link rel="stylesheet" type="text/css" href="../templates/admin/css/bootstrap.css" media="screen">
+</head>
+<body>
+<div class="modal-header">
+	<a class="close" data-dismiss="modal">×</a>
+	<h3><?php echo $main_smarty->get_config_vars('PLIGG_Visual_AdminPanel_Discarded_Stories_Removed') ?></h3>
+</div>
+<div class="modal-body">
+<?php
     $query = "SHOW TABLE STATUS";
     $result=mysql_query($query);
     $table_list = "";
@@ -97,12 +105,15 @@ echo '	<h2 style="font-size: 18px;margin:0;padding:0;border-bottom:1px solid #62
         $query = "OPTIMIZE TABLE ".$table_list;
         mysql_query($query);
 	if (mysql_error())
-		echo mysql_error();
+		echo '<p>'.mysql_error().'</p>';
 	else
-		echo '	<p style=\'font:13px arial, "Lucida Grande","Lucida Sans Unicode",Tahoma,Verdana,sans-serif;\'>'.$main_smarty->get_config_vars("PLIGG_Visual_AdminPanel_Discarded_Stories_Removed_Message").'</p>';
+		echo '<p><strong>'.$num_rows.'</strong> '.$main_smarty->get_config_vars("PLIGG_Visual_AdminPanel_Discarded_Stories_Removed_Message").'</p>';
     }
-
-echo '	<p style=\'font:13px arial, "Lucida Grande","Lucida Sans Unicode",Tahoma,Verdana,sans-serif;\'><a href="./admin_links.php" onclick="parent.$.fn.colorbox.close(); return false;">'.$main_smarty->get_config_vars("PLIGG_Visual_AdminPanel_Return_Story_Management").'</a></p>';
-echo '</div>';
-
 ?>
+</div>
+<div class="modal-footer">
+	<a class="btn btn-primary" data-dismiss="modal">Close</a>
+	<!-- <?php echo $main_smarty->get_config_vars('PLIGG_Visual_AdminPanel_Return_Story_Management') ?> -->
+</div>
+</body>
+</html>

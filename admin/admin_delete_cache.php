@@ -1,4 +1,4 @@
-<?php
+﻿<?php
 include_once('../Smarty.class.php');
 $main_smarty = new Smarty;
 
@@ -114,8 +114,21 @@ function recursive_remove_directory($directory, $empty=TRUE)
 recursive_remove_directory('../cache',TRUE);
 
 ?>
-<div style="padding:8px;margin:14px 2px;border:1px solid #bbb;background:#eee;">
-	<h2 style="font-size: 18px;margin:0;padding:0;border-bottom:1px solid #629ACB;"><?php echo $main_smarty->get_config_vars('PLIGG_Visual_AdminPanel_Cleared_Cache') ?></h2>
-	<p style=\'font:13px arial, "Lucida Grande","Lucida Sans Unicode",Tahoma,Verdana,sans-serif;\'><?php echo $main_smarty->get_config_vars('PLIGG_Visual_AdminPanel_Cleared_Cache_Message') ?></p>
-	<p style='font:13px arial, "Lucida Grande","Lucida Sans Unicode",Tahoma,Verdana,sans-serif;'><a style="color:#094F89;" href="admin_index.php" onclick="parent.$.fn.colorbox.close(); return false;"><?php echo $main_smarty->get_config_vars('PLIGG_Visual_AdminPanel_Return_Admin') ?></a></p>
+<html>
+<head>
+	<link rel="stylesheet" type="text/css" href="../templates/admin/css/bootstrap.css" media="screen">
+</head>
+<body>
+<div class="modal-header">
+	<a class="close" data-dismiss="modal">×</a>
+	<h3><?php echo $main_smarty->get_config_vars('PLIGG_Visual_AdminPanel_Cleared_Cache') ?></h3>
 </div>
+<div class="modal-body">
+	<p><?php echo $main_smarty->get_config_vars('PLIGG_Visual_AdminPanel_Cleared_Cache_Message') ?></p>
+</div>
+<div class="modal-footer">
+	<a class="btn btn-primary" data-dismiss="modal">Close</a>
+	<!-- <?php echo $main_smarty->get_config_vars('PLIGG_Visual_AdminPanel_Return_Admin') ?> -->
+</div>
+</body>
+</html>

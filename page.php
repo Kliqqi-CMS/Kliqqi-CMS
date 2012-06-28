@@ -31,10 +31,12 @@ if($_REQUEST['page']){
 	$page_results=$db->get_row($sql = " SELECT * from ".table_links." where link_title_url='$page' and link_status='page'");
 
 	// Search in old urls if not found
-	if (!$page_results->link_id)
+	if (!$page_results->link_id) {
 		$page_results=$db->get_row($sql="SELECT * FROM " . table_old_urls . " 
 							LEFT JOIN ".table_links." ON old_link_id=link_id AND link_status='page'
 							WHERE `old_title_url` = '$page' AND !ISNULL(link_id)");
+	}
+	
 	if($page_results->link_id){
 		$main_smarty->assign('page_title' , $page_results->link_title);
 		$main_smarty->assign('meta_keywords' , $page_results->link_field1);
@@ -42,6 +44,11 @@ if($_REQUEST['page']){
 		$main_smarty->assign('page_content' , $page_results->link_content);
 		$main_smarty->assign('posttitle', $page_results->link_title);
 		$main_smarty->assign('link_id', $page_results->link_id);
+	}
+	
+	if (!$page_results->link_id) {
+		header("Location: $my_pligg_base/404error.php");
+		die();
 	}
 }
 

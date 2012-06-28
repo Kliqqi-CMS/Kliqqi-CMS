@@ -258,18 +258,18 @@ class Comment {
 		return $this->username;
 	}
 	
-	function votes($user) {
+	function votes($user, $value="<> 0") {
 		require_once(mnminclude.'votes.php');
 
 		$vote = new Vote;
 		$vote->type='comments';
 		$vote->user=$user;
 		$vote->link=$this->id;
-		return $vote->anycount();
+		return $vote->anycount($value);
 	}
 	
 	// DB 11/10/08
-	function votes_from_ip($ip='') {
+	function votes_from_ip($ip='', $value="<> 0") {
 		require_once(mnminclude.'votes.php');
 
 		$vote = new Vote;
@@ -277,7 +277,7 @@ class Comment {
 		$vote->user=-1;
 		$vote->ip=$ip;
 		$vote->link=$this->id;
-		return $vote->anycount();
+		return $vote->anycount($value);
 	}
 	/////
 	

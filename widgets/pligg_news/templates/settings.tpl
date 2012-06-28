@@ -1,8 +1,9 @@
+<div style="margin:10px 10px 0 10px;">
 <form method="get">
 	<input type="hidden" name="widget" value="pligg_news">
 	<p>
 		{#PLIGG_News_Widget_Select_Show#}		
-		<select name="stories" value="pligg_news">
+		<select name="stories" value="pligg_news" style="width:75px;">
 			<option value="1" {if $news_count eq "1"}selected="selected"{/if}>1</option>
 			<option value="2" {if $news_count eq "2"}selected="selected"{/if}>2</option>
 			<option value="3" {if $news_count eq "3"}selected="selected"{/if}>3</option>
@@ -12,10 +13,9 @@
 		{#PLIGG_News_Widget_Select_Items#}
 		
 		{* <input type="text" name="stories" value="{$news_count}"> *}
-		
 	</p>
-	<br />
 	<p>
-		<input type = "submit" value="{#PLIGG_News_Widget_Save#}">
+		<input type="submit" class="btn btn-primary" value="{#PLIGG_News_Widget_Save#}">
 	</p>
 </form>
+</div>

@@ -96,9 +96,9 @@ $file = dirname(__FILE__) . '/templates/' . $thetemp . "/pligg.tpl";
 unset($errors);
 if (!file_exists($file)) { $errors[]='You may have typed the template name wrong or "'. $thetemp . '" does not exist. Click <a href = "admin/admin_config.php?page=Template">here</a> to fix it.'; }
 if (isset($errors)) {
-	$thetemp = "wistie";
+	$thetemp = "bootstrap";
 	$file = dirname(__FILE__) . '/templates/' . $thetemp . "/pligg.tpl";
-	if (!file_exists($file)) {echo 'The default Wistie template does not exist anymore. Please fix this by reuploading the Wistie template!'; die();}
+	if (!file_exists($file)) {echo 'The default template "Bootstrap" does not exist anymore. Please fix this by reuploading the Bootstrap template!'; die();}
 
 	foreach ($errors as $error) {
 		$output.="<p><b>Error:</b> $error</p>\n";

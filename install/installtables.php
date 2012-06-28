@@ -615,8 +615,6 @@ mysql_query( $sql, $conn );
 echo 'Inserting default widgets...<br />';
 $sql = "INSERT INTO `".table_widgets."` VALUES (1, 'Admin Panel Tools', 0.1, 0, 'panel_tools', 1, 'left', 4, '')";
 mysql_query( $sql, $conn );
-$sql = "INSERT INTO `".table_widgets."` VALUES (2, 'Module Settings', 0.1, 0, 'module_settings', 1, 'left', 3, '')";
-mysql_query( $sql, $conn );
 $sql = "INSERT INTO `".table_widgets."` VALUES (3, 'Statistics', 0.1, 0, 'statistics', 1, 'left', 1, '')";
 mysql_query( $sql, $conn );
 $sql = "INSERT INTO `".table_widgets."` VALUES (4, 'Pligg CMS', 0.1, 0, 'pligg_cms', 1, 'right', 5, '')";

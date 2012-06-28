@@ -37,14 +37,14 @@ if(isset($_POST['id'])){
 		error($main_smarty->get_config_vars('PLIGG_Visual_Vote_BadKey'));
 	}
 
-	if($comment->votes($current_user->user_id) <> 0 ||
+	$value = sanitize($_POST['value'], 3);
+	if($comment->votes($current_user->user_id, $value<0 ? '<0' : '>0') <> 0 ||
 	   // DB 11/10/08
 	   (votes_per_ip > 0 && $comment->votes_from_ip() >= votes_per_ip)) {
 	   /////
 		error($main_smarty->get_config_vars('PLIGG_Visual_Vote_AlreadyVoted'));
 	}
 	
-	$value = sanitize($_POST['value'], 3);
 	
 	if($value < -10 || $value > 10){
 		error('Invalid vote value');

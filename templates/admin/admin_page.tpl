@@ -1,6 +1,6 @@
-<h2><img src="{$my_pligg_base}/templates/admin/images/page.gif" align="absmiddle" /> {#PLIGG_Visual_AdminPanel_Manage_Pages#}</h2>
+<legend>{#PLIGG_Visual_AdminPanel_Manage_Pages#}</legend>
 <br />
-	<table class="stripes" cellpadding="0" cellspacing="0" border="0">
+	<table class="table table-bordered table-striped">
 		<thead>
 			<tr>
 				<th>{#PLIGG_Visual_AdminPanel_Page_Submit_Title#}</th>
@@ -15,5 +15,5 @@
 
 {$page_text}
 
-<div class="admin_bottom_button"><a href="{$my_base_url}{$my_pligg_base}/admin/submit_page.php" title="{#PLIGG_Visual_AdminPanel_Page_Submit_New#}"><img src="{$my_pligg_base}/templates/admin/images/new_cat.gif" style="margin-top:2px;"/><p style="margin:1px 0 0 3px;float:right;">{#PLIGG_Visual_AdminPanel_Page_Submit_New#}</p></a></div>
+<a class="btn btn-primary" href="{$my_base_url}{$my_pligg_base}/admin/submit_page.php" title="{#PLIGG_Visual_AdminPanel_Page_Submit_New#}">{#PLIGG_Visual_AdminPanel_Page_Submit_New#}</a>
 <div style="clear:both;"> </div>

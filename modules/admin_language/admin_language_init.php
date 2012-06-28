@@ -9,7 +9,7 @@ if(defined('mnminclude')){
 
 	$include_in_pages = array('all');
 	if( do_we_load_module() ) {		
-		module_add_action_tpl('tpl_header_admin_links', admin_language_tpl_path . 'admin_language_admin_link.tpl');
+		//module_add_action_tpl('tpl_header_admin_links', admin_language_tpl_path . 'admin_language_admin_link.tpl');
 		module_add_action_tpl('tpl_header_admin_main_links', admin_language_tpl_path . 'admin_language_admin_main_link.tpl');
 	}
 	

@@ -6,10 +6,15 @@
 	<form method="get" action="module.php">
 		<input type="hidden" name="module" value="akismet">
 		<input type="hidden" name="view" value="updateKey">
-		<strong>{#PLIGG_Akismet_api_key#} <input type="text" name="key" value="{$wordpress_key}">
-		<input type = "submit" value="{#PLIGG_Akismet_api_update#}">
+		<div style="float:left;display:inline;">
+			<strong>{#PLIGG_Akismet_api_key#} <input type="text" name="key" value="{$wordpress_key}">
+		</div>
+		<div style="float:left;margin:1px 0 0 4px;display:inline;">
+			<input type="submit" class="btn btn-primary" value="{#PLIGG_Akismet_api_update#}">
+		</div>
 	</form>
-	<br />
+	
+	<br style="clear:both;" /><br />
 	<a href="{$URL_akismet}">{#PLIGG_Akismet_return#}</a>
 	
 </fieldset>

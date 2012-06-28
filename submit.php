@@ -256,8 +256,8 @@ function do_submit1() {
 
 //	$main_smarty->assign('submit_id', $_GET['id']);
 	$main_smarty->assign('submit_title', str_replace('"',"&#034;",$linkres->title));
-	$main_smarty->assign('submit_content', str_replace("<br />", "\n", $linkres->content));
-	$main_smarty->assign('storylen', utf8_strlen(str_replace("<br />", "\n", $linkres->content)));
+	//$main_smarty->assign('submit_content', str_replace("<br />", "\n", $linkres->content));
+	//$main_smarty->assign('storylen', utf8_strlen(str_replace("<br />", "\n", $linkres->content)));
 	$main_smarty->assign('submit_summary', $linkres->link_summary);
 	$main_smarty->assign('submit_group', $linkres->link_group_id);
 	$main_smarty->assign('submit_category', $linkres->category);
@@ -288,7 +288,7 @@ function do_submit1() {
 							ORDER BY group_name ASC");
 		if ($group_membered)
 		{
-			$output .= "<select name='link_group_id'>";
+			$output .= "<select name='link_group_id' tabindex='3'>";
 			$output .= "<option value = ''>".$main_smarty->get_config_vars('PLIGG_Visual_Group_Select_Group')."</option>";
 			foreach($group_membered as $results)
 			{
@@ -366,7 +366,7 @@ function do_submit2() {
 	$linkres->title_url = makeUrlFriendly($linkres->title, $linkres->id);
 	$linkres->tags = tags_normalize_string(stripslashes(sanitize($_POST['tags'], 3)));
 	$linkres->content = close_tags(stripslashes(sanitize($_POST['bodytext'], 4, $Story_Content_Tags_To_Allow)));
-	$linkres->content = str_replace("\n", "<br />", $linkres->content);
+	//$linkres->content = str_replace("\n", "<br />", $linkres->content);
 	// Steef 2k7-07 security fix start ----------------------------------------------------------
 		if(isset($_POST['link_field1'])){$linkres->link_field1 = sanitize($_POST['link_field1'], 4, $Story_Content_Tags_To_Allow);}
 		if(isset($_POST['link_field2'])){$linkres->link_field2 = sanitize($_POST['link_field2'], 4, $Story_Content_Tags_To_Allow);}
@@ -387,14 +387,14 @@ function do_submit2() {
 
 	if(!isset($_POST['summarytext'])){
 		$linkres->link_summary = utf8_substr(sanitize($_POST['bodytext'], 4, $Story_Content_Tags_To_Allow), 0, StorySummary_ContentTruncate - 1);
-		$linkres->link_summary = close_tags(str_replace("\n", "<br />", $linkres->link_summary));		
+		//$linkres->link_summary = close_tags(str_replace("\n", "<br />", $linkres->link_summary));		
 	} else {
 		$linkres->link_summary = sanitize($_POST['summarytext'], 4, $Story_Content_Tags_To_Allow);
-		$linkres->link_summary = close_tags(str_replace("\n", "<br />", $linkres->link_summary));
+		//$linkres->link_summary = close_tags(str_replace("\n", "<br />", $linkres->link_summary));
 		if(utf8_strlen($linkres->link_summary) > StorySummary_ContentTruncate){
 			loghack('SubmitAStory-SummaryGreaterThanLimit', 'username: ' . sanitize($_POST["username"], 3).'|email: '.sanitize($_POST["email"], 3), true);
 			$linkres->link_summary = utf8_substr($linkres->link_summary, 0, StorySummary_ContentTruncate - 1);
-			$linkres->link_summary = close_tags(str_replace("\n", "<br />", $linkres->link_summary));
+			//$linkres->link_summary = close_tags(str_replace("\n", "<br />", $linkres->link_summary));
 		}
 	}
 		//get link_group_id

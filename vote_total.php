@@ -91,16 +91,15 @@ if(is_numeric($post_id) && $post_id > 0){
 		error($main_smarty->get_config_vars('PLIGG_Visual_Vote_BadKey'));
 	}
 
-	$value = sanitize($_POST['value'], 3);
+	$value = intval($_POST['value']);
 	if(sanitize($_POST['unvote'], 3) == 'true'){
 	    $link->remove_vote($current_user->user_id, $value);
 	} else {
-	    if($link->votes($current_user->user_id) > 0 || $link->reports($current_user->user_id) > 0 ||
-	    	// DB 11/10/08
+	    if($link->votes($current_user->user_id, $value) > 0 || 
 	        (votes_per_ip > 0 && $link->votes_from_ip() + $link->reports_from_ip() >= votes_per_ip)) {
-	    	/////
-			error($main_smarty->get_config_vars('PLIGG_Visual_Vote_AlreadyVoted'));
+			error($main_smarty->get_config_vars('PLIGG_Visual_Vote_AlreadyVoted ').$link->votes($current_user->user_id, $value).'/'.$value);
 	    }
+	    $link->remove_vote($current_user->user_id, -$value);
 	    $link->insert_vote($current_user->user_id, $value);
 	}
 
