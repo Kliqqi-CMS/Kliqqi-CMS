@@ -6,7 +6,7 @@
 	<p class="error">{#PLIGG_Visual_Submit2Errors_InvalidURL#}{if $submit_url eq "http://"}. {#PLIGG_Visual_Submit2Errors_InvalidURL_Specify#}{else}: {$submit_url}{/if}</p>
 	<br/>
 	<form id="thisform">
-		<input type="button" onclick="javascript:gPageIsOkToExit=true;window.history.go(-1);" value="{#PLIGG_Visual_Submit2Errors_Back#}" class="submit">
+		<input type="button" onclick="javascript:gPageIsOkToExit=true;window.history.go(-1);" value="{#PLIGG_Visual_Submit2Errors_Back#}" class="btn btn-primary">
 	</form>
 {/if}
 
@@ -16,7 +16,7 @@
 	<p><a href="{$submit_search}"><strong>{#PLIGG_Visual_Submit2Errors_DupeArticleURL_Instruct2#}</strong></a></p>
 	<br style="clear: both;" /><br style="clear: both;" />
 	<form id="thisform">
-		<input type=button onclick="javascript:gPageIsOkToExit=true;window.history.go(-1);" value="{#PLIGG_Visual_Submit2Errors_Back#}" class="submit" />
+		<input type=button onclick="javascript:gPageIsOkToExit=true;window.history.go(-1);" value="{#PLIGG_Visual_Submit2Errors_Back#}" class="btn btn-primary" />
 	</form>
 {/if}
 
@@ -28,7 +28,7 @@
 	<p class="error">{#PLIGG_Visual_Submit3Errors_BadKey#}</p>
 	<br/>
 	<form id="thisform">
-		<input type="button" onclick="gPageIsOkToExit=true; document.location.href='{$my_base_url}{$my_pligg_base}/{$pagename}.php?id={$link_id}';" value="{#PLIGG_Visual_Submit3Errors_Back#}" class="submit" />
+		<input type="button" onclick="gPageIsOkToExit=true; document.location.href='{$my_base_url}{$my_pligg_base}/{$pagename}.php?id={$link_id}';" value="{#PLIGG_Visual_Submit3Errors_Back#}" class="btn btn-primary" />
 	</form>
 {/if}
 
@@ -36,7 +36,7 @@
 	<p class="error">{#PLIGG_Visual_Submit3Errors_HasHistory#}: {$submit_error_history}</p>
 	<br/>
 	<form id="thisform">
-		<input type="button" onclick="gPageIsOkToExit=true; document.location.href='{$my_base_url}{$my_pligg_base}/{$pagename}.php?id={$link_id}';" value="{#PLIGG_Visual_Submit3Errors_Back#}" class="submit" />
+		<input type="button" onclick="gPageIsOkToExit=true; document.location.href='{$my_base_url}{$my_pligg_base}/{$pagename}.php?id={$link_id}';" value="{#PLIGG_Visual_Submit3Errors_Back#}" class="btn btn-primary" />
 	</form>
 {/if}
 
@@ -44,7 +44,7 @@
 	<p class="error">{#PLIGG_Visual_Submit3Errors_URLInTitle#}</p>
 	<br/>
 	<form id="thisform">
-		<input type="button" onclick="gPageIsOkToExit=true; document.location.href='{$my_base_url}{$my_pligg_base}/{$pagename}.php?id={$link_id}';" value="{#PLIGG_Visual_Submit3Errors_Back#}" class="submit" />
+		<input type="button" onclick="gPageIsOkToExit=true; document.location.href='{$my_base_url}{$my_pligg_base}/{$pagename}.php?id={$link_id}';" value="{#PLIGG_Visual_Submit3Errors_Back#}" class="btn btn-primary" />
 	</form>
 {/if}
 
@@ -52,7 +52,7 @@
 	<p class="error">{#PLIGG_Visual_Submit3Errors_Incomplete#}</p>
 	<br/>
 	<form id="thisform">
-		<input type="button" onclick="gPageIsOkToExit=true; document.location.href='{$my_base_url}{$my_pligg_base}/{$pagename}.php?id={$link_id}';" value="{#PLIGG_Visual_Submit3Errors_Back#}" class="submit" />
+		<input type="button" onclick="gPageIsOkToExit=true; document.location.href='{$my_base_url}{$my_pligg_base}/{$pagename}.php?id={$link_id}';" value="{#PLIGG_Visual_Submit3Errors_Back#}" class="btn btn-primary" />
 	</form>
 {/if}
 
@@ -60,7 +60,7 @@
 	<p class="error">{#PLIGG_Visual_Submit3Errors_Long_Title#}</p>
 	<br/>
 	<form id="thisform">
-		<input type="button" onclick="gPageIsOkToExit=true; document.location.href='{$my_base_url}{$my_pligg_base}/{$pagename}.php?id={$link_id}';" value="{#PLIGG_Visual_Submit3Errors_Back#}" class="submit" />
+		<input type="button" onclick="gPageIsOkToExit=true; document.location.href='{$my_base_url}{$my_pligg_base}/{$pagename}.php?id={$link_id}';" value="{#PLIGG_Visual_Submit3Errors_Back#}" class="btn btn-primary" />
 	</form>
 {/if}
 
@@ -68,7 +68,7 @@
 	<p class="error">{#PLIGG_Visual_Submit3Errors_Long_Content#}</p>
 	<br/>
 	<form id="thisform">
-		<input type="button" onclick="gPageIsOkToExit=true; document.location.href='{$my_base_url}{$my_pligg_base}/{$pagename}.php?id={$link_id}';" value="{#PLIGG_Visual_Submit3Errors_Back#}" class="submit" />
+		<input type="button" onclick="gPageIsOkToExit=true; document.location.href='{$my_base_url}{$my_pligg_base}/{$pagename}.php?id={$link_id}';" value="{#PLIGG_Visual_Submit3Errors_Back#}" class="btn btn-primary" />
 	</form>
 {/if}
 
@@ -76,7 +76,7 @@
 	<p class="error">{#PLIGG_Visual_Submit3Errors_Long_Tags#}</p>
 	<br/>
 	<form id="thisform">
-		<input type="button" onclick="gPageIsOkToExit=true; document.location.href='{$my_base_url}{$my_pligg_base}/{$pagename}.php?id={$link_id}';" value="{#PLIGG_Visual_Submit3Errors_Back#}" class="submit" />
+		<input type="button" onclick="gPageIsOkToExit=true; document.location.href='{$my_base_url}{$my_pligg_base}/{$pagename}.php?id={$link_id}';" value="{#PLIGG_Visual_Submit3Errors_Back#}" class="btn btn-primary" />
 	</form>
 {/if}
 
@@ -84,7 +84,7 @@
 	<p class="error">{#PLIGG_Visual_Submit3Errors_Long_Summary#}</p>
 	<br/>
 	<form id="thisform">
-		<input type="button" onclick="gPageIsOkToExit=true; document.location.href='{$my_base_url}{$my_pligg_base}/{$pagename}.php?id={$link_id}';" value="{#PLIGG_Visual_Submit3Errors_Back#}" class="submit" />
+		<input type="button" onclick="gPageIsOkToExit=true; document.location.href='{$my_base_url}{$my_pligg_base}/{$pagename}.php?id={$link_id}';" value="{#PLIGG_Visual_Submit3Errors_Back#}" class="btn btn-primary" />
 	</form>
 {/if}
 
@@ -92,7 +92,7 @@
 	<p class="error">{#PLIGG_Visual_Submit3Errors_NoCategory#}</p>
 	<br/>
 	<form id="thisform">
-		<input type="button" onclick="gPageIsOkToExit=true; document.location.href='{$my_base_url}{$my_pligg_base}/{$pagename}.php?id={$link_id}';" value="{#PLIGG_Visual_Submit3Errors_Back#}" class="submit" />
+		<input type="button" onclick="gPageIsOkToExit=true; document.location.href='{$my_base_url}{$my_pligg_base}/{$pagename}.php?id={$link_id}';" value="{#PLIGG_Visual_Submit3Errors_Back#}" class="btn btn-primary" />
 	</form>
 {/if}
 

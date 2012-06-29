@@ -32,7 +32,7 @@ function counter(text) {
 	&nbsp;<a href="{$submit_url}">{$submit_url}</a>
 	{if $isAdmin eq 1}
 		<br />
-		<input type="text" name="url" id="url" class="span6" value ="{$submit_url}">
+		<input type="text" name="url" id="url" class="span6" {if $submit_url neq "http://" && $submit_url neq ""} value ="{$submit_url}"{else} placeholder="http://"{/if}>
 	{/if}
 	
 	<br />
