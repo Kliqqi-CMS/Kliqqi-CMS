@@ -45,7 +45,7 @@
 				
 			</td>
 		</form>
-<form name="bulk_moderate" action="{$my_pligg_base}/admin/admin_comments.php?action=bulkmod&page={$templatelite.get.page|sanitize:2}" method="post">
+<form name="bulk_moderate" action="{$my_base_url}{$my_pligg_base}/admin/admin_comments.php?action=bulkmod&page={$templatelite.get.page|sanitize:2}" method="post">
 		<td style="float:right;"><input type="submit" class="btn btn-primary" name="submit" onclick="return confirm_spam()" value="{#PLIGG_Visual_AdminPanel_Apply_Changes#}" /></td>
 	</tr>
 </table>
@@ -65,12 +65,12 @@
 	{if isset($template_comments)}
 		{section name=id loop=$template_comments}
 		<tr {if $template_comments[id].comment_status=='moderated'}class="tr_moderated"{/if}>
-			<td><a href="{$my_pligg_base}/admin/admin_users.php?mode=view&user={$template_comments[id].comment_author}" title="{$template_comments[id].comment_author}'s Profile" id="comment-{$template_comments[id].comment_id}-author">{$template_comments[id].comment_author}</a></td>
+			<td><a href="{$my_base_url}{$my_pligg_base}/admin/admin_users.php?mode=view&user={$template_comments[id].comment_author}" title="{$template_comments[id].comment_author}'s Profile" id="comment-{$template_comments[id].comment_id}-author">{$template_comments[id].comment_author}</a></td>
 			<td>
 				<div style="margin:0 10px 0 0;padding:0;float:left;">
-					<a href="{$my_pligg_base}/edit.php?id={$template_comments[id].comment_link_id}&commentid={$template_comments[id].comment_id}"><img src="{$my_pligg_base}/templates/admin/images/icon_user_edit.png" title="{#PLIGG_Visual_AdminPanel_Page_Edit#}" alt="{#PLIGG_Visual_AdminPanel_Page_Edit#}" />
+					<a href="{$my_base_url}{$my_pligg_base}/edit.php?id={$template_comments[id].comment_link_id}&commentid={$template_comments[id].comment_id}"><img src="{$my_base_url}{$my_pligg_base}/templates/admin/images/icon_user_edit.png" title="{#PLIGG_Visual_AdminPanel_Page_Edit#}" alt="{#PLIGG_Visual_AdminPanel_Page_Edit#}" />
 				</div>
-				<a href="{$my_pligg_base}/story.php?id={$template_comments[id].comment_link_id}#c{$template_comments[id].comment_id}" title="{$template_comments[id].comment_content_long|truncate:50:"...":true}">{$template_comments[id].comment_content}</a>
+				<a href="{$my_base_url}{$my_pligg_base}/story.php?id={$template_comments[id].comment_link_id}#c{$template_comments[id].comment_id}" title="{$template_comments[id].comment_content_long|truncate:50:"...":true}">{$template_comments[id].comment_content}</a>
 				<input type='hidden' name='old[{$template_comments[id].comment_id}]' id="comment-{$template_comments[id].comment_id}-old" value='{$template_comments[id].comment_status}'>
 			</td>
 			<td width="140px">{$template_comments[id].comment_date}</td>
@@ -88,7 +88,7 @@
 
 </form>
 
-<div style="float:right;margin-top:6px;"><a data-toggle="modal" class="btn btn-danger" href="{$my_pligg_base}/admin/admin_delete_comments.php" title="{#PLIGG_Visual_AdminPanel_Delete_Comments#}"><i class="icon-trash icon-white"></i> {#PLIGG_Visual_AdminPanel_Delete_Comments#}</a></div>
+<div style="float:right;margin-top:6px;"><a data-toggle="modal" class="btn btn-danger" href="{$my_base_url}{$my_pligg_base}/admin/admin_delete_comments.php" title="{#PLIGG_Visual_AdminPanel_Delete_Comments#}"><i class="icon-trash icon-white"></i> {#PLIGG_Visual_AdminPanel_Delete_Comments#}</a></div>
 
 <SCRIPT>
 var confirmation = "{#PLIGG_Visual_AdminPanel_Confirm_Killspam#}\n";

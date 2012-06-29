@@ -33,7 +33,7 @@
 				
 			</td>
 		</form>
-<form name='bulk' action="{$my_pligg_base}/admin/admin_users.php" method="post">
+<form name='bulk' action="{$my_base_url}{$my_pligg_base}/admin/admin_users.php" method="post">
 		<td style="float:right;"><input type="submit" class="btn btn-primary" name="submit" value="{#PLIGG_Visual_AdminPanel_Apply_Changes#}" /></td>
 	</tr>
 </table>
@@ -65,9 +65,9 @@
 				<td style="text-align:center;vertical-align:middle;">{$userlist[nr].user_level}</td>
 				<td style="vertical-align:middle;">
 					{if $userlist[nr].user_lastlogin neq "0000-00-00 00:00:00"}
-						<img src="{$my_pligg_base}/templates/admin/images/icon_share_true.gif" title="{#PLIGG_Visual_AdminPanel_Confirmed_Email#}" alt="{#PLIGG_Visual_AdminPanel_Confirmed_Email#}" />
+						<img src="{$my_base_url}{$my_pligg_base}/templates/admin/images/icon_share_true.gif" title="{#PLIGG_Visual_AdminPanel_Confirmed_Email#}" alt="{#PLIGG_Visual_AdminPanel_Confirmed_Email#}" />
 					{else}
-						<a href="{$my_base_url}{$my_pligg_base}/admin/admin_user_validate.php?id={$userlist[nr].user_id}" title="{#PLIGG_Visual_AdminPanel_Confirmed_Email#}"><img src="{$my_pligg_base}/templates/admin/images/icon_bury.gif" title="{#PLIGG_Visual_AdminPanel_Unconfirmed_Email#}" alt="{#PLIGG_Visual_AdminPanel_Unconfirmed_Email#}" /></a>
+						<a href="{$my_base_url}{$my_pligg_base}/admin/admin_user_validate.php?id={$userlist[nr].user_id}" title="{#PLIGG_Visual_AdminPanel_Confirmed_Email#}"><img src="{$my_base_url}{$my_pligg_base}/templates/admin/images/icon_bury.gif" title="{#PLIGG_Visual_AdminPanel_Unconfirmed_Email#}" alt="{#PLIGG_Visual_AdminPanel_Unconfirmed_Email#}" /></a>
 					{/if}
 					<a href="mailto:{$userlist[nr].user_email}" target="_blank">{$userlist[nr].user_email}</a>
 				</td>
@@ -83,7 +83,7 @@
 </table>
 
 <div style="float:right;margin:8px 2px 0 0;">
-	<div class="btn" style="margin-right:20px;"><a data-toggle="modal" href="{$my_base_url}{$my_pligg_base}/admin/admin_users.php?mode=create" title="{#PLIGG_Visual_AdminPanel_New_User#}"><img src="{$my_pligg_base}/templates/admin/images/user_add.gif" style="margin-top:2px;"/><p style="margin:1px 0 0 3px;float:right;">{#PLIGG_Visual_AdminPanel_New_User#}</p></a></div>
+	<div class="btn" style="margin-right:20px;"><a data-toggle="modal" href="{$my_base_url}{$my_pligg_base}/admin/admin_users.php?mode=create" title="{#PLIGG_Visual_AdminPanel_New_User#}"><img src="{$my_base_url}{$my_pligg_base}/templates/admin/images/user_add.gif" style="margin-top:2px;"/><p style="margin:1px 0 0 3px;float:right;">{#PLIGG_Visual_AdminPanel_New_User#}</p></a></div>
 	<input type="submit" class="btn btn-primary" name="submit" value="{#PLIGG_Visual_AdminPanel_Apply_Changes#}" />
 </div>
 <div style="clear:both;"></div>

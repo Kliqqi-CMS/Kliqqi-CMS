@@ -2,7 +2,7 @@
 <p>Are you sure you want to "disable" this user and prevent them from logging in?</p>
 
 <p>
-	<a class="btn btn-danger" href="{$my_pligg_base}/admin/admin_users.php?mode=yesdisable&user={$user}{$uri_token_admin_users_disable}">Yes, disable this user.</a>
+	<a class="btn btn-danger" href="{$my_base_url}{$my_pligg_base}/admin/admin_users.php?mode=yesdisable&user={$user}{$uri_token_admin_users_disable}">Yes, disable this user.</a>
 	<a class="btn" href="javascript: history.go(-1)">No, cancel</a>
 </p>
 

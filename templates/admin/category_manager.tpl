@@ -222,8 +222,8 @@ function showdel(id)
 				{if $cat_array[thecat].spacercount > $submit_lastspacer}<ul></li>{/if}
 
 				<li id='cat{$cat_array[thecat].auto_id}'>{$cat_array[thecat].name} 
-					<input value="Up" type="image" style="height:9px;width:11px;" src="{$my_pligg_base}/templates/admin/images/cat_up.gif" id='up{$cat_array[thecat].auto_id}' onclick="moveup({$cat_array[thecat].auto_id})" {if $cat_array[thecat].first}style='display:none;'{/if}>
-					<input value="Down" type="image" style="height:9px;width:11px;" src="{$my_pligg_base}/templates/admin/images/cat_down.gif" id='down{$cat_array[thecat].auto_id}' onclick="movedown({$cat_array[thecat].auto_id})" {if $cat_array[thecat].last}style='display:none;'{/if}>
+					<input value="Up" type="image" style="height:9px;width:11px;" src="{$my_base_url}{$my_pligg_base}/templates/admin/images/cat_up.gif" id='up{$cat_array[thecat].auto_id}' onclick="moveup({$cat_array[thecat].auto_id})" {if $cat_array[thecat].first}style='display:none;'{/if}>
+					<input value="Down" type="image" style="height:9px;width:11px;" src="{$my_base_url}{$my_pligg_base}/templates/admin/images/cat_down.gif" id='down{$cat_array[thecat].auto_id}' onclick="movedown({$cat_array[thecat].auto_id})" {if $cat_array[thecat].last}style='display:none;'{/if}>
 
 				{assign var=submit_lastspacer value=$cat_array[thecat].spacercount}
 			{/if}
@@ -237,7 +237,7 @@ function showdel(id)
 <br />
 
 {*
-{#PLIGG_Visual_AdminPanel_Rewrite_Desc_1#} <a href="{$my_pligg_base}/admin/admin_config.php?page=UrlMethod">{#PLIGG_Visual_AdminPanel_URL_Method_2#}</a>{#PLIGG_Visual_AdminPanel_Rewrite_Desc_2#}</b><br /><br/>
+{#PLIGG_Visual_AdminPanel_Rewrite_Desc_1#} <a href="{$my_base_url}{$my_pligg_base}/admin/admin_config.php?page=UrlMethod">{#PLIGG_Visual_AdminPanel_URL_Method_2#}</a>{#PLIGG_Visual_AdminPanel_Rewrite_Desc_2#}</b><br /><br/>
 RewriteRule ^({section name=thecat loop=$cat_array}{$cat_array[thecat].safename}{if $templatelite.section.thecat.iteration neq $cat_count}|{/if}{/section})/([^/]+)/?$ story.php?title=$2 [L]<br />
 RewriteRule ^({section name=thecat loop=$cat_array}{$cat_array[thecat].safename}{if $templatelite.section.thecat.iteration neq $cat_count}|{/if}{/section})/?$ ?category=$1 [L]
 <br/><br />

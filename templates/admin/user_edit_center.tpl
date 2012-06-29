@@ -54,7 +54,7 @@ function check(form)
 			<tr>
 				<td>
 					<button onclick="window.history.go(-1)" class="btn"><i class="icon-chevron-left"></i> {#PLIGG_Visual_View_User_Edit_Cancel#}</button>
-					<a class="btn" href="{$my_pligg_base}/profile.php?login={$userdata[nr].user_login}">{#PLIGG_Visual_Submit3_Modify#} {#PLIGG_Visual_Breadcrumb_Profile#} {#PLIGG_Visual_Profile#}</a>
+					<a class="btn" href="{$my_base_url}{$my_pligg_base}/profile.php?login={$userdata[nr].user_login}">{#PLIGG_Visual_Submit3_Modify#} {#PLIGG_Visual_Breadcrumb_Profile#} {#PLIGG_Visual_Profile#}</a>
 				</td>
 				<td>
 					{$hidden_token_admin_users_edit}
@@ -65,5 +65,5 @@ function check(form)
 	</form>	
 
 {sectionelse}
-	{include file="{$my_pligg_base}/templates/admin/user_doesnt_exist_center.tpl"}
+	{include file="{$my_base_url}{$my_pligg_base}/templates/admin/user_doesnt_exist_center.tpl"}
 {/section}

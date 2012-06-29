@@ -1,6 +1,6 @@
 ﻿<html>
 <head>
-	<link rel="stylesheet" type="text/css" href="{$my_pligg_base}/templates/admin/css/bootstrap.css" media="screen">
+	<link rel="stylesheet" type="text/css" href="{$my_base_url}{$my_pligg_base}/templates/admin/css/bootstrap.css" media="screen">
 </head>
 <body>
 	<div class="modal-header">
