@@ -155,7 +155,7 @@
 							{$story_content|nl2br}
 						{else}
 							{* The truncate modifier will cut off content after X characters. Read more: http://www.smarty.net/docsv2/en/language.modifier.truncate *}
-							{$story_content|truncate:1000:"..."}
+							{$story_content|truncate:500|@closetags}
 						{/if}
 						
 					{/if}
