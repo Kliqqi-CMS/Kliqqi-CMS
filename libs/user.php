@@ -337,10 +337,10 @@ function user_group_read($user_id,$order_by='')
 						AND member_status = 'active'
 						AND group_status = 'Enable'
 						ORDER BY $order_by");
-	if ($groups)
-	{
-		foreach($groups as $groupid)
-			$group_display .= "<li><div class='group_membership'><a href='".getmyurl("group_story_title", $groupid->group_safename)."'>".$groupid->group_name."</a></div></li>";  
+	if ($groups) {
+		foreach($groups as $groupid){
+			$group_display .= "<tr><td><a href='".getmyurl("group_story_title", $groupid->group_safename)."'>".$groupid->group_name."</a></td><td style='text-align:center;'>".$groupid->group_members."</td></tr>"; 
+		}
 		$main_smarty->assign('group_display', $group_display);
 	}	
 	return true;

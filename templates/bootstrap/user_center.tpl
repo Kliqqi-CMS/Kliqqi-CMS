@@ -188,47 +188,56 @@ $(function () {
 			</div>
 			
 			{if $enable_group eq "true"}
-			<div id="groups" class="span4">
-				<legend>{#PLIGG_Visual_User_Profile_User_Groups#}</legend>
-				<ul class="group_membership_list">{$group_display}</ul>
-			</div>
-			{/if}
-			
-			{if $Allow_Friends neq "0"}
-			<div id="friends" class="span4">
-				<legend>{#PLIGG_Visual_LS_My_Friends#}</legend>
-				{if $friends}			
+				<div id="groups" class="span4">
+					<legend>{#PLIGG_Visual_User_Profile_User_Groups#}</legend>
 					<table class="table table-bordered table-striped">
 						<thead class="table_title">
 							<tr>
-								<th scope="col" style="width:25px;"></th>
-								<th scope="col">{#PLIGG_Visual_Login_Username#}</th>
-								{checkActionsTpl location="tpl_pligg_profile_friend_th"}
-								{if $user_login eq $user_logged_in}<th scope="col">{#PLIGG_Visual_User_Profile_Remove_Friend#}</th>{/if}
+								<th>Group Name</th>
+								<th style="width:60px;text-align:center;">Members</th>
 							</tr>
-						</thead>
 						<tbody>
-							{foreach from=$friends item=myfriend}
-								{php}
-									$this->_vars['friend_avatar'] = get_avatar('small', $this->_vars['myfriend']['user_avatar_source'], $this->_vars['myfriend']['user_login'], $this->_vars['myfriend']['user_email']);
-									$this->_vars['profileURL'] = getmyurl('user2', $this->_vars['myfriend']['user_login'], 'profile');
-									$this->_vars['removeURL'] = getmyurl('user_add_remove', $this->_vars['myfriend']['user_login'], 'removefriend');
-								{/php}
-								<tr>
-								<td><a href="{$profileURL}"><img src="{$friend_avatar}" style="text-decoration:none;border:0;"/></a></td>
-								<td><a href="{$profileURL}">{$myfriend.user_login}</a></td>
-								{checkActionsTpl location="tpl_pligg_profile_friend_td"}
-								{if $user_login eq $user_logged_in}
-									<td><a href="{$removeURL}"><img src="{$my_pligg_base}/templates/{$the_template}/images/delete.gif" style="border:0;text-decoration:none;"/></a> <a href="{$removeURL}"> {$myfriend.user_login}</a></td>
-								{/if}
-								</tr>
-							{/foreach}
+							{$group_display}
 						</tbody>
 					</table>
-				{else}
-					<br /><span style="text-transform:capitalize;">{$user_username}</span> {#PLIGG_Visual_User_Profile_No_Friends#}
-				{/if}
-			</div>
+				</div>
+			{/if}
+			
+			{if $Allow_Friends neq "0"}
+				<div id="friends" class="span4">
+					<legend>{#PLIGG_Visual_LS_My_Friends#}</legend>
+					{if $friends}			
+						<table class="table table-bordered table-striped">
+							<thead class="table_title">
+								<tr>
+									<th scope="col" style="width:25px;"></th>
+									<th scope="col">{#PLIGG_Visual_Login_Username#}</th>
+									{checkActionsTpl location="tpl_pligg_profile_friend_th"}
+									{if $user_login eq $user_logged_in}<th scope="col">{#PLIGG_Visual_User_Profile_Remove_Friend#}</th>{/if}
+								</tr>
+							</thead>
+							<tbody>
+								{foreach from=$friends item=myfriend}
+									{php}
+										$this->_vars['friend_avatar'] = get_avatar('small', $this->_vars['myfriend']['user_avatar_source'], $this->_vars['myfriend']['user_login'], $this->_vars['myfriend']['user_email']);
+										$this->_vars['profileURL'] = getmyurl('user2', $this->_vars['myfriend']['user_login'], 'profile');
+										$this->_vars['removeURL'] = getmyurl('user_add_remove', $this->_vars['myfriend']['user_login'], 'removefriend');
+									{/php}
+									<tr>
+									<td><a href="{$profileURL}"><img src="{$friend_avatar}" style="text-decoration:none;border:0;"/></a></td>
+									<td><a href="{$profileURL}">{$myfriend.user_login}</a></td>
+									{checkActionsTpl location="tpl_pligg_profile_friend_td"}
+									{if $user_login eq $user_logged_in}
+										<td><a href="{$removeURL}"><img src="{$my_pligg_base}/templates/{$the_template}/images/delete.gif" style="border:0;text-decoration:none;"/></a> <a href="{$removeURL}"> {$myfriend.user_login}</a></td>
+									{/if}
+									</tr>
+								{/foreach}
+							</tbody>
+						</table>
+					{else}
+						<br /><span style="text-transform:capitalize;">{$user_username}</span> {#PLIGG_Visual_User_Profile_No_Friends#}
+					{/if}
+				</div>
 			{/if}
 			
 			<div id="user_search" class="span4">
