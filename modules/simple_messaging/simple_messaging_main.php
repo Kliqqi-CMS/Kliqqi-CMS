@@ -4,14 +4,10 @@ include_once(mnminclude.'../3rdparty/kmessaging/class.KMessaging.php');
 function get_new_messages(){
 
 	global $main_smarty, $the_template, $current_user;
-   
-	// Method for identifying modules rather than pagename
-	define('modulename', 'simple_messaging');
-    $main_smarty->assign('modulename', modulename);
 
 	// get the new messages
 		if ($current_user->user_id > 0) {
-			$message = new KMessaging(true);
+			$message = new KMessaging(true);	
 			$array = $message->GetAllMesseges(5, $current_user->user_id, '', 1);
 			if(is_array($array)){
 				$message_count = count($array);
@@ -28,7 +24,7 @@ function get_new_messages(){
 					$user=new User();
 					$user->id = $array[$key]['sender'];
 					if(!$user->read()) {
-						echo "error 2";
+						echo "Message Error 1";
 						die;
 					}
 					$array[$key]['sender_name'] = $user->username;
@@ -73,7 +69,7 @@ function simple_messaging_showpage(){
 				$user=new User();
 				$user->id = $array[$key]['sender'];
 				if(!$user->read()) {
-					echo "error 2";
+					echo "Message Error 2";
 					die;
 				}
 				$array[$key]['sender_name'] = $user->username;
@@ -133,7 +129,7 @@ function simple_messaging_showpage(){
 				$user=new User();
 				$user->id = $array[$key]['receiver'];
 				if(!$user->read()) {
-					echo "error 2";
+					echo "Message Error 3";
 					die;
 				}
 				$array[$key]['sender_name'] = $user->username;
