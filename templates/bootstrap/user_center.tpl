@@ -42,8 +42,8 @@ $(function () {
 					</thead>
 					<tbody>
 						<tr>
-							<td style="background:none"><strong>{#PLIGG_Visual_Login_Username#}:</strong></td>
-							<td style="background:none">{if $UseAvatars neq "0"}<span id="ls_avatar"><img src="{$Avatar_ImgSrc}" alt="Avatar" align="absmiddle" /></span>{/if} <span style="text-transform:capitalize;">{$user_username}</span></td>
+							<td><strong>{#PLIGG_Visual_Login_Username#}:</strong></td>
+							<td>{if $UseAvatars neq "0"}<span id="ls_avatar"><img src="{$Avatar_ImgSrc}" alt="Avatar" align="absmiddle" /></span>{/if} <span style="text-transform:capitalize;">{$user_username}</span></td>
 						</tr>			
 						{if $user_names ne ""}
 						<tr>
@@ -155,7 +155,13 @@ $(function () {
 						{/if}
 						<tr>
 							<td><strong>{#PLIGG_Visual_User_Profile_Joined#}:</strong></td>
-							<td>{$user_joined}</td>
+							<td width="120px">
+								{*	{$user_joined}	*}
+								{php}
+									$pligg_date = $this->_vars['user_joined'];
+									echo date("F d, Y", strtotime($pligg_date));
+								{/php}
+							</td>	
 						</tr>
 						<tr>
 							<td><strong>{#PLIGG_Visual_User_Profile_Total_Links#}:</strong></td>
@@ -224,7 +230,7 @@ $(function () {
 										$this->_vars['removeURL'] = getmyurl('user_add_remove', $this->_vars['myfriend']['user_login'], 'removefriend');
 									{/php}
 									<tr>
-									<td><a href="{$profileURL}"><img src="{$friend_avatar}" style="text-decoration:none;border:0;"/></a></td>
+									<td style="text-align:center;"><a href="{$profileURL}"><img src="{$friend_avatar}" style="text-decoration:none;border:0;"/></a></td>
 									<td><a href="{$profileURL}">{$myfriend.user_login}</a></td>
 									{checkActionsTpl location="tpl_pligg_profile_friend_td"}
 									{if $user_login eq $user_logged_in}
@@ -355,7 +361,12 @@ $(function () {
 				{section name=nr loop=$userlist}
 					<tr>
 						<td width="240px"><img src="{$userlist[nr].Avatar}" align="absmiddle" /> <a href="{$URL_user, $userlist[nr].user_login}">{$userlist[nr].user_login}</a></td>
-						<td width="120px">{$userlist[nr].user_date}</td>
+						<td width="120px">{*	{$userlist[nr].user_date}	*}
+							{php}
+								$pligg_date = $this->_vars['userlist'][$this->_sections['nr']['index']]['user_date'];
+								echo date("F d, Y", strtotime($pligg_date));
+							{/php}
+						</td>
 						<td width="300px" style="text-align:center;">{$userlist[nr].user_url}</td>
 						<td width="80px" style="text-align:center;">{if $userlist[nr].status eq 0}	
 								<a href="{$userlist[nr].add_friend}"><img src="{$my_pligg_base}/templates/{$the_template}/images/user_add.gif" align="absmiddle" border="0" /></a>
