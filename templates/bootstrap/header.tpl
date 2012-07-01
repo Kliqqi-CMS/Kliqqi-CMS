@@ -113,27 +113,26 @@
 				<ul class="dropdown-menu">
 				  <li>
 				    <form id="signin" action="{$URL_login}" method="post">
-					  <div style="margin:5px 15px 0 15px;">
-						{checkActionsTpl location="tpl_pligg_login_link"}
-					    <label for="username">{#PLIGG_Visual_Login_Username#}</label>
-						<input id="username" name="username" value="{if isset($login_username)}{$login_username}{/if}" title="username" tabindex="1" type="text">
-					  </div>
-					  <div style="margin:5px 15px 0 15px;">
-						<label for="password">{#PLIGG_Visual_Login_Password#}</label>
-						<input id="password" name="password" value="" title="password" tabindex="2" type="password">
-					  </div>
-					  <div style="margin:5px 15px 0 15px;">
-						<div style="float:left;width:140px;">
-							<input type="hidden" name="processlogin" value="1"/>
-							<input type="hidden" name="return" value="{$get.return}"/>
-							<input id="signin_submit" class="btn btn-primary" style="margin:0 0 5px 0;" value="{#PLIGG_Visual_Login_LoginButton#}" tabindex="4" type="submit">
+						<div style="margin:5px 15px 0 15px;">
+							{checkActionsTpl location="tpl_pligg_login_link"}
+							<label for="username">{#PLIGG_Visual_Login_Username#}</label>
+							<input id="username" name="username" value="{if isset($login_username)}{$login_username}{/if}" title="username" tabindex="1" type="text">
 						</div>
-						<div style="float:left;width:80px;display:inline;">
+						<div style="margin:5px 15px 0 15px;">
+							<label for="password">{#PLIGG_Visual_Login_Password#}</label>
+							<input id="password" name="password" value="" title="password" tabindex="2" type="password">
+						</div>
+						<div style="margin:0px 0 0 15px;">
 							<input id="remember" style="float:left;margin-right:5px;" name="persistent" value="1" tabindex="3" type="checkbox">
 							<label for="remember" style="float:left;font-size:10px;">{#PLIGG_Visual_Login_Remember#}</label>
+							<div style="clear:both;"></div>
 						</div>
-					  </div>
-					  <div class="forgot-password"> <a id="forgot_password_link" href="{$URL_login}" id="resend_password_link" title="Click here to retrieve your login details.">{#PLIGG_Visual_Login_ForgottenPassword#}?</a> </div>
+						<div style="margin:0;text-align:center;margin:0 auto;width:100%;">
+							<input type="hidden" name="processlogin" value="1"/>
+							<input type="hidden" name="return" value="{$get.return}"/>
+							<input id="signin_submit" class="btn btn-primary" style="margin:0;width:90%;" value="{#PLIGG_Visual_Login_LoginButton#}" tabindex="4" type="submit">
+							<a id="forgot_password_link" class="btn" style="margin:8px 0 6px 0;width:81%;" href="{$URL_login}">{#PLIGG_Visual_Login_ForgottenPassword#}?</a>
+						</div>
 					</form>
 				  </li>
 				</ul>
