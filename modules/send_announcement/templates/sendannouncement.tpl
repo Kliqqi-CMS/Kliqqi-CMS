@@ -31,7 +31,7 @@
 		{php}
 	} else {
 {/php}
-	<legend><img src="{$my_pligg_base}/modules/send_announcement/templates/email.gif" align="absmiddle" /> {#Pligg_Send_Announcemet#}</legend>
+	<legend>{#Pligg_Send_Announcemet#}</legend>
 	
 	<p>{#Pligg_Send_Announcemet_Description#}</p>
 	
