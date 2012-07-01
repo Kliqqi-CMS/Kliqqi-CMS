@@ -276,6 +276,13 @@
 	<script type="text/javascript" src="{$my_pligg_base}/templates/{$the_template}/js/jquery/jquery.pnotify.js"></script>
 	<script type="text/javascript" src="{$my_pligg_base}/templates/{$the_template}/js/jquery/jquery.masonry.min.js"></script>
 	
+	{* JavaScript for tooltips on avatar hover *}
+	{literal}
+		<script> 
+		$('.avatar-tooltip').tooltip()
+		</script>
+	{/literal}
+	
 	{if $pagename eq "submit"}
 		<script src="{$my_pligg_base}/templates/{$the_template}/js/wysihtml5-0.3.0_rc3.js"></script>
 		<script src="{$my_pligg_base}/templates/{$the_template}/js/bootstrap-wysihtml5.js"></script>

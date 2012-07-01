@@ -48,10 +48,12 @@ $(function () {
 			<h3>{#PLIGG_Visual_Story_WhoVoted#}</h3>
 			{checkActionsTpl location="tpl_pligg_story_who_voted_start"}
 			<div class="whovotedwrapper whoupvoted">
-				<ul>
+				<ul>			
 					{section name=upvote loop=$voter}
 						<li>
-							{if $UseAvatars neq "0"}<a href="{$URL_user, $voter[upvote].user_login}"><img src="{$voter[upvote].Avatar_ImgSrc}" alt="" align="top" title="{$voter[upvote].user_login}" /></a>{/if} 
+							{if $UseAvatars neq "0"}
+								<a href="{$URL_user, $voter[upvote].user_login}" rel="tooltip" title="{$voter[upvote].user_login}" class="avatar-tooltip"><img src="{$voter[upvote].Avatar_ImgSrc}" alt="" align="top" title="" /></a>
+							{/if}
 							{if $UseAvatars eq "0"}<a href="{$URL_user, $voter[upvote].user_login}">{$voter[upvote].user_login}</a>{/if}
 						</li>
 					{/section}
@@ -69,16 +71,18 @@ $(function () {
 				<ul>
 					{section name=downvote loop=$downvoter}
 						<li>
-							{if $UseAvatars neq "0"}<a href="{$URL_user, $downvoter[downvote].user_login}"><img src="{$downvoter[downvote].Avatar_ImgSrc}" alt="" align="top" title="{$downvoter[downvote].user_login}" /></a>{/if} 
+							{if $UseAvatars neq "0"}
+								<a href="{$URL_user, $downvoter[downvote].user_login}" rel="tooltip" title="{$downvoter[downvote].user_login}" class="avatar-tooltip"><img src="{$downvoter[downvote].Avatar_ImgSrc}" alt="" align="top" title="" /></a>
+							{/if}
 							{if $UseAvatars eq "0"}<a href="{$URL_user, $downvoter[downvote].user_login}">{$downvoter[downvote].user_login}</a>{/if}
 						</li>
 					{/section}
 				</ul>
 			</div>
+			<div style="clear:both;"></div>
 			{checkActionsTpl location="tpl_pligg_story_who_downvoted_end"}
 		</div>
 	{/if}
-
 
 	{if count($related_story) neq 0}
 		<div class="tab-pane fade" id="related">
