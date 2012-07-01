@@ -35,7 +35,7 @@ INSERT INTO `config` VALUES (48, 'Misc', '$dblang', 'en', 'en', 'text', 'Databas
 INSERT INTO `config` VALUES (49, 'Misc', '$page_size', '8', '8', 'number', 'Page Size', 'How many stories to show on a page.', 'normal', NULL);
 INSERT INTO `config` VALUES (50, 'Misc', '$top_users_size', '25', '25', 'number', 'Top Users Size', 'How many users to display in top users.', 'normal', NULL);
 INSERT INTO `config` VALUES (51, 'Template', 'Allow_User_Change_Templates', 'false', 'false', 'true / false', 'Allow User to Change Templates', 'Allow user to change the template. They can do this from the user settings page.', 'define', '');
-INSERT INTO `config` VALUES (52, 'Template', '$thetemp', 'wistie', 'wistie', 'text', 'Template', 'Default Template', 'normal', '''');
+INSERT INTO `config` VALUES (52, 'Template', '$thetemp', 'bootstrap', 'bootstrap', 'text', 'Template', 'Default Template', 'normal', '''');
 INSERT INTO `config` VALUES (53, 'OutGoing', 'track_outgoing', 'false', 'false', 'true / false', 'Enable Outgoing Links', 'Out.php is used to track each click to the external story url. Do you want to enable this click tracking?', 'define', '');
 INSERT INTO `config` VALUES (54, 'OutGoing', 'track_outgoing_method', 'title', 'title', 'url, title or id', 'Outgoing Links Placement', 'What information should the out.php link use?', 'define', '''');
 INSERT INTO `config` VALUES (55, 'Submit', 'auto_vote', 'true', 'true', 'true / false', 'Auto vote', 'Automatically vote for the story you submitted.', 'define', NULL);

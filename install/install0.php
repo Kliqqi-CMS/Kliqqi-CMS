@@ -10,7 +10,7 @@ if($language != 'local'){
 }
 
 if($_GET['language'] == ''){
-	$url = 'http://www.pligg.com/languages/check/getLanguageList.php?version=122';
+	$url = 'http://www.pligg.com/languages/check/getLanguageList.php?version=200';
 	$r = new CD_HTTPRequest($url);
 	$data = $r->DownloadToString();
 	if(strpos($data, '<!--Pligg Language Select-->') > 0){
@@ -25,7 +25,7 @@ if($_GET['language'] == ''){
 
 	$language = addslashes(strip_tags($_GET['language']));
 	if($language != 'local'){
-	    $url = 'http://www.pligg.com/languages/check/getLanguageFile.php?type=installer&version=122&language=' . $language;
+	    $url = 'http://www.pligg.com/languages/check/getLanguageFile.php?type=installer&version=200&language=' . $language;
 	    $r = new CD_HTTPRequest($url);
 	    $data = $r->DownloadToString();
 

@@ -18,7 +18,7 @@ if($language != 'local'){
 }
 
 if($language == '' && $_POST['submit'] == ''){
-	$url = 'http://www.pligg.com/languages/check/getLanguageList.php?type=upgrade&version=122';
+	$url = 'http://www.pligg.com/languages/check/getLanguageList.php?type=upgrade&version=200';
 
 	$r = new CD_HTTPRequest($url);
 	$data = $r->DownloadToString();
@@ -35,7 +35,7 @@ if($language == '' && $_POST['submit'] == ''){
 } else {
 
 	if($language != 'local'){
-	    $url = 'http://www.pligg.com/languages/check/getLanguageFile.php?type=installer&version=122&language=' . $language;
+	    $url = 'http://www.pligg.com/languages/check/getLanguageFile.php?type=installer&version=200&language=' . $language;
 	    $r = new CD_HTTPRequest($url);
 	    $data = $r->DownloadToString();
 
@@ -192,6 +192,13 @@ if (!$errors) {
 	$oldLanguage121 = "// End 1.2.1 Language File";
 	$newLanguage122= "// End 1.2.2 Language File";
 	$languageContent = str_replace($oldLanguage121 , $newLanguage122 , $languageContent);
+	
+	$oldLanguage122 = "// End 1.2.2 Language File";
+	$newLanguage200='http://www.pligg.com/languages/update/lang_' . $language . '_update_200.conf';
+	$r = new CD_HTTPRequest($newLanguage200);
+	$content = $r->DownloadToString();
+	if($content)
+		$languageContent = str_replace($oldLanguage122 , $content , $languageContent);
 		
 // echo $languageContent;
 
@@ -806,7 +813,7 @@ if (!$errors) {
 	}
 	$randkey = '';
 	for ($i=0; $i<32; $i++)
-        $randkey .= chr(rand(48,122));
+        $randkey .= chr(rand(48,200));
        	misc_data_update('hash', $randkey);
 		misc_data_update('validate', 0);
 	
@@ -958,8 +965,8 @@ if (!$errors) {
 	$sql = "DELETE FROM `" . table_config . "` WHERE `var_name` = 'StorySummary_ContentTruncate';";
 	$db->query($sql);
 	
-	// Change the default template value to Wistie
-	$sql = "UPDATE `" . table_config . "` SET `var_defaultvalue` = 'wistie' WHERE `var_name` = '$thetemp';";
+	// Change the default template value to Bootstrap
+	$sql = "UPDATE `" . table_config . "` SET `var_defaultvalue` = 'bootstrap' WHERE `var_name` = '$thetemp';";
 	$db->query($sql);
 	
 	// Delete Pageviews and Captcha

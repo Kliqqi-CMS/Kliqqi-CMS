@@ -451,7 +451,7 @@ mysql_query($sql,$conn);
 //register validation//
 $randkey = '';
 for ($i=0; $i<32; $i++)
-	$randkey .= chr(rand(48,122));
+	$randkey .= chr(rand(48,200));
 
 $sql = "INSERT INTO `" . table_misc_data . "` ( `name` , `data` ) VALUES ('hash', '$randkey');";
 mysql_query( $sql, $conn );
