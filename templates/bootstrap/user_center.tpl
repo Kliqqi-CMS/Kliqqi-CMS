@@ -1,3 +1,5 @@
+{* This template controls the main user profile page, and the user history pages *}
+
 {checkActionsTpl location="tpl_pligg_profile_start"}
 {checkActionsTpl location="tpl_user_center_just_below_header"}
 
@@ -5,7 +7,7 @@
 	{checkActionsTpl location="tpl_pligg_profile_sort_start"}
 	<li {if $user_view eq 'profile'}class="active"{/if}><a {if $user_view eq 'profile'}data-toggle="tab" href="#personal_info"{else}href="{$user_url_personal_data}"{/if} class="navbut{$nav_pd}">{#PLIGG_Visual_User_PersonalData#}</a></li>
 	{if $user_login eq $user_logged_in}
-		<li {if $user_view eq 'setting'}class="active"{/if}><a href="{$user_url_setting}" class="navbut{$nav_set}">{#PLIGG_Visual_User_Setting#}</a></li>
+		<li {if $pagename eq 'profile'}class="active"{/if}><a href="{$URL_Profile}" class="navbut{$nav_set}">{#PLIGG_Visual_User_Setting#}</a></li>
 	{/if}
 	<li {if $user_view eq 'history'}class="active"{/if}><a href="{$user_url_news_sent}" class="navbut{$nav_ns}">{#PLIGG_Visual_User_NewsSent#}</a></li>
 	<li {if $user_view eq 'published'}class="active"{/if}><a href="{$user_url_news_published}" class="navbut{$nav_np}">{#PLIGG_Visual_User_NewsPublished#}</a></li>
@@ -119,13 +121,6 @@ $(function () {
 						<tr>
 							<td><strong>{#PLIGG_Visual_User_Profile_IRC#}:</strong></td>
 							<td><a href="{$user_irc}" target="_blank">{$user_irc}</a></td>
-						</tr>
-						{/if}
-
-						{if $user_login eq $user_logged_in}
-						<tr>
-							<td></td>
-							<td><input type="button" class="btn btn-primary" value="{#PLIGG_Visual_User_Profile_Modify#}" onclick="location='{$URL_Profile}'"></td>
 						</tr>
 						{/if}
 					</tbody>
@@ -434,45 +429,6 @@ $(function () {
 		<br /><br />
 		<h2 style="text-align:center;"><span style="text-transform:capitalize;">{$user_username}</span> {#PLIGG_Visual_User_Profile_No_Friends#}</h2>
 	{/if}
-{/if}
-
-{***********************************************************************************}
-
-{if $user_view eq 'setting'}
-	{checkActionsTpl location="tpl_pligg_profile_settings_start"}
-	<form action="{$my_pligg_base}/user_settings.php?login={$user_username}" method="post">
-		{$hidden_token_user_settings}
-		
-		<h2>{#PLIGG_Visual_User_Setting#}</h2>
-		
-		{if $Allow_User_Change_Templates}
-			<div class="user_settings_template">
-				<strong>{#PLIGG_Visual_User_Setting_Template#}</strong>
-				<select name='template'>
-				{foreach from=$templates item=template}
-				<option {if $template==$current_template}selected{/if}>{$template}</option>
-				{/foreach}
-				</select>
-			</div>
-		{/if}
-		
-		<strong>{#PLIGG_Visual_User_Setting_Categories#}</strong>
-		{foreach from=$category item=cat name="cate"}
-			<!--{if $smarty.foreach.cate.iteration % 5 == 0}<br style="clear:both;">{/if}-->
-			<div class="usercategory_outer">
-				<div class="usercategory_checkbox">
-					<input type="checkbox" name="chack[]" value="{$cat.category__auto_id}" {if !in_array($cat.category__auto_id,$user_category)} checked="checked"{/if}>
-				</div>
-				<div class="usercategory_name">
-					{$cat.category_name}
-				</div>
-			</div>
-		{/foreach}
-
-		<input type="submit" class="btn" name="submit" value="{#PLIGG_Visual_Profile_Save#}">
-		
-	</form>
-	{checkActionsTpl location="tpl_pligg_profile_settings_end"}
 {/if}
 
 {***********************************************************************************}

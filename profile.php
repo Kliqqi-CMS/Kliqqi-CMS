@@ -52,6 +52,23 @@ $navwhere['link3'] = getmyurl('profile', '');
 $main_smarty->assign('navbar_where', $navwhere);
 $main_smarty->assign('posttitle', $main_smarty->get_config_vars('PLIGG_Visual_Profile_ModifyProfile'));
 
+// setup the links
+$main_smarty->assign('user_url_personal_data', getmyurl('user2', $login, 'profile'));
+$main_smarty->assign('user_url_news_sent', getmyurl('user2', $login, 'history'));
+$main_smarty->assign('user_url_news_published', getmyurl('user2', $login, 'published'));
+$main_smarty->assign('user_url_news_unpublished', getmyurl('user2', $login, 'shaken'));
+$main_smarty->assign('user_url_news_voted', getmyurl('user2', $login, 'voted'));
+$main_smarty->assign('user_url_commented', getmyurl('user2', $login, 'commented'));
+$main_smarty->assign('user_url_saved', getmyurl('user2', $login, 'saved'));
+$main_smarty->assign('user_url_setting', getmyurl('user2', $login, 'setting'));
+$main_smarty->assign('user_url_friends', getmyurl('user_friends', $login, 'viewfriends'));
+$main_smarty->assign('user_url_friends2', getmyurl('user_friends', $login, 'viewfriends2'));
+$main_smarty->assign('user_url_add', getmyurl('user_add_remove', $login, 'addfriend'));
+$main_smarty->assign('user_url_remove', getmyurl('user_add_remove', $login, 'removefriend'));
+$main_smarty->assign('user_rss', getmyurl('rssuser', $login));
+$main_smarty->assign('URL_Profile', getmyurl('profile'));
+$main_smarty->assign('user_url_member_groups', getmyurl('user2', $login, 'member_groups	'));
+
 // read the users information from the database
 $user=new User();
 $user->username = $login;
@@ -121,16 +138,29 @@ if(!$user->read()) {
 			echo "<br>";
 		}
 	}
+
+// Save changes
+if(isset($_POST['email'])){
+	if ($savemsg = save_profile())
+	    $main_smarty->assign('savemsg', $savemsg);
+	else
+	{
+	    // Reload the page if no error
+	    $_SESSION['savemsg'] = $main_smarty->get_config_vars("PLIGG_Visual_Profile_DataUpdated");
+	    header("Location: ".getmyurl('profile'));
+	    exit;
+	}
+} else {
+    // Show "Profile Updated" message on reload
+    $main_smarty->assign('savemsg', $_SESSION['savemsg']);
+    unset($_SESSION['savemsg']);
+}
+
 // display profile
 show_profile();
 
 function show_profile() {
-	global $user, $main_smarty, $the_template, $CSRF;
-
-	if(isset($_POST['email'])){
-		$savemsg = save_profile();
-		$main_smarty->assign('savemsg', $savemsg);
-	}
+	global $user, $main_smarty, $the_template, $CSRF, $db;
 
 	$CSRF->create('profile_change', true, true);
 
@@ -182,6 +212,39 @@ function show_profile() {
 	$main_smarty->assign('pagename', pagename);
 	
 	$main_smarty->assign('form_action', $_SERVER["PHP_SELF"]);
+
+	// User Settings
+	$user_categories = explode(",", $user->extra_field['user_categories']);
+		
+	$categorysql = "SELECT * FROM " . table_categories . " where category__auto_id!='0' ";
+	$results = $db->get_results($categorysql);
+	$results = object_2_array($results);
+	$category = array();
+	foreach($results as $key => $val)
+		$category[] = $val['category_name'];
+			
+#	$sor = $_GET['err'];
+#	if($sor == 1)
+#	{
+#		$err = "You have to select at least 1 category";
+#		$main_smarty->assign('err', $err);
+#	}
+		
+	$main_smarty->assign('category', $results);
+	$main_smarty->assign('user_category', $user_categories);
+	$main_smarty->assign('view_href', 'submitted');
+
+	if (Allow_User_Change_Templates)
+	{
+		$dir = "templates";
+		$templates = array();
+		foreach (scandir($dir) as $file)
+		    if (strstr($file,".")!==0 && file_exists("$dir/$file/header.tpl"))
+			$templates[] = $file;
+		$main_smarty->assign('templates', $templates);
+		$main_smarty->assign('current_template', sanitize($_COOKIE['template'],3));
+		$main_smarty->assign('Allow_User_Change_Templates', Allow_User_Change_Templates);
+	}
 
 	// show the template
 	$main_smarty->assign('tpl_center', $the_template . '/profile_center');
@@ -239,6 +302,28 @@ function save_profile() {
 		    }
 		}
 
+		// User settings
+		if (Allow_User_Change_Templates && file_exists("./templates/".$_POST['template']."/header.tpl"))
+		{
+			$domain = $_SERVER['HTTP_HOST']=='localhost' ? '' : preg_replace('/^www/','',$_SERVER['HTTP_HOST']);
+			setcookie("template", $_POST['template'], time()+60*60*24*30,'/',$domain);
+		}
+
+		$sqlGetiCategory = "SELECT category__auto_id from " . table_categories . " where category__auto_id!= 0;";
+		$sqlGetiCategoryQ = mysql_query($sqlGetiCategory);
+		$arr = array();
+		while ($row = mysql_fetch_array($sqlGetiCategoryQ, MYSQL_NUM)) 
+			$arr[] = $row[0];
+
+		$select_check = $_POST['chack'];
+		if (!$select_check) $select_check = array();
+		$diff = array_diff($arr,$select_check);
+		$select_checked = $db->escape(implode(",",$diff));
+
+		$sql = "UPDATE " . table_users . " set user_categories='$select_checked' WHERE user_id = '{$user->id}'";	
+		$query = mysql_query($sql);
+		/////
+
 
 		$user->url=sanitize($_POST['url'], 3);
 		$user->public_email=sanitize($_POST['public_email'], 3);
@@ -287,13 +372,7 @@ function save_profile() {
 		}
 		$user->store();
 		$user->read();
-		if ($language != $user->language)
-		{
-			header("Location: ".getmyurl('profile'));
-			exit;
-		}
 		$current_user->Authenticate($user->username, $user->pass);
-		if(!isset($savemsg)){$savemsg = $main_smarty->get_config_vars("PLIGG_Visual_Profile_DataUpdated");}
 		return $savemsg;
 	} else {
 		return 'There was a token error.';

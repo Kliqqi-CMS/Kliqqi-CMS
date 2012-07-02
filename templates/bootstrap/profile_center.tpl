@@ -1,10 +1,25 @@
-﻿{if $savemsg neq ""}<div class="alert alert-success fade in"><a data-dismiss="alert" class="close">×</a>{$savemsg}</div>{/if} 
+{* This template controls the user settings page *}
+
+<ul class="nav nav-tabs" id="profiletabs">
+	{checkActionsTpl location="tpl_pligg_profile_sort_start"}
+	<li><a href="{$user_url_personal_data}">{#PLIGG_Visual_User_PersonalData#}</a></li>
+	<li class="active"><a href="{$user_url_setting}">{#PLIGG_Visual_User_Setting#}</a></li>
+	<li><a href="{$user_url_news_sent}">{#PLIGG_Visual_User_NewsSent#}</a></li>
+	<li><a href="{$user_url_news_published}">{#PLIGG_Visual_User_NewsPublished#}</a></li>
+	<li><a href="{$user_url_news_unpublished}">{#PLIGG_Visual_User_NewsUnPublished#}</a></li>
+	<li><a href="{$user_url_commented}">{#PLIGG_Visual_User_NewsCommented#}</a></li>
+	<li><a href="{$user_url_news_voted}">{#PLIGG_Visual_User_NewsVoted#}</a></li>
+	<li><a href="{$user_url_saved}">{#PLIGG_Visual_User_NewsSaved#}</a></li>
+	{checkActionsTpl location="tpl_pligg_profile_sort_end"}
+</ul>
+
+{if $savemsg neq ""}<div class="alert alert-success fade in"><a data-dismiss="alert" class="close">×</a>{$savemsg}</div>{/if} 
 
 {checkActionsTpl location="tpl_pligg_profile_info_start"}
 
-<div id="profile_container">
+<div id="profile_container" style="position: relative;">
 	{if $UseAvatars neq false}
-		<table class="table table-bordered table-striped span4">
+		<table class="table table-bordered table-striped span4" style="position: absolute; top: 0px; left: 0px;">
 			<thead class="table_title">
 				<tr>
 					<td colspan="2"><strong>{#PLIGG_Visual_Profile_UploadAvatar2#}</strong></td>
@@ -47,8 +62,6 @@
 	{/if}
 		
 	<form action="" method="post" id="thisform">
-
-		
 		
 		{checkActionsTpl location="tpl_profile_center_fields"}
 		{checkActionsTpl location="tpl_pligg_profile_info_middle"}
@@ -129,8 +142,38 @@
 			
 			</tbody>
 		</table>
-
-		{checkActionsTpl location="tpl_pligg_profile_end"}
+		
+		{checkActionsTpl location="tpl_pligg_profile_settings_start"}		
+		
+		<table class="table table-bordered table-striped span4">
+			<thead class="table_title">
+				<tr>
+					<td colspan="2"><strong>{#PLIGG_Visual_User_Setting#}</strong></td>
+				</tr>
+			</thead>		
+			{if $Allow_User_Change_Templates}
+				<tr>
+					<td><label>{#PLIGG_Visual_User_Setting_Template#}:</label></td>
+					<td><select name='template'>
+					{foreach from=$templates item=template}
+						<option {if $template==$current_template}selected{/if}>{$template}</option>
+					{/foreach}
+					</select>
+					</td>
+				</tr>
+			{/if}
+			<tr>
+				<td><label>{#PLIGG_Visual_User_Setting_Categories#}:</label></td>
+				<td>
+				{foreach from=$category item=cat name="cate"}
+					<input type="checkbox" name="chack[]" value="{$cat.category__auto_id}" {if !in_array($cat.category__auto_id,$user_category)} checked="checked"{/if}>
+					{$cat.category_name}<br/>
+				{/foreach}
+				</td>
+			</tr>
+		</table>
+		
+		{checkActionsTpl location="tpl_pligg_profile_settings_end"}
 
 		<table class="table table-bordered table-striped span4">
 			<thead class="table_title">
@@ -150,16 +193,15 @@
 				<td><input type="password" id="verify" name="newpassword2" size="25" tabindex="15"/></td>
 			</tr>
 		</table>
-		
-		{checkActionsTpl location="tpl_pligg_profile_end"}
 
 </div>
-	<div style="clear:both;"></div>
-		<div class="form-actions">
-			<input type="hidden" name="process" value="1">
-			<input type="hidden" name="user_id" value="{$user_id}">	
-			<input type="submit" name="save_profile" value="{#PLIGG_Visual_Profile_Save#}" class="btn btn-primary" tabindex="16">
-		</div>
-		
+<div style="clear:both;"></div>
+<div class="form-actions">
+	<input type="hidden" name="process" value="1">
+	<input type="hidden" name="user_id" value="{$user_id}">	
+	<input type="submit" name="save_profile" value="{#PLIGG_Visual_Profile_Save#}" class="btn btn-primary" tabindex="16">
+</div>
+
 	</form>
 
+{checkActionsTpl location="tpl_pligg_profile_end"}

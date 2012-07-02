@@ -212,10 +212,6 @@
 						</script>
 					{/literal}
 					
-					{if $pagename eq "group_story"}
-						<div id="group_navbar"></div>
-					{/if}
-					
 					{checkActionsTpl location="tpl_pligg_content_start"}
 						{checkActionsTpl location="tpl_pligg_above_center"}
 						{include file=$tpl_center.".tpl"}

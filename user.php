@@ -102,8 +102,7 @@ $CSRF->create('user_settings', true, true);
 		$main_smarty->assign('user_url', '');
 	}		
 
-
-// setup the URL method 2 links
+// setup the links
 	$main_smarty->assign('user_url_personal_data', getmyurl('user2', $login, 'profile'));
 	$main_smarty->assign('user_url_news_sent', getmyurl('user2', $login, 'history'));
 	$main_smarty->assign('user_url_news_published', getmyurl('user2', $login, 'published'));
@@ -111,7 +110,6 @@ $CSRF->create('user_settings', true, true);
 	$main_smarty->assign('user_url_news_voted', getmyurl('user2', $login, 'voted'));
 	$main_smarty->assign('user_url_commented', getmyurl('user2', $login, 'commented'));
 	$main_smarty->assign('user_url_saved', getmyurl('user2', $login, 'saved'));
-	$main_smarty->assign('user_url_setting', getmyurl('user2', $login, 'setting'));
 	$main_smarty->assign('user_url_friends', getmyurl('user_friends', $login, 'viewfriends'));
 	$main_smarty->assign('user_url_friends2', getmyurl('user_friends', $login, 'viewfriends2'));
 	$main_smarty->assign('user_url_add', getmyurl('user_add_remove', $login, 'addfriend'));
@@ -119,7 +117,6 @@ $CSRF->create('user_settings', true, true);
 	$main_smarty->assign('user_rss', getmyurl('rssuser', $login));
 	$main_smarty->assign('URL_Profile', getmyurl('profile'));
 	$main_smarty->assign('user_url_member_groups', getmyurl('user2', $login, 'member_groups	'));
-
 
 // tell smarty about our user
 	$main_smarty = $user->fill_smarty($main_smarty);
