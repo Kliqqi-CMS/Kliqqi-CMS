@@ -142,8 +142,14 @@
 							{if $pagename eq "live_published"}<li class="active">{#PLIGG_Visual_Breadcrumb_Published#}</li>{/if}
 							{if $pagename eq "live_comments"}<li class="active">{#PLIGG_Visual_Breadcrumb_Comments#}</li>{/if}
 						{if $pagename eq "advancedsearch"}<li class="active">{#PLIGG_Visual_Search_Advanced#}</li>{/if}
-						{if $pagename eq "profile"}<li><a href="{$URL_userNoVar}">{#PLIGG_Visual_Profile#}</a> <span class="divider">/</span></li><li class="active">{#PLIGG_Visual_Profile_ModifyProfile#}</li>{/if}
-						{if $pagename eq "user"}<li class="active"><a href="{$user_url_personal_data}">{$page_header}</a> <a href="{$user_rss, $view_href}" target="_blank"><img src="{$my_pligg_base}/templates/{$the_template}/images/rss.gif" style="margin-left:6px;border:0;"></a></li>{/if}
+						{if $pagename eq "profile"}
+							<li><a href="{$URL_userNoVar}">{$user_login}</a> <span class="divider">/</span></li> 
+							<li class="active">{#PLIGG_Visual_Profile_ModifyProfile#}</li>
+						{/if}
+						{if $pagename eq "user"}
+							<li>{if $user_view neq 'profile'}<a href="{$user_url_personal_data}">{/if}{$username}{if $user_view neq 'profile'}</a> <span class="divider">/</span></li> {/if}
+							{if $user_view neq 'profile'}<li class="active">{$page_header} <a href="{$user_rss, $view_href}" target="_blank"><img src="{$my_pligg_base}/templates/{$the_template}/images/rss.gif" style="margin-left:6px;border:0;"></a></li>{/if}
+						{/if}
 						{if $pagename eq "published" && $get.category eq '' || $pagename eq "index"}<li class="active">{#PLIGG_Visual_Published_News#}{/if}
 						{if $pagename eq "upcoming" && $get.category eq ''}<li class="active">{#PLIGG_Visual_Pligg_Queued#}{/if}
 						{if $get.category}

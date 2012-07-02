@@ -127,8 +127,8 @@ $CSRF->create('user_settings', true, true);
 	if ($view=='setting' && $truelogin!=$login)
 		$view = 'profile';
 
-	$page_header = $user->username;
-	$post_title = $main_smarty->get_config_vars('PLIGG_Visual_Breadcrumb_Profile') . " | " . $login;
+	$username = $user->username;
+	$post_title = $main_smarty->get_config_vars('PLIGG_Visual_Breadcrumb_Profile') . " " . $login;
 
 	$main_smarty->assign('user_view', $view);
 
@@ -141,7 +141,7 @@ $CSRF->create('user_settings', true, true);
 		}
 
 	if ($view == 'voted') {
-		$page_header .= ' | ' . $main_smarty->get_config_vars('PLIGG_Visual_User_NewsVoted');
+		$page_header .= $main_smarty->get_config_vars('PLIGG_Visual_User_NewsVoted');
 		$navwhere['text3'] = $main_smarty->get_config_vars('PLIGG_Visual_User_NewsVoted');
 		$post_title .= " | " . $main_smarty->get_config_vars('PLIGG_Visual_User_NewsVoted');
 		$main_smarty->assign('view_href', 'voted');
@@ -151,7 +151,7 @@ $CSRF->create('user_settings', true, true);
 		}	
 
 	if ($view == 'history') {
-		$page_header .= ' | ' . $main_smarty->get_config_vars('PLIGG_Visual_User_NewsSent');
+		$page_header .= $main_smarty->get_config_vars('PLIGG_Visual_User_NewsSent');
 		$navwhere['text3'] = $main_smarty->get_config_vars('PLIGG_Visual_User_NewsSent');
 		$post_title .= " | " . $main_smarty->get_config_vars('PLIGG_Visual_User_NewsSent');
 		$main_smarty->assign('view_href', 'submitted');
@@ -209,7 +209,7 @@ $CSRF->create('user_settings', true, true);
 	}
 		
 	if ($view == 'published') {
-		$page_header .= ' | ' . $main_smarty->get_config_vars('PLIGG_Visual_User_NewsPublished');
+		$page_header .= $main_smarty->get_config_vars('PLIGG_Visual_User_NewsPublished');
 		$navwhere['text3'] = $main_smarty->get_config_vars('PLIGG_Visual_User_NewsPublished');
 		$post_title .= " | " . $main_smarty->get_config_vars('PLIGG_Visual_User_NewsPublished');
 		$main_smarty->assign('view_href', 'published');
@@ -219,7 +219,7 @@ $CSRF->create('user_settings', true, true);
 		}
 
 	if ($view == 'shaken') {
-		$page_header .= ' | ' . $main_smarty->get_config_vars('PLIGG_Visual_User_NewsUnPublished');
+		$page_header .= $main_smarty->get_config_vars('PLIGG_Visual_User_NewsUnPublished');
 		$navwhere['text3'] = $main_smarty->get_config_vars('PLIGG_Visual_User_NewsUnPublished');
 		$post_title .= " | " . $main_smarty->get_config_vars('PLIGG_Visual_User_NewsUnPublished');
 		$main_smarty->assign('view_href', 'upcoming');
@@ -229,7 +229,7 @@ $CSRF->create('user_settings', true, true);
 		}
 
 	if ($view == 'commented') {
-		$page_header .= ' | ' . $main_smarty->get_config_vars('PLIGG_Visual_User_NewsCommented');
+		$page_header .= $main_smarty->get_config_vars('PLIGG_Visual_User_NewsCommented');
 		$navwhere['text3'] = $main_smarty->get_config_vars('PLIGG_Visual_User_NewsCommented');
 		$post_title .= " | " . $main_smarty->get_config_vars('PLIGG_Visual_User_NewsCommented');
 		$main_smarty->assign('view_href', 'commented');
@@ -239,7 +239,7 @@ $CSRF->create('user_settings', true, true);
 		}
 
 	if ($view == 'saved') {
-		$page_header .= ' | ' . $main_smarty->get_config_vars('PLIGG_Visual_User_NewsSaved');
+		$page_header .= $main_smarty->get_config_vars('PLIGG_Visual_User_NewsSaved');
 		$navwhere['text3'] = $main_smarty->get_config_vars('PLIGG_Visual_User_NewsSaved');
 		$post_title .= " | " . $main_smarty->get_config_vars('PLIGG_Visual_User_NewsSaved');
 		$main_smarty->assign('view_href', 'saved');
@@ -259,13 +259,13 @@ $CSRF->create('user_settings', true, true);
 		}
 
 	if ($view == 'removefriend') {
-		$page_header .= ' | ' . $main_smarty->get_config_vars('PLIGG_Visual_User_Profile_Removing_Friend');
+		$page_header .= $main_smarty->get_config_vars('PLIGG_Visual_User_Profile_Removing_Friend');
 		$navwhere['text3'] = $main_smarty->get_config_vars('PLIGG_Visual_User_Profile_Removing_Friend');
 		$post_title .= " | " . $main_smarty->get_config_vars('PLIGG_Visual_User_Profile_Removing_Friend');
 		}
 
 	if ($view == 'addfriend') {
-		$page_header .= ' | ' . $main_smarty->get_config_vars('PLIGG_Visual_User_Profile_Adding_Friend');
+		$page_header .= $main_smarty->get_config_vars('PLIGG_Visual_User_Profile_Adding_Friend');
 		$navwhere['text3'] = $main_smarty->get_config_vars('PLIGG_Visual_User_Profile_Adding_Friend');
 		$post_title .= " | " . $main_smarty->get_config_vars('PLIGG_Visual_User_Profile_Adding_Friend');
 		}
@@ -280,6 +280,7 @@ $CSRF->create('user_settings', true, true);
 	}	
 
 	$main_smarty->assign('page_header', $page_header);
+	$main_smarty->assign('username', $username);
 	$main_smarty->assign('posttitle', $post_title);
 
 	if ($view == 'search') {
