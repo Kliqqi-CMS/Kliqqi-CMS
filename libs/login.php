@@ -72,7 +72,7 @@ class UserAuth {
 		global $db;
 		$dbusername=sanitize($db->escape($username),4);
 		
-		$user=$db->get_row("SELECT * FROM " . table_users . " WHERE user_login = '$dbusername'");
+		$user=$db->get_row("SELECT * FROM " . table_users . " WHERE user_login = '$dbusername' or user_email= '$dbusername' ");
 
 		if($already_salted_pass == ''){
 			$saltedpass = generateHash($pass, substr($user->user_pass, 0, SALT_LENGTH));
