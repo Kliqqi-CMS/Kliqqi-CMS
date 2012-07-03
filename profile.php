@@ -52,23 +52,6 @@ $navwhere['link3'] = getmyurl('profile', '');
 $main_smarty->assign('navbar_where', $navwhere);
 $main_smarty->assign('posttitle', $main_smarty->get_config_vars('PLIGG_Visual_Profile_ModifyProfile'));
 
-// setup the links
-$main_smarty->assign('user_url_personal_data', getmyurl('user2', $login, 'profile'));
-$main_smarty->assign('user_url_news_sent', getmyurl('user2', $login, 'history'));
-$main_smarty->assign('user_url_news_published', getmyurl('user2', $login, 'published'));
-$main_smarty->assign('user_url_news_unpublished', getmyurl('user2', $login, 'shaken'));
-$main_smarty->assign('user_url_news_voted', getmyurl('user2', $login, 'voted'));
-$main_smarty->assign('user_url_commented', getmyurl('user2', $login, 'commented'));
-$main_smarty->assign('user_url_saved', getmyurl('user2', $login, 'saved'));
-$main_smarty->assign('user_url_setting', getmyurl('user2', $login, 'setting'));
-$main_smarty->assign('user_url_friends', getmyurl('user_friends', $login, 'viewfriends'));
-$main_smarty->assign('user_url_friends2', getmyurl('user_friends', $login, 'viewfriends2'));
-$main_smarty->assign('user_url_add', getmyurl('user_add_remove', $login, 'addfriend'));
-$main_smarty->assign('user_url_remove', getmyurl('user_add_remove', $login, 'removefriend'));
-$main_smarty->assign('user_rss', getmyurl('rssuser', $login));
-$main_smarty->assign('URL_Profile', getmyurl('profile'));
-$main_smarty->assign('user_url_member_groups', getmyurl('user2', $login, 'member_groups	'));
-
 // read the users information from the database
 $user=new User();
 $user->username = $login;
