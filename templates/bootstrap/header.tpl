@@ -115,7 +115,7 @@
 				    <form id="signin" action="{$URL_login}" method="post">
 						<div style="margin:5px 15px 0 15px;">
 							{checkActionsTpl location="tpl_pligg_login_link"}
-							<label for="username">{#PLIGG_Visual_Login_Username#}</label>
+							<label for="username">{#PLIGG_Visual_Login_Username#}/{#PLIGG_Visual_Register_Email#}</label>
 							<input id="username" name="username" value="{if isset($login_username)}{$login_username}{/if}" title="username" tabindex="1" type="text">
 						</div>
 						<div style="margin:5px 15px 0 15px;">
