@@ -35,7 +35,8 @@ $(function () {
 				{else}
 					{checkActionsTpl location="anonymous_comment_form"}
 					<div align="center" class="login_to_comment">
-						<a href="{$login_url}">{#PLIGG_Visual_Story_LoginToComment#}</a> {#PLIGG_Visual_Story_Register#} <a href="{$register_url}">{#PLIGG_Visual_Story_RegisterHere#}</a>.
+						<br />
+						<h3><a href="{$login_url}">{#PLIGG_Visual_Story_LoginToComment#}</a> {#PLIGG_Visual_Story_Register#} <a href="{$register_url}">{#PLIGG_Visual_Story_RegisterHere#}</a>.</h3>
 					</div>
 				{/if}
 			</ol>	
