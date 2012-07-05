@@ -90,7 +90,7 @@ class pThumb {
 				break;
 		}
 		$thumb=imagecreatetruecolor($width, $height);
-		imagecopyresized($thumb, $source, 0, 0, 0, 0, $width, $height, $img_sizes[0], $img_sizes[1]);
+		imagecopyresampled($thumb, $source, 0, 0, 0, 0, $width, $height, $img_sizes[0], $img_sizes[1]);
 		
 		$this->image=$thumb;
 	}
