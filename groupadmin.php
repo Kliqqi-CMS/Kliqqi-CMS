@@ -21,7 +21,13 @@ if(isset($_REQUEST["role"])){
 	$db->query($sql);
 	//page redirect
 	$redirect = '';
-	$redirect = getmyurl("group_story", $id);
+	
+	$grup_sql="SELECT group_safename FROM " . table_groups . " WHERE group_id = $id";
+	$group_details=$db->get_row($grup_sql);
+	
+	
+	//echo $redirect = getmyurl("group_story", $id);
+	$redirect =  getmyurl('group_story2', $group_details->group_safename, 'members');
 	header("Location: $redirect");
 	//$db->query("UPDATE " . table_group_member . " set member_role='".$role."' WHERE member_user_id 	=".$userid." and member_group_id 	=".$id."");
 	die;
