@@ -1076,4 +1076,8 @@ PLIGG_Visual_Story_Who_Upvoted = "Who Upvoted"
 PLIGG_Visual_Story_Who_Downvoted = "Who Downvoted"
 PLIGG_Visual_Story_Who_Downvoted_Story = "Who Downvoted this Story"
 
+//<SECTION>Password Recover</SECTION><ADDED>2.00</ADDED>
+PLIGG_Visual_New_Password = "New Password"
+PLIGG_Visual_New_Verify_Password = "Verify New password"
+PLIGG_Password_Invalid_URL="The link that you followed was invalid or incomplete."
 // End 2.0.0 Language File
