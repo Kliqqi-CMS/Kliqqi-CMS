@@ -131,6 +131,7 @@
 						{if $pagename eq "editgroup"}<li><a href="{$URL_groups}">{#PLIGG_Visual_Groups#}</a> <span class="divider">/</span></li><li><a href="{$group_story_url}">{$group_name}</a> <span class="divider">/</span></li><li class="active">{#PLIGG_Visual_Group_Edit#}</li>{/if}
 						{if $pagename eq "group_story" }<li><a href="{$URL_groups}">{#PLIGG_Visual_Groups#}</a> <span class="divider">/</span></li><li class="active">{$group_name}</li>{/if}
 						{if $pagename eq "login"}<li class="active">{#PLIGG_Visual_Login#}</li>{/if}
+						{if $pagename eq "recover"}<li class="active">{#PLIGG_Visual_Breadcrumb_Recover_Password#}</li>{/if}
 						{if $pagename eq "register"}<li class="active">{#PLIGG_Visual_Register#}</li>{/if}
 						{if $pagename eq "editlink"}<li><a href="{$my_base_url}{$my_pligg_base}/story.php?id={$submit_id}">{$submit_title}</a> <span class="divider">/</span></li><li class="active">{#PLIGG_Visual_LS_Admin_Edit#}</li>{/if}
 						{if $pagename eq "rssfeeds"}<li class="active">{#PLIGG_Visual_RSS_Feeds#}</li>{/if}
