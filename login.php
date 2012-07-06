@@ -115,14 +115,14 @@ if( (isset($_POST["processlogin"]) && is_numeric($_POST["processlogin"])) || (is
 						
 				 $body = sprintf($main_smarty->get_config_vars("PLIGG_PassEmail_Body"),$main_smarty->get_config_vars("PLIGG_Visual_Name")); 
 				
-				 echo $body .='<a href="'.$my_base_url . $my_pligg_base . '/recover.php?id=' . base64_encode($username). '&n=' .$times.'">'.$my_base_url . $my_pligg_base . '/recover.php?id=' . base64_encode($username). '&n=' . time().'</a>';
+				 $body .='<a href="'.$my_base_url . $my_pligg_base . '/recover.php?id=' . base64_encode($username). '&n=' .$times.'">'.$my_base_url . $my_pligg_base . '/recover.php?id=' . base64_encode($username). '&n=' . time().'</a>';
 	
 				$headers = 'From: ' . $main_smarty->get_config_vars("PLIGG_PassEmail_From") . "\r\n";
 				$headers .= "Content-type: text/html; charset=utf-8\r\n";
 	
 			
-					//if (mail($to, $subject, $body, $headers))
-					//{
+					if (mail($to, $subject, $body, $headers))
+					{
 						$main_smarty->assign('user_login', $user->user_login);
 						$main_smarty->assign('profile_url', getmyurl('profile'));
 						$main_smarty->assign('login_url', getmyurl('loginNoVar'));
@@ -135,9 +135,9 @@ if( (isset($_POST["processlogin"]) && is_numeric($_POST["processlogin"])) || (is
 						define('pagename', 'login'); 
 						$main_smarty->assign('pagename', pagename);
 						$errorMsg = $main_smarty->get_config_vars('PLIGG_Visual_Password_Sent');
-					//}else{
-						//$errorMsg = $main_smarty->get_config_vars('PLIGG_Visual_Login_Delivery_Failed');
-					//}
+					}else{
+						$errorMsg = $main_smarty->get_config_vars('PLIGG_Visual_Login_Delivery_Failed');
+					}
 				
 			}else{
 				$errorMsg = $main_smarty->get_config_vars('PLIGG_Visual_Password_Sent');
