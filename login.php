@@ -110,22 +110,19 @@ if( (isset($_POST["processlogin"]) && is_numeric($_POST["processlogin"])) || (is
 				$to = $user->user_email;
 				$subject = $main_smarty->get_config_vars("PLIGG_PassEmail_Subject");
 	
-				$password = substr(md5(uniqid(rand(), true)),0,8);
-				$saltedPass = generateHash($password);
-				$db->query('UPDATE `' . table_users . "` SET `user_pass` = '$saltedPass' WHERE `user_login` = '$username'");
-				$body = sprintf($main_smarty->get_config_vars("PLIGG_PassEmail_PassBody"),
-						$main_smarty->get_config_vars("PLIGG_Visual_Name"),
-						$my_base_url . $my_pligg_base . '/login.php',
-						$username,
-						$password);
-				//$body = $main_smarty->get_config_vars("PLIGG_PassEmail_Body") . $my_base_url . $my_pligg_base . '/login.php?processlogin=4&username=' . $username . '&confirmationcode=' . $saltedlogin;
+			
+				 $times= time();		
+						
+				 $body = sprintf($main_smarty->get_config_vars("PLIGG_PassEmail_Body"),$main_smarty->get_config_vars("PLIGG_Visual_Name")); 
+				
+				 echo $body .='<a href="'.$my_base_url . $my_pligg_base . '/recover.php?id=' . base64_encode($username). '&n=' .$times.'">'.$my_base_url . $my_pligg_base . '/recover.php?id=' . base64_encode($username). '&n=' . time().'</a>';
 	
 				$headers = 'From: ' . $main_smarty->get_config_vars("PLIGG_PassEmail_From") . "\r\n";
 				$headers .= "Content-type: text/html; charset=utf-8\r\n";
 	
-				if(time() - strtotime($user->last_reset_request) > $main_smarty->get_config_vars("PLIGG_PassEmail_LimitPerSecond")){
-					if (mail($to, $subject, $body, $headers))
-					{
+			
+					//if (mail($to, $subject, $body, $headers))
+					//{
 						$main_smarty->assign('user_login', $user->user_login);
 						$main_smarty->assign('profile_url', getmyurl('profile'));
 						$main_smarty->assign('login_url', getmyurl('loginNoVar'));
@@ -133,17 +130,15 @@ if( (isset($_POST["processlogin"]) && is_numeric($_POST["processlogin"])) || (is
 						$errorMsg = $main_smarty->get_config_vars("PLIGG_PassEmail_SendSuccess");
 	
 						$db->query('UPDATE `' . table_users . '` SET `last_reset_code` = "'. $saltedlogin . '" WHERE `user_login` = "'.$username.'"');
-						$db->query('UPDATE `' . table_users . '` SET `last_reset_request` = FROM_UNIXTIME('.time().') WHERE `user_login` = "'.$username.'"');
+						$db->query('UPDATE `' . table_users . '` SET `last_reset_request` = FROM_UNIXTIME('.$times.') WHERE `user_login` = "'.$username.'"');
 						
 						define('pagename', 'login'); 
 						$main_smarty->assign('pagename', pagename);
 						$errorMsg = $main_smarty->get_config_vars('PLIGG_Visual_Password_Sent');
-					}else{
-						$errorMsg = $main_smarty->get_config_vars('PLIGG_Visual_Login_Delivery_Failed');
-					}
-				}else{
-					$errorMsg = $main_smarty->get_config_vars("PLIGG_PassEmail_LimitPerSecond_Message");
-				}
+					//}else{
+						//$errorMsg = $main_smarty->get_config_vars('PLIGG_Visual_Login_Delivery_Failed');
+					//}
+				
 			}else{
 				$errorMsg = $main_smarty->get_config_vars('PLIGG_Visual_Password_Sent');
 			}
