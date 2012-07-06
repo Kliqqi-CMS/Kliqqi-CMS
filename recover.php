@@ -79,9 +79,9 @@ if($user){
 	
 						$headers .= "Content-type: text/html; charset=utf-8\r\n";
 	
-						//if (mail($to, $subject, $body, $headers))
+						if (mail($to, $subject, $body, $headers))
 	
-						//{
+						{
 						  $saltedPass = generateHash($password);
 						  $db->query('UPDATE `' . table_users . "` SET `user_pass` = '$saltedPass' WHERE `user_login` = '".$user->user_login."'");
 						  $db->query('UPDATE `' . table_users . '` SET `last_reset_request` = FROM_UNIXTIME('.time().') WHERE `user_login` = "'.$user->user_login.'"');
@@ -95,11 +95,11 @@ if($user){
 								header('Location: '.$return);
 						    }
 						  
-						/* } else{
+						 } else{
 	
 							$errorMsg = $main_smarty->get_config_vars('PLIGG_Visual_Login_Delivery_Failed');
 	
-						}*/
+						}
 				
 			
 	
