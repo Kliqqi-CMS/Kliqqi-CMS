@@ -265,7 +265,9 @@
 		{include file=$the_template"/vote_normal.tpl"}
 	{/if}
 	{include file=$the_template"/vote_comments.tpl"}
-
+    
+	
+	
 	{checkActionsTpl location="tpl_pligg_body_end"}
 	
 	<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
@@ -274,6 +276,7 @@
 	<!--[if lt IE 7]>
 	<script type="text/javascript" src="{$my_pligg_base}/templates/{$the_template}/js/jquery/jquery.dropdown.js"></script>
 	<![endif]-->
+	{include file=$the_template"/update_story_link.tpl"}
 	<script type="text/javascript" src="{$my_pligg_base}/templates/{$the_template}/js/bootstrap.js"></script>
 	<script type="text/javascript" src="{$my_pligg_base}/templates/{$the_template}/js/bootstrap-fileupload.js"></script>
 	<script type="text/javascript" src="{$my_pligg_base}/templates/{$the_template}/js/jquery/jquery.pnotify.js"></script>
