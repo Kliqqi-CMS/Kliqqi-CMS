@@ -618,7 +618,7 @@ class Link {
 		$smarty->assign('group_story_links_publish', getmyurl('group_story_links_publish', $this->id));
 		$smarty->assign('group_story_links_queued', getmyurl('group_story_links_queued', $this->id));
 		$smarty->assign('group_story_links_discard', getmyurl('group_story_links_discard', $this->id));
-
+                $smarty->assign('link_id',$this->id);   
 		$smarty->assign('user_url_add_links', getmyurl('user_add_links', $this->id));
 		$smarty->assign('user_url_remove_links', getmyurl('user_remove_links', $this->id));
 		$smarty->assign('enable_tags', Enable_Tags);
