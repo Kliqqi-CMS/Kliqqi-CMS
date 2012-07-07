@@ -85,7 +85,10 @@ if(isset($_REQUEST['link_id'])){
 	$db->query("DELETE FROM ".table_additional_categories." WHERE ac_link_id =".$linkres->id);
 
 	$db->query("DELETE FROM ".table_tag_cache);
-
+	
+    if ($_SERVER['HTTP_REFERER'] && strpos($_SERVER['HTTP_REFERER'],$my_base_url.$my_pligg_base)===0)
+	    header('Location: '.$_SERVER['HTTP_REFERER']);
+	else
 	header('Location: '.$my_base_url.$my_pligg_base);
 }
 if(isset($_REQUEST['comment_id'])){
