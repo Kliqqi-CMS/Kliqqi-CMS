@@ -205,19 +205,11 @@
 			{if $user_logged_in}  
 				<iframe height="0px;" width="0px;" frameborder="0" name="add_stories"></iframe>
 				{if $link_mine eq 0}
-					<i class="icon-star"></i> <span id="linksummarySaveLink"><a target="add_stories" href="{$user_url_add_links}" onclick={literal}"$.pnotify({
-						pnotify_text: 'Added &quot;{/literal}{$title_short}{literal}&quot; to <a href=\'{/literal}{$user_url_saved}{literal}\'>Your Favorites</a>.',
-						pnotify_sticker: false,
-						pnotify_history: false,
-						pnotify_notice_icon: 'icon-star'
-					});"{/literal}>{#PLIGG_MiscWords_Save_Links_Save#}</a>
+					<i class="icon-star"></i> <span id="linksummarySaveLink">
+					<a id="add" linkid="{$link_id}" title="{$title_short}" class="favorite" >{#PLIGG_MiscWords_Save_Links_Save#}</a>
 				{else}
-					<i class="icon-star-empty"></i> <span id="linksummaryRemoveLink"><a target="add_stories" href="{$user_url_remove_links}" onclick={literal}"$.pnotify({
-						pnotify_text: 'Removed {/literal}{$title_short}{literal} from <a href=\'{/literal}{$user_url_saved}{literal}\'>Favorites</a>.',
-						pnotify_sticker: false,
-						pnotify_history: false,
-						pnotify_notice_icon: 'icon-star-empty'
-					});"{/literal}>{#PLIGG_MiscWords_Save_Links_Remove#}</a>
+					<i class="icon-star-empty"></i> <span id="linksummaryRemoveLink">
+					<a id="remove" linkid="{$link_id}" title="{$title_short}" class="favorite" >{#PLIGG_MiscWords_Save_Links_Remove#}</a>
 				{/if}
 				</span>&nbsp;
 				<span id="stories-{$link_shakebox_index}" class="label label-success" style="display:none;line-height:1em;">{#PLIGG_MiscWords_Save_Links_Success#}</span>
