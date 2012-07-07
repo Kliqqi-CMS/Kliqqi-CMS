@@ -1080,4 +1080,5 @@ PLIGG_Visual_Story_Who_Downvoted_Story = "Who Downvoted this Story"
 PLIGG_Visual_New_Password = "New Password"
 PLIGG_Visual_New_Verify_Password = "Verify New password"
 PLIGG_Password_Invalid_URL="The link that you followed was invalid or incomplete."
+PLIGG_Visual_Breadcrumb_Recover_Password="Reset Password"
 // End 2.0.0 Language File
