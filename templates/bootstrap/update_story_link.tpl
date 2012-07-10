@@ -22,6 +22,13 @@ var UserURLSave="{$user_url_saved}";
 	  type: "POST",
 	  url:my_base_url+my_pligg_base+"/user_add_remove_links.php",
 	  data: dataString,
+	  beforeSend: function() {
+      	parent.addClass("loader");
+        },
+	 complete: function(){
+	   parent.removeClass("loader");
+	 },
+	
 	  cache: false,
 	
 	  success: function(html)
