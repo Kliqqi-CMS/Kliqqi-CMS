@@ -1844,4 +1844,11 @@
     })
   })
 
+
 }(window.jQuery);
+
+$(document).ready(function() {
+    var pathname = window.location.pathname;
+	$('#red_after_login').val(pathname);
+
+});

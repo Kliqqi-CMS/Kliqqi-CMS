@@ -265,8 +265,10 @@
 		{include file=$the_template"/vote_normal.tpl"}
 	{/if}
 	{include file=$the_template"/vote_comments.tpl"}
-    
 	
+    {if $anonymous_can_vote neq "true" and $user_logged_in eq ""}
+	{include file=$the_template"/modal_login_form.tpl"}
+	{/if}
 	
 	{checkActionsTpl location="tpl_pligg_body_end"}
 	
@@ -309,6 +311,6 @@
 		  });
 		</script>{/literal}
 	{/if}
-	
+
 </body>
 </html>

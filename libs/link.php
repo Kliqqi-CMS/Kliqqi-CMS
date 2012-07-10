@@ -348,7 +348,7 @@ class Link {
 
 	
 	function print_summary($type='full', $fetch = false, $link_summary_template = 'link_summary.tpl') {
-		global $current_user, $globals, $the_template, $smarty, $ranklist;
+		global $current_user, $globals, $the_template, $smarty, $ranklist, $db;
 
 		// DB 09/03/08
 		if(!is_numeric($this->id)){return false;}
@@ -368,6 +368,9 @@ class Link {
 		$main_smarty->config_dir = "";
 		$main_smarty->assign('pligg_language', pligg_language);
 		$main_smarty->config_load(lang_loc . "/languages/lang_" . pligg_language . ".conf");
+		
+        $anonymous_can_vote = $db->get_var('SELECT var_value from ' . table_config . ' where var_name = "anonymous_vote";');
+        $main_smarty->assign('anonymous_vote', $anonymous_can_vote);
 
 		if(phpnum() == 4) {
 			$main_smarty->force_compile = true;
