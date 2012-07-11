@@ -89,7 +89,7 @@
 									<input type="password" class="input-large" id="reg_verify" name="reg_password2" placeholder="{if isset($reg_password2)}{$reg_password2}{/if}">
 								</div>
 								<!-- FIX THIS -->
-								{if isset($register_step_1_extra)}
+								
 								<label class="control-label" for="input01">CAPTCHA</label>
 								<div class="controls">
 								
@@ -135,7 +135,7 @@ var RecaptchaOptions = {
 
 
                                  </div>
-								 {/if}
+								 
 							</div>
 							<hr />
 							<h4>{#PLIGG_Visual_Register_Description_Title#}</h4>
