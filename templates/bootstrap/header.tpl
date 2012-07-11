@@ -127,7 +127,7 @@ var RecaptchaOptions = {
 	$publickey = get_misc_data('reCaptcha_pubkey'); // you got this from the signup page
 	echo recaptcha_get_html($publickey);
 ?>
-{/if}
+
 
 
 
@@ -135,6 +135,7 @@ var RecaptchaOptions = {
 
 
                                  </div>
+								 {/if}
 							</div>
 							<hr />
 							<h4>{#PLIGG_Visual_Register_Description_Title#}</h4>
