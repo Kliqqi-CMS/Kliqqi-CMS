@@ -17,7 +17,7 @@ var UserURLSave="{$user_url_saved}";
 	  //parent.addClass("remove_favorite");
 	
 	 
-	  parent.fadeOut(100);
+	  
 	  $.ajax({
 	  type: "POST",
 	  url:my_base_url+my_pligg_base+"/user_add_remove_links.php",
@@ -25,9 +25,7 @@ var UserURLSave="{$user_url_saved}";
 	  beforeSend: function() {
       	parent.addClass("loader");
         },
-	 complete: function(){
-	   parent.removeClass("loader");
-	 },
+	
 	
 	  cache: false,
 	
@@ -44,8 +42,9 @@ var UserURLSave="{$user_url_saved}";
 		  }else{
 		   parent.html(html); 
 		  }
-		   
-		  parent.fadeIn(200);
+		  
+		 
+		  parent.removeClass("loader");
 		 
 		} 
 		
