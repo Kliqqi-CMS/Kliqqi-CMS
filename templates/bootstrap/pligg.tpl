@@ -266,7 +266,7 @@
 	{/if}
 	{include file=$the_template"/vote_comments.tpl"}
 	
-    {if $anonymous_can_vote neq "true" and $user_logged_in eq ""}
+    {if $anonymous_vote eq "false" and $user_logged_in eq ""}
 	{include file=$the_template"/modal_login_form.tpl"}
 	{/if}
 	
