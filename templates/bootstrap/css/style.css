@@ -341,6 +341,6 @@ font-size:0.85em;
 width:282px;
 }
 .loader{
-background-image:url(../images/ajax-loader.gif);
+background-image:url(images/ajax-loader.gif);
 background-repeat:no-repeat;
 }
