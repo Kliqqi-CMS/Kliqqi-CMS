@@ -52,6 +52,11 @@
 			  {checkActionsTpl location="tpl_pligg_navbar_end"}
 			  
 			 {if $user_authenticated neq true}
+			 
+			  {if $pagename eq "register"}
+				<li {if $pagename eq "register"}class="active current"{/if}><a href="{$URL_register}"><span>{#PLIGG_Visual_Register#}</span></a></li>
+			  {else}
+
 				  <!-- Login Dropdown -->
 				  <div id="myModal" class="modal hide fade">
 					<div class="modal-header">
@@ -85,10 +90,51 @@
 								</div>
 								<!-- FIX THIS -->
 								{if isset($register_step_1_extra)}
-									<div class="controls">
-										{$register_step_1_extra}
-									</div>
-								{/if}
+								<label class="control-label" for="input01">CAPTCHA</label>
+								<div class="controls">
+								
+{literal}
+<script>
+var RecaptchaOptions = {
+   theme : 'custom',
+   custom_theme_widget: 'recaptcha_widget',
+   tabindex : 29
+};
+</script>
+{/literal}
+<div class="control-group{if isset($register_captcha_error)} error{/if}">
+	
+	
+		{if isset($register_captcha_error)}
+			<div class="alert alert-error">
+				<button class="close" data-dismiss="alert">×</button>
+				{$register_captcha_error}
+			</div>
+		{/if}
+		<div id="recaptcha_widget" style="display:none">
+			<div id="recaptcha_image"></div>
+			<div class="recaptcha_only_if_incorrect_sol" style="color:red">Incorrect CAPTCHA please try again</div>
+			<input class="span4" style="margin-top:5px; width:210px;" type="text" id="recaptcha_response_field" name="recaptcha_response_field" />
+			<p class="help-inline">
+				<a href="javascript:Recaptcha.reload()">Get another CAPTCHA</a> &nbsp;&nbsp; | &nbsp;&nbsp;
+				<a href="javascript:Recaptcha.showhelp()">Help</a>
+			</p>
+		</div>
+	
+</div>
+<?php 
+	require_once(captcha_captchas_path . '/reCaptcha/libs/recaptchalib.php');
+	$publickey = get_misc_data('reCaptcha_pubkey'); // you got this from the signup page
+	echo recaptcha_get_html($publickey);
+?>
+{/if}
+
+
+
+
+
+
+                                 </div>
 							</div>
 							<hr />
 							<h4>{#PLIGG_Visual_Register_Description_Title#}</h4>
@@ -108,6 +154,7 @@
 					  </form>
 					</div>
               <li><a href="#myModal" data-toggle="modal">{#PLIGG_Visual_Register#}</a></li>
+			  {/if}
 			  <li class="dropdown">
 				<a data-toggle="dropdown" class="dropdown-toggle" href="#">{#PLIGG_Visual_Login_Title#} <b class="caret"></b></a>
 				<ul class="dropdown-menu">
