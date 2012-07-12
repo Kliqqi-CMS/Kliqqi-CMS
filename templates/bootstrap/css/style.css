@@ -56,6 +56,12 @@ hr.soften {
 margin:0 0 40px 0;
 clear:both;
 }
+.title h2 {
+	line-height:26px;
+} 
+.subtext {
+	line-height:24px;
+}
 .storyfooter {
 background:#eeeeee;
 border:1px solid #bbbbbb;
