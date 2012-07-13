@@ -90,43 +90,47 @@
 								</div>
 								<!-- FIX THIS -->
 								
+								<!--
+								
+								{if $captcha_reg_en eq 'true'}
 								<label class="control-label" for="input01">CAPTCHA</label>
+								{if $captcha_method eq "reCaptcha"}
 								<div class="controls">
 								
-{literal}
-<script>
-var RecaptchaOptions = {
-   theme : 'custom',
-   custom_theme_widget: 'recaptcha_widget',
-   tabindex : 29
-};
-</script>
-{/literal}
-<div class="control-group{if isset($register_captcha_error)} error{/if}">
-	
-	
-		{if isset($register_captcha_error)}
-			<div class="alert alert-error">
-				<button class="close" data-dismiss="alert">×</button>
-				{$register_captcha_error}
-			</div>
-		{/if}
-		<div id="recaptcha_widget" style="display:none">
-			<div id="recaptcha_image"></div>
-			<div class="recaptcha_only_if_incorrect_sol" style="color:red">Incorrect CAPTCHA please try again</div>
-			<input class="span4" style="margin-top:5px; width:210px;" type="text" id="recaptcha_response_field" name="recaptcha_response_field" />
-			<p class="help-inline">
-				<a href="javascript:Recaptcha.reload()">Get another CAPTCHA</a> &nbsp;&nbsp; | &nbsp;&nbsp;
-				<a href="javascript:Recaptcha.showhelp()">Help</a>
-			</p>
-		</div>
-	
-</div>
-<?php 
-	require_once(captcha_captchas_path . '/reCaptcha/libs/recaptchalib.php');
-	$publickey = get_misc_data('reCaptcha_pubkey'); // you got this from the signup page
-	echo recaptcha_get_html($publickey);
-?>
+								{literal}
+								<script>
+								var RecaptchaOptions = {
+								   theme : 'custom',
+								   custom_theme_widget: 'recaptcha_widget',
+								   tabindex : 29
+								};
+								</script>
+								{/literal}
+								<div class="control-group{if isset($register_captcha_error)} error{/if}">
+									
+									
+										{if isset($register_captcha_error)}
+											<div class="alert alert-error">
+												<button class="close" data-dismiss="alert">×</button>
+												{$register_captcha_error}
+											</div>
+										{/if}
+										<div id="recaptcha_widget" style="display:none">
+											<div id="recaptcha_image"></div>
+											<div class="recaptcha_only_if_incorrect_sol" style="color:red">Incorrect CAPTCHA please try again</div>
+											<input class="span4" style="margin-top:5px; width:210px;" type="text" id="recaptcha_response_field" name="recaptcha_response_field" />
+											<p class="help-inline">
+												<a href="javascript:Recaptcha.reload()">Get another CAPTCHA</a> &nbsp;&nbsp; | &nbsp;&nbsp;
+												<a href="javascript:Recaptcha.showhelp()">Help</a>
+											</p>
+										</div>
+									
+								</div>
+								<?php 
+									require_once(captcha_captchas_path . '/reCaptcha/libs/recaptchalib.php');
+									$publickey = get_misc_data('reCaptcha_pubkey'); // you got this from the signup page
+									echo recaptcha_get_html($publickey);
+								?>
 
 
 
@@ -135,6 +139,35 @@ var RecaptchaOptions = {
 
 
                                  </div>
+								{elseif $captcha_method eq "WhiteHat"}
+								<div class="controls">
+								<img src="{$captcha_path}captchas/WhiteHat/CaptchaSecurityImages.php" /><br /><br/>
+<input type="text" size="20" name="security_code" /><br /><br />
+<input type="hidden" name="token" value="{$token_registration_captcha}"/>
+                                 </div>
+								{elseif $captcha_method eq "math" }
+								<div class="controls">
+								<br /><b>What is the answer to this question:</b> What is {$number1} + {$number2} = <input type="text" size="2" name="answer" />
+								</div>
+								{/if} 
+								
+								{/if}
+								-->
+							{if isset($register_step_1_extra)}
+							{if $captcha_method eq "reCaptcha"}
+							{$register_step_1_extra}
+							{elseif $captcha_method eq "WhiteHat"}
+							<label class="control-label" for="input01">CAPTCHA</label>
+							<div class="controls">
+								{$register_step_1_extra}
+							</div>
+							{elseif $captcha_method eq "math"}
+							<div class="controls">
+								{$register_step_1_extra}
+							</div> 
+							{/if}
+							{/if}
+
 								 
 							</div>
 							<hr />

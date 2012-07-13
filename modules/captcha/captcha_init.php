@@ -15,7 +15,10 @@ if(defined('mnminclude')){
 
 		if(captcha_reg_enabled == true){
 			module_add_action('register_showform', 'captcha_register', '');
+			module_add_action('register_showModal', 'captcha_register', '');
 			module_add_action('register_check_errors', 'captcha_register_check_errors', '');
+			//if(pagename != "register")
+			
 		}
 		if(captcha_comment_enabled == true){
 			module_add_action('story_top', 'captcha_register', '');
@@ -30,8 +33,18 @@ if(defined('mnminclude')){
 		if($moduleName == 'captcha'){
 			module_add_action('module_page', 'captcha_showpage', '');
 		}
-
+         
+	
+  
 		include_once(mnmmodules . 'captcha/captcha_main.php');
+		
+		if ($current_user->user_id <= 0 && $current_user->authenticated==false){ 
+		check_actions('register_showform', $vars);
+			//for modal window;
+     $main_smarty->assign('captcha_method', get_misc_data('captcha_method'));
+    
+		}
+		
 	}
 }
 ?>

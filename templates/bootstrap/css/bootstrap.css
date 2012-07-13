@@ -3986,9 +3986,14 @@ a.thumbnail:hover {
 
 .modal-body {
   overflow-y: auto;
-  max-height: 488px;
+  max-height: 450px;
   padding: 15px;
 }
+
+.modal-body .span4{
+width:210px !important;  
+}
+
 
 .modal-form {
   margin-bottom: 0;
