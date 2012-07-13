@@ -31,7 +31,7 @@
 						<div class="modal-footer">
 							
 									
-							<p>{#PLIGG_Visual_Login_NewUsersA#}<a href="{$register_url}" class="btn btn-success dropdown-toggle" tabindex="7">{#PLIGG_Visual_Login_NewUsersB#}</a></p>
+							<p>{#PLIGG_Visual_Login_NewUsersA#}<a href="{$URL_register}" class="btn btn-success dropdown-toggle" tabindex="7">{#PLIGG_Visual_Login_NewUsersB#}</a></p>
 							
 							
 						</div>
