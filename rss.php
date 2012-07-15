@@ -126,6 +126,11 @@ if($time > 0) {
 }
 
 do_rss_header($title);
+
+// module system hook
+$vars = '';
+check_actions('rss_start_data', $vars);
+
 $link = new Link;
 $links = $db->get_results($sql);
 if ($links) {
@@ -164,9 +169,19 @@ if ($links) {
 		echo "	<category>" . htmlspecialchars($category_name) . "</category>\n";
 		echo "	<votes>" . $link->votes . "</votes>\n";
 		echo "	<guid>".getmyFullurl("storyURL", $link->category_safe_names($link->category), urlencode($link->title_url), $link->id)."</guid>\n";
+
+		// module system hook
+		$vars = array('item' => $link);
+		check_actions('rss_item', $vars);
+
 		echo "</item>\n\n";
 	}
 }
+
+// module system hook
+$vars = '';
+check_actions('rss_end_data', $vars);
+
 
 do_rss_footer();
 
