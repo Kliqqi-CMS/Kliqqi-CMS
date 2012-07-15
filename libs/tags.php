@@ -33,7 +33,6 @@ function tags_insert_string($link, $lang, $string, $date = 0) {
 		}
 		$db->query("TRUNCATE TABLE ".table_tag_cache);
 		$db->query($sql="INSERT INTO ".table_tag_cache." select tag_words, count(DISTINCT link_id) as count FROM ".table_tags.", ".table_links." WHERE tag_lang='en' and link_id = tag_link_id and (link_status='published' OR link_status='queued') GROUP BY tag_words order by count desc");
-print $sql;
 
 		return true;
 	}
@@ -110,9 +109,7 @@ class TagCloud {
         
         //CDPDF
         if(isset($_REQUEST['category'])){
-            $cat_info=$db->get_row("SELECT category_id, category_name from " . table_categories . " where category_safe_name = '".$db->escape($_REQUEST['category'])."';");
-			$catId = $cat_info->category_id;
-			$cat_name=$cat_info->category_name;
+            $catId = $db->get_var("SELECT category_id from " . table_categories . " where category_safe_name = '".$db->escape($_REQUEST['category'])."';");
             //$catId = get_category_id($this->category);
             if(isset($catId)){
                 $child_cats = '';
@@ -220,7 +217,6 @@ class TagCloud {
 
             $this->smarty_variable->assign('tags_largest_tag', $max);
             $this->smarty_variable->assign('tags_coef', $coef);
-			$this->smarty_variable->assign('category_name',$cat_name);
     }
 }  
 
