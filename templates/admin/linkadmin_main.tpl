@@ -2,7 +2,7 @@
 	<legend>{#PLIGG_Visual_Change_Link_Status#}</legend>
 	
 	<p><a class="btn" href="{$admin_queued_url}">Set as Upcoming</a> &ndash; {#PLIGG_Visual_Change_Link_Queued#}</p>
-	<p><a class="btn" href="{$admin_published_url}">Set as Published</a> &ndash; {#PLIGG_Visual_Change_Link_Published#}</p>
+	<p><a class="btn btn-primary" href="{$admin_published_url}">Set as Published</a> &ndash; {#PLIGG_Visual_Change_Link_Published#}</p>
 	<p><a class="btn btn-danger" href="{$admin_discard_url}">Discard the Story</a> &ndash; {#PLIGG_Visual_Change_Link_Discard#}</p>
 	
 	<hr />
