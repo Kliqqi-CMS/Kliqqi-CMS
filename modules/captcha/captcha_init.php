@@ -37,11 +37,13 @@ if(defined('mnminclude')){
 	
   
 		include_once(mnmmodules . 'captcha/captcha_main.php');
+		$basename = basename($_SERVER['REQUEST_URI']);
+		if ($current_user->user_id <= 0 && $current_user->authenticated==false && $basename!="register"){ 
+		$vars='';
 		
-		if ($current_user->user_id <= 0 && $current_user->authenticated==false){ 
 		check_actions('register_showform', $vars);
 			//for modal window;
-     $main_smarty->assign('captcha_method', get_misc_data('captcha_method'));
+      $main_smarty->assign('captcha_method', get_misc_data('captcha_method'));
     
 		}
 		
