@@ -28,8 +28,8 @@
 							</div>
 						{ /foreach }
 					{/if}
-					<input type="text" name="reg_username" class="input-medium" id="reg_username" value="{if isset($reg_username)}{$reg_username}{/if}" size="25" tabindex="10" maxlength="32"/>
-					<span id="checkit-reg-username"><input type="button" name="reg-checkbutton1" id="reg-checkbutton1" value="{#PLIGG_Visual_Register_Verify#}" onclick="checkfield('username', this.form, this.form.reg_username)" class="btn" tabindex="11" /></span><br/><span id="reg_usernamecheckitvalue"></span>
+					<input type="text" name="reg_username" class="input-medium reg_username" id="reg_username" value="{if isset($reg_username)}{$reg_username}{/if}" size="25" tabindex="10" maxlength="32"/>
+					<br/><span class="reg_usernamecheckitvalue"></span>
 				</div>
 			</div>
 			  
@@ -44,8 +44,8 @@
 							</div>
 						{ /foreach }
 					{/if}
-					<input type="text" class="input-medium" id="reg_email" name="reg_email" value="{if isset($reg_email)}{$reg_email}{/if}" tabindex="12" maxlength="128"/>
-					<span id="checkit-reg-pass"><input type="button" name="reg-checkbutton2" id="reg-checkbutton2" value="{#PLIGG_Visual_Register_Verify#}" onclick="checkfield('email', this.form, this.form.reg_email)" class="btn" tabindex="13" /></span><br/><span id="reg_emailcheckitvalue"></span>
+					<input type="text" class="input-medium reg_email" id="reg_email" name="reg_email" value="{if isset($reg_email)}{$reg_email}{/if}" tabindex="12" maxlength="128"/>
+					<br/><span class="reg_emailcheckitvalue"></span>
 					<p class="help-inline">{#PLIGG_Visual_Register_Lowercase#}</p>
 				</div>
 			</div>

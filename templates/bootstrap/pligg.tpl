@@ -281,11 +281,15 @@
 	<!--[if lt IE 7]>
 	<script type="text/javascript" src="{$my_pligg_base}/templates/{$the_template}/js/jquery/jquery.dropdown.js"></script>
 	<![endif]-->
-	{include file=$the_template"/update_story_link.tpl"}
+	{include file=$the_template"/functions/update_story_link.tpl"}
+	<!--for registration validation-->
+	<script type="text/javascript" src="{$my_pligg_base}/templates/{$the_template}/js/registration_verify.js"></script>
+	
 	<script type="text/javascript" src="{$my_pligg_base}/templates/{$the_template}/js/bootstrap.js"></script>
 	<script type="text/javascript" src="{$my_pligg_base}/templates/{$the_template}/js/bootstrap-fileupload.js"></script>
 	<script type="text/javascript" src="{$my_pligg_base}/templates/{$the_template}/js/jquery/jquery.pnotify.js"></script>
 	<script type="text/javascript" src="{$my_pligg_base}/templates/{$the_template}/js/jquery/jquery.masonry.min.js"></script>
+	
 	
 	{* JavaScript for tooltips on avatar hover *}
 	{literal}
@@ -314,6 +318,6 @@
 		  });
 		</script>{/literal}
 	{/if}
- <script src="{$my_pligg_base}/templates/xmlhttp.php" type="text/javascript"></script> {* this line HAS to be towards the END of pligg.tpl *}
+ 
 </body>
 </html>
