@@ -1,12 +1,10 @@
+{************************************
+**** Date Picker Javascript Template ****
+	 http://www.nsftools.com/tips/NotesTips.htm#datepicker 
+*************************************}
+
 {literal}
 <script language=JavaScript>
-/**
-This is a JavaScript library that will allow you to easily add some basic DHTML
-drop-down datepicker functionality to your Notes forms. This script is not as
-full-featured as others you may find on the Internet, but it's free, it's easy to
-understand, and it's easy to change.
-http://www.nsftools.com/tips/NotesTips.htm#datepicker
-*/
 
 var datePickerDivID = "datepicker";
 var iFrameDivID = "datepickeriframe";

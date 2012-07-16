@@ -1,3 +1,7 @@
+{************************************
+****** Live Published Template ******
+*************************************}
+
 <h1>{#PLIGG_Visual_Live#} {#PLIGG_Visual_Breadcrumb_Published#}</h1><br />
 
 <table class="table table-bordered table-striped">

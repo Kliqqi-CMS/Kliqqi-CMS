@@ -1,3 +1,7 @@
+{************************************
+******** Edit Story Template ********
+*************************************}
+
 {literal}
 <script type="text/javascript">
 function SetState(obj_checkbox, obj_textarea) {

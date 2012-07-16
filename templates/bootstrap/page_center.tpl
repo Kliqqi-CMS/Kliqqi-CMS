@@ -1,3 +1,7 @@
+{************************************
+******* Page Display Template *******
+*************************************}
+
 {eval var=$page_content}
 
 {if isset($isgod) && $isgod eq 1}

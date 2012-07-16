@@ -1,3 +1,7 @@
+{************************************
+******** Live Main Template *********
+*************************************}
+
 <h1>{#PLIGG_Visual_Live#}</h1><br />
 
 <table class="table table-bordered table-striped">

@@ -1,4 +1,7 @@
-﻿<!-- START SUBMIT_GROUPS.TPL -->
+﻿{************************************
+****** Submit Groups Template *******
+*************************************}
+
 {if $enable_group eq "true" && $group_allow eq 1}
 	<fieldset>
 		{if $error}
@@ -66,4 +69,3 @@
 {else}
 	{#PLIGG_Visual_Group_Disabled#}
 {/if}
-<!-- END SUBMIT_GROUPS.TPL -->

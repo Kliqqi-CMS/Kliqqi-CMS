@@ -1,3 +1,6 @@
+{************************************
+******* Comment Form Template *******
+*************************************}
 <a name="discuss"></a>
 <div class="form-horizontal">
 	<fieldset>
@@ -12,7 +15,6 @@
 				{if $Spell_Checker eq 1}
 					<input type="button" name="spelling" value="{#PLIGG_Visual_Check_Spelling#}" class="btn" onClick="openSpellChecker('comment_content');"/>
 				{/if}
-				
 			</div>
 		</div>
 		
@@ -28,7 +30,6 @@
 			<input type="hidden" name="link_id" value="{$link_id}" />
 			<input type="hidden" name="user_id" value="{$user_id}" />
 			<input type="submit" name="submit" value="{#PLIGG_Visual_Comment_Submit#}" class="btn btn-primary" />
-			
 		</div>
 	</fieldset>
 </div>

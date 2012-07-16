@@ -1,4 +1,8 @@
-﻿<li class="comment">
+﻿{************************************
+**** Individual Comment Template ****
+*************************************}
+
+<li class="comment">
 	<a id="c{$comment_id}"></a>
 	{checkActionsTpl location="tpl_pligg_story_comments_single_start"}
 	<div class="comment-wrapper clearfix" {if $comment_status neq "published"}style="background-color: #FFFBE4;border:1px solid #DFDFDF;"{/if}>

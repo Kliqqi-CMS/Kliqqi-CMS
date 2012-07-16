@@ -1,4 +1,9 @@
+{************************************
+******** 404 Error Template *********
+*************************************}
+
 <legend>{#PLIGG_Visual_404_Title#}</legend>
+
 <p>{#PLIGG_Visual_404_Description#}</p>
 
 <ul>

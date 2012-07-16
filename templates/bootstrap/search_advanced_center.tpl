@@ -1,3 +1,6 @@
+{************************************
+***** Advanced Search Template ******
+*************************************}
 <script>
 	{literal}
 	function SEO2submit(form)
@@ -24,7 +27,6 @@
 </script>
 
 <div class="span7">
-
 	<form method="get" class="form-horizontal" action="{$URL_search}" {php}	global $URLMethod; if ($URLMethod==2) print "onsubmit='SEO2submit(this); return false;'";{/php}>
 		<fieldset>
 		

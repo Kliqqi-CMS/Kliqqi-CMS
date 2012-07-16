@@ -1,3 +1,7 @@
+{************************************
+****** Submit Step 1 Template *******
+*************************************}
+
 <legend>{#PLIGG_Visual_Submit1_Header#}</legend>
 
 <div class="submit">

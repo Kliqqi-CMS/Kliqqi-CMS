@@ -1,4 +1,8 @@
-﻿{if $is_group_admin eq '1'}
+﻿{************************************
+******** Edit Group Template ********
+*************************************}
+
+{if $is_group_admin eq '1'}
 	{if $errors}
 		<div class="alert">
 			<button class="close" data-dismiss="alert">×</button>

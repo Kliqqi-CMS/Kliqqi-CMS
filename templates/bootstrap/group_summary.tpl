@@ -1,4 +1,8 @@
-﻿<div class="group_container">
+﻿{************************************
+******* Group Story Template ********
+*************************************}
+
+<div class="group_container">
 	<div style="float:left;width:100px;margin:0 0 10px 0;">
 		<a href="{$group_story_url}"><img src="{$imgsrc}" alt="{$group_name} Avatar" class="thumbnail" /></a>
 	</div>

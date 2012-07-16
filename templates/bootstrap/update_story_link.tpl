@@ -59,16 +59,13 @@ var UserURLSave="{$user_url_saved}";
 		
 		
 	  });
-               					
-      
+    
+    
   	return false;
-  
+	
     });
 	
-	
   });
-
-
 
 {/literal}
 </script>

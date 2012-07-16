@@ -1,4 +1,6 @@
-{* This template controls the user settings page *}
+{************************************
+******* User Settings Template ******
+*************************************}
 
 <ul class="nav nav-tabs" id="profiletabs">
 	{checkActionsTpl location="tpl_pligg_profile_sort_start"}

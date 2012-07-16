@@ -1,3 +1,7 @@
+{************************************
+***** Individual Group Template *****
+*************************************}
+
 {if $enable_group eq "true"}
 	{checkActionsTpl location="tpl_pligg_group_start"}
 	{include file=$the_template."/group_summary.tpl"}

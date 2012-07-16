@@ -1,14 +1,18 @@
+{************************************
+****** Submit Step 2 Template *******
+*************************************}
+
 <script type="text/javascript" src="{$my_pligg_base}/templates/{$the_template}/js/story_preview.js"></script>
 
 {literal}
-<style type="text/css">
-.form-horizontal .control-label {
-width:120px;
-}
-.form-horizontal .controls {
-margin-left:140px;
-}
-</style>
+	<style type="text/css">
+		.form-horizontal .control-label {
+			width:120px;
+		}
+		.form-horizontal .controls {
+			margin-left:140px;
+		}
+	</style>
 {/literal}
 
 <div class="submit_page">

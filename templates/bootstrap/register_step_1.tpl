@@ -1,3 +1,7 @@
+{************************************
+*** Registration Step 2 Template ****
+*************************************}
+
 {#PLIGG_Visual_Register_Thankyou#|sprintf:$get.user}
 
 <br />

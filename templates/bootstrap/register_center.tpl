@@ -1,4 +1,8 @@
-﻿<div class="register-wrapper">
+﻿{************************************
+****** Registration Template ********
+*************************************}
+
+<div class="register-wrapper">
 
 	<div class="span4 register-left">
 		<h2>{#PLIGG_Visual_Register_Description_Title#}</h2>

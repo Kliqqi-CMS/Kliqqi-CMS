@@ -1,3 +1,7 @@
+{************************************
+******* Groups Main Template ********
+*************************************}
+
 {if $enable_group eq "true"}
 	{if $pagename eq "groups"}
 		<div class="hero-unit group_explain">

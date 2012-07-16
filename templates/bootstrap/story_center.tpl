@@ -26,7 +26,7 @@ $(function () {
 		<a name="comments" href="#comments"></a>
 		{checkActionsTpl location="tpl_pligg_story_comments_start"}
 		<form action="" method="post" id="thisform">
-			<ol class="comment-list">	
+			<ol class="comment-list">
 				{checkActionsTpl location="tpl_pligg_story_comments_individual_start"}
 					{$the_comments}
 				{checkActionsTpl location="tpl_pligg_story_comments_individual_end"}

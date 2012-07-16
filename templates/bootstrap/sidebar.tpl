@@ -1,3 +1,7 @@
+{************************************
+****** First Sidebar Template *******
+*************************************}
+
 {if $pagename neq "submit"}
 
 	{checkActionsTpl location="tpl_pligg_sidebar2_start"}

@@ -1,7 +1,7 @@
-{*
-The live.php Javascript is in a seperate file because it needs to come after xmlhttp is loaded and
-xmlhttp is loaded at the end of pligg.tpl. This file gets shown after all of pligg.tpl is.
-*}
+{************************************
+***** Live Javascript Template *****
+ Needs to be called after xmlhttp is loaded at the end of pligg.tpl
+*************************************}
 
 <script type="text/javascript">
 //<![CDATA[

@@ -1,4 +1,7 @@
-{* This template controls the main user profile page, and the user history pages *}
+{************************************
+***** User Profile Template *******
+ This template controls the main user profile page, and the user history pages
+*************************************}
 
 {checkActionsTpl location="tpl_pligg_profile_start"}
 {checkActionsTpl location="tpl_user_center_just_below_header"}

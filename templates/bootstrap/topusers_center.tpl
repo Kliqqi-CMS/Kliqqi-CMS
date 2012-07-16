@@ -1,3 +1,7 @@
+{************************************
+****** Top Users Page Template ******
+*************************************}
+
 <h1>{#PLIGG_Visual_Top_Users#}</h1><br />
 
 {checkActionsTpl location="tpl_pligg_topusers_start"}
