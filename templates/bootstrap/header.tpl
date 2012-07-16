@@ -72,14 +72,14 @@
 						<div class="control-group">
 							<label class="control-label" for="input01">{#PLIGG_Visual_Register_Username#}</label>
 							<div class="controls">
-								<input type="text" class="input-large" name="reg_username" id="reg_username">
-								<span id="checkit-reg-username"><input type="button" name="reg-checkbutton1" id="reg-checkbutton1" value="{#PLIGG_Visual_Register_Verify#}" onclick="checkfield('username', this.form, this.form.reg_username)" class="btn" tabindex="11" /></span><br/><span id="reg_usernamecheckitvalue"></span>
+								<input type="text" class="input-large reg_username" name="reg_username">
+								<br/><span class="reg_usernamecheckitvalue"></span><br/>
 							</div>
 							<label class="control-label" for="input01">{#PLIGG_Visual_Register_Email#}</label>
 							<div class="controls">
 								{if isset($form_email_error)}{ foreach value=error from=$form_email_error }<div class="alert alert-block alert-error fade in"><button data-dismiss="alert" class="close">×</button>{$error}</div>{ /foreach }{/if}
-								<input type="text" class="input-large" id="reg_email" placeholder="" name="reg_email">
-								<span id="checkit-reg-pass"><input type="button" name="reg-checkbutton2" id="reg-checkbutton2" value="{#PLIGG_Visual_Register_Verify#}" onclick="checkfield('email', this.form, this.form.reg_email)" class="btn" tabindex="13" /></span><span id="reg_emailcheckitvalue"></span>
+								<input type="text" class="input-large reg_email" id="reg_email" placeholder="" name="reg_email">
+								<br/><span class="reg_emailcheckitvalue"></span><br/>
 							</div>
 							<label class="control-label" for="input01">{#PLIGG_Visual_Register_Password#}</label>
 							<div class="controls">
@@ -92,70 +92,6 @@
 								<input type="password" class="input-large" id="reg_verify" name="reg_password2" placeholder="{if isset($reg_password2)}{$reg_password2}{/if}">
 							</div>
 							<!-- FIX THIS -->
-							
-							<!--
-							
-							{if $captcha_reg_en eq 'true'}
-							<label class="control-label" for="input01">CAPTCHA</label>
-							{if $captcha_method eq "reCaptcha"}
-							<div class="controls">
-							
-							{literal}
-							<script>
-							var RecaptchaOptions = {
-							   theme : 'custom',
-							   custom_theme_widget: 'recaptcha_widget',
-							   tabindex : 29
-							};
-							</script>
-							{/literal}
-							<div class="control-group{if isset($register_captcha_error)} error{/if}">
-								
-								
-									{if isset($register_captcha_error)}
-										<div class="alert alert-error">
-											<button class="close" data-dismiss="alert">×</button>
-											{$register_captcha_error}
-										</div>
-									{/if}
-									<div id="recaptcha_widget" style="display:none">
-										<div id="recaptcha_image"></div>
-										<div class="recaptcha_only_if_incorrect_sol" style="color:red">Incorrect CAPTCHA please try again</div>
-										<input class="span4" style="margin-top:5px; width:210px;" type="text" id="recaptcha_response_field" name="recaptcha_response_field" />
-										<p class="help-inline">
-											<a href="javascript:Recaptcha.reload()">Get another CAPTCHA</a> &nbsp;&nbsp; | &nbsp;&nbsp;
-											<a href="javascript:Recaptcha.showhelp()">Help</a>
-										</p>
-									</div>
-								
-							</div>
-							<?php 
-								require_once(captcha_captchas_path . '/reCaptcha/libs/recaptchalib.php');
-								$publickey = get_misc_data('reCaptcha_pubkey'); // you got this from the signup page
-								echo recaptcha_get_html($publickey);
-							?>
-
-
-
-
-
-
-
-							 </div>
-							{elseif $captcha_method eq "WhiteHat"}
-							<div class="controls">
-							<img src="{$captcha_path}captchas/WhiteHat/CaptchaSecurityImages.php" /><br /><br/>
-<input type="text" size="20" name="security_code" /><br /><br />
-<input type="hidden" name="token" value="{$token_registration_captcha}"/>
-							 </div>
-							{elseif $captcha_method eq "math" }
-							<div class="controls">
-							<br /><b>What is the answer to this question:</b> What is {$number1} + {$number2} = <input type="text" size="2" name="answer" />
-							</div>
-							{/if} 
-							
-							{/if}
-							-->
 						{if isset($register_step_1_extra)}
 						{if $captcha_method eq "reCaptcha"}
 						{$register_step_1_extra}
