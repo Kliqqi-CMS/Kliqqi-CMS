@@ -1,3 +1,6 @@
+{************************************
+*********** Main Template ***********
+*************************************}
 <!DOCTYPE html>
 <html dir="{#PLIGG_Visual_Language_Direction#}" xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
 <head>
@@ -260,11 +263,11 @@
 <!-- END CONTENT --> 
 	{* this line HAS to be towards the END of pligg.tpl *}
 	{if $Voting_Method == 2}
-		{include file=$the_template"/vote_star.tpl"}
+		{include file=$the_template"/functions/vote_star.tpl"}
 	{else}
-		{include file=$the_template"/vote_normal.tpl"}
+		{include file=$the_template"/functions/vote_normal.tpl"}
 	{/if}
-	{include file=$the_template"/vote_comments.tpl"}
+	{include file=$the_template"/functions/vote_comments.tpl"}
 	
     {if $anonymous_vote eq "false" and $user_logged_in eq ""}
 	{include file=$the_template"/modal_login_form.tpl"}
