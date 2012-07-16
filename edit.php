@@ -68,9 +68,6 @@ if(is_numeric($_GET['id'])) {
 		if($current_user->owncomment=="YES"){
 			$main_smarty->assign('comment_form', print_comment_form(true));
 		}
-		if($current_user->user_level == "admin" or $current_user->user_level == "god"){
-			$main_smarty->assign('removed_link', '<a href="#" onclick=(document.getElementById("comment_content").value="'.$main_smarty->get_config_vars("PLIGG_Visual_EditComment_Removed").'")>'.$main_smarty->get_config_vars("PLIGG_Visual_EditComment_ReplaceWithRemoved").'</a>');
-		}
 	} 
 
 	// misc smarty

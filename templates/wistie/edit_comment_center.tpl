@@ -11,5 +11,3 @@
 	<input type="hidden" name="link_id" value="{$link_id}" />
 	<input type="hidden" name="user_id" value="{$user_id}" />
 </form>
-
-{$removed_link}
