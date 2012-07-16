@@ -311,6 +311,6 @@
 		  });
 		</script>{/literal}
 	{/if}
-
+ <script src="{$my_pligg_base}/templates/xmlhttp.php" type="text/javascript"></script> {* this line HAS to be towards the END of pligg.tpl *}
 </body>
 </html>
