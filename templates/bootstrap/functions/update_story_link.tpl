@@ -37,22 +37,27 @@ var UserURLSave="{$user_url_saved}";
 		    parent.attr('id','remove');
 			message='Saved '+link_title+' from <a href="'+UserURLSave+'">Favorites</a>.';
 			parent.html(remove_lang_text);
-		  }else if(return_value==2){
-		    parent.attr('id','add');
-			message='Removed '+link_title+' from <a href="'+UserURLSave+'">Favorites</a>.';
-		    parent.html(save_lang_text);
-		  }else{
-		   parent.html(html); 
-		   message="error!";
-		  }
-		  
-		  $.pnotify({
+			$.pnotify({
 						pnotify_text: message,
 						pnotify_sticker: false,
 						pnotify_history: false,
 						pnotify_notice_icon: 'icon-star-empty'
 					});
-
+		  }else if(return_value==2){
+		    parent.attr('id','add');
+			message='Removed '+link_title+' from <a href="'+UserURLSave+'">Favorites</a>.';
+		    parent.html(save_lang_text);
+			$.pnotify({
+						pnotify_text: message,
+						pnotify_sticker: false,
+						pnotify_history: false,
+						pnotify_notice_icon: 'icon-star-empty'
+					});
+		  }else{
+		  var tag = $("<div></div>");
+			tag.html(html).dialog({modal: true}).dialog('open');
+		  }
+		  
 		  parent.removeClass("loader");
 		 
 		} 
