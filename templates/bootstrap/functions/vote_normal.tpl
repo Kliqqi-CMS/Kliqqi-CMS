@@ -19,7 +19,8 @@ function vote (user, id, htmlid, md5, value)
     } else {
     	$.post(url, mycontent, function (data) {
 		if (data.match (new RegExp ("^ERROR:"))) {
-			alert(data.substring (6, data.length));
+			var tag = $("<div></div>");
+			tag.html(data).dialog({modal: true}).dialog('open');
    		} else {
 			var anchor = $('#xvote-'+htmlid+' > .'+(value>0 ? 'btn-danger' : 'btn-success'));
 			if (anchor.length)
