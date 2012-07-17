@@ -110,6 +110,10 @@ class TagCloud {
         //CDPDF
         if(isset($_REQUEST['category'])){
             $catId = $db->get_var("SELECT category_id from " . table_categories . " where category_safe_name = '".$db->escape($_REQUEST['category'])."';");
+			$category_name = $db->get_var("SELECT category_name from " . table_categories . " where category_safe_name = '".$db->escape($_REQUEST['category'])."';");
+			
+			$this->smarty_variable->assign('category_name', $category_name);
+
             //$catId = get_category_id($this->category);
             if(isset($catId)){
                 $child_cats = '';
