@@ -13,14 +13,14 @@ function cvote (user, id, htmlid, md5, value)
 {
     var url = my_pligg_base + "/cvote.php";
     var mycontent = "id=" + id + "&user=" + user + "&md5=" + md5 + "&value=" + value;
-	
-    if (!anonymous_vote && user==0) {
+	 if (!anonymous_vote && user==0) {
         window.location= my_base_url + my_pligg_base + "/login.php?return="+location.href;
     } else {
     	$.post(url, mycontent, function (data) {
 		if (data.match (new RegExp ("^ERROR:"))) {
-			alert(data.substring (6, data.length));
-   		} else {
+			var tag = $("<div></div>");
+			tag.html(data).dialog({modal: true}).dialog('open');
+			} else {
 			$('#cvote-'+htmlid).html(data.split('~')[0]);
 		}
 	}, "text");
