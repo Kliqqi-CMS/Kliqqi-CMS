@@ -20,7 +20,7 @@
 			{/if}
 		</div>
 		<div class="comment-right span7" id="wholecomment{$comment_id}">
-			{if $hide_comment_edit neq 'yes'}
+			{if $user_username eq 'you' || $isadmin eq 1}
 				<div class="btn-group pull-right">
 					<a class="btn dropdown-toggle" data-toggle="dropdown" href="#">
 					  <i class="icon-info-sign"></i> {#PLIGG_Visual_Admin_Links#}
@@ -31,9 +31,10 @@
 							<li><a href="{$my_base_url}{$my_pligg_base}/admin/admin_users.php?mode=view&user={$user_userlogin}">{#PLIGG_Visual_Comment_Manage_User#} {$user_userlogin}</a></li>
 							<li><a href="{$edit_comment_url}">{#PLIGG_Visual_Comment_Edit#}</a></li>
 							<li><a href="{$delete_comment_url}">{#PLIGG_Visual_Comment_Delete#}</a></li>
-						{else}	  
-							{if $user_username eq 'you'}<a href="{$edit_comment_url}">{#PLIGG_Visual_Comment_Edit#}</a>{/if}
+						{elseif $user_username eq 'you'}	  
+							<li><a href="{$edit_comment_url}">{#PLIGG_Visual_Comment_Edit#}</a></li>
 						{/if}
+						{checkActionsTpl location="tpl_pligg_story_comments_admin"}
 					</ul>
 				</div>
 			{/if}
