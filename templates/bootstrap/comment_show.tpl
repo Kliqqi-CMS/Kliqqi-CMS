@@ -1,5 +1,6 @@
 ﻿{************************************
 **** Individual Comment Template ****
+ INFO: http://forums.pligg.com/glossary/3-templates/67-comment_show-tpl.html
 *************************************}
 
 <li class="comment">
