@@ -408,7 +408,7 @@ if($canIhaveAccess == 1)
 					$main_smarty->assign('pagename', pagename);					
 				
 					// show the template
-					$main_smarty->assign('tpl_center', '/admin/user_disable_step1_center');
+					$main_smarty->assign('tpl_center', '/admin/user_disable_center');
 					$main_smarty->display($template_dir . '/admin/admin.tpl');
 				} else {
 					showmyerror('userdoesntexist');
