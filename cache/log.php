@@ -903,3 +903,290 @@
 [19-Jul-2012 19:11:30 UTC] Invalid or no certificate authority found, using bundled information
 [19-Jul-2012 19:11:50 UTC] Invalid or no certificate authority found, using bundled information
 [19-Jul-2012 19:11:50 UTC] Invalid or no certificate authority found, using bundled information
+[19-Jul-2012 19:17:39 UTC] Invalid or no certificate authority found, using bundled information
+[19-Jul-2012 19:17:39 UTC] Invalid or no certificate authority found, using bundled information
+[19-Jul-2012 19:17:39 UTC] Invalid or no certificate authority found, using bundled information
+[19-Jul-2012 19:17:39 UTC] Invalid or no certificate authority found, using bundled information
+[19-Jul-2012 19:17:46 UTC] Invalid or no certificate authority found, using bundled information
+[19-Jul-2012 19:17:46 UTC] Invalid or no certificate authority found, using bundled information
+[19-Jul-2012 19:19:01 UTC] Invalid or no certificate authority found, using bundled information
+[19-Jul-2012 19:19:01 UTC] Invalid or no certificate authority found, using bundled information
+[19-Jul-2012 19:20:55 UTC] Invalid or no certificate authority found, using bundled information
+[19-Jul-2012 19:20:56 UTC] Invalid or no certificate authority found, using bundled information
+[19-Jul-2012 19:21:05 UTC] Invalid or no certificate authority found, using bundled information
+[19-Jul-2012 19:21:05 UTC] Invalid or no certificate authority found, using bundled information
+[19-Jul-2012 19:21:23 UTC] Invalid or no certificate authority found, using bundled information
+[19-Jul-2012 19:21:23 UTC] Invalid or no certificate authority found, using bundled information
+[19-Jul-2012 19:21:51 UTC] Invalid or no certificate authority found, using bundled information
+[19-Jul-2012 19:21:51 UTC] Invalid or no certificate authority found, using bundled information
+[19-Jul-2012 19:22:44 UTC] Invalid or no certificate authority found, using bundled information
+[19-Jul-2012 19:22:44 UTC] Invalid or no certificate authority found, using bundled information
+[19-Jul-2012 19:23:47 UTC] Invalid or no certificate authority found, using bundled information
+[19-Jul-2012 19:23:47 UTC] Invalid or no certificate authority found, using bundled information
+[19-Jul-2012 19:25:23 UTC] Invalid or no certificate authority found, using bundled information
+[19-Jul-2012 19:25:23 UTC] Invalid or no certificate authority found, using bundled information
+[19-Jul-2012 19:29:18 UTC] Invalid or no certificate authority found, using bundled information
+[19-Jul-2012 19:29:18 UTC] Invalid or no certificate authority found, using bundled information
+[19-Jul-2012 19:29:41 UTC] Invalid or no certificate authority found, using bundled information
+[19-Jul-2012 19:29:41 UTC] Invalid or no certificate authority found, using bundled information
+[19-Jul-2012 19:30:09 UTC] Invalid or no certificate authority found, using bundled information
+[19-Jul-2012 19:30:09 UTC] Invalid or no certificate authority found, using bundled information
+[19-Jul-2012 19:30:20 UTC] Invalid or no certificate authority found, using bundled information
+[19-Jul-2012 19:30:20 UTC] Invalid or no certificate authority found, using bundled information
+[19-Jul-2012 19:30:32 UTC] Invalid or no certificate authority found, using bundled information
+[19-Jul-2012 19:30:33 UTC] Invalid or no certificate authority found, using bundled information
+[19-Jul-2012 19:30:41 UTC] Invalid or no certificate authority found, using bundled information
+[19-Jul-2012 19:30:41 UTC] Invalid or no certificate authority found, using bundled information
+[19-Jul-2012 19:30:48 UTC] Invalid or no certificate authority found, using bundled information
+[19-Jul-2012 19:30:48 UTC] Invalid or no certificate authority found, using bundled information
+[19-Jul-2012 19:31:01 UTC] Invalid or no certificate authority found, using bundled information
+[19-Jul-2012 19:31:02 UTC] Invalid or no certificate authority found, using bundled information
+[19-Jul-2012 19:31:10 UTC] Invalid or no certificate authority found, using bundled information
+[19-Jul-2012 19:31:10 UTC] Invalid or no certificate authority found, using bundled information
+[19-Jul-2012 19:31:15 UTC] Invalid or no certificate authority found, using bundled information
+[19-Jul-2012 19:31:15 UTC] Invalid or no certificate authority found, using bundled information
+[19-Jul-2012 19:31:26 UTC] Invalid or no certificate authority found, using bundled information
+[19-Jul-2012 19:31:26 UTC] Invalid or no certificate authority found, using bundled information
+[19-Jul-2012 19:32:19 UTC] Invalid or no certificate authority found, using bundled information
+[19-Jul-2012 19:32:19 UTC] Invalid or no certificate authority found, using bundled information
+[19-Jul-2012 19:32:24 UTC] Invalid or no certificate authority found, using bundled information
+[19-Jul-2012 19:32:24 UTC] Invalid or no certificate authority found, using bundled information
+[19-Jul-2012 19:32:28 UTC] Invalid or no certificate authority found, using bundled information
+[19-Jul-2012 19:32:28 UTC] Invalid or no certificate authority found, using bundled information
+[19-Jul-2012 19:32:35 UTC] Invalid or no certificate authority found, using bundled information
+[19-Jul-2012 19:32:35 UTC] Invalid or no certificate authority found, using bundled information
+[19-Jul-2012 19:32:39 UTC] Invalid or no certificate authority found, using bundled information
+[19-Jul-2012 19:32:39 UTC] Invalid or no certificate authority found, using bundled information
+[19-Jul-2012 19:33:07 UTC] Invalid or no certificate authority found, using bundled information
+[19-Jul-2012 19:33:08 UTC] Invalid or no certificate authority found, using bundled information
+[19-Jul-2012 19:33:35 UTC] Invalid or no certificate authority found, using bundled information
+[19-Jul-2012 19:33:36 UTC] Invalid or no certificate authority found, using bundled information
+[19-Jul-2012 19:36:28 UTC] Invalid or no certificate authority found, using bundled information
+[19-Jul-2012 19:36:28 UTC] Invalid or no certificate authority found, using bundled information
+[19-Jul-2012 19:36:38 UTC] Invalid or no certificate authority found, using bundled information
+[19-Jul-2012 19:36:38 UTC] Invalid or no certificate authority found, using bundled information
+[19-Jul-2012 19:36:45 UTC] Invalid or no certificate authority found, using bundled information
+[19-Jul-2012 19:36:45 UTC] Invalid or no certificate authority found, using bundled information
+[19-Jul-2012 19:37:59 UTC] Invalid or no certificate authority found, using bundled information
+[19-Jul-2012 19:37:59 UTC] Invalid or no certificate authority found, using bundled information
+[19-Jul-2012 19:38:08 UTC] Invalid or no certificate authority found, using bundled information
+[19-Jul-2012 19:38:08 UTC] Invalid or no certificate authority found, using bundled information
+[19-Jul-2012 19:38:12 UTC] Invalid or no certificate authority found, using bundled information
+[19-Jul-2012 19:38:12 UTC] Invalid or no certificate authority found, using bundled information
+[19-Jul-2012 19:38:18 UTC] Invalid or no certificate authority found, using bundled information
+[19-Jul-2012 19:38:18 UTC] Invalid or no certificate authority found, using bundled information
+[19-Jul-2012 19:38:18 UTC] Invalid or no certificate authority found, using bundled information
+[19-Jul-2012 19:38:18 UTC] Invalid or no certificate authority found, using bundled information
+[19-Jul-2012 19:38:24 UTC] Invalid or no certificate authority found, using bundled information
+[19-Jul-2012 19:38:24 UTC] Invalid or no certificate authority found, using bundled information
+[19-Jul-2012 19:38:31 UTC] Invalid or no certificate authority found, using bundled information
+[19-Jul-2012 19:38:32 UTC] Invalid or no certificate authority found, using bundled information
+[19-Jul-2012 19:38:32 UTC] Invalid or no certificate authority found, using bundled information
+[19-Jul-2012 19:38:32 UTC] Invalid or no certificate authority found, using bundled information
+[19-Jul-2012 19:39:43 UTC] Invalid or no certificate authority found, using bundled information
+[19-Jul-2012 19:39:43 UTC] Invalid or no certificate authority found, using bundled information
+[19-Jul-2012 19:45:06 UTC] Invalid or no certificate authority found, using bundled information
+[19-Jul-2012 19:45:06 UTC] Invalid or no certificate authority found, using bundled information
+[19-Jul-2012 19:45:06 UTC] Invalid or no certificate authority found, using bundled information
+[19-Jul-2012 19:45:06 UTC] Invalid or no certificate authority found, using bundled information
+[19-Jul-2012 19:47:54 UTC] Invalid or no certificate authority found, using bundled information
+[19-Jul-2012 19:47:55 UTC] Invalid or no certificate authority found, using bundled information
+[19-Jul-2012 19:48:25 UTC] Invalid or no certificate authority found, using bundled information
+[19-Jul-2012 19:48:26 UTC] Invalid or no certificate authority found, using bundled information
+[19-Jul-2012 19:48:39 UTC] Invalid or no certificate authority found, using bundled information
+[19-Jul-2012 19:48:39 UTC] Invalid or no certificate authority found, using bundled information
+[19-Jul-2012 19:59:24 UTC] Invalid or no certificate authority found, using bundled information
+[19-Jul-2012 19:59:24 UTC] Invalid or no certificate authority found, using bundled information
+[19-Jul-2012 19:59:50 UTC] Invalid or no certificate authority found, using bundled information
+[19-Jul-2012 19:59:51 UTC] Invalid or no certificate authority found, using bundled information
+[19-Jul-2012 20:05:45 UTC] Invalid or no certificate authority found, using bundled information
+[19-Jul-2012 20:05:45 UTC] Invalid or no certificate authority found, using bundled information
+[19-Jul-2012 20:05:52 UTC] Invalid or no certificate authority found, using bundled information
+[19-Jul-2012 20:05:52 UTC] Invalid or no certificate authority found, using bundled information
+[19-Jul-2012 20:05:55 UTC] Invalid or no certificate authority found, using bundled information
+[19-Jul-2012 20:05:55 UTC] Invalid or no certificate authority found, using bundled information
+[19-Jul-2012 20:05:57 UTC] Invalid or no certificate authority found, using bundled information
+[19-Jul-2012 20:05:57 UTC] Invalid or no certificate authority found, using bundled information
+[19-Jul-2012 20:05:59 UTC] Invalid or no certificate authority found, using bundled information
+[19-Jul-2012 20:05:59 UTC] Invalid or no certificate authority found, using bundled information
+[19-Jul-2012 20:07:49 UTC] Invalid or no certificate authority found, using bundled information
+[19-Jul-2012 20:07:49 UTC] Invalid or no certificate authority found, using bundled information
+[19-Jul-2012 20:07:49 UTC] Invalid or no certificate authority found, using bundled information
+[19-Jul-2012 20:07:49 UTC] Invalid or no certificate authority found, using bundled information
+[19-Jul-2012 20:07:50 UTC] Invalid or no certificate authority found, using bundled information
+[19-Jul-2012 20:07:50 UTC] Invalid or no certificate authority found, using bundled information
+[19-Jul-2012 20:07:53 UTC] Invalid or no certificate authority found, using bundled information
+[19-Jul-2012 20:07:53 UTC] Invalid or no certificate authority found, using bundled information
+[19-Jul-2012 20:08:01 UTC] Invalid or no certificate authority found, using bundled information
+[19-Jul-2012 20:08:01 UTC] Invalid or no certificate authority found, using bundled information
+[19-Jul-2012 20:08:01 UTC] Invalid or no certificate authority found, using bundled information
+[19-Jul-2012 20:08:01 UTC] Invalid or no certificate authority found, using bundled information
+[19-Jul-2012 20:08:07 UTC] Invalid or no certificate authority found, using bundled information
+[19-Jul-2012 20:08:07 UTC] Invalid or no certificate authority found, using bundled information
+[19-Jul-2012 20:08:10 UTC] Invalid or no certificate authority found, using bundled information
+[19-Jul-2012 20:08:10 UTC] Invalid or no certificate authority found, using bundled information
+[19-Jul-2012 20:08:11 UTC] Invalid or no certificate authority found, using bundled information
+[19-Jul-2012 20:08:11 UTC] Invalid or no certificate authority found, using bundled information
+[19-Jul-2012 20:08:12 UTC] Invalid or no certificate authority found, using bundled information
+[19-Jul-2012 20:08:12 UTC] Invalid or no certificate authority found, using bundled information
+[19-Jul-2012 20:12:27 UTC] Invalid or no certificate authority found, using bundled information
+[19-Jul-2012 20:12:27 UTC] Invalid or no certificate authority found, using bundled information
+[19-Jul-2012 20:12:28 UTC] Invalid or no certificate authority found, using bundled information
+[19-Jul-2012 20:12:28 UTC] Invalid or no certificate authority found, using bundled information
+[19-Jul-2012 20:15:01 UTC] Invalid or no certificate authority found, using bundled information
+[19-Jul-2012 20:15:01 UTC] Invalid or no certificate authority found, using bundled information
+[19-Jul-2012 20:16:46 UTC] Invalid or no certificate authority found, using bundled information
+[19-Jul-2012 20:16:46 UTC] Invalid or no certificate authority found, using bundled information
+[19-Jul-2012 20:16:53 UTC] Invalid or no certificate authority found, using bundled information
+[19-Jul-2012 20:16:53 UTC] Invalid or no certificate authority found, using bundled information
+[19-Jul-2012 20:17:02 UTC] Invalid or no certificate authority found, using bundled information
+[19-Jul-2012 20:17:03 UTC] Invalid or no certificate authority found, using bundled information
+[19-Jul-2012 20:17:13 UTC] Invalid or no certificate authority found, using bundled information
+[19-Jul-2012 20:17:13 UTC] Invalid or no certificate authority found, using bundled information
+[19-Jul-2012 20:17:47 UTC] Invalid or no certificate authority found, using bundled information
+[19-Jul-2012 20:17:48 UTC] Invalid or no certificate authority found, using bundled information
+[19-Jul-2012 20:17:48 UTC] PHP Fatal error:  Cannot redeclare get_category_id() (previously declared in C:\wamp\www\beanstalk\trunk\libs\html1.php:19) in C:\wamp\www\beanstalk\trunk\libs\html1.php on line 30
+[19-Jul-2012 20:17:48 UTC] PHP Stack trace:
+[19-Jul-2012 20:17:48 UTC] PHP   1. {main}() C:\wamp\www\beanstalk\trunk\submit.php:0
+[19-Jul-2012 20:17:48 UTC] PHP   2. do_submit0() C:\wamp\www\beanstalk\trunk\submit.php:102
+[19-Jul-2012 20:18:12 UTC] Invalid or no certificate authority found, using bundled information
+[19-Jul-2012 20:18:12 UTC] Invalid or no certificate authority found, using bundled information
+[19-Jul-2012 20:18:12 UTC] PHP Fatal error:  Cannot redeclare sanit() (previously declared in C:\wamp\www\beanstalk\trunk\config.php:70) in C:\wamp\www\beanstalk\trunk\config.php on line 72
+[19-Jul-2012 20:18:12 UTC] PHP Stack trace:
+[19-Jul-2012 20:18:12 UTC] PHP   1. {main}() C:\wamp\www\beanstalk\trunk\submit.php:0
+[19-Jul-2012 20:18:12 UTC] PHP   2. do_submit0() C:\wamp\www\beanstalk\trunk\submit.php:102
+[19-Jul-2012 20:18:13 UTC] Invalid or no certificate authority found, using bundled information
+[19-Jul-2012 20:18:13 UTC] Invalid or no certificate authority found, using bundled information
+[19-Jul-2012 20:18:14 UTC] PHP Fatal error:  Cannot redeclare sanit() (previously declared in C:\wamp\www\beanstalk\trunk\config.php:70) in C:\wamp\www\beanstalk\trunk\config.php on line 72
+[19-Jul-2012 20:18:14 UTC] PHP Stack trace:
+[19-Jul-2012 20:18:14 UTC] PHP   1. {main}() C:\wamp\www\beanstalk\trunk\submit.php:0
+[19-Jul-2012 20:18:14 UTC] PHP   2. do_submit0() C:\wamp\www\beanstalk\trunk\submit.php:102
+[19-Jul-2012 20:18:33 UTC] Invalid or no certificate authority found, using bundled information
+[19-Jul-2012 20:18:33 UTC] Invalid or no certificate authority found, using bundled information
+[19-Jul-2012 20:18:53 UTC] Invalid or no certificate authority found, using bundled information
+[19-Jul-2012 20:18:53 UTC] Invalid or no certificate authority found, using bundled information
+[19-Jul-2012 20:19:23 UTC] Invalid or no certificate authority found, using bundled information
+[19-Jul-2012 20:19:23 UTC] Invalid or no certificate authority found, using bundled information
+[19-Jul-2012 20:19:23 UTC] PHP Fatal error:  Cannot redeclare sanit() (previously declared in C:\wamp\www\beanstalk\trunk\config.php:70) in C:\wamp\www\beanstalk\trunk\config.php on line 72
+[19-Jul-2012 20:19:23 UTC] PHP Stack trace:
+[19-Jul-2012 20:19:23 UTC] PHP   1. {main}() C:\wamp\www\beanstalk\trunk\submit.php:0
+[19-Jul-2012 20:19:23 UTC] PHP   2. do_submit0() C:\wamp\www\beanstalk\trunk\submit.php:102
+[19-Jul-2012 20:20:01 UTC] Invalid or no certificate authority found, using bundled information
+[19-Jul-2012 20:20:01 UTC] Invalid or no certificate authority found, using bundled information
+[19-Jul-2012 20:20:01 UTC] PHP Fatal error:  Cannot redeclare sanit() (previously declared in C:\wamp\www\beanstalk\trunk\config.php:70) in C:\wamp\www\beanstalk\trunk\config.php on line 72
+[19-Jul-2012 20:20:01 UTC] PHP Stack trace:
+[19-Jul-2012 20:20:02 UTC] PHP   1. {main}() C:\wamp\www\beanstalk\trunk\submit.php:0
+[19-Jul-2012 20:20:02 UTC] PHP   2. do_submit0() C:\wamp\www\beanstalk\trunk\submit.php:102
+[19-Jul-2012 20:20:06 UTC] Invalid or no certificate authority found, using bundled information
+[19-Jul-2012 20:20:06 UTC] Invalid or no certificate authority found, using bundled information
+[19-Jul-2012 20:20:06 UTC] PHP Fatal error:  Cannot redeclare sanit() (previously declared in C:\wamp\www\beanstalk\trunk\config.php:70) in C:\wamp\www\beanstalk\trunk\config.php on line 72
+[19-Jul-2012 20:20:06 UTC] PHP Stack trace:
+[19-Jul-2012 20:20:06 UTC] PHP   1. {main}() C:\wamp\www\beanstalk\trunk\submit.php:0
+[19-Jul-2012 20:20:06 UTC] PHP   2. do_submit0() C:\wamp\www\beanstalk\trunk\submit.php:102
+[19-Jul-2012 20:20:10 UTC] Invalid or no certificate authority found, using bundled information
+[19-Jul-2012 20:20:10 UTC] Invalid or no certificate authority found, using bundled information
+[19-Jul-2012 20:20:10 UTC] PHP Fatal error:  Cannot redeclare sanit() (previously declared in C:\wamp\www\beanstalk\trunk\config.php:70) in C:\wamp\www\beanstalk\trunk\config.php on line 72
+[19-Jul-2012 20:20:10 UTC] PHP Stack trace:
+[19-Jul-2012 20:20:10 UTC] PHP   1. {main}() C:\wamp\www\beanstalk\trunk\submit.php:0
+[19-Jul-2012 20:20:10 UTC] PHP   2. do_submit0() C:\wamp\www\beanstalk\trunk\submit.php:102
+[19-Jul-2012 20:20:15 UTC] Invalid or no certificate authority found, using bundled information
+[19-Jul-2012 20:20:15 UTC] Invalid or no certificate authority found, using bundled information
+[19-Jul-2012 20:20:15 UTC] PHP Fatal error:  TPL: [in ../modules/fb/templates/fb_script.tpl line 384]: syntax error: file '.tpl' does not exist in C:\wamp\www\beanstalk\trunk\class.template.php on line 949
+[19-Jul-2012 20:20:15 UTC] PHP Stack trace:
+[19-Jul-2012 20:20:15 UTC] PHP   1. {main}() C:\wamp\www\beanstalk\trunk\submit.php:0
+[19-Jul-2012 20:20:15 UTC] PHP   2. do_submit0() C:\wamp\www\beanstalk\trunk\submit.php:102
+[19-Jul-2012 20:20:15 UTC] PHP   3. Template_Lite->display() C:\wamp\www\beanstalk\trunk\submit.php:143
+[19-Jul-2012 20:20:15 UTC] PHP   4. Template_Lite->fetch() C:\wamp\www\beanstalk\trunk\class.template.php:514
+[19-Jul-2012 20:20:15 UTC] PHP   5. Template_Lite->_fetch_compile() C:\wamp\www\beanstalk\trunk\class.template.php:554
+[19-Jul-2012 20:20:15 UTC] PHP   6. eval() C:\wamp\www\beanstalk\trunk\class.template.php:758
+[19-Jul-2012 20:20:15 UTC] PHP   7. Template_Lite->_fetch_compile_include() C:\wamp\www\beanstalk\trunk\class.template.php(758) : eval()'d code:213
+[19-Jul-2012 20:20:15 UTC] PHP   8. template_fetch_compile_include() C:\wamp\www\beanstalk\trunk\class.template.php:668
+[19-Jul-2012 20:20:15 UTC] PHP   9. Template_Lite->_get_resource() C:\wamp\www\beanstalk\trunk\internal\template.fetch_compile_include.php:21
+[19-Jul-2012 20:20:15 UTC] PHP  10. Template_Lite->trigger_error() C:\wamp\www\beanstalk\trunk\class.template.php:494
+[19-Jul-2012 20:20:15 UTC] PHP  11. trigger_error() C:\wamp\www\beanstalk\trunk\class.template.php:949
+[19-Jul-2012 20:20:20 UTC] Invalid or no certificate authority found, using bundled information
+[19-Jul-2012 20:20:20 UTC] Invalid or no certificate authority found, using bundled information
+[19-Jul-2012 20:21:27 UTC] Invalid or no certificate authority found, using bundled information
+[19-Jul-2012 20:21:27 UTC] Invalid or no certificate authority found, using bundled information
+[19-Jul-2012 20:21:52 UTC] Invalid or no certificate authority found, using bundled information
+[19-Jul-2012 20:21:53 UTC] Invalid or no certificate authority found, using bundled information
+[19-Jul-2012 20:22:16 UTC] Invalid or no certificate authority found, using bundled information
+[19-Jul-2012 20:22:16 UTC] Invalid or no certificate authority found, using bundled information
+[19-Jul-2012 20:22:18 UTC] Invalid or no certificate authority found, using bundled information
+[19-Jul-2012 20:22:18 UTC] Invalid or no certificate authority found, using bundled information
+[19-Jul-2012 20:22:54 UTC] Invalid or no certificate authority found, using bundled information
+[19-Jul-2012 20:22:55 UTC] Invalid or no certificate authority found, using bundled information
+[19-Jul-2012 20:22:55 UTC] Invalid or no certificate authority found, using bundled information
+[19-Jul-2012 20:22:56 UTC] Invalid or no certificate authority found, using bundled information
+[19-Jul-2012 20:22:58 UTC] Invalid or no certificate authority found, using bundled information
+[19-Jul-2012 20:22:58 UTC] Invalid or no certificate authority found, using bundled information
+[19-Jul-2012 20:23:11 UTC] Invalid or no certificate authority found, using bundled information
+[19-Jul-2012 20:23:11 UTC] Invalid or no certificate authority found, using bundled information
+[19-Jul-2012 20:23:55 UTC] Invalid or no certificate authority found, using bundled information
+[19-Jul-2012 20:23:55 UTC] Invalid or no certificate authority found, using bundled information
+[19-Jul-2012 20:25:00 UTC] Invalid or no certificate authority found, using bundled information
+[19-Jul-2012 20:25:00 UTC] Invalid or no certificate authority found, using bundled information
+[19-Jul-2012 20:34:20 UTC] Invalid or no certificate authority found, using bundled information
+[19-Jul-2012 20:34:20 UTC] Invalid or no certificate authority found, using bundled information
+[19-Jul-2012 20:34:21 UTC] Invalid or no certificate authority found, using bundled information
+[19-Jul-2012 20:34:21 UTC] Invalid or no certificate authority found, using bundled information
+[19-Jul-2012 20:34:22 UTC] Invalid or no certificate authority found, using bundled information
+[19-Jul-2012 20:34:22 UTC] Invalid or no certificate authority found, using bundled information
+[19-Jul-2012 20:34:25 UTC] Invalid or no certificate authority found, using bundled information
+[19-Jul-2012 20:34:25 UTC] Invalid or no certificate authority found, using bundled information
+[19-Jul-2012 20:34:26 UTC] Invalid or no certificate authority found, using bundled information
+[19-Jul-2012 20:34:26 UTC] Invalid or no certificate authority found, using bundled information
+[19-Jul-2012 20:34:27 UTC] Invalid or no certificate authority found, using bundled information
+[19-Jul-2012 20:34:27 UTC] Invalid or no certificate authority found, using bundled information
+[19-Jul-2012 20:34:27 UTC] Invalid or no certificate authority found, using bundled information
+[19-Jul-2012 20:34:28 UTC] Invalid or no certificate authority found, using bundled information
+[19-Jul-2012 20:34:29 UTC] Invalid or no certificate authority found, using bundled information
+[19-Jul-2012 20:34:29 UTC] Invalid or no certificate authority found, using bundled information
+[19-Jul-2012 20:34:29 UTC] Invalid or no certificate authority found, using bundled information
+[19-Jul-2012 20:34:30 UTC] Invalid or no certificate authority found, using bundled information
+[19-Jul-2012 20:34:34 UTC] Invalid or no certificate authority found, using bundled information
+[19-Jul-2012 20:34:34 UTC] Invalid or no certificate authority found, using bundled information
+[19-Jul-2012 20:34:35 UTC] Invalid or no certificate authority found, using bundled information
+[19-Jul-2012 20:34:35 UTC] Invalid or no certificate authority found, using bundled information
+[19-Jul-2012 20:34:36 UTC] Invalid or no certificate authority found, using bundled information
+[19-Jul-2012 20:34:36 UTC] Invalid or no certificate authority found, using bundled information
+[19-Jul-2012 20:34:37 UTC] Invalid or no certificate authority found, using bundled information
+[19-Jul-2012 20:34:37 UTC] Invalid or no certificate authority found, using bundled information
+[19-Jul-2012 20:34:39 UTC] Invalid or no certificate authority found, using bundled information
+[19-Jul-2012 20:34:39 UTC] Invalid or no certificate authority found, using bundled information
+[19-Jul-2012 20:34:41 UTC] Invalid or no certificate authority found, using bundled information
+[19-Jul-2012 20:34:41 UTC] Invalid or no certificate authority found, using bundled information
+[19-Jul-2012 20:34:42 UTC] Invalid or no certificate authority found, using bundled information
+[19-Jul-2012 20:34:42 UTC] Invalid or no certificate authority found, using bundled information
+[19-Jul-2012 20:34:45 UTC] Invalid or no certificate authority found, using bundled information
+[19-Jul-2012 20:34:50 UTC] Invalid or no certificate authority found, using bundled information
+[19-Jul-2012 20:34:52 UTC] Invalid or no certificate authority found, using bundled information
+[19-Jul-2012 20:34:52 UTC] Invalid or no certificate authority found, using bundled information
+[19-Jul-2012 20:34:56 UTC] Invalid or no certificate authority found, using bundled information
+[19-Jul-2012 20:34:56 UTC] Invalid or no certificate authority found, using bundled information
+[19-Jul-2012 20:35:01 UTC] Invalid or no certificate authority found, using bundled information
+[19-Jul-2012 20:35:01 UTC] Invalid or no certificate authority found, using bundled information
+[19-Jul-2012 20:36:21 UTC] Invalid or no certificate authority found, using bundled information
+[19-Jul-2012 20:36:22 UTC] Invalid or no certificate authority found, using bundled information
+[19-Jul-2012 20:39:27 UTC] Invalid or no certificate authority found, using bundled information
+[19-Jul-2012 20:39:27 UTC] Invalid or no certificate authority found, using bundled information
+[19-Jul-2012 20:39:30 UTC] Invalid or no certificate authority found, using bundled information
+[19-Jul-2012 20:39:30 UTC] Invalid or no certificate authority found, using bundled information
+[19-Jul-2012 20:40:15 UTC] Invalid or no certificate authority found, using bundled information
+[19-Jul-2012 20:40:15 UTC] Invalid or no certificate authority found, using bundled information
+[19-Jul-2012 20:40:36 UTC] Invalid or no certificate authority found, using bundled information
+[19-Jul-2012 20:40:37 UTC] Invalid or no certificate authority found, using bundled information
+[19-Jul-2012 20:40:58 UTC] Invalid or no certificate authority found, using bundled information
+[19-Jul-2012 20:40:58 UTC] Invalid or no certificate authority found, using bundled information
+[19-Jul-2012 20:41:00 UTC] Invalid or no certificate authority found, using bundled information
+[19-Jul-2012 20:41:00 UTC] Invalid or no certificate authority found, using bundled information
+[19-Jul-2012 20:41:23 UTC] Invalid or no certificate authority found, using bundled information
+[19-Jul-2012 20:41:23 UTC] Invalid or no certificate authority found, using bundled information
+[19-Jul-2012 20:41:48 UTC] Invalid or no certificate authority found, using bundled information
+[19-Jul-2012 20:41:48 UTC] Invalid or no certificate authority found, using bundled information
+[19-Jul-2012 20:42:42 UTC] Invalid or no certificate authority found, using bundled information
+[19-Jul-2012 20:42:42 UTC] Invalid or no certificate authority found, using bundled information
+[19-Jul-2012 20:42:50 UTC] Invalid or no certificate authority found, using bundled information
+[19-Jul-2012 20:42:50 UTC] Invalid or no certificate authority found, using bundled information
+[19-Jul-2012 20:43:06 UTC] Invalid or no certificate authority found, using bundled information
+[19-Jul-2012 20:43:06 UTC] Invalid or no certificate authority found, using bundled information

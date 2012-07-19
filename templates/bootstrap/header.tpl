@@ -31,7 +31,8 @@
 						<li><a href="{$URL_logout}">{#PLIGG_Visual_Logout#}</a></li>
 					</ul>
 				</div>
-			{/if}<!--/$user_authenticated -->
+				<!--/$user_authenticated -->
+			{/if}
 			<div class="nav-collapse">
 				<ul class="nav">
 					<li {if $pagename eq "published" || $pagename eq "index"}class="active current"{/if}><a href="{$my_base_url}{$my_pligg_base}">Home</a></li>
@@ -158,7 +159,8 @@
 								</li>
 							</ul><!--/.dropdown-menu -->
 						</li><!--/.dropdown -->
-					{/if}<!--/$user_authenticated -->
+						<!--/$user_authenticated -->
+					{/if}
 				</ul><!--/.nav -->
 			</div><!--/.nav-collapse -->
 		</div><!--/.container -->

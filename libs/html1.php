@@ -10,7 +10,7 @@ if(!defined('mnminclude')){header('Location: ../404error.php');die();}
 
 // Check if a .maintenance file exists in the Pligg root directory
 $maintenance_file = "./.maintenance";
-if(file_exists($maintenance_file) && $current_user->user_level!="god"){
+if(file_exists($maintenance_file)){
     $maintenance_mode="true";
 } else {
     $maintenance_mode="false";

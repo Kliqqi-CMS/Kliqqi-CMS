@@ -193,7 +193,6 @@
 							</div>
 						{/if}
 					</ul>
-					<!-- END BREADCRUMBS -->
 					{literal}
 						<script type="text/javascript" language="JavaScript">
 						function checkForm() {

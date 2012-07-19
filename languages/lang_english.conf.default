@@ -1,6 +1,6 @@
 //<LANG>EN</LANG>
 //<TITLE>English</TITLE>
-//<VERSION>1.2.2</VERSION>
+//<VERSION>2.0.0</VERSION>
 
 //<SECTION>GENERAL</SECTION><ADDED>1.00</ADDED>
 PLIGG_Visual_Name = "My Site"
@@ -1075,10 +1075,9 @@ PLIGG_Visual_AdminPanel_Subcategory_Delete = "Delete sub-categories"
 PLIGG_Visual_Story_Who_Upvoted = "Who Upvoted"
 PLIGG_Visual_Story_Who_Downvoted = "Who Downvoted"
 PLIGG_Visual_Story_Who_Downvoted_Story = "Who Downvoted this Story"
-
-//<SECTION>Password Recover</SECTION><ADDED>2.00</ADDED>
+PLIGG_Maintenance_Mode = "Maintenance Mode"
+PLIGG_Maintenance_Admin_Warning="<strong>Warning!</strong> Maintenance Mode is currently active. Remove the .maintenance file from your Pligg directory to disable it."
 PLIGG_Visual_New_Password = "New Password"
 PLIGG_Visual_New_Verify_Password = "Verify New password"
 PLIGG_Password_Invalid_URL="The link that you followed was invalid or incomplete."
-PLIGG_Visual_Breadcrumb_Recover_Password="Reset Password"
 // End 2.0.0 Language File

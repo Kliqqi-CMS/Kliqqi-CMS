@@ -128,9 +128,12 @@ include('./libs/link_summary.php'); // this is the code that show the links / st
 $main_smarty->assign('link_pagination', do_pages($rows, $page_size, "upcoming", true));
 
 // show the template
-if($maintenance_mode=="true"){
+if($maintenance_mode=="true" && $current_user->user_level!="god"){
 	$main_smarty->display($the_template . '/maintenance.tpl');
 } else {
+	if($maintenance_mode=="true" && $current_user->user_level=="god"){
+		echo '<div class="alert alert-error" style="margin-bottom:0;"><button class="close" data-dismiss="alert">×</button>'.$main_smarty->get_config_vars('PLIGG_Maintenance_Admin_Warning').'</div>';
+	}
 	$main_smarty->assign('tpl_center', $the_template . '/upcoming_center');
 	$main_smarty->display($the_template . '/pligg.tpl');
 }
