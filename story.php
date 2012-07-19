@@ -176,15 +176,8 @@ if(is_numeric($requestID)) {
 	$main_smarty->assign('story_comment_count', $link->comments());
 	$main_smarty->assign('URL_rss_page', getmyurl('storyrss', isset($requestTitle) ? $requestTitle : urlencode($link->title_url), $link->category_safe_name($link->category)));
 
-	if($maintenance_mode=="true" && $current_user->user_level!="god"){
-		$main_smarty->display($the_template . '/maintenance.tpl');
-	} else {
-		if($maintenance_mode=="true" && $current_user->user_level=="god"){
-			echo '<div class="alert alert-error" style="margin-bottom:0;"><button class="close" data-dismiss="alert">×</button>'.$main_smarty->get_config_vars('PLIGG_Maintenance_Admin_Warning').'</div>';
-		}
-		$main_smarty->assign('tpl_center', $the_template . '/story_center');
-		$main_smarty->display($the_template . '/pligg.tpl');
-	}
+	$main_smarty->assign('tpl_center', $the_template . '/story_center');
+	$main_smarty->display($the_template . '/pligg.tpl');
 } else {
 
 	// check for redirects
@@ -269,15 +262,8 @@ function insert_comment () {
 	if (strlen($comment->content) > maxCommentLength)
 	{
 		$main_smarty->assign('url', $_SERVER['REQUEST_URI']);
-		if($maintenance_mode=="true" && $current_user->user_level!="god"){
-			$main_smarty->display($the_template . '/maintenance.tpl');
-		} else {
-			if($maintenance_mode=="true" && $current_user->user_level=="god"){
-				echo '<div class="alert alert-error" style="margin-bottom:0;"><button class="close" data-dismiss="alert">×</button>'.$main_smarty->get_config_vars('PLIGG_Maintenance_Admin_Warning').'</div>';
-			}
-			$main_smarty->assign('tpl_center', $the_template . '/comment_errors');
-			$main_smarty->display($the_template . '/pligg.tpl');
-		}
+		$main_smarty->assign('tpl_center', $the_template . '/comment_errors');
+		$main_smarty->display($the_template . '/pligg.tpl');
 		exit;
 	}
 

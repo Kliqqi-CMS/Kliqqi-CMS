@@ -18,7 +18,6 @@
 				{if $isadmin}<li><a href="{$my_pligg_base}/admin/admin_users.php?mode=killspam&user={$link_submitter}"><i class="icon-ban-circle"></i> {#PLIGG_Visual_View_User_Killspam#}</a></li>{/if}
 				{if $isadmin}<li><a href="{$my_pligg_base}/delete.php?link_id={$link_id}"><i class="icon-trash"></i> {#PLIGG_Visual_AdminPanel_Discard#}</a></li>{/if}
 			</ul>
-			
 			<iframe height="0" width="0" frameborder="0" name="story_status" class="invisible"></iframe>
 			<span id="stories_status-{$link_shakebox_index}" style="display:none;">
 				<a target="story_status" href="{$group_story_links_publish}" onclick="show_hide_user_links(document.getElementById('story_status_success-{$link_shakebox_index}'))">{#PLIGG_Visual_AdminPanel_Published#}</a>

@@ -164,13 +164,6 @@ $main_smarty->assign('error', $errors);
 $main_smarty->assign('pagename', pagename);
 
 // show the template
-if($maintenance_mode=="true" && $current_user->user_level!="god"){
-	$main_smarty->display($the_template . '/maintenance.tpl');
-} else {
-	if($maintenance_mode=="true" && $current_user->user_level=="god"){
-		echo '<div class="alert alert-error" style="margin-bottom:0;"><button class="close" data-dismiss="alert">×</button>'.$main_smarty->get_config_vars('PLIGG_Maintenance_Admin_Warning').'</div>';
-	}
-	$main_smarty->assign('tpl_center', $the_template . '/submit_groups');
-	$main_smarty->display($the_template . '/pligg.tpl');
-}
+$main_smarty->assign('tpl_center', $the_template . '/submit_groups');
+$main_smarty->display($the_template . '/pligg.tpl');
 ?>

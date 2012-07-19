@@ -72,15 +72,8 @@ if(empty($_POST['phase']) && (!empty($_GET['url']) || is_numeric($_GET['id']))) 
 		define('pagename', 'submit'); 
 		$main_smarty->assign('pagename', pagename);
 		$main_smarty->assign('submit_error', 'badkey');
-		if($maintenance_mode=="true" && $current_user->user_level!="god"){
-			$main_smarty->display($the_template . '/maintenance.tpl');
-		} else {
-			if($maintenance_mode=="true" && $current_user->user_level=="god"){
-				echo '<div class="alert alert-error" style="margin-bottom:0;"><button class="close" data-dismiss="alert">×</button>'.$main_smarty->get_config_vars('PLIGG_Maintenance_Admin_Warning').'</div>';
-			}
-			$main_smarty->assign('tpl_center', $the_template . '/submit_errors');
-			$main_smarty->display($the_template . '/pligg.tpl');
-		}
+		$main_smarty->assign('tpl_center', $the_template . '/submit_errors');
+		$main_smarty->display($the_template . '/pligg.tpl');
 		die();
 	    }
 	    $_POST['url'] = $row['link_url'];
@@ -124,18 +117,10 @@ function do_submit0() {
 	define('pagename', 'submit'); 
 	$main_smarty->assign('pagename', pagename);
 	
-	// This needs fixed.
-	if($maintenance_mode=="true" && $current_user->user_level!="god"){
-		$main_smarty->display($the_template . '/maintenance.tpl');
-	} else {
-		if($maintenance_mode=="true" && $current_user->user_level=="god"){
-			echo '<div class="alert alert-error" style="margin-bottom:0;"><button class="close" data-dismiss="alert">×</button>'.$main_smarty->get_config_vars('PLIGG_Maintenance_Admin_Warning').'</div>';
-		}
-		$main_smarty->assign('tpl_center', $the_template . '/submit_step_1');
-		$vars = '';
-		check_actions('do_submit0', $vars);
-		$main_smarty->display($the_template . '/pligg.tpl');
-	}
+	$main_smarty->assign('tpl_center', $the_template . '/submit_step_1');
+	$vars = '';
+	check_actions('do_submit0', $vars);
+	$main_smarty->display($the_template . '/pligg.tpl');
 }
 
 // submit step 1
@@ -213,15 +198,9 @@ function do_submit1() {
 	
 	if(!$linkres->valid) {
 		$main_smarty->assign('submit_error', 'invalidurl');
-		if($maintenance_mode=="true" && $current_user->user_level!="god"){
-			$main_smarty->display($the_template . '/maintenance.tpl');
-		} else {
-			if($maintenance_mode=="true" && $current_user->user_level=="god"){
-				echo '<div class="alert alert-error" style="margin-bottom:0;"><button class="close" data-dismiss="alert">×</button>'.$main_smarty->get_config_vars('PLIGG_Maintenance_Admin_Warning').'</div>';
-			}
-			$main_smarty->assign('tpl_center', $the_template . '/submit_errors');
-			$main_smarty->display($the_template . '/pligg.tpl');
-		}
+		$main_smarty->assign('tpl_center', $the_template . '/submit_errors');
+		
+		$main_smarty->display($the_template . '/pligg.tpl');
 		return;
 	}
 	
@@ -229,19 +208,12 @@ function do_submit1() {
 		if(!is_numeric($_GET['id']) && $linkres->duplicates($url) > 0) {
 			$main_smarty->assign('submit_search', getmyurl("search_url", htmlentities($url)));
 			$main_smarty->assign('submit_error', 'dupeurl');
+			$main_smarty->assign('tpl_center', $the_template . '/submit_errors');
 			
 			define('pagename', 'submit'); 
-		    $main_smarty->assign('pagename', pagename);
+		     	$main_smarty->assign('pagename', pagename);
 			
-			if($maintenance_mode=="true" && $current_user->user_level!="god"){
-				$main_smarty->display($the_template . '/maintenance.tpl');
-			} else {
-				if($maintenance_mode=="true" && $current_user->user_level=="god"){
-					echo '<div class="alert alert-error" style="margin-bottom:0;"><button class="close" data-dismiss="alert">×</button>'.$main_smarty->get_config_vars('PLIGG_Maintenance_Admin_Warning').'</div>';
-				}
-				$main_smarty->assign('tpl_center', $the_template . '/submit_errors');
-				$main_smarty->display($the_template . '/pligg.tpl');
-			}
+			$main_smarty->display($the_template . '/pligg.tpl');
 			return;
 		}
 	}
@@ -332,6 +304,9 @@ function do_submit1() {
 	}
 
 	$main_smarty->assign('Spell_Checker', Spell_Checker);
+
+	$main_smarty->assign('tpl_extra_fields', $the_template . '/submit_extra_fields');
+	$main_smarty->assign('tpl_center', $the_template . '/submit_step_2');
 	
 	define('pagename', 'submit'); 
 	$main_smarty->assign('pagename', pagename);
@@ -339,16 +314,7 @@ function do_submit1() {
 	$vars = '';
 	check_actions('do_submit1', $vars);
 	$_SESSION['step'] = 1;
-	if($maintenance_mode=="true" && $current_user->user_level!="god"){
-		$main_smarty->display($the_template . '/maintenance.tpl');
-	} else {
-		if($maintenance_mode=="true" && $current_user->user_level=="god"){
-			echo '<div class="alert alert-error" style="margin-bottom:0;"><button class="close" data-dismiss="alert">×</button>'.$main_smarty->get_config_vars('PLIGG_Maintenance_Admin_Warning').'</div>';
-		}
-		$main_smarty->assign('tpl_extra_fields', $the_template . '/submit_extra_fields');
-		$main_smarty->assign('tpl_center', $the_template . '/submit_step_2');
-		$main_smarty->display($the_template . '/pligg.tpl');
-	}
+	$main_smarty->display($the_template . '/pligg.tpl');
 }
 
 // submit step 2
@@ -507,22 +473,18 @@ function do_submit2() {
 	} else {
 		$main_smarty->assign('submit_trackback', '');
 	}
+			
 	$main_smarty->assign('tpl_extra_fields', $the_template . '/submit_extra_fields');
 	$main_smarty->assign('tpl_center', $the_template . '/submit_step_3');
+	
+
 	$vars = '';	
 	check_actions('do_submit2', $vars);
 	$_SESSION['step'] = 2;
 	if (Submit_Complete_Step2)
 	    do_submit3();
 	else
-		if($maintenance_mode=="true" && $current_user->user_level!="god"){
-			$main_smarty->display($the_template . '/maintenance.tpl');
-		} else {
-			if($maintenance_mode=="true" && $current_user->user_level=="god"){
-				echo '<div class="alert alert-error" style="margin-bottom:0;"><button class="close" data-dismiss="alert">×</button>'.$main_smarty->get_config_vars('PLIGG_Maintenance_Admin_Warning').'</div>';
-			}
-			$main_smarty->display($the_template . '/pligg.tpl');
-		}
+	    $main_smarty->display($the_template . '/pligg.tpl');
 	}
 }
 
@@ -638,15 +600,8 @@ function link_errors($linkres)
 	
 	if($error == true){
 		$main_smarty->assign('link_id', $linkres->id);
-		if($maintenance_mode=="true" && $current_user->user_level!="god"){
-			$main_smarty->display($the_template . '/maintenance.tpl');
-		} else {
-			if($maintenance_mode=="true" && $current_user->user_level=="god"){
-				echo '<div class="alert alert-error" style="margin-bottom:0;"><button class="close" data-dismiss="alert">×</button>'.$main_smarty->get_config_vars('PLIGG_Maintenance_Admin_Warning').'</div>';
-			}
-			$main_smarty->assign('tpl_center', $the_template . '/submit_errors');
-			$main_smarty->display($the_template . '/pligg.tpl');
-		}
+		$main_smarty->assign('tpl_center', $the_template . '/submit_errors');
+		$main_smarty->display($the_template . '/pligg.tpl');
 		die();
 	}
 	
@@ -660,16 +615,9 @@ function link_catcha_errors($linkerror)
 
 	if($linkerror == 'captcha_error') { // if no category is selected
 		$main_smarty->assign('submit_error', 'register_captcha_error');
-		if($maintenance_mode=="true" && $current_user->user_level!="god"){
-			$main_smarty->display($the_template . '/maintenance.tpl');
-		} else {
-			if($maintenance_mode=="true" && $current_user->user_level=="god"){
-				echo '<div class="alert alert-error" style="margin-bottom:0;"><button class="close" data-dismiss="alert">×</button>'.$main_smarty->get_config_vars('PLIGG_Maintenance_Admin_Warning').'</div>';
-			}
-			$main_smarty->assign('tpl_center', $the_template . '/submit_errors');
-			$main_smarty->display($the_template . '/pligg.tpl');
-#			$main_smarty->display($the_template . '/submit_errors.tpl');
-		}
+		$main_smarty->assign('tpl_center', $the_template . '/submit_errors');
+		$main_smarty->display($the_template . '/pligg.tpl');
+#		$main_smarty->display($the_template . '/submit_errors.tpl');
 		$error = true;
 	}
 	return $error;

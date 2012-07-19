@@ -106,16 +106,10 @@ function simple_messaging_showpage(){
 		
 		define('modulepage', 'simple_messaging_inbox'); 
 		$main_smarty->assign('modulepage', modulepage);
+	
+		$main_smarty->assign('tpl_center', simple_messaging_tpl_path . 'inbox');
+		$main_smarty->display($the_template . '/pligg.tpl');
 
-		if($maintenance_mode=="true" && $current_user->user_level!="god"){
-		$main_smarty->display($the_template . '/maintenance.tpl');
-		} else {
-			if($maintenance_mode=="true" && $current_user->user_level=="god"){
-				echo '<div class="alert alert-error" style="margin-bottom:0;"><button class="close" data-dismiss="alert">×</button>'.$main_smarty->get_config_vars('PLIGG_Maintenance_Admin_Warning').'</div>';
-			}
-			$main_smarty->assign('tpl_center', simple_messaging_tpl_path . 'inbox');
-			$main_smarty->display($the_template . '/pligg.tpl');
-		}
 	}
 	
 	
@@ -172,15 +166,8 @@ function simple_messaging_showpage(){
 		define('modulepage', 'simple_messaging_sentbox'); 
 		$main_smarty->assign('modulepage', modulepage);
 	
-		if($maintenance_mode=="true" && $current_user->user_level!="god"){
-			$main_smarty->display($the_template . '/maintenance.tpl');
-		} else {
-			if($maintenance_mode=="true" && $current_user->user_level=="god"){
-				echo '<div class="alert alert-error" style="margin-bottom:0;"><button class="close" data-dismiss="alert">×</button>'.$main_smarty->get_config_vars('PLIGG_Maintenance_Admin_Warning').'</div>';
-			}
-			$main_smarty->assign('tpl_center', simple_messaging_tpl_path . 'sent');
-			$main_smarty->display($the_template . '/pligg.tpl');
-		}
+		$main_smarty->assign('tpl_center', simple_messaging_tpl_path . 'sent');
+		$main_smarty->display($the_template . '/pligg.tpl');
 
 	}
 
@@ -207,15 +194,9 @@ function simple_messaging_showpage(){
 		define('modulepage', 'simple_messaging_compose'); 
 		$main_smarty->assign('modulepage', modulepage);
 	
-		if($maintenance_mode=="true" && $current_user->user_level!="god"){
-			$main_smarty->display($the_template . '/maintenance.tpl');
-		} else {
-			if($maintenance_mode=="true" && $current_user->user_level=="god"){
-				echo '<div class="alert alert-error" style="margin-bottom:0;"><button class="close" data-dismiss="alert">×</button>'.$main_smarty->get_config_vars('PLIGG_Maintenance_Admin_Warning').'</div>';
-			}
-			$main_smarty->assign('tpl_center', simple_messaging_tpl_path . 'compose');
-			$main_smarty->display($the_template . '/pligg.tpl');
-		}
+		$main_smarty->assign('tpl_center', simple_messaging_tpl_path . 'compose');
+		$main_smarty->display($the_template . '/pligg.tpl');
+
 	}
 	
 
@@ -239,16 +220,9 @@ function simple_messaging_showpage(){
 		$user_to=new User();
 		$user_to->username = $msg_to;
 		if(!$user_to->read()) {
-			if($maintenance_mode=="true" && $current_user->user_level!="god"){
-				$main_smarty->display($the_template . '/maintenance.tpl');
-			} else {
-				if($maintenance_mode=="true" && $current_user->user_level=="god"){
-					echo '<div class="alert alert-error" style="margin-bottom:0;"><button class="close" data-dismiss="alert">×</button>'.$main_smarty->get_config_vars('PLIGG_Maintenance_Admin_Warning').'</div>';
-				}
-				$main_smarty->assign('message', 'The person you are trying to send a message to does not exist!');
-				$main_smarty->assign('tpl_center', simple_messaging_tpl_path . 'error');
-				$main_smarty->display($the_template . '/pligg.tpl');
-			}
+			$main_smarty->assign('message', 'The person you are trying to send a message to does not exist!');
+			$main_smarty->assign('tpl_center', simple_messaging_tpl_path . 'error');
+			$main_smarty->display($the_template . '/pligg.tpl');
 			die;
 		}
 		$msg_to_ID = $user_to->id;
@@ -263,15 +237,8 @@ function simple_messaging_showpage(){
 
 			$main_smarty->assign('message', $main_smarty->get_config_vars('PLIGG_MESSAGING_Error_'.$msg_result));
 			$main_smarty->config_load(simple_messaging_pligg_lang_conf);
-			if($maintenance_mode=="true" && $current_user->user_level!="god"){
-				$main_smarty->display($the_template . '/maintenance.tpl');
-			} else {
-				if($maintenance_mode=="true" && $current_user->user_level=="god"){
-					echo '<div class="alert alert-error" style="margin-bottom:0;"><button class="close" data-dismiss="alert">×</button>'.$main_smarty->get_config_vars('PLIGG_Maintenance_Admin_Warning').'</div>';
-				}
-				$main_smarty->assign('tpl_center', simple_messaging_tpl_path . 'error');
-				$main_smarty->display($the_template . '/pligg.tpl');
-			}
+			$main_smarty->assign('tpl_center', simple_messaging_tpl_path . 'error');
+			$main_smarty->display($the_template . '/pligg.tpl');
 			die;
 		} else {
 			// The message has been put in the database successfully, so let's alert the recipient by email:
@@ -309,16 +276,10 @@ function simple_messaging_showpage(){
 		
 		define('modulepage', 'viewmsg'); 
 		$main_smarty->assign('modulepage', modulepage);
-		
-		if($maintenance_mode=="true" && $current_user->user_level!="god"){
-			$main_smarty->display($the_template . '/maintenance.tpl');
-		} else {
-			if($maintenance_mode=="true" && $current_user->user_level=="god"){
-				echo '<div class="alert alert-error" style="margin-bottom:0;"><button class="close" data-dismiss="alert">×</button>'.$main_smarty->get_config_vars('PLIGG_Maintenance_Admin_Warning').'</div>';
-			}
-			$main_smarty->assign('tpl_center', simple_messaging_tpl_path . 'show_message');
-			$main_smarty->display($the_template . '/pligg.tpl');
-		}
+	
+		$main_smarty->assign('tpl_center', simple_messaging_tpl_path . 'show_message');
+		$main_smarty->display($the_template . '/pligg.tpl');
+
 	}
 	
 	if($view == "viewsentmsg"){
@@ -338,15 +299,9 @@ function simple_messaging_showpage(){
 		define('modulepage', 'viewsentmsg'); 
 		$main_smarty->assign('modulepage', modulepage);
 	
-		if($maintenance_mode=="true" && $current_user->user_level!="god"){
-			$main_smarty->display($the_template . '/maintenance.tpl');
-		} else {
-			if($maintenance_mode=="true" && $current_user->user_level=="god"){
-				echo '<div class="alert alert-error" style="margin-bottom:0;"><button class="close" data-dismiss="alert">×</button>'.$main_smarty->get_config_vars('PLIGG_Maintenance_Admin_Warning').'</div>';
-			}
-			$main_smarty->assign('tpl_center', simple_messaging_tpl_path . 'show_sent_message');
-			$main_smarty->display($the_template . '/pligg.tpl');
-		}
+		$main_smarty->assign('tpl_center', simple_messaging_tpl_path . 'show_sent_message');
+		$main_smarty->display($the_template . '/pligg.tpl');
+
 	}
 
 	if($view == "delmsg"){
@@ -386,15 +341,9 @@ function simple_messaging_showpage(){
 		define('modulepage', 'reply'); 
 		$main_smarty->assign('modulepage', modulepage);
 	
-		if($maintenance_mode=="true" && $current_user->user_level!="god"){
-			$main_smarty->display($the_template . '/maintenance.tpl');
-		} else {
-			if($maintenance_mode=="true" && $current_user->user_level=="god"){
-				echo '<div class="alert alert-error" style="margin-bottom:0;"><button class="close" data-dismiss="alert">×</button>'.$main_smarty->get_config_vars('PLIGG_Maintenance_Admin_Warning').'</div>';
-			}
-			$main_smarty->assign('tpl_center', simple_messaging_tpl_path . 'compose');
-			$main_smarty->display($the_template . '/pligg.tpl');
-		}
+		$main_smarty->assign('tpl_center', simple_messaging_tpl_path . 'compose');
+		$main_smarty->display($the_template . '/pligg.tpl');
+
 	}
 
 }
@@ -417,15 +366,8 @@ function messaging_get_message_details($msgID){
 		$thisuser=new User();
 		$thisuser->id = $array['sender'];
 		if(!$thisuser->read()) {
-			if($maintenance_mode=="true" && $current_user->user_level!="god"){
-				$main_smarty->display($the_template . '/maintenance.tpl');
-			} else {
-				if($maintenance_mode=="true" && $current_user->user_level=="god"){
-					echo '<div class="alert alert-error" style="margin-bottom:0;"><button class="close" data-dismiss="alert">×</button>'.$main_smarty->get_config_vars('PLIGG_Maintenance_Admin_Warning').'</div>';
-				}
-				$main_smarty->assign('message', 'The person you are trying to send a message to does not exist!');
-				$main_smarty->display(messaging_tpl_path . 'error.tpl');
-			}
+			$main_smarty->assign('message', 'The person you are trying to send a message to does not exist!');
+			$main_smarty->display(messaging_tpl_path . 'error.tpl');
 			die();
 		}
 		$array['sender_name'] = $thisuser->username;
@@ -437,30 +379,16 @@ function messaging_get_message_details($msgID){
 		$thisuser=new User();
 		$thisuser->id = $array['receiver'];
 		if(!$thisuser->read()) {
-			if($maintenance_mode=="true" && $current_user->user_level!="god"){
-				$main_smarty->display($the_template . '/maintenance.tpl');
-			} else {
-				if($maintenance_mode=="true" && $current_user->user_level=="god"){
-					echo '<div class="alert alert-error" style="margin-bottom:0;"><button class="close" data-dismiss="alert">×</button>'.$main_smarty->get_config_vars('PLIGG_Maintenance_Admin_Warning').'</div>';
-				}
-				$main_smarty->assign('message', 'This person doesn\'t seem to exist!');
-				$main_smarty->display(messaging_tpl_path . 'error.tpl');
-			}
+			$main_smarty->assign('message', 'This person doesn\'t seem to exist!');
+			$main_smarty->display(messaging_tpl_path . 'error.tpl');
 			die();
 		}
 		$array['sender_name'] = $current_user->user_login;
 		$thisuser = "";
 		return $array;
 	} else {
-		if($maintenance_mode=="true" && $current_user->user_level!="god"){
-			$main_smarty->display($the_template . '/maintenance.tpl');
-		} else {
-			if($maintenance_mode=="true" && $current_user->user_level=="god"){
-				echo '<div class="alert alert-error" style="margin-bottom:0;"><button class="close" data-dismiss="alert">×</button>'.$main_smarty->get_config_vars('PLIGG_Maintenance_Admin_Warning').'</div>';
-			}
-			$main_smarty->assign('message', 'This is not your message!');
-			$main_smarty->display(messaging_tpl_path . 'error.tpl');
-		}
+		$main_smarty->assign('message', 'This is not your message!');
+		$main_smarty->display(messaging_tpl_path . 'error.tpl');
 		die();
 	}	
 }

@@ -27,6 +27,14 @@ if(!defined('lang_loc')){
 	}
 }
 
+// Check if a .maintenance file exists in the Pligg root directory
+$maintenance_file = "./.maintenance";
+if(file_exists($maintenance_file)){
+	$main_smarty->assign('maintenance_mode', 'true');
+} else {
+	$main_smarty->assign('maintenance_mode', 'false');
+}
+
 $main_smarty->config_dir = "";
 $main_smarty->force_compile = false; // has to be off to use cache
 $main_smarty->config_load(lang_loc . "/languages/lang_" . pligg_language . ".conf");
@@ -39,6 +47,7 @@ if(isset($_POST['username']) && sanitize($_GET['username'], 3) != ''){$main_smar
 $main_smarty->assign('dblang', $dblang);
 $main_smarty->assign('pligg_language', pligg_language);
 $main_smarty->assign('user_logged_in', $current_user->user_login);
+$main_smarty->assign('user_level', $current_user->user_level);
 $main_smarty->assign('user_authenticated', $current_user->authenticated);
 $main_smarty->assign('Enable_Tags', Enable_Tags);
 $main_smarty->assign('Enable_Live', Enable_Live);
