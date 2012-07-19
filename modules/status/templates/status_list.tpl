@@ -131,7 +131,7 @@
 				{checkActionsTpl location="status_submit_2"}
 					<textarea rows="1" class="span7 status_submit_input" name="status">{php}if ($_SESSION['status_text']) print $_SESSION['status_text']; elseif ($user->id != $current_user->user_id) print '@'.$user->username.' ';{/php}</textarea> 
 				{checkActionsTpl location="status_submit_3"}
-				<input class="span2 btn status_submit_submission" value="{#PLIGG_Status_Submit#}" type="submit">
+				<input class="span2 btn btn-primary status_submit_submission" value="{#PLIGG_Status_Submit#}" type="submit">
 				</form>
 			</div>
 			<div class="status_clear"> </div>
