@@ -1,6 +1,7 @@
 {************************************
 ***** Advanced Search Template ******
 *************************************}
+<!-- search_advanced_center.tpl -->
 <script>
 	{literal}
 	function SEO2submit(form)
@@ -29,7 +30,6 @@
 <div class="span7">
 	<form method="get" class="form-horizontal" action="{$URL_search}" {php}	global $URLMethod; if ($URLMethod==2) print "onsubmit='SEO2submit(this); return false;'";{/php}>
 		<fieldset>
-		
 			<div class="control-group">
 				<label for="search" class="control-label">{#PLIGG_Visual_Search_Keywords#}</label>
 				<div class="controls">
@@ -37,7 +37,6 @@
 					<p class="help-block">{#PLIGG_Visual_Search_Keywords_Instructions#}</p>
 				</div>
 			</div>
-		
 			<div class="control-group">
 				<label for="slink" class="control-label">{#PLIGG_Visual_Search_Story#}</label>
 				<div class="controls">
@@ -48,7 +47,6 @@
 					</select>
 				</div>
 			</div>
-		
 			<div class="control-group">
 				<label for="scategory" class="control-label">{#PLIGG_Visual_Search_Category#}</label>
 				<div class="controls">
@@ -57,7 +55,6 @@
 					</select>
 				</div>
 			</div>
-
 			<div class="control-group">
 				<label for="scomments" class="control-label">{#PLIGG_Visual_Search_Comments#}</label>
 				<div class="controls">
@@ -65,7 +62,6 @@
 					<input type="radio" name="scomments" value="0" /> {#PLIGG_Visual_Search_Advanced_No#}
 				</div>
 			</div>
-			
 			<div class="control-group">
 				<label for="stags" class="control-label">{#PLIGG_Visual_Search_Tags#}</label>
 				<div class="controls">
@@ -73,7 +69,6 @@
 					<input type="radio" name="stags" value="0" /> {#PLIGG_Visual_Search_Advanced_No#}
 				</div>
 			</div>
-
 			<div class="control-group">
 				<label for="suser" class="control-label">{#PLIGG_Visual_Search_User#}</label>
 				<div class="controls">
@@ -81,7 +76,6 @@
 					<input type="radio" name="suser" value="0" checked="checked" /> {#PLIGG_Visual_Search_Advanced_No#}
 				</div>
 			</div>
-			
 			<div class="control-group">
 				<label for="date" class="control-label">{#PLIGG_Visual_Advanced_Search_Date#}</label>
 				<div class="controls">
@@ -90,7 +84,6 @@
 					<input type="button" value="{#PLIGG_Visual_Advanced_Search_Select#}" class="btn" onclick="displayDatePicker('date', false, 'ymd', '-');">
 				</div>
 			</div>
-			
 			{php} if (enable_group=='true') { {/php}
 				<div class="control-group">
 					<label for="sgroup" class="control-label">{#PLIGG_Visual_Search_Group#}</label>
@@ -103,7 +96,6 @@
 					</div>
 				</div>
 			{php} }	{/php}
-
 			<div class="control-group">
 				<label for="status" class="control-label">{#PLIGG_Visual_Search_Status#}</label>
 				<div class="controls">
@@ -114,12 +106,11 @@
 					</select>
 				</div>
 			</div>
-
 			<div class="form-actions">
 				<input name="adv" type="hidden" value="1" />		
 				<input name="advancesearch" value="Search " type="submit" class="btn btn-primary" />
 			</div>
-			
 		</fieldset>
 	</form>
 </div>
+<!--/search_advanced_center.tpl -->

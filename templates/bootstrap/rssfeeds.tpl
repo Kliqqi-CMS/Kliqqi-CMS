@@ -1,7 +1,7 @@
 ﻿{************************************
 ********* RSS Feeds Template ********
 *************************************}
-
+<!-- rssfeeds.tpl -->
 <table class="table table-bordered table-striped">
 	<thead>
 		<tr>
@@ -22,3 +22,4 @@
 		{/section}
 	</tbody>
 </table>
+<!--/rssfeeds.tpl -->

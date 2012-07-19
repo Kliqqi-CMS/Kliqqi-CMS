@@ -2,10 +2,9 @@
 ***** User Profile Template *******
  This template controls the main user profile page, and the user history pages
 *************************************}
-
+<!-- user_center.tpl -->
 {checkActionsTpl location="tpl_pligg_profile_start"}
 {checkActionsTpl location="tpl_user_center_just_below_header"}
-
 <ul class="nav nav-tabs" id="profiletabs">
 	{checkActionsTpl location="tpl_pligg_profile_sort_start"}
 	<li {if $user_view eq 'profile'}class="active"{/if}><a {if $user_view eq 'profile'}data-toggle="tab" href="#personal_info"{else}href="{$user_url_personal_data}"{/if} class="navbut{$nav_pd}">{#PLIGG_Visual_User_PersonalData#}</a></li>
@@ -21,23 +20,19 @@
 	{checkActionsTpl location="tpl_pligg_profile_sort_end"}
 	<li><a data-toggle="tab" href="#status_update_module">Status</a></li>
 </ul>
-
 {literal}
-<script>
-$(function () {
-	$('#profiletabs a[href="#personal_info"]').tab('show');
-	$('#profiletabs a[href="#status_update_module"]').tab('show');
-})
-</script>
+	<script>
+		$(function () {
+			$('#profiletabs a[href="#personal_info"]').tab('show');
+			$('#profiletabs a[href="#status_update_module"]').tab('show');
+		})
+	</script>
 {/literal}
-
 {***********************************************************************************}
-
 {if $user_view eq 'profile'}
 	<div id="tabbed" class="tab-content">
 		<div class="tab-pane fade active in" id="personal_info">
 			{checkActionsTpl location="tpl_pligg_profile_info_start"}
-			
 			<div class="span4">
 				<table class="table table-bordered table-striped">
 					<thead class="table_title">
@@ -51,88 +46,76 @@ $(function () {
 							<td>{if $UseAvatars neq "0"}<span id="ls_avatar"><img src="{$Avatar_ImgSrc}" alt="Avatar" align="absmiddle" /></span>{/if} <span style="text-transform:capitalize;">{$user_username}</span></td>
 						</tr>			
 						{if $user_names ne ""}
-						<tr>
-							<td><strong>{#PLIGG_Visual_User_Profile_User#}:</strong></td>
-							<td>{$user_names}</td>
-						</tr>
+							<tr>
+								<td><strong>{#PLIGG_Visual_User_Profile_User#}:</strong></td>
+								<td>{$user_names}</td>
+							</tr>
 						{/if}
-
 						{if $user_url ne ""}
-						<tr>
-							<td><strong>{#PLIGG_Visual_User_Profile_Homepage#}:</strong></td>
-							<td style="text-align:center;"><a href="{$user_url}" target="_blank" rel="nofollow">{$user_url}</a></td>
-						</tr>
+							<tr>
+								<td><strong>{#PLIGG_Visual_User_Profile_Homepage#}:</strong></td>
+								<td style="text-align:center;"><a href="{$user_url}" target="_blank" rel="nofollow">{$user_url}</a></td>
+							</tr>
 						{/if}
-
 						{if $user_publicemail ne ""}
-						<tr>
-							<td><strong>{#PLIGG_Visual_User_Profile_PublicEmail#}:</strong></td>
-							<td>{$user_publicemail}</td>
-						</tr>
+							<tr>
+								<td><strong>{#PLIGG_Visual_User_Profile_PublicEmail#}:</strong></td>
+								<td>{$user_publicemail}</td>
+							</tr>
 						{/if}
-
 						{if $user_location ne ""}
-						<tr>
-							<td><strong>{#PLIGG_Visual_Profile_Location#}:</strong></td>
-							<td>{$user_location}</td>
-						</tr>
+							<tr>
+								<td><strong>{#PLIGG_Visual_Profile_Location#}:</strong></td>
+								<td>{$user_location}</td>
+							</tr>
 						{/if}
-
 						{if $user_occupation ne ""}
-						<tr>
-							<td><strong>{#PLIGG_Visual_Profile_Occupation#}:</strong></td>
-							<td>{$user_occupation}</td>
-						</tr>
+							<tr>
+								<td><strong>{#PLIGG_Visual_Profile_Occupation#}:</strong></td>
+								<td>{$user_occupation}</td>
+							</tr>
 						{/if}
-
 						{if $user_aim ne ""}
-						<tr>
-							<td><strong>{#PLIGG_Visual_User_Profile_AIM#}:</strong></td>
-							<td>{$user_aim}</td>
-						</tr>
+							<tr>
+								<td><strong>{#PLIGG_Visual_User_Profile_AIM#}:</strong></td>
+								<td>{$user_aim}</td>
+							</tr>
 						{/if}
-
 						{if $user_msn ne ""}
-						<tr>
-							<td><strong>{#PLIGG_Visual_User_Profile_MSN#}:</strong></td>
-							<td>{$user_msn}</td>
-						</tr>
+							<tr>
+								<td><strong>{#PLIGG_Visual_User_Profile_MSN#}:</strong></td>
+								<td>{$user_msn}</td>
+							</tr>
 						{/if}
-
 						{if $user_yahoo ne ""}
-						<tr>
-							<td><strong>{#PLIGG_Visual_User_Profile_Yahoo#}:</strong></td>
-							<td>{$user_yahoo}</td>
-						</tr>
+							<tr>
+								<td><strong>{#PLIGG_Visual_User_Profile_Yahoo#}:</strong></td>
+								<td>{$user_yahoo}</td>
+							</tr>
 						{/if}
-
 						{if $user_gtalk ne ""}
-						<tr>
-							<td><strong>{#PLIGG_Visual_User_Profile_GTalk#}:</strong></td>
-							<td>{$user_gtalk}</td>
-						</tr>
+							<tr>
+								<td><strong>{#PLIGG_Visual_User_Profile_GTalk#}:</strong></td>
+								<td>{$user_gtalk}</td>
+							</tr>
 						{/if}
-
 						{if $user_skype ne ""}
-						<tr>
-							<td><strong>{#PLIGG_Visual_User_Profile_Skype#}:</strong></td>
-							<td>{$user_skype}</td>
-						</tr>
+							<tr>
+								<td><strong>{#PLIGG_Visual_User_Profile_Skype#}:</strong></td>
+								<td>{$user_skype}</td>
+							</tr>
 						{/if}
-
 						{if $user_irc ne ""}
-						<tr>
-							<td><strong>{#PLIGG_Visual_User_Profile_IRC#}:</strong></td>
-							<td><a href="{$user_irc}" target="_blank">{$user_irc}</a></td>
-						</tr>
+							<tr>
+								<td><strong>{#PLIGG_Visual_User_Profile_IRC#}:</strong></td>
+								<td><a href="{$user_irc}" target="_blank">{$user_irc}</a></td>
+							</tr>
 						{/if}
 					</tbody>
 				</table>
 				{checkActionsTpl location="tpl_show_extra_profile"}
 			</div>
-			
 			{checkActionsTpl location="tpl_pligg_profile_info_middle"}
-			
 			<div id="stats" class="span4">
 				<table class="table table-bordered table-striped">
 					<thead class="table_title">
@@ -165,22 +148,18 @@ $(function () {
 							<td><strong>{#PLIGG_Visual_User_Profile_Total_Links#}:</strong></td>
 							<td>{$user_total_links}</td>
 						</tr>
-						
 						<tr>
 							<td><strong>{#PLIGG_Visual_User_Profile_Published_Links#}:</strong></td>
 							<td>{$user_published_links}</td>
 						</tr>
-						
 						<tr>
 							<td><strong>{#PLIGG_Visual_User_Profile_Total_Comments#}:</strong></td>
 							<td>{$user_total_comments}</td>
 						</tr>
-						
 						<tr>
 							<td><strong>{#PLIGG_Visual_User_Profile_Total_Votes#}:</strong></td>
 							<td>{$user_total_votes}</td>
 						</tr>
-						
 						{*
 						<tr>
 							<td><strong>{#PLIGG_Visual_User_Profile_Published_Votes#}:</strong></td>
@@ -190,7 +169,6 @@ $(function () {
 					</tbody>
 				</table>
 			</div>
-			
 			{if $enable_group eq "true"}
 				<div id="groups" class="span4">
 					<legend>{#PLIGG_Visual_User_Profile_User_Groups#}</legend>
@@ -206,7 +184,6 @@ $(function () {
 					</table>
 				</div>
 			{/if}
-			
 			{if $Allow_Friends neq "0"}
 				<div id="friends" class="span4">
 					<legend>{#PLIGG_Visual_LS_My_Friends#}</legend>
@@ -243,7 +220,6 @@ $(function () {
 					{/if}
 				</div>
 			{/if}
-			
 			<div id="user_search" class="span4">
 				<legend>{#PLIGG_Visual_AdminPanel_Users#}</legend>
 				<table class="table table-bordered table-striped">
@@ -251,11 +227,7 @@ $(function () {
 						{if $user_authenticated eq true} 
 							<tr>
 								<td colspan="2">
-									<form action="{$my_pligg_base}/user.php" method="get"
-										{php}
-										global $URLMethod, $my_base_url, $my_pligg_base;
-										if ($URLMethod==2) print "onsubmit='document.location.href=\"{$my_base_url}{$my_pligg_base}/user/search/\"+encodeURIComponent(this.keyword.value); return false;'";
-										{/php}>
+									<form action="{$my_pligg_base}/user.php" method="get" {php}	global $URLMethod, $my_base_url, $my_pligg_base; if ($URLMethod==2) print "onsubmit='document.location.href=\"{$my_base_url}{$my_pligg_base}/user/search/\"+encodeURIComponent(this.keyword.value); return false;'"; {/php}>
 										<input type="hidden" name="view" value="search">
 										<input type="text" name="keyword" style="width:220px;margin:6px 0 0 6px">
 										<input type="submit" value="{#PLIGG_Visual_User_Search_Users#}" class="btn" style="margin-top:4px;">
@@ -296,27 +268,19 @@ $(function () {
 		{checkActionsTpl location="tpl_pligg_profile_tab_insert"}
 	</div>
 {/if}
-
 {***********************************************************************************}
-
 {if $user_view eq 'search'}
-
 	{if $Allow_Friends neq "0"}	
 		<div id="search_users">
-			<form action="{$my_pligg_base}/user.php" method="get"
-	{php}
-	global $URLMethod, $my_base_url, $my_pligg_base;
-	if ($URLMethod==2) print "onsubmit='document.location.href=\"{$my_base_url}{$my_pligg_base}/user/search/\"+encodeURIComponent(this.keyword.value); return false;'";
-	{/php}
->
-			<input type="hidden" name="view" value="search">
+			<form action="{$my_pligg_base}/user.php" method="get" {php} global $URLMethod, $my_base_url, $my_pligg_base; if ($URLMethod==2) print "onsubmit='document.location.href=\"{$my_base_url}{$my_pligg_base}/user/search/\"+encodeURIComponent(this.keyword.value); return false;'";{/php}>
+				<input type="hidden" name="view" value="search">
 				{if $get.keyword neq ""}
 					{assign var=searchboxtext value=$get.keyword}
 				{else}
 					{assign var=searchboxtext value=#PLIGG_Visual_Search_SearchDefaultText#}			
 				{/if}
-			<input type="text" name="keyword" class="field" value="{$searchboxtext}" onfocus="if(this.value == '{$searchboxtext}') {ldelim}this.value = '';{rdelim}" onblur="if (this.value == '') {ldelim}this.value = '{$searchboxtext}';{rdelim}">
-			<input type="submit" value="{#PLIGG_Visual_User_Search_Users#}" class="button">
+				<input type="text" name="keyword" class="field" value="{$searchboxtext}" onfocus="if(this.value == '{$searchboxtext}') {ldelim}this.value = '';{rdelim}" onblur="if (this.value == '') {ldelim}this.value = '{$searchboxtext}';{rdelim}">
+				<input type="submit" value="{#PLIGG_Visual_User_Search_Users#}" class="button">
 			</form>
 		</div>
 		{if $user_login neq $user_logged_in}
@@ -338,14 +302,10 @@ $(function () {
 			&nbsp;|&nbsp;
 			<img src="{$my_pligg_base}/templates/{$the_template}/images/friends2.png" align="absmiddle" />
 			<a href="{$user_url_friends2}">{#PLIGG_Visual_User_Profile_View_Friends_2#}</a> 
-
-			
 		{/if} 
 	{/if}
-
 	{if $userlist}
 		<h2>{#PLIGG_Visual_Search_SearchResults#} &quot;{$search}&quot;</h2>
-
 		<table class="table table-bordered table-striped">
 			<thead class="table_title">
 				<tr>
@@ -379,37 +339,25 @@ $(function () {
 	{else}
 		<h2>{#PLIGG_Visual_Search_NoResults#} '{$search}'</h2>
 	{/if}
-	
 {/if}
-
 {***********************************************************************************}
-
 {if $user_view eq 'viewfriends'}
 	<div id="navbar">
 		{if $Allow_Friends neq "0"}
 			{if $user_authenticated eq true} 
 				<div id="search_users">
-					<form action="{$my_pligg_base}/user.php" method="get"
-		{php}
-		global $URLMethod, $my_base_url, $my_pligg_base;
-		if ($URLMethod==2) print "onsubmit='document.location.href=\"{$my_base_url}{$my_pligg_base}/user/search/\"+encodeURIComponent(this.keyword.value); return false;'";
-		{/php}
->
-					<input type="hidden" name="view" value="search">
-					<input type="text" name="keyword" class="field">
-					<input type="submit" value="{#PLIGG_Visual_User_Search_Users#}" class="button">
+					<form action="{$my_pligg_base}/user.php" method="get" {php} global $URLMethod, $my_base_url, $my_pligg_base; if ($URLMethod==2) print "onsubmit='document.location.href=\"{$my_base_url}{$my_pligg_base}/user/search/\"+encodeURIComponent(this.keyword.value); return false;'";{/php}>
+						<input type="hidden" name="view" value="search">
+						<input type="text" name="keyword" class="field">
+						<input type="submit" value="{#PLIGG_Visual_User_Search_Users#}" class="button">
 					</form>
 				</div>
 			{/if}
-			
 			<img src="{$my_pligg_base}/templates/{$the_template}/images/friends2.png" align="absmiddle" /> 
 			<a href="{$user_url_friends2}">{#PLIGG_Visual_User_Profile_View_Friends_2#}</a> 
-
 		{/if}
 	</div>
-
 	<h2>{#PLIGG_Visual_User_Profile_Your_Friends#}</h2>
-
 	{if $friends}
 	  	<table>
 		<th style="width:250px;text-align:left;">{#PLIGG_Visual_User_Profile_Username#}</th>
@@ -433,26 +381,19 @@ $(function () {
 		<h2 style="text-align:center;"><span style="text-transform:capitalize;">{$user_username}</span> {#PLIGG_Visual_User_Profile_No_Friends#}</h2>
 	{/if}
 {/if}
-
 {***********************************************************************************}
-
 {if $user_view eq 'viewfriends2'}
-
 	{if $Allow_Friends neq "0"}	 
 		{if $user_authenticated eq true} 
-			<form action="{$my_pligg_base}/user.php" method="get" {php}
-				global $URLMethod, $my_base_url, $my_pligg_base;
-				if ($URLMethod==2) print "onsubmit='document.location.href=\"{$my_base_url}{$my_pligg_base}/user/search/\"+encodeURIComponent(this.keyword.value); return false;'";
-			{/php}>
-			<input type="hidden" name="view" value="search">
-			<input type="text" name="keyword" class="field">
-			<input type="submit" value="{#PLIGG_Visual_User_Search_Users#}" class="button">
+			<form action="{$my_pligg_base}/user.php" method="get" {php} global $URLMethod, $my_base_url, $my_pligg_base; if ($URLMethod==2) print "onsubmit='document.location.href=\"{$my_base_url}{$my_pligg_base}/user/search/\"+encodeURIComponent(this.keyword.value); return false;'";{/php}>
+				<input type="hidden" name="view" value="search">
+				<input type="text" name="keyword" class="field">
+				<input type="submit" value="{#PLIGG_Visual_User_Search_Users#}" class="button">
 			</form>
 		{/if}		
 		<img src="{$my_pligg_base}/templates/{$the_template}/images/friends.png" align="absmiddle" />
 		<a href="{$user_url_friends}">{#PLIGG_Visual_User_Profile_View_Friends#}</a>
 	{/if}
-
 	<h2>{#PLIGG_Visual_User_Profile_Viewing_Friends_2a#}</h2>
 	{if $friends}
 	  	<table>
@@ -476,19 +417,13 @@ $(function () {
 	{else}
 		<h2>{$user_username} {#PLIGG_Visual_User_Profile_No_Friends_2#}</h2>
 	{/if}
-	
 {/if}
-
 {***********************************************************************************}
-
 {if $user_view eq 'removefriend'}
 	<div id="navbar">
 		{if $Allow_Friends neq "0"}		
 			{if $user_authenticated eq true} 
-				<form action="{$my_pligg_base}/user.php" method="get" {php}
-					global $URLMethod, $my_base_url, $my_pligg_base;
-					if ($URLMethod==2) print "onsubmit='document.location.href=\"{$my_base_url}{$my_pligg_base}/user/search/\"+encodeURIComponent(this.keyword.value); return false;'";
-					{/php}>
+				<form action="{$my_pligg_base}/user.php" method="get" {php} global $URLMethod, $my_base_url, $my_pligg_base;	if ($URLMethod==2) print "onsubmit='document.location.href=\"{$my_base_url}{$my_pligg_base}/user/search/\"+encodeURIComponent(this.keyword.value); return false;'";{/php}>
 					<input type="hidden" name="view" value="search">
 					<input type="text" name="keyword" class="field">
 					<input type="submit" value="{#PLIGG_Visual_User_Search_Users#}" class="button">
@@ -501,43 +436,32 @@ $(function () {
 				<img src="{$my_pligg_base}/templates/{$the_template}/images/friends2.png" align="absmiddle" />
 				<a href="{$user_url_friends2}">{#PLIGG_Visual_User_Profile_View_Friends_2#}</a>	  
 			{/if}
-
 		{/if}
 	</div>
-
 	<h2>{#PLIGG_Visual_User_Profile_Friend_Removed#}</h2>
-	
 {/if}
-
 {***********************************************************************************}
-
 {if $user_view eq 'addfriend'}
 	{if $Allow_Friends neq "0"}	 
 		{if $user_authenticated eq true} 
-			<form action="{$my_pligg_base}/user.php" method="get" {php}
-				global $URLMethod, $my_base_url, $my_pligg_base;
-				if ($URLMethod==2) print "onsubmit='document.location.href=\"{$my_base_url}{$my_pligg_base}/user/search/\"+encodeURIComponent(this.keyword.value); return false;'";
-			{/php}>
+			<form action="{$my_pligg_base}/user.php" method="get" {php}	global $URLMethod, $my_base_url, $my_pligg_base; if ($URLMethod==2) print "onsubmit='document.location.href=\"{$my_base_url}{$my_pligg_base}/user/search/\"+encodeURIComponent(this.keyword.value); return false;'"; {/php}>
 				<input type="hidden" name="view" value="search">
 				<input type="text" name="keyword" class="field">
 				<input type="submit" value="{#PLIGG_Visual_User_Search_Users#}" class="button">
 			</form>
 		{/if}
-		
 		<img src="{$my_pligg_base}/templates/{$the_template}/images/friends.png" align="absmiddle" />
 		<a href="{$user_url_friends}">{#PLIGG_Visual_User_Profile_View_Friends#}</a>
 		&nbsp;|&nbsp;
 		<img src="{$my_pligg_base}/templates/{$the_template}/images/friends2.png" align="absmiddle" />
 		<a href="{$user_url_friends2}">{#PLIGG_Visual_User_Profile_View_Friends_2#}</a>
-
 	{/if}
-
 	<h2 style="text-align:center;">{#PLIGG_Visual_User_Profile_Friend_Added#}</h2>
-	
 {/if}
-
 {***********************************************************************************}
-
-{if isset($user_page)}{$user_page}{/if}
+{if isset($user_page)}
+	{$user_page}
+{/if}
 {if isset($user_pagination)}{checkActionsTpl location="tpl_pligg_pagination_start"}{$user_pagination}{checkActionsTpl location="tpl_pligg_pagination_end"}{/if}
 {checkActionsTpl location="tpl_pligg_profile_end"}
+<!--/user_center.tpl -->

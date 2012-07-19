@@ -1,7 +1,7 @@
 {************************************
 ******* User Settings Template ******
 *************************************}
-
+<!-- profile_center.tpl -->
 <ul class="nav nav-tabs" id="profiletabs">
 	{checkActionsTpl location="tpl_pligg_profile_sort_start"}
 	<li><a href="{$user_url_personal_data}">{#PLIGG_Visual_User_PersonalData#}</a></li>
@@ -14,11 +14,8 @@
 	<li><a href="{$user_url_saved}">{#PLIGG_Visual_User_NewsSaved#}</a></li>
 	{checkActionsTpl location="tpl_pligg_profile_sort_end"}
 </ul>
-
 {if $savemsg neq ""}<div class="alert alert-success fade in"><a data-dismiss="alert" class="close">×</a>{$savemsg}</div>{/if} 
-
 {checkActionsTpl location="tpl_pligg_profile_info_start"}
-
 <div id="profile_container" style="position: relative;">
 	{if $UseAvatars neq false}
 		<table class="table table-bordered table-striped span4" style="position: absolute; top: 0px; left: 0px;">
@@ -61,13 +58,11 @@
 				</tr>
 			</tbody>
 		</table>
+		<!--/$UseAvatars-->
 	{/if}
-		
 	<form action="" method="post" id="thisform">
-		
 		{checkActionsTpl location="tpl_profile_center_fields"}
 		{checkActionsTpl location="tpl_pligg_profile_info_middle"}
-			
 		<table class="table table-bordered table-striped span4">
 			<thead class="table_title">
 				<tr>
@@ -144,9 +139,7 @@
 			
 			</tbody>
 		</table>
-		
 		{checkActionsTpl location="tpl_pligg_profile_settings_start"}		
-		
 		<table class="table table-bordered table-striped span4">
 			<thead class="table_title">
 				<tr>
@@ -174,9 +167,7 @@
 				</td>
 			</tr>
 		</table>
-		
 		{checkActionsTpl location="tpl_pligg_profile_settings_end"}
-
 		<table class="table table-bordered table-striped span4">
 			<thead class="table_title">
 				<tr>
@@ -195,7 +186,7 @@
 				<td><input type="password" id="verify" name="newpassword2" size="25" tabindex="15"/></td>
 			</tr>
 		</table>
-
+	{* There is still an open <form> that needs to be closed *}
 </div>
 <div style="clear:both;"></div>
 <div class="form-actions">
@@ -203,7 +194,6 @@
 	<input type="hidden" name="user_id" value="{$user_id}">	
 	<input type="submit" name="save_profile" value="{#PLIGG_Visual_Profile_Save#}" class="btn btn-primary" tabindex="16">
 </div>
-
 	</form>
-
 {checkActionsTpl location="tpl_pligg_profile_end"}
+<!--/profile_center.tpl -->

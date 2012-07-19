@@ -1,17 +1,15 @@
 {************************************
 ****** First Sidebar Template *******
 *************************************}
-
+<!-- sidebar.tpl -->
 {if $pagename neq "submit"}
-
 	{checkActionsTpl location="tpl_pligg_sidebar2_start"}
-	
 	<!-- START SEARCH -->
 	<script type="text/javascript">
-	{if !isset($searchboxtext)}
-		{assign var=searchboxtext value=#PLIGG_Visual_Search_SearchDefaultText#}			
-	{/if}
-	var some_search='{$searchboxtext}';
+		{if !isset($searchboxtext)}
+			{assign var=searchboxtext value=#PLIGG_Visual_Search_SearchDefaultText#}			
+		{/if}
+		var some_search='{$searchboxtext}';
 	</script>
 	<div class="search">
 		<form action="{$my_pligg_base}/search.php" method="get" name="thisform-search" id="thisform-search" {if $urlmethod==2}onsubmit='document.location.href="{$my_base_url}{$my_pligg_base}/search/"+this.search.value.replace(/\//g,"|").replace(/\?/g,"%3F"); return false;'{/if}>
@@ -21,13 +19,8 @@
 	</div>
 	<div class="clear"></div>
 	<!-- END SEARCH -->
-		
 	{checkActionsTpl location="tpl_pligg_sidebar_middle"}
-	
-	<!-- START ABOUT -->
-		{assign var=sidebar_module value="about_box"}{include file=$the_template_sidebar_modules."/wrapper.tpl"}
-	<!-- END ABOUT -->
-
+	{assign var=sidebar_module value="about_box"}{include file=$the_template_sidebar_modules."/wrapper.tpl"}
 	{checkActionsTpl location="tpl_pligg_sidebar2_end"}
-	
 {/if}
+<!--/sidebar.tpl -->

@@ -76,10 +76,6 @@ float:left;
 float:right;
 }
 
-.comment-form {
-width:90%;
-}
-
 .whovotedwrapper ul {
 padding:0;
 margin:0;
@@ -128,14 +124,18 @@ text-align:center;
     margin-bottom: 0px;
 }
 .comment-left {
-    float: left;
-    margin-bottom: 18px;
-    padding: 0;
+    margin:0;
+}
+
+.comment-right {
+	margin:0;
+}
+
+.child-comment{
+	margin-left:30px;
 }
 
 .avatar {}
-
-.comment-right {}
 
 .comment-data{
 	margin-bottom: 9px;
@@ -182,6 +182,9 @@ padding: 0px 10px;
 float:right;
 }
 
+.comment-form {
+width:90%;
+}
 
 /********************* SIDEBAR ********************/
 
@@ -350,7 +353,7 @@ width:282px;
 background-image:url(images/ajax-loader.gif);
 background-repeat:no-repeat;
 }
-.maintenance_mod{
+.maintenance_mode{
 	display:block;
     /*set the div in the center of the screen*/
     position:absolute;

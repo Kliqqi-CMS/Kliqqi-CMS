@@ -1,13 +1,11 @@
 {************************************
 ****** Submit Errors Template *******
 *************************************}
-
+<!-- submit_errors.tpl -->
 <fieldset>
-
 	{************************************
 	******* Submit Step 2 Errors ********
 	*************************************}
-
 	{if $submit_error eq 'invalidurl'}
 		<div class="alert">
 			<p>{#PLIGG_Visual_Submit2Errors_InvalidURL#}{if $submit_url eq "http://"}. {#PLIGG_Visual_Submit2Errors_InvalidURL_Specify#}{else}: {$submit_url}{/if}</p>
@@ -17,7 +15,6 @@
 			</form>
 		</div>
 	{/if}
-
 	{if $submit_error eq 'dupeurl'}
 		<div class="alert">
 			<p>{#PLIGG_Visual_Submit2Errors_DupeArticleURL#}: {$submit_url}</p>
@@ -29,13 +26,10 @@
 			</form>
 		</div>
 	{/if}
-
 	{checkActionsTpl location="tpl_pligg_submit_error_2"}
-
 	{************************************
 	******* Submit Step 3 Errors ********
 	*************************************}
-
 	{if $submit_error eq 'badkey'}
 		<div class="alert">
 			<p>{#PLIGG_Visual_Submit3Errors_BadKey#}</p>
@@ -45,7 +39,6 @@
 			</form>
 		</div>
 	{/if}
-
 	{if $submit_error eq 'hashistory'}
 		<div class="alert">
 			<p>{#PLIGG_Visual_Submit3Errors_HasHistory#}: {$submit_error_history}</p>
@@ -55,7 +48,6 @@
 			</form>
 		</div>
 	{/if}
-
 	{if $submit_error eq 'urlintitle'}
 		<div class="alert">
 			<p>{#PLIGG_Visual_Submit3Errors_URLInTitle#}</p>
@@ -65,7 +57,6 @@
 			</form>
 		</div>
 	{/if}
-
 	{if $submit_error eq 'incomplete'}
 		<div class="alert">
 			<p>{#PLIGG_Visual_Submit3Errors_Incomplete#}</p>
@@ -75,7 +66,6 @@
 			</form>
 		</div>
 	{/if}
-
 	{if $submit_error eq 'long_title'}
 		<div class="alert">
 			<p>{#PLIGG_Visual_Submit3Errors_Long_Title#}</p>
@@ -85,7 +75,6 @@
 			</form>
 		</div>
 	{/if}
-
 	{if $submit_error eq 'long_content'}
 		<div class="alert">
 			<p>{#PLIGG_Visual_Submit3Errors_Long_Content#}</p>
@@ -95,7 +84,6 @@
 			</form>
 		</div>
 	{/if}
-
 	{if $submit_error eq 'long_tags'}
 		<div class="alert">
 			<p>{#PLIGG_Visual_Submit3Errors_Long_Tags#}</p>
@@ -105,7 +93,6 @@
 			</form>
 		</div>
 	{/if}
-
 	{if $submit_error eq 'long_summary'}
 		<div class="alert">
 			<p>{#PLIGG_Visual_Submit3Errors_Long_Summary#}</p>
@@ -115,7 +102,6 @@
 			</form>
 		</div>
 	{/if}
-
 	{if $submit_error eq 'nocategory'}
 		<div class="alert">
 		<p>{#PLIGG_Visual_Submit3Errors_NoCategory#}</p>
@@ -125,7 +111,6 @@
 			</form>
 		</div>
 	{/if}
-
 	{checkActionsTpl location="tpl_pligg_submit_error_3"}
-
 </fieldset>
+<!--/submit_errors.tpl -->

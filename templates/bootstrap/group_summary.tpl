@@ -1,7 +1,7 @@
 ﻿{************************************
 ******* Group Story Template ********
 *************************************}
-
+<!-- group_summary.tpl -->
 <div class="group_container">
 	<div style="float:left;width:100px;margin:0 0 10px 0;">
 		<a href="{$group_story_url}"><img src="{$imgsrc}" alt="{$group_name} Avatar" class="thumbnail" /></a>
@@ -28,7 +28,6 @@
 		<span class="group_members"> with {$group_members} {#PLIGG_Visual_Group_Member#}</span>
 		<br />
 		<p class="group_description">{$group_description}</p>
-		
 		{if $pagename eq 'group_story'}
 			{checkActionsTpl location="tpl_pligg_group_list_end"}
 			{if $user_logged_in neq $group_submitter}
@@ -55,7 +54,6 @@
 				<a class="btn" href="{$group_edit_url}"><span class="icon-edit"></span> {#PLIGG_Visual_Group_Text_edit#}</a>
 				<a class="btn" href="#groupavatar" data-toggle="modal"><span class="icon-picture"></span> {#PLIGG_Visual_Group_Avatar_Upload#}</a>
 				<a class="btn btn-danger" onclick="return confirm('{#PLIGG_Visual_Group_Delete_Confirm#}')" href={$group_delete_url}><span class="icon-white icon-trash"></span> {#PLIGG_Visual_Group_Text_Delete#}</a>
-			
 				{if $Avatar_uploaded neq ''}
 					<br />
 					<div class="alert">
@@ -63,7 +61,6 @@
 						{$Avatar_uploaded}
 					</div>
 				{/if}
-				
 				{* Avatar upload modal *}
 				<div class="modal hide fade" id="groupavatar" style="display: none;">
 					<form method="POST" enctype="multipart/form-data" name="image_upload_form" action="{$form_action}">
@@ -85,7 +82,6 @@
 						</div>
 					</form>
 				</div>
-				
 			{/if}
 		{elseif $group_status eq 'disable'}
 			<div class='group_approve'>
@@ -95,3 +91,4 @@
 	</div>
 	<div style="clear:both;"></div>
 </div>
+<!--/group_summary.tpl -->

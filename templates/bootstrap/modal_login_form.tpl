@@ -1,11 +1,11 @@
 {************************************
 ******* Login Popup Template ********
 *************************************}
-
+<!-- modal_login_form.tpl -->
 <div id="LoginModal" class="modal hide fade LoginModal">
 	<div class="modal-header">
-	  <button class="close" data-dismiss="modal">&times;</button>
-	  <h3>{#PLIGG_Visual_Login_Title#}</h3>
+		<button class="close" data-dismiss="modal">&times;</button>
+		<h3>{#PLIGG_Visual_Login_Title#}</h3>
 	</div>
 	{checkActionsTpl location="tpl_pligg_register_start"}
 	<form id="signin" action="{$URL_login}" method="post">	
@@ -35,3 +35,4 @@
 		</div>
 	 </form> 
 </div>
+<!--/modal_login_form.tpl -->

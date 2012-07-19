@@ -1,14 +1,11 @@
 {************************************
 ***** Individual Group Template *****
 *************************************}
-
+<!-- group_story_center.tpl -->
 {if $enable_group eq "true"}
 	{checkActionsTpl location="tpl_pligg_group_start"}
 	{include file=$the_template."/group_summary.tpl"}
 	{checkActionsTpl location="tpl_pligg_group_end"}
-	{*down tabs begins*}
-	
-	
 	<ul id="storytabs" class="nav nav-tabs">
 		{checkActionsTpl location="tpl_pligg_group_sort_start"}
 		{if $groupview eq "published"}<li class="active"><a href="{$groupview_published}"><span class="active">{#PLIGG_Visual_Group_Published#}</span></a>{else}<li><a href="{$groupview_published}">{#PLIGG_Visual_Group_Published#}</a>{/if}</li>
@@ -17,9 +14,7 @@
 		{if $groupview eq "members"}<li class="active"><a href="{$groupview_members}"><span class="active">{#PLIGG_Visual_Group_Member#}</span></a>{else}<li><a href="{$groupview_members}">{#PLIGG_Visual_Group_Member#}</a>{/if}</li>
 		{checkActionsTpl location="tpl_pligg_group_sort_end"}
 	</ul>
-	
 	<div class="tab-content" id="tabbed">
-		
 		{if $groupview eq "published"}
 			{$group_display}
 			<div style="clear:both;"></div>
@@ -33,7 +28,6 @@
 			<div style="clear:both;"></div>
 			{$group_story_pagination}
 		{elseif $groupview eq "members"}
-			
 			<table class="table table-bordered table-striped">
 				<thead>
 					<tr>
@@ -50,8 +44,7 @@
 					{$member_display}
 				</tbody>
 			</table>
-		{/if}		
-	
+		{/if}
 	</div>
-	
 {/if}
+<!--/group_story_center.tpl -->

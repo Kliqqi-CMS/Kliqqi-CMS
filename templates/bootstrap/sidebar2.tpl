@@ -1,9 +1,8 @@
 {************************************
 ****** Second Sidebar Template ******
 *************************************}
-
+<!-- sidebar2.tpl -->
 {checkActionsTpl location="tpl_pligg_sidebar_start"}
-
 {if $pagename eq "cloud"}
 	<div class="headline">
 		<div class="sectiontitle">{#PLIGG_Visual_Pligg_Queued_Sort#} {#PLIGG_Visual_Tags_Link_Summary#}</div>
@@ -20,7 +19,6 @@
 		</ul>   
 	</div>
 {/if}
-
 {if $pagename eq "live" || $pagename eq "live_unpublished" || $pagename eq "live_published" || $pagename eq "live_comments"}
 	<div class="headline">
 		<div class="sectiontitle">{#PLIGG_Visual_Pligg_Queued_Sort#} {#PLIGG_Visual_Live#}</div>
@@ -34,11 +32,12 @@
 		</ul>
 	</div>	
 {/if}
- 
 {checkActionsTpl location="tpl_pligg_sidebar_stories_u"}
 {checkActionsTpl location="tpl_pligg_sidebar_stories"}
 {checkActionsTpl location="tpl_pligg_sidebar_comments"}
-
-{if $Enable_Tags} {assign var=sidebar_module value="tags"}{include file=$the_template_sidebar_modules."/wrapper.tpl"} {/if}
-
+{if $Enable_Tags}
+	{assign var=sidebar_module value="tags"}
+	{include file=$the_template_sidebar_modules."/wrapper.tpl"}
+{/if}
 {checkActionsTpl location="tpl_pligg_sidebar_end"}
+<!--/sidebar2.tpl -->

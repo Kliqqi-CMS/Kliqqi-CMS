@@ -1,9 +1,8 @@
 {************************************
 ****** Live Published Template ******
 *************************************}
-
-<h1>{#PLIGG_Visual_Live#} {#PLIGG_Visual_Breadcrumb_Published#}</h1><br />
-
+<!-- live_published_center.tpl -->
+<legend>{#PLIGG_Visual_Live#} {#PLIGG_Visual_Breadcrumb_Published#}</legend>
 <table class="table table-bordered table-striped">
 	<thead>
 		<tr class="live2-item">
@@ -26,7 +25,7 @@
 	{/section}
 	</tbody>
 </table>
-
 {checkActionsTpl location="tpl_pligg_pagination_start"}
 {$live_pagination}
 {checkActionsTpl location="tpl_pligg_pagination_end"}
+<!--/live_published_center.tpl -->

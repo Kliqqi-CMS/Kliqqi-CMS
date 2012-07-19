@@ -2,12 +2,12 @@
 **** Individual Comment Template ****
  INFO: http://forums.pligg.com/glossary/3-templates/67-comment_show-tpl.html
 *************************************}
-
+<!-- comment_show.tpl -->
 <li class="comment">
 	<a id="c{$comment_id}"></a>
 	{checkActionsTpl location="tpl_pligg_story_comments_single_start"}
 	<div class="comment-wrapper clearfix" {if $comment_status neq "published"}style="background-color: #FFFBE4;border:1px solid #DFDFDF;"{/if}>
-		<div class="comment-left span1">
+		<div class="span1 comment-left">
 			{if $UseAvatars neq "0"}<a href="{$user_view_url}"><img src="{$Avatar_ImgSrc}" align="absmiddle" class="avatar" alt="{$user_username}" title="{$user_username}" /></a>{/if}      
 			{if $Enable_Comment_Voting eq 1}
 				<br />
@@ -20,7 +20,7 @@
 				{/if}
 			{/if}
 		</div>
-		<div class="comment-right span7" id="wholecomment{$comment_id}">
+		<div class="span8 comment-right" id="wholecomment{$comment_id}">
 			{if $user_logged_in == $user_userlogin || $isadmin eq 1}
 				<div class="btn-group pull-right">
 					<a class="btn dropdown-toggle" data-toggle="dropdown" href="#">
@@ -51,20 +51,20 @@
 					{$comment_age} {#PLIGG_Visual_Comment_Ago#} 
 				</span>
 				<span class="comment-reply">
-					{if $comment_parent eq 0 && $current_userid neq 0} 
+					{if $current_userid neq 0} 
 						<a data-toggle="modal" href="#replymodal" >{#PLIGG_Visual_Comment_Reply#}</a>
 					{/if}
 				</span>
 				{if $comment_votes lt 0}
 					<span class="comment-hide">
-						<span id = "show_hide_comment_content-{$comment_id}"> <a href = "javascript://"  onclick="var replydisplay=document.getElementById('comment_content-{$comment_id}').style.display ? '' : 'none'; document.getElementById('comment_content-{$comment_id}').style.display = replydisplay;">{#PLIGG_Visual_Comment_Show_Hide#}</a></span>
+						<span id="show_hide_comment_content-{$comment_id}"> <a href = "javascript://"  onclick="var replydisplay=document.getElementById('comment_content-{$comment_id}').style.display ? '' : 'none'; document.getElementById('comment_content-{$comment_id}').style.display = replydisplay;">{#PLIGG_Visual_Comment_Show_Hide#}</a></span>
 					</span>
 				{/if}
 			</p>
 			{if $comment_votes gte 0} 
 				<p id="comment_content-{$comment_id}">{$comment_content}</p> 
 			{else}
-				<p id = "comment_content-{$comment_id}" style="display:none">{$comment_content}</p>
+				<p id="comment_content-{$comment_id}" style="display:none">{$comment_content}</p>
 			{/if}
 		</div>
 
@@ -94,3 +94,4 @@
 	</div>
 	{checkActionsTpl location="tpl_pligg_story_comments_single_end"}
 </li>
+<!--/comment_show.tpl -->

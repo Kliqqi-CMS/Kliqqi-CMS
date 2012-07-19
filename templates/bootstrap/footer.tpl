@@ -1,7 +1,7 @@
 {************************************
 ********** Footer Template **********
 *************************************}
-
+<!-- footer.tpl -->
 <div id="footer">
 	{checkActionsTpl location="tpl_pligg_footer_start"}
 	<span class="subtext"> 
@@ -16,3 +16,4 @@
 	</span>
 	{checkActionsTpl location="tpl_pligg_footer_end"}
 </div>
+<!--/footer.tpl -->

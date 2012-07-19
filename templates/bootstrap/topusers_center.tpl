@@ -1,11 +1,9 @@
 {************************************
 ****** Top Users Page Template ******
 *************************************}
-
-<h1>{#PLIGG_Visual_Top_Users#}</h1><br />
-
+<!--/topusers_center.tpl -->
+<legend>{#PLIGG_Visual_Top_Users#}</legend>
 {checkActionsTpl location="tpl_pligg_topusers_start"}
-
 <table class="table table-bordered table-striped">
 	<thead>
 		<tr>
@@ -25,12 +23,10 @@
 			</th>
 		</tr>
 	</thead>
-
 	{$users_table}
-
 </table>
 {checkActionsTpl location="tpl_pligg_topusers_end"}
-
 {checkActionsTpl location="tpl_pligg_pagination_start"}
 {$topusers_pagination}
 {checkActionsTpl location="tpl_pligg_pagination_end"}
+<!--/topusers_center.tpl -->

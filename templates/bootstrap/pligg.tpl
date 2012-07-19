@@ -100,14 +100,12 @@
 	{else}	
 		<title>{$posttitle} | {$pretitle} {#PLIGG_Visual_Name#}</title>
 	{/if}
-
+	
 	<link rel="alternate" type="application/rss+xml" title="RSS 2.0" href="{$my_base_url}{$my_pligg_base}/rss.php"/>
 	<link rel="icon" href="{$my_pligg_base}/favicon.ico" type="image/x-icon"/>
-	
 	{if $pagename eq 'published'}<link rel="canonical" href="{$my_base_url}{$my_pligg_base}/{$navbar_where.text2}/" />{/if}
 	{if $pagename eq 'index'}<link rel="canonical" href="{$my_base_url}{$my_pligg_base}/" />{/if}
 	{if $pagename eq 'story'}<link rel="canonical" href="{$my_base_url}{$my_pligg_base}{$navbar_where.link2}" />{/if}
-	
 	{checkActionsTpl location="tpl_pligg_head_end"}
 </head>
 <body dir="{#PLIGG_Visual_Language_Direction#}" {$body_args}>
@@ -117,15 +115,12 @@
 		<section id="maincontent">
 			<div class="row">
 				{checkActionsTpl location="tpl_pligg_banner_top"}
-				
 				<!-- START LEFT COLUMN -->
-			{if $pagename eq "submit"}
+			  {if $pagename eq "submit"}
 				<div class="span12">
-			{else}
+			  {else}
 				<div class="span9">
-			{/if}
-			
-				<!-- START BREADCRUMBS -->
+			  {/if}
 					<ul class="breadcrumb">
 						<li><a href="{$my_base_url}{$my_pligg_base}">{#PLIGG_Visual_Home#}</a> <span class="divider">/</span></li>
 						{if $pagename eq "submit"}<li class="active">{#PLIGG_Visual_Submit#}</li>{/if}
@@ -171,7 +166,6 @@
 						{/if}
 						{if $posttitle neq "" && $pagename eq "page"}<li>{$posttitle}</li>{/if}
 						{checkActionsTpl location="tpl_pligg_breadcrumb_end"}
-						
 						{if $pagename eq "published" || $pagename eq "index" || $pagename eq "upcoming" || $pagename eq "groups" {* || $pagename eq "group_story" *} }
 							{* Sort Dropdown *}
 							<div class="btn-group pull-right" style="margin-top:-8px;margin-right:-14px;">
@@ -187,15 +181,6 @@
 												{if $setmeka eq "month"}<li id="active"><a id="current" href="{$index_url_month}"><span class="active">{#PLIGG_Visual_This_Month#}</span></a>{else}<li><a href="{$index_url_month}">{#PLIGG_Visual_This_Month#}</a>{/if}</li>
 												{if $setmeka eq "year"}<li id="active"><a id="current" href="{$index_url_year}"><span class="active">{#PLIGG_Visual_This_Year#}</span></a>{else}<li><a href="{$index_url_year}">{#PLIGG_Visual_This_Year#}</a>{/if}</li>
 												{if $setmeka eq "alltime"}<li id="active"><a id="current" href="{$index_url_alltime}"><span class="active">{#PLIGG_Visual_This_All#}</span></a>{else}<li><a href="{$index_url_alltime}">{#PLIGG_Visual_This_All#}</a>{/if}</li>
-											{* 
-											{elseif $pagename eq "group_story"} 
-												{checkActionsTpl location="tpl_pligg_group_sort_start"}
-												{if $groupview eq "published"}<li id="active"><a id="current" href="{$groupview_published}"><span class="active">{#PLIGG_Visual_Group_Published#}</span></a>{else}<li><a href="{$groupview_published}">{#PLIGG_Visual_Group_Published#}</a>{/if}</li>
-												{if $groupview eq "upcoming"}<li id="active"><a id="current" href="{$groupview_upcoming}"><span class="active">{#PLIGG_Visual_Group_Upcoming#}</span></a>{else}<li><a href="{$groupview_upcoming}">{#PLIGG_Visual_Group_Upcoming#}</a>{/if}</li>
-												{if $groupview eq "shared"}<li id="active"><a id="current" href="{$groupview_sharing}"><span class="active">{#PLIGG_Visual_Group_Shared#}</span></a>{else}<li><a href="{$groupview_sharing}">{#PLIGG_Visual_Group_Shared#}</a>{/if}</li>
-												{if $groupview eq "members"}<li id="active"><a id="current" href="{$groupview_members}"><span class="active">{#PLIGG_Visual_Group_Member#}</span></a>{else}<li><a href="{$groupview_members}">{#PLIGG_Visual_Group_Member#}</a>{/if}</li>
-												{checkActionsTpl location="tpl_pligg_group_sort_end"}
-											*}
 											{elseif $pagename eq "groups"}
 												{if $sortby eq "name"}<li id="active"><a id="current" href="{$group_url_members}"><span class="active">{#PLIGG_Visual_Group_Sort_Members#}</span></a>{else}<li><a href="{$group_url_members}">{#PLIGG_Visual_Group_Sort_Members#}</a>{/if}</li>
 												{if $sortby eq "name"}<li id="active"><a id="current" href="{$group_url_name}"><span class="active">{#PLIGG_Visual_Group_Sort_Name#}</span></a>{else}<li><a href="{$group_url_name}">{#PLIGG_Visual_Group_Sort_Name#}</a>{/if}</li>
@@ -207,10 +192,8 @@
 								</ul>
 							</div>
 						{/if}
-						
 					</ul>
 					<!-- END BREADCRUMBS -->
-				
 					{literal}
 						<script type="text/javascript" language="JavaScript">
 						function checkForm() {
@@ -221,13 +204,11 @@
 						}//
 						</script>
 					{/literal}
-					
 					{checkActionsTpl location="tpl_pligg_content_start"}
-						{checkActionsTpl location="tpl_pligg_above_center"}
-						{include file=$tpl_center.".tpl"}
-						{checkActionsTpl location="tpl_pligg_below_center"}
+					{checkActionsTpl location="tpl_pligg_above_center"}
+					{include file=$tpl_center.".tpl"}
+					{checkActionsTpl location="tpl_pligg_below_center"}
 					{checkActionsTpl location="tpl_pligg_content_end"}
-					
 				</div><!--/span-->
 				<!-- END LEFT COLUMN -->
 		  
@@ -249,47 +230,46 @@
 					</div><!--/span-->
 					<!-- END RIGHT COLUMN -->
 				{/if}
-
-		{checkActionsTpl location="tpl_pligg_banner_bottom"}
-	</section>
-	
-	<hr>
-	<footer class="footer">
-		{include file=$tpl_footer.".tpl"}
-	</footer>
-	
+			{checkActionsTpl location="tpl_pligg_banner_bottom"}
+			</div><!--/.row-->
+		</section><!--/#maincontent-->
+		
+		<hr>
+		<footer class="footer">
+			{include file=$tpl_footer.".tpl"}
+		</footer>
+		
 	</div><!--/.container-->
 	
-<!-- END CONTENT --> 
-	{* this line HAS to be towards the END of pligg.tpl *}
 	{if $Voting_Method == 2}
 		{include file=$the_template"/functions/vote_star.tpl"}
 	{else}
 		{include file=$the_template"/functions/vote_normal.tpl"}
 	{/if}
-	{include file=$the_template"/functions/vote_comments.tpl"}
+	{if $pagename eq "story"}
+		{include file=$the_template"/functions/vote_comments.tpl"}
+	{/if}
+	{include file=$the_template"/functions/update_story_link.tpl"}
 	
     {if $anonymous_vote eq "false" and $user_logged_in eq ""}
-	{include file=$the_template"/modal_login_form.tpl"}
+		{include file=$the_template"/modal_login_form.tpl"}
 	{/if}
 	
 	{checkActionsTpl location="tpl_pligg_body_end"}
-	
 	<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
 	<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.18/jquery-ui.min.js"></script>
 	<link href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.18/themes/smoothness/jquery-ui.css" media="all" rel="stylesheet" type="text/css" />
+	
 	<!--[if lt IE 7]>
 	<script type="text/javascript" src="{$my_pligg_base}/templates/{$the_template}/js/jquery/jquery.dropdown.js"></script>
 	<![endif]-->
-	{include file=$the_template"/functions/update_story_link.tpl"}
+	
 	<!--for registration validation-->
 	<script type="text/javascript" src="{$my_pligg_base}/templates/{$the_template}/js/registration_verify.js"></script>
-	
 	<script type="text/javascript" src="{$my_pligg_base}/templates/{$the_template}/js/bootstrap.js"></script>
 	<script type="text/javascript" src="{$my_pligg_base}/templates/{$the_template}/js/bootstrap-fileupload.js"></script>
 	<script type="text/javascript" src="{$my_pligg_base}/templates/{$the_template}/js/jquery/jquery.pnotify.js"></script>
 	<script type="text/javascript" src="{$my_pligg_base}/templates/{$the_template}/js/jquery/jquery.masonry.min.js"></script>
-	
 	
 	{* JavaScript for tooltips on avatar hover *}
 	{literal}
@@ -305,9 +285,9 @@
 			$('#bodytext').wysihtml5();
 		</script>{/literal}
 	{/if}
-	
 	{if $pagename eq "profile"}
-		{literal}<script>
+		{literal}
+		<script>
 		  $(function(){
 			var $container = $('#profile_container');
 			$container.imagesLoaded( function(){
@@ -316,8 +296,8 @@
 			  });
 			});
 		  });
-		</script>{/literal}
+		</script>
+		{/literal}
 	{/if}
- 
 </body>
 </html>

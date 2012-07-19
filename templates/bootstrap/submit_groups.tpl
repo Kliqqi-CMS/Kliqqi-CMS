@@ -1,7 +1,7 @@
 ﻿{************************************
 ****** Submit Groups Template *******
 *************************************}
-
+<!-- submit_groups.tpl -->
 {if $enable_group eq "true" && $group_allow eq 1}
 	<fieldset>
 		{if $error}
@@ -10,10 +10,8 @@
 				{$error}
 			</div>
 		{/if}
-		
 		<form action="{$URL_submit_groups}" method="post" name="thisform" id="thisform" class="form-horizontal" enctype="multipart/form-data">
 			{$hidden_token_submit_group}
-			
 			<div class="control-group">
 				<label class="control-label">{#PLIGG_Visual_Submit_Group_Title#}:</label>
 				<div class="controls">
@@ -28,7 +26,6 @@
 					<br /><p class="help-inline">{#PLIGG_Visual_Group_Submit_DescriptionInstruction#}</p>
 				</div>
 			</div>
-			
 			<div class="control-group">
 				<label class="control-label">{#PLIGG_Visual_Submit_Group_Privacy#}:</label>
 				<div class="controls">
@@ -44,7 +41,6 @@
 					<br />{#PLIGG_Visual_Group_Submit_PrivacyInstruction#}
 				</div>
 			</div>
-
 			<div class="control-group">
 				<label class="control-label">{#PLIGG_Visual_Submit_Group_Mail_Friends#}:</label>
 				<div class="controls">
@@ -52,7 +48,6 @@
 					<br /><p class="help-inline">{#PLIGG_Visual_Group_Submit_Mail_Friends_Desc#}</p>
 				</div>
 			</div>
-		
 			<div class="control-group">
 				<label class="control-label">{#PLIGG_Visual_Submit_Group_vote_to_publish#}:</label>
 				<div class="controls">
@@ -69,3 +64,4 @@
 {else}
 	{#PLIGG_Visual_Group_Disabled#}
 {/if}
+<!--/submit_groups.tpl -->

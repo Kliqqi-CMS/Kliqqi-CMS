@@ -1,7 +1,7 @@
 {************************************
 ******* Submit Extra Fields  ********
 *************************************}
-
+<!-- submit_extra_fields.tpl -->
 {if $Enable_Extra_Field_1 eq 1}
 	<p><label>{$Field_1_Title}:</label>{$Field_1_Instructions}<br />
 	<input type="text" name="link_field1" id="link_field1" value="{$submit_link_field1}" size="60" />
@@ -77,3 +77,4 @@
 	<input type="text" name="link_field15" id="link_field15" value="{$submit_link_field15}" size="60"/>
 	</p>
 {/if}
+<!--/submit_extra_fields.tpl -->

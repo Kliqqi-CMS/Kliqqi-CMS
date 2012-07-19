@@ -1,7 +1,7 @@
 {************************************
 ******* Groups Main Template ********
 *************************************}
-
+<!-- group_center.tpl -->
 {if $enable_group eq "true"}
 	{if $pagename eq "groups"}
 		<div class="hero-unit group_explain">
@@ -19,11 +19,7 @@
 				{/if}
 				<div class="search_groups">
 					<div class="input-append">
-						<form action="{$my_pligg_base}/groups.php" method="get"
-							{if $urlmethod eq 2}
-								onsubmit="document.location.href = '{$my_base_url}{$my_pligg_base}/groups/search/' + encodeURIComponent(this.keyword.value); return false;"
-							{/if}
-							>
+						<form action="{$my_pligg_base}/groups.php" method="get"	{if $urlmethod eq 2}onsubmit="document.location.href = '{$my_base_url}{$my_pligg_base}/groups/search/' + encodeURIComponent(this.keyword.value); return false;"{/if}>
 							<input type="hidden" name="view" value="search">
 								{if $get.keyword neq ""}
 									{assign var=searchboxtext value=$get.keyword}
@@ -38,7 +34,6 @@
 			</div>
 		</div>
 	{/if}
-	
 	{if $get.keyword}
 		{if $group_display}
 			<legend>{#PLIGG_Visual_Search_SearchResults#} &quot;{$search}&quot;</legend>
@@ -46,9 +41,8 @@
 			<legend>{#PLIGG_Visual_Search_NoResults#} &quot;{$search}&quot;</legend>
 		{/if}
 	{/if}
-
 	{$group_display}
 	<div style="clear:both;"></div>
 	{$group_pagination}
-
 {/if}
+<!-- group_center.tpl -->
