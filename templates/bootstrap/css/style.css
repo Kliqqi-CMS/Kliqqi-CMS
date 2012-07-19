@@ -350,3 +350,19 @@ width:282px;
 background-image:url(images/ajax-loader.gif);
 background-repeat:no-repeat;
 }
+.maintenance_mod{
+	display:block;
+    /*set the div in the center of the screen*/
+    position:absolute;
+    top:30%;
+    left:35%;
+    width:350px;
+	height:200px;
+
+   color:red;
+   background:#e3eeff;
+   font-size:18px;
+   line-height:30px;
+   padding:10px;border:1px solid green;
+	
+}

@@ -140,5 +140,10 @@ $main_smarty->assign('link_pagination', do_pages($rows, $page_size, "published",
 
 // show the template
 $main_smarty->assign('tpl_center', $the_template . '/index_center');
+
+
+if(maintenance_mode==true && $current_user->user_level!="god")
+$main_smarty->display($the_template . '/pligg_maintenance.tpl');
+else
 $main_smarty->display($the_template . '/pligg.tpl');
 ?>
