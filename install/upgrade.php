@@ -986,10 +986,6 @@ if (!$errors) {
 	$db->query($sql);
 	$sql = "UPDATE `" . table_config . "` SET `var_page` = 'Misc' WHERE `var_page` = 'Social';";
 	$db->query($sql);
-	$result = $db->get_results("select * from `" . table_config . "` where `var_name` = 'maintenance_mode';");
-	if (count($result) == 0) {
-		$db->query("INSERT INTO `" . table_config . "` VALUES (NULL, 'Misc', 'maintenance_mode', 'false', 'false', 'true / false', 'Enable Maintenance Mode', 'Create a maintenance mode.', 'define', NULL);");
-	}
      
 	$tableexists = checkfortable(table_login_attempts);
 	if (!$tableexists) {

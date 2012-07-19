@@ -128,6 +128,10 @@ include('./libs/link_summary.php'); // this is the code that show the links / st
 $main_smarty->assign('link_pagination', do_pages($rows, $page_size, "upcoming", true));
 
 // show the template
-$main_smarty->assign('tpl_center', $the_template . '/upcoming_center');
-$main_smarty->display($the_template . '/pligg.tpl');
+if($maintenance_mode=="true"){
+	$main_smarty->display($the_template . '/maintenance.tpl');
+} else {
+	$main_smarty->assign('tpl_center', $the_template . '/upcoming_center');
+	$main_smarty->display($the_template . '/pligg.tpl');
+}
 ?>

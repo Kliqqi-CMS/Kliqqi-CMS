@@ -369,9 +369,12 @@ $CSRF->create('user_settings', true, true);
 	}
 
 // display the template
-	$main_smarty->assign('tpl_center', $the_template . '/user_center');
-	$main_smarty->display($the_template . '/pligg.tpl');
-
+	if($maintenance_mode=="true"){
+		$main_smarty->display($the_template . '/maintenance.tpl');
+	} else {
+		$main_smarty->assign('tpl_center', $the_template . '/user_center');
+		$main_smarty->display($the_template . '/pligg.tpl');
+	}
 
 function do_stories () {
 	global $db, $main_smarty, $rows, $user, $offset, $page_size,$current_user,$cached_links;

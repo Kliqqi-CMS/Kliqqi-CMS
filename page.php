@@ -53,8 +53,11 @@ if($_REQUEST['page']){
 }
 
 // show the template
-$main_smarty->assign('tpl_center', $the_template . '/page_center');
-$main_smarty->display($the_template . '/pligg.tpl');
+if($maintenance_mode=="true"){
+	$main_smarty->display($the_template . '/maintenance.tpl');
+} else {
+	$main_smarty->assign('tpl_center', $the_template . '/page_center');
+	$main_smarty->display($the_template . '/pligg.tpl');
+}
 
 ?>
-

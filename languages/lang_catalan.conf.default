@@ -376,7 +376,7 @@ PLIGG_Visual_Breadcrumb_Edit_User_Data_Saved = "Dades guardades"
 PLIGG_Visual_Breadcrumb_User_Reset_Pass = "Reset Password"
 PLIGG_Visual_Breadcrumb_User_Disable = "Inhabilita l'usuari"
 PLIGG_Visual_Breadcrumb_User_Disable_2 = "Usuari inhabilitat"
-PLIGG_Visual_Breadcrumb_User_Killspam = "Killspam (pas 1)"
+PLIGG_Visual_Breadcrumb_User_Killspam = "Killspam"
 PLIGG_Visual_Breadcrumb_View_Comments = "Veure comentaris enviats"
 PLIGG_Visual_Breadcrumb_User_Does_Not_Exist = "L'usuari no existeix"
 

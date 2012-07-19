@@ -42,7 +42,11 @@ check_actions('live', $vars);
 $main_smarty->assign('body_args', 'onload="start()"');
 
 // show the template
-$main_smarty->assign('tpl_center', $the_template . '/live_center');
-$main_smarty->display($the_template . '/pligg.tpl');
-$main_smarty->display($the_template . '/live_js.tpl');
+if($maintenance_mode=="true"){
+	$main_smarty->display($the_template . '/maintenance.tpl');
+} else {
+	$main_smarty->assign('tpl_center', $the_template . '/live_center');
+	$main_smarty->display($the_template . '/pligg.tpl');
+	$main_smarty->display($the_template . '/live_js.tpl');
+}
 ?>

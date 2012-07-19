@@ -27,7 +27,11 @@ define('pagename', 'rssfeeds');
 $main_smarty->assign('pagename', pagename);
 
 // show the template
-$main_smarty->assign('tpl_center', $the_template . '/rssfeeds');
-$main_smarty->display($the_template . '/pligg.tpl');
+if($maintenance_mode=="true"){
+	$main_smarty->display($the_template . '/maintenance.tpl');
+} else {
+	$main_smarty->assign('tpl_center', $the_template . '/rssfeeds');
+	$main_smarty->display($the_template . '/pligg.tpl');
+}
 
 ?>

@@ -206,7 +206,6 @@ class Comment {
 		$smarty->assign('comment_user_vote_count', $this->user_vote_count);
 		
 		// if the person logged in is the person viewing the comment, show 'you' instead of the name
-		if ($current_user->user_login == $this->username) $smarty->assign('user_username', $smarty->get_config_vars('PLIGG_Visual_Comment_Current_User_Username'));
 		$smarty->assign('user_userlogin', $this->username);
 		// the url for the edit comment link
 			$smarty->assign('edit_comment_url', getmyurl('editcomment', $this->id, $link->id));

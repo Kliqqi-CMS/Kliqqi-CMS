@@ -89,6 +89,10 @@ $main_smarty->assign('live_pagination', do_pages($rows, $top_users_size, "unpubl
 $main_smarty = do_sidebar($main_smarty);
 
 // show the template
-$main_smarty->assign('tpl_center', $the_template . '/live_unpublished_center');
-$main_smarty->display($the_template . '/pligg.tpl');
+if($maintenance_mode=="true"){
+	$main_smarty->display($the_template . '/maintenance.tpl');
+} else {
+	$main_smarty->assign('tpl_center', $the_template . '/live_unpublished_center');
+	$main_smarty->display($the_template . '/pligg.tpl');
+}
 ?>

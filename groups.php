@@ -71,6 +71,10 @@ function group_read($from_where,$order_by)
 }
 
 // show the template
-$main_smarty->assign('tpl_center', $the_template . '/group_center');
-$main_smarty->display($the_template . '/pligg.tpl');
+if($maintenance_mode=="true"){
+	$main_smarty->display($the_template . '/maintenance.tpl');
+} else {
+	$main_smarty->assign('tpl_center', $the_template . '/group_center');
+	$main_smarty->display($the_template . '/pligg.tpl');
+}
 ?>

@@ -39,7 +39,11 @@ if(isset($_GET['template'])){
 	}
 }
 
-// show the template	
-$main_smarty->assign('tpl_center', $the_template . '/settemplate_center');
-$main_smarty->display($the_template . '/pligg.tpl');
+// show the template
+if($maintenance_mode=="true"){
+	$main_smarty->display($the_template . '/maintenance.tpl');
+} else {
+	$main_smarty->assign('tpl_center', $the_template . '/settemplate_center');
+	$main_smarty->display($the_template . '/pligg.tpl');
+}
 ?>

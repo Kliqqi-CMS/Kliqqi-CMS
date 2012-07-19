@@ -124,6 +124,10 @@ $main_smarty = do_sidebar($main_smarty);
 $main_smarty->assign('headers', $header_items);
 $main_smarty->assign('topusers_pagination', do_pages($rows, $top_users_size, "topusers", true));
 // show the template
-$main_smarty->assign('tpl_center', $the_template . '/topusers_center');
-$main_smarty->display($the_template . '/pligg.tpl');
+if($maintenance_mode=="true"){
+	$main_smarty->display($the_template . '/maintenance.tpl');
+} else {
+	$main_smarty->assign('tpl_center', $the_template . '/topusers_center');
+	$main_smarty->display($the_template . '/pligg.tpl');
+}
 ?>

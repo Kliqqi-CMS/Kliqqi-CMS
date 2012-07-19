@@ -376,7 +376,7 @@ PLIGG_Visual_Breadcrumb_Edit_User_Data_Saved = "数据已保存"
 PLIGG_Visual_Breadcrumb_User_Reset_Pass = "重设密码"
 PLIGG_Visual_Breadcrumb_User_Disable = "禁止用户"
 PLIGG_Visual_Breadcrumb_User_Disable_2 = "用户已被禁止"
-PLIGG_Visual_Breadcrumb_User_Killspam = "处理垃圾 (第一步)"
+PLIGG_Visual_Breadcrumb_User_Killspam = "处理垃圾"
 PLIGG_Visual_Breadcrumb_View_Comments = "查看已提交的评论"
 PLIGG_Visual_Breadcrumb_User_Does_Not_Exist = "用户不存在"
 

@@ -255,10 +255,14 @@ if ($link) {
 			$main_smarty = do_sidebar($main_smarty);
 
 			// show the template
-			//$main_smarty->assign('storylen', utf8_strlen(str_replace("<br />", "\n", $link_content)));
-			$main_smarty->assign('tpl_extra_fields', $the_template . '/submit_extra_fields');
-			$main_smarty->assign('tpl_center', $the_template . '/editlink_edit_center');
-			$main_smarty->display($the_template . '/pligg.tpl');
+			if($maintenance_mode=="true"){
+				$main_smarty->display($the_template . '/maintenance.tpl');
+			} else {
+				//$main_smarty->assign('storylen', utf8_strlen(str_replace("<br />", "\n", $link_content)));
+				$main_smarty->assign('tpl_extra_fields', $the_template . '/submit_extra_fields');
+				$main_smarty->assign('tpl_center', $the_template . '/editlink_edit_center');
+				$main_smarty->display($the_template . '/pligg.tpl');
+			}
 		}
 	}
 	else
@@ -326,7 +330,11 @@ function link_errors($linkres)
 		$main_smarty->assign('pagename', pagename);
 		
 		// show the template
-		$main_smarty->display($the_template . '/pligg.tpl');
+		if($maintenance_mode=="true"){
+			$main_smarty->display($the_template . '/maintenance.tpl');
+		} else {
+			$main_smarty->display($the_template . '/pligg.tpl');
+		}
 	}
 	return $error;
 }

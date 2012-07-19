@@ -376,7 +376,7 @@ PLIGG_Visual_Breadcrumb_Edit_User_Data_Saved = "Данные сохранены"
 PLIGG_Visual_Breadcrumb_User_Reset_Pass = "Сбросить пароль"
 PLIGG_Visual_Breadcrumb_User_Disable = "Отключить пользователя"
 PLIGG_Visual_Breadcrumb_User_Disable_2 = "Пользователь отключен"
-PLIGG_Visual_Breadcrumb_User_Killspam = "Удаление спамера (Шаг 1)"
+PLIGG_Visual_Breadcrumb_User_Killspam = "Удаление спамера"
 PLIGG_Visual_Breadcrumb_View_Comments = "Просмотреть оставленные комментарии"
 PLIGG_Visual_Breadcrumb_User_Does_Not_Exist = "Пользователь не существует"
 

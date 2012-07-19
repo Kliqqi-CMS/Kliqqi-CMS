@@ -376,7 +376,7 @@ PLIGG_Visual_Breadcrumb_Edit_User_Data_Saved = "ข้อมูลถูกบ�
 PLIGG_Visual_Breadcrumb_User_Reset_Pass = "เปลี่ยนสหัสผ่านใหม่"
 PLIGG_Visual_Breadcrumb_User_Disable = "ยกเลิกสมาชิก"
 PLIGG_Visual_Breadcrumb_User_Disable_2 = "สมาชิกถูกยกเลิก"
-PLIGG_Visual_Breadcrumb_User_Killspam = "จัดการสแปม (ขั้นตอนที่ 1)"
+PLIGG_Visual_Breadcrumb_User_Killspam = "จัดการสแปม "
 PLIGG_Visual_Breadcrumb_View_Comments = "ดูความเห็นที่กำลังแสดง"
 PLIGG_Visual_Breadcrumb_User_Does_Not_Exist = "ไม่มีสมาชิกคนนี้"
 

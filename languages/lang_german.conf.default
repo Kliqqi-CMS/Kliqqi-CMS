@@ -376,7 +376,7 @@ PLIGG_Visual_Breadcrumb_Edit_User_Data_Saved = "Daten gespeichert"
 PLIGG_Visual_Breadcrumb_User_Reset_Pass = "Passwort zur&uuml;cksetzten"
 PLIGG_Visual_Breadcrumb_User_Disable = "Sperre Benutzer"
 PLIGG_Visual_Breadcrumb_User_Disable_2 = "Benutzer gesperrt"
-PLIGG_Visual_Breadcrumb_User_Killspam = "Killspam (Step 1)"
+PLIGG_Visual_Breadcrumb_User_Killspam = "Killspam"
 PLIGG_Visual_Breadcrumb_View_Comments = ""&Uuml;bermittelte Kommentare ansehen"
 PLIGG_Visual_Breadcrumb_User_Does_Not_Exist = "Benutzer existiert nicht"
 

@@ -376,7 +376,7 @@ PLIGG_Visual_Breadcrumb_Edit_User_Data_Saved = "تم حفظ البيانات"
 PLIGG_Visual_Breadcrumb_User_Reset_Pass = "إسترجع كلمة المرور"
 PLIGG_Visual_Breadcrumb_User_Disable = "عطل المستخدم"
 PLIGG_Visual_Breadcrumb_User_Disable_2 = "المستخدم معطل"
-PLIGG_Visual_Breadcrumb_User_Killspam = "Killspam (Step 1)"
+PLIGG_Visual_Breadcrumb_User_Killspam = "Killspam"
 PLIGG_Visual_Breadcrumb_View_Comments = "إستعرض الأجوبة المرسلة"
 PLIGG_Visual_Breadcrumb_User_Does_Not_Exist = "المستخدم غير مسجل لدينا"
 

@@ -24,8 +24,12 @@ $main_smarty->assign('pagename', pagename);
 $main_smarty = do_sidebar($main_smarty);
 
 // show the template
-header( "HTTP/1.1 404 Not Found" );
-$main_smarty->assign('tpl_center', $the_template . '/404error');
-$main_smarty->display($the_template . '/pligg.tpl');
+if($maintenance_mode=="true"){
+	$main_smarty->display($the_template . '/maintenance.tpl');
+} else {
+	header( "HTTP/1.1 404 Not Found" );
+	$main_smarty->assign('tpl_center', $the_template . '/404error');
+	$main_smarty->display($the_template . '/pligg.tpl');
+}
 exit;
 ?>

@@ -80,8 +80,12 @@ if($pligg_regfrom != ''){
 $vars = '';
 check_actions('register_showform', $vars);
 
-$main_smarty->assign('tpl_center', $the_template . '/register_center');
-$main_smarty->display($the_template . '/pligg.tpl');
+if($maintenance_mode=="true"){
+	$main_smarty->display($the_template . '/maintenance.tpl');
+} else {
+	$main_smarty->assign('tpl_center', $the_template . '/register_center');
+	$main_smarty->display($the_template . '/pligg.tpl');
+}
 
 die();
 

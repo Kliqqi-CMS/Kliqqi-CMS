@@ -27,7 +27,11 @@ if ($usr->read()){
 define('pagename', 'register_complete'); 
 $main_smarty->assign('pagename', pagename);
 
-$main_smarty = do_sidebar($main_smarty, $navwhere);
-$main_smarty->assign('tpl_center', $the_template . '/register_step_1');
-$main_smarty->display($the_template . '/pligg.tpl');
+if($maintenance_mode=="true"){
+	$main_smarty->display($the_template . '/maintenance.tpl');
+} else {
+	$main_smarty = do_sidebar($main_smarty, $navwhere);
+	$main_smarty->assign('tpl_center', $the_template . '/register_step_1');
+	$main_smarty->display($the_template . '/pligg.tpl');
+}
 ?>
