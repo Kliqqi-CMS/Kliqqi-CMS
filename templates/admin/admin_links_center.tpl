@@ -1,3 +1,4 @@
+<!-- admin_links_center.tpl -->
 <legend>
 {if $templatelite.get.user}
 	{$templatelite.get.user|sanitize:2}'s {#PLIGG_Visual_TopUsers_TH_News#}
@@ -5,7 +6,6 @@
 	{#PLIGG_Visual_AdminPanel_Links#}
 {/if}
 </legend>
-
 <table>
 	<tr>
 		<form action="{$my_base_url}{$my_pligg_base}/admin/admin_links.php" method="get">
@@ -22,34 +22,32 @@
 			</div>
 		</td>
 		<td>
-				<select name="filter" style="margin-right:10px;"onchange="this.form.submit()">
-					<option value="all" {if $templatelite.get.filter == "all"} selected="selected" {/if}>{#PLIGG_Visual_AdminPanel_All#}</option>
-					<option value="published" {if $templatelite.get.filter == "published"} selected="selected" {/if}>{#PLIGG_Visual_AdminPanel_Published#}</option>
-					<option value="upcoming" {if $templatelite.get.filter == "upcoming"} selected="selected" {/if}>{#PLIGG_Visual_AdminPanel_Upcoming#}</option>
-					<option value="discard" {if $templatelite.get.filter == "discard"} selected="selected" {/if}>{#PLIGG_Visual_AdminPanel_Discarded#}</option>
-					<option value="spam" {if $templatelite.get.filter == "spam"} selected="selected" {/if}>{#PLIGG_Visual_AdminPanel_Spam#}</option>
-					<option value="all">   ---   </option>
-					<option value="today" {if $templatelite.get.filter == "today"} selected="selected" {/if}>{#PLIGG_Visual_AdminPanel_Today#}</option>
-					<option value="yesterday" {if $templatelite.get.filter == "yesterday"} selected="selected" {/if}>{#PLIGG_Visual_AdminPanel_Yesterday#}</option>
-					<option value="week" {if $templatelite.get.filter == "week"} selected="selected" {/if}>{#PLIGG_Visual_AdminPanel_Week#}</option>
-				</select>
+			<select name="filter" style="margin-right:10px;"onchange="this.form.submit()">
+				<option value="all" {if $templatelite.get.filter == "all"} selected="selected" {/if}>{#PLIGG_Visual_AdminPanel_All#}</option>
+				<option value="published" {if $templatelite.get.filter == "published"} selected="selected" {/if}>{#PLIGG_Visual_AdminPanel_Published#}</option>
+				<option value="upcoming" {if $templatelite.get.filter == "upcoming"} selected="selected" {/if}>{#PLIGG_Visual_AdminPanel_Upcoming#}</option>
+				<option value="discard" {if $templatelite.get.filter == "discard"} selected="selected" {/if}>{#PLIGG_Visual_AdminPanel_Discarded#}</option>
+				<option value="spam" {if $templatelite.get.filter == "spam"} selected="selected" {/if}>{#PLIGG_Visual_AdminPanel_Spam#}</option>
+				<option value="all">   ---   </option>
+				<option value="today" {if $templatelite.get.filter == "today"} selected="selected" {/if}>{#PLIGG_Visual_AdminPanel_Today#}</option>
+				<option value="yesterday" {if $templatelite.get.filter == "yesterday"} selected="selected" {/if}>{#PLIGG_Visual_AdminPanel_Yesterday#}</option>
+				<option value="week" {if $templatelite.get.filter == "week"} selected="selected" {/if}>{#PLIGG_Visual_AdminPanel_Week#}</option>
+			</select>
 		</td>
 		<td>
-				<select name="pagesize" onchange="this.form.submit()">
-					<option value="15" {if isset($pagesize) && $pagesize == 15}selected{/if}>Show 15</option>
-					<option value="30" {if isset($pagesize) && $pagesize == 30}selected{/if}>Show 30</option>
-					<option value="50" {if isset($pagesize) && $pagesize == 50}selected{/if}>Show 50</option>
-					<option value="100" {if isset($pagesize) && $pagesize == 100}selected{/if}>Show 100</option>
-					<option value="200" {if isset($pagesize) && $pagesize == 200}selected{/if}>Show 200</option>
-				</select>
-				
+			<select name="pagesize" onchange="this.form.submit()">
+				<option value="15" {if isset($pagesize) && $pagesize == 15}selected{/if}>Show 15</option>
+				<option value="30" {if isset($pagesize) && $pagesize == 30}selected{/if}>Show 30</option>
+				<option value="50" {if isset($pagesize) && $pagesize == 50}selected{/if}>Show 50</option>
+				<option value="100" {if isset($pagesize) && $pagesize == 100}selected{/if}>Show 100</option>
+				<option value="200" {if isset($pagesize) && $pagesize == 200}selected{/if}>Show 200</option>
+			</select>
 		</td>
 		</form>
 <form name="bulk_moderate" action="{$my_base_url}{$my_pligg_base}/admin/admin_links.php?action=bulkmod&page={$templatelite.get.page|sanitize:2}" method="post">
 		<td style="float:right;"><input type="submit" class="btn btn-primary" name="submit" onclick="return confirm_spam()" value="{#PLIGG_Visual_AdminPanel_Apply_Changes#}" /></td>
 	</tr>
 </table>
-
 {$hidden_token_admin_links_edit}
 <table class="table table-bordered table-striped">
 	<tr>
@@ -77,15 +75,11 @@
 	</tr>	
 	{/section}
 </table>
-
-	<div style="float:right;margin:8px 2px 0 0;"><input type="submit" class="btn btn-primary" name="submit" onclick="return confirm_spam()" value="{#PLIGG_Visual_AdminPanel_Apply_Changes#}" /></div>
-	<div style="clear:both;"> </div>
-
+<div style="float:right;margin:8px 2px 0 0;"><input type="submit" class="btn btn-primary" name="submit" onclick="return confirm_spam()" value="{#PLIGG_Visual_AdminPanel_Apply_Changes#}" /></div>
+<div style="clear:both;"> </div>
 </form>
-
 <div style="float:right;margin-top:6px;"><a data-toggle="modal" href="{$my_base_url}{$my_pligg_base}/admin/admin_delete_stories.php" class="btn btn-danger" title="{#PLIGG_Visual_AdminPanel_Delete_Stories#}"><i class="icon-trash icon-white"></i> {#PLIGG_Visual_AdminPanel_Delete_Stories#}</a></div>
 <div style="clear:both;"> </div>
-
 <SCRIPT>
 var confirmation = "{#PLIGG_Visual_AdminPanel_Confirm_Killspam#}\n";
 {literal}
@@ -168,3 +162,4 @@ function confirm_spam() {
 }
 </SCRIPT>
 {/literal}
+<!--/admin_links_center.tpl -->

@@ -1,3 +1,4 @@
+<!-- admin_comments_center.tpl -->
 <legend>
 {if $templatelite.get.user}
 	{$templatelite.get.user|sanitize:2}'s {#PLIGG_Visual_Story_Comments#}
@@ -5,7 +6,6 @@
 	{#PLIGG_Visual_AdminPanel_Comments_Legend#}
 {/if}
 </legend>
-
 <table>
 	<tr>
 		<form action="{$my_base_url}{$my_pligg_base}/admin/admin_comments.php" method="get">
@@ -42,7 +42,6 @@
 					<option value="100" {if isset($pagesize) && $pagesize == 100}selected{/if}>Show 100</option>
 					<option value="200" {if isset($pagesize) && $pagesize == 200}selected{/if}>Show 200</option>
 				</select>
-				
 			</td>
 		</form>
 <form name="bulk_moderate" action="{$my_base_url}{$my_pligg_base}/admin/admin_comments.php?action=bulkmod&page={$templatelite.get.page|sanitize:2}" method="post">
@@ -82,14 +81,10 @@
 		{/section}
 	{/if}		
 </table>
-
-	<div style="float:right;margin:8px 2px 0 0;"><input type="submit" class="btn btn-primary" name="submit" onclick="return confirm_spam()" value="{#PLIGG_Visual_AdminPanel_Apply_Changes#}" /></div>
-	<div style="clear:both;"> </div>
-
+<div style="float:right;margin:8px 2px 0 0;"><input type="submit" class="btn btn-primary" name="submit" onclick="return confirm_spam()" value="{#PLIGG_Visual_AdminPanel_Apply_Changes#}" /></div>
+<div style="clear:both;"> </div>
 </form>
-
 <div style="float:right;margin-top:6px;"><a data-toggle="modal" class="btn btn-danger" href="{$my_base_url}{$my_pligg_base}/admin/admin_delete_comments.php" title="{#PLIGG_Visual_AdminPanel_Delete_Comments#}"><i class="icon-trash icon-white"></i> {#PLIGG_Visual_AdminPanel_Delete_Comments#}</a></div>
-
 <SCRIPT>
 var confirmation = "{#PLIGG_Visual_AdminPanel_Confirm_Killspam#}\n";
 {literal}
@@ -172,3 +167,4 @@ function confirm_spam() {
 }
 </SCRIPT>
 {/literal}
+<!--/admin_comments_center.tpl -->

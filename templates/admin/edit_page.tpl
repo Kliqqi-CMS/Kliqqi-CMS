@@ -1,10 +1,8 @@
+<!-- edit_page.tpl -->
 <legend>{#PLIGG_Visual_AdminPanel_Page_Edit#}</legend>
-
 <a class="btn" href="{$my_base_url}{$my_pligg_base}/page.php?page={$page_url}" target="_blank">Visit {$page_title} Page</a>
 <br /><br />
-
 <form action="" class="form-horizontal" method="POST" id="thisform">
-
 	<div class="control-group">
 		<label class="control-label">{#PLIGG_Visual_AdminPanel_Page_Submit_Title#}</label>
 		<div class="controls">
@@ -12,7 +10,6 @@
 			<p class="help-inline">This will appear in the &lt;title&gt; tag and breadcrumb area.</p>
 		</div>
 	</div>
-	
 	<div class="control-group">
 		<label class="control-label">{#PLIGG_Visual_AdminPanel_Page_Submit_URL#}</label>
 		<div class="controls">
@@ -20,7 +17,6 @@
 			<p class="help-inline">Define the URL value (ex. about-us). If left blank, this will be generated for you.</p>
 		</div>
 	</div>
-	
 	<div class="control-group">
 		<label class="control-label">{#PLIGG_Visual_AdminPanel_Page_Submit_Keywords#}</label>
 		<div class="controls">
@@ -28,7 +24,6 @@
 			<p class="help-inline">This value is used for the meta keywords tag. Enter keywords separated by commas.</p>
 		</div>
 	</div>
-	
 	<div class="control-group">
 		<label class="control-label">{#PLIGG_Visual_AdminPanel_Page_Submit_Description#}</label>
 		<div class="controls">
@@ -36,7 +31,6 @@
 			<p class="help-inline">This value is used for the meta description tag.</p>
 		</div>
 	</div>
-	
 	<div class="control-group">
 		<label class="control-label">Page Content</label>
 		<div class="controls">
@@ -45,13 +39,12 @@
 			{#PLIGG_Visual_AdminPanel_Page_Smarty#}
 		</div>
 	</div>
-
 	<div class="form-actions">
 		<input type="submit" class="btn btn-primary" name="submit" value="{#PLIGG_Visual_AdminPanel_Page_Submit#}" />
 		<button class="btn" ONCLICK="history.go(-1)">Cancel</button>
 	</div>
-
 	<input type="hidden" name="process" value="edit_page" />
 	<input type="hidden" name="randkey" value="{$randkey}" />
 	<input type="hidden" name="link_id" value="{$link_id}" />
 </form>
+<!--/edit_page.tpl -->

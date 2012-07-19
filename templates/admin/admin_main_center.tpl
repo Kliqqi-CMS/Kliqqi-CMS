@@ -1,3 +1,4 @@
+<!-- admin_main_center.tpl -->
 {if $amIgod eq 1}
 	<div class="column" style="margin-left:0;">
 		{foreach from=$widgets item=widget}	
@@ -96,3 +97,4 @@
 {else}
 	{#PLIGG_Visual_AdminPanel_NoAccess#}
 {/if}
+<!--/admin_main_center.tpl -->

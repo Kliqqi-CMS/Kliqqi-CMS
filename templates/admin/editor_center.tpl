@@ -1,10 +1,9 @@
-﻿<legend>{#PLIGG_Visual_AdminPanel_Editor#}</legend>
-
-{* If the open button has been pressed *}
+﻿<!-- editor_center.tpl -->
+<legend>{#PLIGG_Visual_AdminPanel_Editor#}</legend>
 {if $templatelite.post.open}
+	{* If the open button has been pressed *}
     {if !$error}
 		<h3>{#PLIGG_Visual_AdminPanel_Template_File_Opened#}</h3>
-
 		<form action="" method="post" {if $filedata}onsubmit="if (this.updatedfile.value!='' || confirm('{#PLIGG_Visual_AdminPanel_Template_Empty_Confirm#}')) this.isempty.value=1; else return false;"{/if}>	
 			<input type="hidden" name="the_file2" value="{$the_file}" />
 			<p><strong>{#PLIGG_Visual_AdminPanel_Template_Currently_Open#}: {$the_file}</strong></p>
@@ -16,20 +15,17 @@
 			<input type="hidden" name="isempty" value="{if $filedata}0{else}1{/if}">
 			<input type="submit" class="btn btn-primary" name="save" value="Save Changes" class="btn"/>
 		</form>
-		
     {else}
 		<div class="alert alert-block">
 			<h4 class="alert-heading">{#PLIGG_Visual_AdminPanel_Template_Error#}</h4>
 			{#PLIGG_Visual_AdminPanel_Template_Cant_Open#}
 		</div>
     {/if}
-	
-{* If save button has been pushed.... *}
 {elseif $templatelite.post.save}
+	{* If save button has been pushed.... *}
     {$error}
-
-{* show list of files *}
 {else}
+	{* show list of files *}
     {if $files}
 		<form action="" method="post">
 			<h3>{#PLIGG_Visual_AdminPanel_Editor_Choose#}</h3>
@@ -42,7 +38,6 @@
 			</select>
 			<input type="submit" class="btn btn-primary" name="open" value="Open" />	
 		</form>
-
     {else}
 		<div class="alert alert-block fade in">
 			<h4 class="alert-heading">{#PLIGG_Visual_AdminPanel_Template_Error#}</h4>
@@ -50,4 +45,4 @@
 		</div>
     {/if}
 {/if}
-	
+<!--/editor_center.tpl -->

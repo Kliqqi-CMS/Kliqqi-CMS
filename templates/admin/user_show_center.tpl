@@ -1,3 +1,4 @@
+<!-- user_show_center.tpl -->
 {section name=nr loop=$userdata}
 	<legend>View User</legend>
 	<table class="table table-bordered table-striped" cellpadding="0" cellspacing="0">
@@ -15,10 +16,8 @@
 		<br />
 		<tr><td><img src="{$my_base_url}{$my_pligg_base}/templates/admin/images/user_comments.gif" align="absmiddle"/> <a href="admin_comments.php?user={$userdata[nr].user_login}">{#PLIGG_Visual_View_User_Sub_Comments#}</a></td> <td> {$commentcount} Total</td></tr>
 	</table>	
-
 	{if $amIgod}		
 		<hr/>
-
 		<a class="btn" href="?mode=edit&user={$userdata[nr].user_login}"><img src="{$my_base_url}{$my_pligg_base}/templates/admin/images/user_edit.gif" align="absmiddle"/> {#PLIGG_Visual_View_User_Edit_Data#}</a>
 		{if $user_logged_in neq $userdata[nr].user_login && $userdata[nr].user_id neq '1'}
 			{if $userdata[nr].user_enabled}
@@ -28,9 +27,8 @@
 			{/if}
 			<a class="btn btn-danger" href="?mode=killspam&user={$userdata[nr].user_login}&id={$userdata[nr].user_id}"><img src="{$my_base_url}{$my_pligg_base}/templates/admin/images/user_killspam.gif" align="absmiddle"/> {#PLIGG_Visual_View_User_Killspam#}</a>
 		{/if}
-
 	{/if}
-
 {sectionelse}
 	{include file="/templates/admin/user_doesnt_exist_center.tpl"}
 {/section}
+<!--/user_show_center.tpl -->

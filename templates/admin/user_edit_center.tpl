@@ -1,20 +1,21 @@
+<!-- user_edit_center.tpl -->
 {section name=nr loop=$userdata}
-<script>
-var message = "{#PLIGG_Visual_Register_Error_NoPassMatch#}";
-{literal}
-function check(form)
-{
-    if (form.password.value != form.password2.value)
-    {
-	alert(message);
-	form.password.focus();
-	return false;
-    }
-    return true;
-}
-{/literal}
-</script>
-<legend>{#PLIGG_Visual_Breadcrumb_Edit_User#}: {$userdata[nr].user_login}</legend>
+	<script>
+		var message = "{#PLIGG_Visual_Register_Error_NoPassMatch#}";
+		{literal}
+		function check(form)
+		{
+			if (form.password.value != form.password2.value)
+			{
+			alert(message);
+			form.password.focus();
+			return false;
+			}
+			return true;
+		}
+		{/literal}
+	</script>
+	<legend>{#PLIGG_Visual_Breadcrumb_Edit_User#}: {$userdata[nr].user_login}</legend>
 	<form id="form1" name="form1" method="get" action="" onsubmit="return check(this);">
 		<table class="table table-bordered table-striped">
 			<tr>
@@ -63,7 +64,7 @@ function check(form)
 			</tr>
 		</table>
 	</form>	
-
 {sectionelse}
 	{include file="{$my_base_url}{$my_pligg_base}/templates/admin/user_doesnt_exist_center.tpl"}
 {/section}
+<!--/user_edit_center.tpl -->

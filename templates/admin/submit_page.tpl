@@ -1,3 +1,4 @@
+<!-- submit_page.tpl -->
 <legend>{#PLIGG_Visual_AdminPanel_Page_Submit_New#}</legend>
 <form action="" method="POST" id="thisform">
 	<label>{#PLIGG_Visual_AdminPanel_Page_Submit_Title#} : </label><input type="text" name="page_title" id="page_title" size="66"/>
@@ -17,3 +18,4 @@
 <hr />
 <p>{#PLIGG_Visual_AdminPanel_Page_HTML#}</p>
 <p>{#PLIGG_Visual_AdminPanel_Page_Smarty#}</p>
+<!--/submit_page.tpl -->

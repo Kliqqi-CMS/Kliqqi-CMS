@@ -1,3 +1,4 @@
+<!-- admin_group.tpl -->
 <legend>{#PLIGG_Visual_AdminPanel_Manage_Groups#}</legend>
 <br />
 	<table class="table table-bordered table-striped">
@@ -31,8 +32,7 @@
 		{/foreach}
 		</tbody>
 	</table>
-
 <br />
-
 <div class="btn"><a href="{$my_base_url}{$my_pligg_base}/submit_groups.php" onclick="window.open('{$my_base_url}{$my_pligg_base}/submit_groups.php','popup','width=900,height=900,scrollbars=yes,resizable=yes,toolbar=no,directories=no,location=no,menubar=no,status=no,left=0,top=0'); return false"><img src="{$my_base_url}{$my_pligg_base}/templates/admin/images/friends.gif" style="margin-top:2px;"/><p style="margin:1px 0 0 3px;float:right;">{#PLIGG_Visual_AdminPanel_New_Group#}</p></a></div>
 <div style="clear:both;"> </div>
+<!--/admin_group.tpl -->

@@ -1,4 +1,5 @@
-﻿<legend>{#PLIGG_Visual_AdminPanel_User_Manage#}</legend>
+﻿<!-- user_listall_center.tpl -->
+<legend>{#PLIGG_Visual_AdminPanel_User_Manage#}</legend>
 <table>
 	<tr>
 		<form action="{$my_base_url}{$my_pligg_base}/admin/admin_users.php" method="get">
@@ -30,18 +31,15 @@
 					<option value="100" {if isset($pagesize) && $pagesize == 100}selected{/if}>Show 100</option>
 					<option value="200" {if isset($pagesize) && $pagesize == 200}selected{/if}>Show 200</option>
 				</select>
-				
 			</td>
 		</form>
-<form name='bulk' action="{$my_base_url}{$my_pligg_base}/admin/admin_users.php" method="post">
-		<td style="float:right;"><input type="submit" class="btn btn-primary" name="submit" value="{#PLIGG_Visual_AdminPanel_Apply_Changes#}" /></td>
+		<form name='bulk' action="{$my_base_url}{$my_pligg_base}/admin/admin_users.php" method="post">
+			<td style="float:right;"><input type="submit" class="btn btn-primary" name="submit" value="{#PLIGG_Visual_AdminPanel_Apply_Changes#}" /></td>
 	</tr>
 </table>
-
 {if isset($usererror)}
 	<span class="error">{$usererror}</span><br/>
 {/if}
-
 {$hidden_token_admin_users_list}
 <table class="table table-bordered table-striped">
 	<thead>
@@ -81,15 +79,12 @@
 		{/section}
 	</tbody>
 </table>
-
 <div style="float:right;margin:8px 2px 0 0;">
 	<div class="btn" style="margin-right:20px;"><a data-toggle="modal" href="{$my_base_url}{$my_pligg_base}/admin/admin_users.php?mode=create" title="{#PLIGG_Visual_AdminPanel_New_User#}"><img src="{$my_base_url}{$my_pligg_base}/templates/admin/images/user_add.gif" style="margin-top:2px;"/><p style="margin:1px 0 0 3px;float:right;">{#PLIGG_Visual_AdminPanel_New_User#}</p></a></div>
 	<input type="submit" class="btn btn-primary" name="submit" value="{#PLIGG_Visual_AdminPanel_Apply_Changes#}" />
 </div>
 <div style="clear:both;"></div>
-
 </form>
-
 <SCRIPT>
 {literal}
 function check_all(elem) {
@@ -99,3 +94,4 @@ function check_all(elem) {
 }
 {/literal}
 </SCRIPT>
+<!--/user_listall_center.tpl -->

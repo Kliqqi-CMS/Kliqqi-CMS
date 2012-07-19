@@ -1,32 +1,25 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html dir="{#PLIGG_Visual_Language_Direction#}" xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
 <head>
-
 	{checkActionsTpl location="tpl_pligg_admin_head_start"}
-
 	<link rel="stylesheet" type="text/css" href="{$my_base_url}{$my_pligg_base}/templates/admin/css/bootstrap.css" media="screen">
 	<link rel="stylesheet" type="text/css" href="{$my_base_url}{$my_pligg_base}/templates/admin/css/bootstrap-responsive.css" media="screen">
 	<link rel="stylesheet" type="text/css" href="{$my_base_url}{$my_pligg_base}/templates/{$the_template}/css/jquery.pnotify.css" media="screen" />
 	<link rel="stylesheet" type="text/css" href="{$my_base_url}{$my_pligg_base}/templates/admin/css/style.css" media="screen">
 	{checkForCss}
-	
 	<meta name="Language" content="en-us">
 	<meta name="Robots" content="none">
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	
 	<title>{#PLIGG_Visual_Name#} Admin Panel</title>
 	<link rel="icon" href="{$my_base_url}{$my_pligg_base}/favicon.ico" type="image/x-icon"/>	
-
 	<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
 	<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.18/jquery-ui.min.js"></script>
-
 	<script type="text/javascript" src="{$my_base_url}{$my_pligg_base}/templates/admin/js/jquery/jquery.easing.1.3.js"></script>
 	<script type="text/javascript" src="{$my_base_url}{$my_pligg_base}/templates/admin/js/jquery/jquery.coda-slider-2.0.js"></script> 
 	<script type="text/javascript" src="{$my_base_url}{$my_pligg_base}/templates/admin/js/jquery/jquery.pnotify.js"></script>
 	<script type="text/javascript" src="{$my_base_url}{$my_pligg_base}/templates/admin/js/jquery/jquery.masonry.min.js"></script>
 	<script type="text/javascript" src="{$my_base_url}{$my_pligg_base}/templates/admin/js/bootstrap.js"></script>
-
 	{if $pagename eq "admin_index"}
 		<script type="text/javascript" src="{$my_base_url}{$my_pligg_base}/templates/admin/js/jquery/jquery.ui.widget.js"></script> 
 		<script type="text/javascript" src="{$my_base_url}{$my_pligg_base}/templates/admin/js/jquery/jquery.ui.mouse.js"></script> 
@@ -35,9 +28,7 @@
 		<link type="text/css" href="{$my_base_url}{$my_pligg_base}/templates/admin/css/admin_home.css" rel="stylesheet" />		
 		<link type="text/css" href="{$my_base_url}{$my_pligg_base}/templates/admin/css/coda-slider-2.0.css" rel="stylesheet" media="screen" />
 	{/if}
-	
 	<script src="{$my_base_url}{$my_pligg_base}/templates/admin/js/simpleedit.js" type="text/javascript"></script>
-	
 	{if $pagename eq "admin_index"}
 		{literal}
 		<script type="text/javascript">
@@ -45,13 +36,11 @@
 			$(".column").sortable({
 				connectWith: '.column'
 			});
-
 			$(".portlet").addClass("ui-widget ui-widget-content ui-helper-clearfix ui-corner-all")
 				.find(".portlet-header")
 					.addClass("ui-widget-header")
 					.end()
 				.find(".portlet-content");
-
 			$(".ui-icon-minusthick").click(function() {
 				$(this).toggleClass("ui-icon-minusthick").toggleClass("ui-icon-plusthick");
 				$(this).parents(".portlet:first").find(".portlet-content:first").toggle();
@@ -72,10 +61,7 @@
 				codaslider.codaSlider();
 	//			codaslider.css({ height: panelHeight });
 			});
-
-
 			jQuery(document).ajaxError(function(event, request, settings){ alert("Error"); });
-
 			$( ".column" ).sortable({
 				stop: function(event, ui) { 
 					var data = '';
@@ -85,12 +71,9 @@
 					$.get("admin_index.php", { action: "move", left: ui.offset.left, top: ui.offset.top, id: ui.item[0].id, list: data }, function(data){
 	//  					alert("data load " + data);
 					});
-
 				}
 			});
-
 	//		$(".column").disableSelection();
-
 		});
 		$().ready(function() {
 			$(".coda-slider").each(function(index) {
@@ -100,9 +83,7 @@
 		</script>
 		{/literal}
 	{/if}
-	
 	{checkActionsTpl location="tpl_pligg_admin_head_end"}
-
 </head>
 <body dir="{#PLIGG_Visual_Language_Direction#}">
 {checkActionsTpl location="tpl_pligg_admin_body_start"}
@@ -114,11 +95,8 @@
 				<span class="icon-bar"></span>
 				<span class="icon-bar"></span>
 				<span class="icon-bar"></span>
-			</a>
-			
-			<!-- Be sure to leave the brand out there if you want it shown -->
+			</a>	
 			<a class="brand" href="{$my_base_url}{$my_pligg_base}/admin/admin_index.php">{#PLIGG_Visual_AdminPanel#} Panel</a>
-			
 			<!-- .pull-right pushes content to the right side -->
 			<div class="pull-right">
 				<ul class="nav">
@@ -130,7 +108,6 @@
 				</form>
 				*}
 			</div>
-			
 			<!-- Everything you want hidden at 940px or less, place within here -->
 			<div class="nav-collapse">
 				<ul class="nav">
@@ -142,15 +119,12 @@
         </div>
 	</div>
 </div>
-	
-	
 <div class="container-fluid">
     <div class="row-fluid">
         <div class="span3">
 			<div class="well sidebar-nav">
 				<ul class="nav nav-list">
 					<div id="AdminAccordion" class="accordion">
-						
 						<div class="accordion-group">
 							<div class="accordion-heading">
 								<span class="accordion-heading-title">
@@ -173,7 +147,6 @@
 								</div>
 							</div>
 						</div>
-						
 						<div class="accordion-group">
 							<div class="accordion-heading">
 								<a href="#CollapseSettings" data-parent="#AdminAccordion" data-toggle="collapse" class="accordion-toggle">
@@ -201,7 +174,6 @@
 								</div>
 							</div>
 						</div>
-						
 						<div class="accordion-group">
 							<div class="accordion-heading">
 								<a href="#CollapseTemplate" data-parent="#AdminAccordion" data-toggle="collapse" class="accordion-toggle">
@@ -215,7 +187,6 @@
 								</div>
 							</div>
 						</div>
-						
 						<div class="accordion-group">
 							<div class="accordion-heading">
 								<span class="accordion-heading-title">
@@ -234,7 +205,6 @@
 								</div>
 							</div>
 						</div>
-						
 						<div class="accordion-group">
 							<div class="accordion-heading">
 								<span class="accordion-heading-title">
@@ -253,14 +223,12 @@
 								</div>
 							</div>
 						</div>
-						
 					</div>
 				</ul>
 			</div>
 		</div>
 		<div class="span9">
 			<div class="row-fluid">
-				
 				{*
 				<ul class="breadcrumb">
 					<li><a href="{$my_base_url}{$my_pligg_base}/">{#PLIGG_Visual_Home#}</a> <span class="divider">/</span></li> <li><a href="{$my_base_url}{$my_pligg_base}/admin/admin_index.php">{#PLIGG_Visual_AdminPanel#}</a>  <span class="divider">/</span></li>
@@ -281,69 +249,56 @@
 					{checkActionsTpl location="tpl_pligg_admin_breadcrumbs"}
 				</ul>
 				*}
-				
 				<div id="main_content">
 					<div class="bluerndcontent">
 						{checkActionsTpl location="tpl_pligg_admin_legend_before"}
 						{include file=$tpl_center.".tpl"}
 						{* Start Pagination *}
-							{if ($pagename eq "admin_users" && $templatelite.get.mode=='') || $pagename eq "admin_comments" || $pagename eq "admin_links" || $pagename eq "admin_user_validate"}	
-								{php} 
-								Global $db, $main_smarty, $rows, $offset, $URLMethod;
-								$oldURLMethod=$URLMethod;
-								$URLMethod=1;
-								$pagesize=get_misc_data('pagesize');
-								do_pages($rows, $pagesize ? $pagesize : 30, $the_page); 
-								$URLMethod=$oldURLMethod;
-								{/php}
-							{/if} 
+						{if ($pagename eq "admin_users" && $templatelite.get.mode=='') || $pagename eq "admin_comments" || $pagename eq "admin_links" || $pagename eq "admin_user_validate"}	
+							{php} 
+							Global $db, $main_smarty, $rows, $offset, $URLMethod;
+							$oldURLMethod=$URLMethod;
+							$URLMethod=1;
+							$pagesize=get_misc_data('pagesize');
+							do_pages($rows, $pagesize ? $pagesize : 30, $the_page); 
+							$URLMethod=$oldURLMethod;
+							{/php}
+						{/if} 
 						{* End Pagination *}
 						{checkActionsTpl location="tpl_pligg_admin_legend_after"}
-
 					</div>
 				</div>
 				{checkActionsTpl location="tpl_pligg_admin_body_end"}
 			</div><!-- /row-fluid -->
 		</div><!-- /span9 -->
 	</div><!-- /row-fluid -->
-	
 	<hr />
 	<footer>
 		<p>Powered by <a href="http://www.pligg.com/">Pligg CMS</a></p>
 	</footer>
-	
 </div><!-- /container-fluid -->
-
 {* JavaScript to prevent the carousel function from automatically changing content *}
 {literal}
 	<script type='text/javascript'>//<![CDATA[ 
-	$(window).load(function(){
-		$(function() {
-			$('.carousel').each(function(){
-				$(this).carousel({
-					interval: false
+		$(window).load(function(){
+			$(function() {
+				$('.carousel').each(function(){
+					$(this).carousel({
+						interval: false
+					});
 				});
 			});
-		});
-	});//]]>  
+		});//]]>  
 	</script>
-{/literal}
-
-{* JavaScript to allow multiple sidebar accordions to be open *}
-{literal}
+	<!-- JavaScript to allow multiple sidebar accordions to be open -->
 	<script type='text/javascript'>//<![CDATA[ 
-	$(window).load(function(){
-	$('.collapse').collapse({
-		toggle: false
-	});
-
-	//$(".collapse").collapse()
-
-	});//]]>  
+		$(window).load(function(){
+			$('.collapse').collapse({
+				toggle: false
+			});
+			//$(".collapse").collapse()
+		});//]]>  
 	</script>
-{/literal}
-
-{literal}
 	<script type="text/javascript">
 		$(document).ready(function() {
 		// https://gist.github.com/1688900
@@ -363,6 +318,5 @@
 		});
 	</script>
 {/literal}
-
 </body>
 </html>
