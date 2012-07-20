@@ -4,17 +4,15 @@
 <!--/topusers_center.tpl -->
 <legend>{#PLIGG_Visual_Top_Users#}</legend>
 {checkActionsTpl location="tpl_pligg_topusers_start"}
-<table class="table table-bordered table-striped">
+<table class="tablesorter table table-bordered table-striped" id="tablesorter-demo" >
 	<thead>
 		<tr>
 			<th>{#PLIGG_Visual_Rank#}</th>
 			{foreach from=$headers item=header key=number}
 				<th>
-					{ if $number eq $templatelite.GET.sortby }
-						<span>{$header}</span>
-					{ else }
-						<a href="?sortby={$number}">{$header}</a>
-					{ /if }
+					
+						{$header}
+					
 				</th>
 			{/foreach}
 
@@ -30,3 +28,4 @@
 {$topusers_pagination}
 {checkActionsTpl location="tpl_pligg_pagination_end"}
 <!--/topusers_center.tpl -->
+
