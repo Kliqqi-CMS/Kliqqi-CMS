@@ -21,9 +21,9 @@ if (!$_COOKIE['referrer'])
     check_referrer();
 
 // html tags allowed during submit
-if (checklevel('god'))
+if (checklevel('admin'))
     $Story_Content_Tags_To_Allow = Story_Content_Tags_To_Allow_God;
-elseif (checklevel('admin'))
+elseif (checklevel('moderator'))
     $Story_Content_Tags_To_Allow = Story_Content_Tags_To_Allow_Admin;
 else
     $Story_Content_Tags_To_Allow = Story_Content_Tags_To_Allow_Normal;
@@ -627,9 +627,9 @@ function allowToAuthorCat($cat) {
 	global $current_user, $db;
 
 	$user = new User($current_user->user_id);
-	if($user->level == "god")
+	if($user->level == "admin")
 		return true;
-	else if($user->level == "admin" && ((is_array($cat) && $cat['authorlevel'] != "god") || $cat->category_author_level != "god"))
+	else if($user->level == "moderator" && ((is_array($cat) && $cat['authorlevel'] != "admin") || $cat->category_author_level != "admin"))
 		return true;
 	else if((is_array($cat) && $cat['authorlevel'] == "normal") || $cat->category_author_level == "normal")
 	// DB 11/12/08

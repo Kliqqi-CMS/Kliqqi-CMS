@@ -13,8 +13,8 @@
 
 	{$settings.pre_format}
 	{php}
-		$this->_vars['isgod'] = checklevel('god');
 		$this->_vars['isadmin'] = checklevel('admin');
+		$this->_vars['isadmin'] = checklevel('moderator');
 	{/php}
 
 
@@ -45,7 +45,7 @@
 				else print "/modules/status/status.php?id=";{/php}{$update.update_id}">{#PLIGG_Status_Permalink#}{if $settings.show_permalinks} {$update.update_id}</a> 
 				{/if}
 				{checkActionsTpl location="status_tools_2"}
-				{if $current_user.user_id && ($update.update_user_id==$current_user.user_id || $isadmin || $isgod)}
+				{if $current_user.user_id && ($update.update_user_id==$current_user.user_id || $isadmin || $isadmin)}
 					| <a href="{$my_pligg_base}/modules/status/status.php?did={$update.update_id}">{#PLIGG_Status_Delete#}</a>
 					{assign var='slash' value='1'}
 				{/if}

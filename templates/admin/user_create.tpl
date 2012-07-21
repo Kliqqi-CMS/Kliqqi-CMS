@@ -40,8 +40,8 @@
 			<div class="div_texbox">
 				<select name="level">
 					<option value="normal">Normal</option>
+					<option value="moderator">Moderator</option>
 					<option value="admin">Admin</option>
-					<option value="god">God</option>	
 				</select>
 			</div>
 			<div style="clear:both;"></div>

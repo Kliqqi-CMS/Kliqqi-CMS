@@ -23,7 +23,7 @@ if(!is_numeric($requestID)){$requestID = 0;}
 if(isset($_REQUEST['title'])){$requestTitle = $db->escape(strip_tags($_REQUEST['title']));}
 
 //check group admin
-$canIhaveAccess = checklevel('god');
+$canIhaveAccess = checklevel('admin');
 if($current_user->user_id != get_group_creator($requestID) && $canIhaveAccess != 1)
 {
 	//page redirect

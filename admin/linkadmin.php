@@ -17,11 +17,11 @@ include(mnminclude.'smartyvariables.php');
 
 //check_referrer();
 
-// restrict this page to god and admin
+// restrict access to admins and moderators
 force_authentication();
 $canIhaveAccess = 0;
-$canIhaveAccess = $canIhaveAccess + checklevel('god');
 $canIhaveAccess = $canIhaveAccess + checklevel('admin');
+$canIhaveAccess = $canIhaveAccess + checklevel('moderator');
 
 if($canIhaveAccess == 1)
 {

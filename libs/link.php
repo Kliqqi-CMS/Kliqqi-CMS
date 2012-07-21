@@ -556,8 +556,8 @@ class Link {
         $smarty->assign('Avatar_ImgSrcs', get_avatar('small', "", "", "", $this->userid));
 
 		$canIhaveAccess = 0;
-		$canIhaveAccess = $canIhaveAccess + checklevel('god');
 		$canIhaveAccess = $canIhaveAccess + checklevel('admin');
+		$canIhaveAccess = $canIhaveAccess + checklevel('moderator');
 		if($canIhaveAccess == 1)
 			{$smarty->assign('isadmin', 'yes');}
 

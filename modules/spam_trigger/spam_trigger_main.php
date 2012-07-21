@@ -15,7 +15,7 @@ function spam_trigger_showpage(){
 
 	force_authentication();
 	$canIhaveAccess = 0;
-	$canIhaveAccess = $canIhaveAccess + checklevel('god');
+	$canIhaveAccess = $canIhaveAccess + checklevel('admin');
 	
 	if($canIhaveAccess == 1)
 	{	
@@ -57,7 +57,7 @@ function spam_trigger_editlink()
 {
 	global $db, $current_user, $linkres;
 
-	if (checklevel('god') || checklevel('admin')) return;
+	if (checklevel('admin') || checklevel('moderator')) return;
 	if (!is_numeric($_POST['id'])) return;
 
 	$settings = get_spam_trigger_settings();
@@ -87,7 +87,7 @@ function spam_trigger_do_submit3($vars)
 {
 	global $db, $current_user;
 
-	if (checklevel('god') || checklevel('admin')) return;
+	if (checklevel('admin') || checklevel('moderator')) return;
 	$linkres = $vars['linkres'];
 	if (!$linkres->id) return;
 

@@ -188,7 +188,7 @@ function akismet_top(){
 
 	//force_authentication();
 	$canIhaveAccess = 0;
-	$canIhaveAccess = $canIhaveAccess + checklevel('god');
+	$canIhaveAccess = $canIhaveAccess + checklevel('admin');
 
 	if($canIhaveAccess == 1)
 	{
@@ -203,7 +203,7 @@ function akismet_showpage(){
 
 	force_authentication();
 	$canIhaveAccess = 0;
-	$canIhaveAccess = $canIhaveAccess + checklevel('god');
+	$canIhaveAccess = $canIhaveAccess + checklevel('admin');
 
 	if($canIhaveAccess == 1)
 	{	

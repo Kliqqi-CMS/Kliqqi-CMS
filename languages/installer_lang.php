@@ -68,11 +68,11 @@
 	$lang['TablesGood'] = '<p><strong>Tables were created successfully!</strong></p><hr />';
 	$lang['Error3-1'] = '<p>There was a problem creating the tables.</p>';
 	$lang['Error3-2'] = '<p>Could not connect to database.</p>';
-	$lang['EnterGod'] = '<p><strong>Enter your admin account details below:</strong><br />Please write down this account information because it will be needed to log in and configure your site.</p>';
-	$lang['GodLogin'] = 'Admin Login';
-	$lang['GodPassword'] = 'Admin Password';
+	$lang['EnterAdmin'] = '<p><strong>Enter your admin account details below:</strong><br />Please write down this account information because it will be needed to log in and configure your site.</p>';
+	$lang['AdminLogin'] = 'Admin Login';
+	$lang['AdminPassword'] = 'Admin Password';
 	$lang['ConfirmPassword'] = 'Confirm Password';
-	$lang['GodEmail'] = 'Admin E-mail';
+	$lang['AdminEmail'] = 'Admin E-mail';
 	$lang['CreateAdmin'] = 'Create Admin Account';
 
 // Step 5

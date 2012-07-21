@@ -40,7 +40,7 @@ if ($sortby == 0) { // sort users alphabetically
 	$order_by = ' ORDER BY user_karma DESC ';
 } else {
 	$select = 'SELECT user_id, COUNT(*) AS count ';
-	$whether_to_show_user = "AND user_enabled = 1 AND user_level NOT IN ('god', 'Spammer') AND (user_login != 'anonymous' OR user_lastip)";
+	$whether_to_show_user = "AND user_enabled = 1 AND user_level NOT IN ('admin', 'Spammer') AND (user_login != 'anonymous' OR user_lastip)";
 	$order_by = ' ORDER BY count DESC ';
 }
 
@@ -104,7 +104,6 @@ if ($users) {
 			$main_smarty->assign('user_published_votes_percent', '');
 		$main_smarty->assign('user_karma', $user->karma);
 		$main_smarty->assign('user_rank', $ranklist[$user->karma]);
-		
 		$main_smarty->assign('user_avatar', get_avatar('large', "", $user->username, $user->email));
 		
 		$users_table .= $main_smarty->fetch(The_Template . "/topusers_data.tpl");

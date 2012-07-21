@@ -12,7 +12,7 @@ include_once('../../libs/utils.php');
 
 $upload_dir = mnmpath . get_misc_data('upload_directory');
 $thumb_dir  = mnmpath . get_misc_data('upload_thdirectory');
-$isadmin = checklevel('god');
+$isadmin = checklevel('admin');
 
 // Upload a file 
 if ($_POST['id'])

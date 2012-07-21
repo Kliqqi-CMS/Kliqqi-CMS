@@ -23,7 +23,7 @@ $sql = "CREATE TABLE `" . table_categories . "` (
   `category_order` int(11) NOT NULL default '0',
   `category_desc` varchar(255) NOT NULL,
   `category_keywords` varchar(255) NOT NULL,
-  `category_author_level` enum('normal','admin','god') NOT NULL default 'normal',
+  `category_author_level` enum('normal','moderator','admin') NOT NULL default 'normal',
   `category_author_group` varchar(255) NOT NULL default '',
   `category_votes` varchar(4) NOT NULL default '',
   `category_karma` varchar(4) NOT NULL default '',
@@ -161,7 +161,7 @@ mysql_query( $sql, $conn );
 $sql = "CREATE TABLE `" . table_users . "` (
   `user_id` int(20) NOT NULL auto_increment,
   `user_login` varchar(32) NOT NULL default '',
-  `user_level` enum('normal','admin','god','Spammer') NOT NULL default 'normal',
+  `user_level` enum('normal','admin','admin','Spammer') NOT NULL default 'normal',
   `user_modification` timestamp NOT NULL,
   `user_date` timestamp NOT NULL,
   `user_pass` varchar(64) NOT NULL default '',
@@ -378,7 +378,7 @@ $sql = "CREATE TABLE `".table_group_member."` (
 	`member_id` INT( 20 ) NOT NULL auto_increment,
 	`member_user_id` INT( 20 ) NOT NULL ,
 	`member_group_id` INT( 20 ) NOT NULL ,
-	`member_role` ENUM( 'admin', 'normal', 'moderator', 'flagged', 'banned' ) NOT NULL,
+	`member_role` ENUM( 'admin', 'moderator', 'admin', 'flagged', 'banned' ) NOT NULL,
 	`member_status` ENUM( 'active', 'inactive') NOT NULL,
 	PRIMARY KEY  (`member_id`),
 	KEY `user_group` (`member_group_id`, `member_user_id`)
@@ -438,7 +438,7 @@ mysql_query( $sql, $conn );
 
 ///////////////////////////////////////////////////////////////////////////
 
-$sql = "INSERT INTO `" . table_misc_data . "` ( `name` , `data` ) VALUES ('pligg_version', '1.2.2');";
+$sql = "INSERT INTO `" . table_misc_data . "` ( `name` , `data` ) VALUES ('pligg_version', '2.0.0');";
 mysql_query( $sql, $conn );
 //Captcha Upgrade:
 $sql = "INSERT INTO `" . table_misc_data . "` ( `name` , `data` ) VALUES ('captcha_method', 'reCaptcha');";
@@ -603,8 +603,8 @@ $sql =  "INSERT  into " . table_misc_data . " (name,data) VALUES
 ('status_results', '10'),
 ('status_max_chars', '1200'),
 ('status_avatar', 'small'),
-('status_profile_level', 'god,admin,normal'),
-('status_level', 'god,admin,normal'),
+('status_profile_level', 'admin,moderator,normal'),
+('status_level', 'admin,moderator,normal'),
 ('status_user_email', '1'),
 ('status_user_comment', '1'),
 ('status_user_story', '1'),

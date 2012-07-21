@@ -2,7 +2,7 @@
 {if $isAdmin eq 1}
 	{php}
 	$canIhaveAccess = 0;
-	$canIhaveAccess = $canIhaveAccess + checklevel('god');
+	$canIhaveAccess = $canIhaveAccess + checklevel('admin');
 	if($canIhaveAccess == 1) {
 		if($_REQUEST['dobackup'] == "files"){
 			include ('../libs/backup/file_backup/backup.php');

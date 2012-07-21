@@ -17,8 +17,8 @@
 			<td>
 				<select name="filter" style="margin-right:10px;"onchange="this.form.submit()">
 					<option value="">-- User Level --</option>
-					<option value="god" {if $templatelite.get.filter == "god"} selected="selected" {/if}>God</option>
 					<option value="admin" {if $templatelite.get.filter == "admin"} selected="selected" {/if}>Admin</option>
+					<option value="moderator" {if $templatelite.get.filter == "moderator"} selected="selected" {/if}>Moderator</option>
 					<option value="normal" {if $templatelite.get.filter == "normal"} selected="selected" {/if}>Normal</option>
 					<option value="spammer" {if $templatelite.get.filter == "spammer"} selected="selected" {/if}>Spammer</option>
 				</select>

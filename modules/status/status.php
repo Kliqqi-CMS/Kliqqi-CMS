@@ -23,8 +23,8 @@ $main_smarty = do_sidebar($main_smarty);
 define('pagename', 'status'); 
 $main_smarty->assign('pagename', pagename);
 
-$isgod = checklevel('god');
 $isadmin = checklevel('admin');
+$isadmin = checklevel('moderator');
 
 if (is_numeric($_GET['lid']) && $_GET['action']=='likes')
 {
@@ -76,7 +76,7 @@ if ($_POST['status'])
     unset($_SESSION['status_error']);
     $_SESSION['status_text'] = $_POST['status'];
 
-    if (!$isgod)
+    if (!$isadmin)
         $text  = sanitize($_POST['status'],3);
     else
         $text  = mysql_real_escape_string(close_tags($_POST['status']));
@@ -101,9 +101,9 @@ if ($_POST['status'])
     if (preg_match('/\*(\w+)/',$text,$m))
     {
 	$level = strtolower($m[1]);
-	if ($isgod)
+	if ($isadmin)
 	{
-	    // God can message all existing levels
+	    // Admin can message all existing levels
 	    $levels = $db->get_results("SELECT DISTINCT user_level FROM ".table_users);
 	    foreach ($levels as $l)
 		if ($l->user_level == $level)
@@ -113,8 +113,8 @@ if ($_POST['status'])
 	    else
 	    	$level_sql = "update_level='$level',";
 	}
-	// Admins can message to god and admin levels
-	elseif ($isadmin && in_array($level,array('god','admin')))
+	// Admins can message to admins and moderators
+	elseif ($isadmin && in_array($level,array('admin','moderator')))
 	    $level_sql = "update_level='$level',";
     }
 
@@ -168,7 +168,7 @@ if ($_POST['status'])
 // Delete update
 elseif (is_numeric($_GET['did']))
 {
-    if ($isadmin || $isgod)
+    if ($isadmin || $isadmin)
   	$db->query("DELETE FROM ".table_prefix."updates WHERE update_id='{$_GET['did']}'");
     else
   	$db->query("DELETE FROM ".table_prefix."updates WHERE update_id='{$_GET['did']}' AND update_user_id='{$current_user->user_id}'");

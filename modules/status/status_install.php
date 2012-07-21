@@ -1,5 +1,5 @@
 <?php
-	$module_info['name'] = 'Status';
+	$module_info['name'] = 'Status Update Module';
 	$module_info['desc'] = 'Adds a micro-blogging status update feature to your Pligg website.';
 	$module_info['version'] = '1.3';
 	$module_info['settings_url'] = '../module.php?module=status';
@@ -54,8 +54,8 @@
 		misc_data_update('status_results', '10');
 		misc_data_update('status_max_chars', '1200');
 		misc_data_update('status_avatar', 'small');
-		misc_data_update('status_profile_level', 'god,admin,normal');
-		misc_data_update('status_level', 'god,admin,normal');
+		misc_data_update('status_profile_level', 'admin,moderator,normal');
+		misc_data_update('status_level', 'admin,moderator,normal');
 		misc_data_update('status_user_email', '1');
 		misc_data_update('status_user_comment', '1');
 		misc_data_update('status_user_story', '1');

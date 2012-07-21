@@ -56,8 +56,8 @@ function showdel(id)
 									<td>
 										<select name="level" style="padding:3px;width:100px">
 											<option value="normal" {if $cat_array[thecat].authorlevel=='normal'}selected{/if}>Normal</option>
+											<option value="moderator" {if $cat_array[thecat].authorlevel=='moderator'}selected{/if}>Moderator</option>
 											<option value="admin" {if $cat_array[thecat].authorlevel=='admin'}selected{/if}>Admin</option>
-											<option value="god" {if $cat_array[thecat].authorlevel=='god'}selected{/if}>God</option>
 										</select>
 									</td>
 								</tr>
@@ -139,8 +139,8 @@ function showdel(id)
 							<td>
 							<select name="level">
 								<option value="normal">Normal</option>
+								<option value="moderator">Moderator</option>
 								<option value="admin">Admin</option>
-								<option value="god">God</option>
 							</select>
 							</td>
 						</tr>

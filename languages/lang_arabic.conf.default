@@ -828,7 +828,7 @@ PLIGG_Live_Items_to_Show_Desc = "عدد المداخلات في صفحة مبا�
 PLIGG_How_often_to_refresh_Title = "معدل التحديث"
 PLIGG_How_often_to_refresh_Desc = "عدد الثواني بين كل تحديث. يجب أن لا يكون أقل من 5."
 PLIGG_HTML_tags_to_allow_to_Normal_users_Title = "علامات HTML المصرحة للأعضاء"
-PLIGG_HTML_tags_to_allow_to_Normal_users_Desc = "أتركها فارغة لتعطيل علامات HTML. مثال '< b >< br >< font >< img >< p >' <strong>(بدون مسافات)</strong>"
+PLIGG_HTML_tags_to_allow_to_Normal_users_Desc = "أتركها فارغة لتعطيل علامات HTML. مثال '&lt;b>&lt;br>&lt;font>&lt;img>&lt;p>' <strong>(بدون مسافات)</strong>"
 PLIGG_Require_a_URL_when_Submitting_Title = "يتطلب رابط للمشاركة"
 PLIGG_Require_a_URL_when_Submitting_Desc = "يتطلب رابط للمشاركة"
 PLIGG_Show_the_URL_Input_Box_Title = "أظهر مربع الروابط"
@@ -948,9 +948,9 @@ PLIGG_Minutes_before_a_user_is_no_longer_allowed_to_edit_a_story_Desc = "<strong
 PLIGG_Group_Create_User_Level_Title = "مستوى إنشاء مجموعة"
 PLIGG_Group_Create_User_Level_Desc = "أقل مستوى للعضو ليتمكن من إنشاء مجموعة"
 PLIGG_HTML_tags_to_allow_to_Admin_users_Title = "علامات HTML للمستخدم بمستوى مدير"
-PLIGG_HTML_tags_to_allow_to_Admin_users_Desc = "اتركه فارغا لتعطيل العلامات. مثال '< b >< br >< font >< img >< p >' <strong>(بدون مسافات)</strong>"
-PLIGG_HTML_tags_to_allow_to_God_Title = "علامات HTML للمستخدم بمستوى God"
-PLIGG_HTML_tags_to_allow_to_God_Desc = "اتركه فارغا لتعطيل العلامات. مثال '< b >< br >< font >< img >< p >' <strong>(بدون مسافات)</strong>"
+PLIGG_HTML_tags_to_allow_to_Admin_users_Desc = "اتركه فارغا لتعطيل العلامات. مثال '&lt;b>&lt;br>&lt;font>&lt;img>&lt;p>' <strong>(بدون مسافات)</strong>"
+PLIGG_HTML_tags_to_allow_to_God_Title = "علامات HTML للمستخدم بمستوى Admin"
+PLIGG_HTML_tags_to_allow_to_God_Desc = "اتركه فارغا لتعطيل العلامات. مثال '&lt;b>&lt;br>&lt;font>&lt;img>&lt;p>' <strong>(بدون مسافات)</strong>"
 PLIGG_Validate_user_email_Title = "تصديق البريد الالكتروني"
 PLIGG_Validate_user_email_Desc = "يجب على الأعضاء تصديق بريدهم الالكتروني"
 PLIGG_Timezone_offset_Title = "المنطقة الزمنية"

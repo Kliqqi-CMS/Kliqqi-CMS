@@ -234,7 +234,7 @@ function group_display($requestID)
 		
 		//check group admin
 		global $current_user;
-		$canIhaveAccess = $canIhaveAccess + checklevel('god');
+		$canIhaveAccess = $canIhaveAccess + checklevel('admin');
 		if($current_user->user_id == $group_creator || $canIhaveAccess == 1){$main_smarty->assign('is_group_admin', 1);}
 		
 		

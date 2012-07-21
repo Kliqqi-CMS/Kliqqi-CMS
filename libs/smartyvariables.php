@@ -67,7 +67,7 @@ $main_smarty->assign('enable_group', enable_group);
 $main_smarty->assign('group_submit_level', group_submit_level);
 $group_submit_level = group_submit_level;
 $current_user_level = $current_user->user_level;
-if(group_submit_level == $current_user_level || group_submit_level == 'normal' || $current_user_level == 'god')
+if(group_submit_level == $current_user_level || group_submit_level == 'normal' || $current_user_level == 'admin')
 	$main_smarty->assign('group_allow', 1);
 
 $main_smarty->assign('SearchMethod', SearchMethod);
@@ -89,9 +89,9 @@ $main_smarty->assign('tpl_header_admin', '/header');
 
 //remove this after we eliminate the need for do_header
 $canIhaveAccess = 0;
-$canIhaveAccess = $canIhaveAccess + checklevel('god');
-if($canIhaveAccess == 1){$main_smarty->assign('isgod', 1);}
 $canIhaveAccess = $canIhaveAccess + checklevel('admin');
+if($canIhaveAccess == 1){$main_smarty->assign('isadmin', 1);}
+$canIhaveAccess = $canIhaveAccess + checklevel('moderator');
 if($canIhaveAccess == 1){$main_smarty->assign('isadmin', 1);}
 // show count of upcoming stories
 $queued = $db->get_var('SELECT count(*) from ' . table_links . ' where link_status = "queued";');

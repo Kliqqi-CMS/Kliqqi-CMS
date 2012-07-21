@@ -11,7 +11,7 @@ check_referrer();
 force_authentication();
 
 $canIhaveAccess = 0;
-$canIhaveAccess = $canIhaveAccess + checklevel('god');
+$canIhaveAccess = $canIhaveAccess + checklevel('admin');
 
 if($canIhaveAccess == 0){	
 	header("Location: " . getmyurl('login', $_SERVER['REQUEST_URI']));

@@ -13,8 +13,8 @@
 		global $db, $current_user, $URLMethod;
 		include_once(mnminclude.'search.php');
 
-		$this->_vars['isgod'] = checklevel('god');
 		$this->_vars['isadmin'] = checklevel('admin');
+		$this->_vars['isadmin'] = checklevel('moderator');
 
 		$settings = get_status_settings();
 		$user = new User;
@@ -177,7 +177,7 @@
 				if ($URLMethod==2) print "/status/"; 
 				else print "/modules/status/status.php?id=";{/php}{$update.update_id}">{#PLIGG_Status_Permalink#}{if $settings.show_permalinks} {$update.update_id}{/if}</a>
 				{checkActionsTpl location="status_tools_2"}
-				{if $current_user.user_id && ($update.update_user_id==$current_user.user_id || $isadmin || $isgod)}
+				{if $current_user.user_id && ($update.update_user_id==$current_user.user_id || $isadmin || $isadmin)}
 					| <a href="{$my_pligg_base}/modules/status/status.php?did={$update.update_id}">{#PLIGG_Status_Delete#}</a>
 					{assign var='slash' value='1'}
 				{/if}
@@ -216,7 +216,7 @@
 						$group = $db->get_row("SELECT * FROM ".table_groups." WHERE group_id={$this->_vars['update']['update_group_id']}");
 						$this->_vars['update']['update_text'] = str_replace( '!'.$group->group_name, "<a href='".getmyurl("group_story_title", $group->group_safename)."'>!{$group->group_name}</a>", $this->_vars['update']['update_text'] );
 					}
-					if (in_array($this->_vars['update']['update_level'],array('god','admin')))
+					if (in_array($this->_vars['update']['update_level'],array('admin','moderator')))
 						$this->_vars['update']['update_text'] = str_replace( '*'.$this->_vars['update']['update_level'], "<span style='color:red;'>*{$this->_vars['update']['update_level']}</span>", $this->_vars['update']['update_text'] );
 					elseif ($this->_vars['update']['update_level'])
 						$this->_vars['update']['update_text'] = str_replace( '*'.$this->_vars['update']['update_level'], "", $this->_vars['update']['update_text'] );

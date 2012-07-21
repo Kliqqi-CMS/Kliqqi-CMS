@@ -43,7 +43,7 @@ function links_showpage(){
 
 	force_authentication();
 	$canIhaveAccess = 0;
-	$canIhaveAccess = $canIhaveAccess + checklevel('god');
+	$canIhaveAccess = $canIhaveAccess + checklevel('admin');
 	
 	if($canIhaveAccess == 1)
 	{	

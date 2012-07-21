@@ -10,9 +10,7 @@
 			<th>{#PLIGG_Visual_Rank#}</th>
 			{foreach from=$headers item=header key=number}
 				<th>
-					
-						{$header}
-					
+					{$header}
 				</th>
 			{/foreach}
 
@@ -28,4 +26,3 @@
 {$topusers_pagination}
 {checkActionsTpl location="tpl_pligg_pagination_end"}
 <!--/topusers_center.tpl -->
-

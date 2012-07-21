@@ -13,7 +13,7 @@ if(defined('mnminclude')){
 /*		module_add_action('all_pages_top', 'akismet_top', '');
 
 		$canIhaveAccess = 0;
-		$canIhaveAccess = $canIhaveAccess + checklevel('god');
+		$canIhaveAccess = $canIhaveAccess + checklevel('admin');
 
 		if($canIhaveAccess == 1)
 		{

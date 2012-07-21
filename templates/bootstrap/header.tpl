@@ -51,7 +51,7 @@
 					{if $Enable_Live}
 						<li {if $pagename eq "live"}class="active current"{/if}><a href="{$URL_live}"><span>{#PLIGG_Visual_Live#}</span></a></li>
 					{/if}
-					{if isset($isgod) && $isgod eq 1}
+					{if isset($isadmin) && $isadmin eq 1}
 						<li><a href="{$URL_admin}"><span>{#PLIGG_Visual_Header_AdminPanel#}</span></a></li>
 					{/if}
 					{checkActionsTpl location="tpl_pligg_navbar_end"}

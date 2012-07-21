@@ -52,7 +52,7 @@ if($language == '' && $_POST['submit'] == ''){
 			die();
 		}
 	    } else {
-		echo 'We just tried to connect to Pligg.com to get language file but there was a problem.<br /><br /><a href = "upgrade.php?language=local">Click to Continue in English</a>';
+		echo '<p>We just tried to connect to Pligg.com to get language file but there was a problem.</p><p><a href = "upgrade.php?language=local">Click to Continue in English</a></p>';
 		include ('footer.php');
 		die();
 	    }		
@@ -204,34 +204,32 @@ if (!$errors) {
 
 	// Point to the file that's going to be written to.
 	$filename = '../languages/lang_' . $language . '.conf';
-	echo $lang['LanguageUpdate'] . '<br />';
+	echo '<p>'.$lang['LanguageUpdate'] . '</p>';
 	// Let's make sure the language file exists and is writable first.
 	if (is_writable($filename)) {
 
 		if (!$handle = fopen($filename, 'w')) {
-			 echo '$filename' . $lang['NotFound'] . '<br />';
+			 echo '<p>$filename' . $lang['NotFound'] . '</p>';
 			 exit;
 		}
 
 		// Write $languageContent to the opened language file.
 		if (fwrite($handle, $languageContent) === FALSE) {
-			echo '$filename' . $lang['NotEditable'] . '<br />';
+			echo '<p>$filename' . $lang['NotEditable'] . '</p>';
 			exit;
 		}
 
-		echo $lang['UpgradeLanguage'] . '<br />';
+		echo '<p>'.$lang['UpgradeLanguage'] . '</p>';
 
 		fclose($handle);
 	} else {
-		echo '$filename' . $lang['NotEditable'] . '<br />';
+		echo '<p>$filename' . $lang['NotEditable'] . '</p>';
 	}
 	echo '<br />';
 	// End Language File Upgrade
 
-	echo $lang['UpgradingTables'] . '<br />';
+	echo '<p>'.$lang['UpgradingTables'] . '<ul>';
 
-
-	
 	$result = $db->get_results("select * from `" . table_config . "` where `var_name` = 'Submit_Complete_Step2';");
 	if (count($result) == 0) {
 		$db->query("INSERT INTO `" . table_config . "` VALUES (NULL, 'Submit', 'Submit_Complete_Step2', 'true', 'true', 'true / false', 'Complete submission on Submit Step 2?', 'Skip step 3 (preview) or not', 'define', NULL);");
@@ -331,7 +329,7 @@ if (!$errors) {
 
 	$result = $db->get_results("select * from `" . table_config . "` where `var_name` = 'group_submit_level';");
 	if (count($result) == 0) {
-		$db->query("INSERT INTO `" . table_config . "` ( `var_id` , `var_page` , `var_name` , `var_value` , `var_defaultvalue` , `var_optiontext` , `var_title` , `var_desc` , `var_method` , `var_enclosein` )VALUES (NULL , 'Groups', 'group_submit_level', 'normal', 'normal', 'normal,admin,god', 'Group Create User Level', 'Minimum user level to create new groups', 'define', 'NULL');");
+		$db->query("INSERT INTO `" . table_config . "` ( `var_id` , `var_page` , `var_name` , `var_value` , `var_defaultvalue` , `var_optiontext` , `var_title` , `var_desc` , `var_method` , `var_enclosein` )VALUES (NULL , 'Groups', 'group_submit_level', 'normal', 'normal', 'normal,moderator,admin', 'Group Create User Level', 'Minimum user level to create new groups', 'define', 'NULL');");
 	}
 	
 	$result = $db->get_results("select * from `" . table_config . "` where `var_name` = 'misc_validate';");
@@ -458,14 +456,14 @@ if (!$errors) {
 	
 
 	// 3 levels for html tags
-	$sql = "UPDATE `" . table_config . "` set  var_title='HTML tags to allow to Normal users' WHERE `var_id` = 20;";
+	$sql = "UPDATE `" . table_config . "` set  var_title='HTML tags to allow for Normal users' WHERE `var_id` = 20;";
 	$db->query($sql);
 	$result = $db->get_results("select * from `" . table_config . "` where `var_name` = 'Story_Content_Tags_To_Allow_Admin';");
 	if (count($result) == 0) 
-		$db->query("INSERT INTO `" . table_config . "` VALUES (91, 'Submit', 'Story_Content_Tags_To_Allow_Admin', '', '', 'HTML tags', 'HTML tags to allow to Admin users', 'leave blank to not allow tags. Examples are \"&lt;strong>&lt;br>&lt;font>&lt;img>&lt;p>\"', 'define', '''')");
+		$db->query("INSERT INTO `" . table_config . "` VALUES (91, 'Submit', 'Story_Content_Tags_To_Allow_Admin', '', '', 'HTML tags', 'HTML tags to allow for Moderators', 'leave blank to not allow tags. Examples are \"&lt;strong>&lt;br>&lt;font>&lt;img>&lt;p>\"', 'define', '''')");
 	$result = $db->get_results("select * from `" . table_config . "` where `var_name` = 'Story_Content_Tags_To_Allow_God';");
 	if (count($result) == 0) 
-		$db->query("INSERT INTO `" . table_config . "` VALUES (92, 'Submit', 'Story_Content_Tags_To_Allow_God', '', '', 'HTML tags', 'HTML tags to allow to God', 'leave blank to not allow tags. Examples are \"&lt;strong>&lt;br>&lt;font>&lt;img>&lt;p>\"', 'define', '''')");
+		$db->query("INSERT INTO `" . table_config . "` VALUES (92, 'Submit', 'Story_Content_Tags_To_Allow_God', '', '', 'HTML tags', 'HTML tags to allow for Admins', 'leave blank to not allow tags. Examples are \"&lt;strong>&lt;br>&lt;font>&lt;img>&lt;p>\"', 'define', '''')");
 	$db->query("UPDATE `" . table_config . "` SET var_name='Story_Content_Tags_To_Allow_Normal' WHERE var_name='Story_Content_Tags_To_Allow'");
 
 	$result = $db->get_results("select * from `" . table_config . "` where `var_name` = 'maxTitleLength';");
@@ -648,7 +646,7 @@ if (!$errors) {
 	}
 	else
 		$db->query("ALTER TABLE  `".table_groups."` CHANGE  `group_date`  `group_date` DATETIME");
-	echo 'Creating table: \'groups\'....<br />';
+	echo '<li>Creating table: \'groups\'....</li>';
 	
 	//group member table
 	$tableexists = checkfortable(table_group_member);
@@ -664,7 +662,7 @@ if (!$errors) {
 		);";
 		$db->query($sql);
        	}
-	echo 'Creating table: \'group_member\'....<br />';
+	echo '<li>Creating table: \'group_member\'....</li>';
 	
 	//group shared table
 	$tableexists = checkfortable(table_group_shared);
@@ -678,7 +676,7 @@ if (!$errors) {
 		);";
         	$db->query($sql);
 		}
-	echo 'Creating table: \'group_shared\'....<br />';
+	echo '<li>Creating table: \'group_shared\'....</li>';
 	
 	$fieldexists = checkforindex('tag_words', table_tags); 	 
 	if (!$fieldexists) { 	 
@@ -772,7 +770,7 @@ if (!$errors) {
 	}
 	        
 
-	//echo '<br />Regenerating the totals table...<br />';
+	echo '<li>Regenerating the totals table...</li>';
 	totals_regenerate();
         
 	
@@ -785,7 +783,7 @@ if (!$errors) {
 			) ENGINE = MyISAM;";
 		$db->query($sql);
 		
-		$sql = "INSERT INTO `" . table_misc_data . "` ( `name` , `data` ) VALUES ('pligg_version', '1.2.2');";
+		$sql = "INSERT INTO `" . table_misc_data . "` ( `name` , `data` ) VALUES ('pligg_version', '2.0.0');";
 		$db->query($sql);
 		//Captcha upgrade:
 		$sql = "INSERT INTO `" . table_misc_data . "` ( `name` , `data` ) VALUES ('captcha_method', 'reCaptcha');";
@@ -797,7 +795,8 @@ if (!$errors) {
 		//
 		//
 	} else {
-		$sql = "UPDATE `" . table_misc_data . "` SET `data` = '1.2.2' WHERE `name` = 'pligg_version';";
+		include_once('upgrade_2.0.php');
+		$sql = "UPDATE `" . table_misc_data . "` SET `data` = '2.0.0' WHERE `name` = 'pligg_version';";
 		$db->query($sql);
         	//Captcha upgrade:
 		$captcha_result=$db->get_results("select * from " . table_misc_data . " where name = 'captcha_method'");
@@ -866,7 +865,7 @@ if (!$errors) {
 	} else {
 		$sql = "CHANGE  `user_categories`  `user_categories` VARCHAR( 255 ) DEFAULT  ''";
 		$db->query($sql);
-		if (get_misc_data('user_cat')=='' && $db->get_var("SELECT user_categories FROM ".table_users." WHERE user_level='god' LIMIT 1"))
+		if (get_misc_data('user_cat')=='' && $db->get_var("SELECT user_categories FROM ".table_users." WHERE user_level='admin' LIMIT 1"))
 		{
 			$sqlGetiCategory = "SELECT category__auto_id from " . table_categories . " where category__auto_id!= 0;";
 			$sqlGetiCategoryQ = mysql_query($sqlGetiCategory);
@@ -937,7 +936,7 @@ if (!$errors) {
 	}
 	$fieldexists = checkforfield('category_author_level', table_categories);
 	if (!$fieldexists) {
-		$sql = "ALTER TABLE `" . table_categories . "` ADD `category_author_level` enum('normal','admin','god') NOT NULL default 'normal';";
+		$sql = "ALTER TABLE `" . table_categories . "` ADD `category_author_level` enum('normal','moderator','admin') NOT NULL default 'normal';";
 		$db->query($sql);
 	}
 	
@@ -1011,14 +1010,14 @@ if (!$errors) {
 		$db->query($sql);
 	}
 	        
-	print "Upgrading to UTF-8<br />";
+	print "<li>Upgrading to UTF-8</li>";
 	$stmts = explode(';', file_get_contents(dirname(__FILE__) . '/utf8.sql'));
 	foreach($stmts as $stmt) {
 	  $stmt = str_replace("`pligg_", "`".table_prefix, $stmt);
   	  mysql_query($stmt);
 	}
 	
-	// echo 'Clearing cache/templates_c directory...<br />';
+	echo '<li>Clearing cache/templates_c directory...</li>';
 	include_once('../Smarty.class.php');
 	$smarty = new Smarty;
 	$smarty->config_dir= '';
@@ -1031,7 +1030,7 @@ if (!$errors) {
 	$config = new pliggconfig;
 	$config->create_file("../settings.php");
 	
-	echo '<br /><b>' . $lang['IfNoError'] . '</b>';
+	echo '</ul></p><p><b>' . $lang['IfNoError'] . '</b></p>';
 
     //end of if post submit is Yes.
     }

@@ -15,9 +15,9 @@ $main_smarty = do_sidebar($main_smarty);
 // require user to log in
 force_authentication();
 
-// restrict access to god only
+// restrict access to admins
 $canIhaveAccess = 0;
-$canIhaveAccess = $canIhaveAccess + checklevel('god');
+$canIhaveAccess = $canIhaveAccess + checklevel('admin');
 if($current_user->user_id != get_group_creator($_REQUEST['id']) && $canIhaveAccess == 0) {
 //	$main_smarty->assign('tpl_center', '/templates/admin/admin_access_denied');
 //	$main_smarty->display($template_dir . '/admin/admin.tpl');

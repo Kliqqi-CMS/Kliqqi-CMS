@@ -37,13 +37,13 @@ if( $_REQUEST['activate'] == 'true')
 	$user_id = $_REQUEST['user_id'];
 	if (!is_numeric($user_id) || !is_numeric($group_id)) die();
 	
-	$canIhaveAccess = checklevel('god');
+	$canIhaveAccess = checklevel('admin');
 	if (!$canIhaveAccess) {
 	    $owner = $db->get_var("SELECT group_creator FROM " . table_groups . " WHERE group_id = $group_id");
 	    $canIhaveAccess = ($owner == $current_user->user_id);
 	    if (!$canIhaveAccess) {
 		$member = $db->get_row("SELECT * FROM " . table_group_member . " WHERE member_group_id = $group_id AND member_user_id = '".$current_user->user_id ."' " );
-		$canIhaveAccess = ($member->member_status=='active' && $member->member_role=='admin');
+		$canIhaveAccess = ($member->member_status=='active' && $member->member_role=='moderator');
 	    }
 	}
 	if (!$canIhaveAccess) die("You don't have enough rights");
@@ -78,13 +78,13 @@ if($_REQUEST['activate'] == 'false')
 	$user_id = $_REQUEST['user_id'];
 	if (!is_numeric($user_id) || !is_numeric($group_id)) die();
 	
-	$canIhaveAccess = checklevel('god');
+	$canIhaveAccess = checklevel('admin');
 	if (!$canIhaveAccess) {
 	    $owner = $db->get_var("SELECT group_creator FROM " . table_groups . " WHERE group_id = $group_id");
 	    $canIhaveAccess = ($owner == $current_user->user_id);
 	    if (!$canIhaveAccess) {
 		$member = $db->get_row("SELECT * FROM " . table_group_member . " WHERE member_group_id = $group_id AND member_user_id = '".$current_user->user_id ."' " );
-		$canIhaveAccess = ($member->member_status=='active' && $member->member_role=='admin');
+		$canIhaveAccess = ($member->member_status=='active' && $member->member_role=='moderator');
 	    }
 	}
 	if (!$canIhaveAccess) die("You don't have enough rights");

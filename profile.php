@@ -29,8 +29,8 @@ check_referrer();
 $main_smarty = do_sidebar($main_smarty);
 
 $canIhaveAccess = 0;
-$canIhaveAccess = $canIhaveAccess + checklevel('god');
 $canIhaveAccess = $canIhaveAccess + checklevel('admin');
+$canIhaveAccess = $canIhaveAccess + checklevel('moderator');
 
 // If not logged in, redirect to the index page
 if ($_GET['login'] && $canIhaveAccess) 

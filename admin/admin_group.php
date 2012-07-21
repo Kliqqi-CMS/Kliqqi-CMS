@@ -13,13 +13,13 @@ check_referrer();
 // require user to log in
 force_authentication();
 
-// restrict access to god and admin only
-$amIgod = 0;
-$amIgod = $amIgod + checklevel('god');
-$main_smarty->assign('amIgod', $amIgod);
+// restrict access to admins and moderators
+$amIadmin = 0;
+$amIadmin = $amIadmin + checklevel('admin');
+$main_smarty->assign('amIadmin', $amIadmin);
 
 $canIhaveAccess = 0;
-$canIhaveAccess = $canIhaveAccess + checklevel('god');
+$canIhaveAccess = $canIhaveAccess + checklevel('admin');
 
 if($canIhaveAccess == 0){	
 	header("Location: " . getmyurl('login', $_SERVER['REQUEST_URI']));

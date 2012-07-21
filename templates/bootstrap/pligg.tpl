@@ -1,7 +1,7 @@
 {************************************
 *********** Main Template ***********
 *************************************}
-{if $maintenance_mode eq "true" && $user_level neq 'god'}{include file=$the_template"/maintenance.tpl"}{else}<!DOCTYPE html>
+{if $maintenance_mode eq "true" && $user_level neq 'admin'}{include file=$the_template"/maintenance.tpl"}{else}<!DOCTYPE html>
 <html dir="{#PLIGG_Visual_Language_Direction#}" xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
 <head>
 	{checkActionsTpl location="tpl_pligg_head_start"}
@@ -109,7 +109,7 @@
 	{checkActionsTpl location="tpl_pligg_head_end"}
 </head>
 <body dir="{#PLIGG_Visual_Language_Direction#}" {$body_args}>
-	{if $maintenance_mode eq "true" && $user_level eq 'god'}
+	{if $maintenance_mode eq "true" && $user_level eq 'admin'}
 		<div class="alert alert-error" style="margin-bottom:0;"><button class="close" data-dismiss="alert">×</button>{#PLIGG_Maintenance_Admin_Warning#}</div>
 	{/if}
 	{checkActionsTpl location="tpl_pligg_body_start"}

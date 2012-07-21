@@ -40,7 +40,7 @@ if(is_numeric($_GET['id'])) {
 
 	$main_smarty->assign('the_story', $link->print_summary('summary', true));
 
-	if($current_user->user_level == "admin" or $current_user->user_level == "god"){
+	if($current_user->user_level == "moderator" or $current_user->user_level == "admin"){
 		$comments = $db->get_results("SELECT * FROM " . table_comments . " WHERE comment_id=$link->commentid ORDER BY comment_date");
 	} else {
 		$comments = $db->get_results("SELECT * FROM " . table_comments . " WHERE comment_status='published' AND comment_id=$link->commentid and comment_user_id=$current_user->user_id ORDER BY comment_date");

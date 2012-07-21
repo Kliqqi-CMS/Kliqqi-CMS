@@ -5,9 +5,9 @@ include(mnminclude.'html1.php');
 // require user to log in
 force_authentication();
 
-// restrict access to god only
+// restrict access to admins
 $canIhaveAccess = 0;
-$canIhaveAccess = $canIhaveAccess + checklevel('god');
+$canIhaveAccess = $canIhaveAccess + checklevel('admin');
 
 if($canIhaveAccess == 0){	
 	header("Location: " . getmyurl('login', $_SERVER['REQUEST_URI']));

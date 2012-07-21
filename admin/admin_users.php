@@ -23,14 +23,14 @@ check_referrer();
 // require user to log in
 force_authentication();
 
-// restrict access to god and admin only
-$amIgod = 0;
-$amIgod = $amIgod + checklevel('god');
-$main_smarty->assign('amIgod', $amIgod);
+// restrict access to admins and moderators
+$amIadmin = 0;
+$amIadmin = $amIadmin + checklevel('admin');
+$main_smarty->assign('amIadmin', $amIadmin);
 
 $canIhaveAccess = 0;
-$canIhaveAccess = $canIhaveAccess + checklevel('god');
 $canIhaveAccess = $canIhaveAccess + checklevel('admin');
+$canIhaveAccess = $canIhaveAccess + checklevel('moderator');
 
 if($canIhaveAccess == 0){	
 //	$main_smarty->assign('tpl_center', '/admin/admin_access_denied');
@@ -221,7 +221,7 @@ if($canIhaveAccess == 1)
 			canIChangeUser($userdata[0]['user_level']);
 			
 			$main_smarty->assign('userdata', $userdata);
-			$main_smarty->assign('levels', array('normal','god','admin','Spammer'));
+			$main_smarty->assign('levels', array('normal','admin','moderator','Spammer'));
 
 			// breadcrumbs and page title
 			$navwhere['text1'] = $main_smarty->get_config_vars('PLIGG_Visual_Header_AdminPanel');
@@ -383,7 +383,7 @@ if($canIhaveAccess == 1)
 				$CSRF->create('admin_users_disable', true, true);
 			// code to prevent CSRF		
 		
-			if(sanitize($_GET["user"], 3) == "god"){
+			if(sanitize($_GET["user"], 3) == "admin"){
 				echo "You can't disable this user";
 			} else {
 				$user= $db->get_row('SELECT * FROM ' . table_users . ' where user_login="'.sanitize($_GET["user"], 3).'"');
@@ -496,7 +496,7 @@ if($canIhaveAccess == 1)
 				$CSRF->create('admin_users_killspam', true, true);
 			// code to prevent CSRF		
 
-			if(sanitize($_GET["user"], 3) == "god"){
+			if(sanitize($_GET["user"], 3) == "admin"){
 		  		echo "You can't killspam this user";
 			} else {
 				$user= $db->get_row('SELECT * FROM ' . table_users . ' where user_login="'.sanitize($_GET["user"], 3).'"');

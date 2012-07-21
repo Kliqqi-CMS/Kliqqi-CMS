@@ -1,5 +1,5 @@
 <!-- admin_main_center.tpl -->
-{if $amIgod eq 1}
+{if $amIadmin eq 1}
 	<div class="column" style="margin-left:0;">
 		{foreach from=$widgets item=widget}	
 			{if $widget.column=='left'}

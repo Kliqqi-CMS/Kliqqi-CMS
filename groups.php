@@ -10,7 +10,7 @@ include(mnminclude.'smartyvariables.php');
 include mnminclude.'extra_fields_smarty.php';
 
 $from_where = "1";
-if (!checklevel('god'))
+if (!checklevel('admin'))
     $from_where .= " AND group_status = 'Enable' ";
 elseif ($_REQUEST["approve"] && is_numeric($_REQUEST["approve"]))
     $db->query("UPDATE ".table_groups." SET group_status='Enable' WHERE group_id=".$db->escape(sanitize($_REQUEST["approve"],3)));

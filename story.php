@@ -69,7 +69,7 @@ if(is_numeric($requestID)) {
 	if ($link->read() == false || (sizeof($thecat)>0 && 
 				      (array_diff($thecat, $link->additional_cats, array($link->category)) || 
 				       sizeof($thecat)!=sizeof($link->additional_cats)+1)) ||
-				      (($link->status=='spam' || $link->status=='discard') && !checklevel('god') && !checklevel('admin'))){
+				      (($link->status=='spam' || $link->status=='discard') && !checklevel('admin') && !checklevel('moderator'))){
 
 		// check for redirects
 		include(mnminclude.'redirector.php');
@@ -202,7 +202,7 @@ function get_comments ($fetch = false){
 
 	$output = '';
 
-	if (checklevel('god') || checklevel('admin'))
+	if (checklevel('admin') || checklevel('moderator'))
 	    $status_sql = " OR comment_status='moderated'";
 
 	// get all parent comments

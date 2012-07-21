@@ -152,17 +152,17 @@
 				<tr>
 					<td style="text-align:right;min-width:300px;width:300px;"><label><a href="#{#PLIGG_Status_Levels#}">{#PLIGG_Status_Levels#}</a>:</label></td>
 					<td>
-						<input type="checkbox" name="status_level[]" id="status_level1" value="god" {if strstr($settings.level,'god')}checked{/if}/> god<br>
-						<input type="checkbox" name="status_level[]" id="status_level2" value="admin" {if strstr($settings.level,'admin')}checked{/if}/> admin<br>
-						<input type="checkbox" name="status_level[]" id="status_level3" value="normal" {if strstr($settings.level,'normal')}checked{/if}/> normal<br>
+						<input type="checkbox" name="status_level[]" id="status_level1" value="admin" {if strstr($settings.level,'admin')}checked{/if}/> Admin<br>
+						<input type="checkbox" name="status_level[]" id="status_level2" value="moderator" {if strstr($settings.level,'moderator')}checked{/if}/> Moderator<br>
+						<input type="checkbox" name="status_level[]" id="status_level3" value="normal" {if strstr($settings.level,'normal')}checked{/if}/> Normal<br>
 					</td>
 				</tr>
 				<tr>
 					<td style="text-align:right;min-width:300px;width:300px;"><label><a href="#{#PLIGG_Status_Profile_Levels#}">{#PLIGG_Status_Profile_Levels#}</a>:</label></td>
 					<td>
-						<input type="checkbox" name="status_profile_level[]" id="status_level1" value="god" {if strstr($settings.profile_level,'god')}checked{/if}/> god<br>
-						<input type="checkbox" name="status_profile_level[]" id="status_level2" value="admin" {if strstr($settings.profile_level,'admin')}checked{/if}/> admin<br>
-						<input type="checkbox" name="status_profile_level[]" id="status_level3" value="normal" {if strstr($settings.profile_level,'normal')}checked{/if}/> normal<br>
+						<input type="checkbox" name="status_profile_level[]" id="status_level1" value="admin" {if strstr($settings.profile_level,'admin')}checked{/if}/> Admin<br>
+						<input type="checkbox" name="status_profile_level[]" id="status_level2" value="moderator" {if strstr($settings.profile_level,'admin')}checked{/if}/> Moderator<br>
+						<input type="checkbox" name="status_profile_level[]" id="status_level3" value="normal" {if strstr($settings.profile_level,'normal')}checked{/if}/> Normal<br>
 					</td>
 				</tr>
 				<tr>

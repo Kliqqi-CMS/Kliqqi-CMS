@@ -453,10 +453,10 @@ function killspam($id)
 }		
 
 function canIChangeUser($user_level) {
-    //Don't want to let admins reset other admins or god
-    $amIgod = checklevel('god');
+    // Don't let admins delete other admins and moderators
+    $amIadmin = checklevel('admin');
 
-    if (($user_level == 'god' || $user_level == 'admin') && !$amIgod) {
+    if (($user_level == 'admin' || $user_level == 'moderator') && !$amIadmin) {
         echo "Access denied";
         die;
     } 

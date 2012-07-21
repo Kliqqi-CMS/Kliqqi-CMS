@@ -31,7 +31,7 @@ class Friend {
 		if (!is_numeric($friend)) die();
 		
 		if ($current_user->user_id == 0) {
-        echo "<span class='success' style='border:solid1px#269900;padding:2px2px2px2px'>Please <a href=" .my_base_url.my_pligg_base. "/login.php?return=/user.php?login=god&amp;view=addfriend>login</a></span><br/>";
+        echo "<span class='success' style='border:solid1px#269900;padding:2px2px2px2px'>Please <a href=" .my_base_url.my_pligg_base. "/login.php?return=/user.php?view=addfriend>login</a></span><br/>";
         return;
         }
 		

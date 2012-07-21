@@ -58,27 +58,27 @@ if (!$errors) {
 	$config->create_file('../settings.php');
 
 	include_once( '../config.php' );
-	$output='<div class="instructions"><p>' . $lang['EnterGod'] . '</p>
+	$output='<div class="instructions"><p>' . $lang['EnterAdmin'] . '</p>
 	<table>
 		<form id="form1" name="form1" action="install.php" method="post">
 		<tr>
-			<td><label>' . $lang['GodLogin'] . '</label></td>
-			<td><input name="godlogin" type="text" value="" /></td>
+			<td><label>' . $lang['AdminLogin'] . '</label></td>
+			<td><input name="adminlogin" type="text" value="" /></td>
 		</tr>
 		
 		<tr>
-			<td><label>' . $lang['GodPassword'] . '</label></td>
-			<td><input name="godpassword" type="password" value="" /></td>
+			<td><label>' . $lang['AdminPassword'] . '</label></td>
+			<td><input name="adminpassword" type="password" value="" /></td>
 		</tr>
 			
 		<tr>
 			<td><label>' . $lang['ConfirmPassword'] . '</label></td>
-			<td><input name="godpassword2" type="password" value="" /></td>
+			<td><input name="adminpassword2" type="password" value="" /></td>
 		</tr>
 			  
 		<tr>
-			<td><label>' . $lang['GodEmail'] . '</label></td>
-			<td><input name="godemail" type="text" value="" /></td>
+			<td><label>' . $lang['AdminEmail'] . '</label></td>
+			<td><input name="adminemail" type="text" value="" /></td>
 		</tr>
 
 		<tr>

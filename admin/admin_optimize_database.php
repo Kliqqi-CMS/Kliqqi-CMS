@@ -16,9 +16,9 @@ if ($_SERVER['SERVER_ADDR'])
 	// require user to log in
 	force_authentication();
 
-	// restrict access to god only
+	// restrict access to admins
 	$canIhaveAccess = 0;
-	$canIhaveAccess = $canIhaveAccess + checklevel('god');
+	$canIhaveAccess = $canIhaveAccess + checklevel('admin');
 
 	if($canIhaveAccess == 0){	
 //		$main_smarty->assign('tpl_center', '/admin/admin_access_denied');

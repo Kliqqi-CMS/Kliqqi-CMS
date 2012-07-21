@@ -18,9 +18,9 @@ include(mnminclude.'csrf.php');
 
 check_referrer();
 
-// restrict access to god
+// restrict access to admins
 $canIhaveAccess = 0;
-$canIhaveAccess = $canIhaveAccess + checklevel('god');
+$canIhaveAccess = $canIhaveAccess + checklevel('admin');
 $main_smarty->assign('isAdmin', $canIhaveAccess);
 
 
@@ -32,9 +32,9 @@ if(isset($_POST['id'])){
 }
 if(!is_numeric($theid)){$theid = 0;}
 // misc smarty
-if (checklevel('god'))
+if (checklevel('admin'))
     $Story_Content_Tags_To_Allow = Story_Content_Tags_To_Allow_God;
-elseif (checklevel('admin'))
+elseif (checklevel('moderator'))
     $Story_Content_Tags_To_Allow = Story_Content_Tags_To_Allow_Admin;
 else
     $Story_Content_Tags_To_Allow = Story_Content_Tags_To_Allow_Normal;
@@ -44,10 +44,10 @@ $main_smarty->assign('Story_Content_Tags_To_Allow', htmlspecialchars($Story_Cont
 $link = $db->get_row("SELECT link_id, link_author, UNIX_TIMESTAMP(link_date) AS date FROM " . table_links . " WHERE link_id=".$theid.";");
 /////
 if ($link) {
-	if ($link->link_author==$current_user->user_id || $current_user->user_level == "admin" || $current_user->user_level == "god")
+	if ($link->link_author==$current_user->user_id || $current_user->user_level == "moderator" || $current_user->user_level == "admin")
 	{
 		// DB 11/11/08
-		if ($current_user->user_level != "god" && $current_user->user_level != "admin" && limit_time_to_edit!=0 && (time()-$link->date)/60 > edit_time_limit)
+		if ($current_user->user_level != "admin" && $current_user->user_level != "moderator" && limit_time_to_edit!=0 && (time()-$link->date)/60 > edit_time_limit)
 		{
 			echo "<br /><br />" . sprintf($main_smarty->get_config_vars('PLIGG_Visual_EditLink_Timeout'),edit_time_limit) . "<br/ ><br /><a href=".my_base_url.my_pligg_base.">".$main_smarty->get_config_vars('PLIGG_Visual_Name')." </a>";
 			exit;
@@ -226,8 +226,8 @@ if ($link) {
 			$main_smarty->assign('cat_array', $array);
 
 			$canIhaveAccess = 0;
-			$canIhaveAccess = $canIhaveAccess + checklevel('god');
 			$canIhaveAccess = $canIhaveAccess + checklevel('admin');
+			$canIhaveAccess = $canIhaveAccess + checklevel('moderator');
 			$main_smarty->assign('canIhaveAccess', $canIhaveAccess);
 
 			if(Enable_Tags){

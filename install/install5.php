@@ -15,11 +15,11 @@ include_once mnminclude.'db.php';
 include_once mnminclude.'html1.php';
 
 // Check user input here
-if (!$_POST['godlogin'] ||
-    !$_POST['godpassword'] ||
-    !$_POST['godemail'])
+if (!$_POST['adminlogin'] ||
+    !$_POST['adminpassword'] ||
+    !$_POST['adminemail'])
     	$errors[] = $lang['Error5-1'];
-elseif ($_POST['godpassword'] != $_POST['godpassword2'])
+elseif ($_POST['adminpassword'] != $_POST['adminpassword2'])
     	$errors[] = $lang['Error5-2'];
 		
 if (!$errors) {
@@ -28,8 +28,8 @@ if (!$errors) {
 	
 	echo "Adding the Admin user account...<br />";
 	$userip=$db->escape($_SERVER['REMOTE_ADDR']);
-	$saltedpass=generateHash($_POST['godpassword']);
-	$sql = "INSERT INTO `" . table_users . "` (`user_id`, `user_login`, `user_level`, `user_modification`, `user_date`, `user_pass`, `user_email`, `user_names`, `user_karma`, `user_url`, `user_lastlogin`, `user_ip`, `user_lastip`, `last_reset_request`, `user_enabled`) VALUES (1, '".$db->escape($_POST['godlogin'])."', 'god', now(), now(), '$saltedpass', '".$db->escape($_POST['godemail'])."', '', '10.00', 'http://pligg.com', now(), '0', '0', now(), '1');";
+	$saltedpass=generateHash($_POST['adminpassword']);
+	$sql = "INSERT INTO `" . table_users . "` (`user_id`, `user_login`, `user_level`, `user_modification`, `user_date`, `user_pass`, `user_email`, `user_names`, `user_karma`, `user_url`, `user_lastlogin`, `user_ip`, `user_lastip`, `last_reset_request`, `user_enabled`) VALUES (1, '".$db->escape($_POST['adminlogin'])."', 'admin', now(), now(), '$saltedpass', '".$db->escape($_POST['adminemail'])."', '', '10.00', 'http://pligg.com', now(), '0', '0', now(), '1');";
 	$db->query( $sql );
 
 	//done

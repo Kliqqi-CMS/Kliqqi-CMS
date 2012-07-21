@@ -218,10 +218,10 @@ class Comment {
 		//spellchecker
 	    $smarty->assign('Spell_Checker',Spell_Checker); 
 
-		// does the person logged in have admin or god access?
+		// does the person logged in have admin or moderator status?
 			$canIhaveAccess = 0;
-			$canIhaveAccess = $canIhaveAccess + checklevel('god');
 			$canIhaveAccess = $canIhaveAccess + checklevel('admin');
+			$canIhaveAccess = $canIhaveAccess + checklevel('moderator');
 			if($canIhaveAccess == 1){$smarty->assign('isadmin', 1);}
 		
 		// the link to upvote the comment

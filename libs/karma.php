@@ -88,7 +88,7 @@ $iHowManyContributorsInTheList = 10;
 
 
 // Pull the list of top contributors 
-$users = $db->get_results("SELECT user_id from " . table_users . " where user_level <> 'god' order by user_karma desc limit " . $iHowManyContributorsInTheList);
+$users = $db->get_results("SELECT user_id from " . table_users . " where user_level <> 'admin' order by user_karma desc limit " . $iHowManyContributorsInTheList);
 
 // Cycle through the results, building the list 
 foreach($users as $dbuser) {

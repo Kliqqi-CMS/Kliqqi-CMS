@@ -10,13 +10,13 @@
 		<tr><td width="160px"><strong>{#PLIGG_Visual_View_User_LL_Address#}: </strong></td><td> {$userdata[nr].user_lastip}</td></tr>
 		<tr><td width="160px"><strong>{#PLIGG_Visual_View_User_Groups_Belongs#}: </strong></td><td> {$userdata[nr].belongs}</td></tr>
 		<tr><td width="160px"><strong>{#PLIGG_Visual_View_User_Groups_Created#}: </strong></td><td> {$userdata[nr].created}</td></tr>
-		{if $userdata[nr].user_login neq "god"}<tr><td><strong>{#PLIGG_Visual_View_User_IP_Address#}:</strong></td><td> {$userdata[nr].user_ip}</td></tr>{/if}
+		{if $userdata[nr].user_login neq "admin"}<tr><td><strong>{#PLIGG_Visual_View_User_IP_Address#}:</strong></td><td> {$userdata[nr].user_ip}</td></tr>{/if}
 		{checkActionsTpl location="tpl_admin_user_show_center_fields"}
 		<tr><td><img src="{$my_base_url}{$my_pligg_base}/templates/admin/images/user_links.gif" align="absmiddle"/> <a href="admin_links.php?user={$userdata[nr].user_login}">{#PLIGG_Visual_View_User_Sub_Links#}</a></td> <td> {$linkcount} Total</td></tr>
 		<br />
 		<tr><td><img src="{$my_base_url}{$my_pligg_base}/templates/admin/images/user_comments.gif" align="absmiddle"/> <a href="admin_comments.php?user={$userdata[nr].user_login}">{#PLIGG_Visual_View_User_Sub_Comments#}</a></td> <td> {$commentcount} Total</td></tr>
 	</table>	
-	{if $amIgod}		
+	{if $amIadmin}		
 		<hr/>
 		<a class="btn" href="?mode=edit&user={$userdata[nr].user_login}"><img src="{$my_base_url}{$my_pligg_base}/templates/admin/images/user_edit.gif" align="absmiddle"/> {#PLIGG_Visual_View_User_Edit_Data#}</a>
 		{if $user_logged_in neq $userdata[nr].user_login && $userdata[nr].user_id neq '1'}

@@ -105,7 +105,7 @@ CHANGE  `trackback_title`  `trackback_title` TEXT CHARACTER SET utf8 COLLATE utf
 CHANGE  `trackback_content`  `trackback_content` TEXT CHARACTER SET utf8 COLLATE utf8_unicode_ci DEFAULT NULL;
 
 ALTER TABLE  `pligg_users` CHANGE  `user_login`  `user_login` VARCHAR( 32 ) CHARACTER SET utf8 COLLATE utf8_unicode_ci,
-CHANGE  `user_level`  `user_level` ENUM(  'normal',  'admin',  'god', 'Spammer' ) DEFAULT  'normal',
+CHANGE  `user_level`  `user_level` ENUM(  'normal',  'moderator',  'admin', 'Spammer' ) DEFAULT  'normal',
 CHANGE  `user_pass`  `user_pass` VARCHAR( 64 ) CHARACTER SET utf8 COLLATE utf8_unicode_ci,
 CHANGE  `user_email`  `user_email` VARCHAR( 128 ) CHARACTER SET utf8 COLLATE utf8_unicode_ci,
 CHANGE  `user_names`  `user_names` VARCHAR( 128 ) CHARACTER SET utf8 COLLATE utf8_unicode_ci,

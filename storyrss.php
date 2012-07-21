@@ -27,7 +27,7 @@ if(is_numeric($requestID)) {
 	$id = $requestID;
 	$link = new Link;
 	$link->id=$requestID;
-	if(!$link->read() || ($link->status=='spam' && !checklevel('god') && !checklevel('admin'))){
+	if(!$link->read() || ($link->status=='spam' && !checklevel('admin') && !checklevel('moderator'))){
 
 		// check for redirects
 		include(mnminclude.'redirector.php');

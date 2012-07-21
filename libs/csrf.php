@@ -7,7 +7,7 @@ class CSRF {
 	// options
 	var $do_log = false;  // log to file
 	var $do_debug = false;  // output debug info
-	var $do_debug_only_if_user = ''; // debug output is visible only to user X. blank means everyone can see. usually set to 'god'
+	var $do_debug_only_if_user = ''; // debug output is visible only to user X. blank means everyone can see. usually set to 'admin'
 
 	// define other variables
 	var $datalog = ''; // an array of all the log items

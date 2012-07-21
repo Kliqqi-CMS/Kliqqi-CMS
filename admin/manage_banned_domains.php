@@ -19,8 +19,8 @@ check_referrer();
 force_authentication();
 
 $canIhaveAccess = 0;
-$canIhaveAccess = $canIhaveAccess + checklevel('god');
 $canIhaveAccess = $canIhaveAccess + checklevel('admin');
+$canIhaveAccess = $canIhaveAccess + checklevel('moderator');
 
 // read the mysql database to get the pligg version
 $sql = "SELECT data FROM " . table_misc_data . " WHERE name = 'pligg_version'";

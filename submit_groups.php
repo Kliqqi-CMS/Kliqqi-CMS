@@ -33,7 +33,7 @@ $main_smarty->assign('auto_approve_group', auto_approve_group);
 // make sure user is logged in
 force_authentication();
 $current_user_level = $current_user->user_level;
-if(enable_group == "true" && (group_submit_level == $current_user_level || group_submit_level == 'normal' || $current_user_level == 'god'))
+if(enable_group == "true" && (group_submit_level == $current_user_level || group_submit_level == 'normal' || $current_user_level == 'admin'))
 //if(enable_group == "true" && group_allow == 1)
 {
 	if(isset($_POST['group_title'])){
@@ -93,7 +93,7 @@ if(enable_group == "true" && (group_submit_level == $current_user_level || group
 		//echo 'sdgfdsgds'.$in_id;
 		
 		//to make group creator a member
-		$insert_member = "INSERT IGNORE INTO ". table_group_member ." (`member_user_id` , `member_group_id`, `member_role`) VALUES (".$group_author.", ".$in_id.",'admin' )";
+		$insert_member = "INSERT IGNORE INTO ". table_group_member ." (`member_user_id` , `member_group_id`, `member_role`) VALUES (".$group_author.", ".$in_id.",'moderator' )";
 		$db->query($insert_member);
 		
 		if(isset($_POST['group_mailer']))
