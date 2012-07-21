@@ -30,7 +30,7 @@ $canIhaveAccess = $canIhaveAccess + checklevel('admin');
 $canIhaveAccess = $canIhaveAccess + checklevel('moderator');
 
 if($canIhaveAccess == 0){	
-//	$main_smarty->assign('tpl_center', '/admin/admin_access_denied');
+//	$main_smarty->assign('tpl_center', '/admin/access_denied');
 //	$main_smarty->display($template_dir . '/admin/admin.tpl');		
 	header("Location: " . getmyurl('login', $_SERVER['REQUEST_URI']));
 	die();
@@ -80,20 +80,19 @@ if($page_id){
 							<a href="'.getmyurl("page", $page_results->link_title_url).'" title="'.$page_results->link_title.'" target="_blank">'.$page_results->link_title.'</a>
 						</td>
 						<td style="text-align:center;">
-							<a href="'.$my_base_url.$my_pligg_base.'/admin/edit_page.php?link_id='.$page_results->link_id.'"><img src="'.$my_base_url.$my_pligg_base.'/templates/admin/images/user_edit.gif" alt="'. $main_smarty->get_config_vars("PLIGG_Visual_AdminPanel_Page_Edit") .'" title="'. $main_smarty->get_config_vars("PLIGG_Visual_AdminPanel_Page_Edit") .'" /></a>
+							<a href="'.$my_base_url.$my_pligg_base.'/admin/edit_page.php?link_id='.$page_results->link_id.'"><i class="icon icon-edit" alt="'. $main_smarty->get_config_vars("PLIGG_Visual_AdminPanel_Page_Edit") .'" title="'. $main_smarty->get_config_vars("PLIGG_Visual_AdminPanel_Page_Edit") .'"></i></a>
 						</td>
 						<td style="text-align:center;">
-							<a onclick="return confirm(\''.$main_smarty->get_config_vars('PLIGG_Visual_Page_Delete_Confirm').'\');" href="'.$my_base_url.$my_pligg_base.'/admin/admin_page.php?link_id='.$page_results->link_id.'&mode=delete"><img src="'.$my_base_url.$my_pligg_base.'/templates/admin/images/delete.png" alt="'. $main_smarty->get_config_vars("PLIGG_Visual_AdminPanel_Page_Delete") .'" title="'. $main_smarty->get_config_vars("PLIGG_Visual_AdminPanel_Page_Delete") .'" /></a>
+							<a onclick="return confirm(\''.$main_smarty->get_config_vars('PLIGG_Visual_Page_Delete_Confirm').'\');" href="'.$my_base_url.$my_pligg_base.'/admin/admin_page.php?link_id='.$page_results->link_id.'&mode=delete"><i class="icon icon-trash" alt="'. $main_smarty->get_config_vars("PLIGG_Visual_AdminPanel_Page_Delete") .'" title="'. $main_smarty->get_config_vars("PLIGG_Visual_AdminPanel_Page_Delete") .'"></i></a>
 						</td>
 					</tr>';
 	}
 }
-$page_text .= '<br/>';
 
 $main_smarty->assign('page_title' , $page_title);
 $main_smarty->assign('page_text' , $page_text);
 
 // show the template
-$main_smarty->assign('tpl_center', '/admin/admin_page');
+$main_smarty->assign('tpl_center', '/admin/pages');
 $main_smarty->display($template_dir . '/admin/admin.tpl');
 ?>

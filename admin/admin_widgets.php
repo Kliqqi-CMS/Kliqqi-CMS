@@ -111,7 +111,7 @@ if($_GET['action'] == 'remove'){
 
 	
 
-	$main_smarty->assign('tpl_center', '/admin/admin_widgets_center');
+	$main_smarty->assign('tpl_center', '/admin/widgets');
 	$output = $main_smarty->fetch($template_dir . '/admin/admin.tpl');		
 
 	if (!function_exists('clear_widget_cache')) {

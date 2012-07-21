@@ -160,6 +160,7 @@
 									<li{if $pagename eq "admin_config" && $templatelite.get.page eq "AntiSpam"} class="active"{/if}><a href="{$my_base_url}{$my_pligg_base}/admin/admin_config.php?page=AntiSpam">AntiSpam</a></li>
 									<li{if $pagename eq "admin_config" && $templatelite.get.page eq "Avatars"} class="active"{/if}><a href="{$my_base_url}{$my_pligg_base}/admin/admin_config.php?page=Avatars">Avatars</a></li>
 									<li{if $pagename eq "admin_config" && $templatelite.get.page eq "Comments"} class="active"{/if}><a href="{$my_base_url}{$my_pligg_base}/admin/admin_config.php?page=Comments">Comments</a></li>
+									<li{if $pagename eq "admin_backup"} class="active"{/if}><a href="{$my_base_url}{$my_pligg_base}/admin/admin_backup.php">{#PLIGG_Visual_AdminPanel_Backup#}</a></li>
 									<li{if $pagename eq "admin_config" && $templatelite.get.page eq "Groups"} class="active"{/if}><a href="{$my_base_url}{$my_pligg_base}/admin/admin_config.php?page=Groups">Groups</a></li>
 									<li{if $pagename eq "admin_config" && $templatelite.get.page eq "Live"} class="active"{/if}><a href="{$my_base_url}{$my_pligg_base}/admin/admin_config.php?page=Live">Live</a></li>
 									<li{if $pagename eq "admin_config" && $templatelite.get.page eq "Location Installed"} class="active"{/if}><a href="{$my_base_url}{$my_pligg_base}/admin/admin_config.php?page=Location Installed">Location Installed</a></li>
@@ -195,12 +196,13 @@
 									</a>
 								</span>
 								<span class="badge accordion-heading-alert">
-									<a href="{$my_base_url}{$my_pligg_base}/admin/admin_modules.php">2</a>
+									<a href="{$my_base_url}{$my_pligg_base}/admin/admin_modules.php">3</a>
 								</span>
 							</div>
 							<div class="accordion-body collapse in" id="CollapseModules">
 								<div class="accordion-inner">
-									<li{if $pagename eq "admin_modules"}{php} if ($_GET["status"] == ""){ echo ' class="active"'; } {/php}{/if}><a href="{$my_base_url}{$my_pligg_base}/admin/admin_modules.php" {if $pagename eq "admin_modules"}class="active"{/if} >{#PLIGG_Visual_AdminPanel_Modules_Nav#} <span class="pull-right badge badge-gray">2</span></a></li> 
+									<li{if $pagename eq "admin_modules"}{php} if ($_GET["status"] == ""){ echo ' class="active"'; } {/php}{/if}><a href="{$my_base_url}{$my_pligg_base}/admin/admin_modules.php" {if $pagename eq "admin_modules"}class="active"{/if} >Installed {#PLIGG_Visual_AdminPanel_Modules_Nav#} <span class="pull-right badge badge-gray">2</span></a></li> 
+									<li{if $pagename eq "admin_modules"}{php} if ($_GET["status"] == "uninstalled"){ echo ' class="active"'; } {/php}{/if}><a href="{$my_base_url}{$my_pligg_base}/admin/admin_modules.php?status=uninstalled" {if $pagename eq "admin_modules"}{php} if ($_GET["status"] == "uninstalled"){ echo ' class="active"'; } {/php}{/if} >Uninstalled {#PLIGG_Visual_AdminPanel_Modules_Nav#} <span class="pull-right badge badge-gray">1</span></a></li> 
 									{checkActionsTpl location="tpl_header_admin_main_links"}
 								</div>
 							</div>

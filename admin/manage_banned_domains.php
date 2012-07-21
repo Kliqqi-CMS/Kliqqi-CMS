@@ -41,13 +41,13 @@ if($canIhaveAccess == 1){
 	// if spam checking is not enabled in the admin panel
 	if(CHECK_SPAM == false){
 		$main_smarty->assign('errorText', "<b>Error:</b> You have <b>Enable spam checking</b> set to false. Please set it to true in the <a href='$my_base_url$my_pligg_base/admin/admin_config.php?page=AntiSpam' target='_blank'>admin panel</a>.");
-		$main_smarty->assign('tpl_center', '/admin/admin_banned_domain_add');
+		$main_smarty->assign('tpl_center', '/admin/banned_domain_add');
 		$main_smarty->display($template_dir . '/admin/admin.tpl');
 	}
 	elseif(isset($_REQUEST['add'])){
 		$main_smarty->assign('story_id', sanitize($_REQUEST['id'], 3));
 		$main_smarty->assign('domain_to_ban',  sanitize($_REQUEST['add'], 3));
-		$main_smarty->assign('tpl_center', '/admin/admin_banned_domain_add');
+		$main_smarty->assign('tpl_center', '/admin/banned_domain_add');
 		$main_smarty->display($template_dir . '/admin/admin.tpl');
 	}
 	elseif(isset($_REQUEST['doban'])){
@@ -56,13 +56,13 @@ if($canIhaveAccess == 1){
 		if (is_writable($filename)) {
 		   if (!$handle = fopen($filename, 'a')) {
 				$main_smarty->assign('errorText', "Cannot open file ($filename)");
-				$main_smarty->assign('tpl_center', '/admin/admin_banned_domain_add');
+				$main_smarty->assign('tpl_center', '/admin/banned_domain_add');
 				$main_smarty->display($template_dir . '/admin/admin.tpl');
 				exit;
 		   }
 		   if (fwrite($handle, $somecontent) === FALSE) {
 				$main_smarty->assign('errorText', "Cannot write to file ($filename)");
-				$main_smarty->assign('tpl_center', '/admin/admin_banned_domain_add');
+				$main_smarty->assign('tpl_center', '/admin/banned_domain_add');
 				$main_smarty->display($template_dir . '/admin/admin.tpl');
 				exit;
 		   }
@@ -70,7 +70,7 @@ if($canIhaveAccess == 1){
 			$main_smarty->assign('somecontent', $somecontent);
 			$main_smarty->assign('filename', $filename);
 			$main_smarty->assign('storyurl', getmyurl("story", $id));
-			$main_smarty->assign('tpl_center', '/admin/admin_banned_domain_added');
+			$main_smarty->assign('tpl_center', '/admin/banned_domain_added');
 			$main_smarty->display($template_dir . '/admin/admin.tpl');
 
 			fclose($handle);
@@ -78,7 +78,7 @@ if($canIhaveAccess == 1){
 		} 
 		else {
 			$main_smarty->assign('errorText', "The file $filename is not writable");
-			$main_smarty->assign('tpl_center', '/admin/admin_banned_domain_add');
+			$main_smarty->assign('tpl_center', '/admin/banned_domain_add');
 			$main_smarty->display($template_dir . '/admin/admin.tpl');
 		}
 	}
@@ -86,14 +86,14 @@ if($canIhaveAccess == 1){
 	{
 		$lines = file('../local-antispam.txt');
 		$main_smarty->assign('lines', $lines);
-		$main_smarty->assign('tpl_center', '/admin/admin_banned_domain_list');
+		$main_smarty->assign('tpl_center', '/admin/banned_domains');
 		$main_smarty->display($template_dir . '/admin/admin.tpl');
 	}
 }
 else
 {
 //	$main_smarty->assign('errorText', "<br />We're sorry, but you do not have administrative privileges on this site.<br />If you wish to be promoted, please contact the site administrator.<br />");
-//	$main_smarty->assign('tpl_center', '/admin/admin_banned_domain_add');
+//	$main_smarty->assign('tpl_center', '/admin/banned_domain_add');
 //	$main_smarty->display($template_dir . '/admin/admin.tpl');
 	header("Location: " . getmyurl('login', $_SERVER['REQUEST_URI']));
 }

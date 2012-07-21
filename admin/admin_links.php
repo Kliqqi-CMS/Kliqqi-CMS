@@ -30,7 +30,7 @@ $canIhaveAccess = 0;
 $canIhaveAccess = $canIhaveAccess + checklevel('admin');
 
 if($canIhaveAccess == 0){	
-//	$main_smarty->assign('tpl_center', '/admin/admin_access_denied');
+//	$main_smarty->assign('tpl_center', '/admin/access_denied');
 //	$main_smarty->display($template_dir . '/admin/admin.tpl');		
 	header("Location: " . getmyurl('login', $_SERVER['REQUEST_URI']));
 	die();
@@ -193,7 +193,7 @@ if($canIhaveAccess == 1) {
 	$main_smarty->assign('version_number', $pligg_version);
 	
 	// show the template
-	$main_smarty->assign('tpl_center', '/admin/admin_links_center');
+	$main_smarty->assign('tpl_center', '/admin/submissions');
 	$main_smarty->display($template_dir . '/admin/admin.tpl');
 
 }

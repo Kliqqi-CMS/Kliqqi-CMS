@@ -31,7 +31,7 @@ $canIhaveAccess = 0;
 $canIhaveAccess = $canIhaveAccess + checklevel('admin');
 
 if($canIhaveAccess == 0){	
-//	$main_smarty->assign('tpl_center', '/admin/admin_access_denied');
+//	$main_smarty->assign('tpl_center', '/admin/access_denied');
 //	$main_smarty->display($template_dir . '/admin/admin.tpl');		
 	header("Location: " . getmyurl('login', $_SERVER['REQUEST_URI']));
 	die();
@@ -128,9 +128,9 @@ if($canIhaveAccess == 1) {
 	$main_smarty->assign('posttitle', " / " . $main_smarty->get_config_vars('PLIGG_Visual_Header_AdminPanel'));
 	
 	if (isset($_GET['action']) && sanitize($_GET['action'], 3) == "bulkmod" && isset($_POST['submit'])) {
-		$CSRF->check_expired('admin_comments_edit');
+		$CSRF->check_expired('comments_edit');
 		$killspammed = array();
-		if ($CSRF->check_valid(sanitize($_POST['token'], 3), 'admin_comments_edit')){
+		if ($CSRF->check_valid(sanitize($_POST['token'], 3), 'comments_edit')){
 			$comment = array();
 			foreach ($_POST["comment"] as $k => $v) {
 				$comment[intval($k)] = sanitize($v, 3);
@@ -166,7 +166,7 @@ if($canIhaveAccess == 1) {
 				$link->store();
 				$link='';
 			}
-			header("Location: ".my_pligg_base."/admin/admin_comments.php?page=".sanitize($_GET['page'],3));
+			header("Location: ".my_pligg_base."/admin/comments.php?page=".sanitize($_GET['page'],3));
 			die();
 
 		} else {
@@ -174,11 +174,11 @@ if($canIhaveAccess == 1) {
 		    exit;
 		}
 	} else {
-		$CSRF->create('admin_comments_edit', true, true);
+		$CSRF->create('comments_edit', true, true);
 	}
 	
 	// pagename
-	define('pagename', 'admin_comments'); 
+	define('pagename', 'comments'); 
 	$main_smarty->assign('pagename', pagename);
 	
 	// read the mysql database to get the pligg version
@@ -187,7 +187,7 @@ if($canIhaveAccess == 1) {
 	$main_smarty->assign('version_number', $pligg_version); 
 	
 	// show the template
-	$main_smarty->assign('tpl_center', '/admin/admin_comments_center');
+	$main_smarty->assign('tpl_center', '/admin/comments');
 	$main_smarty->display($template_dir . '/admin/admin.tpl');
 
 }

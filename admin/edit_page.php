@@ -33,7 +33,7 @@ $canIhaveAccess = $canIhaveAccess + checklevel('admin');
 $canIhaveAccess = $canIhaveAccess + checklevel('moderator');
 
 if($canIhaveAccess == 0){	
-//	$main_smarty->assign('tpl_center', '/admin/admin_access_denied');
+//	$main_smarty->assign('tpl_center', '/admin/access_denied');
 //	$main_smarty->display($template_dir . '/admin/admin.tpl');		
 	header("Location: " . getmyurl('login', $_SERVER['REQUEST_URI']));
 	die();
@@ -104,7 +104,7 @@ if($_REQUEST['process']=='edit_page'){
 	}
   }
 // show the template
-$main_smarty->assign('tpl_center', '/admin/edit_page');
+$main_smarty->assign('tpl_center', '/admin/page_edit');
 $main_smarty->display($template_dir . '/admin/admin.tpl');	
 
 ?>

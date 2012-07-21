@@ -30,7 +30,7 @@ $canIhaveAccess = $canIhaveAccess + checklevel('admin');
 $canIhaveAccess = $canIhaveAccess + checklevel('moderator');
 
 if($canIhaveAccess == 0){	
-//	$main_smarty->assign('tpl_center', '/admin/admin_access_denied');
+//	$main_smarty->assign('tpl_center', '/admin/access_denied');
 //	$main_smarty->display($template_dir . '/admin/admin.tpl');
 	header("Location: " . getmyurl('login', $_SERVER['REQUEST_URI']));
 	die();
@@ -59,7 +59,7 @@ $pligg_version = $db->get_var($sql);
 $main_smarty->assign('version_number', $pligg_version);
 
 // show the template
-$main_smarty->assign('tpl_center', '/admin/backup_main_center');
+$main_smarty->assign('tpl_center', '/admin/backup');
 $main_smarty->display($template_dir . '/admin/admin.tpl');
 	
 ?>

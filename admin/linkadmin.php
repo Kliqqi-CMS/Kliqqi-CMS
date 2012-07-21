@@ -53,7 +53,7 @@ if($canIhaveAccess == 1)
 				$main_smarty->assign('pagename', pagename);
 				
 				// show the template
-				$main_smarty->assign('tpl_center', '/admin/linkadmin_main');
+				$main_smarty->assign('tpl_center', '/admin/submission_view');
 				$main_smarty->display($template_dir . '/admin/admin.tpl');
 			}
 			else
@@ -83,7 +83,7 @@ if($canIhaveAccess == 1)
 			  $main_smarty->assign('pagename', pagename);
 				
 				//show the template
-				$main_smarty->assign('tpl_center', '/admin/linkadmin_stage2');
+				$main_smarty->assign('tpl_center', '/admin/submission_status');
 				$main_smarty->display($template_dir . '/admin/admin.tpl');
 	
 			}
@@ -113,7 +113,7 @@ if($canIhaveAccess == 1)
 			$main_smarty->assign('pagename', pagename);
 
 			// show the template
-			$main_smarty->assign('tpl_center', '/admin/linkadmin_update');
+			$main_smarty->assign('tpl_center', '/admin/submission_update');
 			$main_smarty->display($template_dir . '/admin/admin.tpl');
 			}else{
 				echo 'Error: link not found';

@@ -33,7 +33,7 @@ $canIhaveAccess = $canIhaveAccess + checklevel('admin');
 $canIhaveAccess = $canIhaveAccess + checklevel('moderator');
 
 if($canIhaveAccess == 0){	
-//	$main_smarty->assign('tpl_center', '/admin/admin_access_denied');
+//	$main_smarty->assign('tpl_center', '/admin/access_denied');
 //	$main_smarty->display($template_dir . '/admin/admin.tpl');		
 	header("Location: " . getmyurl('login', $_SERVER['REQUEST_URI']));
 	die();
@@ -203,7 +203,7 @@ if($canIhaveAccess == 1)
 			check_actions('admin_users_view', $vars);
 			
 			// show the template
-			$main_smarty->assign('tpl_center', '/admin/user_show_center');
+			$main_smarty->assign('tpl_center', '/admin/user_view');
 			$main_smarty->display($template_dir . '/admin/admin.tpl');
 		}
 		
@@ -241,7 +241,7 @@ if($canIhaveAccess == 1)
 			if(!$user->read()) {
 				$user = sanitize($_GET["user"], 3);
 				$main_smarty->assign('user', $user);
-				$main_smarty->assign('tpl_center', '/admin/user_doesnt_exist_center');
+				$main_smarty->assign('tpl_center', '/admin/user_does_not_exist');
 				$main_smarty->display($template_dir . '/admin/admin.tpl');
 				die;
 			}
@@ -251,7 +251,7 @@ if($canIhaveAccess == 1)
 			check_actions('admin_users_edit', $vars);
 	
 			// show the template
-			$main_smarty->assign('tpl_center', '/admin/user_edit_center');
+			$main_smarty->assign('tpl_center', '/admin/user_edit');
 			$main_smarty->display($template_dir . '/admin/admin.tpl');
 		}		
 		
@@ -365,7 +365,7 @@ if($canIhaveAccess == 1)
 					$main_smarty->assign('pagename', pagename);
 	
 					// show the template
-					$main_smarty->assign('tpl_center', '/admin/user_password_reset_center');
+					$main_smarty->assign('tpl_center', '/admin/user_password_reset');
 					$main_smarty->display($template_dir . '/admin/admin.tpl');
 				}
 				else{showmyerror('userdoesntexist');}
@@ -408,7 +408,7 @@ if($canIhaveAccess == 1)
 					$main_smarty->assign('pagename', pagename);					
 				
 					// show the template
-					$main_smarty->assign('tpl_center', '/admin/user_disable_center');
+					$main_smarty->assign('tpl_center', '/admin/user_disable');
 					$main_smarty->display($template_dir . '/admin/admin.tpl');
 				} else {
 					showmyerror('userdoesntexist');
@@ -524,7 +524,7 @@ if($canIhaveAccess == 1)
 					$main_smarty->assign('pagename', pagename);
 		
 					// show the template
-					$main_smarty->assign('tpl_center', '/admin/user_killspam_center');
+					$main_smarty->assign('tpl_center', '/admin/user_killspam');
 					$main_smarty->display($template_dir . '/admin/admin.tpl');
 				}
 				else{showmyerror('userdoesntexist');}
@@ -595,7 +595,7 @@ if($canIhaveAccess == 1)
 			$main_smarty->assign('pagename', pagename);
 
 			// show the template
-			$main_smarty->assign('tpl_center', '/admin/user_listall_center');
+			$main_smarty->assign('tpl_center', '/admin/users');
 			$main_smarty->display($template_dir . '/admin/admin.tpl');		
 		
 		}
@@ -644,7 +644,7 @@ if($canIhaveAccess == 1)
 		$main_smarty->assign('pagename', pagename);
 
 		// show the template
-		$main_smarty->assign('tpl_center', '/admin/user_listall_center');
+		$main_smarty->assign('tpl_center', '/admin/users');
 		$main_smarty->display($template_dir . '/admin/admin.tpl');
 	}
 } else {
@@ -670,7 +670,7 @@ function showmyerror()
 	$main_smarty->assign('pagename', pagename);
 
 	// show the template
-	$main_smarty->assign('tpl_center', '/admin/user_doesnt_exist_center');
+	$main_smarty->assign('tpl_center', '/admin/user_does_not_exist');
 	$main_smarty->display($template_dir . '/admin/admin.tpl');
 }
 ?>

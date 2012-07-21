@@ -69,6 +69,6 @@ $main_smarty->assign('groups',$db->get_results($sql,ARRAY_A));
 //$main_smarty->assign('page_text' , $page_text);
 
 // show the template
-$main_smarty->assign('tpl_center', '/admin/admin_group');
+$main_smarty->assign('tpl_center', '/admin/groups');
 $main_smarty->display($template_dir . '/admin/admin.tpl');
 ?>
