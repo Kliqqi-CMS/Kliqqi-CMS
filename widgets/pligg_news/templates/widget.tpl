@@ -18,8 +18,11 @@
 
 {php}
 
-require_once('../templates/admin/simplepie.inc');
-$url = 'http://www.pligg.com/rss/blog';
+require_once('../libs/SimplePie.compiled.php');
+$feed = new SimplePie();
+$feed->set_feed_url('http://www.pligg.com/rss/blog');
+$feed->init();
+$feed->handle_content_type();
 
 function shorten($string, $length){
 	// By default, an ellipsis will be appended to the end of the text.
@@ -47,9 +50,7 @@ function shorten($string, $length){
 	return $desc;
 }
 
-$feed = new SimplePie();
-$feed->set_feed_url($url);
-$feed->init();
+
 
 // default starting item
 $start = 0;
