@@ -33,6 +33,9 @@ if($language != 'local'){
 	.navbar-fixed-top, .navbar-fixed-bottom {
 		position:absolute;
 	}
+	.navbar .nav > li > a {
+		padding-top:11px;
+	}
 	</style>
 	
 	<title>Pligg CMS <?php $lang['installer'] ?></title>
