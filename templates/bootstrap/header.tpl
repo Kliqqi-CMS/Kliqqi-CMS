@@ -170,7 +170,11 @@
 </div><!--/.navbar -->
 <div class="navbar navbar-fixed-top">
 	<!-- START CATEGORIES -->
-	{assign var=sidebar_module value="categories"}{include file=$the_template_sidebar_modules."/wrapper.tpl"}
+	<div id="categories">
+		<div class="container">
+			{assign var=sidebar_module value="categories"}{include file=$the_template_sidebar_modules."/wrapper.tpl"}
+		</div>
+	</div>
 	<!-- END CATEGORIES -->
 </div>
 <!--/header.tpl -->
