@@ -1,30 +1,28 @@
-<?php
 
-echo ' <br />
+			</div>
+		</div><!--/.row-->
+	</section><!--/#maincontent-->
+	<hr />
+	<footer class="footer">
+		<div id="footer">
+			<span class="subtext"> 
+				<a href="http://pligg.com/" target="_blank">Pligg Content Management System</a> 
+				| Need Web Hosting? Check out our <a href="http://pligg.com/hosting/" target="_blank">Preferred Hosts</a> 
+			</span>
 		</div>
-	</div>
-</div>
+	</footer>
+</div><!--/.container-->
 
+<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.18/jquery-ui.min.js"></script>
+<link href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.18/themes/smoothness/jquery-ui.css" media="all" rel="stylesheet" type="text/css" />
 
-<div id="footer-wrap">
-	<div class="footer">
-		<div class="rss-feeds">
-			<h1>Pligg CMS RSS Feeds</h1>
-			<ul>
-				<li><a href="http://www.pligg.com/blog/feed/" target="_blank">Blog</a></li>
-				<li><a href="http://twitter.com/statuses/user_timeline/6024362.rss" target="_blank">Twitter</a></li>
-				<li><a href="http://forums.pligg.com/external.php" target="_blank">Forum</a></li>
-			</ul>
-		</div>
-	</div>
-	<div id="about">
-		<h3><a href="http://forums.pligg.com/">Help!</a></h3>
-		<br /><div class="design">For support and additional free downloads to enhance your Pligg install please visit <a href="http://www.pligg.com">Pligg.com</a> and the <a href="http://forums.pligg.com">Pligg Forum.</a></div>
-		<br>
-	</div>
-</div>
+<!--[if lt IE 7]>
+<script type="text/javascript" src="../templates/admin/js/jquery/jquery.dropdown.js"></script>
+<![endif]-->
+
+<script type="text/javascript" src="../templates/admin/js/bootstrap.js"></script>
 
 </body>
-</html>';
+</html>
 
-?>

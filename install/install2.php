@@ -24,54 +24,63 @@ elseif (!is_writable($file)) { $errors[]="$file " . $lang['NotEditable'] ; }
 
 if (!$errors) {
 
-$output='<div class="instructions"><p>' . $lang['EnterMySQL'] . '</p>
-<table>
-<form id="form1" name="form1" action="install.php" method="post">
-<tr>
-<td><label>' . $lang['DatabaseName'] . '</label></td>
-<td><input name="dbname" type="text" value="" /></td>
-</tr>
+$output='
+<form class="form-horizontal" id="form1" name="form1" action="install.php" method="post">
+	<fieldset>
+		<p>' . $lang['EnterMySQL'] . '</p>
+		
+		<div class="control-group">
+			<label for="input01" class="control-label">' . $lang['DatabaseName'] . '</label>
+			<div class="controls">
+				<input class="input-xlarge" name="dbname" type="text" value="" />
+			</div>
+		</div>
 
-<tr>
-<td><label>' . $lang['DatabaseUsername'] . '</label></td>
-<td><input name="dbuser" type="text" value="" /></td>
-</tr>
+		<div class="control-group">
+			<label for="input01" class="control-label">' . $lang['DatabaseUsername'] . '</label>
+			<div class="controls">
+				<input class="input-xlarge" name="dbuser" type="text" value="" />
+			</div>
+		</div>
+		  
+		<div class="control-group">
+			<label for="input01" class="control-label">' . $lang['DatabasePassword'] . '</label>
+			<div class="controls">
+				<input class="input-xlarge" name="dbpass" type="password" value="" />
+			</div>
+		</div>
+		
+		<div class="control-group">
+			<label for="input01" class="control-label">' . $lang['DatabaseServer'] . '</label>
+			<div class="controls">
+				<input class="input-xlarge" name="dbhost" type="text" value="localhost" />
+			</div>
+		</div>
 
-<tr>
-<td><label>' . $lang['DatabasePassword'] . '</label></td>
-<td><input name="dbpass" type="password" value="" /></td>
-</tr>
-  
-<tr>
-<td><label>' . $lang['DatabaseServer'] . '</label></td>
-<td><input name="dbhost" type="text" value="localhost" /></td>
-</tr>
-
-<tr>
-<td><label>' . $lang['TablePrefix'] . '</label></td>
-<td><input name="tableprefix" type="text" value="pligg_" />
-</tr>
-
-<tr>
-<td colspan=2>' . $lang['PrefixExample'] . '</td>
-</tr>
-
-<tr>
-<td><label></label></td>
-<td><input type="submit" class="submitbutton" name="Submit" value="' . $lang['CheckSettings'] . '" /></td>
-</tr>
-<input type="hidden" name="language" value="' . addslashes(strip_tags($_REQUEST['language'])) . '">
-<input type="hidden" name="step" value="3">
+		<div class="control-group">
+			<label for="input01" class="control-label">' . $lang['TablePrefix'] . '</label>
+			<div class="controls">
+				<input class="input-xlarge" name="tableprefix" type="text" value="pligg_" />
+				<p class="help-block">' . $lang['PrefixExample'] . '</p>
+			</div>
+		</div>
+		
+		<div class="form-actions">
+			<input type="submit" class="btn btn-primary" name="Submit" value="' . $lang['CheckSettings'] . '" />
+			<button class="btn" onclick="history.go(-1)">Back</button>
+		</div>
+		
+		<input type="hidden" name="language" value="' . addslashes(strip_tags($_REQUEST['language'])) . '">
+		<input type="hidden" name="step" value="3">
+	</fieldset>
 </form>
-</table>
-</div>
 ';
 
 
 }
 else { 
 	$output=DisplayErrors($errors);
-	$output.='<p>' . $lang['Errors'] . '</p>';
+	$output.='<div class="alert">' . $lang['Errors'] . '</div>';
 }
 
 echo $output;

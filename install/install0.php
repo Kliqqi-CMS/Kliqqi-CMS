@@ -16,7 +16,10 @@ if($_GET['language'] == ''){
 	if(strpos($data, '<!--Pligg Language Select-->') > 0){
 		echo $data;
 	} else {
-		echo 'We just tried to connect to Pligg.com to get a list of available languages but there was a problem.<br /><br /><a href = "install.php?language=local">Click to Continue in English</a>';
+	    echo '<div class="alert"><button class="close" data-dismiss="alert">×</button>';
+		echo 'We just tried to connect to Pligg.com to get all of the language files available for installation, but there was a problem. That\'s okay because we can continue by using the local English version.';
+		echo '</div>';
+		echo '<a class="btn btn-primary" href = "install.php?language=local">Click to Continue in English</a>';
 	}
 	include ('footer.php');
 	die();
@@ -51,8 +54,11 @@ if($_GET['language'] == ''){
 			$_SESSION['language'] = $language;
 		}
 	    } else {
-		echo 'We just tried to connect to Pligg.com to get language file but there was a problem.<br /><br /><a href = "install.php?language=local">Click to Continue in English</a>';
-		include ('footer.php');
+			echo '<div class="alert"><button class="close" data-dismiss="alert">×</button>';
+			echo 'We just tried to connect to Pligg.com to get all of the language files available for installation, but there was a problem. That\'s okay because we can continue by using the local English version.';
+			echo '</div>';
+			echo '<a class="btn btn-primary" href = "install.php?language=local">Click to Continue in English</a>';
+			include ('footer.php');
 		die();
 	    }
 	}

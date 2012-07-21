@@ -169,12 +169,8 @@
 	</div><!--/.navbar-inner -->
 </div><!--/.navbar -->
 <div class="navbar navbar-fixed-top">
-  <div id="categories">
-	<div class="container">
-		<!-- START CATEGORIES -->
-		{assign var=sidebar_module value="categories"}{include file=$the_template_sidebar_modules."/wrapper.tpl"}
-		<!-- END CATEGORIES -->
-	</div>
-  </div>
+	<!-- START CATEGORIES -->
+	{assign var=sidebar_module value="categories"}{include file=$the_template_sidebar_modules."/wrapper.tpl"}
+	<!-- END CATEGORIES -->
 </div>
 <!--/header.tpl -->

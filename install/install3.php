@@ -48,13 +48,13 @@ if($check_errors !== false){
   	  <input type="hidden" name="tableprefix" value="'.addslashes(strip_tags($_POST['tableprefix'])).'" />
 	  <input type="hidden" name="language" value="' . addslashes(strip_tags($_REQUEST['language'])) . '">
   	  <input type="hidden" name="step" value="4">
-  	  <input type="submit" class="submitbutton" name="Submit" value="' . $lang['Next'] . '" />
+  	  <input type="submit" class="btn btn-primary" name="Submit" value="' . $lang['Next'] . '" />
   	  </form></div>';
   }
   else {
     $output=DisplayErrors($errors);
     $output.='<div class="instructions"><form id="thisform">
-    <input class="submitbutton" type=button onclick="window.history.go(-1)" value="' . $lang['GoBack'] . '" />
+    <a class="btn btn-primary" href="install.php?step=2">' . $lang['GoBack'] . '</a>
     </form></div>';
   }
   echo $output;

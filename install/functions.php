@@ -30,7 +30,7 @@ function Message( $message, $good )
 
 function DisplayErrors($errors) {
 	foreach ($errors as $error) {
-		$output.="<p><b>Error:</b> $error</p>\n";
+		$output.="<div class='alert alert-error'><strong>Error:</strong> $error</div>\n";
 	}
 	return $output;
 }

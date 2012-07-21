@@ -83,7 +83,7 @@ if (!$errors) {
 
 		<tr>
 			<td><label></label></td>
-			<td><input type="submit" class="submitbutton" name="Submit" value="' . $lang['CreateAdmin'] . '" /></td>
+			<td><input type="submit" class="btn btn-primary" name="Submit" value="' . $lang['CreateAdmin'] . '" /></td>
 		</tr>
 		
 		<input type="hidden" name="language" value="' . addslashes(strip_tags($_REQUEST['language'])) . '">

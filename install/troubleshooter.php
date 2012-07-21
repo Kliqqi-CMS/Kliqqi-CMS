@@ -4,25 +4,10 @@ $page = 'troubleshooter';
 $include='header.php'; if (file_exists($include)) { include_once($include); }
 $include='functions.php'; if (file_exists($include)) { require_once($include); }
 ?>
-	
-<script type='text/javascript' src='../templates/admin/js/zebrastripe.js'></script>
 
 <style type="text/css">
-.intro h3 {font-size:18px;border-bottom:1px solid #619ACB;}
-.intro ul {margin:10px 0 28px 0;}
-.intro li {margin:3px 20px;}
-.intro p {padding:5px 6px 5px 6px;}
-.intro table {border-collapse:collapse;width:100%;background:#fff;font-size:14px;margin:15px 0;border:1px solid #000;}
-.intro table td {padding:6px;}
-.intro table tr {border-top:1px solid #000;}
-.intro table tr a {background:none;}
-.intro table td, .intro table th {border: 1px solid #000000; }
-.tableleft {width:650px;}
 .good {color:#066035;}
 .bad {color:#C50202;}
-blockquote {border:1px solid #D5D5AA;padding:4px;background:#F6F6CB;}
-.helpimage {position:relative;float:right;width:16px;height:16px}
-.helpbox {width:740px;background:#FFFFD4;border:1px solid #bbb;margin:8px 0px 8px 0px;padding:10px;}
 </style>
 <script type="text/javascript" language="JavaScript"><!--
 function InsertContent(tid) {
@@ -188,7 +173,7 @@ if (file_exists($file)) {
 
 echo '</ul><h3>Checking PHP and MySQL Features</h3>';
 
-echo '<table cellspacing="0" border="0" class="stripes">';
+echo '<table class="table table-bordered table-striped"><tbody>';
 echo '<tr><td>PHP Version</td><td>';
 
 $phpversion = phpversion();
@@ -219,9 +204,9 @@ echo '<tr><td>fopen</td><td> ', function_exists('fopen') ? '<span class="good">E
 echo '<tr><td>fwrite</td><td> ', function_exists('fwrite') ? '<span class="good">Enabled</span>' : '<a href="javascript:InsertContent(\'fwritewarning\');"><img class="helpimage" src="../templates/admin/images/help.gif" alt="Help?" /></a><span class="bad">Disabled</span>' . '</td></tr>';
 echo '<tr><td>file_get_contents</td><td> ', file_get_contents(__FILE__) ? '<span class="good">Enabled</span>' : '<a href="javascript:InsertContent(\'fgetwarning\');"><img class="helpimage" src="../templates/admin/images/help.gif" alt="Help?" /></a><span class="bad">Disabled</span>' . '</td></tr>';
 echo '<tr><td>GD Graphics Library</td><td> ', function_exists('gd_info') ? '<span class="good">Enabled</span>' : '<a href="javascript:InsertContent(\'gdwarning\');"><img class="helpimage" src="../templates/admin/images/help.gif" alt="Help?" /></a><span class="bad">Disabled</span>' . '</td></tr>';
-echo '</table>';
+echo '</tbody></table>';
 
-echo '<hr /><p style="text-align:center">Please continue to the <a href="./install.php">Installation Page</a>, the <a href="./upgrade.php">Upgrade Page</a>, or the <a href="../readme.html">Pligg Readme</a>.</p></div>';
+echo '<div class="hero-unit" style="padding:25px 10px;"><p style="text-align:center">Please continue to the <a href="./install.php">Installation Page</a>, the <a href="./upgrade.php">Upgrade Page</a>, or the <a href="../readme.html">Pligg Readme</a>.</p></div></div>';
 
 ?>
 	

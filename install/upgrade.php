@@ -25,7 +25,10 @@ if($language == '' && $_POST['submit'] == ''){
 	if(strpos($data, '!--Pligg Language Select-->') > 0){
 		echo $data;
 	} else {
-		echo 'We just tried to connect to Pligg.com to get a list of available languages but there was a problem.<br /><br /><a href = "upgrade.php?language=local">Click to Continue in English</a>';
+	    echo '<div class="alert"><button class="close" data-dismiss="alert">×</button>';
+		echo 'We just tried to connect to Pligg.com to get all of the language files available for installation, but there was a problem. That\'s okay because we can continue by using the local English version.';
+		echo '</div>';
+		echo '<a class="btn btn-primary" href = "upgrade.php?language=local">Click to Continue in English</a>';
 	}
 
 	include ('footer.php');
@@ -52,7 +55,10 @@ if($language == '' && $_POST['submit'] == ''){
 			die();
 		}
 	    } else {
-		echo '<p>We just tried to connect to Pligg.com to get language file but there was a problem.</p><p><a href = "upgrade.php?language=local">Click to Continue in English</a></p>';
+	    echo '<div class="alert"><button class="close" data-dismiss="alert">×</button>';
+		echo 'We just tried to connect to Pligg.com to get all of the language files available for installation, but there was a problem. That\'s okay because we can continue by using the local English version.';
+		echo '</div>';
+		echo '<a class="btn btn-primary" href = "upgrade.php?language=local">Click to Continue in English</a>';
 		include ('footer.php');
 		die();
 	    }		
@@ -89,7 +95,7 @@ if (!$errors) {
     if (!$_POST['submit']) {
 	echo '<p><strong>' . $lang['UpgradeAreYouSure'] . '</strong></p>
 	<form id="form" name="form" method="post">
-	<input type="submit" class="submitbutton" name="submit" value="' . $lang['UpgradeYes'] . '" />
+	<input type="submit" class="btn btn-primary" name="submit" value="' . $lang['UpgradeYes'] . '" />
 	</form>';
     }       	
     else { //they clicked yes!

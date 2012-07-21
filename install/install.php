@@ -16,7 +16,7 @@ if ($step == 0) {
 $include='header.php'; if (file_exists($include)) { include_once($include); }
 $include='functions.php'; if (file_exists($include)) { require_once($include); }
 
-echo '<div class="steps"><h2>' . $lang['Step'] . ' '.$step.': </h2></div>';
+echo '<div class="steps"><legend>' . $lang['Step'] . ' '.$step.'</legend></div>';
 echo '<div class="installercontent">';
 
 // intro

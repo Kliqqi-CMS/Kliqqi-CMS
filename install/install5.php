@@ -34,7 +34,7 @@ if (!$errors) {
 
 	//done
 	$output='<p><strong>' . $lang['InstallSuccess'] . '</strong></p>
-	<br /><h2>' . $lang['WhatToDo'] . '</h2>
+	<br /><legend>' . $lang['WhatToDo'] . '</legend>
 	<div class="donext"><ol>
 		' . $lang['WhatToDoList'] . '
 	</ol></div>';

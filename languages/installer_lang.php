@@ -14,31 +14,38 @@
 	$lang['Troubleshooter_instruct'] = 'The Troubleshooter will detect common problems such as incorrect folder permissions';
 
 // intro / step 1
-	$lang['WelcomeToInstaller'] = 'Welcome to the Pligg Installer!';
+	$lang['WelcomeToInstaller'] = 'Welcome to the Pligg CMS Installer!';
 	$lang['Introduction'] = 'Introduction';
-	$lang['WelcomeToThe'] = 'Welcome to the <a href="http://www.pligg.com" target="_blank">Pligg Content Management System</a>. Before installing Pligg CMS please make sure that you have the latest version of Pligg by visiting <a href="http://www.pligg.com/download.php" target="_blank">the official Pligg Download Page</a>.';
-	$lang['Bugs'] = 'While you are visiting the Pligg.com, please familiarize yourself with some of the documentation provided by the Pligg community. We also suggest that you register with the <a href="http://forums.pligg.com/" target="_blank">Pligg Forum</a>, where you will find free modules, templates and other great resources to enhance your website. If you discover any bugs or typos in Pligg, please <a href="http://forums.pligg.com/projects/pligg-cms/index.html" target="_blank">report it</a> through our bug report section so that we can fix it in a future release.';
+	$lang['WelcomeToThe'] = 'Welcome to <a href="http://pligg.com" target="_blank">Pligg Content Management System</a>, the CMS that powers thousands of community websites. If this is your first time installing Pligg, please read all of the provided instructions carefully so that you don\'t miss any important directions. On behalf of the Pligg developers, I would like to wish you and your new website the best of luck.';
+	$lang['VersionCheckOld'] = 'We could be wrong, but it looks like you need to update to the latest version. You can <a href="http://pligg.com/downloads/">download it from here</a>.';
+	$lang['Bugs'] = 'Please familiarize yourself with some of the documentation provided by the Pligg community at the <a href="http://forums.pligg.com/">Pligg Forums</a>. We also suggest that you register an account so that you will have access to free support, modules, widgets, templates and other great resources. If you discover any bugs, or if you just want to suggest a new feature, please <a href="http://forums.pligg.com/projectpost.php" target="_blank">post your feedback here</a> or on our very own <a href="http://pligg.com/demo/">Pligg Demo website</a>.';
 	$lang['Installation'] = 'Installation (Please Read Carefully)';
-	$lang['OnceFamiliar'] = '<p>If this is your first time installing Pligg you will continue on through this page after carefully following the directions below. If you need to <a href="./upgrade.php">upgrade your site</a> from a previous version, please run the upgrade script by clicking on the Upgrade tab above. WARNING: running the installation process on an existing Pligg site database will overwrite all stories and settings, so please make sure that you want to perform an install if you continue below.</p><br />
-	<h4>1. Rename settings.php.default to settings.php</h4>
-	<h4>2. Rename /libs/dbconnect.php.default to dbconnect.php</h4><br />
-	<h4>3. CHMOD 755 the following folders, if they give you errors try 777.</h4>
+	$lang['OnceFamiliar'] = '<p>If this is your first time installing Pligg you should continue on this page after carefully following the directions below. If you need to <a href="./upgrade.php">upgrade your site</a> from a previous version, please run the upgrade script by clicking on the Upgrade link above. WARNING: running the installation process on an existing Pligg site database will overwrite all stories and settings, so please make sure that you want to perform an installation if you choose to continue below.
 	<ol>
-	<li>/admin/backup/</li>
-	<li>/avatars/groups_uploaded/</li>
-	<li>/avatars/user_uploaded/</li>
-	<li>/cache/</li>
-	<li>/cache/admin_c/</li>
-	<li>/cache/templates_c/</li>
-	<li>/languages/ (And all of the files contained in this folder should be CHMOD 777)</li>
-	</ol><br />
-	<h4>4. CHMOD 666 the following files</h4>
-	<ol>
-	<li>/libs/dbconnect.php</li>
-	<li>settings.php</li>
+		<li>Rename approvedips.txt.default to approvedips.txt</li>
+		<li>Rename bannedips.txt.default to bannedips.txt</li>
+		<li>Rename local-antispam.txt.default to local-antispam.txt</li>
+		<li>Rename notspam.txt.default to notspam.txt</li>
+		<li>Rename settings.php.default to settings.php</li>
+		<li>Rename /libs/dbconnect.php.default to dbconnect.php</li>
+		<li>Rename /languages/lang_english.conf.default to lang_english.conf</li>
+		<li>CHMOD 0777 the following folders:</li>
+		<ol>
+			<li>/admin/backup/</li>
+			<li>/avatars/groups_uploaded/</li>
+			<li>/avatars/user_uploaded/</li>
+			<li>/cache/</li>
+			<li>/cache/admin_c/</li>
+			<li>/cache/templates_c/</li>
+			<li>/languages/ (CHMOD 0777 all of the files contained within this folder)</li>
+		</ol>
+		<li>CHMOD 0666 the following files</li>
+		<ol>
+			<li>/libs/dbconnect.php</li>
+			<li>settings.php</li>
+		</ol>
 	</ol>
-	<br />
-	Once you have familiarized yourself with the basic concept and design of Pligg by reading through some of the Pligg forum posts, Proceed to the next step and install Pligg.';
+	You\'re now past the hardest part! Proceed to the next step to install Pligg onto your MySQL database.</p>';
 
 // step 2
 	$lang['EnterMySQL'] = 'Enter your MySQL database settings below. If you don\'t know your MySQL database settings you should check your webhost documentation or contact them directly.';
@@ -49,15 +56,15 @@
 	$lang['TablePrefix'] = 'Table Prefix';
 	$lang['PrefixExample'] = '(ie: "pligg_" makes the tables for users become pligg_users)';
 	$lang['CheckSettings'] = 'Check Settings';
-	$lang['Errors'] = 'Please fix the above error(s), install halted!';
+	$lang['Errors'] = 'Please fix the above error(s), then <a class="btn btn-mini" onClick="document.location.reload(true)">Refresh the Page</a>';
 
 // step 3
 	$lang['ConnectionEstab'] = 'Database connection established...';
 	$lang['FoundDb'] = 'Found database...';
 	$lang['dbconnect'] = '\'/libs/dbconnect.php\' was updated successfully.';
 	$lang['NoErrors'] = 'There were no errors, continue onto the next step...';
-	$lang['Next'] = 'Next';
-	$lang['GoBack'] = 'Go Back';
+	$lang['Next'] = 'Next Step';
+	$lang['GoBack'] = 'Go Back and Try Again';
 	$lang['Error2-1'] = 'Could not write to \'libs/dbconnect.php\' file.';
 	$lang['Error2-2'] = 'Could not open \'/libs/dbconnect.php\' file for writing.';
 	$lang['Error2-3'] = 'Connected to the database, but the database name is incorrect.';
