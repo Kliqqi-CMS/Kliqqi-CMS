@@ -53,4 +53,25 @@ function check_lang_conf($version) {
 	}
 }
 
+function percent($num_amount, $num_total) {
+	$count1 = $num_amount / $num_total;
+	$count2 = $count1 * 100;
+	$count = number_format($count2, 0);
+	return $count;
+}
+
+function getfiles($dirname=".") {
+	$pattern="\.default$";
+	$files = array();
+	if($handle = opendir($dirname)) {
+	   while(false !== ($file = readdir($handle))){
+			if(preg_match('/'.$pattern.'/i', $file)){
+				echo "<li>$file</li>";
+			}
+	   }
+		closedir($handle);
+	}
+	return($files);
+}
+
 ?>

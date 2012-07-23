@@ -4,11 +4,12 @@ $page = 'troubleshooter';
 $include='header.php'; if (file_exists($include)) { include_once($include); }
 $include='functions.php'; if (file_exists($include)) { require_once($include); }
 ?>
-
 <style type="text/css">
-.good {color:#066035;}
-.bad {color:#C50202;}
+.popover-inner {
+width:500px;
+}
 </style>
+
 <script type="text/javascript" language="JavaScript"><!--
 function InsertContent(tid) {
 if(document.getElementById(tid).style.display == "none") {
@@ -19,58 +20,100 @@ else {
 	}
 }
 //--></script>
-	
+
+<?php
+
+// MySQL Version
+// I'm not confident in how well this is written, feel free to improve.
+ob_start();
+phpinfo();
+$info = ob_get_contents();
+ob_end_clean();
+$start = explode("<h2><a name=\"module_mysql\">mysql</a></h2>",$info,1000);
+if(count($start) < 2){
+	$mysqlversion = '0';
+}else{
+	$again = explode("<tr><td class=\"e\">Client API version </td><td class=\"v\">",$start[1],1000);
+	$last_time = explode(" </td></tr>",$again[1],1000);
+	$mysqlversion = $last_time[0];
+} 
+$pattern = '/[^0-9-.]/i';
+$replacement = '';
+$mysqlversion = preg_replace($pattern, $replacement, $mysqlversion); 
+
+// Tally up how many items are fulfilled.
+$required = 25; // This should be the number of checks being performed
+$tally = 0;
+if (glob("../languages/*.conf")) { $tally = $tally+1;}
+if (phpversion() > 4) { $tally = $tally+1; }
+if ($mysqlversion > 4) { $tally = $tally+1; }
+if (function_exists('curl_version')){ $tally = $tally+1; }
+if (function_exists('fopen')){ $tally = $tally+1; }
+if (function_exists('fwrite')){ $tally = $tally+1; }
+if (file_get_contents(__FILE__)){ $tally = $tally+1; }
+if (function_exists('gd_info')){ $tally = $tally+1; }
+if (file_exists('../settings.php')) { $tally = $tally+1; }
+if (file_exists('../libs/dbconnect.php')) { $tally = $tally+1; }
+if (file_exists('../bannedips.txt')) { $tally = $tally+1; }
+if (file_exists('../local-antispam.txt')) { $tally = $tally+1; }
+if (is_writable('../admin/backup/')) { $tally = $tally+1; }
+if (is_writable('../avatars/groups_uploaded/')) { $tally = $tally+1; }
+if (is_writable('../avatars/user_uploaded/')) { $tally = $tally+1; }
+if (is_writable('../cache/')) { $tally = $tally+1; }
+if (is_writable('../cache/admin_c/')) { $tally = $tally+1; }
+if (is_writable('../cache/templates_c/')) { $tally = $tally+1; }
+if (is_writable('../languages/')) { $tally = $tally+1; }
+foreach (glob("../languages/*.conf") as $filename) { $required = $required+1; if (is_writable($filename)) {$tally = $tally+1;} }
+if (is_writable('../languages/installer_lang.php')) { $tally = $tally+1; }
+if (is_writable('../languages/installer_lang_default.php')) { $tally = $tally+1; }
+if (is_writable('../bannedips.txt')) { $tally = $tally+1; }
+if (is_writable('../local-antispam.txt')) { $tally = $tally+1; }
+if (is_writable('../libs/dbconnect.php')) { $tally = $tally+1; }
+if (is_writable('../settings.php')) { $tally = $tally+1; }
+//echo $tally.' / '.$required;
+$percent = percent($tally,$required);
+
+if ($tally < $required ){
+	echo '<div class="alert alert-warning">
+		<p><strong>Warning:</strong> Your server has only met <strong>'.$tally.'</strong> of  the <strong>'.$required.'</strong> requirements to run Pligg CMS. Please see the information below to discover what issues need to be addressed.</p>';
+		echo '<div style="margin-bottom: 9px;" class="progress progress-danger"><div style="width: '.$percent.'%" class="bar"></div></div>';
+} else {
+	echo '<div class="alert alert-success">
+		<p>Your server met all of the requirements needed to run Pligg CMS. See the information below for a detailed report.</p>';
+		echo '<div style="margin-bottom: 9px;" class="progress progress-success"><div style="width: 100%" class="bar"></div></div>';
+}
+?>
+</div>
 <?php
 echo '<table class="table table-bordered table-striped">';
-echo '<thead><tr><th colspan="2">Checking Files That May Need To Be Renamed</th></tr></thead>';
+echo '<thead><tr><th colspan="2">Checking for files need to be renamed</th></tr></thead>';
 echo '<tbody>';
 
 // Start Language Check
 $rename = " must be renamed to ";
-function getfiles($dirname=".") {
-	$pattern="\.default$";
-	$files = array();
-	if($handle = opendir($dirname)) {
-	   while(false !== ($file = readdir($handle))){
-			if(preg_match('/'.$pattern.'/i', $file)){
-				echo "<td>$file</td></tr>";
-			}
-	   }
-		closedir($handle);
-	}
-	return($files);
-}
 
-if (file_exists('../languages/lang_english.conf')) {
-    echo '<tr><td style="width:20px;"><i class="icon icon-ok"></i></td><td>../languages/lang_english.conf</td></tr>';
-}elseif (file_exists('../languages/lang_arabic.conf')) {
-	echo '<tr><td style="width:20px;"><i class="icon icon-ok"></i></td><td>../languages/lang_arabic.conf</td></tr>';
-}elseif (file_exists('../languages/lang_chinese_simplified.conf')) {
-	echo '<tr><td style="width:20px;"><i class="icon icon-ok"></i></td><td>../languages/lang_chinese_simplified.conf</td></tr>';
-}elseif (file_exists('../languages/lang_german.conf')) {
-	echo '<tr><td style="width:20px;"><i class="icon icon-ok"></i></td><td>../languages/lang_german.conf</td></tr>';
-}elseif (file_exists('../languages/lang_italian.conf')) {
-	echo '<tr><td style="width:20px;"><i class="icon icon-ok"></i></td><td>../languages/lang_italian.conf</td></tr>';
-}elseif (file_exists('../languages/lang_russian.conf')) {
-	echo '<tr><td style="width:20px;"><i class="icon icon-ok"></i></td><td>../languages/lang_russian.conf</td></tr>';
-}elseif (file_exists('../languages/lang_thai.conf')) {
-	echo '<tr><td style="width:20px;"><i class="icon icon-ok"></i></td><td>../languages/lang_thai.conf</td></tr>';
-}elseif (file_exists('../languages/lang_turkmen.conf')) {
-	echo '<tr><td style="width:20px;"><i class="icon icon-ok"></i></td><td>../languages/lang_turkmen.conf</td></tr>';
-} else {
-	echo '<tr><td style="width:20px;"><i class="icon icon-remove"></i></td><td>No Language file has been detected! You will need to remove the .default extension from one of these language files:<ul style="margin:0px 0 5px 15px;padding:0;">';
+$language_file_count = 0;
+foreach (glob("../languages/*.conf") as $filename) { $language_file_count = $language_file_count+1;}
+if (!glob("../languages/*.conf")) { 
+	echo '<tr><td style="width:20px;" class="bad"><i class="icon icon-remove"></i></td><td>No Language file has been detected! You will need to remove the .default extension from one of these language files:<ul style="margin:0px 0 5px 15px;padding:0;">';
 	getfiles("../languages"); // List language files
 	echo '</ul></td></tr>';
+}else{
+    echo "<tr><td style='width:20px;' class='good'><i class='icon icon-ok'></i></td><td>You have renamed ";
+	echo '<a id="langfiles" data-content="<ul>';
+	foreach (glob("../languages/*.conf") as $filename) {
+		echo "<li>$filename</li>";
+	}
+	echo '</ul>" rel="popover" href="#" data-original-title="Renamed Language Files">'.$language_file_count.' language file(s)</a>, which are ready to be used</td></tr>'."\n";
 }
-// End Language Check
 
 $settings = '../settings.php';
 $settingsdefault = '../settings.php.default';
 if (file_exists($settings)) {
-	echo '<tr><td><i class="icon icon-ok"></i></td><td>'.$settings.'</td></tr>';
+	echo '<tr><td ckass="good"><i class="icon icon-ok" ></i></td><td>'.$settings.'</td></tr>';
 } else {
 	if (file_exists($settingsdefault)) {
-		echo '<tr><td><i class="icon icon-remove"></i></td><td>'.$settingsdefault.$rename.$settings.'.</td></tr>';
+		echo '<tr><td class="bad"><i class="icon icon-remove"></i></td><td>'.$settingsdefault.$rename.$settings.'.</td></tr>';
 	}
 }
 $dbconnect = '../libs/dbconnect.php';
@@ -100,15 +143,17 @@ if (file_exists($localantispam)) {
 		echo '<tr><td><i class="icon icon-remove"></i></td><td>'.$localantispamdefault.$rename.$localantispam.'.</td></tr>';
 	}
 }
-
 echo '</tbody></table>';
 
+/* This causes a conflict if there is no lang_english.conf language file. */
+/*
 include_once('../config.php');
 if ($URLMethod == 2 && !file_exists('../.htaccess')) { echo '<tr><td><i class="icon icon-remove"></i></td><td>URL Method 2 is enabled in your Admin Panel, but the file .htaccess does not exist! Please rename the file "htaccess.default" to ".htaccess"</td></tr>'; }
 if ((!$my_base_url) || ($my_base_url == '')) { echo '<tr><td><i class="icon icon-remove"></i></td><td>Your Base URL is not set - Visit <a href = "../admin/admin_config.php?page=Location%20Installed">Admin > Config > Location Installed</a> to change your settings. You can also temporarily change the value from ../settings.php if you aren\'t able to access the Admin Panel.</td></tr>'; }
+*/
 
 echo '<table class="table table-bordered table-striped">';
-echo '<thead><tr><th colspan="2">Checking CHMOD Settings</th></tr></thead>';
+echo '<thead><tr><th colspan="2">Checking <a id="chmod" data-content="CHMOD represents the read, write, and execute permissions given to files and directories. Pligg CMS requires that certain files and directories are given a CHMOD status of 0777, allowing Pligg to have access to make changes to files. Any lines that return as an error represent files that need to be updated to CHMOD 0777." rel="popover" href="http://en.wikipedia.org/wiki/Chmod" data-original-title="CHMOD">CHMOD Settings</a></th></tr></thead>';
 echo '<tbody>';
 
 $file='../admin/backup/';
@@ -139,10 +184,9 @@ $file='../languages/';
 if (!is_writable($file)) { echo '<tr><td><i class="icon icon-remove"></i></td><td>'.$file.' is not writable! Please chmod this directory and all contained files to 777.</span></td></tr>'; }
 if (is_writable($file)) { echo '<tr><td><i class="icon icon-ok"></i></td><td>'.$file.'</span></td></tr>'; }
 
-$file='../languages/lang_english.conf';
-if (file_exists($file)) {
-	if (!is_writable($file)) { echo '<tr><td><i class="icon icon-remove"></i></td><td>'.$file.' is not writable! Please chmod this file to 777.</span></td></tr>'; }
-	if (is_writable($file)) { echo '<tr><td><i class="icon icon-ok"></i></td><td>'.$file.'</span></td></tr>'; }
+foreach (glob("../languages/*.conf") as $filename) {
+	if (!is_writable($file)) { echo '<tr><td><i class="icon icon-remove"></i></td><td>'.$filename.' is not writable! Please chmod this file to 777.</span></td></tr>'; }
+	if (is_writable($file)) { echo '<tr><td><i class="icon icon-ok"></i></td><td>'.$filename.'</span></td></tr>'; }
 }
 
 $file='../languages/installer_lang.php';
@@ -181,88 +225,61 @@ echo '<table class="table table-bordered table-striped">';
 echo '<thead><tr><th colspan="2">Checking Server Settings</th></tr></thead>';
 echo '<tbody>';
 
+// PHP
 $phpversion = phpversion();
+echo '<tr><td>';
 if ($phpversion < 5) {
-	echo '<tr><td><i class="icon icon-remove"></i></td>';
-	echo '<td><a href="javascript:InsertContent(\'phpversion\');">PHP Version ('.$phpversion.')</a></td>';
-	echo '</tr>';
+	echo '<i class="icon icon-remove"></i>';
 } else if ($phpversion > 4) {
-	echo '<tr><td><i class="icon icon-ok"></i></td>';
-	echo '<td><a href="javascript:InsertContent(\'phpversion\');">PHP Version ('.$phpversion.')</a></td>';
-	echo '</tr>';
+	echo '<i class="icon icon-ok"></i>';
+
 }
+echo '</td><td><a id="phpversion" data-content="Pligg has been tested on both PHP versions 4 and 5. We have designed the content management system based on PHP 5 technologies, so certain problems may occur when using older versions of PHP. We suggest that your server runs a mininum of PHP 5." rel="popover" href="http://us3.php.net/tut.php" data-original-title="PHP Version">PHP Version ('.$phpversion.')</a></td>';
+echo '</tr>';
 
-ob_start();
-phpinfo();
-$info = ob_get_contents();
-ob_end_clean();
-
-$mysqlinfo = stristr($info, 'Client API version');
-preg_match('/[1-9].[0-9].[1-9][0-9]/', $mysqlinfo, $mysqlmatch);
-$mysqlversion = $mysqlmatch[0];
-
+echo '<tr><td>';
 if ($mysqlversion < 5) {
-	echo '<tr><td><i class="icon icon-remove"></i></td>';
-	echo '<td><a href="javascript:InsertContent(\'mysqlversion\');">MySQL Version ('.$mysqlversion.')</a></td>';
-	echo '</tr>';
+	echo '<i class="icon icon-remove"></i>';
 } else if ($mysqlversion > 4) {
-	echo '<tr><td><i class="icon icon-ok"></i></td>';
-	echo '<td><a href="javascript:InsertContent(\'mysqlversion\');">MySQL Version ('.$mysqlversion.')</a></td>';
-	echo '</tr>';
-
+	echo '<i class="icon icon-ok"></i>';
 }
+echo '</td><td><a id="mysqlversion" data-content="Pligg has been tested on both MySQL versions 4 and 5, during that process we have discovered that bugs will occassionally pop up is you are running MySQL 4. For this reason we suggest that you use a server with MySQL 5 or later to run a Pligg CMS website. MySQL 5 has been available for some time now and we hope that most major web hosts now support it. It offers features that are not built into MySQL 4, which we may have used when writing code for Pligg CMS." rel="popover" href="http://dev.mysql.com/doc/" data-original-title="MySQL Version">MySQL Version ('.$mysqlversion.')</a></td>';
+echo '</tr>';
 
 echo '<tr><td style="width:20px;">', function_exists('curl_version') ? '<i class="icon icon-ok"></i></td>' : '<i class="icon icon-remove"></i></td>';
-	echo '<td><a href="javascript:InsertContent(\'curlwarning\');">cURL</a></td></tr>';
+	echo '<td><a id="curlwarning" data-content="cURL is a PHP library that allows Pligg to connect to external websites." rel="popover" href="http://php.net/manual/en/book.curl.php" data-original-title="cURL PHP Extension">cURL</a></td></tr>';
+
 echo '<tr><td>', function_exists('fopen') ? '<i class="icon icon-ok"></i></td>' : '<i class="icon icon-remove"></i></td>';
-	echo '<td><a href="javascript:InsertContent(\'fopenwarning\');">fopen</a></td></tr>';
+	echo '<td><a id="fopenwarning" data-content="The fopen function for PHP allows us to create, read, and manipulate local files." rel="popover" href="http://www.w3schools.com/php/func_filesystem_fopen.asp" data-original-title="fopen PHP Function">fopen</a></td></tr>';
+
 echo '<tr><td>', function_exists('fwrite') ? '<i class="icon icon-ok"></i></td>' : '<i class="icon icon-remove"></i></td>';
-	echo '<td><a href="javascript:InsertContent(\'fwritewarning\');">fwrite</a></td></tr>';
+	echo '<td><a id="fwritewarning" data-content="The fwrite function is used in conjunction with the fopen function. It allows PHP to write to an opened file." rel="popover" href="http://www.w3schools.com/php/func_filesystem_fwrite.asp" data-original-title="fwrite PHP Function">fwrite</td></tr>';
+	
 echo '<tr><td>', file_get_contents(__FILE__) ? '<i class="icon icon-ok"></i></td>' : '<i class="icon icon-remove"></i></td>';
-	echo '<td><a href="javascript:InsertContent(\'fgetwarning\');">file_get_contents</a></td></tr>';
+	echo '<td><a id="fgetwarning" data-content="The file_get_contents() function for PHP reads a file into a string." rel="popover" href="http://www.w3schools.com/php/func_filesystem_file_get_contents.asp" data-original-title="fgetwarning PHP Function">file_get_contents</a></td></tr>';
+	
 echo '<tr><td>', function_exists('gd_info') ? '<i class="icon icon-ok"></i></td>' : '<i class="icon icon-remove"></i></td>';
-	echo '<td><a href="javascript:InsertContent(\'gdwarning\');">GD Graphics Library</a></td></tr>';
+	echo '<td><a id="gdwarning" data-content="The GD Graphics Library is a graphics software library for dynamically manipulating images. Any images handled by Pligg, like user avatar or group images, use GD to manipulate the file." rel="popover" href="http://php.net/manual/en/book.image.php" data-original-title="GD Graphics Library">GD Graphics Library</a></td></tr>';
+	
 echo '</tbody></table>';
 
 echo '<div class="hero-unit" style="padding:25px 10px;"><p style="text-align:center">Please continue to the <a href="./install.php">Installation Page</a>, the <a href="./upgrade.php">Upgrade Page</a>, or the <a href="../readme.html">Pligg Readme</a>.</p></div>';
 
 ?>
-	
-<div id="phpversion" class="helpbox" style="display:none;">
-<h3>PHP Version Warning</h3>
-<p>Pligg has been tested on both PHP versions 4 and 5. We have designed the content management system based on PHP 5 technologies, so certain problems may occur when using older versions of PHP. We suggest that your server runs a mininum of PHP 5.</p>
-</div>
-
-<div id="mysqlversion" class="helpbox" style="display:none;">
-<h3>MySQL Version Warning</h3>
-<p>Pligg has been tested on both MySQL versions 4 and 5, during that process we have discovered that bugs will occassionally pop up is you are running MySQL 4. For this reason we suggest that you use a server with MySQL 5 or later to run a Pligg CMS website. MySQL 5 has been available for some time now and we hope that most major web hosts now support it. It offers features that are not built into MySQL 4, which we may have used when writing code for Pligg CMS.</p>
-</div>
-
-<div id="curlwarning" class="helpbox" style="display:none;">
-<h3>cURL Warning</h3>
-<p>Pligg and some Pligg modules may depend on cURL in order to operate. We suggest that you enable cURL on your web server to achieve the full functionality of Pligg and to avoid any errors. If the server has simply turned off cURL from you php.ini file it may be an easy fix. Open your server's php.ini file and find the line below, then remove the semicolon from the start of that line and restart Apache.</p>
-<blockquote>;extension=php_curl.dll</blockquote>
-<p>You may continue to install Pligg without enabling cURL, but it may result in errors when using some more advanced modules.</p>
-</div>
-
-<div id="fopenwarning" class="helpbox" style="display:none;">
-<h3>fopen Warning</h3>
-<p>The fopen() PHP function opens a file or URL. Pligg requires fopen to grab external files from Pligg.com that are used for installing and upgrading Pligg CMS. It is also used for monitoring modules for updates.</p>
-</div>
-
-<div id="fwritewarning" class="helpbox" style="display:none;">
-<h3>fwrite Warning</h3>
-<p>The fwrite() PHP function writes to an open file. The function will stop at the end of the file or when it reaches the specified length, whichever comes first. Pligg requires fwrite to grab external files from Pligg.com and save them to your local web server during the installation and upgrade process.</p>
-</div>
-
-<div id="fgetwarning" class="helpbox" style="display:none;">
-<h3>file_get_contents Warning</h3>
-<p>file_get_contents() is the preferred way to read the contents of a file into a string. Pligg requires this function to download the contents of external files from Pligg.com and save them to the local web server for installing and upgrading Pligg. </p>
-</div>
-
-<div id="gdwarning" class="helpbox" style="display:none;">
-<h3>GD Graphics Library Warning</h3>
-<p>In order to resize and save uploaded images, Pligg requires that you have installed the GD library. GD is used for all image upload functionality used in Pligg. It is also used for locally rendered CAPTCHAs and other various modules and features.</p>
-</div>
 
 <?php $include='footer.php'; if (file_exists($include)) { include_once($include); } ?>
+
+<script>  
+$(function ()  
+{ 
+	$("#langfiles").popover();
+	$("#chmod").popover();
+	$("#phpversion").popover();
+	$("#mysqlversion").popover();
+	$("#curlwarning").popover();
+	$("#fopenwarning").popover();
+	$("#fwritewarning").popover();
+	$("#fgetwarning").popover();
+	$("#gdwarning").popover();
+});
+</script> 
