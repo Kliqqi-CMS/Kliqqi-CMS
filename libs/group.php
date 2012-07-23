@@ -267,6 +267,7 @@ function group_display($requestID)
 
 		//$main_smarty->assign('form_action', $_SERVER["PHP_SELF"]);
 		$group_story_url = getmyurl("group_story_title", $group_safename);
+		$main_smarty->assign('group_story_url', $group_story_url);
 		$main_smarty->assign('form_action', $group_story_url);
 		$main_smarty->assign('edit_form_action', getmyurl("editgroup", $group_id));
 		$group_array = array($group_name, $group_description, $group_privacy);
