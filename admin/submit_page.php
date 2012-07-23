@@ -76,7 +76,7 @@ if($_REQUEST['process']=='new_page'){
 	}
   }
 // show the template
-$main_smarty->assign('tpl_center', $template_dir . '/admin/submit_page');
+$main_smarty->assign('tpl_center', $template_dir . '/admin/page_submit');
 $main_smarty->display($template_dir . '/admin/admin.tpl');
 
 ?>
