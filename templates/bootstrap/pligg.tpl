@@ -273,6 +273,18 @@
 	<script type="text/javascript" src="{$my_pligg_base}/templates/{$the_template}/js/jquery/jquery.pnotify.js"></script>
 	<script type="text/javascript" src="{$my_pligg_base}/templates/{$the_template}/js/jquery/jquery.masonry.min.js"></script>
 	
+    {if $pagename eq "topusers"}
+     <script type="text/javascript" src="{$my_pligg_base}/templates/{$the_template}/js/jquery.tablesorter.js"></script>
+    {literal}
+    <script type="text/javascript">
+        $(function() {		
+            $("#tablesorter-demo").tablesorter({sortList:[[0,0]], widgets: ['zebra']});
+            $("#options").tablesorter({sortList: [[0,0]], headers: { 3:{sorter: false}, 1:{sorter: false}}});
+        });	
+    </script>
+    {/literal}
+    {/if}
+    
 	{* JavaScript for tooltips on avatar hover *}
 	{literal}
 		<script> 
