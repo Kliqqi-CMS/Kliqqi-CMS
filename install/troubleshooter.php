@@ -24,7 +24,7 @@ else {
 <?php
 
 // MySQL Version
-// I'm not confident in how well this is written, feel free to improve.
+// No easy way to determine the version without having established a connection to the database. This method reads the phpinfo data.
 ob_start();
 phpinfo();
 $info = ob_get_contents();
@@ -40,6 +40,7 @@ if(count($start) < 2){
 $pattern = '/[^0-9-.]/i';
 $replacement = '';
 $mysqlversion = preg_replace($pattern, $replacement, $mysqlversion); 
+
 
 // Tally up how many items are fulfilled.
 $required = 25; // This should be the number of checks being performed
