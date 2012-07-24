@@ -729,9 +729,9 @@ function getmyurl($x, $var1="", $var2="", $var3="") {
 		If ($x == "editcomment") {return my_pligg_base."/story/" . $var2 . "/editcomment/" . $var1 . "/";}
 		If ($x == "tagcloud") {return my_pligg_base."/tagcloud/";}
 		If ($x == "tagcloud_range") {return my_pligg_base."/tagcloud/range/" . $var1 . "/";}
-		If ($x == "live_comments") {return my_pligg_base."/comments/";}
-		If ($x == "live_published") {return my_pligg_base."/live_published/";}
-		If ($x == "live_unpublished") {return my_pligg_base."/unpublished/";}
+		If ($x == "live_comments") {return my_pligg_base."/live/comments/";}
+		If ($x == "live_published") {return my_pligg_base."/live/published/";}
+		If ($x == "live_unpublished") {return my_pligg_base."/live/upcoming/";}
 		If ($x == "tag") {return my_pligg_base."/tag/" . $var1 . "/";}
 		If ($x == "tag2") {return my_pligg_base."/tag/" . $var1 . "/" . $var2 . "/";}
 		If ($x == "live") {return my_pligg_base."/live/";}

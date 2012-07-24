@@ -24,13 +24,12 @@ RewriteCond %{HTTP_HOST} !^localhost
 RewriteRule .* http://www.%{HTTP_HOST}%{REQUEST_URI} [R=301,L]
 ##### Re-directing End #####
 
-## You can find the below lines pre-made for you in the category management section of the admin panel ##
-RewriteRule ^(all)/([^/]+)/?$ story.php?title=$2 [L]
-RewriteRule ^(all)/?$ index.php [R=301,L]
-##
-
 ## The settings that you should configure are all above this line.
 ## Continue below only if you are an advanced user.
+
+# Story and Category URLs
+RewriteRule ^(all)/([^/]+)/?$ story.php?title=$2 [L]
+RewriteRule ^(all)/?$ index.php [R=301,L]
 
 # /recent redirection
 RewriteRule ^upcoming/recent/?$ upcoming [R=301,L]
@@ -59,7 +58,6 @@ RewriteRule ^group/([^/]+)/rss/?$ rss.php?status=published&group=$1 [L]
 RewriteRule ^group/([^/]+)/upcoming/rss/?$ rss.php?status=queued&group=$1 [L]
 RewriteRule ^group/([^/]+)/shared/rss/?$ rss.php?status=shared&group=$1 [L]
 RewriteRule ^([^/]+)/([^/]+)/rss/?$ storyrss.php?title=$2 [L]
-
 RewriteRule ^rss/([a-zA-Z0-9-]+)/?$ rss.php?status=$1 [L]
 RewriteRule ^rss/category/([^/]+)/?$ rss.php?category=$1 [L]
 RewriteRule ^rss/category/upcoming/([^/]+)/?$ rss.php?status=queued&category=$1 [L]
@@ -80,7 +78,6 @@ RewriteRule ^cache/admin_c([0-9]+)/?$ index.php [L]
 RewriteRule ^cache/templates_c/([0-9]+)/?$ index.php [L]
 RewriteRule ^category/([^/]+)/?$ index.php?category=$1 [L]
 RewriteRule ^category/([^/]+)/([^/]+)/?$ story.php?title=$2 [L]
-RewriteRule ^live/?$ live.php [L]
 RewriteRule ^login/?$ login.php [L]
 RewriteRule ^login/([a-zA-Z0-9-]+)/?$ login.php?return=$1 [L]
 RewriteRule ^login/([a-zA-Z0-9-]+)/([a-zA-Z0-9-]+)/?$ login.php?return=$1/$2 [L]
@@ -155,13 +152,13 @@ RewriteRule ^groups/unjoin/([0-9]+)/? join_group.php?id=$1&join=false [L]
 RewriteRule ^groups/withdraw/([0-9]+)/user_id/([0-9]+)/?$ join_group.php?group_id=$1&user_id=$2&activate=withdraw [L]
 
 ## Live
-RewriteRule ^comments/?$ live_comments.php [L]
-RewriteRule ^comments/page/([^/]+)/?$ live_comments.php?page=$1 [L]
-RewriteRule ^live_published/?$ live_published.php [L]
-RewriteRule ^live_published/page/([^/]+)/?$ live_published.php?page=$1 [L]
-RewriteRule ^published/page/([^/]+)/?$ live_published.php?page=$1 [L]
-RewriteRule ^unpublished/?$ live_unpublished.php [L]
-RewriteRule ^unpublished/page/([^/]+)/?$ live_unpublished.php?page=$1 [L]
+RewriteRule ^live/?$ live.php [L]
+RewriteRule ^live/comments/?$ live_comments.php [L]
+RewriteRule ^live/comments/page/([^/]+)/?$ live_comments.php?page=$1 [L]
+RewriteRule ^live/published/?$ live_published.php [L]
+RewriteRule ^live/published/page/([^/]+)/?$ live_published.php?page=$1 [L]
+RewriteRule ^live/unpublished/?$ live_unpublished.php [L]
+RewriteRule ^live/unpublished/page/([^/]+)/?$ live_unpublished.php?page=$1 [L]
 
 ## Modules
 RewriteRule ^inbox/?$ module.php?module=simple_messaging&view=inbox [L]
