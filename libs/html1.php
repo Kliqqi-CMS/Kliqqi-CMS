@@ -451,6 +451,15 @@ function do_pages($total, $page_size, $thepage, $fetch = false) {
 			elseif (pagename == "index" || pagename == "published" ) {
 				$output .= '<li><a href="'.my_pligg_base.'/'.$query.($i>1 ? '/page/'.$i : '').'">&#171; '.$main_smarty->get_config_vars("PLIGG_Visual_Page_Previous").'</a></li>';
 			}
+			elseif (pagename == "live_published") {
+				$output .= '<li><a href="'.my_pligg_base.'/live/published/'.$query.'/page/'.$i.'">&#171; '.$main_smarty->get_config_vars("PLIGG_Visual_Page_Previous").'</a></li>';
+			}
+			elseif (pagename == "live_unpublished") {
+				$output .= '<li><a href="'.my_pligg_base.'/live/upcoming/'.$query.'/page/'.$i.'">&#171; '.$main_smarty->get_config_vars("PLIGG_Visual_Page_Previous").'</a></li>';
+			}
+			elseif (pagename == "live_comments") {
+				$output .= '<li><a href="'.my_pligg_base.'/live/comments/'.$query.'/page/'.$i.'">&#171; '.$main_smarty->get_config_vars("PLIGG_Visual_Page_Previous").'</a></li>';
+			}
 			else {
 				$output .= '<li><a href="'.my_pligg_base.'/'.pagename.'/'.$query.'/page/'.$i.'">&#171; '.$main_smarty->get_config_vars("PLIGG_Visual_Page_Previous").'</a></li>';
 			}
@@ -466,6 +475,15 @@ function do_pages($total, $page_size, $thepage, $fetch = false) {
 			}
 			elseif (pagename == "index" || pagename == "published" ) {
 				$output .= '<li><a href="'.my_pligg_base.'/'.$query.'">'.$i.'</a></li>';
+			}
+			elseif (pagename == "live_published") {
+				$output .= '<li><a href="'.my_pligg_base.'/live/published/'.$query.'/page/'.$i.'">'.$i.'</a></li>';
+			}
+			elseif (pagename == "live_unpublished") {
+				$output .= '<li><a href="'.my_pligg_base.'/live/upcoming/'.$query.'/page/'.$i.'">'.$i.'</a></li>';
+			}
+			elseif (pagename == "live_comments") {
+				$output .= '<li><a href="'.my_pligg_base.'/live/comments/'.$query.'/page/'.$i.'">'.$i.'</a></li>';
 			}
 			else {
 				$output .= '<li><a href="'.my_pligg_base.'/'.pagename.'/'.$query.'/page/'.$i.'">'.$i.'</a></li>';
@@ -485,6 +503,15 @@ function do_pages($total, $page_size, $thepage, $fetch = false) {
 				elseif (pagename == "index" || pagename == "published" ) {
 					$output .= '<li><a href="'.my_pligg_base.'/'.$query.($i>1 ? '/page/'.$i : '').'">'.$i.'</a></li>';
 				}
+				elseif (pagename == "live_published") {
+					$output .= '<li><a href="'.my_pligg_base.'/live/published/'.$query.'/page/'.$i.'">'.$i.'</a></li>';
+				}
+				elseif (pagename == "live_unpublished") {
+					$output .= '<li><a href="'.my_pligg_base.'/live/upcoming/'.$query.'/page/'.$i.'">'.$i.'</a></li>';
+				}
+				elseif (pagename == "live_comments") {
+					$output .= '<li><a href="'.my_pligg_base.'/live/comments/'.$query.'/page/'.$i.'">'.$i.'</a></li>';
+				}
 				else {
 					$output .= '<li><a href="'.my_pligg_base.'/'.pagename.'/'.$query.'/page/'.$i.'">'.$i.'</a></li>';
 				}
@@ -503,6 +530,15 @@ function do_pages($total, $page_size, $thepage, $fetch = false) {
 			elseif (pagename == "index" || pagename == "published" ) {
 				$output .= '<li><a href="'.my_pligg_base.'/'.$query.'/page/'.$i.'">'.$i.'</a></li>';
 			}
+			elseif (pagename == "live_published") {
+				$output .= '<li><a href="'.my_pligg_base.'/live/published/'.$query.'/page/'.$i.'">'.$i.'</a></li>';
+			}
+			elseif (pagename == "live_unpublished") {
+				$output .= '<li><a href="'.my_pligg_base.'/live/upcoming/'.$query.'/page/'.$i.'">'.$i.'</a></li>';
+			}
+			elseif (pagename == "live_comments") {
+				$output .= '<li><a href="'.my_pligg_base.'/live/comments/'.$query.'/page/'.$i.'">'.$i.'</a></li>';
+			}
 			else {
 				$output .= '<li><a href="'.my_pligg_base.'/'.pagename.'/'.$query.'/page/'.$i.'">'.$i.'</a></li>';
 			}
@@ -515,6 +551,15 @@ function do_pages($total, $page_size, $thepage, $fetch = false) {
 			}
 			elseif (pagename == "admin_links") {
 				$output .= '<li><a href="'.my_pligg_base.'/admin/'.pagename.'.php?page='.$i.'"> '.$main_smarty->get_config_vars("PLIGG_Visual_Page_Next"). ' &#187;' . '</a></li>';
+			}
+			elseif (pagename == "live_published") {
+				$output .= '<li><a href="'.my_pligg_base.'/live/published/'.$query.'/page/'.$i.'"> '.$main_smarty->get_config_vars("PLIGG_Visual_Page_Next"). ' &#187;' . '</a></li>'; 
+			}
+			elseif (pagename == "live_unpublished") {
+				$output .= '<li><a href="'.my_pligg_base.'/live/upcoming/'.$query.'/page/'.$i.'"> '.$main_smarty->get_config_vars("PLIGG_Visual_Page_Next"). ' &#187;' . '</a></li>'; 
+			}
+			elseif (pagename == "live_comments") {
+				$output .= '<li><a href="'.my_pligg_base.'/live/comments/'.$query.'/page/'.$i.'"> '.$main_smarty->get_config_vars("PLIGG_Visual_Page_Next"). ' &#187;' . '</a></li>'; 
 			}
 			elseif (pagename == "index" || pagename == "published" ) {
 				$output .= '<li><a href="'.my_pligg_base.'/'.$query.'/page/'.$i.'"> '.$main_smarty->get_config_vars("PLIGG_Visual_Page_Next"). ' &#187;' . '</a></li>'; 
