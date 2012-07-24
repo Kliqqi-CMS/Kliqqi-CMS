@@ -157,8 +157,8 @@ RewriteRule ^live/comments/?$ live_comments.php [L]
 RewriteRule ^live/comments/page/([^/]+)/?$ live_comments.php?page=$1 [L]
 RewriteRule ^live/published/?$ live_published.php [L]
 RewriteRule ^live/published/page/([^/]+)/?$ live_published.php?page=$1 [L]
-RewriteRule ^live/unpublished/?$ live_unpublished.php [L]
-RewriteRule ^live/unpublished/page/([^/]+)/?$ live_unpublished.php?page=$1 [L]
+RewriteRule ^live/upcoming/?$ live_unpublished.php [L]
+RewriteRule ^live/upcoming/page/([^/]+)/?$ live_unpublished.php?page=$1 [L]
 
 ## Modules
 RewriteRule ^inbox/?$ module.php?module=simple_messaging&view=inbox [L]
