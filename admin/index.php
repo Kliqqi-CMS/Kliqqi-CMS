@@ -1,9 +1,55 @@
 <?php 
+/* This file checks if the installation file still exists. If so, you will be presented with a message telling you to remove it from your server. */
 
 $install = '../install/install.php';
 
 if (file_exists($install)) {
-    echo "<html><head><style type='text/css'>body {background-color:#FFFDDD;}</style></head><body><div style='margin:0 auto;position:relative;text-align:center;font-size:16px;padding:10px 10px 40px 10px;margin-top:60px;width:28em;background:#fff;border:1px solid #000;border-top-color:#bbb;border-left-color:#bbb;'><h2>Warning!</h2><p>The file install.php currently exists in the /install/ directory of your website.<br />Please <strong>remove the /install/ directory</strong> if you have completed an installation or upgrade to your site.</p><p>To temporarily ignore this error and continue to the admin panel<br /><a href='./admin_index.php'>Click Here</a></p></div></body>";
+    echo '<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+<head>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta name="Robots" content="none" />
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<link rel="stylesheet" type="text/css" href="../templates/admin/css/bootstrap.css" media="screen" />
+	<link rel="stylesheet" type="text/css" href="../templates/admin/css/bootstrap-responsive.css">
+	<link rel="stylesheet" type="text/css" href="../templates/admin/css/style.css" media="screen" />
+	<style type="text/css">
+	body {
+		padding-top: 30px;
+		position: relative;
+		background-color: #fff;
+		background-image: url(../templates/admin/css/images/grid-18px-masked.png);
+		background-repeat: repeat-x;
+		background-position: 0 0px;
+	}
+	.navbar-fixed-top, .navbar-fixed-bottom {
+		position:absolute;
+	}
+	.navbar .nav > li > a {
+		padding-top:11px;
+	}
+	</style>
+	<title>Warning! Installation Files Detected</title>
+</head>
+	<body>
+		<div class="container">
+			<section id="maincontent">
+				<div class="row">
+					<div class="span12">
+						<div class="well form-search">
+							<h2>Warning!</h2>
+							<p>The file ../install/install.php still exists on your server! 
+								<br />For security reasons, you need to <strong>remove the /install/ directory</strong> from your server immediately after you have completed an installation or upgrade of your website.
+							</p>
+							<p>To temporarily ignore this error and continue to the Admin Panel <a href="./admin_index.php">Click Here</a></p>
+						</div>
+					</div>
+				</div><!--/.row-->
+			</section><!--/#maincontent-->
+		</div><!--/.container-->
+	</body>
+</html>';
 } else {
     header('Location: admin_index.php');
 }
