@@ -442,11 +442,6 @@ if (!$errors) {
 	if (count($result) == 0) 
 		$db->query("insert into `" . table_modules . "` (`id`, `name`, `version`, `latest_version`, `folder`, `enabled`) VALUES (97, 'Multibox Admin', 0.1, 0, 'multibox_admin', 0);");
 	
-	// Install English Help Documents Module
-	$result = $db->get_results("select * from `" . table_modules . "` where `folder` = 'admin_help_english';");
-	if (count($result) == 0) 
-		$db->query("insert into `" . table_modules . "` (`id`, `name`, `version`, `latest_version`, `folder`, `enabled`) VALUES (98, 'Admin Help English', 0.3, 0, 'admin_help_english', 1);");
-	
 	// Install Hello World Module
 	$result = $db->get_results("select * from `" . table_modules . "` where `folder` = 'hello_world';");
 	if (count($result) == 0) 

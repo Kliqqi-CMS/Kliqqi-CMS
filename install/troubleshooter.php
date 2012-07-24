@@ -75,7 +75,7 @@ $percent = percent($tally,$required);
 
 if ($tally < $required ){
 	echo '<div class="alert alert-warning">
-		<p><strong>Warning:</strong> Your server has only met <strong>'.$tally.'</strong> of  the <strong>'.$required.'</strong> requirements to run Pligg CMS. Please see the information below to discover what issues need to be addressed.</p>';
+		<p><strong>Warning:</strong> Your server has only met <strong>'.$tally.'</strong> of  the <strong>'.$required.'</strong> requirements to run Pligg CMS. While not all of the items on this page are required to run Pligg, we suggest that you try to comply with the suggestions made on this page. Please see the list below to discover what issues need to be addressed.</p>';
 		echo '<div style="margin-bottom: 9px;" class="progress progress-danger"><div style="width: '.$percent.'%" class="bar"></div></div>';
 } else {
 	echo '<div class="alert alert-success">

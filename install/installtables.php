@@ -516,8 +516,6 @@ $sql = "INSERT INTO `" . table_modules . "` (`id`, `name`, `version`, `latest_ve
 mysql_query( $sql, $conn );
 $sql = "INSERT INTO `" . table_modules . "` (`id`, `name`, `version`, `latest_version`, `folder`, `enabled`) VALUES (3, 'Captcha', 1.0, '', 'captcha', 1);";
 mysql_query( $sql, $conn );
-$sql = "INSERT INTO `" . table_modules . "` (`id`, `name`, `version`, `latest_version`, `folder`, `enabled`) VALUES (4, 'Admin Help English', 0.3, '', 'admin_help_english', 1);";
-mysql_query( $sql, $conn );
 $sql = "INSERT INTO `" . table_modules . "` (`id`, `name`, `version`, `latest_version`, `folder`, `enabled`) VALUES (5, 'Hello World', 0.3, '', 'hello_world', 1);";
 mysql_query( $sql, $conn );
 $sql = "INSERT INTO `" . table_modules . "` (`id`, `name`, `version`, `latest_version`, `folder`, `enabled`) VALUES (6, 'Simple Private Messaging', 0.7, '', 'simple_messaging', 1);";
