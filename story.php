@@ -245,6 +245,8 @@ function insert_comment () {
 	global $link, $db, $current_user, $main_smarty, $the_template;
 
         check_actions('story_insert_comment',$vars);
+		$main_smarty->assign('TheComment',$_POST['comment_content']);
+		
 	if($vars['error'] == true){
 		$error = true;
 		return;

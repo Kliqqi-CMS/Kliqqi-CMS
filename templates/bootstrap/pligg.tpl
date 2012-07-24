@@ -251,7 +251,7 @@
 	{if $pagename eq "story"}
 		{include file=$the_template"/functions/vote_comments.tpl"}
 	{/if}
-	{include file=$the_template"/functions/update_story_link.tpl"}
+	
 	
     {if $anonymous_vote eq "false" and $user_logged_in eq ""}
 		{include file=$the_template"/modal_login_form.tpl"}
@@ -272,7 +272,7 @@
 	<script type="text/javascript" src="{$my_pligg_base}/templates/{$the_template}/js/bootstrap-fileupload.js"></script>
 	<script type="text/javascript" src="{$my_pligg_base}/templates/{$the_template}/js/jquery/jquery.pnotify.js"></script>
 	<script type="text/javascript" src="{$my_pligg_base}/templates/{$the_template}/js/jquery/jquery.masonry.min.js"></script>
-	
+	{include file=$the_template"/functions/update_story_link.tpl"}
     {if $pagename eq "topusers"}
      <script type="text/javascript" src="{$my_pligg_base}/templates/{$the_template}/js/jquery.tablesorter.js"></script>
     {literal}
