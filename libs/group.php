@@ -342,7 +342,7 @@ function member_display($requestID)
 				}
 			}
 				$index=$index+1;
-			echo '</tr>';
+			$member_display .= '</tr>';
 		}
 	}
 		//echo $member_display;
