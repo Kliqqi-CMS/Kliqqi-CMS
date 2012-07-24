@@ -28,10 +28,10 @@ if (!$errors) {
 		include_once '../libs/define_tables.php';
 
 		//time to create the tables
-		echo '<p>' . $lang['CreatingTables'] . '</p>';
+		echo '<li>' . $lang['CreatingTables'] . '</li>';
 		include_once ('../libs/db.php');
 		include_once("installtables.php");
-		if (pligg_createtables($conn) == 1) { echo "<p>" . $lang['TablesGood'] . "</p>"; }
+		if (pligg_createtables($conn) == 1) { echo "<li>" . $lang['TablesGood'] . "</li>"; }
 		else { $errors[] = $lang['Error3-1']; }
 	}
 	else { $errors[] = $lang['Error3-2']; }
