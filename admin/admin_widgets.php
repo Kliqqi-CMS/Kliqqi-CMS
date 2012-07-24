@@ -19,7 +19,7 @@ if($canIhaveAccess == 0){
 }
 
 // pagename
-define('pagename', 'admin_widgets'); 
+define('pagename', 'admin_widgets');
 $main_smarty->assign('pagename', pagename);
 
 // read the mysql database to get the pligg version

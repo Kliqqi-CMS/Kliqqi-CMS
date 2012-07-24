@@ -7,7 +7,6 @@
 		<form action="" method="post" {if $filedata}onsubmit="if (this.updatedfile.value!='' || confirm('{#PLIGG_Visual_AdminPanel_Template_Empty_Confirm#}')) this.isempty.value=1; else return false;"{/if}>	
 			<input type="hidden" name="the_file2" value="{$the_file}" />
 			<p><strong>{#PLIGG_Visual_AdminPanel_Template_Currently_Open#}: {$the_file}</strong></p>
-			
 			<textarea rows="30" class="span12" id="editor" name="updatedfile">{$filedata}</textarea>
 			<br/>
 			<input type="button" value="Cancel" onClick="javascript:location.href='{$my_base_url}{$my_pligg_base}/admin/admin_editor.php'" class="btn" />
@@ -36,7 +35,7 @@
 					<option value="{$file}">{$file}</option>
 				{/foreach}
 			</select>
-			<input type="submit" class="btn btn-primary" name="open" value="Open" />	
+			<input type="submit" class="btn btn-primary" name="open" value="Open" id="open_template" />	
 		</form>
     {else}
 		<div class="alert alert-block fade in">

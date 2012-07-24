@@ -12,11 +12,11 @@ if($action == 'main' || $action == 'disable' || $action == 'enable'){
 	echo '<p>'.$main_smarty->get_config_vars('PLIGG_Visual_AdminPanel_Module_Description').'</p>';
 	echo '	<ul id="moduletabs" class="nav nav-tabs">';
 		if ($_GET["status"] != 'uninstalled'){
-			echo '<li class="active"><a href="#installed" data-toggle="tab">Installed</a></li>';
-			echo '<li><a href="#uninstalled" data-toggle="tab">Uninstalled</a></li>';
+			echo '<li class="active" id="module_installed"><a href="#installed" data-toggle="tab">Installed</a></li>';
+			echo '<li id="module_uninstalled"><a href="#uninstalled" data-toggle="tab">Uninstalled</a></li>';
 		} else {
-			echo '<li><a href="#installed" data-toggle="tab">Installed</a></li>';
-			echo '<li class="active"><a href="#uninstalled" data-toggle="tab">Uninstalled</a></li>';
+			echo '<li id="module_installed"><a href="#installed" data-toggle="tab">Installed</a></li>';
+			echo '<li class="active" id="module_uninstalled"><a href="#uninstalled" data-toggle="tab">Uninstalled</a></li>';
 		}
 	echo '	</ul>';
 	// Tab Wrapper
@@ -28,7 +28,7 @@ if($action == 'main' || $action == 'disable' || $action == 'enable'){
 		echo '<div id="installed" class="tab-pane fade in">';
 	}
 	echo '<form name="bulk_moderate" method="post">';
-	echo '<div class="module_apply"><input type="submit" class="btn btn-primary" name="submit" value="'.$main_smarty->get_config_vars('PLIGG_Visual_AdminPanel_Apply_Changes').'" /></div>';
+	echo '<div class="module_apply"><input type="submit" class="btn btn-primary" name="submit" value="'.$main_smarty->get_config_vars('PLIGG_Visual_AdminPanel_Apply_Changes').'" id="apply_changes" /></div>';
 	echo '<br />';
 	echo '<table class="table table-bordered table-striped">';
 	echo '<thead><tr><th style="text-align:center;">Enabled</th><th>Details</th><th>Requires</th><th>Version</th><th>Homepage</th><th>Settings</th><th>Uninstall</th></tr></thead><tbody>';	

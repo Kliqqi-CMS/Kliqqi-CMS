@@ -12,11 +12,11 @@
 		echo '<p>'.$main_smarty->get_config_vars('PLIGG_Visual_AdminPanel_Widget_Description').'</p>';
 		echo '	<ul id="widgettabs" class="nav nav-tabs">';
 			if ($_GET["status"] != 'uninstalled'){
-				echo '<li class="active"><a href="#installed" data-toggle="tab">Installed</a></li>';
-				echo '<li><a href="#uninstalled" data-toggle="tab">Uninstalled</a></li>';
+				echo '<li class="active"><a href="#installed" data-toggle="tab" id="installed">Installed</a></li>';
+				echo '<li><a href="#uninstalled" data-toggle="tab" id="uninstalled">Uninstalled</a></li>';
 			} else {
-				echo '<li><a href="#installed" data-toggle="tab">Installed</a></li>';
-				echo '<li class="active"><a href="#uninstalled" data-toggle="tab">Uninstalled</a></li>';
+				echo '<li><a href="#installed" data-toggle="tab" id="installed">Installed</a></li>';
+				echo '<li class="active" id="uninstalled"><a href="#uninstalled" data-toggle="tab">Uninstalled</a></li>';
 			}
 		echo '	</ul>';
 		// Tab Wrapper
@@ -28,7 +28,7 @@
 			echo '<div id="installed" class="tab-pane fade in">';
 		}
 		echo '<form name="bulk_moderate" method="post">';
-		echo '<div class="apply_widgets"><input type="submit" class="btn btn-primary" name="submit" value="'.$main_smarty->get_config_vars('PLIGG_Visual_AdminPanel_Apply_Changes').'" /></div>';
+		echo '<div class="apply_widgets"><input type="submit" class="btn btn-primary" name="submit" value="'.$main_smarty->get_config_vars('PLIGG_Visual_AdminPanel_Apply_Changes').'" id="apply_changes" /></div>';
 		echo '<br />';
 		echo '<table class="table table-bordered table-striped">';
 		echo '<thead><tr><th style="text-align:center;">Enabled</th><th>Details</th><th>Homepage</th><th>Uninstall</th></tr></thead></tbody>';	
