@@ -1,6 +1,6 @@
 <!-- home.tpl -->
 {if $amIadmin eq 1}
-	<div class="column" style="margin-left:0;">
+	<div class="column" style="margin-left:0;" id="left_column">
 		{foreach from=$widgets item=widget}	
 			{if $widget.column=='left'}
 				<div class="portlet ui-widget ui-widget-content ui-helper-clearfix ui-corner-all" id="{$widget.id}">

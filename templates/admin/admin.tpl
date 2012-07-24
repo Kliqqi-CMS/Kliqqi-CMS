@@ -156,21 +156,21 @@
 							{*  Sample of hidden accordion. No "in" class, and height set to 0px *}
 							<div class="accordion-body collapse" style="height: 0px;" id="CollapseSettings">
 								<div class="accordion-inner">
-									<li{if $pagename eq "admin_config" && $templatelite.get.page eq "Anonymous"} class="active"{/if}><a href="{$my_base_url}{$my_pligg_base}/admin/admin_config.php?page=Anonymous">Anonymous</a></li>
-									<li{if $pagename eq "admin_config" && $templatelite.get.page eq "AntiSpam"} class="active"{/if}><a href="{$my_base_url}{$my_pligg_base}/admin/admin_config.php?page=AntiSpam">AntiSpam</a></li>
-									<li{if $pagename eq "admin_config" && $templatelite.get.page eq "Avatars"} class="active"{/if}><a href="{$my_base_url}{$my_pligg_base}/admin/admin_config.php?page=Avatars">Avatars</a></li>
-									<li{if $pagename eq "admin_config" && $templatelite.get.page eq "Comments"} class="active"{/if}><a href="{$my_base_url}{$my_pligg_base}/admin/admin_config.php?page=Comments">Comments</a></li>
-									<li{if $pagename eq "admin_backup"} class="active"{/if}><a href="{$my_base_url}{$my_pligg_base}/admin/admin_backup.php">{#PLIGG_Visual_AdminPanel_Backup#}</a></li>
-									<li{if $pagename eq "admin_config" && $templatelite.get.page eq "Groups"} class="active"{/if}><a href="{$my_base_url}{$my_pligg_base}/admin/admin_config.php?page=Groups">Groups</a></li>
-									<li{if $pagename eq "admin_config" && $templatelite.get.page eq "Live"} class="active"{/if}><a href="{$my_base_url}{$my_pligg_base}/admin/admin_config.php?page=Live">Live</a></li>
-									<li{if $pagename eq "admin_config" && $templatelite.get.page eq "Location Installed"} class="active"{/if}><a href="{$my_base_url}{$my_pligg_base}/admin/admin_config.php?page=Location Installed">Location Installed</a></li>
-									<li{if $pagename eq "admin_config" && $templatelite.get.page eq "Misc"} class="active"{/if}><a href="{$my_base_url}{$my_pligg_base}/admin/admin_config.php?page=Misc">Miscellaneous</a></li>
-									<li{if $pagename eq "admin_config" && $templatelite.get.page eq "OutGoing"} class="active"{/if}><a href="{$my_base_url}{$my_pligg_base}/admin/admin_config.php?page=OutGoing">OutGoing</a></li>
-									<li{if $pagename eq "admin_config" && $templatelite.get.page eq "SEO"} class="active"{/if}><a href="{$my_base_url}{$my_pligg_base}/admin/admin_config.php?page=SEO">SEO</a></li>
-									<li{if $pagename eq "admin_config" && $templatelite.get.page eq "Story"} class="active"{/if}><a href="{$my_base_url}{$my_pligg_base}/admin/admin_config.php?page=Story">Story</a></li>
-									<li{if $pagename eq "admin_config" && $templatelite.get.page eq "Submit"} class="active"{/if}><a href="{$my_base_url}{$my_pligg_base}/admin/admin_config.php?page=Submit">Submit</a></li>
-									<li{if $pagename eq "admin_config" && $templatelite.get.page eq "Tags"} class="active"{/if}><a href="{$my_base_url}{$my_pligg_base}/admin/admin_config.php?page=Tags">Tags</a></li>
-									<li{if $pagename eq "admin_config" && $templatelite.get.page eq "Voting"} class="active"{/if}><a href="{$my_base_url}{$my_pligg_base}/admin/admin_config.php?page=Voting">Voting</a></li>
+									<li{if $pagename eq "admin_config" && $templatelite.get.page eq "Anonymous"} class="active"{/if} id="settings_anonymous"><a href="{$my_base_url}{$my_pligg_base}/admin/admin_config.php?page=Anonymous">Anonymous</a></li>
+									<li{if $pagename eq "admin_config" && $templatelite.get.page eq "AntiSpam"} class="active"{/if} id="settings_antispam"><a href="{$my_base_url}{$my_pligg_base}/admin/admin_config.php?page=AntiSpam">AntiSpam</a></li>
+									<li{if $pagename eq "admin_config" && $templatelite.get.page eq "Avatars"} class="active"{/if} id="settings_avatars"><a href="{$my_base_url}{$my_pligg_base}/admin/admin_config.php?page=Avatars">Avatars</a></li>
+									<li{if $pagename eq "admin_config" && $templatelite.get.page eq "Comments"} class="active"{/if} id="settings_comments"><a href="{$my_base_url}{$my_pligg_base}/admin/admin_config.php?page=Comments">Comments</a></li>
+									<li{if $pagename eq "admin_backup"} class="active"{/if} id="settings_backup"><a href="{$my_base_url}{$my_pligg_base}/admin/admin_backup.php">{#PLIGG_Visual_AdminPanel_Backup#}</a></li>
+									<li{if $pagename eq "admin_config" && $templatelite.get.page eq "Groups"} class="active"{/if} id="settings_groups"><a href="{$my_base_url}{$my_pligg_base}/admin/admin_config.php?page=Groups">Groups</a></li>
+									<li{if $pagename eq "admin_config" && $templatelite.get.page eq "Live"} class="active"{/if} id="settings_live"><a href="{$my_base_url}{$my_pligg_base}/admin/admin_config.php?page=Live">Live</a></li>
+									<li{if $pagename eq "admin_config" && $templatelite.get.page eq "Location Installed"} class="active"{/if} id="settings_location"><a href="{$my_base_url}{$my_pligg_base}/admin/admin_config.php?page=Location Installed">Location Installed</a></li>
+									<li{if $pagename eq "admin_config" && $templatelite.get.page eq "Misc"} class="active"{/if} id="settings_misc"><a href="{$my_base_url}{$my_pligg_base}/admin/admin_config.php?page=Misc">Miscellaneous</a></li>
+									<li{if $pagename eq "admin_config" && $templatelite.get.page eq "OutGoing"} class="active"{/if} id="settings_outgoing"><a href="{$my_base_url}{$my_pligg_base}/admin/admin_config.php?page=OutGoing">OutGoing</a></li>
+									<li{if $pagename eq "admin_config" && $templatelite.get.page eq "SEO"} class="active"{/if} id="settings_seo"><a href="{$my_base_url}{$my_pligg_base}/admin/admin_config.php?page=SEO">SEO</a></li>
+									<li{if $pagename eq "admin_config" && $templatelite.get.page eq "Story"} class="active"{/if} id="settings_story"><a href="{$my_base_url}{$my_pligg_base}/admin/admin_config.php?page=Story">Story</a></li>
+									<li{if $pagename eq "admin_config" && $templatelite.get.page eq "Submit"} class="active"{/if} id="settings_submit"><a href="{$my_base_url}{$my_pligg_base}/admin/admin_config.php?page=Submit">Submit</a></li>
+									<li{if $pagename eq "admin_config" && $templatelite.get.page eq "Tags"} class="active"{/if} id="settings_tags"><a href="{$my_base_url}{$my_pligg_base}/admin/admin_config.php?page=Tags">Tags</a></li>
+									<li{if $pagename eq "admin_config" && $templatelite.get.page eq "Voting"} class="active"{/if} id="settings_voting"><a href="{$my_base_url}{$my_pligg_base}/admin/admin_config.php?page=Voting">Voting</a></li>
 									{checkActionsTpl location="tpl_pligg_admin_navtabs_end"}
 								</div>
 							</div>

@@ -1,10 +1,12 @@
 {if $pagename eq "admin_index"}
 	<ol id="HelloWorld" style="display:none;">
+		<li data-target="#AdminAccordion" data-title="Admin Sidebar">Navigate between the different Admin Panel pages using these links. Each section can be collapsed or expanded, making it easier to access the links that you use most frequently between sessions.</li>
 		<li data-target="#CollapseManage" data-title="Management Sidebar Area">This is the management sidebar area, where you will find links to manage content on your Pligg website. If you see a number on the right side of any of these sidebar labels, that represents items that need to be reviewed. </li>
 		<li data-target="#CollapseSettings" data-title="Settings Sidebar Area">This is where you can configure your site to your liking. Change things like: whether un-registered users can vote, how many stories appear on each page, backup your files and MySQL database.</li>
 		<li data-target="#CollapseTemplate" data-title="Template Sidebar Area">Here you can manage your template through a settings area and a web-based template file editor.</li>
 		<li data-target="#CollapseModules" data-title="Modules Sidebar Area">Modules are add-ons that provide additional functionality to Pligg. Modules that have settings pages will insert a link to that page under this section. The numbers that appear to the right of some modules represent something that they want to call your attention to, like content waiting for your approval. The number that appears in the collapsable bar at the top is the total number of alerts in the module section, similar to how the manage section alerts work.</li>
 		<li data-target="#CollapseWidgets" data-title="Widgets Sidebar Area">Widgets are the boxes of information that appear on the Admin Panel Homepage.</li>
+		<li data-target="#left_column" data-title="Widgets">Here's an example of Widgets in action. They can be quickly customized through the settings link in the corner of some of their title bars, minimized temporarily, or completely uninstalled with a single click on the X icon.</li>
 	</ol>
 
 	<script src="{$my_base_url}{$my_pligg_base}/modules/hello_world/templates/bootstrap-tour.js" type="text/javascript"></script>
@@ -69,6 +71,8 @@
 {if $pagename eq "admin_config" && $templatelite.get.page neq "Template"}
 	<ol id="HelloWorld" style="display:none;">
 		<li data-target="#CollapseSettings" data-title="Settings Sidebar Area">This is where you can configure your site to your liking. Change things like: whether un-registered users can vote, how many stories appear on each page, backup your files and MySQL database.</li>
+		<li data-target="#settings_anonymous" data-title="Anonymous">Enable anonymous voting from this page.</li>
+		<li data-target="#settings_antispam" data-title="Antispam">Here you can change what local blacklist files Pligg uses to prevent spam.</li>
 	</ol>
 
 	<script src="{$my_base_url}{$my_pligg_base}/modules/hello_world/templates/bootstrap-tour.js" type="text/javascript"></script>
