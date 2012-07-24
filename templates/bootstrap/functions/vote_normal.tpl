@@ -13,10 +13,13 @@ function vote (user, id, htmlid, md5, value)
 {
     var url = my_pligg_base + "/vote_total.php";
     var mycontent = "id=" + id + "&user=" + user + "&md5=" + md5 + "&value=" + value;
+	dynamic_class=".linkVote_"+id;
+    var link_title=$(dynamic_class).attr("title");
 	
     if (!anonymous_vote && user==0) {
         window.location= my_base_url + my_pligg_base + "/login.php?return="+location.href;
     } else {
+		
     	$.post(url, mycontent, function (data) {
 		if (data.match (new RegExp ("^ERROR:"))) {
 			var tag = $("<div></div>");
@@ -32,6 +35,19 @@ function vote (user, id, htmlid, md5, value)
 			anchor.addClass(value>0 ? 'btn-success' : 'btn-danger')
 				.attr('href', anchor.attr('href').replace(/vote/,'unvote'))
 				.children('i').addClass('icon-white');
+				
+		     if(value==10)
+			  like_dislike_text='You like';
+			 else if(value==-10)
+			  like_dislike_text='You dislike';	
+			    
+			 $.pnotify({
+								pnotify_text: like_dislike_text+' &quot;'+link_title+'&quot;',
+								pnotify_sticker: false,
+								pnotify_history: false,
+								pnotify_notice_icon: 'icon-thumbs-down'
+							});	
+			
 
 			if (Voting_Method == 2){
 			} else {
@@ -46,7 +62,9 @@ function unvote (user, id, htmlid, md5, value)
 {
     var url = my_pligg_base + "/vote_total.php";
     var mycontent = "unvote=true&id=" + id + "&user=" + user + "&md5=" + md5 + "&value=" + value;
-
+	dynamic_class=".linkVote_"+id;
+    var link_title=$(dynamic_class).attr("title");
+	
     if (!anonymous_vote && user==0) {
         window.location= my_base_url + my_pligg_base + "/login.php?return="+location.href;
     } else {
@@ -58,6 +76,19 @@ function unvote (user, id, htmlid, md5, value)
 			anchor.removeClass(value>0 ? 'btn-success' : 'btn-danger')
 				.attr('href', anchor.attr('href').replace(/unvote/,'vote'))
 				.children('i').removeClass('icon-white');
+				
+			if(value==10)
+			  like_dislike_text='You removed like';
+			 else if(value==-10)
+			  like_dislike_text='You removed dislike';
+				
+			$.pnotify({
+								pnotify_text: like_dislike_text+' &quot;'+link_title+'&quot;',
+								pnotify_sticker: false,
+								pnotify_history: false,
+								pnotify_notice_icon: 'icon-thumbs-down'
+							});	
+						
 
 			if (Voting_Method == 2){
 			} else {

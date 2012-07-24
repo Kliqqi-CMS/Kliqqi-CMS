@@ -95,19 +95,22 @@ if(is_numeric($post_id) && $post_id > 0){
 	if(sanitize($_POST['unvote'], 3) == 'true'){
 	    $link->remove_vote($current_user->user_id, $value);
 	} else {
-	    
-		if($value==10){
-		if($link->votes($current_user->user_id, $value) > 0 || 
-	        (votes_per_ip > 0 && $link->votes_from_ip() >= votes_per_ip)) {
-			error($main_smarty->get_config_vars('PLIGG_Visual_Vote_AlreadyVoted'));
-	    }
-		}elseif($value==-10){
-		if($link->votes($current_user->user_id, $value) > 0 || 
-	        (votes_per_ip > 0 && $link->reports_from_ip() >= votes_per_ip)) {
-			error($main_smarty->get_config_vars('PLIGG_Visual_Vote_AlreadyVoted'));
-	    }
-		}
 		
+		//Checking for ip vote  
+		if($link->votes($current_user->user_id, $value) > 0)
+		  error($main_smarty->get_config_vars('PLIGG_Visual_Vote_AlreadyVoted').$link->votes($current_user->user_id, $value).'/'.$value);
+		
+		
+		if($current_user->user_id==0 && $value==10 && votes_per_ip > 0 && $link->votes_from_ip() >= votes_per_ip)
+		 error($main_smarty->get_config_vars('PLIGG_Visual_Vote_AlreadyVoted').'/'.$value);
+		 
+		if($current_user->user_id==0 && $value==-10 && votes_per_ip > 0 && $link->reports_from_ip() >= votes_per_ip)
+		 error($main_smarty->get_config_vars('PLIGG_Visual_Vote_AlreadyVoted').'/'.$value);
+		
+	   /* if($link->votes($current_user->user_id, 10) > 0 || $link->votes($current_user->user_id, -10) > 0 ||
+	        (votes_per_ip > 0 && $link->votes_from_ip() + $link->reports_from_ip() >= votes_per_ip)) {
+			//error($main_smarty->get_config_vars('PLIGG_Visual_Vote_AlreadyVoted').$link->votes($current_user->user_id, $value).'/'.$value);
+	    }*/
 		
 	    $link->remove_vote($current_user->user_id, -$value);
 	    $link->insert_vote($current_user->user_id, $value);

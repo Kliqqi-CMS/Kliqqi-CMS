@@ -69,37 +69,17 @@
                         {else}
 						{if $link_shakebox_currentuser_votes eq 0}
 							<!-- Vote For It -->
-							<a class="btn btn-mini" href="javascript:{$link_shakebox_javascript_vote}" {if $user_logged_in neq ''}onclick={literal}"$.pnotify({
-								pnotify_text: 'You Like &quot;{/literal}{$title_short}{literal}&quot;',
-								pnotify_sticker: false,
-								pnotify_history: false,
-								pnotify_notice_icon: 'icon-thumbs-up'
-							});"{/literal}{/if}><i class="icon-thumbs-up"></i></a>
+							<a class="btn btn-mini linkVote_{$link_id}" href="javascript:{$link_shakebox_javascript_vote}" title="{$title_short}" ><i class="icon-thumbs-up"></i></a>
 						{elseif $link_shakebox_currentuser_votes eq 1}
 							<!-- Already Voted -->
-							<a class="btn btn-mini btn-success" href="javascript:{$link_shakebox_javascript_unvote}" onclick={literal}"$.pnotify({
-								pnotify_text: 'You Like for &quot;{/literal}{$title_short}{literal}&quot;',
-								pnotify_sticker: false,
-								pnotify_history: false,
-								pnotify_notice_icon: 'icon-thumbs-up'
-							});"{/literal}><i class="icon-white icon-thumbs-up"></i></a>
+							<a class="btn btn-mini btn-success linkVote_{$link_id}" href="javascript:{$link_shakebox_javascript_unvote}" title="{$title_short}" ><i class="icon-white icon-thumbs-up"></i></a>
 						{/if}
 						{if $link_shakebox_currentuser_reports eq 0}
 							<!-- Bury It -->
-							<a class="btn btn-mini" href="javascript:{$link_shakebox_javascript_report}" {if $user_logged_in neq ''}onclick={literal}"$.pnotify({
-								pnotify_text: 'You Dislike &quot;{/literal}{$title_short}{literal}&quot;',
-								pnotify_sticker: false,
-								pnotify_history: false,
-								pnotify_notice_icon: 'icon-thumbs-down'
-							});"{/literal}{/if}><i class="icon-thumbs-down"></i></a>
+							<a class="btn btn-mini linkVote_{$link_id}" href="javascript:{$link_shakebox_javascript_report}" title="{$title_short}" ><i class="icon-thumbs-down"></i></a>
 						{elseif $link_shakebox_currentuser_reports eq 1}
 							<!-- Already Buried -->
-							<a class="btn btn-mini btn-danger" href="javascript:{$link_shakebox_javascript_unbury}" onclick={literal}"$.pnotify({
-								pnotify_text: 'You Dislike &quot;{/literal}{$title_short}{literal}&quot;',
-								pnotify_sticker: false,
-								pnotify_history: false,
-								pnotify_notice_icon: 'icon-thumbs-down'
-							});"{/literal}><i class="icon-white icon-thumbs-down"></i></a>
+							<a class="btn btn-mini btn-danger linkVote_{$link_id}"   href="javascript:{$link_shakebox_javascript_unbury}" title="{$title_short}" }><i class="icon-white icon-thumbs-down"></i></a>
 						{/if}
 						{/if}
 						<!-- Votes: {$link_shakebox_currentuser_votes} Buries: {$link_shakebox_currentuser_reports} -->
