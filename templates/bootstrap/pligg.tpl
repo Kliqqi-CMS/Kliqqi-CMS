@@ -169,7 +169,7 @@
 						{/if}
 						{if $posttitle neq "" && $pagename eq "page"}<li>{$posttitle}</li>{/if}
 						{checkActionsTpl location="tpl_pligg_breadcrumb_end"}
-						{if $pagename eq "published" || $pagename eq "index" || $pagename eq "upcoming" || $pagename eq "groups" {* || $pagename eq "group_story" *} }
+						{if $pagename eq "published" || $pagename eq "index" || $pagename eq "upcoming" || $pagename eq "groups" || $pagename eq "live" || $pagename eq "live_published" || $pagename eq "live_unpublished" || $pagename eq "live_comments" }
 							{* Sort Dropdown *}
 							<div class="btn-group pull-right" style="margin-top:-8px;margin-right:-14px;">
 								<ul class="nav nav-pills">
@@ -189,6 +189,11 @@
 												{if $sortby eq "name"}<li id="active"><a id="current" href="{$group_url_name}"><span class="active">{#PLIGG_Visual_Group_Sort_Name#}</span></a>{else}<li><a href="{$group_url_name}">{#PLIGG_Visual_Group_Sort_Name#}</a>{/if}</li>
 												{if $sortby eq "newest"}<li id="active"><a id="current" href="{$group_url_newest}"><span class="active">{#PLIGG_Visual_Group_Sort_Newest#}</span></a>{else}<li><a href="{$group_url_newest}">{#PLIGG_Visual_Group_Sort_Newest#}</a>{/if}</li>
 												{if $sortby eq "oldest"}<li id="active"><a id="current" href="{$group_url_oldest}"><span class="active">{#PLIGG_Visual_Group_Sort_Oldest#}</span></a>{else}<li><a href="{$groupview_published}">{#PLIGG_Visual_Group_Published#}</a>{/if}</li>
+											{elseif $pagename eq "live" || $pagename eq "live_published" || $pagename eq "live_unpublished" || $pagename eq "live_comments"}
+												<li {if $pagename eq "live"}id="active"{/if}><a href="{$URL_live}"><span {if $pagename eq "live"}class="active"{/if}>{#PLIGG_Visual_Breadcrumb_All#}</span></a></li>
+												<li {if $pagename eq "live_published"}id="active"{/if}><a href="{$URL_published}"><span {if $pagename eq "live_published"}class="active"{/if}>{#PLIGG_Visual_Breadcrumb_Published_Tab#}</span></a></li>
+												<li {if $pagename eq "live_unpublished"}id="active"{/if}><a href="{$URL_unpublished}"><span {if $pagename eq "live_unpublished"}class="active"{/if}>{#PLIGG_Visual_Breadcrumb_Unpublished_Tab#}</span></a></li>
+												<li {if $pagename eq "live_comments"}id="active"{/if}><a href="{$URL_comments}"><span {if $pagename eq "live_comments"}class="active"{/if}>{#PLIGG_Visual_Breadcrumb_Comments#}</span></a></li>
 											{/if}
 										</ul>
 									</li>

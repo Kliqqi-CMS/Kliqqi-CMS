@@ -5,6 +5,9 @@
 // You can get copies of the licenses here:
 // 		http://www.affero.org/oagpl.html
 // AFFERO GENERAL PUBLIC LICENSE is also included in the file called "COPYING".
+include_once('Smarty.class.php');
+$main_smarty = new Smarty;
+
 
 include('config.php');
 include(mnminclude.'link.php');
@@ -79,15 +82,15 @@ function get_votes($time) {
 				$user= preg_replace('/\.[0-9]+$/', '', $event->vote_ip);
 			}
 			if ($event->vote_value < 0) {
-				$type = 'report';
+				$type = 'Down Vote';
 				$who = $user;
 			}	
 			else if ($event->vote_value >= 0) {
-				$type = 'vote';
+				$type = 'Up Vote';
 				$who = $user;
 			} 
 			else { 
-				$type = 'problem';
+				$type = 'Problem';
 				$who = $event->vote_value;
 			}
 			$status =  get_status($event->link_status);
@@ -115,7 +118,7 @@ function get_new_stories($time) {
 	foreach ($res as $event) {
 		$id=$event->link_id;
 		$uid = $event->link_author;
-		$type = 'new';
+		$type = 'Submission';
 		$who = $event->user_login;
 		$status =  get_status($event->link_status);
 		$key = $event->timestamp . ':new:'.$id;
@@ -141,7 +144,7 @@ function get_new_published($time) {
 	foreach ($res as $event) {
 		$id=$event->link_id;
 		$uid = $event->link_author;
-		$type = 'published';
+		$type = 'Published';
 		$who = $event->user_login;
 		$status =  get_status($event->link_status);
 		$key = $event->timestamp . ':published:'.$id;
@@ -161,7 +164,7 @@ function get_comments($time) {
 	foreach ($res as $event) {
 		$id=$event->comment_id;
 		$uid=$event->comment_user_id;
-		$type = 'comment';
+		$type = 'Comment';
 		$who = $event->user_login;
 		$status =  get_status($event->link_status);
 		$key = $event->timestamp . ':comment:'.$id;

@@ -41,8 +41,14 @@ check_actions('live', $vars);
 // misc smarty that has to come after do_sidebar
 $main_smarty->assign('body_args', 'onload="start()"');
 
+// restrict access to admins
+$canIhaveAccess = 0;
+$canIhaveAccess = $canIhaveAccess + checklevel('admin');
+$canIhaveAccess = $canIhaveAccess + checklevel('moderator');
+$main_smarty->assign('isAdmin', $canIhaveAccess);
+
 // show the template
 $main_smarty->assign('tpl_center', $the_template . '/live_center');
 $main_smarty->display($the_template . '/pligg.tpl');
-$main_smarty->display($the_template . '/live_js.tpl');
+$main_smarty->display($the_template . '/functions/live_js.tpl');
 ?>
