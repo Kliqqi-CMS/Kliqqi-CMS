@@ -166,7 +166,7 @@
 						{/if}
 						{if $posttitle neq "" && $pagename eq "page"}<li>{$posttitle}</li>{/if}
 						{checkActionsTpl location="tpl_pligg_breadcrumb_end"}
-						{if $pagename eq "published" || $pagename eq "index" || $pagename eq "upcoming" || $pagename eq "groups" || $pagename eq "live" || $pagename eq "live_published" || $pagename eq "live_unpublished" || $pagename eq "live_comments" }
+						{if $pagename eq "published" || $pagename eq "index" || $pagename eq "upcoming" || $pagename eq "cloud" || $pagename eq "groups" || $pagename eq "live" || $pagename eq "live_published" || $pagename eq "live_unpublished" || $pagename eq "live_comments" }
 							{* Sort Dropdown *}
 							<div class="btn-group pull-right" style="margin-top:-8px;margin-right:-14px;">
 								<ul class="nav nav-pills">
@@ -191,6 +191,16 @@
 												<li {if $pagename eq "live_published"}id="active"{/if}><a href="{$URL_published}"><span {if $pagename eq "live_published"}class="active"{/if}>{#PLIGG_Visual_Breadcrumb_Published_Tab#}</span></a></li>
 												<li {if $pagename eq "live_unpublished"}id="active"{/if}><a href="{$URL_unpublished}"><span {if $pagename eq "live_unpublished"}class="active"{/if}>{#PLIGG_Visual_Breadcrumb_Unpublished_Tab#}</span></a></li>
 												<li {if $pagename eq "live_comments"}id="active"{/if}><a href="{$URL_comments}"><span {if $pagename eq "live_comments"}class="active"{/if}>{#PLIGG_Visual_Breadcrumb_Comments#}</span></a></li>
+											{elseif $pagename eq "cloud"}
+											{if $pagename eq "cloud"}
+												{section name=i start=0 loop=$count_range_values step=1}
+													{if $templatelite.section.i.index eq $current_range}
+														<li id="active"><a href="#"><span class="active">{$range_names[i]}</span></a></li>
+													{else}	
+														<li><a href="{$URL_tagcloud_range, $templatelite.section.i.index}"><span>{$range_names[i]}</span></a></li>
+													{/if}
+												{/section}
+											{/if}
 											{/if}
 										</ul>
 									</li>
