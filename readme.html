@@ -67,10 +67,10 @@
 				<ol>
 					<li>Create a mysql database. If you are unfamiliar with how to create a mysql database, please contact your web host or search their support site. Please pay careful attention when creating a database and write down your database name, username, password, and host somewhere.</li>
 					<li>Rename the /language/lang_english.conf.default file to lang_english.conf. Same instructions apply to any other language file that you might use that are located in the /languages directory.</li>
-					<li>Rename the file approvedips.txt.default to approvedips.txt</li>
-					<li>Rename the file bannedips.txt.default to bannedips.txt</li>
+					<li>Rename the file approvedips.log.default to approvedips.log</li>
+					<li>Rename the file bannedips.log.default to bannedips.log</li>
 					<li>Rename the file settings.php.default to settings.php</li>
-					<li>Rename the file local-antispam.txt.default to local-antispam.txt</li>
+					<li>Rename the file local-antispam.log.default to local-antispam.log</li>
 					<li>Rename the /libs/dbconnect.php.default file to dbconnect.php</li>
 					<li>Upload the files to your server.</li>
 					<li>CHMOD 755 the following directories and files. If you experience any errors try 777.
@@ -82,9 +82,9 @@
 							<li>/cache/admin_c/</li>
 							<li>/cache/templates_c/</li>
 							<li>/languages/ (And all of the files contained in this folder should be CHMOD 777)</li>
-							<li>approvedips.txt</li>
-							<li>bannedips.txt</li>
-							<li>local-antispam.txt</li>
+							<li>approvedips.log</li>
+							<li>bannedips.log</li>
+							<li>local-antispam.log</li>
 						</ul>
 					</li>
 					<li>CHMOD 666 the following files

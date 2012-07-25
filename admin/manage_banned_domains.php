@@ -51,7 +51,7 @@ if($canIhaveAccess == 1){
 		$main_smarty->display($template_dir . '/admin/admin.tpl');
 	}
 	elseif(isset($_REQUEST['doban'])){
-		$filename = '../local-antispam.txt';
+		$filename = '../local-antispam.log';
 		$somecontent = strtoupper(sanitize($_REQUEST['doban'], 3)) . "\n";
 		if (is_writable($filename)) {
 		   if (!$handle = fopen($filename, 'a')) {
@@ -84,7 +84,7 @@ if($canIhaveAccess == 1){
 	}
 	elseif(isset($_REQUEST['list']))
 	{
-		$lines = file('../local-antispam.txt');
+		$lines = file('../local-antispam.log');
 		$main_smarty->assign('lines', $lines);
 		$main_smarty->assign('tpl_center', '/admin/banned_domains');
 		$main_smarty->display($template_dir . '/admin/admin.tpl');

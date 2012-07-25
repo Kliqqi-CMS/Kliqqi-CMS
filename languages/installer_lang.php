@@ -22,10 +22,10 @@
 	$lang['Installation'] = 'Installation (Please Read Carefully)';
 	$lang['OnceFamiliar'] = '<p>If this is your first time installing Pligg you should continue on this page after carefully following the directions below. If you need to <a href="./upgrade.php">upgrade your site</a> from a previous version, please run the upgrade script by clicking on the Upgrade link above. WARNING: running the installation process on an existing Pligg site database will overwrite all stories and settings, so please make sure that you want to perform an installation if you choose to continue below.
 	<ol>
-		<li>Rename approvedips.txt.default to approvedips.txt</li>
-		<li>Rename bannedips.txt.default to bannedips.txt</li>
-		<li>Rename local-antispam.txt.default to local-antispam.txt</li>
-		<li>Rename notspam.txt.default to notspam.txt</li>
+		<li>Rename approvedips.log.default to approvedips.log</li>
+		<li>Rename bannedips.log.default to bannedips.log</li>
+		<li>Rename local-antispam.log.default to local-antispam.log</li>
+		<li>Rename notspam.log.default to notspam.log</li>
 		<li>Rename settings.php.default to settings.php</li>
 		<li>Rename /libs/dbconnect.php.default to dbconnect.php</li>
 		<li>Rename /languages/lang_english.conf.default to lang_english.conf</li>

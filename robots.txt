@@ -8,7 +8,6 @@ User-agent: *
 Crawl-delay: 5
 Disallow: 
 Disallow: /3rdparty/
-Disallow: /antispam.txt
 Disallow: /admin/
 Disallow: /admin/admin_index.php
 Disallow: /backup/
@@ -26,9 +25,15 @@ Disallow: /readme.html
 Disallow: /search.php
 Disallow: /search/
 Disallow: /searchurl/
-Disallow: /spamlog.log
 Disallow: /tag/
 Disallow: /templates/
+Disallow: /upcoming/recent/
+Disallow: /upcoming/yesterday/
+Disallow: /upcoming/today/
+Disallow: /upcoming/week/
+Disallow: /upcoming/month/
+Disallow: /upcoming/year/
+Disallow: /upcoming/alltime/
 Disallow: /user/profile/
 Disallow: /user/history/
 Disallow: /user/published/
@@ -43,10 +48,3 @@ Disallow: /week/
 Disallow: /month/
 Disallow: /year/
 Disallow: /alltime/
-Disallow: /upcoming/recent/
-Disallow: /upcoming/yesterday/
-Disallow: /upcoming/today/
-Disallow: /upcoming/week/
-Disallow: /upcoming/month/
-Disallow: /upcoming/year/
-Disallow: /upcoming/alltime/

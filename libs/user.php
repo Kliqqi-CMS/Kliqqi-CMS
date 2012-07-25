@@ -418,9 +418,9 @@ function killspam($id)
 	    }
 
 	$results = $db->get_results($sql="SELECT link_id, link_url FROM `" . table_links . "` WHERE `link_author` = $id");
-	$filename = mnmpath.'local-antispam.txt';
+	$filename = mnmpath.'local-antispam.log';
 	$lines = file($filename,FILE_IGNORE_NEW_LINES | FILE_SKIP_EMPTY_LINES);
-	$approved = file(mnmpath.'notspam.txt',FILE_IGNORE_NEW_LINES | FILE_SKIP_EMPTY_LINES);
+	$approved = file(mnmpath.'notspam.log',FILE_IGNORE_NEW_LINES | FILE_SKIP_EMPTY_LINES);
 	if ($results)
 	    foreach ($results as $result)
 	    {

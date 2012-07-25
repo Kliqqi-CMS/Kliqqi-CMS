@@ -10,8 +10,8 @@ INSERT INTO `config` VALUES (10, 'Tags', '$tags_min_pts', '8', '8', 'number (sho
 INSERT INTO `config` VALUES (11, 'Tags', '$tags_max_pts', '36', '36', 'number', 'Tags Maximum Font Size', '<b>Only used if Tags are enabled.</b> How large should the text for the largest tags be.', 'normal', NULL);
 INSERT INTO `config` VALUES (12, 'Tags', '$tags_words_limit', '100', '100', 'number', 'Tag Cloud Word Limit', '<b>Only used if Tags are enabled.</b> The most tags to show in the cloud.', 'normal', NULL);
 INSERT INTO `config` VALUES (13, 'AntiSpam', 'CHECK_SPAM', 'false', 'false', 'true / false', 'Enable spam checking', 'Checks submitted domains to see if they''re on a blacklist.', 'define', NULL);
-INSERT INTO `config` VALUES (14, 'AntiSpam', '$MAIN_SPAM_RULESET', 'antispam.txt', 'antispam.txt', 'text file', 'Main Spam Ruleset', 'What file should be used to check for spam domains?', 'normal', '"');
-INSERT INTO `config` VALUES (15, 'AntiSpam', '$USER_SPAM_RULESET', 'local-antispam.txt', 'local-antispam.txt', 'text file', 'Local Spam Ruleset', 'What file should Pligg write to if you mark items as spam?', 'normal', '"');
+INSERT INTO `config` VALUES (14, 'AntiSpam', '$MAIN_SPAM_RULESET', 'antispam.log', 'antispam.log', 'text file', 'Main Spam Ruleset', 'What file should be used to check for spam domains?', 'normal', '"');
+INSERT INTO `config` VALUES (15, 'AntiSpam', '$USER_SPAM_RULESET', 'local-antispam.log', 'local-antispam.log', 'text file', 'Local Spam Ruleset', 'What file should Pligg write to if you mark items as spam?', 'normal', '"');
 INSERT INTO `config` VALUES (16, 'AntiSpam', '$SPAM_LOG_BOOK', 'spamlog.log', 'spamlog.log', 'text file', 'Spam Log', 'File to log spam blocks to.', 'normal', '"');
 INSERT INTO `config` VALUES (17, 'Live', 'Enable_Live', 'true', 'true', 'true / false', 'Enable Live', 'Enable the live page.', 'define', NULL);
 INSERT INTO `config` VALUES (18, 'Live', 'items_to_show', '20', '20', 'number', 'Live Items to Show', 'Number of items to show on the live page.', 'define', NULL);
