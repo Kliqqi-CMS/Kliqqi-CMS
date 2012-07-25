@@ -20,13 +20,7 @@
 	{/if}
 
 	{checkForCss}
-	{checkForJs}		
-
-	{if $pagename neq "published" && $pagename neq "upcoming"}
-		{if $Spell_Checker eq 1}			
-			<script src="{$my_pligg_base}/3rdparty/speller/spellChecker.js" type="text/javascript"></script>
-		{/if}
-	{/if}	
+	{checkForJs}	
 
 	{if preg_match('/index.php$/',$templatelite.server.SCRIPT_NAME)}
 		{if $get.category}

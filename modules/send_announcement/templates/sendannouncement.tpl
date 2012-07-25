@@ -38,7 +38,6 @@
 	<form name="frm" action="" onSubmit="return errorCheck();" method="post">
 		{#Pligg_Send_Announcement_Subject#}:<br /><input type="text" name="sub" value="" class="span9" /><br /><br />
 		{#Pligg_Send_Announcement_Message#}:<br /><textarea name="msg" id="message" rows="10" class="span9"></textarea><br />
-		{if $Spell_Checker eq 1}<input type="button" name="spelling" value="{#Pligg_Send_Announcement_Check_Spelling#}" class="btn" onClick="openSpellChecker('message');"/>{/if}
 		<br /><input type="submit" name="submit" value="{#Pligg_Send_Announcement_Submit#}" class="btn btn-primary" />
 	</form>
 

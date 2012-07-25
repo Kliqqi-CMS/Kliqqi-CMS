@@ -11,9 +11,6 @@
 			<div class="controls">
 				<textarea name="comment_content" id="comment_content" class="comment-form" rows="6" />{if isset($TheComment)}{$TheComment}{/if}</textarea>
 				<p class="help-inline">{#PLIGG_Visual_Comment_NoHTML#}</p>
-				{if $Spell_Checker eq 1}
-					<input type="button" name="spelling" value="{#PLIGG_Visual_Check_Spelling#}" class="btn" onClick="openSpellChecker('comment_content');"/>
-				{/if}
 			</div>
 		</div>
 		{if isset($register_step_1_extra)}

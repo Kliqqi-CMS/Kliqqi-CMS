@@ -54,7 +54,6 @@ $main_smarty->assign('Enable_Live', Enable_Live);
 $main_smarty->assign('Voting_Method', Voting_Method);
 $main_smarty->assign('my_base_url', my_base_url);
 $main_smarty->assign('my_pligg_base', my_pligg_base);
-$main_smarty->assign('Spell_Checker', Spell_Checker);
 $main_smarty->assign('Allow_User_Change_Templates', Allow_User_Change_Templates);
 $main_smarty->assign('urlmethod', urlmethod);
 $main_smarty->assign('UseAvatars', do_we_use_avatars());

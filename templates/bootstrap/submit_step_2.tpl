@@ -70,7 +70,6 @@
 				<div class="controls">
 					<textarea name="bodytext" tabindex="15" rows="8" id="bodytext" class="span4" maxlength="{$maxStoryLength}" WRAP="SOFT" onkeypress="counter(this)" onkeydown="counter(this)" onkeyup="counter(this); if(!this.form.summarycheckbox || !this.form.summarytext) return; if(this.form.summarycheckbox.checked == false) {ldelim}this.form.summarytext.value = this.form.bodytext.value.substring(0, {$StorySummary_ContentTruncate});{rdelim}textCounter(this.form.summarytext,this.form.remLen, {$StorySummary_ContentTruncate});">{if $submit_url_description}{$submit_url_description}{/if}{$submit_content}</textarea><br />
 					{* <input size="2" value='{$storylen}' name="text_num disabled" class="span1" /> {#PLIGG_Visual_Total_Chars#} *}
-					{if $Spell_Checker eq 1}<input type="button" name="spelling" value="{#PLIGG_Visual_Check_Spelling#}" class="btn" onclick="openSpellChecker('bodytext');"/>{/if}
 					<p class="help-inline">{#PLIGG_Visual_Submit2_DescInstruct#}</p>
 				</div>
 			</div>
@@ -86,7 +85,6 @@
 						{/if *}
 						<textarea disabled="true" name="summarytext" rows="5" maxlength="{$maxSummaryLength}" id="summarytext" class="span1" WRAP="SOFT" onkeydown="textCounter(this.form.summarytext,this.form.remLen, {$StorySummary_ContentTruncate});">{$submit_summary}</textarea><br />
 						<input readonly type="text" name="remLen" size="3" class="span1" value="400">{#PLIGG_Visual_Submit2_SummaryCharactersLeft#}
-						{if $Spell_Checker eq 1}<input type="button" name="spelling" value="{#PLIGG_Visual_Check_Spelling#}" class="btn" onclick="openSpellChecker('summarytext');"/>{/if}
 						<p class="help-inline">{#PLIGG_Visual_Submit2_SummaryInstruct#}{#PLIGG_Visual_Submit2_SummaryLimit#}{$StorySummary_ContentTruncate}{#PLIGG_Visual_Submit2_SummaryLimitCharacters#}</p>
 					</div>
 				</div>

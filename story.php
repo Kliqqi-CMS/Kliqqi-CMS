@@ -146,7 +146,6 @@ if(is_numeric($requestID)) {
 	// misc smarty
 	$main_smarty->assign('Enable_Comment_Voting', Enable_Comment_Voting);
 	$main_smarty->assign('enable_show_last_visit', enable_show_last_visit);
-	$main_smarty->assign('Spell_Checker',Spell_Checker);
 	$main_smarty->assign('UseAvatars', do_we_use_avatars());
 	$main_smarty->assign('related_title_url', getmyurl('storytitle', ""));
 	$main_smarty->assign('related_story', related_stories($id, $link->tags, $link->category));

@@ -62,9 +62,6 @@
 		</span>
 	{/if}
 	<br />
-	{if $Spell_Checker eq 1}
-		<input type="button" name="spelling" value="{#PLIGG_Visual_Check_Spelling#}" class="btn" onClick="openSpellChecker('bodytext');"/>
-	{/if}
 	<input class="span1" value='{$storylen}' name=text_num disabled> {#PLIGG_Visual_Total_Chars#} 
 	<br />
 	{if $SubmitSummary_Allow_Edit eq 1}
@@ -75,9 +72,6 @@
 		<br />
 		<textarea name="summarytext" rows="5" id="summarytext" class="span9" WRAP="SOFT" onKeyDown="textCounter(this.form.summarytext,this.form.remLen, {$StorySummary_ContentTruncate});">{$submit_summary}</textarea>
 		<input readonly type=text name=remLen size="3" class="span1" value="{$StorySummary_ContentTruncate}"> {#PLIGG_Visual_Submit2_SummaryCharactersLeft#}
-		{if $Spell_Checker eq 1}
-			<input class="btn" type="button" name="spelling" value="{#PLIGG_Visual_Check_Spelling#}" onClick="openSpellChecker('summarytext');"/>
-		{/if}
 		<br />
 	{/if}
 	<strong>{#PLIGG_Visual_Submit2_Category#}: </strong>

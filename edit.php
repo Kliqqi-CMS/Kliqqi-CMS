@@ -70,9 +70,6 @@ if(is_numeric($_GET['id'])) {
 		}
 	} 
 
-	// misc smarty
-	$main_smarty->assign('Spell_Checker',Spell_Checker);
-
 	// pagename
 	define('pagename', 'edit'); 
 	$main_smarty->assign('pagename', pagename);

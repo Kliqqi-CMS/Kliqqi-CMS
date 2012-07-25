@@ -218,7 +218,6 @@ if ($link) {
 			$main_smarty->assign('submit_link_field13', $linkres->link_field13);
 			$main_smarty->assign('submit_link_field14', $linkres->link_field14);
 			$main_smarty->assign('submit_link_field15', $linkres->link_field15);
-			$main_smarty->assign('Spell_Checker',Spell_Checker);
 
 			include_once(mnminclude.'dbtree.php');
 			$array = tree_to_array(0, table_categories, FALSE);

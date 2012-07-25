@@ -78,9 +78,6 @@
 				<div class="modal-body">
 					<div id="reply-{$comment_id}"> 
 						<textarea name="reply_comment_content[{$comment_id}]" id="reply_comment_content-{$comment_id}" rows="5" style="width:98%;" />{$TheComment}</textarea>
-						{if $Spell_Checker eq 1}
-							<input type="button" name="spelling" value="{#PLIGG_Visual_Check_Spelling#}" onClick="openSpellChecker('reply_comment_content-{$comment_id}');" class="btn"/>
-						{/if}
 						<p>{#PLIGG_Visual_Comment_NoHTML#}</p>
 					</div>
 				</div>

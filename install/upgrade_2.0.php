@@ -13,18 +13,24 @@ $new_version = '200';
 
 // Check if you need to run the one time upgrade to Pligg 2.0
 if ($old_version < $new_version) {
+
 	//echo $lang['UpgradingTables'] . '<br />';
 	echo '<li>Performing one-time Pligg 2.0 Upgrade</li><ul>';
-
+	
+	// Update User Levels, removing the 'god' level
 	$sql = "UPDATE ".table_users." SET user_level='moderator' WHERE user_level='admin';";
 	$db->query($sql);
 	echo '<li>Changed Admin to Moderator</li>';
-
 	$sql = "UPDATE ".table_users." SET user_level='admin' WHERE user_level='god';";
 	$db->query($sql);
 	echo '<li>Changed God to Admin</li>';
 	
-	// Add the new FAQ Page here
+	// Remove the Spell Checker from Admin Config
+	$sql = "DELETE FROM " . table_config . " WHERE var_name='Spell_Checker'";
+	$db->query($sql);
+	echo '<li>Removed Spell Checker</li>';
+	
+	// Add a new FAQ Page
 	$sql = "INSERT INTO `" . table_links . "`  (`link_id`, `link_author`, `link_status`, `link_randkey`, `link_votes`, `link_reports`, `link_comments`, `link_karma`, `link_modified`, `link_date`, `link_published_date`, `link_category`, `link_lang`, `link_url`, `link_url_title`, `link_title`, `link_title_url`, `link_content`, `link_summary`, `link_tags`, `link_field1`, `link_field2`, `link_field3`, `link_field4`, `link_field5`, `link_field6`, `link_field7`, `link_field8`, `link_field9`, `link_field10`, `link_field11`, `link_field12`, `link_field13`, `link_field14`, `link_field15`, `link_group_id`, `link_out`) VALUES (NULL, 1, 'page', 0, 0, 0, 0, '0.00', '2012-07-23 00:00:00', '2012-07-23 00:00:00', '0000-00-00 00:00:00', 0, 1, '', NULL, 'Frequently Asked Questions', 'faq', '<a name\"top\" style=\"text-decoration:none;color:#000;text-transform:uppercase;\"><h1>Frequently Asked Questions</h1></a>
 <p>Welcome to the Frequently Asked Questions (FAQ) page. This page explains many of the features that are offered by this site to our members.</p>
 <ol>

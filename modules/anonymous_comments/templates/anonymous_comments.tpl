@@ -21,7 +21,6 @@
 *}
 		<label>{#PLIGG_Anonymous_Comment_NoHTML#}</label><br clear="all" />
 		<textarea name="comment_content" id="comment" rows="6" cols="60"/>{if isset($TheComment)}{$TheComment}{/if}</textarea><br />
-		{if $Spell_Checker eq 1}<input type="button" name="spelling" value="{#PLIGG_Anonymous_Comment_Check_Spelling#}" class="btn" onClick="openSpellChecker('comment');"/>{/if}
 		<br/>
 		{if isset($register_step_1_extra)}
 			<br />

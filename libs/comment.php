@@ -215,9 +215,6 @@ class Comment {
 			$smarty->assign('UseAvatars', do_we_use_avatars());
 			$smarty->assign('Avatar_ImgSrc', get_avatar('large', "", $this->username, ""));
 
-		//spellchecker
-	    $smarty->assign('Spell_Checker',Spell_Checker); 
-
 		// does the person logged in have admin or moderator status?
 			$canIhaveAccess = 0;
 			$canIhaveAccess = $canIhaveAccess + checklevel('admin');

@@ -302,9 +302,7 @@ function do_submit1() {
 		$vars = '';
 		check_actions('register_showform', $vars);
 	}
-
-	$main_smarty->assign('Spell_Checker', Spell_Checker);
-
+	
 	$main_smarty->assign('tpl_extra_fields', $the_template . '/submit_extra_fields');
 	$main_smarty->assign('tpl_center', $the_template . '/submit_step_2');
 	
