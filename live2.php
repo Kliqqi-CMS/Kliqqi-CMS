@@ -70,7 +70,11 @@ echo "]);";
 // get latest votes
 function get_votes($time) {
 	global $db, $events, $last_timestamp;
-	$res = $db->get_results("select vote_id, unix_timestamp(vote_date) as timestamp, vote_value, vote_ip, vote_user_id, link_id, link_title, link_url, link_status, link_date, link_published_date, link_votes, link_author from " . table_votes . ", " . table_links . " where vote_date > from_unixtime($time) and link_id = vote_link_id and vote_user_id != link_author and (link_status='published' OR link_status='queued') and vote_type = 'links' order by vote_date desc limit 20");
+	$res = $db->get_results("SELECT *, unix_timestamp(vote_date) as timestamp 
+	                            FROM " . table_votes . ", " . table_links . " 
+	                            WHERE vote_date > FROM_UNIXTIME($time) AND link_id = vote_link_id AND vote_user_id != link_author AND (link_status='published' OR link_status='queued') AND vote_type = 'links' 
+	                            ORDER BY vote_date DESC 
+	                            LIMIT 20");
 	if (!$res) return;
 	foreach ($res as $event) {
 		if(substr($event->vote_ip, 0, 3) != '0.0'){
@@ -84,22 +88,23 @@ function get_votes($time) {
 			if ($event->vote_value < 0) {
 				$type = 'Down Vote';
 				$who = $user;
-			}	
-			else if ($event->vote_value >= 0) {
+			} elseif ($event->vote_value >= 0) {
 				$type = 'Up Vote';
 				$who = $user;
-			} 
-			else { 
+			} else { 
 				$type = 'Problem';
 				$who = $event->vote_value;
 			}
 			$status =  get_status($event->link_status);
 			$key = $event->timestamp . ':votes:'.$id;
-			if(Voting_Method == 2){$votes = $event->link_votes/2;}
-      else {$votes = $event->link_votes;}
-			$events[$key] = 'ts:"'.$event->timestamp.'", type:"'.$type.'", votes:"'.$votes.'", link:"'.$event->link_id.'", title:"'.addslashes($event->link_title).'", who:"'.addslashes($who).'", status:"'.$status.'", uid:"'.$uid.'"';
+			if (Voting_Method == 2) {
+			    $votes = $event->link_votes/2;
+            } else {
+                $votes = $event->link_votes;
+            }
+	        $events[$key] = 'ts:"'.$event->timestamp.'", type:"'.$type.'", votes:"'.$votes.'", link:"'.$event->link_id.'", title:"'.addslashes($event->link_title).'", who:"'.addslashes($who).'", status:"'.$status.'", uid:"'.$uid.'"';
 			//echo "($key)". $events[$key];
-			if($event->timestamp > $last_timestamp) $last_timestamp = $event->timestamp;
+	        if($event->timestamp > $last_timestamp) $last_timestamp = $event->timestamp;
 		}
 	}
 }
