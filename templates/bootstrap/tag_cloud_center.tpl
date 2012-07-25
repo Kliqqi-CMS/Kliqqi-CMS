@@ -3,9 +3,9 @@
 *************************************}
 <!-- tag_cloud_center.tpl -->
 <legend>{#PLIGG_Visual_Tags#}</legend>
-<p style="line-height:{$tags_max_pts}pt;">
+<div id="tagcloud" style="line-height:{$tags_max_pts}px;">
 	{section name=customer loop=$tag_number}
-		<span style="font-size: {$tag_size[customer]}pt"><a href="{$tag_url[customer]}">{$tag_name[customer]}</a></span>&nbsp;&nbsp;
+		<span style="font-size: {$tag_size[customer]|number_format}px" class="cloud_size_{$tag_size[customer]|number_format}"><a href="{$tag_url[customer]}">{$tag_name[customer]}</a></span>&nbsp;
 	{/section}
-</p>
+</div>
 <!--/tag_cloud_center.tpl -->
