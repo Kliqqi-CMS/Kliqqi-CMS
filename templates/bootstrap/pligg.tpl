@@ -265,9 +265,12 @@
 	{/if}
 	
 	
-    {if $anonymous_vote eq "false" and $user_logged_in eq ""}
+     {if $anonymous_vote eq "false" and $user_logged_in eq ""}
 		{include file=$the_template"/modal_login_form.tpl"}
-	{/if}
+     {elseif $votes_per_ip>0 and $user_logged_in eq ""}  
+        {include file=$the_template"/modal_login_form.tpl"}  
+	 {/if}
+	
 	
 	{checkActionsTpl location="tpl_pligg_body_end"}
 	<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>

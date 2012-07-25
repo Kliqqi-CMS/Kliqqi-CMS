@@ -60,6 +60,7 @@ class Link {
 	var $check_saved = true; // check to see if the user has 'saved' this link. sidebarstories doesn't need to check (so don't waste time on it)
 	var $get_author_info = true; // get information about the link_author. sidebarstories doesn't need this information (so don't waste time on it)
 	var $check_friends = true; // see if the author is a friend of the logged in user.  sidebarstories doesn't need this information (so don't waste time on it)
+	var $vote_from_this_ip=0; // if disable multiple vote from the same ip
 
 	function get($url) {
 		$url=trim($url);
@@ -628,12 +629,17 @@ class Link {
 		$smarty->assign('link_shakebox_index', $link_index);
 		$smarty->assign('link_shakebox_votes', $this->votes);
 	    $smarty->assign('link_shakebox_showbury', $this->reports);
+		
+		
+		
 	        
 		$this->get_current_user_votes($current_user->user_id);
-		
+		if(votes_per_ip > 0)
+		$smarty->assign('vote_from_this_ip', $this->vote_from_this_ip);
 		$smarty->assign('link_shakebox_currentuser_votes', $this->current_user_votes);
 		$smarty->assign('link_shakebox_currentuser_reports', $this->current_user_reports);
-
+         
+		 
 		if($this->reports == -1){
 			// reporting was added to the svn and some people started using it
 			// so in upgrade if someone already has the reports field, we set it to
@@ -840,6 +846,10 @@ class Link {
 				
 		$this->current_user_votes = $votes;
 		$this->current_user_reports = $reports;
+		
+		if(votes_per_ip > 0 && $user==0){
+		$this->vote_from_this_ip=$this->votes_from_ip()+$this->reports_from_ip();
+		}
 		
 	}
 
