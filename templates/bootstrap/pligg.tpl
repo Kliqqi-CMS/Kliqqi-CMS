@@ -48,6 +48,14 @@
 		{/if}
 	{elseif preg_match('/submit.php$/',$templatelite.server.SCRIPT_NAME)}	
 		<title>{#PLIGG_Visual_Submit#} | {#PLIGG_Visual_Name#}</title>
+	{elseif preg_match('/live.php$/',$templatelite.server.SCRIPT_NAME)}	
+		<title>{#PLIGG_Visual_Live#} | {#PLIGG_Visual_Name#}</title>
+	{elseif preg_match('/live_unpublished.php$/',$templatelite.server.SCRIPT_NAME)}	
+		<title>{#PLIGG_Visual_Live#} {#PLIGG_Visual_Breadcrumb_Unpublished#} | {#PLIGG_Visual_Name#}</title>
+	{elseif preg_match('/live_published.php$/',$templatelite.server.SCRIPT_NAME)}	
+		<title>{#PLIGG_Visual_Live#} {#PLIGG_Visual_Breadcrumb_Published#} | {#PLIGG_Visual_Name#}</title>
+	{elseif preg_match('/live_comments.php$/',$templatelite.server.SCRIPT_NAME)}	
+		<title>{#PLIGG_Visual_Live#} {#PLIGG_Visual_Comments#} | {#PLIGG_Visual_Name#}</title>		
 	{elseif preg_match('/editlink.php$/',$templatelite.server.SCRIPT_NAME)}	
 		<title>{#PLIGG_Visual_EditStory_Header#}: {$submit_title} | {#PLIGG_Visual_Name#}</title>
 	{elseif preg_match('/advancedsearch.php$/',$templatelite.server.SCRIPT_NAME)}	

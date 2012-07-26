@@ -2,7 +2,7 @@
 ****** Live Comments Template *******
 *************************************}
 <!-- live_comments_center.tpl -->
-<legend>{#PLIGG_Visual_Live#} {#PLIGG_Visual_Breadcrumb_Comments#}</legend>
+<legend>{#PLIGG_Visual_Live#} {#PLIGG_Visual_Comments#}</legend>
 <table class="table table-bordered table-striped">
 	<thead>
 		<tr class="live2-item">
