@@ -228,11 +228,7 @@
 						<div class="well sidebar-nav">
 							<div id="rightcol">
 								{include file=$tpl_right_sidebar.".tpl"}
-				{/if}
-								{if $pagename neq "submit" && $pagename neq "user" && $pagename neq "profile" && $pagename neq "login" && $pagename neq "register" && $pagename neq "edit"}
-									{include file=$tpl_second_sidebar.".tpl"}
-								{/if}	
-				{if $pagename neq "submit"}
+								{include file=$tpl_second_sidebar.".tpl"}
 							</div>
 						</div><!--/.well -->
 					</div><!--/span-->
