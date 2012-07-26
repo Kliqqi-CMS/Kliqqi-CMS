@@ -29,16 +29,16 @@ $sql = "SELECT user_login FROM " . table_users . " ORDER BY user_id DESC LIMIT 1
 $last_user = $db->get_var($sql);
 $main_smarty->assign('sidebar_stats_last_user', $last_user); 
 
-$members = $db->get_var('SELECT count(*) from ' . table_users . ';');
+$members = $db->get_var('SELECT count(*) from ' . table_users . ' WHERE user_enabled = "1";');
 $main_smarty->assign('sidebar_stats_members', $members);
 
-$votes = $db->get_var('SELECT count(*) from ' . table_votes . ' where vote_type="links";');
+$votes = $db->get_var('SELECT count(*) from ' . table_votes . ' WHERE vote_type="links";');
 $main_smarty->assign('sidebar_stats_votes', $votes);
 
-$published = $db->get_var('SELECT count(*) from ' . table_links . ' where link_status = "published";');
+$published = $db->get_var('SELECT count(*) from ' . table_links . ' WHERE link_status = "published";');
 $main_smarty->assign('sidebar_stats_published', $published);
 
-$upcoming = $db->get_var('SELECT count(*) from ' . table_links . ' where link_status = "queued";');
+$upcoming = $db->get_var('SELECT count(*) from ' . table_links . ' WHERE link_status = "queued";');
 $main_smarty->assign('sidebar_stats_upcoming', $upcoming);
 
 $main_smarty->assign('sidebar_stats_stories', $upcoming + $published);
@@ -46,7 +46,7 @@ $main_smarty->assign('sidebar_stats_stories', $upcoming + $published);
 $comments = $db->get_var('SELECT count(*) from ' . table_comments . ' WHERE comment_status = "published";');
 $main_smarty->assign('sidebar_stats_comments', $comments);
 
-$votes = $db->get_var('SELECT count(*) from ' . table_votes . ' where vote_type="comments";');
+$votes = $db->get_var('SELECT count(*) from ' . table_votes . ' WHERE vote_type="comments";');
 $main_smarty->assign('sidebar_stats_comment_votes', $votes);
 
 $groups = $db->get_var('SELECT count(*) from ' . table_groups . ' WHERE group_status = "Enable";');
