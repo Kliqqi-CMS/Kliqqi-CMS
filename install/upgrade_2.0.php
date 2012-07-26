@@ -17,6 +17,39 @@ if ($old_version < $new_version) {
 	//echo $lang['UpgradingTables'] . '<br />';
 	echo '<li>Performing one-time Pligg 2.0 Upgrade</li><ul>';
 	
+	// Change default avatar to new larger png files
+	$sql = "UPDATE ".table_config." SET var_defaultvalue='/avatars/Avatar_100.png' WHERE var_name='Default_Gravatar_Large';";
+	$db->query($sql);
+	// Change the large avatar location, only if it is still set to the default value
+	$sql = "UPDATE ".table_config." SET var_value='/avatars/Avatar_100.png' WHERE var_value='/avatars/Gravatar_30.gif';";
+	$db->query($sql);
+	$sql = "UPDATE ".table_config." SET var_defaultvalue='/avatars/Avatar_32.png' WHERE var_name='Default_Gravatar_Small';";
+	$db->query($sql);
+	$sql = "UPDATE ".table_config." SET var_value='/avatars/Avatar_32.png' WHERE var_value='/avatars/Gravatar_15.gif';";
+	$db->query($sql);
+	// Force a change of avatar sizes
+	$sql = "UPDATE ".table_config." SET var_defaultvalue='32' WHERE var_name='Avatar_Small';";
+	$db->query($sql);
+	$sql = "UPDATE ".table_config." SET var_value='32' WHERE var_name='Avatar_Small';";
+	$db->query($sql);
+	$sql = "UPDATE ".table_config." SET var_defaultvalue='100' WHERE var_name='Avatar_Large';";
+	$db->query($sql);
+	$sql = "UPDATE ".table_config." SET var_value='100' WHERE var_name='Avatar_Large';";
+	$db->query($sql);
+	// We need to regenerate avatars to the new size here
+	echo '<li>Changed default avatars to larger format .png files</li>';
+	
+	// Update group avatar height/width sizes to 100
+	$sql = "UPDATE ".table_config." SET var_value='100' WHERE var_name='group_avatar_size_width';";
+	$db->query($sql);
+	$sql = "UPDATE ".table_config." SET var_defaultvalue='100' WHERE var_name='group_avatar_size_width';";
+	$db->query($sql);
+	$sql = "UPDATE ".table_config." SET var_value='100' WHERE var_name='group_avatar_size_height';";
+	$db->query($sql);
+	$sql = "UPDATE ".table_config." SET var_defaultvalue='100' WHERE var_name='group_avatar_size_height';";
+	$db->query($sql);
+	echo '<li>Changed group avatar height/width size setting to 100px</li>';
+	
 	// Update User Levels, removing the 'god' level
 	$sql = "UPDATE ".table_users." SET user_level='moderator' WHERE user_level='admin';";
 	$db->query($sql);
