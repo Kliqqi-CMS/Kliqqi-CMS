@@ -45,21 +45,19 @@
 	<thead>
 		<tr>
 			<th style="width:40px;text-align:center;">ID</th>
-			<th style="width:40px"></th>
 			<th>{#PLIGG_Visual_Login_Username#}</th>
 			<th style="text-align:center;width:80px">{#PLIGG_Visual_View_User_Level#}</th>
 			<th>{#PLIGG_Visual_View_User_Email#}</th>
 			<th style="width:140px">{#PLIGG_Visual_User_Profile_Joined#}</th>
 			<th style="text-align:center;width:70px;">{#PLIGG_Visual_User_Profile_Enabled#}</th>
-			<th style="text-align:center;width:100px;"><input type='checkbox' onclick='check_all(this);' style="margin:0px 4px 3px 0;;">{#PLIGG_Visual_KillSpam#}</th>
+			<th style="text-align:center;width:100px;"><input type='checkbox' onclick='check_all(this);' style="margin:0px 4px 3px 0;">{#PLIGG_Visual_KillSpam#}</th>
 		</tr>
 	</thead>
 	<tbody>
 		{section name=nr loop=$userlist}
 			<tr {if $userlist[nr].user_enabled eq '0'}class="tr_moderated"{/if}>
 				<td style="width:40px;text-align:center;vertical-align:middle;">{$userlist[nr].user_id}</td>
-				<td style="width:40px;text-align:center;vertical-align:middle;"><img src="{$userlist[nr].Avatar}" style="height:18px;width:18px;" /></td>
-				<td style="vertical-align:middle;"><a href = "?mode=view&user={$userlist[nr].user_login}">{$userlist[nr].user_login}</a></td>	
+				<td style="vertical-align:middle;"><img src="{$userlist[nr].Avatar}" style="height:18px;width:18px;" /> <a href = "?mode=view&user={$userlist[nr].user_login}">{$userlist[nr].user_login}</a></td>	
 				<td style="text-align:center;vertical-align:middle;">{$userlist[nr].user_level}</td>
 				<td style="vertical-align:middle;">
 					{if $userlist[nr].user_lastlogin neq "0000-00-00 00:00:00"}
@@ -67,14 +65,14 @@
 					{else}
 						<a href="{$my_base_url}{$my_pligg_base}/admin/admin_user_validate.php?id={$userlist[nr].user_id}" title="{#PLIGG_Visual_AdminPanel_Confirmed_Email#}"><i class="icon icon-warning-sign" title="{#PLIGG_Visual_AdminPanel_Unconfirmed_Email#}" alt="{#PLIGG_Visual_AdminPanel_Unconfirmed_Email#}"></i></a>
 					{/if}
-					<a href="mailto:{$userlist[nr].user_email}" target="_blank">{$userlist[nr].user_email}</a>
+					<a href="mailto:{$userlist[nr].user_email}" target="_blank">{$userlist[nr].user_email|truncate:25:"...":true}</a>
 				</td>
 				<td>{$userlist[nr].user_date}</td>
 				<td style="text-align:center;vertical-align:middle;">
 					<input type="checkbox" onclick="document.getElementById('enabled_{$userlist[nr].user_id}').value=this.checked ? 1 : 0;" {if $userlist[nr].user_enabled}checked{/if}>
 					<input type="hidden" name="enabled[{$userlist[nr].user_id}]" id="enabled_{$userlist[nr].user_id}" value="{$userlist[nr].user_enabled}">
 				</td>
-				<td style="text-align:center;vertical-align:middle;"><div style="text-align:center"><input type='checkbox' id='delete' name='delete[]' value='{$userlist[nr].user_id}'></div></td>	
+				<td style="text-align:center;vertical-align:middle;"><div style="text-align:center"><input type='checkbox' id='killspam' name='delete[]' value='{$userlist[nr].user_id}'></div></td>	
 			</tr>
 		{/section}
 	</tbody>
@@ -89,7 +87,7 @@
 {literal}
 function check_all(elem) {
 	for (var i=0; i< document.bulk.length; i++) 
-		if (document.bulk[i].id == "delete")
+		if (document.bulk[i].id == "killspam")
 			document.bulk[i].checked = elem.checked;
 }
 {/literal}
