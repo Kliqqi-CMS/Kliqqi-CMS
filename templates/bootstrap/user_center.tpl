@@ -131,7 +131,7 @@
 							</tr>
 							<tr>
 								<td><strong>{#PLIGG_Visual_User_Profile_KarmaPoints#}:</strong></td>
-								<td>{$user_karma}</td>
+								<td>{$user_karma|number_format:"0"}</td>
 							</tr>
 						{/if}
 						<tr>
