@@ -189,7 +189,7 @@ if(is_numeric($requestID)) {
 	die();
 }
 
-function get_comments ($fetch = false){
+function get_comments ($fetch = false, $parent = 0){
 	Global $db, $main_smarty, $current_user, $CommentOrder, $link, $cached_comments;
 	
 	//Set comment order to 1 if it's not set in the admin panel
@@ -205,32 +205,26 @@ function get_comments ($fetch = false){
 	    $status_sql = " OR comment_status='moderated'";
 
 	// get all parent comments
-	$comments = $db->get_results("SELECT * FROM " . table_comments . " WHERE (comment_status='published' $status_sql) AND comment_link_id=$link->id and comment_parent = 0 ORDER BY " . $CommentOrderBy);
+	$comments = $db->get_results("SELECT * 
+	                                    FROM " . table_comments . " 
+	                                    WHERE (comment_status='published' $status_sql) AND 
+	                                           comment_link_id=$link->id AND comment_parent = $parent 
+	                                    ORDER BY " . $CommentOrderBy);
 	if ($comments) {
 		require_once(mnminclude.'comment.php');
-		$comment = new Comment;
+	    $comment = new Comment;
 		foreach($comments as $dbcomment) {
 			$comment->id=$dbcomment->comment_id;
 			$cached_comments[$dbcomment->comment_id] = $dbcomment;
 			$comment->read();
-			$output .= $comment->print_summary($link, true);			
+			$output .= $comment->print_summary($link, true);
+
+			$output .= '<div class="child-comment">';
+			$output .= get_comments(true, $dbcomment->comment_id);
+			$output .= "</div>\n";
 	
-			// get all child comments
-			$comments2 = $db->get_results("SELECT * FROM " . table_comments . " WHERE (comment_status='published' $status_sql) AND comment_parent={$dbcomment->comment_id} ORDER BY " . $CommentOrderBy);
-			if ($comments2) {
-				$output .= '<div class="child-comment">';
-				require_once(mnminclude.'comment.php');
-				$comment2 = new Comment;
-				foreach($comments2 as $dbcomment2) {
-					$comment2->id=$dbcomment2->comment_id;
-					$cached_comments[$dbcomment2->comment_id] = $dbcomment2;
-					$comment2->read();
-					$output .= $comment2->print_summary($link, true);
-				}
-				$output .= "</div>\n";
-			}
-	
- 		} 
+ 		}
+ 		  
 		if($fetch == false){
 			echo $output;
 		} else {
