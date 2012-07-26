@@ -4,6 +4,12 @@ padding-top:0;
 padding-bottom:0;
 }
 
+.alert-danger, .alert-error {
+background-color: #FFC6C6;
+border-color: #F4A2AD;
+color: #C80700;
+}
+
 .navbar-inner {
 border-radius:0;
 }
