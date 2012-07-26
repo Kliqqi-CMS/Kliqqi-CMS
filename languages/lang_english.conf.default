@@ -382,7 +382,7 @@ PLIGG_Visual_Breadcrumb_User_Does_Not_Exist = "User Does Not Exist"
 
 
 //<SECTION>USER PROFILE</SECTION><ADDED>1.00</ADDED>
-PLIGG_Visual_User_PersonalData = "Personal Information"
+PLIGG_Visual_User_PersonalData = "Profile"
 PLIGG_Visual_User_NewsSent = "Submitted"
 PLIGG_Visual_User_NewsPublished = "Published"
 PLIGG_Visual_User_NewsUnPublished = "Upcoming"

@@ -43,7 +43,12 @@
 					<tbody>
 						<tr>
 							<td><strong>{#PLIGG_Visual_Login_Username#}:</strong></td>
-							<td>{if $UseAvatars neq "0"}<span id="ls_avatar"><img src="{$Avatar_ImgSrc}" alt="Avatar" align="absmiddle" /></span>{/if} <span style="text-transform:capitalize;">{$user_username}</span></td>
+							<td>
+								{if $UseAvatars neq "0"}
+									<img src="{$Avatar_ImgSrc}" class="thumbnail" style="margin-bottom:4px;" alt="Avatar" />
+								{/if}
+								{$user_username}
+							</td>
 						</tr>			
 						{if $user_names ne ""}
 							<tr>
