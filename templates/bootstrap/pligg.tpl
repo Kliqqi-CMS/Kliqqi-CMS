@@ -223,7 +223,7 @@
 				{checkActionsTpl location="tpl_pligg_columns_start"}	
 
 				{if $pagename neq "submit"}
-				<!-- START RIGHT COLUMN -->
+					<!-- START RIGHT COLUMN -->
 					<div class="span3">
 						<div class="well sidebar-nav">
 							<div id="rightcol">
