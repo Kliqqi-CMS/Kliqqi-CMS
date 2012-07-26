@@ -38,6 +38,7 @@ if($list_comments)
 			$main_smarty->assign('Avatar_ImgSmall', get_avatar('small', '', $row->user_login, $row->user_email));
 			$main_smarty->assign('Avatar_ImgLarge', get_avatar('large', '', $row->user_login, $row->user_email));
 			$main_smarty->assign('username', $row->user_login);
+			$main_smarty->assign('user_view_url', getmyurl('user', $row->user_login));
 			$body .= $main_smarty->fetch($my_base_url . './modules/sidebar_comments/templates/sidebar_comments.tpl');		
 		}
 	}
