@@ -11,6 +11,12 @@ float: left;
 float: right;
 }
 
+.alert-danger, .alert-error{
+background-color: #FFC6C6;
+border-color: #F4A2AD;
+color: #C80700;
+}
+
 #nav {
 border-top: 1px solid #dedede;
 border-bottom: 1px solid #dedede;
