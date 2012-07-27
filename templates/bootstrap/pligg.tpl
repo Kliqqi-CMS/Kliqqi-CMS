@@ -113,6 +113,9 @@
 	{/if}
 	{checkActionsTpl location="tpl_pligg_body_start"}
 	{include file=$tpl_header.".tpl"}
+	<!-- START CATEGORIES -->
+	{assign var=sidebar_module value="categories"}{include file=$the_template_sidebar_modules."/wrapper.tpl"}
+	<!-- END CATEGORIES -->
 	<div class="container">
 		<section id="maincontent">
 			<div class="row">
