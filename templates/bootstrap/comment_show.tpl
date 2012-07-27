@@ -52,7 +52,7 @@
 				</span>
 				<span class="comment-reply">
 					{if $current_userid neq 0} 
-						<a data-toggle="modal" href="#replymodal" >{#PLIGG_Visual_Comment_Reply#}</a>
+						<a data-toggle="modal" href="#replymodal-{$comment_id}" >{#PLIGG_Visual_Comment_Reply#}</a>
 					{/if}
 				</span>
 				{if $comment_votes lt 0}
@@ -68,9 +68,9 @@
 			{/if}
 		</div>
 
-		{if $comment_parent eq 0 && $current_userid neq 0} 
+		{if $current_userid neq 0} 
 			{* Display comment form if replying to a comment *}
-			<div class="modal hide" id="replymodal">
+			<div class="modal hide" id="replymodal-{$comment_id}">
 				<div class="modal-header">
 					<button type="button" class="close" data-dismiss="modal">×</button>
 					<h3>{#PLIGG_Visual_Comment_Send#}</h3>
