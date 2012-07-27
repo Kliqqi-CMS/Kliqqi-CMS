@@ -70,7 +70,17 @@ if( (isset($_POST["processlogin"]) && is_numeric($_POST["processlogin"])) || (is
 		    if($current_user->Authenticate($username, $password, $persistent) == false) {
 		    {
 		    	$db->query("UPDATE ".table_login_attempts." SET login_username='$dbusername', login_count=login_count+1, login_time=NOW() WHERE login_id=".$login_id);
-			$errorMsg=$main_smarty->get_config_vars('PLIGG_Visual_Login_Error');
+
+			$user=$db->get_row("SELECT * FROM " . table_users . " WHERE user_login = '$username' or user_email= '$username'");
+			if (pligg_validate() && $user->user_lastlogin == "0000-00-00 00:00:00")
+				$errorMsg=$main_smarty->get_config_vars('PLIGG_Visual_Resend_Email') .
+					"<form method='post'>
+						<input type='text' name='email'> 
+						<input type='submit' value='Send'>
+						<input type='hidden' name='processlogin' value='5'/>
+					</form>";
+			else
+				$errorMsg=$main_smarty->get_config_vars('PLIGG_Visual_Login_Error');
 		    }
 		    } else {
 			$sql = "DELETE FROM " . table_login_attempts . " WHERE login_ip='$lastip' ";
@@ -166,6 +176,44 @@ if( (isset($_POST["processlogin"]) && is_numeric($_POST["processlogin"])) || (is
 			} else {
 				$errorMsg = $main_smarty->get_config_vars('PLIGG_Visual_Login_Forgot_ErrorBadCode');
 			} 
+		}
+	}
+
+	if($_POST["processlogin"] == 5 && pligg_validate()) { // resend confirmation email
+	    $email = sanitize($db->escape(trim($_POST['email'])),4);
+	    if (check_email($email)){
+			$user = $db->get_row("SELECT * FROM `" . table_users . "` where `user_email` = '".$email."' AND user_level!='Spammer'");
+			if($user){
+				$encode=md5($_POST['email'] . $user->karma .  $user->username. pligg_hash().$main_smarty->get_config_vars('PLIGG_Visual_Name'));
+
+				$domain = $main_smarty->get_config_vars('PLIGG_Visual_Name');			
+				$validation = my_base_url . my_pligg_base . "/validation.php?code=$encode&uid=".urlencode($user->username)."&email=".urlencode($_POST['email']);
+				$str = $main_smarty->get_config_vars('PLIGG_PassEmail_verification_message');
+				eval('$str = "'.str_replace('"','\"',$str).'";');
+				$message = "$str";
+
+				if(phpnum()>=5)
+					require("libs/class.phpmailer5.php");
+				else
+					require("libs/class.phpmailer4.php");
+				$mail = new PHPMailer();
+				$mail->From = $main_smarty->get_config_vars('PLIGG_PassEmail_From');
+				$mail->FromName = $main_smarty->get_config_vars('PLIGG_PassEmail_Name');
+				$mail->AddAddress($_POST['email']);
+				$mail->AddReplyTo($main_smarty->get_config_vars('PLIGG_PassEmail_From'));
+				$mail->IsHTML(false);
+				$mail->Subject = $main_smarty->get_config_vars('PLIGG_PassEmail_Subject_verification');
+				$mail->Body = $message;
+				$mail->CharSet = 'utf-8';
+
+#print_r($mail);					
+				if(!$mail->Send())
+					return false;
+
+			}
+			$errorMsg = $main_smarty->get_config_vars('PLIGG_Visual_Email_Sent');
+		}else{
+			$errorMsg = $main_smarty->get_config_vars('PLIGG_Visual_Register_Error_BadEmail');
 		}
 	}
 }   
