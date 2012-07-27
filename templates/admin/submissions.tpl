@@ -53,10 +53,10 @@
 	<tr>
 		<th>{#PLIGG_Visual_View_Links_Author#}</th>
 		<th>{#PLIGG_Visual_View_Links_New_Window#}</th>
-		<th nowrap><input type='checkbox' name='all1'  onclick='mark_all_publish();'> <a onclick='mark_all_publish();' >{#PLIGG_Visual_AdminPanel_Publish#}</a></th>
-		<th nowrap><input type='checkbox' name='all2' onclick='mark_all_queued();'> <a onclick='mark_all_queued();' >{#PLIGG_Visual_AdminPanel_Upcoming#}</a></th>
-		<th nowrap><input type='checkbox' name='all3' onclick='mark_all_spam();'> <a onclick='mark_all_spam();' >{#PLIGG_Visual_AdminPanel_Spam#}</a></th>
-		<th nowrap><input type='checkbox' name='all4' onclick='mark_all_discard();'> <a onclick='mark_all_discard();' >{#PLIGG_Visual_AdminPanel_Discard#}</a></a></th>
+		<th nowrap style="text-align:center;"><input type='checkbox' name='all1' onclick='mark_all_publish();' style="display:none;"><a onclick='mark_all_publish();'>{#PLIGG_Visual_AdminPanel_Publish#}</a></th>
+		<th nowrap style="text-align:center;"><input type='checkbox' name='all2' onclick='mark_all_queued();' style="display:none;"><a onclick='mark_all_queued();'>{#PLIGG_Visual_AdminPanel_Upcoming#}</a></th>
+		<th nowrap style="text-align:center;"><input type='checkbox' name='all3' onclick='mark_all_spam();' style="display:none;"><a onclick='mark_all_spam();'>{#PLIGG_Visual_AdminPanel_Spam#}</a></th>
+		<th nowrap style="text-align:center;"><input type='checkbox' name='all4' onclick='mark_all_discard();' style="display:none;"><a onclick='mark_all_discard();'>{#PLIGG_Visual_AdminPanel_Discard#}</a></th>
 	</tr>
 	{section name=id loop=$template_stories}
 	<tr {if $template_stories[id].link_status=='moderated'}class="tr_moderated"{/if}>

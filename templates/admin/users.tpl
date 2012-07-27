@@ -46,11 +46,11 @@
 		<tr>
 			<th style="width:40px;text-align:center;">ID</th>
 			<th>{#PLIGG_Visual_Login_Username#}</th>
-			<th style="text-align:center;width:80px">{#PLIGG_Visual_View_User_Level#}</th>
+			<th style="text-align:center;">{#PLIGG_Visual_View_User_Level#}</th>
 			<th>{#PLIGG_Visual_View_User_Email#}</th>
 			<th style="width:140px">{#PLIGG_Visual_User_Profile_Joined#}</th>
-			<th style="text-align:center;width:70px;">{#PLIGG_Visual_User_Profile_Enabled#}</th>
-			<th style="text-align:center;width:100px;"><input type='checkbox' onclick='check_all(this);' style="margin:0px 4px 3px 0;">{#PLIGG_Visual_KillSpam#}</th>
+			<th style="text-align:center;">{#PLIGG_Visual_User_Profile_Enabled#}</th>
+			<th style="text-align:center;"><input type='checkbox' onclick='check_all(this);' style="margin:0px 4px 3px 0;">{#PLIGG_Visual_KillSpam#}</th>
 		</tr>
 	</thead>
 	<tbody>

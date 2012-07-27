@@ -44,7 +44,7 @@
 				</select>
 			</td>
 		</form>
-<form name="bulk_moderate" action="{$my_base_url}{$my_pligg_base}/admin/admin_comments.php?action=bulkmod&page={$templatelite.get.page|sanitize:2}" method="post">
+		<form name="bulk_moderate" action="{$my_base_url}{$my_pligg_base}/admin/admin_comments.php?action=bulkmod&page={$templatelite.get.page|sanitize:2}" method="post">
 		<td style="float:right;"><input type="submit" class="btn btn-primary" name="submit" onclick="return confirm_spam()" value="{#PLIGG_Visual_AdminPanel_Apply_Changes#}" /></td>
 	</tr>
 </table>
@@ -55,10 +55,10 @@
 			<th style="width:125px;">{#PLIGG_Visual_View_Links_Author#}</th>
 			<th>{#PLIGG_MiscWords_Comment#}</th>
 			<th>{#PLIGG_Visual_User_NewsSent#}</th>
-			<th nowrap style="text-align:center;"><input type='checkbox' name='all1' onclick='mark_all_publish();'> <a onclick='mark_all_publish();' >{#PLIGG_Visual_AdminPanel_Publish#}</a></th>
-			<th nowrap style="text-align:center;"><input type='checkbox' name='all2' onclick='mark_all_queued();'> <a onclick='mark_all_queued();' >{#PLIGG_Visual_AdminPanel_Moderated#}</a></th>
-			<th nowrap style="text-align:center;"><input type='checkbox' name='all3' onclick='mark_all_spam();'> <a onclick='mark_all_spam();' >{#PLIGG_Visual_AdminPanel_Spam#}</a></th>
-			<th nowrap style="text-align:center;"><input type='checkbox' name='all4' onclick='mark_all_discard();'> <a onclick='mark_all_discard();' >{#PLIGG_Visual_AdminPanel_Discard#}</a></th>
+			<th nowrap style="text-align:center;"><input type='checkbox' name='all1' onclick='mark_all_publish();' style="display:none;"><a onclick='mark_all_publish();'>{#PLIGG_Visual_AdminPanel_Publish#}</a></th>
+			<th nowrap style="text-align:center;"><input type='checkbox' name='all2' onclick='mark_all_queued();' style="display:none;"><a onclick='mark_all_queued();'>{#PLIGG_Visual_AdminPanel_Moderated#}</a></th>
+			<th nowrap style="text-align:center;"><input type='checkbox' name='all3' onclick='mark_all_spam();' style="display:none;"><a onclick='mark_all_spam();'>{#PLIGG_Visual_AdminPanel_Spam#}</a></th>
+			<th nowrap style="text-align:center;"><input type='checkbox' name='all4' onclick='mark_all_discard();' style="display:none;"><a onclick='mark_all_discard();'>{#PLIGG_Visual_AdminPanel_Discard#}</a></th>
 		</tr>
 	</thead>
 	{if isset($template_comments)}
