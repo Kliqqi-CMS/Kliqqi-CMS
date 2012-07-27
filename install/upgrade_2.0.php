@@ -1,8 +1,14 @@
 <?php
 // This file is for performing an upgrade from Pligg 1.0 to 2.0.
 
-// Report all PHP errors (see changelog)
-error_reporting(E_ALL);
+// Report all PHP errors
+// error_reporting(E_ALL);
+
+$include='../config.php';
+if (file_exists($include)) { 
+	include_once($include);
+#	include(mnminclude.'html1.php');
+}
 
 // Get your Pligg Version
 $sql = "SELECT data FROM " . table_misc_data . " WHERE name = 'pligg_version'";
@@ -49,7 +55,35 @@ if ($old_version < $new_version) {
 	$sql = "UPDATE ".table_config." SET var_defaultvalue='100' WHERE var_name='group_avatar_size_height';";
 	$db->query($sql);
 	echo '<li>Changed group avatar height/width size setting to 100px</li>';
-	
+		
+	// Re-create user avatars
+	$user_image_path = mnmpath."avatars/user_uploaded" . "/";
+	require_once(mnminclude . "class.pThumb.php");
+	$results = $db->get_results("SELECT * FROM ".table_users);
+	foreach ($results as $user)
+	{
+		$imagename = $user->user_id . "_original.jpg";
+		$newimage = $user_image_path . $imagename ;
+		if (file_exists($newimage))
+		{
+
+		$img=new pThumb();
+		$img->pSetSize(Avatar_Large, Avatar_Large);
+		$img->pSetQuality(100);
+		$img->pCreate($newimage);
+		$img->pSave($user_image_path . $user->user_id . "_".Avatar_Large.".jpg");
+		$img = "";
+
+		// create small avatar
+		$img=new pThumb();
+		$img->pSetSize(Avatar_Small, Avatar_Small);
+		$img->pSetQuality(100);
+		$img->pCreate($newimage);
+		$img->pSave($user_image_path . $user->user_id . "_".Avatar_Small.".jpg");
+		$img = "";
+		}
+	}
+
 	// Update User Levels, removing the 'god' level
 	$sql = "UPDATE ".table_users." SET user_level='moderator' WHERE user_level='admin';";
 	$db->query($sql);
