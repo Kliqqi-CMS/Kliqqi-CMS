@@ -75,9 +75,11 @@ if( (isset($_POST["processlogin"]) && is_numeric($_POST["processlogin"])) || (is
 			if (pligg_validate() && $user->user_lastlogin == "0000-00-00 00:00:00")
 				$errorMsg=$main_smarty->get_config_vars('PLIGG_Visual_Resend_Email') .
 					"<form method='post'>
-						<input type='text' name='email'> 
-						<input type='submit' value='Send'>
-						<input type='hidden' name='processlogin' value='5'/>
+						<div class='input-append notvalidated'>
+							<input type='text' class='span2' name='email'> 
+							<input type='submit' class='btn' value='Send'>
+							<input type='hidden' name='processlogin' value='5'/>
+						</div>
 					</form>";
 			else
 				$errorMsg=$main_smarty->get_config_vars('PLIGG_Visual_Login_Error');
