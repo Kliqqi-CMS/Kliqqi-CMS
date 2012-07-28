@@ -46,6 +46,12 @@
 	<br />
 	<input type="text" id="title" class="span6" name="title" value="{$submit_title}" maxlength="{$maxTitleLength}" />
 	<br />
+	{if $isAdmin eq 1}
+		<strong>Author: </strong>
+		<br />
+		<input type="text" id="author" class="span6" name="author" value="{$author}" READONLY />
+		<br />
+	{/if}
 	{if $enable_tags}
 		<strong>{#PLIGG_Visual_Submit2_Tags#}: </strong> 
 		<span class="field-description">{#PLIGG_Visual_Submit2_Tags_Inst1#} {#PLIGG_Visual_Submit2_Tags_Example#} {#PLIGG_Visual_Submit2_Tags_Inst2#}</span>

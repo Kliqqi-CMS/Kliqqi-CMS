@@ -123,7 +123,7 @@ if ($link) {
 				$linkres->title = stripslashes(sanitize($_POST['title'], 3));
 				$linkres->title_url = makeUrlFriendly($linkres->title, $linkres->id);
 			}
-
+			
 			$linkres->content = close_tags(sanitize($_POST['bodytext'], 4, $Story_Content_Tags_To_Allow));
 			$linkres->tags = tags_normalize_string(stripslashes(sanitize($_POST['tags'], 3)));
 			if(sanitize($_POST['summarytext'], 3) == ""){
@@ -139,24 +139,25 @@ if ($link) {
 				}
 			}
 
-    	// Steef 2k7-07 security fix start ----------------------------------------------------------
-    	$linkres->link_field1 = sanitize($_POST['link_field1'], 4, $Story_Content_Tags_To_Allow); 
-    	$linkres->link_field2 = sanitize($_POST['link_field2'], 4, $Story_Content_Tags_To_Allow); 
-    	$linkres->link_field3 = sanitize($_POST['link_field3'], 4, $Story_Content_Tags_To_Allow); 
-    	$linkres->link_field4 = sanitize($_POST['link_field4'], 4, $Story_Content_Tags_To_Allow); 
-    	$linkres->link_field5 = sanitize($_POST['link_field5'], 4, $Story_Content_Tags_To_Allow);                   			
-    	$linkres->link_field6 = sanitize($_POST['link_field6'], 4, $Story_Content_Tags_To_Allow); 
-    	$linkres->link_field7 = sanitize($_POST['link_field7'], 4, $Story_Content_Tags_To_Allow); 
-    	$linkres->link_field8 = sanitize($_POST['link_field8'], 4, $Story_Content_Tags_To_Allow); 
-    	$linkres->link_field9 = sanitize($_POST['link_field9'], 4, $Story_Content_Tags_To_Allow); 
-    	$linkres->link_field10 = sanitize($_POST['link_field10'], 4, $Story_Content_Tags_To_Allow); 
-    	$linkres->link_field11 = sanitize($_POST['link_field11'], 4, $Story_Content_Tags_To_Allow); 
-    	$linkres->link_field12 = sanitize($_POST['link_field12'], 4, $Story_Content_Tags_To_Allow); 
-    	$linkres->link_field13 = sanitize($_POST['link_field13'], 4, $Story_Content_Tags_To_Allow); 
-    	$linkres->link_field14 = sanitize($_POST['link_field14'], 4, $Story_Content_Tags_To_Allow); 
-    	$linkres->link_field15 = sanitize($_POST['link_field15'], 4, $Story_Content_Tags_To_Allow); 
-    	// Steef 2k7-07 security fix end --------------------------------------------------------------
-     // $linkres->content = str_replace("\n", "<br />", $linkres->content);
+			// Steef 2k7-07 security fix start ----------------------------------------------------------
+			$linkres->link_field1 = sanitize($_POST['link_field1'], 4, $Story_Content_Tags_To_Allow); 
+			$linkres->link_field2 = sanitize($_POST['link_field2'], 4, $Story_Content_Tags_To_Allow); 
+			$linkres->link_field3 = sanitize($_POST['link_field3'], 4, $Story_Content_Tags_To_Allow); 
+			$linkres->link_field4 = sanitize($_POST['link_field4'], 4, $Story_Content_Tags_To_Allow); 
+			$linkres->link_field5 = sanitize($_POST['link_field5'], 4, $Story_Content_Tags_To_Allow);                   			
+			$linkres->link_field6 = sanitize($_POST['link_field6'], 4, $Story_Content_Tags_To_Allow); 
+			$linkres->link_field7 = sanitize($_POST['link_field7'], 4, $Story_Content_Tags_To_Allow); 
+			$linkres->link_field8 = sanitize($_POST['link_field8'], 4, $Story_Content_Tags_To_Allow); 
+			$linkres->link_field9 = sanitize($_POST['link_field9'], 4, $Story_Content_Tags_To_Allow); 
+			$linkres->link_field10 = sanitize($_POST['link_field10'], 4, $Story_Content_Tags_To_Allow); 
+			$linkres->link_field11 = sanitize($_POST['link_field11'], 4, $Story_Content_Tags_To_Allow); 
+			$linkres->link_field12 = sanitize($_POST['link_field12'], 4, $Story_Content_Tags_To_Allow); 
+			$linkres->link_field13 = sanitize($_POST['link_field13'], 4, $Story_Content_Tags_To_Allow); 
+			$linkres->link_field14 = sanitize($_POST['link_field14'], 4, $Story_Content_Tags_To_Allow); 
+			$linkres->link_field15 = sanitize($_POST['link_field15'], 4, $Story_Content_Tags_To_Allow); 
+			// Steef 2k7-07 security fix end --------------------------------------------------------------
+			
+			// $linkres->content = str_replace("\n", "<br />", $linkres->content);
 
 			if (link_errors($linkres)) {
 				return;
@@ -189,6 +190,11 @@ if ($link) {
 			$link_category=$linkres->category;
 			$link_summary = $linkres->link_summary;
 			//$link_summary = str_replace("<br />", "\n", $link_summary);
+			
+			// Get the username
+			$link_author = $db->get_col("SELECT link_author FROM " . table_links . " WHERE link_id=".$theid.";");
+			$user = $db->get_row("SELECT * FROM " . table_users . " WHERE user_id=".$link_author[0].";");
+			$main_smarty->assign('author', $user->user_login);
 			
 			$main_smarty->assign('enable_tags', Enable_Tags);
 			$main_smarty->assign('submit_url', $linkres->url);
