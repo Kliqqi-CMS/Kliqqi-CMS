@@ -47,7 +47,7 @@
 	<input type="text" id="title" class="span6" name="title" value="{$submit_title}" maxlength="{$maxTitleLength}" />
 	<br />
 	{if $isAdmin eq 1}
-		<strong>Author: </strong>
+		<strong>{#PLIGG_Visual_Change_Link_Submitted_By#}: </strong>
 		<br />
 		<input type="text" id="author" class="span6" name="author" value="{$author}" READONLY />
 		<br />
