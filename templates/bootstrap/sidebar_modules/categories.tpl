@@ -1,24 +1,4 @@
 <!-- sidebar_modules\categories.tpl -->
-{literal}
-<style type="text/css">
-.dropdown-menu .sub-menu {
-    left: 100%;
-    position: absolute;
-    top: 0;
-    visibility: hidden;
-    margin-top: -1px;
-}
-.dropdown-menu li:hover .sub-menu {
-    visibility: visible;
-}
-.dropdown:hover .dropdown-menu {
-    display: block;
-}
-.nav-tabs .dropdown-menu, .nav-pills .dropdown-menu, .navbar .dropdown-menu {
-    margin-top: 0;
-}
-</style>
-{/literal}
 
 <header id="categories">
 	<div class="subnav">
