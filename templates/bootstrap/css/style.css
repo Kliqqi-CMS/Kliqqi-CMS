@@ -491,3 +491,9 @@ table.tablesorter thead tr .headerSortUp {
 table.tablesorter thead tr .headerSortDown {
 	background-image: url(images/desc.gif);
 }
+
+/************* RECAPTCHA **************/
+/* Fix to hide the iframe inserted near navbar end */
+iframe {display:none;} 
+/* Apply the iframe class to any iframes that need to display */
+iframe.iframe {display:block} 

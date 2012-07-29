@@ -1,5 +1,4 @@
 <!-- sidebar_modules\categories.tpl -->
-
 <header id="categories">
 	<div class="subnav">
 		<div class="container">
