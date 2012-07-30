@@ -14,7 +14,7 @@
 	<li><a href="{$user_url_saved}">{#PLIGG_Visual_User_NewsSaved#}</a></li>
 	{checkActionsTpl location="tpl_pligg_profile_sort_end"}
 </ul>
-{if $savemsg neq ""}<div class="alert alert-success fade in"><a data-dismiss="alert" class="close">×</a>{$savemsg}</div>{/if} 
+{if $savemsg neq ""}<div class="alert alert-warning fade in"><a data-dismiss="alert" class="close">×</a>{$savemsg}</div>{/if} 
 {checkActionsTpl location="tpl_pligg_profile_info_start"}
 <div id="profile_container" style="position: relative;">
 	{if $UseAvatars neq false}
@@ -70,7 +70,12 @@
 				</tr>
 			</thead>
 			<tbody>
-             
+				{if $userlevel eq 'admin' or $userlevel eq 'moderator'}
+					<tr>
+						<td><label for="user_login" accesskey="1">{#PLIGG_Visual_Register_Username#}:</label></td>
+						<td><input type="text" name="user_login" id="names" tabindex="1" value="{$user_login}"></td>
+					</tr>
+				{/if}
 				<tr>
 					<td><label for="name" accesskey="1">{#PLIGG_Visual_Profile_RealName#}:</label></td>
 					<td><input type="text" name="names" id="names" tabindex="1" value="{$user_names}"></td>
@@ -169,20 +174,6 @@
 			</tr>
 		</table>
 		{checkActionsTpl location="tpl_pligg_profile_settings_end"}
-        
-        {if $userlevel eq 'admin' or $userlevel eq 'moderator'}
-        <table class="table table-bordered table-striped span4">
-			<thead class="table_title">
-				<tr>
-					<td colspan="2"><strong>{#PLIGG_Visual_Profile_ChangeUserName#}</strong></td>
-				</tr>
-			</thead>		<tr>
-					<td><label for="user_login" accesskey="1">{#PLIGG_Visual_Register_Username#}:</label></td>
-					<td><input type="text" name="user_login" id="names" tabindex="1" value="{$user_login}"></td>
-				</tr>
-			
-		</table>
-        {/if}
 		<table class="table table-bordered table-striped span4">
 			<thead class="table_title">
 				<tr>
