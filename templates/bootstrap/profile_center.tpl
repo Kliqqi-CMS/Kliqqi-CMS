@@ -70,6 +70,7 @@
 				</tr>
 			</thead>
 			<tbody>
+             
 				<tr>
 					<td><label for="name" accesskey="1">{#PLIGG_Visual_Profile_RealName#}:</label></td>
 					<td><input type="text" name="names" id="names" tabindex="1" value="{$user_names}"></td>
@@ -168,6 +169,20 @@
 			</tr>
 		</table>
 		{checkActionsTpl location="tpl_pligg_profile_settings_end"}
+        
+        {if $userlevel eq 'admin' or $userlevel eq 'moderator'}
+        <table class="table table-bordered table-striped span4">
+			<thead class="table_title">
+				<tr>
+					<td colspan="2"><strong>{#PLIGG_Visual_Profile_ChangeUserName#}</strong></td>
+				</tr>
+			</thead>		<tr>
+					<td><label for="user_login" accesskey="1">{#PLIGG_Visual_Register_Username#}:</label></td>
+					<td><input type="text" name="user_login" id="names" tabindex="1" value="{$user_login}"></td>
+				</tr>
+			
+		</table>
+        {/if}
 		<table class="table table-bordered table-striped span4">
 			<thead class="table_title">
 				<tr>

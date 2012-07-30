@@ -33,13 +33,15 @@ $canIhaveAccess = $canIhaveAccess + checklevel('admin');
 $canIhaveAccess = $canIhaveAccess + checklevel('moderator');
 
 // If not logged in, redirect to the index page
+
 if ($_GET['login'] && $canIhaveAccess) 
 	$login=$_GET['login'];
 elseif ($current_user->user_id > 0 && $current_user->authenticated) 
 	$login=$current_user->user_login;
 else {
-	header('Location: '.$my_base_url.$my_pligg_base);
-	die;
+	//header('Location: '.$my_base_url.$my_pligg_base);
+	//die;
+	$myname=$my_base_url.$my_pligg_base;
 }
 
 // breadcrumbs and page title
@@ -124,12 +126,22 @@ if(!$user->read()) {
 
 // Save changes
 if(isset($_POST['email'])){
-	if ($savemsg = save_profile())
-	    $main_smarty->assign('savemsg', $savemsg);
-	else
+	
+	$savemsg = save_profile();
+	
+	if (is_string($savemsg)){
+	   	$main_smarty->assign('savemsg', $savemsg);
+				
+	}else
 	{
+		$save_message_text=$main_smarty->get_config_vars("PLIGG_Visual_Profile_DataUpdated");
+		if($savemsg['username']==1)
+		 $save_message_text.="<br/>".$main_smarty->get_config_vars("PLIGG_Visual_Profile_UsernameUpdated");
+		if($savemsg['pass']==1)
+		 $save_message_text.="<br/>".$main_smarty->get_config_vars("PLIGG_Visual_Profile_PassUpdated");
 	    // Reload the page if no error
-	    $_SESSION['savemsg'] = $main_smarty->get_config_vars("PLIGG_Visual_Profile_DataUpdated");
+		
+	    $_SESSION['savemsg'] = $save_message_text;
 	    header("Location: ".getmyurl('profile'));
 	    exit;
 	}
@@ -162,6 +174,7 @@ function show_profile() {
 	$main_smarty->assign('user_login', $user->username);
 	$main_smarty->assign('user_names', $user->names);
 	$main_smarty->assign('user_username', $user->username);
+	$main_smarty->assign('userlevel', $user->level);
 	$main_smarty->assign('user_url', $user->url);
 	$main_smarty->assign('user_publicemail', $user->public_email);
 	$main_smarty->assign('user_location', $user->location);
@@ -236,11 +249,17 @@ function show_profile() {
 
 function save_profile() {
 	global $user, $current_user, $db, $main_smarty, $CSRF, $canIhaveAccess, $language;
+  
+  
 
 	if ($CSRF->check_valid(sanitize($_POST['token'], 3), 'profile_change')){
 	
 		if(!isset($_POST['save_profile']) || !$_POST['process'] || (!$canIhaveAccess && sanitize($_POST['user_id'], 3) != $current_user->user_id)) return;
-
+		
+		
+		
+		
+		
 		if ($user->email!=sanitize($_POST['email'], 3))
 		{
 		    if(!check_email(sanitize($_POST['email'], 3))) {
@@ -306,8 +325,9 @@ function save_profile() {
 		$sql = "UPDATE " . table_users . " set user_categories='$select_checked' WHERE user_id = '{$user->id}'";	
 		$query = mysql_query($sql);
 		/////
-
-
+  
+      
+       
 		$user->url=sanitize($_POST['url'], 3);
 		$user->public_email=sanitize($_POST['public_email'], 3);
 		$user->location=sanitize($_POST['location'], 3);
@@ -333,6 +353,37 @@ function save_profile() {
 		}
 		$user->avatar_source=$avatar_source;
 	
+	  if($user->level=="admin" || $user->level=="moderator"){
+		  if ($user->username!=sanitize($_POST['user_login'], 3))
+			{
+			 $user_login=sanitize($_POST['user_login'], 3);
+				
+			if (preg_match('/\pL/u', 'a')) {	// Check if PCRE was compiled with UTF-8 support
+			if (!preg_match('/^[_\-\d\p{L}\p{M}]+$/iu',$user_login)) { // if username contains invalid characters
+			$savemsg = $main_smarty->get_config_vars('PLIGG_Visual_Register_Error_UserInvalid');
+			return $savemsg;
+			}
+			} else {
+				if (!preg_match('/^[^~`@%&=\\/;:\\.,<>!"\\\'\\^\\.\\[\\]\\$\\(\\)\\|\\*\\+\\-\\?\\{\\}\\\\]+$/', $user_login)) {
+				$savemsg = $main_smarty->get_config_vars('PLIGG_Visual_Register_Error_UserInvalid');
+				 return $savemsg;
+				}
+			}
+		
+					
+			if(user_exists(trim($user_login)) ) {
+			  $savemsg = $main_smarty->get_config_vars("PLIGG_Visual_Register_Error_UserExists");
+			  $user->username= $user_login;
+			  return $savemsg;
+			
+			 }else{
+			  $user->username=$user_login;
+			  $saved['username']=1;
+			  }
+			 
+			}
+	    }
+	
 		if(!empty($_POST['newpassword']) || !empty($_POST['newpassword2'])) {
 			$oldpass = sanitize($_POST['oldpassword'], 3);
 			$userX=$db->get_row("SELECT user_id, user_pass, user_login FROM " . table_users . " WHERE user_login = '".$user->username."'");
@@ -344,19 +395,23 @@ function save_profile() {
 				} else {
 					$saltedpass=generateHash(sanitize($_POST['newpassword'], 3));
 					$user->pass = $saltedpass;
-					$user->store();
-					$savemsg = $main_smarty->get_config_vars("PLIGG_Visual_Profile_PassUpdated");
-					return $savemsg;
+					$saved['pass']=1;
 				}
 			} else {
 				$savemsg = $main_smarty->get_config_vars("PLIGG_Visual_Profile_BadOldPass");
 				return $savemsg;
 			}
 		}
+		
 		$user->store();
 		$user->read();
-		$current_user->Authenticate($user->username, $user->pass);
-		return $savemsg;
+		if($saved['pass']==1 || $saved['username']==1)
+		 $current_user->Authenticate($user->username, $user->pass, false, $user->pass);
+		else{
+		 $current_user->Authenticate($user->username, $user->pass);
+		 $saved['profile']=1;
+		}
+		return $saved;
 	} else {
 		return 'There was a token error.';
 	}
