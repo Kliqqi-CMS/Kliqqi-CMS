@@ -204,7 +204,7 @@ if ($link) {
 			$user = $db->get_row("SELECT * FROM " . table_users . " WHERE user_id=".$link_author[0].";");
 			$main_smarty->assign('author', $user->user_id);
 			
-			$usersql = mysql_query("SELECT user_id, user_login FROM " . table_users . " WHERE user_enabled=1 and user_login!=''");
+			$usersql = mysql_query("SELECT user_id, user_login FROM " . table_users . " WHERE user_enabled=1 and user_login!='' ORDER BY user_login");
 			$userdata = array();				
 			while ($rows = mysql_fetch_array ($usersql, MYSQL_ASSOC)) array_push ($userdata, $rows);
 			//$userdata = $db->get_results("SELECT user_id, user_login FROM " . table_users . " WHERE user_enabled=1");
