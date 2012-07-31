@@ -18,71 +18,34 @@
 
 {php}
 
-require_once('../libs/SimplePie.compiled.php');
-$feed = new SimplePie();
-$feed->set_feed_url('http://www.pligg.com/rss/blog');
-$feed->init();
-$feed->handle_content_type();
+Function feedMe($feed,$items) {
+	// Use cURL to fetch RSS Feed
+	$ch = curl_init();
+	curl_setopt($ch, CURLOPT_URL, $feed);
+	curl_setopt($ch, CURLOPT_HEADER, 0);
+	curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+	curl_setopt ($ch, CURLOPT_USERAGENT, $useragent);
+	$rss = curl_exec($ch);
+	curl_close($ch);
 
-function shorten($string, $length){
-	// By default, an ellipsis will be appended to the end of the text.
-	$suffix = '';
+	// Manipulate string into object
+	$rss = simplexml_load_string($rss);
 
-	// Convert 'smart' punctuation to 'dumb' punctuation, strip the HTML tags,
-	// and convert all tabs and line-break characters to single spaces.
-	$short_desc = trim(str_replace(array("\r","\n", "\t"), ' ', strip_tags($string)));
-
-	// Cut the string to the requested length, and strip any extraneous spaces 
-	// from the beginning and end.
-	$desc = trim(substr($short_desc, 0, $length));
-
-	// Find out what the last displayed character is in the shortened string
-	$lastchar = substr($desc, -1, 1);
-
-	// If the last character is a period, an exclamation point, or a question 
-	// mark, clear out the appended text.
-	if ($lastchar == '.' || $lastchar == '!' || $lastchar == '?') $suffix='';
-
-	// Append the text.
-	$desc .= $suffix;
-
-	// Send the new description back to the page.
-	return $desc;
-}
-
-
-
-// default starting item
-$start = 0;
-
-// default number of items to display. 0 = all
-$length = $this->_vars['news_count'];
-
-// set item link to script uri
-$link = $_SERVER['REQUEST_URI'];
-
-function trim_text($input, $length) {
-	$input = strip_tags($input);
-	if (iconv_strlen($input,'UTF-8') <= $length) {
-		return $input;
+	// This gets the total number of items available. Substitute this with $items to print all RSS items.
+	$cnt = count($rss->channel->item);
+	
+	for($i=0; $i<$items; $i++)
+	{
+		$url = $rss->channel->item[$i]->link;
+		$title = $rss->channel->item[$i]->title;
+		$desc = $rss->channel->item[$i]->description;
+		echo '<h4 class="pligg_news_title"><a href="'.$url.'">'.$title.'</a></h4><p class="pligg_news_paragraph">'.$desc.'</p>';
 	}
-	$last_space = iconv_strrpos(iconv_substr($input, 0, $length,'UTF-8'), ' ','UTF-8');
-	$trimmed_text = iconv_substr($input, 0, $last_space,'UTF-8');
-	$trimmed_text .= '...';
-	return $trimmed_text;
 }
 
-// loop through items
-foreach($feed->get_items($start,$length) as $key=>$item) {
-	// set query string to item number
-	$queryString = '?item=' . $key;
+// Number of items to display
+$items = $this->_vars['news_count'];
 
-	$link = $item->get_link();
-	$queryString = '';        
-
-	// display item title and date    
-	echo '<h4 class="pligg_news_title"><a href="' . $link . $queryString . '">' . shorten($item->get_title(), 55) . '</a></h4>';
-	echo '<p class="pligg_news_paragraph">'.trim_text($item->get_description(), 350).'</p>';
-}
+feedMe("http://pligg.com/blog/feed/",$items);
 
 {/php}
