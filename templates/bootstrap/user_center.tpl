@@ -184,7 +184,15 @@
 								<th style="width:60px;text-align:center;">Members</th>
 							</tr>
 						<tbody>
-							{$group_display}
+							{if $group_display eq ''}
+								<tr>
+									<td colspan="2">
+										{#Pligg_Profile_No_Membership#}
+									</td>
+								</tr>
+							{else}
+								{$group_display}
+							{/if}
 						</tbody>
 					</table>
 				</div>
@@ -192,17 +200,17 @@
 			{if $Allow_Friends neq "0"}
 				<div id="friends" class="span4">
 					<legend>{#PLIGG_Visual_LS_My_Friends#}</legend>
-					{if $friends}			
-						<table class="table table-bordered table-striped">
-							<thead class="table_title">
-								<tr>
-									<th scope="col" style="width:25px;"></th>
-									<th scope="col">{#PLIGG_Visual_Login_Username#}</th>
-									{checkActionsTpl location="tpl_pligg_profile_friend_th"}
-									{if $user_login eq $user_logged_in}<th scope="col">{#PLIGG_Visual_User_Profile_Remove_Friend#}</th>{/if}
-								</tr>
-							</thead>
-							<tbody>
+					<table class="table table-bordered table-striped">
+						<thead class="table_title">
+							<tr>
+								<th scope="col" style="width:25px;"></th>
+								<th scope="col">{#PLIGG_Visual_Login_Username#}</th>
+								{checkActionsTpl location="tpl_pligg_profile_friend_th"}
+								{if $user_login eq $user_logged_in}<th scope="col">{#PLIGG_Visual_User_Profile_Remove_Friend#}</th>{/if}
+							</tr>
+						</thead>
+						<tbody>
+							{if $friends}
 								{foreach from=$friends item=myfriend}
 									{php}
 										$this->_vars['friend_avatar'] = get_avatar('small', $this->_vars['myfriend']['user_avatar_source'], $this->_vars['myfriend']['user_login'], $this->_vars['myfriend']['user_email']);
@@ -218,18 +226,22 @@
 									{/if}
 									</tr>
 								{/foreach}
-							</tbody>
-						</table>
-					{else}
-						<br /><span style="text-transform:capitalize;">{$user_username}</span> {#PLIGG_Visual_User_Profile_No_Friends#}
-					{/if}
+							{else}
+								<tr>
+									<td colspan="3">
+										<span style="text-transform:capitalize;">{$user_username}</span> {#PLIGG_Visual_User_Profile_No_Friends#}
+									</td>
+								</tr>
+							{/if}
+						</tbody>
+					</table>
 				</div>
 			{/if}
-			<div id="user_search" class="span4">
-				<legend>{#PLIGG_Visual_AdminPanel_Users#}</legend>
-				<table class="table table-bordered table-striped">
-					{if $Allow_Friends neq "0"}	
-						{if $user_authenticated eq true} 
+			{if $Allow_Friends neq "0" && $user_authenticated eq true}	
+				<div id="user_search" class="span4">
+					<legend>{#PLIGG_Visual_AdminPanel_Users#}</legend>
+					<table class="table table-bordered table-striped">
+						<tbody>
 							<tr>
 								<td colspan="2">
 									<form action="{$my_pligg_base}/user.php" method="get" {php}	global $URLMethod, $my_base_url, $my_pligg_base; if ($URLMethod==2) print "onsubmit='document.location.href=\"{$my_base_url}{$my_pligg_base}/user/search/\"+encodeURIComponent(this.keyword.value); return false;'"; {/php}>
@@ -239,34 +251,34 @@
 									</form>
 								</td>
 							</tr>
-						{/if}
-						{if $user_login neq $user_logged_in}
-							<tr>
-							{if check_for_enabled_module('simple_messaging',0.6) && $is_friend}
-								{if $friends}
-									<td><img src="{$my_pligg_base}/modules/simple_messaging/images/reply.png" border="0" align="absmiddle" /> <a href="{$my_pligg_base}/module.php?module=simple_messaging&view=compose&return={$templatelite.server.REQUEST_URI|urlencode}&to={$user_login}">{#PLIGG_Visual_User_Profile_Message#} {$user_login}</a></td>
+							{if $user_login neq $user_logged_in}
+								<tr>
+								{if check_for_enabled_module('simple_messaging',0.6) && $is_friend}
+									{if $friends}
+										<td><img src="{$my_pligg_base}/modules/simple_messaging/images/reply.png" border="0" align="absmiddle" /> <a href="{$my_pligg_base}/module.php?module=simple_messaging&view=compose&return={$templatelite.server.REQUEST_URI|urlencode}&to={$user_login}">{#PLIGG_Visual_User_Profile_Message#} {$user_login}</a></td>
+									{/if}
 								{/if}
-							{/if}
-							{if $is_friend gt 0}
-								<td><img src="{$my_pligg_base}/templates/{$the_template}/images/user_delete.gif" align="absmiddle" /> <a href="{$user_url_remove}">{#PLIGG_Visual_User_Profile_Remove_Friend#} {$user_login} {#PLIGG_Visual_User_Profile_Remove_Friend_2#}</a></td>
-								{if $user_authenticated eq true}
-									{checkActionsTpl location="tpl_user_center"}
+								{if $is_friend gt 0}
+									<td><img src="{$my_pligg_base}/templates/{$the_template}/images/user_delete.gif" align="absmiddle" /> <a href="{$user_url_remove}">{#PLIGG_Visual_User_Profile_Remove_Friend#} {$user_login} {#PLIGG_Visual_User_Profile_Remove_Friend_2#}</a></td>
+									{if $user_authenticated eq true}
+										{checkActionsTpl location="tpl_user_center"}
+									{/if}
+								{else}
+									{if $user_authenticated eq true} 					
+										<td><img src="{$my_pligg_base}/templates/{$the_template}/images/user_add.gif" align="absmiddle" /> <a href="{$user_url_add}">{#PLIGG_Visual_User_Profile_Add_Friend#} {$user_login} {#PLIGG_Visual_User_Profile_Add_Friend_2#}</a></td>
+									{/if}   
 								{/if}
+								</tr>
 							{else}
-								{if $user_authenticated eq true} 					
-									<td><img src="{$my_pligg_base}/templates/{$the_template}/images/user_add.gif" align="absmiddle" /> <a href="{$user_url_add}">{#PLIGG_Visual_User_Profile_Add_Friend#} {$user_login} {#PLIGG_Visual_User_Profile_Add_Friend_2#}</a></td>
-								{/if}   
+								<tr>
+									<td><img src="{$my_pligg_base}/templates/{$the_template}/images/friends.png" align="absmiddle" /> <a href="{$user_url_friends}">{#PLIGG_Visual_User_Profile_View_Friends#}</a></td>
+									<td><img src="{$my_pligg_base}/templates/{$the_template}/images/friends2.png" align="absmiddle" /> <a href="{$user_url_friends2}">{#PLIGG_Visual_User_Profile_View_Friends_2#}</a></td>
+								</tr>
 							{/if}
-							</tr>
-						{else}
-							<tr>
-								<td><img src="{$my_pligg_base}/templates/{$the_template}/images/friends.png" align="absmiddle" /> <a href="{$user_url_friends}">{#PLIGG_Visual_User_Profile_View_Friends#}</a></td>
-								<td><img src="{$my_pligg_base}/templates/{$the_template}/images/friends2.png" align="absmiddle" /> <a href="{$user_url_friends2}">{#PLIGG_Visual_User_Profile_View_Friends_2#}</a></td>
-							</tr>
-						{/if} 
-					{/if}
-				</table>
-			</div>	
+						</tbody>
+					</table>
+				</div>	
+			{/if}
 			{checkActionsTpl location="tpl_pligg_profile_info_end"}
 			<div style="clear:both;"> </div>
 		</div>

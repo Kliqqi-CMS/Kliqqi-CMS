@@ -1079,4 +1079,5 @@ PLIGG_Password_Invalid_URL="The link that you followed was invalid or incomplete
 PLIGG_Visual_Resend_Email = "Your email is not validated yet. Please enter your email address here to resend confirmation message:"
 PLIGG_Visual_Email_Sent = "If the email address exists in our database you will be sent a confirmation email soon."
 PLIGG_Visual_Profile_UsernameUpdated = "Your username has been updated" 
+Pligg_Profile_No_Membership = "This user is not a member of any groups yet."
 // End 2.0.0 Language File
