@@ -22,6 +22,8 @@ check_referrer();
 $canIhaveAccess = 0;
 $canIhaveAccess = $canIhaveAccess + checklevel('admin');
 $main_smarty->assign('isAdmin', $canIhaveAccess);
+$main_smarty->assign('isModerator', checklevel('moderator'));
+
 
 
 if(isset($_GET['id'])){
@@ -82,8 +84,7 @@ if ($link) {
 					if ($linkres->category != sanitize($_POST["category"], 3)){$body = $body . $main_smarty->get_config_vars('PLIGG_Visual_Submit2_Category') . " change\r\n\r\n" . $main_smarty->get_config_vars('PLIGG_Visual_EditStory_Email_PreviousText') . ": " . GetCatName($linkres->category) . "\r\n\r\n" . $main_smarty->get_config_vars('PLIGG_Visual_EditStory_Email_NewText') . ": " . GetCatName(sanitize($_POST["category"], 3)) . "\r\n\r\n";}
 					if ($linkres->title != sanitize($_POST["title"], 4, $Story_Content_Tags_To_Allow)){$body = $body . $main_smarty->get_config_vars('PLIGG_Visual_Submit2_Title') . " change\r\n\r\n" . $main_smarty->get_config_vars('PLIGG_Visual_EditStory_Email_PreviousText') . ": " . $linkres->title . "\r\n\r\n" . $main_smarty->get_config_vars('PLIGG_Visual_EditStory_Email_NewText') . ": " . sanitize($_POST["title"], 3) . "\r\n\r\n";}      
 					
-					if ($linkres->author != sanitize($_POST["author"],3))
-					  $linkres->author = sanitize($_POST["author"],3);
+					
 					
 					if ($linkres->content != close_tags(sanitize($_POST["bodytext"], 4, $Story_Content_Tags_To_Allow))){$body = $body . $main_smarty->get_config_vars('PLIGG_Visual_Submit2_Description') . " change\r\n\r\n" . $main_smarty->get_config_vars('PLIGG_Visual_EditStory_Email_PreviousText') . ": " . $linkres->content . "\r\n\r\n" . $main_smarty->get_config_vars('PLIGG_Visual_EditStory_Email_NewText') . ": " . close_tags(sanitize($_POST["bodytext"], 3)) . "\r\n\r\n";}
 					if ($linkres->tags != tags_normalize_string(sanitize($_POST['tags'], 3))){$body = $body . $main_smarty->get_config_vars('PLIGG_Visual_Submit2_Tags') . " change\r\n\r\n" . $main_smarty->get_config_vars('PLIGG_Visual_EditStory_Email_PreviousText') . ": " . $linkres->tags . "\r\n\r\n" . $main_smarty->get_config_vars('PLIGG_Visual_EditStory_Email_NewText') . ": " . tags_normalize_string(sanitize($_POST['tags'], 3)) . "\r\n\r\n";}
@@ -104,6 +105,9 @@ if ($link) {
 				}
 			}
 
+            if ($linkres->author != sanitize($_POST["author"],3) && !empty($_POST["author"]))
+			  $linkres->author = sanitize($_POST["author"],3);
+			 
 			if($canIhaveAccess == 1)
 			{
 				$url = htmlspecialchars(sanitize($_POST['url'], 3));
