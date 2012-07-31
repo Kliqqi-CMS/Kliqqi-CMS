@@ -56,7 +56,7 @@
 								<td>{$user_names}</td>
 							</tr>
 						{/if}
-						{if $user_url ne "" && $user_karma > "20"}
+						{if $user_url ne "" && $user_karma > "20" || $user_login eq $user_logged_in}
 							<tr>
 								<td><strong>{#PLIGG_Visual_User_Profile_Homepage#}:</strong></td>
 								<td><a href="{$user_url}" target="_blank" rel="nofollow">{$user_url}</a></td>
