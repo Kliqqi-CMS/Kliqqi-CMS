@@ -56,10 +56,10 @@
 								<td>{$user_names}</td>
 							</tr>
 						{/if}
-						{if $user_url ne ""}
+						{if $user_url ne "" && $user_karma > "20"}
 							<tr>
 								<td><strong>{#PLIGG_Visual_User_Profile_Homepage#}:</strong></td>
-								<td style="text-align:center;"><a href="{$user_url}" target="_blank" rel="nofollow">{$user_url}</a></td>
+								<td><a href="{$user_url}" target="_blank" rel="nofollow">{$user_url}</a></td>
 							</tr>
 						{/if}
 						{if $user_publicemail ne ""}
@@ -210,7 +210,7 @@
 										$this->_vars['removeURL'] = getmyurl('user_add_remove', $this->_vars['myfriend']['user_login'], 'removefriend');
 									{/php}
 									<tr>
-									<td style="text-align:center;"><a href="{$profileURL}"><img src="{$friend_avatar}" style="text-decoration:none;border:0;"/></a></td>
+									<td><a href="{$profileURL}"><img src="{$friend_avatar}" style="text-decoration:none;border:0;"/></a></td>
 									<td><a href="{$profileURL}">{$myfriend.user_login}</a></td>
 									{checkActionsTpl location="tpl_pligg_profile_friend_td"}
 									{if $user_login eq $user_logged_in}
