@@ -92,10 +92,14 @@ $CSRF->create('user_settings', true, true);
 // avatars
 	$main_smarty->assign('UseAvatars', do_we_use_avatars());
 	$main_smarty->assign('Avatar_ImgSrc', get_avatar('large', '', $user->username, $user->email));
+	
+// User Homepage URL
 	if ($user->url != "") {
-		if(substr(strtoupper($user->url), 0, 7) != "HTTP://"){
+		if(substr(strtoupper($user->url), 0, 8) == "HTTPS://"){
+			$main_smarty->assign('user_url', $user->url);
+		}elseif(substr(strtoupper($user->url), 0, 7) != "HTTP://"){
 			$main_smarty->assign('user_url', "http://" . $user->url);
-		}	else {
+		} else {
 			$main_smarty->assign('user_url', $user->url);
 		}
 	} else {
