@@ -100,6 +100,16 @@ class Link {
 		}
 		if(preg_match("'<meta name=\"description\" content=\"([^<]*?)\" />'", $this->html, $matches)) {
 			$this->url_description=$matches[1];
+		}else{
+			// Fall back on the first <p> tag content
+			$start = strpos($this->html, '<p>');
+			$end = strpos($this->html, '</p>', $start);
+			$paragraph = substr($this->html, $start, $end-$start+4);
+			$paragraph = html_entity_decode(strip_tags($paragraph));
+			// Make sure that it's over 100 characters in length
+			if (strlen($paragraph)>100){
+				$this->url_description=$paragraph;
+			}
 		}
 		
 		// Detect trackbacks
