@@ -61,6 +61,7 @@ class Link {
 	var $get_author_info = true; // get information about the link_author. sidebarstories doesn't need this information (so don't waste time on it)
 	var $check_friends = true; // see if the author is a friend of the logged in user.  sidebarstories doesn't need this information (so don't waste time on it)
 	var $vote_from_this_ip=0; // if disable multiple vote from the same ip
+	var $report_from_this_ip=0; // if disable multiple vote from the same ip
 
 	function get($url) {
 		$url=trim($url);
@@ -644,8 +645,10 @@ class Link {
 		
 	        
 		$this->get_current_user_votes($current_user->user_id);
-		if(votes_per_ip > 0)
+		if(votes_per_ip > 0){
 		$smarty->assign('vote_from_this_ip', $this->vote_from_this_ip);
+		$smarty->assign('report_from_this_ip', $this->report_from_this_ip);
+		}
 		$smarty->assign('link_shakebox_currentuser_votes', $this->current_user_votes);
 		$smarty->assign('link_shakebox_currentuser_reports', $this->current_user_reports);
          
@@ -858,7 +861,16 @@ class Link {
 		$this->current_user_reports = $reports;
 		
 		if(votes_per_ip > 0 && $user==0){
-		$this->vote_from_this_ip=$this->votes_from_ip()+$this->reports_from_ip();
+		$ac_vote_from_IP=$this->votes_from_ip();
+		if($ac_vote_from_IP<=1)
+		 $ac_vote_from_IP=0;
+		
+		$ac_report_from_IP=$this->reports_from_ip();
+		if($ac_report_from_IP<=1)
+		$ac_report_from_IP=0;
+		 	
+		$this->vote_from_this_ip=$ac_vote_from_IP;
+		$this->report_from_this_ip=$ac_report_from_IP;
 		}
 		
 	}

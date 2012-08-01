@@ -103,10 +103,10 @@ if(is_numeric($post_id) && $post_id > 0){
 	   }else{
 		
 		
-		if($value==10 && votes_per_ip > 0 && $link->votes_from_ip() >= votes_per_ip)
+		if($value==10 && votes_per_ip > 0 && $link->votes_from_ip() >= votes_per_ip+1)
 		 error($main_smarty->get_config_vars('PLIGG_Visual_Vote_AlreadyVoted').'/'.$value);
 		 
-		if($value==-10 && votes_per_ip > 0 && $link->reports_from_ip() >= votes_per_ip)
+		if($value==-10 && votes_per_ip > 0 && $link->reports_from_ip() >= votes_per_ip+1)
 		 error($main_smarty->get_config_vars('PLIGG_Visual_Vote_AlreadyVoted').'/'.$value);
 	   }
 	   /* if($link->votes($current_user->user_id, 10) > 0 || $link->votes($current_user->user_id, -10) > 0 ||
