@@ -120,7 +120,7 @@ PLIGG_Visual_Register_Description_Points = "<li>Submit content for others to vot
 
 
 //<SECTION>LOGIN</SECTION><ADDED>1.00</ADDED>
-PLIGG_Visual_Login_Login = "Login"
+PLIGG_Visual_Login_Login = "Log in"
 PLIGG_Visual_Login_Username = "Username"
 PLIGG_Visual_Login_Password = "Password"
 PLIGG_Visual_Login_Remember = "Remember"
