@@ -476,7 +476,7 @@ if (!$errors) {
 		
 	$result = $db->get_results("select * from `" . table_config . "` where `var_name` = 'minTagsLength';");
 	if (count($result) == 0) 
-		$db->query("INSERT INTO `" . table_config . "` VALUES (NULL, 'Submit', 'minTagsLength', '3', '3', 'number', 'Minimum Tag Line Length', 'Minimum number of characters for the story tags.', 'define', NULL)");
+		$db->query("INSERT INTO `" . table_config . "` VALUES (NULL, 'Submit', 'minTagsLength', '3', '3', 'number', 'Minimum Tag Character Length', 'Minimum number of characters allowed for story tags. Should be at least 3 to be searchable.', 'define', NULL)");
 			
 	$result = $db->get_results("select * from `" . table_config . "` where `var_name` = 'maxStoryLength';");
 	if (count($result) == 0) 

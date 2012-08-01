@@ -94,9 +94,9 @@
 		</div>
 	{/if}
     
-    {if $submit_error eq 'sort_tags'}
+    {if $submit_error eq 'short_tags'}
 		<div class="alert">
-			<p>{#PLIGG_Visual_Submit3Errors_Sort_Tags#}</p>
+			<p>{#PLIGG_Visual_Submit3Errors_Short_Tags#}</p>
 			<br/>
 			<form id="thisform">
 				<input type="button" onclick="gPageIsOkToExit=true; document.location.href='{$my_base_url}{$my_pligg_base}/{$pagename}.php?id={$link_id}';" value="{#PLIGG_Visual_Submit3Errors_Back#}" class="btn btn-primary" />

@@ -309,7 +309,6 @@ PLIGG_Visual_Submit3Errors_NoCategory = "No Category Selected"
 PLIGG_Visual_Submit3Errors_Long_Title = "Title is too long"
 PLIGG_Visual_Submit3Errors_Long_Content = "Content is too long"
 PLIGG_Visual_Submit3Errors_Long_Tags = "Tags line is too long"
-PLIGG_Visual_Submit3Errors_Sort_Tags = "Tags line is too sort"
 PLIGG_Visual_Submit3Errors_Long_Summary = "Summary is too long"
 PLIGG_Visual_Total_Chars = "Total Characters"
 
@@ -1081,4 +1080,5 @@ PLIGG_Visual_Resend_Email = "Your email is not validated yet. Please enter your 
 PLIGG_Visual_Email_Sent = "If the email address exists in our database you will be sent a confirmation email soon."
 PLIGG_Visual_Profile_UsernameUpdated = "Your username has been updated" 
 Pligg_Profile_No_Membership = "This user is not a member of any groups yet."
+PLIGG_Visual_Submit3Errors_Short_Tags = "Tags line is too short"
 // End 2.0.0 Language File
