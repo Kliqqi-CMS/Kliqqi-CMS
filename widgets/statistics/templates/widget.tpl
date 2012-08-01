@@ -135,9 +135,13 @@
 			<td>
 				{php}
 					function find_SQL_Version() {
-					   $output = shell_exec('mysql -V');
-					   preg_match('@[0-9]+\.[0-9]+\.[0-9]+@', $output, $version);
-					   return $version[0];
+						$output = shell_exec('mysql -V');
+						preg_match('@[0-9]+\.[0-9]+\.[0-9]+@', $output, $version);
+						if ($version[0] != ''){
+							return $version[0];
+						}else{
+							return 'Unknown';
+						}
 					}
 					echo find_SQL_Version();
 				{/php}
