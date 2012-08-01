@@ -19,8 +19,6 @@ $canIhaveAccess = 0;
 $canIhaveAccess = $canIhaveAccess + checklevel('admin');
 $canIhaveAccess = $canIhaveAccess + checklevel('moderator');
 
-$canIhaveAccess = 0;
-
 // initialize error message variable
 $errorMsg="";
 
