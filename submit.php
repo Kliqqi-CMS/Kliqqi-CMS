@@ -574,8 +574,8 @@ function link_errors($linkres)
 		$error = true;
 	}
 	
-	if(utf8_strlen($linkres->tags) < minTagsLength) {
-		$main_smarty->assign('submit_error', 'sort_tags');
+	if(utf8_strlen($linkres->tags) < minTagsLength && $linkres->tags!="" ) {
+		$main_smarty->assign('submit_error', 'short_tags');
 		$error = true;
 	}
 	
