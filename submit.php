@@ -573,10 +573,17 @@ function link_errors($linkres)
 		$main_smarty->assign('submit_error', 'long_content');
 		$error = true;
 	}
+	
+	if(utf8_strlen($linkres->tags) < minTagsLength) {
+		$main_smarty->assign('submit_error', 'sort_tags');
+		$error = true;
+	}
+	
 	if(utf8_strlen($linkres->tags) > maxTagsLength) {
 		$main_smarty->assign('submit_error', 'long_tags');
 		$error = true;
 	}
+	
   	if (utf8_strlen($linkres->summary) > maxSummaryLength ) { 
 		$main_smarty->assign('submit_error', 'long_summary');
 		$error = true;

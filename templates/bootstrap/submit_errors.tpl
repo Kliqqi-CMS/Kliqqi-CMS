@@ -93,6 +93,17 @@
 			</form>
 		</div>
 	{/if}
+    
+    {if $submit_error eq 'sort_tags'}
+		<div class="alert">
+			<p>{#PLIGG_Visual_Submit3Errors_Sort_Tags#}</p>
+			<br/>
+			<form id="thisform">
+				<input type="button" onclick="gPageIsOkToExit=true; document.location.href='{$my_base_url}{$my_pligg_base}/{$pagename}.php?id={$link_id}';" value="{#PLIGG_Visual_Submit3Errors_Back#}" class="btn btn-primary" />
+			</form>
+		</div>
+	{/if}
+    
 	{if $submit_error eq 'long_summary'}
 		<div class="alert">
 			<p>{#PLIGG_Visual_Submit3Errors_Long_Summary#}</p>

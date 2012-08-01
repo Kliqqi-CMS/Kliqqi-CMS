@@ -473,6 +473,11 @@ if (!$errors) {
 	$result = $db->get_results("select * from `" . table_config . "` where `var_name` = 'maxTagsLength';");
 	if (count($result) == 0) 
 		$db->query("INSERT INTO `" . table_config . "` VALUES (NULL, 'Submit', 'maxTagsLength', '40', '40', 'number', 'Maximum Tag Line Length', 'Maximum number of characters for the story tags.', 'define', NULL)");
+		
+	$result = $db->get_results("select * from `" . table_config . "` where `var_name` = 'minTagsLength';");
+	if (count($result) == 0) 
+		$db->query("INSERT INTO `" . table_config . "` VALUES (NULL, 'Submit', 'minTagsLength', '3', '3', 'number', 'Minimum Tag Line Length', 'Minimum number of characters for the story tags.', 'define', NULL)");
+			
 	$result = $db->get_results("select * from `" . table_config . "` where `var_name` = 'maxStoryLength';");
 	if (count($result) == 0) 
 		$db->query("INSERT INTO `" . table_config . "` VALUES (NULL, 'Submit', 'maxStoryLength', '1000', '1000', 'number', 'Maximum Story Length', 'Maximum number of characters for the story description.', 'define', NULL)");

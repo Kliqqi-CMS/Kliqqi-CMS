@@ -309,6 +309,7 @@ PLIGG_Visual_Submit3Errors_NoCategory = "No Category Selected"
 PLIGG_Visual_Submit3Errors_Long_Title = "Title is too long"
 PLIGG_Visual_Submit3Errors_Long_Content = "Content is too long"
 PLIGG_Visual_Submit3Errors_Long_Tags = "Tags line is too long"
+PLIGG_Visual_Submit3Errors_Sort_Tags = "Tags line is too sort"
 PLIGG_Visual_Submit3Errors_Long_Summary = "Summary is too long"
 PLIGG_Visual_Total_Chars = "Total Characters"
 
