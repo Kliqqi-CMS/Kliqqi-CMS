@@ -34,11 +34,13 @@ function save_changes(id,form)
     {
     	XMLHttpRequestObject.open("GET", "?action=save&var_id="+id+"&var_value="+escape(value), true);
         XMLHttpRequestObject.onreadystatechange = function() {
+			editme.value=value;
 		if ( XMLHttpRequestObject.readyState == 4 && XMLHttpRequestObject.responseText!='') eval(XMLHttpRequestObject.responseText);
 	}
     	XMLHttpRequestObject.send(null);
     }
     hide_edit(id);
+	
 }
 function check_number(id,field,min_value)
 {
