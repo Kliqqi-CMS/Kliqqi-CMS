@@ -100,6 +100,7 @@ function admin_language_showpage(){
 			{
 //print_r($_GET);		
 //print "New: ".js_urldecode($_GET["newvalue"]);
+echo "ankan";
 				$_GET["newvalue"] = js_urldecode($_GET["newvalue"]);
 				$outputHtml[] = "Saving <strong>" . $_GET["edit"] . "</strong><br />";
 	
@@ -203,10 +204,10 @@ function admin_language_showpage(){
 //						$VALUE = htmlspecialchars(str_replace('"', '', trim(substr($line, $x + 1, 10000))));
 						if(function_exists("iconv") && detect_encoding($VALUE)!='utf-8')
 				    		    $VALUE = iconv('','UTF-8//IGNORE',$VALUE);
-					    $outputHtml[] = "<form style='margin:0;' onsubmit=\"return false\">";
+					    $outputHtml[] = "<form style='margin:0;' onsubmit=\"return false\" name=\"myform\">";
 						$outputHtml[] = "<input type=\"text\" name=\"var_value\" class=\"span edit_input\" style=\"margin:0;\" id=\"editme$ID\" onclick=\"show_edit('$ID')\" value=\"$VALUE\">";
 						$outputHtml[] = "<span id=\"showme$ID\" style=\"display:none;\">";
-						$outputHtml[] = "<input type=\"text\" name=\"var_value\" class=\"span edit_input\" style=\"margin:0;\" value=\"$VALUE\">";
+						//$outputHtml[] = "<input type=\"text\" name=\"var_value\" class=\"span edit_input\" style=\"margin:0;\" value=\"$VALUE\">";
 				 		$outputHtml[] = "<input type=\"submit\" style=\"margin-top:5px;\" class=\"btn btn-primary\" value=\"Save\" onclick=\"save_changes('$ID',this.form)\">";
 						$outputHtml[] = "<input type=\"reset\" style=\"margin-top:5px;\" class=\"btn\"value=\"Cancel\" onclick=\"hide_edit('$ID')\">";
 						$outputHtml[] = "</span></form>";
