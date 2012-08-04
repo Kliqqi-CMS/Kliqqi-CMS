@@ -18,7 +18,7 @@
 	</table>	
 	{if $amIadmin}		
 		<hr/>
-		<a class="btn" href="?mode=edit&user={$userdata[nr].user_login}">{#PLIGG_Visual_View_User_Edit_Data#}</a>
+		<a class="btn btn-primary" href="?mode=edit&user={$userdata[nr].user_login}">{#PLIGG_Visual_View_User_Edit_Data#}</a>
 		{if $user_logged_in neq $userdata[nr].user_login && $userdata[nr].user_id neq '1'}
 			{if $userdata[nr].user_enabled}
 				<a class="btn btn-warning" href="?mode=disable&user={$userdata[nr].user_login}">{#PLIGG_Visual_View_User_Disable#}</a>
