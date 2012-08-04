@@ -1,4 +1,124 @@
 ﻿<!-- users.tpl -->
+<script language="JavaScript" type="text/javascript" src="{$my_base_url}{$my_pligg_base}/templates/admin/js/jquery/jquery.form.js"></script>
+<script language="JavaScript" type="text/javascript" src="{$my_base_url}{$my_pligg_base}/templates/admin/js/jquery/jquery.validate.js"></script>
+
+<!-- JDR: Themeroller files and my generic base -->
+<link type="text/css" href="http://localhost/svnpligg/trunk/templates/admin/inc/css/ui-lightness/jquery-ui-1.7.2.custom.css" rel="stylesheet" />
+
+<script language="JavaScript" type="text/javascript">
+{literal}
+jQuery(function() {
+    jQuery().ajaxError(function(a, b, e) {
+        throw e;
+    });
+	
+	// JDR: our form submit and valiation
+	var aform = $("#createUserForm").validate({
+	    
+		// JDR: make sure we show/hide both blocks
+		errorContainer: "#errorblock-div1, #errorblock-div2",
+	    
+		// JDR: put all error messages in a UL
+		errorLabelContainer: "#errorblock-div2 ul",
+	    
+		// JDR: wrap all error messages in an LI tag
+		wrapper: "li",
+	    
+		// JDR: rules/messages are for the validation
+		rules: {
+	        username: "required",
+			password: "required",
+	        email: {
+	            required: true,
+	            email: true
+	                }
+	    },
+	    messages: {
+	        username: "Please enter username.",
+			password:"Please enter password",
+	        email: {
+	            required: "Please enter your email address.",
+	            email: "Please enter a valid email address."
+	                }
+	    },
+		
+		// JDR: our form submit
+	    submitHandler: function(form) {
+	        jQuery(form).ajaxSubmit({
+				// JDR: the return target block
+	            target: '#client-script-return-data',
+				
+				// JDR: what to do on form submit success
+	            success: function() { $('#createUserForm-modal').dialog('close'); successEvents('#client-script-return-msg'); }
+	         });
+	     }
+	}); 
+	
+	// JDR: our modal dialog setup
+	var amodal = $("#createUserForm-modal").dialog({
+	   bgiframe: true,
+	   autoOpen: false,
+	   height: 450,
+	   width: 350,
+	   modal: true,
+	   buttons: {
+	      'Create User': function() 
+		  { 
+		  	// JDR: submit the form
+		  	$("#createUserForm").submit(); 
+		  },
+	      Cancel: function() 
+		  { 
+		  	// JDR: close the dialog, reset the form
+		    $(this).dialog('close'); aform.resetForm(); 
+		  }
+	   }
+	});
+	
+	// JDR: onclick action for our button
+	var abutton = $('#load-my-modal').click(function() {
+	    $('#createUserForm-modal').dialog('open');
+	});
+	
+	// JDR: this sets up a hover effect for all buttons
+    var abuttonglow = $(".ui-button:not(.ui-state-disabled)")
+	.hover(
+		function() {
+		    $(this).addClass("ui-state-hover");
+		},
+		function() {
+		    $(this).removeClass("ui-state-hover");
+		}
+	).mousedown(function() {
+	    $(this).addClass("ui-state-active");
+	})
+	.mouseup(function() {
+	    $(this).removeClass("ui-state-active");
+	});	
+	
+}); // JDR: end main jQuery function start
+
+function successEvents(msg) {
+
+    // JDR: microseconds to show return message block
+    var defaultmessagedisplay = 10000;
+    
+    // JDR: fade in our return message block
+    $(msg).fadeIn('slow');
+
+    // JDR: remove return message block
+    setTimeout(function() { $(msg).fadeOut('slow'); }, defaultmessagedisplay);
+};
+{/literal}	
+</script>
+<div class="ui-widget ui-helper-hidden" id="client-script-return-msg">
+		<div class="ui-state-highlight ui-corner-all" style="padding: 0pt 0.7em; margin-top: 20px;"> 
+			<p><span class="ui-icon ui-icon-circle-check" style="float: left; margin-right: 0.3em;"></span>
+			<!-- JDR: our return message will go in the following span -->
+			<span id="client-script-return-msg-rtn"></span></p>
+		</div>
+	</div>
+  <div id="client-script-return-data" class="ui-widget ui-widget-content jdr-blockme">For our example, our form post from the modal will replace this text.</div>  
 <legend>{#PLIGG_Visual_AdminPanel_User_Manage#}</legend>
 <table>
 	<tr>
@@ -33,6 +153,7 @@
 				</select>
 			</td>
 		</form>
+        
 		<form name='bulk' action="{$my_base_url}{$my_pligg_base}/admin/admin_users.php" method="post">
 			<td style="float:right;"><input type="submit" class="btn btn-primary" name="submit" value="{#PLIGG_Visual_AdminPanel_Apply_Changes#}" /></td>
 	</tr>
@@ -78,11 +199,15 @@
 	</tbody>
 </table>
 <div style="float:right;margin:8px 2px 0 0;">
-	<a class="btn btn-success" data-toggle="modal" href="{$my_base_url}{$my_pligg_base}/admin/admin_users.php?mode=create" title="{#PLIGG_Visual_AdminPanel_New_User#}">{#PLIGG_Visual_AdminPanel_New_User#}</a>
+<a class="btn btn-success" id="load-my-modal" title="{#PLIGG_Visual_AdminPanel_New_User#}">{#PLIGG_Visual_AdminPanel_New_User#}</a>
 	<input type="submit" class="btn btn-primary" name="submit" value="{#PLIGG_Visual_AdminPanel_Apply_Changes#}" />
 </div>
-<div style="clear:both;"></div>
 </form>
+
+{include file="/admin/user_create.tpl"}
+
+<div style="clear:both;"></div>
+
 <SCRIPT>
 {literal}
 function check_all(elem) {
