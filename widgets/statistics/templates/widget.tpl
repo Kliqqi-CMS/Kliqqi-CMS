@@ -1,3 +1,4 @@
+{checkActionsTpl location="tpl_pligg_admin_stats_widget_start"}
 <table class="table table-condensed table-striped" style="font-size:1.1em;">
 	{if $sw_version eq "1"}
 		<tr>
@@ -160,4 +161,6 @@
 			</td>
 		</tr>
 	{/if}
+	{checkActionsTpl location="tpl_pligg_admin_stats_widget_intable"}
 </table>
+{checkActionsTpl location="tpl_pligg_admin_stats_widget_end"}

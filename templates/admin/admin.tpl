@@ -145,7 +145,8 @@
 										<li{if $pagename eq "admin_group"} class="active"{/if} id="manage_groups"><a href="{$my_base_url}{$my_pligg_base}/admin/admin_group.php">Groups <span class="pull-right badge badge-gray">1</span></a></li> 
 										<li{if $pagename eq "admin_page" || $pagename eq "edit_page" || $pagename eq "submit_page"} class="active"{/if} id="manage_pages"><a href="{$my_base_url}{$my_pligg_base}/admin/admin_page.php">Pages</a></li> 
 										<li{if $pagename eq "admin_categories" || $pagename eq "admin_categories_tasks"} class="active"{/if} id="manage_categories"><a href="{$my_base_url}{$my_pligg_base}/admin/admin_categories.php">Categories</a></li> 
-									</div>
+									         {checkActionsTpl location="tpl_pligg_admin_manage_sidebarnav_end"}
+                                                                        </div>
 								</div>
 							</div>
 							<div class="accordion-group">
@@ -186,7 +187,8 @@
 									<div class="accordion-inner">
 										<li{if $pagename eq "admin_config" && $templatelite.get.page eq "Template"} class="active"{/if} id="template_settings"><a href="{$my_base_url}{$my_pligg_base}/admin/admin_config.php?page=Template">Template Settings</a></li>
 										<li{if $pagename eq "admin_editor"} class="active"{/if} id="template_editor"><a href="{$my_base_url}{$my_pligg_base}/admin/admin_editor.php">{#PLIGG_Visual_AdminPanel_Template_Nav#} Editor</a></li>
-									</div>
+									         {checkActionsTpl location="tpl_pligg_admin_template_sidebarnav_end"}
+                                                                        </div>
 								</div>
 							</div>
 							<div class="accordion-group">
@@ -223,7 +225,8 @@
 									<div class="accordion-inner">
 										<li {if $pagename eq "admin_widgets"}{php} if ($_GET["status"] == ""){ echo 'class="active"'; } {/php}{/if} id="widgets_installed"><a href="{$my_base_url}{$my_pligg_base}/admin/admin_widgets.php">Installed {#PLIGG_Visual_AdminPanel_Widgets_Nav#} <span class="pull-right badge badge-gray">1</span></a></li> 
 										<li {if $pagename eq "admin_widgets"}{php} if ($_GET["status"] == "uninstalled"){ echo 'class="active"'; } {/php}{/if} id="widgets_uninstalled"><a href="{$my_base_url}{$my_pligg_base}/admin/admin_widgets.php?status=uninstalled">Uninstalled {#PLIGG_Visual_AdminPanel_Widgets_Nav#}</a></li>
-									</div>
+								                 {checkActionsTpl location="tpl_pligg_admin_widgets_sidebarnav_end"}
+                                                                	</div>
 								</div>
 							</div>
 						</div>
@@ -276,6 +279,7 @@
 		<hr />
 		<footer>
 			<p>Powered by <a href="http://www.pligg.com/">Pligg CMS</a></p>
+			{checkActionsTpl location="tpl_pligg_admin_footer_end"}
 		</footer>
 	</div><!-- /container-fluid -->
 	{* JavaScript to prevent the carousel function from automatically changing content *}

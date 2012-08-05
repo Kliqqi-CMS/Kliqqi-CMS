@@ -1,6 +1,7 @@
 <!-- user_view.tpl -->
 {section name=nr loop=$userdata}
 	<legend>View User</legend>
+	{checkActionsTpl location="tpl_pligg_admin_user_view_start"}
 	<table class="table table-bordered table-striped" cellpadding="0" cellspacing="0">
 		<th colspan="2">Viewing {$userdata[nr].user_login}</th>
 		<tr><td width="160px"><strong>{#PLIGG_Visual_View_User_Login#}: </strong></td><td><img src="{$userdata[nr].Avatar}" align="absmiddle"/> {$userdata[nr].user_login}</td></tr>
@@ -32,3 +33,4 @@
 	{include file="/templates/admin/user_doesnt_exist_center.tpl"}
 {/section}
 <!--/user_view.tpl -->
+{checkActionsTpl location="tpl_pligg_admin_user_view_end"}
