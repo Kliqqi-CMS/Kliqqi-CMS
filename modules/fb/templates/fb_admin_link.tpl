@@ -1,0 +1,1 @@
+<li{if $modulename eq "fb"} class="active"{/if}><a href="{$my_pligg_base}/module.php?module=fb">Facebook Module</a></li>
