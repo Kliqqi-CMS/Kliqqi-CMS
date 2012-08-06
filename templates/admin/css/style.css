@@ -14,6 +14,11 @@ color: #C80700;
 border-radius:0;
 }
 
+.loader{
+background-image:url(images/ajax-loader2.gif);
+background-repeat:no-repeat;
+}
+
 #htmlElement {
 padding: 10px;
 background-color: #000;
