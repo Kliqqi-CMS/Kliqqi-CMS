@@ -50,7 +50,7 @@ $main_smarty = do_sidebar($main_smarty);
 if($canIhaveAccess == 1)
 {
 	// sessions used to prevent CSRF
-		$CSRF = new csrf();
+	$CSRF = new csrf();
 	if(isset($_POST['submit'])) {
 	    if ($_POST["enabled"]) {
 	    	$CSRF->check_expired('admin_users_list');
@@ -74,11 +74,11 @@ if($canIhaveAccess == 1)
 
 	    if ($_POST['delete'])
 	    {
-	    foreach ($_POST['delete'] as $id)
-	    {
-		$_GET['id'] = $id = $db->escape($id);
-		killspam($id);
-	    }
+			foreach ($_POST['delete'] as $id)
+			{
+				$_GET['id'] = $id = $db->escape($id);
+				killspam($id);
+			}
 	    }
 	    header("Location:  ".my_pligg_base."/admin/admin_users.php");
 	    exit;
@@ -116,8 +116,8 @@ if($canIhaveAccess == 1)
 				die();
 			}
 	    } else {
-		$CSRF->show_invalid_error(1);
-		exit;
+			$CSRF->show_invalid_error(1);
+			exit;
 	    }
 	}
 
@@ -126,33 +126,32 @@ if($canIhaveAccess == 1)
 		if ($_GET["mode"] == "create"){ // create user
 				
 			$CSRF->create('admin_users_create', true, true);
-				// breadcrumbs and page titles
-				$navwhere['text1'] = $main_smarty->get_config_vars('PLIGG_Visual_Header_AdminPanel');
-				$navwhere['link1'] = getmyurl('admin', '');
-				$navwhere['text2'] = $main_smarty->get_config_vars('PLIGG_Visual_Header_AdminPanel_1');
-				$navwhere['link2'] = my_pligg_base . "/admin/admin_users.php";
-				$navwhere['text3'] = $main_smarty->get_config_vars('PLIGG_Visual_Breadcrumb_User_Killspam');
-				$main_smarty->assign('navbar_where', $navwhere);
-				$main_smarty->assign('posttitle', " / " . $main_smarty->get_config_vars('PLIGG_Visual_Header_AdminPanel'));
-				
-				// misc smarty
-				$main_smarty->assign('pagename', pagename);
-				
-				// pagename
-				define('pagename', 'admin_users'); 
-				$main_smarty->assign('pagename', pagename);
-	
-				// show the template
-				$main_smarty->assign('tpl_center', '/admin/user_create');
-				$main_smarty->display($template_dir . '/admin/help.tpl');
-				exit;
+			// breadcrumbs and page titles
+			$navwhere['text1'] = $main_smarty->get_config_vars('PLIGG_Visual_Header_AdminPanel');
+			$navwhere['link1'] = getmyurl('admin', '');
+			$navwhere['text2'] = $main_smarty->get_config_vars('PLIGG_Visual_Header_AdminPanel_1');
+			$navwhere['link2'] = my_pligg_base . "/admin/admin_users.php";
+			$navwhere['text3'] = $main_smarty->get_config_vars('PLIGG_Visual_Breadcrumb_User_Killspam');
+			$main_smarty->assign('navbar_where', $navwhere);
+			$main_smarty->assign('posttitle', " / " . $main_smarty->get_config_vars('PLIGG_Visual_Header_AdminPanel'));
+			
+			// misc smarty
+			$main_smarty->assign('pagename', pagename);
+			
+			// pagename
+			define('pagename', 'admin_users'); 
+			$main_smarty->assign('pagename', pagename);
+
+			// show the template
+			$main_smarty->assign('tpl_center', '/admin/user_create');
+			$main_smarty->display($template_dir . '/admin/help.tpl');
+			exit;
 
 		}
 		if (sanitize($_GET["mode"], 3) == "view"){ // view single user
 
 			// code to prevent CSRF
 			$CSRF->create('admin_users_resetpass', true, true);
-			// code to prevent CSRF
 	
 			$usersql = mysql_query('SELECT * FROM ' . table_users . ' where user_login="'.sanitize($_GET["user"], 3).'"');
 			$userdata = array();				
@@ -209,10 +208,9 @@ if($canIhaveAccess == 1)
 		
 		if (sanitize($_GET["mode"], 3) == "edit"){ // edit user
 			// code to prevent CSRF
-				// doesn't matter if a token exists. if we're viewing this page, just
-				// create a new one or replace the existing.
-				$CSRF->create('admin_users_edit', true, true);
-			// code to prevent CSRF		
+			// doesn't matter if a token exists. if we're viewing this page, just
+			// create a new one or replace the existing.
+			$CSRF->create('admin_users_edit', true, true);
 
 			$usersql = mysql_query('SELECT * FROM ' . table_users . ' where user_login="'.sanitize($_GET["user"], 3).'"');
 			$userdata = array();
@@ -257,8 +255,7 @@ if($canIhaveAccess == 1)
 		
 		if (sanitize($_GET["mode"], 3) == $main_smarty->get_config_vars('PLIGG_Visual_Profile_Save')){ //save user info
 			// code to prevent CSRF
-				$CSRF->check_expired('admin_users_edit');
-			// code to prevent CSRF
+			$CSRF->check_expired('admin_users_edit');
 
 			if ($CSRF->check_valid(sanitize($_GET['token'], 3), 'admin_users_edit')){
 				$user = $db->get_row('SELECT * FROM ' . table_users . ' where user_login="'.sanitize($_GET["user"], 3).'"');
@@ -602,7 +599,7 @@ if($canIhaveAccess == 1)
 	
 	}
 	else{ // No options are selected, so show the list of users.			
-			$CSRF->create('admin_users_list', true, true);
+		$CSRF->create('admin_users_list', true, true);
 		global $offset, $top_users_size;			
 		// Items per page drop-down
 		if(isset($_GET["pagesize"]) && is_numeric($_GET["pagesize"])) {
@@ -648,7 +645,7 @@ if($canIhaveAccess == 1)
 		$main_smarty->display($template_dir . '/admin/admin.tpl');
 	}
 } else {
-	echo 'not for you! go away!';
+	echo 'You don\'t have permission to view this page.';
 }		
 		
 function showmyerror()

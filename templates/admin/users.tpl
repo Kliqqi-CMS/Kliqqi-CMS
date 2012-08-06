@@ -1,6 +1,7 @@
-﻿<!-- users.tpl
+﻿<!-- users.tpl -->
+{* 
 <script language="JavaScript" type="text/javascript" src="{$my_base_url}{$my_pligg_base}/templates/admin/js/jquery/jquery.form.js"></script>
-<script language="JavaScript" type="text/javascript" src="{$my_base_url}{$my_pligg_base}/templates/admin/js/jquery/jquery.validate.js"></script> -->
+<script language="JavaScript" type="text/javascript" src="{$my_base_url}{$my_pligg_base}/templates/admin/js/jquery/jquery.validate.js"></script>
 
 <!-- JDR: Themeroller files and my generic base
 <link type="text/css" href="http://localhost/svnpligg/trunk/templates/admin/inc/css/ui-lightness/jquery-ui-1.7.2.custom.css" rel="stylesheet" />  -->
@@ -33,9 +34,9 @@ jQuery(function() {
 	                }
 	    },
 	    messages: {
-	        username: "Please enter user name.",
+	        username: "Please enter a user name.",
 	        email: {
-	            required: "Please enter your email address.",
+	            required: "Please enter an email address.",
 	            email: "Please enter a valid email address."
 	                }
 	    }
@@ -97,7 +98,7 @@ function successEvents(msg) {
     setTimeout(function() { $(msg).fadeOut('slow'); }, defaultmessagedisplay);
 };
 {/literal}	
-</script>-->
+</script> *}
 <legend>{#PLIGG_Visual_AdminPanel_User_Manage#}</legend>
 {include file="/admin/user_create.tpl"}
 <table>
@@ -164,7 +165,7 @@ function successEvents(msg) {
 					{if $userlist[nr].user_lastlogin neq "0000-00-00 00:00:00"}
 						<i class="icon icon-ok" title="{#PLIGG_Visual_AdminPanel_Confirmed_Email#}" alt="{#PLIGG_Visual_AdminPanel_Confirmed_Email#}"></i>
 					{else}
-						<a href="{$my_base_url}{$my_pligg_base}/admin/admin_user_validate.php?id={$userlist[nr].user_id}" title="{#PLIGG_Visual_AdminPanel_Confirmed_Email#}"><i class="icon icon-warning-sign" title="{#PLIGG_Visual_AdminPanel_Unconfirmed_Email#}" alt="{#PLIGG_Visual_AdminPanel_Unconfirmed_Email#}"></i></a>
+						<a data-toggle="modal" href="{$my_base_url}{$my_pligg_base}/admin/admin_user_validate.php?id={$userlist[nr].user_id}" title="{#PLIGG_Visual_AdminPanel_Confirmed_Email#}"><i class="icon icon-warning-sign" title="{#PLIGG_Visual_AdminPanel_Unconfirmed_Email#}"></i></a>
 					{/if}
 					<a href="mailto:{$userlist[nr].user_email}" target="_blank">{$userlist[nr].user_email|truncate:25:"...":true}</a>
 				</td>

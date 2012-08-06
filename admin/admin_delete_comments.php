@@ -54,11 +54,6 @@ $num_rows = mysql_num_rows($result);
 while($comment = mysql_fetch_object($result))
         delete_comment($comment->comment_id);
 ?>
-<html>
-<head>
-	<link rel="stylesheet" type="text/css" href="../templates/admin/css/bootstrap.css" media="screen">
-</head>
-<body>
 <div class="modal-header">
 	<a class="close" data-dismiss="modal">×</a>
 	<h3><?php echo $main_smarty->get_config_vars('PLIGG_Visual_AdminPanel_Discarded_Comments_Removed') ?></h3>
@@ -80,5 +75,3 @@ while($comment = mysql_fetch_object($result))
 	<a class="btn btn-primary" data-dismiss="modal">Close</a>
 	<!-- <?php echo $main_smarty->get_config_vars('PLIGG_Visual_AdminPanel_Return_Comment_Management') ?> -->
 </div>
-</body>
-</html>

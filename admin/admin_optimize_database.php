@@ -37,11 +37,6 @@ if ($_SERVER['SERVER_ADDR'])
         $table_list .= $cur_table->Name.", ";
     }
 ?>
-<html>
-<head>
-	<link rel="stylesheet" type="text/css" href="../templates/admin/css/bootstrap.css" media="screen">
-</head>
-<body>
 <div class="modal-header">
 	<a class="close" data-dismiss="modal">×</a>
 	<h3><?php echo $main_smarty->get_config_vars('PLIGG_Visual_AdminPanel_Optimized') ?></h3>
@@ -63,5 +58,3 @@ if ($_SERVER['SERVER_ADDR'])
 	<a class="btn btn-primary" data-dismiss="modal">Close</a>
 	<!-- <?php echo $main_smarty->get_config_vars('PLIGG_Visual_AdminPanel_Return_Admin') ?> -->
 </div>
-</body>
-</html>

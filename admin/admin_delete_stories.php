@@ -82,11 +82,6 @@ $query="DELETE FROM " . table_tag_cache;
 if (!mysql_query($query)) {error_page(mysql_error());}
 
 ?>
-<html>
-<head>
-	<link rel="stylesheet" type="text/css" href="../templates/admin/css/bootstrap.css" media="screen">
-</head>
-<body>
 <div class="modal-header">
 	<a class="close" data-dismiss="modal">×</a>
 	<h3><?php echo $main_smarty->get_config_vars('PLIGG_Visual_AdminPanel_Discarded_Stories_Removed') ?></h3>
@@ -115,5 +110,3 @@ if (!mysql_query($query)) {error_page(mysql_error());}
 	<a class="btn btn-primary" data-dismiss="modal">Close</a>
 	<!-- <?php echo $main_smarty->get_config_vars('PLIGG_Visual_AdminPanel_Return_Story_Management') ?> -->
 </div>
-</body>
-</html>
