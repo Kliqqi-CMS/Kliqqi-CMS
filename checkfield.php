@@ -60,7 +60,17 @@ switch ($type) {
 		else
 			echo "OK";
 		break;
+	case 'password':
+		if(strlen($name) < 5 ) { // if password is less than 5 characters
+		 echo $main_smarty->get_config_vars('PLIGG_Visual_Register_Error_FiveCharPass');
+		 return;
+		}else{
+		 echo "OK";
+		}
+	   break;	
+	   
 	default:
-		echo "KO $type";
+		echo "KO";
 }
+
 ?>
