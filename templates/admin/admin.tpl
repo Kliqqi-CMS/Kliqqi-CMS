@@ -28,6 +28,7 @@
 		<link type="text/css" href="{$my_base_url}{$my_pligg_base}/templates/admin/css/admin_home.css" rel="stylesheet" />		
 		<link type="text/css" href="{$my_base_url}{$my_pligg_base}/templates/admin/css/coda-slider-2.0.css" rel="stylesheet" media="screen" />
 	{/if}
+    {$Jscript}
 	<script src="{$my_base_url}{$my_pligg_base}/templates/admin/js/simpleedit.js" type="text/javascript"></script>
 	{if $pagename eq "admin_index"}
 		{literal}
