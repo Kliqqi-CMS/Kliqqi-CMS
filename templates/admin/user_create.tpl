@@ -159,13 +159,13 @@ function checkUsername(val){
 			{$hidden_token_admin_users_create}
 			<label for="username">{#PLIGG_Visual_Register_Username#}:</label>
 			<div class="div_texbox username">
-				<input name="username" type="text" class="textbox" id="username" value="" onkeyup="checkUsername(this.value)" />
+				<input name="username" type="text" class="textbox" id="username" value=""  onchange="checkUsername(this.value)" />
 			</div>
 			
 			<div style="clear:both;"></div>
 			<label for="email">{#PLIGG_Visual_Register_Email#}:</label>
 			<div class="div_texbox email">
-				<input name="email" type="text" class="textbox" id="email" value="" onkeyup="checkEmail(this.value)"/>
+				<input name="email" type="text" class="textbox" id="email" value="" onchange="checkEmail(this.value)"/>
 			</div>
 			<div style="clear:both;"></div>
 			<label>{#PLIGG_Visual_View_User_Level#}:</label>
@@ -179,7 +179,7 @@ function checkUsername(val){
 			<div style="clear:both;"></div>
 			<label for="password">{#PLIGG_Visual_Register_Password#}:</label>
 			<div class="div_texbox password">
-				<input name="password" type="text" class="textbox" id="password" value=""   onkeyup="checkPassword(this.value)"/>
+				<input name="password" type="text" class="textbox" id="password" value=""   onchange="checkPassword(this.value)"/>
 			</div>
 			
 			<div style="clear:both;"></div>
