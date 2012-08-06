@@ -67,7 +67,11 @@ function checkUsername(val){
 	 type: 'POST',
 	 data: pdata,
 	 url: UserNameAjaxUrl,
+	 beforeSend: function() {
+				$('.username .error').addClass("loader");
+			},
 	 success: function(data) {
+	 $('.username .error').removeClass("loader");	 
 	 $('.username .error').html(data);
 	 	 if(data!="OK")
 		  error=true;
@@ -90,7 +94,11 @@ function checkUsername(val){
 		 type: 'POST',
 		 data: pdata,
 		 url: UserNameAjaxUrl,
+		 beforeSend: function() {
+				$('.email .error').addClass("loader");
+			},
 		 success: function(data) {
+		 $('.email .error').removeClass("loader");	 
 		 $('.email .error').html(data);
 			 if(data!="OK")
 			  error=true;
@@ -116,7 +124,11 @@ function checkUsername(val){
 	 type: 'POST',
 	 data: pdata,
 	 url: UserNameAjaxUrl,
+	 beforeSend: function() {
+				$('.password .error').addClass("loader");
+			},
 	 success: function(data) {
+	 $('.password .error').removeClass("loader");	 
 	 $('.password .error').html(data);
 	 
 		 if(data!="OK"){
