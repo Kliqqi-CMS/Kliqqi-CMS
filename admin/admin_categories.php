@@ -15,6 +15,12 @@ include(mnminclude.'link.php');
 include(mnminclude.'smartyvariables.php');
 include_once(mnminclude.'dbtree.php');
 include(mnminclude.'csrf.php');
+include(mnminclude.'document_class.php');
+
+$PliggDoc->add_js(my_base_url.my_pligg_base."/templates/admin/js/move.js");
+
+$PliggDoc->get_js();
+
 
 check_referrer();
 
