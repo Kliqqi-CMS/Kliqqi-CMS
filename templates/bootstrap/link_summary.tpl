@@ -1,5 +1,5 @@
 {************************************
-******** Story Page Template ********
+********** Story Template ***********
 *************************************}
 <!-- link_summary.tpl -->
 <div class="stories" id="xnews-{$link_shakebox_index}" {* if $link_shakebox_currentuser_reports gt 0} style="opacity:0.5;filter:alpha(opacity = 50)"{/if *}>
