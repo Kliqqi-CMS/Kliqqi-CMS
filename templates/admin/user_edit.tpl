@@ -16,11 +16,40 @@
 		{/literal}
 	</script>
 	<legend>{#PLIGG_Visual_Breadcrumb_Edit_User#}: {$userdata[nr].user_login}</legend>
-	<form id="form1" name="form1" method="get" action="" onsubmit="return check(this);">
+	<form id="form1" name="form1" method="post" action="admin_users.php" onsubmit="return check(this);">
+    <input type="hidden" name="mode" value="{#PLIGG_Visual_Profile_Save#}" />
+    <input type="hidden" name="token" value="{$uri_token_admin_users_edit}" />
+    <input type="hidden" name="user_id" value="{$userdata[nr].user_id}" />
+     {if isset($username_error)}
+				<div class="alert">
+					<button class="close" data-dismiss="alert">×</button>
+					{ foreach value=error from=$username_error }
+						<p class="error">{$error}</p>
+					{ /foreach }
+				</div>
+		{/if}
+        
+        {if isset($email_error)}
+				<div class="alert">
+					<button class="close" data-dismiss="alert">×</button>
+					{ foreach value=error from=$email_error }
+						<p class="error">{$error}</p>
+					{ /foreach }
+				</div>
+			{/if}	
+        {if isset($password_error)}
+				<div class="alert">
+					<button class="close" data-dismiss="alert">×</button>
+					{ foreach value=error from=$password_error }
+						<p class="error">{$error}</p>
+					{ /foreach }
+				</div>
+			{/if}	    	
 		<table class="table table-bordered table-striped">
 			<tr>
-				<td style="width:215px;"><label>{#PLIGG_Visual_View_User_Login#}:</label></td>
-				<td><input name=login value="{$userdata[nr].user_login}"></td>
+				<td style="width:215px;">
+                <label>{#PLIGG_Visual_View_User_Login#}:</label></td>
+				<td><input name=login value="{$userdata[nr].user_login}" readonly="readonly"></td>
 			</tr>
 			{if $userdata[nr].user_id neq 1}
 				<tr>

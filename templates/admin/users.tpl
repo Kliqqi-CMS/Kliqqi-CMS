@@ -1,104 +1,15 @@
 ﻿<!-- users.tpl -->
-{* 
-<script language="JavaScript" type="text/javascript" src="{$my_base_url}{$my_pligg_base}/templates/admin/js/jquery/jquery.form.js"></script>
-<script language="JavaScript" type="text/javascript" src="{$my_base_url}{$my_pligg_base}/templates/admin/js/jquery/jquery.validate.js"></script>
-
-<!-- JDR: Themeroller files and my generic base
-<link type="text/css" href="http://localhost/svnpligg/trunk/templates/admin/inc/css/ui-lightness/jquery-ui-1.7.2.custom.css" rel="stylesheet" />  -->
-
-<!--<script language="JavaScript" type="text/javascript">
 {literal}
-jQuery(function() {
-    jQuery().ajaxError(function(a, b, e) {
-        throw e;
-    });
-	
-	// JDR: our form submit and valiation
-	var aform = $("#createUserForm").validate({
-	    
-		// JDR: make sure we show/hide both blocks
-		errorContainer: "#errorblock-div1, #errorblock-div2",
-	    
-		// JDR: put all error messages in a UL
-		errorLabelContainer: "#errorblock-div2 ul",
-	    
-		// JDR: wrap all error messages in an LI tag
-		wrapper: "li",
-	    
-		// JDR: rules/messages are for the validation
-		rules: {
-	        username: "required",
-	        email: {
-	            required: true,
-	            email: true
-	                }
-	    },
-	    messages: {
-	        username: "Please enter a user name.",
-	        email: {
-	            required: "Please enter an email address.",
-	            email: "Please enter a valid email address."
-	                }
-	    }
-		
-		
-		// JDR: our form submit
-	  /* submitHandler: function(form) {
-	        jQuery(form).ajaxSubmit({
-				// JDR: the return target block
-	            target: '#client-script-return-data',
-				
-				// JDR: what to do on form submit success
-	            success: function() { $('#createUserForm-modal').dialog('close'); successEvents('#client-script-return-msg'); }
-	         });
-	     }*/
-	}); 
-	
-	// JDR: our modal dialog setup
-	var amodal = $("#my-modal-form").dialog({
-	   bgiframe: true,
-	   autoOpen: false,
-	   height: 350,
-	   width: 300,
-	   modal: true,
-	   buttons: {
-	      'Update Data': function() 
-		  { 
-		  	// JDR: submit the form
-		  	$("#modal-form-test").submit(); 
-		  },
-	      Cancel: function() 
-		  { 
-		  	// JDR: close the dialog, reset the form
-		    $(this).dialog('close'); aform.resetForm(); 
-		  }
-	   }
-	});
-	
-	
-	// JDR: onclick action for our button
-	var abutton = $('#load-my-modal').click(function() {
-	    $('#createUserForm-modal').dialog('open');
-	});
-	
-	// JDR: this sets up a hover effect for all buttons
-   
-	
-}); // JDR: end main jQuery function start
+<script type="text/javascript" language="javascript">
 
-function successEvents(msg) {
-
-    // JDR: microseconds to show return message block
-    var defaultmessagedisplay = 10000;
-    
-    // JDR: fade in our return message block
-    $(msg).fadeIn('slow');
-
-    // JDR: remove return message block
-    setTimeout(function() { $(msg).fadeOut('slow'); }, defaultmessagedisplay);
-};
-{/literal}	
-</script> *}
+function submit_list_form(){
+		document.getElementById("user_list_form").submit();
+		//for(x in document.getElementById("user_list_form"))
+		//alert(x);
+		//alert(document.getElementById("user_list_form"));
+}
+</script>
+{/literal}
 <legend>{#PLIGG_Visual_AdminPanel_User_Manage#}</legend>
 {include file="/admin/user_create.tpl"}
 <table>
@@ -135,15 +46,22 @@ function successEvents(msg) {
 			</td>
 		</form>
         
-		<form name='bulk' action="{$my_base_url}{$my_pligg_base}/admin/admin_users.php" method="post">
-			<td style="float:right;"><input type="submit" class="btn btn-primary" name="submit" value="{#PLIGG_Visual_AdminPanel_Apply_Changes#}" /></td>
+             	
+			<td style="float:right;">
+           
+           
+            <input type="button" class="btn btn-primary" name="btnsubmit" value="{#PLIGG_Visual_AdminPanel_Apply_Changes#}" onclick="submit_list_form()" />
+            
+            </td>
 	</tr>
 </table>
 {if isset($usererror)}
 	<span class="error">{$usererror}</span><br/>
 {/if}
+<form name="user_list_formasd" id="user_list_form" action="{$my_base_url}{$my_pligg_base}/admin/admin_users.php" method="post">
+<input type="hidden" name="frmsubmit" value="userlist" />	
 {$hidden_token_admin_users_list}
-<table class="table table-bordered table-striped table-condensed">
+<table class="table table-bordered table-striped table-condensed tablesorter" id="tablesorter-userTable">
 	<thead>
 		<tr>
 			<th style="width:40px;text-align:center;">ID</th>
@@ -152,7 +70,7 @@ function successEvents(msg) {
 			<th>{#PLIGG_Visual_View_User_Email#}</th>
 			<th style="width:140px">{#PLIGG_Visual_User_Profile_Joined#}</th>
 			<th style="text-align:center;">{#PLIGG_Visual_User_Profile_Enabled#}</th>
-			<th style="text-align:center;"><input type='checkbox' onclick='check_all(this);' style="margin:0px 4px 3px 0;">{#PLIGG_Visual_KillSpam#}</th>
+			<th style="text-align:center;">{#PLIGG_Visual_KillSpam#}</th>
 		</tr>
 	</thead>
 	<tbody>
@@ -171,19 +89,20 @@ function successEvents(msg) {
 				</td>
 				<td>{$userlist[nr].user_date}</td>
 				<td style="text-align:center;vertical-align:middle;">
-					<input type="checkbox" onclick="document.getElementById('enabled_{$userlist[nr].user_id}').value=this.checked ? 1 : 0;" {if $userlist[nr].user_enabled}checked{/if}>
-					<input type="hidden" name="enabled[{$userlist[nr].user_id}]" id="enabled_{$userlist[nr].user_id}" value="{$userlist[nr].user_enabled}">
+					<input type="radio" name="enabled[{$userlist[nr].user_id}]"  {if $userlist[nr].user_enabled}checked{/if} value="1">
+					<!--<input type="hidden" name="enabled[{$userlist[nr].user_id}]" id="enabled_{$userlist[nr].user_id}" value="{$userlist[nr].user_enabled}">-->
 				</td>
-				<td style="text-align:center;vertical-align:middle;"><div style="text-align:center"><input type='checkbox' id='killspam' name='delete[]' value='{$userlist[nr].user_id}'></div></td>	
+				<td style="text-align:center;vertical-align:middle;"><div style="text-align:center"><input type="radio" id='killspam' name='enabled[{$userlist[nr].user_id}]' value='0' {if $userlist[nr].user_enabled neq 1}checked{/if}></div></td>	
 			</tr>
 		{/section}
 	</tbody>
 </table>
+</form>
 <div style="float:right;margin:8px 2px 0 0;">
 <a class="btn btn-success"  href="#createUserForm-modal" data-toggle="modal" title="{#PLIGG_Visual_AdminPanel_New_User#}">{#PLIGG_Visual_AdminPanel_New_User#}</a>
-	<input type="submit" class="btn btn-primary" name="submit" value="{#PLIGG_Visual_AdminPanel_Apply_Changes#}" />
+	<input type="button" class="btn btn-primary" name="btnsubmit" value="{#PLIGG_Visual_AdminPanel_Apply_Changes#}" onclick="submit_list_form()" />
 </div>
-</form>
+
 
 <div style="clear:both;"></div>
 
