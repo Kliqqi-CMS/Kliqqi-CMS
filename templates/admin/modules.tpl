@@ -30,7 +30,7 @@ if($action == 'main' || $action == 'disable' || $action == 'enable'){
 	echo '<form name="bulk_moderate" method="post">';
 	echo '<div class="module_apply"><input type="submit" class="btn btn-primary" name="submit" value="'.$main_smarty->get_config_vars('PLIGG_Visual_AdminPanel_Apply_Changes').'" id="apply_changes" /></div>';
 	echo '<br />';
-	echo '<table class="table table-bordered table-striped">';
+	echo '<table class="table table-bordered">';
 	echo '<thead><tr><th style="text-align:center;">Enabled</th><th>Details</th><th>Requires</th><th>Version</th><th>Homepage</th><th>Settings</th><th>Uninstall</th></tr></thead><tbody>';	
 	$modules = $db->get_results('SELECT * from ' . table_modules . ' order by name asc;');
 	if($modules){
@@ -130,7 +130,7 @@ if($action == 'main' || $action == 'disable' || $action == 'enable'){
 	} else {
 		echo '<div id="uninstalled" class="tab-pane fade in">';
 	}
-	echo '<table class="table table-bordered table-striped">';
+	echo '<table class="table table-bordered">';
 	echo '<thead><tr><th>Details</th><th>Requires</th><th style="text-align:center;">Version</th><th style="text-align:center;">Homepage</th><th style="text-align:center;">Install</th></tr></thead><tbody>';	
 	// find all the folders in the modules folder
 	$dir = '../modules/';

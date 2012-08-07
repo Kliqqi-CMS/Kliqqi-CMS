@@ -49,7 +49,7 @@
 	</tr>
 </table>
 {$hidden_token_admin_links_edit}
-<table class="table table-bordered table-striped table-condensed">
+<table class="table table-bordered table-condensed">
 	<tr>
 		<th>{#PLIGG_Visual_View_Links_Author#}</th>
 		<th>{#PLIGG_Visual_View_Links_New_Window#}</th>

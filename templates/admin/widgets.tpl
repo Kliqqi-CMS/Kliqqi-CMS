@@ -30,7 +30,7 @@
 		echo '<form name="bulk_moderate" method="post">';
 		echo '<div class="apply_widgets"><input type="submit" class="btn btn-primary" name="submit" value="'.$main_smarty->get_config_vars('PLIGG_Visual_AdminPanel_Apply_Changes').'" id="apply_changes" /></div>';
 		echo '<br />';
-		echo '<table class="table table-bordered table-striped">';
+		echo '<table class="table table-bordered">';
 		echo '<thead><tr><th style="text-align:center;">Enabled</th><th>Details</th><th>Homepage</th><th>Uninstall</th></tr></thead></tbody>';	
 		$widgets = $db->get_results('SELECT * from ' . table_widgets . ' order by name asc;');
 		if($widgets){
@@ -111,7 +111,7 @@
 		} else {
 			echo '<div id="uninstalled" class="tab-pane fade in">';
 		}
-		echo '<table class="table table-bordered table-striped">';
+		echo '<table class="table table-bordered">';
 		echo '<thead><tr><th>Details</th><th style="text-align:center;">Install</th></tr></thead><tbody>';	
 		// find all the folders in the widgets folder
 		$dir = '../widgets/';

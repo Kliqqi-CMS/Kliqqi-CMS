@@ -1,7 +1,7 @@
 <!-- groups.tpl -->
 <legend>{#PLIGG_Visual_AdminPanel_Manage_Groups#}</legend>
 <br />
-<table class="table table-bordered table-striped">
+<table class="table table-bordered">
 	<thead>
 		<tr>
 			<th>{#PLIGG_Visual_AdminPanel_Group_Name#}</th>
