@@ -21,4 +21,5 @@
 {/if}
 <meta name="Language" content="{#PLIGG_Visual_Meta_Language#}" />
 <meta name="Robots" content="All" />
+<meta name="generator" content="Pligg" />
 <!--/meta.tpl -->
