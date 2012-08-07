@@ -173,7 +173,9 @@ if($canIhaveAccess == 1) {
 			}
 
 			totals_regenerate();
-			header("Location: ".my_pligg_base."/admin/admin_links.php?page=".sanitize($_GET['page'],3));
+			//header("Location: ".my_pligg_base."/admin/admin_links.php?page=".sanitize($_GET['page'],3));
+			$redirect_url=$_SERVER['HTTP_REFERER'];
+			header("Location:". $redirect_url);
 			die();
 		} else {
 		    $CSRF->show_invalid_error(1);
