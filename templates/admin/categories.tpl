@@ -199,9 +199,7 @@ function showdel(id)
 	</ul>
 </div>
 <hr />
-<legend>URL Method 2</legend>
-<a href="admin_categories.php?action=htaccess" rel="width:250,height:250" class="mb" target="_blank">{#PLIGG_Visual_AdminPanel_URL_Method_2_Click#}</a> {#PLIGG_Visual_AdminPanel_URL_Method_2_Rename#}
-<hr />
+<p>Pligg allows users to select what categories they see from their profile settings page. If you add a new category after users have de-selected a category, they won't be able to see that new category. To make it so that all users category settings are reset to see all cateogires, click on the button below.</p> 
 <div class="btn"><a href="admin_categories.php?action=reset">{#PLIGG_Visual_Categories_Reset#}</a></div>
 <div style="clear:both;"> </div>
 <!--/categories.tpl -->
