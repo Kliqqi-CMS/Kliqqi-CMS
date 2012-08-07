@@ -21,5 +21,6 @@
 {/if}
 <meta name="Language" content="{#PLIGG_Visual_Meta_Language#}" />
 <meta name="Robots" content="All" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="generator" content="Pligg" />
 <!--/meta.tpl -->
