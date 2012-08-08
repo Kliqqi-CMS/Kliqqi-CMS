@@ -7,6 +7,9 @@
 		<tr><td width="160px"><strong>{#PLIGG_Visual_View_User_Login#}: </strong></td><td><img src="{$userdata[nr].Avatar}" align="absmiddle"/> {$userdata[nr].user_login}</td></tr>
 		<tr><td width="160px"><strong>{#PLIGG_Visual_View_User_Level#}: </strong></td><td>{$userdata[nr].user_level}</td></tr>
 		<tr><td width="160px"><strong>{#PLIGG_Visual_View_User_Email#}: </strong></td><td>{$userdata[nr].user_email}</td></tr>
+		<tr><td width="160px"><strong>{#PLIGG_Visual_User_Profile_Joined#}: </strong></td><td>{$userdata[nr].user_date}</td></tr>
+		<tr><td width="160px"><strong>ID: </strong></td><td>{$userdata[nr].user_id}</td></tr>
+		<tr><td width="160px"><strong>{#PLIGG_Visual_View_User_Level#}: </strong></td><td>{$userdata[nr].user_level}</td></tr>
 		<tr><td width="160px"><strong>{#PLIGG_Visual_View_User_LL_Date#}: </strong></td><td>{$userdata[nr].user_lastlogin}</td></tr>
 		<tr><td width="160px"><strong>{#PLIGG_Visual_View_User_LL_Address#}: </strong></td><td> {$userdata[nr].user_lastip}</td></tr>
 		<tr><td width="160px"><strong>{#PLIGG_Visual_View_User_Groups_Belongs#}: </strong></td><td> {$userdata[nr].belongs}</td></tr>
@@ -17,7 +20,7 @@
 		<br />
 		<tr><td><a href="admin_comments.php?user={$userdata[nr].user_login}">{#PLIGG_Visual_View_User_Sub_Comments#}</a></td> <td> {$commentcount} Total</td></tr>
 	</table>	
-	{if $amIadmin}		
+	{if $amIadmin}
 		<hr/>
 		<a class="btn btn-primary" href="?mode=edit&user={$userdata[nr].user_login}">{#PLIGG_Visual_View_User_Edit_Data#}</a>
 		{if $user_logged_in neq $userdata[nr].user_login && $userdata[nr].user_id neq '1'}
