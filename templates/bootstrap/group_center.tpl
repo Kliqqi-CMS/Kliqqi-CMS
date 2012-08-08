@@ -45,4 +45,13 @@
 	<div style="clear:both;"></div>
 	{$group_pagination}
 {/if}
+   {if $enable_group neq "true"}
+       {literal}
+                <script type="text/javascript">
+   <!--
+   window.location="{/literal}{$my_base_url}{$my_pligg_base}/404error.php{literal}";
+   //-->
+                </script>
+      {/literal}
+   {/if}
 <!-- group_center.tpl -->
