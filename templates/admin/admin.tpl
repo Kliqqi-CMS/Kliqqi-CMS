@@ -135,7 +135,7 @@
 										</a>
 									</span>
 									<span class="badge accordion-heading-alert">
-										14
+										{math equation="a + b + c + d" a=$total b=$comments c=$members d=$grouptotal}
 									</span>
 								</div>
 								<div class="accordion-body collapse in" id="CollapseManage">
@@ -144,7 +144,6 @@
 										<li{if $pagename eq "admin_comments"} class="active"{/if} id="manage_comments"><a href="{$my_base_url}{$my_pligg_base}/admin/admin_comments.php">Comments <span class="pull-right badge badge-gray">{$comments}</span></a></li>
 										<li{if $pagename eq "admin_users" || $pagename eq "admin_user_validate"} class="active"{/if} id="manage_users"><a href="{$my_base_url}{$my_pligg_base}/admin/admin_users.php">Users<span class="pull-right badge badge-gray">{$members}</span></a></li>
 										<li{if $pagename eq "admin_group"} class="active"{/if} id="manage_groups"><a href="{$my_base_url}{$my_pligg_base}/admin/admin_group.php">Groups <span class="pull-right badge badge-gray">{$grouptotal}</span></a></li>
-										<li{if $pagename eq "admin_group"} class="active"{/if} id="manage_groups"><a href="{$my_base_url}{$my_pligg_base}/admin/admin_group.php">Groups <span class="pull-right badge badge-gray">1</span></a></li> 
 										<li{if $pagename eq "admin_page" || $pagename eq "edit_page" || $pagename eq "submit_page"} class="active"{/if} id="manage_pages"><a href="{$my_base_url}{$my_pligg_base}/admin/admin_page.php">Pages</a></li> 
 										<li{if $pagename eq "admin_categories" || $pagename eq "admin_categories_tasks"} class="active"{/if} id="manage_categories"><a href="{$my_base_url}{$my_pligg_base}/admin/admin_categories.php">Categories</a></li> 
 									         {checkActionsTpl location="tpl_pligg_admin_manage_sidebarnav_end"}
