@@ -1,6 +1,6 @@
 {config_load file=akismet_lang_conf}
 
-<legend><img src="{$akismet_img_path}shield.png" align="absmiddle"/> {#PLIGG_Akismet_manage_stories#}</legend>
+<legend>{#PLIGG_Akismet_manage_stories#}</legend>
 
 <form name="bulk_moderate" action="{$URL_akismet_isSpam}&action=bulkmod" method="post">
 	<table class="table table-bordered table-striped">

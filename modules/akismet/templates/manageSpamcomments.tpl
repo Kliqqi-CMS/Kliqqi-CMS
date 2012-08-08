@@ -1,14 +1,13 @@
 {config_load file=akismet_lang_conf}
-<fieldset>
-	<legend><img src="{$akismet_img_path}shield.png" align="absmiddle"/> {#PLIGG_Akismet_manage_comments#}</legend>
-	<a href="{$URL_akismet}">{#PLIGG_Akismet_return#}</a><br /><br />
-	
-	{if count($link_data) gt 0}
-		{$spam_output}
-	{/if}
-	
-</fieldset>
-{config_load file=akismet_pligg_lang_conf}
+
+<legend>{#PLIGG_Akismet_manage_comments#}</legend>
+
+{if count($link_data) gt 0}
+	{$spam_output}
+{/if}
+
+<hr />
+<a href="{$URL_akismet}" class="btn">Return to the Akismet Management page</a>
 
 {literal}
 <SCRIPT>
@@ -32,3 +31,5 @@ function mark_all_notspam() {
 }
 </SCRIPT>
 {/literal}
+
+{config_load file=akismet_pligg_lang_conf}

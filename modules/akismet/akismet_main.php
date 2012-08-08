@@ -290,9 +290,15 @@ function akismet_showpage(){
 				$user_cmt = new User;
 				$user_cmt_link = new Link;
 				$spam_output .=' <form name="bulk_moderate" action="'.URL_akismet_isSpamcomment.'&action=bulkmod" method="post">';
-				$spam_output .='<table class="stripes" cellpadding="0" cellspacing="0" border="0">';
-				$spam_output .="<tr><th style='width:100px;'>Author</th><th>Content</th><th style='width:60px;'><input type='checkbox' name='all1'  onclick='mark_all_spam();'><a onclick='mark_all_spam();' style='cursor:pointer;text-decoration:none;color:#fff;'>Spam</a></th>
-						<th style='width:90px;'><input type='checkbox' name='all2'  onclick='mark_all_notspam();'><a onclick='mark_all_notspam();' style='cursor:pointer;text-decoration:none;color:#fff;'>Not Spam</a></th></tr>";
+				$spam_output .='<table class="table table-bordered table-striped">';
+				$spam_output .="<thead>
+									<tr>
+										<th>Author</th>
+										<th>Content</th>
+										<th style='width:65px;text-align:center;'><input type='checkbox' name='all1' onclick='mark_all_spam();' style='display:none;'><a onclick='mark_all_spam();' style='cursor:pointer;text-decoration:none;'>Spam</a></th>
+										<th style='width:80px;text-align:center;'><input type='checkbox' name='all2' onclick='mark_all_notspam();' style='display:none;'><a onclick='mark_all_notspam();' style='cursor:pointer;text-decoration:none;'>Not Spam</a></th>
+									</tr>
+								<tbody>";
 				foreach($link_data as $spam_cmts){
 					$user_cmt->id=$spam_cmts->userid;
 					$user_cmt->read();
@@ -302,13 +308,13 @@ function akismet_showpage(){
 					$user_cmt_link->read();
 							
 					$spam_output .="<tr>";
-					$spam_output .= "<td>".$user_name."</td>";
-					$spam_output .= "<td>".save_text_to_html($spam_cmts->cmt_content)."</td>";
-					$spam_output .= '<td><center><input type="radio" name="spamcomment['.$spam_cmts->auto_id.']" id="spamcomment-'.$spam_cmts->auto_id.'" value="spamcomment"></center></td>';
-					$spam_output .= '<td><center><input type="radio" name="spamcomment['.$spam_cmts->auto_id.']" id="spamcomment-'.$spam_cmts->auto_id.'" value="notspamcomment"></center></td>';
+					$spam_output .= "	<td>".$user_name."</td>";
+					$spam_output .= "	<td><a href='story.php?id=".$user_cmt_link->id=$spam_cmts->linkid."'>".save_text_to_html($spam_cmts->cmt_content)."</a></td>";
+					$spam_output .= '	<td style="text-align:center;"><input type="radio" name="spamcomment['.$spam_cmts->auto_id.']" id="spamcomment-'.$spam_cmts->auto_id.'" value="spamcomment"></td>';
+					$spam_output .= '	<td style="text-align:center;"><input type="radio" name="spamcomment['.$spam_cmts->auto_id.']" id="spamcomment-'.$spam_cmts->auto_id.'" value="notspamcomment"></td>';
 					$spam_output .="</tr>";
 				}
-				$spam_output .="</table>";
+				$spam_output .="</tbody></table>";
 				$spam_output .='<p align="right" style="margin-top:10px;"><input type="submit" name="submit" value="Apply Changes" class="btn" /></p>';
 				$spam_output .="</form>";
 					
