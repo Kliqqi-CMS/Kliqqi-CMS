@@ -213,8 +213,8 @@ if($canIhaveAccess == 1)
 			
 			$user->username = sanitize($userdata[0]['user_login'], 3);
 			if(!$user->read()) {
-				echo "Invalid User";
-				die;
+				$main_smarty->assign('tpl_center', '/admin/user_does_not_exist');
+				$main_smarty->display($template_dir . '/admin/admin.tpl');
 			}
 			
 			// module system hook
