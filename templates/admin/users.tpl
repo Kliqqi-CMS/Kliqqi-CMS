@@ -61,7 +61,7 @@ function submit_list_form(){
 <form name="user_list_formasd" id="user_list_form" action="{$my_base_url}{$my_pligg_base}/admin/admin_users.php" method="post">
 <input type="hidden" name="frmsubmit" value="userlist" />	
 {$hidden_token_admin_users_list}
-<table class="table table-bordered table-condensed tablesorter" id="tablesorter-userTable">
+<table class="table table-bordered table-striped table-condensed tablesorter" id="tablesorter-userTable">
 	<thead>
 		<tr>
 			<th style="width:40px;text-align:center;">ID</th>
@@ -77,7 +77,7 @@ function submit_list_form(){
 		{section name=nr loop=$userlist}
 			<tr {if $userlist[nr].user_enabled eq '0'}class="tr_moderated"{/if}>
 				<td style="width:40px;text-align:center;vertical-align:middle;">{$userlist[nr].user_id}</td>
-				<td style="vertical-align:middle;"><img src="{$userlist[nr].Avatar}" style="height:18px;width:18px;" /> <a href = "?mode=view&user={$userlist[nr].user_login}">{$userlist[nr].user_login}</a></td>	
+				<td style="vertical-align:middle;"><img src="{$userlist[nr].Avatar}" style="height:18px;width:18px;" /> <a href = "?mode=view&user={$userlist[nr].user_id}">{$userlist[nr].user_login}</a></td>	
 				<td style="text-align:center;vertical-align:middle;">{$userlist[nr].user_level}</td>
 				<td style="vertical-align:middle;">
 					{if $userlist[nr].user_lastlogin neq "0000-00-00 00:00:00"}
