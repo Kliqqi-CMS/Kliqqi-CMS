@@ -171,9 +171,10 @@ if($canIhaveAccess == 1)
 			// code to prevent CSRF
 			$CSRF->create('admin_users_resetpass', true, true);
 	
-			$usersql = mysql_query('SELECT * FROM ' . table_users . ' where user_login="'.sanitize($_GET["user"], 3).'"');
+			$usersql = mysql_query('SELECT * FROM ' . table_users . ' where user_id="'.sanitize($_GET["user"], 3).'"');
 			$userdata = array();				
 			while ($rows = mysql_fetch_array ($usersql, MYSQL_ASSOC)) array_push ($userdata, $rows);
+			
 		  
 			foreach($userdata as $key => $val){
 				$userdata[$key]['Avatar'] = get_avatar('large', "", $val['user_login'], $val['user_email']);
@@ -209,7 +210,8 @@ if($canIhaveAccess == 1)
    			$main_smarty->assign('pagename', pagename);
 			
 			$user=new User();
-			$user->username = sanitize($_GET["user"], 3);
+			
+			$user->username = sanitize($userdata[0]['user_login'], 3);
 			if(!$user->read()) {
 				echo "Invalid User";
 				die;
@@ -230,13 +232,111 @@ if($canIhaveAccess == 1)
 			// create a new one or replace the existing.
 			
 			
-			$CSRF->create('admin_users_edit', true, true);
+			
 
-			$usersql = mysql_query('SELECT * FROM ' . table_users . ' where user_login="'.sanitize($_GET["user"], 3).'"');
+			$usersql = mysql_query('SELECT * FROM ' . table_users . ' where user_id="'.sanitize($_GET["user_id"], 3).'"');
 			$userdata = array();
 			while ($rows = mysql_fetch_array ($usersql, MYSQL_ASSOC)) array_push ($userdata, $rows);
 			
 			canIChangeUser($userdata[0]['user_level']);
+			
+			$user=new User();
+			$user->username = sanitize($userdata[0]['user_login'], 3);
+			if(!$user->read()) {
+				$user = sanitize($userdata[0]['user_login'], 3);
+				$main_smarty->assign('user', $user);
+				echo "ankannest";
+				$main_smarty->assign('tpl_center', '/admin/user_does_not_exist');
+				$main_smarty->display($template_dir . '/admin/admin.tpl');
+				die;
+			}
+			
+			//update user date
+			if(isset($_POST['token'])){
+			
+				$CSRF->check_expired('admin_users_edit');
+			if ($CSRF->check_valid(sanitize($_POST['token'], 3), 'admin_users_edit')){
+				
+				$user_old = $db->get_row('SELECT * FROM ' . table_users . ' where user_id="'.sanitize($_GET["user_id"], 3).'"');
+				
+				
+				   $username=trim(sanitize($_POST["login"], 3));
+				   $email=trim(sanitize($_POST["email"], 3)); 
+					
+					$error=0;
+					
+					if($user_old->user_login!=$username){	
+					if (!isset($username) || strlen($username) < 3) {
+					 $main_smarty->assign(username_error, $main_smarty->get_config_vars('PLIGG_Visual_Register_Error_UserTooShort'));
+					 $error=1;			
+					}
+					elseif (!preg_match('/^[a-zA-Z0-9\-]+$/', $username)) {
+					 $main_smarty->assign(username_error, $main_smarty->get_config_vars('PLIGG_Visual_Register_Error_UserInvalid'));
+					 $error=1;
+					}
+					elseif (user_exists(trim($username)) ) {
+					 $main_smarty->assign(username_error, $main_smarty->get_config_vars('PLIGG_Visual_Register_Error_UserExists'));
+					 $error=1;
+					 }
+					}
+					
+					if($user_old->user_email!=$email){
+					if (!check_email(trim($email))) {
+					 $main_smarty->assign(email_error, $main_smarty->get_config_vars('PLIGG_Visual_Register_Error_BadEmail'));
+					 $error=1;
+					}
+					elseif (email_exists(trim($email))) {
+					 $main_smarty->assign(email_error, $main_smarty->get_config_vars('PLIGG_Visual_Register_Error_EmailExists'));
+					 $error=1;			
+					}
+					}
+					
+										
+					// module system hook
+					$vars = '';
+					
+					check_actions('admin_users_save', $vars);
+					
+					
+					$user->username=$username;
+					$user->level=trim(sanitize($_POST["level"], 3));
+					$user->email=$email;
+					
+					if ($_POST["password"] && $_POST["password"]==$_POST["password2"]){
+						
+					if (strlen($password) < 5 ) {
+					 $main_smarty->assign(password_error, $main_smarty->get_config_vars('PLIGG_Visual_Register_Error_FiveCharPass'));
+					 $error=1;			
+					}else 	
+					    $user->pass = $_POST["password"];
+						
+					}
+					
+					
+					if($error==0){
+					$user->id=$_GET["user_id"];	
+					echo "save";
+					$user->store();
+					header("Location: ".my_pligg_base."/admin/admin_users.php?mode=view&user=".$_GET["user_id"]."");
+					}
+					
+					
+					if($error==1){
+				    $userdata[0]['user_login']=$username;
+					$userdata[0]['user_email']=$email;
+					$userdata[0]['cng_lavel']=$userdata->level;
+					}
+					
+					
+				}
+				else{showmyerror('userdoesntexist');}
+				//user save end
+				
+			} 				
+			//update user data end	
+			
+			
+			$CSRF->create('admin_users_edit', true, true);
 			
 			$main_smarty->assign('userdata', $userdata);
 			$main_smarty->assign('levels', array('normal','admin','moderator','Spammer'));
@@ -254,16 +354,7 @@ if($canIhaveAccess == 1)
 			define('pagename', 'admin_users'); 
 			$main_smarty->assign('pagename', pagename);
 
-			$user=new User();
-			$user->username = sanitize($_GET["user"], 3);
-			if(!$user->read()) {
-				$user = sanitize($_GET["user"], 3);
-				$main_smarty->assign('user', $user);
-				$main_smarty->assign('tpl_center', '/admin/user_does_not_exist');
-				$main_smarty->display($template_dir . '/admin/admin.tpl');
-				die;
-			}
-
+			
 			// module system hook
 			$vars = '';
 			check_actions('admin_users_edit', $vars);
@@ -275,125 +366,7 @@ if($canIhaveAccess == 1)
 		
 		
 
-			if (sanitize($_POST["mode"], 3) == $main_smarty->get_config_vars('PLIGG_Visual_Profile_Save')){ //save user info
-			// code to prevent CSRF
 			
-			
-			$CSRF->check_expired('admin_users_edit');
-
-			if ($CSRF->check_valid(sanitize($_POST['token'], 3), 'admin_users_edit')){
-				
-				$user = $db->get_row('SELECT * FROM ' . table_users . ' where user_id="'.sanitize($_POST["user_id"], 3).'"');
-				
-				
-				   $username=trim(sanitize($_POST["login"], 3));
-				   $email=trim(sanitize($_POST["email"], 3)); 
-					
-					$error=0;
-					
-					if($user->user_login!=$username){	
-					if (!isset($username) || strlen($username) < 3) {
-					 $main_smarty->assign(username_error, $main_smarty->get_config_vars('PLIGG_Visual_Register_Error_UserTooShort'));
-					 $error=1;			
-					}
-					elseif (!preg_match('/^[a-zA-Z0-9\-]+$/', $username)) {
-					 $main_smarty->assign(username_error, $main_smarty->get_config_vars('PLIGG_Visual_Register_Error_UserInvalid'));
-					 $error=1;
-					}
-					elseif (user_exists(trim($username)) ) {
-					 $main_smarty->assign(username_error, $main_smarty->get_config_vars('PLIGG_Visual_Register_Error_UserExists'));
-					 $error=1;
-					 }
-					}
-					
-					if($user->user_email!=$email){
-					if (!check_email(trim($email))) {
-					 $main_smarty->assign(email_error, $main_smarty->get_config_vars('PLIGG_Visual_Register_Error_BadEmail'));
-					 $error=1;
-					}
-					elseif (email_exists(trim($email))) {
-					 $main_smarty->assign(email_error, $main_smarty->get_config_vars('PLIGG_Visual_Register_Error_EmailExists'));
-					 $error=1;			
-					}
-					}
-					
-					
-					
-					
-					canIChangeUser($user->user_level);
-					
-					if ($user) {
-					$userdata=new User();
-					$userdata->username = $user->user_login;
-					if(!$userdata->read()) {
-						echo "Error reading user data.";
-						die;
-					}
-					
-					// module system hook
-					$vars = '';
-					
-					check_actions('admin_users_save', $vars);
-					
-					$userdata->username=$username;
-					$userdata->level=trim(sanitize($_POST["level"], 3));
-					$userdata->email=$email;
-					
-					if ($_POST["password"] && $_POST["password"]==$_POST["password2"]){
-						
-					if (strlen($password) < 5 ) {
-					 $main_smarty->assign(password_error, $main_smarty->get_config_vars('PLIGG_Visual_Register_Error_FiveCharPass'));
-					 $error=1;			
-					}else	
-					    $userdata->pass = $_POST["password"];
-						
-					}
-					
-					
-					
-					if($error==0)
-					$userdata->store();
-	
-					// breadcrumbs and page title
-					$navwhere['text1'] = $main_smarty->get_config_vars('PLIGG_Visual_Header_AdminPanel');
-					$navwhere['link1'] = getmyurl('admin', '');
-					$navwhere['text2'] = $main_smarty->get_config_vars('PLIGG_Visual_Header_AdminPanel_1');
-					$navwhere['link2'] = my_pligg_base . "/admin/admin_users.php";
-					$navwhere['text3'] = $main_smarty->get_config_vars('PLIGG_Visual_Breadcrumb_Edit_User_Data_Saved');
-					$main_smarty->assign('navbar_where', $navwhere);
-					$main_smarty->assign('posttitle', " / " . $main_smarty->get_config_vars('PLIGG_Visual_Header_AdminPanel'));
-					
-					// pagename
-					define('pagename', 'admin_users'); 
-					$main_smarty->assign('pagename', pagename);
-					
-					if($error==1){
-				   $userdata=array();
-					$usersql = mysql_query('SELECT * FROM ' . table_users . ' where user_id="'.sanitize($_POST["user_id"], 3).'"');
-					$userdata = array();
-					while ($rows = mysql_fetch_array ($usersql, MYSQL_ASSOC)) array_push ($userdata, $rows);
-				   $main_smarty->assign('userdata', $userdata);
-			       $main_smarty->assign('levels', array('normal','admin','moderator','Spammer'));	
-				   
-				   $vars = '';
-			check_actions('admin_users_edit', $vars);	
-				   $main_smarty->assign('tpl_center', '/admin/user_edit');
-			       $main_smarty->display($template_dir . '/admin/admin.tpl');	
-			        
-					
-					}
-	                
-					if($error==0)
-					header("Location: ".my_pligg_base."/admin/admin_users.php?mode=view&user=".$username."");
-					
-					
-				}
-				else{showmyerror('userdoesntexist');}
-			} else {
-				$CSRF->show_invalid_error(1);
-			}
-		}
-		
 		
 		
 		//
@@ -750,8 +723,8 @@ function showmyerror()
 	$main_smarty->assign('navbar_where', $navwhere);
 	$main_smarty->assign('posttitle', " / " . $main_smarty->get_config_vars('PLIGG_Visual_Header_AdminPanel'));
 	
-	// pagename
-	define('pagename', 'admin_users'); 
+	// pagename	define('pagename', 'admin_users'); 
+
 	$main_smarty->assign('pagename', pagename);
 
 	// show the template
