@@ -262,6 +262,7 @@ if($canIhaveAccess == 1)
 				
 				   $username=trim(sanitize($_POST["login"], 3));
 				   $email=trim(sanitize($_POST["email"], 3)); 
+				   $password=$_POST['password'];
 					
 					$error=0;
 					
