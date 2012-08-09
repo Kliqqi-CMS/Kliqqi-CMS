@@ -3,7 +3,7 @@
 *************************************}
 <!-- topusers_data.tpl -->
 <tr>
-	<td>{$user_rank}</td>
+	<td style="text-align:center;">{$user_rank}</td>
 	<td>{if $UseAvatars neq "0"}<img src="{$user_avatar}" align="absmiddle" />{/if} <a href="{$user_userlink}">{$user_username}</a></td>
 	<td>{$user_total_links}</td>
 	{if $user_total_links gt 0}
