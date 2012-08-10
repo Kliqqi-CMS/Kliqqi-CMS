@@ -8,13 +8,60 @@ function submit_list_form(){
 		//alert(x);
 		//alert(document.getElementById("user_list_form"));
 }
+
+
+
+function mark_user_enable() {
+
+	document.user_list_form.all1.checked=1;
+	document.user_list_form.all2.checked=0;
+	document.user_list_form.spanall.checked=0;
+	
+	for (var i=0; i< document.user_list_form.length; i++) {
+		if (document.user_list_form[i].value == "1") {
+			document.user_list_form[i].checked = true;
+		}
+	}
+}
+
+
+function mark_user_disable() {
+
+	document.user_list_form.all1.checked=0;
+	document.user_list_form.all2.checked=1;
+	document.user_list_form.spanall.checked=0;
+	
+	for (var i=0; i< document.user_list_form.length; i++) {
+		if (document.user_list_form[i].value == "0") {
+			document.user_list_form[i].checked = true;
+		}
+	}
+}
+
+
+function mark_user_spam() {
+
+	document.user_list_form.all1.checked=0;
+	document.user_list_form.all2.checked=0;
+	document.user_list_form.spanall.checked=1;
+	
+	for (var i=0; i< document.user_list_form.length; i++) {
+		if (document.user_list_form[i].value == "3") {
+			document.user_list_form[i].checked = true;
+		}
+	}
+}
+
+
+
+
 </script>
 {/literal}
 <legend>{#PLIGG_Visual_AdminPanel_User_Manage#}</legend>
 {include file="/admin/user_create.tpl"}
 <table>
 	<tr>
-		<form action="{$my_base_url}{$my_pligg_base}/admin/admin_users.php" method="get">
+		<form action="{$my_base_url}{$my_pligg_base}/admin/admin_users.php" method="get" >
 			<td>
 				<div class="input-append">
 					<input type="hidden" name="mode" value="search">
@@ -58,7 +105,7 @@ function submit_list_form(){
 {if isset($usererror)}
 	<span class="error">{$usererror}</span><br/>
 {/if}
-<form name="user_list_formasd" id="user_list_form" action="{$my_base_url}{$my_pligg_base}/admin/admin_users.php" method="post">
+<form name="user_list_form" id="user_list_form" action="{$my_base_url}{$my_pligg_base}/admin/admin_users.php" method="post">
 <input type="hidden" name="frmsubmit" value="userlist" />	
 {$hidden_token_admin_users_list}
 <table class="table table-bordered table-striped table-condensed tablesorter" id="tablesorter-userTable">
@@ -69,8 +116,11 @@ function submit_list_form(){
 			<th style="text-align:center;">{#PLIGG_Visual_View_User_Level#}</th>
 			<th>{#PLIGG_Visual_View_User_Email#}</th>
 			<th style="width:140px">{#PLIGG_Visual_User_Profile_Joined#}</th>
-			<th style="text-align:center;">{#PLIGG_Visual_User_Profile_Enabled#}</th>
-			<th style="text-align:center;">{#PLIGG_Visual_KillSpam#}</th>
+			<th style="text-align:center;"><input type='checkbox' onclick='mark_user_enable();' name="all1" style="margin:0px 4px 3px 0;"><a onclick='mark_user_enable();'>{#PLIGG_Visual_User_Profile_Enabled#}</a></th>
+            <th style="text-align:center;"><input type='checkbox' name='all2' onclick='mark_user_disable();' ><a onclick='mark_user_disable();'>{#PLIGG_Visual_User_Profile_Disabled#}</a></th>
+            
+			<th style="text-align:center;"><input type='checkbox' name='spanall' onclick='mark_user_spam();' ><a onclick='mark_user_spam();'>{#PLIGG_Visual_KillSpam#}</a></th>
+            
 		</tr>
 	</thead>
 	<tbody>
@@ -89,10 +139,24 @@ function submit_list_form(){
 				</td>
 				<td>{$userlist[nr].user_date}</td>
 				<td style="text-align:center;vertical-align:middle;">
-					<input type="radio" name="enabled[{$userlist[nr].user_id}]"  {if $userlist[nr].user_enabled}checked{/if} value="1">
-					<!--<input type="hidden" name="enabled[{$userlist[nr].user_id}]" id="enabled_{$userlist[nr].user_id}" value="{$userlist[nr].user_enabled}">-->
+					<input type="radio" name="enabled[{$userlist[nr].user_id}]" id="link-{$userlist[nr].user_id}"  {if $userlist[nr].user_enabled}checked{/if} value="1">
+					
 				</td>
-				<td style="text-align:center;vertical-align:middle;"><div style="text-align:center"><input type="radio" id='killspam' name='enabled[{$userlist[nr].user_id}]' value='0' {if $userlist[nr].user_enabled neq 1}checked{/if}></div></td>	
+                
+                <td style="text-align:center;vertical-align:middle;">
+                {if $userlist[nr].user_level neq 'admin' and $userlist[nr].user_level neq 'moderator'}
+					<input type="radio" name="enabled[{$userlist[nr].user_id}]" id="link-{$userlist[nr].user_id}"  {if $userlist[nr].user_enabled eq 0 }checked{/if} value="0">
+					{/if}
+				</td>
+                
+				<td style="text-align:center;vertical-align:middle;">
+                {if $userlist[nr].user_level neq 'admin' and $userlist[nr].user_level neq 'moderator'}
+                <div style="text-align:center">
+                 <input type="radio" name='enabled[{$userlist[nr].user_id}]' value='3' id="link-{$userlist[nr].user_id}" {if $userlist[nr].user_enabled eq 3}checked{/if}></div>
+                {/if}
+                </td>
+                
+                
 			</tr>
 		{/section}
 	</tbody>

@@ -37,9 +37,12 @@ $canIhaveAccess = $canIhaveAccess + checklevel('moderator');
 
 $PliggDoc->add_js(my_base_url.my_pligg_base."/templates/admin/js/jquery.tablesorter.js");
 
-$PliggDoc->add_js("$(function() {		
-            $('#tablesorter-userTable').tablesorter({sortList:[[0,0]], widgets: ['zebra']});
-            $('#options').tablesorter({sortList: [[0,0]], headers: { 3:{sorter: false}, 1:{sorter: false}}});
+
+
+$PliggDoc->add_js("$(function() {
+				
+            $('#tablesorter-userTable').tablesorter({sortList: [[0,1]], headers: { 5:{sorter: false}, 6:{sorter: false}, 7:{sorter: false}}});
+            
         });	", true);
 
 $PliggDoc->get_js();
@@ -79,7 +82,11 @@ if($canIhaveAccess == 1)
 				if ($user->user_enabled != $value)
 				{
 					canIChangeUser($user->user_level);
+					
+					if($value==1 or $value==0)
 					$db->query("UPDATE ".table_users." SET user_enabled='$value', user_level=IF(user_level='Spammer','normal',user_level) WHERE user_id='".$db->escape($id)."'");
+					elseif($value==3)
+					killspam($id);
 				}
 			}
 	    	} else {
@@ -245,7 +252,6 @@ if($canIhaveAccess == 1)
 			if(!$user->read()) {
 				$user = sanitize($userdata[0]['user_login'], 3);
 				$main_smarty->assign('user', $user);
-				echo "ankannest";
 				$main_smarty->assign('tpl_center', '/admin/user_does_not_exist');
 				$main_smarty->display($template_dir . '/admin/admin.tpl');
 				die;
