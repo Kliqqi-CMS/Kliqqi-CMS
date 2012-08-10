@@ -30,7 +30,7 @@ function start() {
 function get_data() {
 	if (busy) return;
 	busy = true;
-	url  = my_base_url + my_pligg_base + '/live2.php?time=' + timestamp;
+	url  = window.location.href.replace(/\/live.*?$/, '/live2.php?time=' + timestamp);
 
     	$.get(url, function (data) {
 		busy = false;
