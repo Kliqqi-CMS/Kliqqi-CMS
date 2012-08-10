@@ -117,9 +117,11 @@ function dropbox_backup_showpage(){
 					$fullpath = $z->compress($src,$dst);
 					$source = basename($fullpath);
 					
-					$status = 'success';
-					$message = 'The file has been sent to your Dropbox account.';
-	
+					if ($status != 'error'){
+						$status = 'success';
+						$message = 'The file has been sent to your Dropbox account.';
+					}
+					
 					// Send to Dropbox
 					$dropbox_email=escapeshellcmd(get_misc_data('dropbox_backup_email'));	// Dropbox email address
 					$dropbox_pass=escapeshellcmd(get_misc_data('dropbox_backup_pass'));   	// Dropbox password
