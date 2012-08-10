@@ -15,7 +15,7 @@ include(mnminclude.'link.php');
 include(mnminclude.'user.php');
 include(mnminclude.'smartyvariables.php');
 include(mnminclude.'csrf.php');
-			
+
 check_referrer();
 
 // require user to log in
@@ -100,10 +100,9 @@ if($canIhaveAccess == 1) {
 				break;
 
 	  	}	
-	}
-	else
+	} else {
 		$filter_sql = " link_status <> 'page' AND link_status <> 'discard' AND link_status <> 'spam' ";
-
+	}
 	$filtered = $db->get_results($sql="SELECT SQL_CALC_FOUND_ROWS * FROM " . table_links . " WHERE $filter_sql $search_sql $user_sql ORDER BY link_date DESC LIMIT $offset,$pagesize");
 	$rows = $db->get_var("SELECT FOUND_ROWS()");
 
@@ -112,21 +111,21 @@ if($canIhaveAccess == 1) {
 	$link = new Link;
 	if($filtered) {
     $template_stories = array();
-	  foreach($filtered as $dbfiltered) {
-	    $link->id = $dbfiltered->link_id;
- 	    $cached_links[$dbfiltered->link_id] = $dbfiltered;
-	    $link->read();
-	    $user->id = $link->author;
-	    $user->read();
-		  $template_stories[] = array(
+		foreach($filtered as $dbfiltered) {
+			$link->id = $dbfiltered->link_id;
+			$cached_links[$dbfiltered->link_id] = $dbfiltered;
+			$link->read();
+			$user->id = $link->author;
+			$user->read();
+			$template_stories[] = array(
 				'link_title_url' => $link->title_url,
 				'link_id' => $link->id,
 				'link_title' => $link->title,
 				'link_status' => $link->status,
 				'link_author' => $user->username,
-		  );
-	  }
-	  $main_smarty->assign('template_stories', $template_stories);
+			);
+		}
+		$main_smarty->assign('template_stories', $template_stories);
 	}
 
 	// breadcrumbs and page title
@@ -149,7 +148,6 @@ if($canIhaveAccess == 1) {
 			foreach($comment as $key => $value) {
 				if ($value == "published") {
 					$db->query('UPDATE `' . table_links . '` SET `link_status` = "published", link_published_date = now() WHERE `link_id` = "'.$key.'"');
-
 					$vars = array('link_id' => $key);
 					check_actions('link_published', $vars);
 				}
