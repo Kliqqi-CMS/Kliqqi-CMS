@@ -41,7 +41,7 @@ $PliggDoc->add_js(my_base_url.my_pligg_base."/templates/admin/js/jquery.tablesor
 
 $PliggDoc->add_js("$(function() {
 				
-            $('#tablesorter-userTable').tablesorter({sortList: [[0,1]], headers: { 5:{sorter: false}, 6:{sorter: false}, 7:{sorter: false}}});
+            $('#tablesorter-userTable').tablesorter({sortList: [[1,1]], headers: { 5:{sorter: false}, 6:{sorter: false}, 0:{sorter: false}}});
             
         });	", true);
 
@@ -72,22 +72,41 @@ if($canIhaveAccess == 1)
 		  if ($_POST["enabled"]) {
 	    	$CSRF->check_expired('admin_users_list');
 	    	if ($CSRF->check_valid(sanitize($_POST['token'], 3), 'admin_users_list')){
-	
-			foreach($_POST["enabled"] as $id => $value) 
+	        
+			$value = $db->escape($_POST['admin_acction']);
+			
+			foreach($_POST["enabled"] as $id => $valuea) 
 			{
 				$_GET['id'] = $id = $db->escape($id);
-				$value = $db->escape($value);
+				
 								
 				$user= $db->get_row('SELECT * FROM ' . table_users ." where user_id=$id");
-				if ($user->user_enabled != $value)
+				
+				if($value==3)
 				{
-					canIChangeUser($user->user_level);
+				 if($user->user_level!="Spammer")	
+				  killspam($id);
+				 
+				}elseif($value==2){
 					
-					if($value==1 or $value==0)
-					$db->query("UPDATE ".table_users." SET user_enabled='$value', user_level=IF(user_level='Spammer','normal',user_level) WHERE user_id='".$db->escape($id)."'");
-					elseif($value==3)
-					killspam($id);
+				 if ($user->user_enabled != 0)
+				   {
+					canIChangeUser($user->user_level);
+				 $db->query("UPDATE ".table_users." SET user_enabled='0', user_level=IF(user_level='Spammer','normal',user_level) WHERE user_id='".$db->escape($id)."'");
+				   }
+					
+				}elseif($value==1){
+					
+				 if ($user->user_enabled != 1)
+				   {
+					canIChangeUser($user->user_level);
+				 $db->query("UPDATE ".table_users." SET user_enabled='1', user_level=IF(user_level='Spammer','normal',user_level) WHERE user_id='".$db->escape($id)."'");
+					
+				   }	
+					
 				}
+				
+				
 			}
 	    	} else {
 			$CSRF->show_invalid_error(1);
