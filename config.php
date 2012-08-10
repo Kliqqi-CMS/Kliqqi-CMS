@@ -13,7 +13,7 @@ error_reporting(E_ALL ^ E_NOTICE ^ E_WARNING);
 ini_set('display_errors','Off');
 ini_set('error_log','cache/log.php');
 
-// experimental caching
+// Template Caching
 // 0 = off
 // 1 = on
 define('caching', 1);
