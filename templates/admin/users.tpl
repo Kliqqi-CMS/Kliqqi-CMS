@@ -1,7 +1,6 @@
 ﻿<!-- users.tpl -->
 {literal}
 <script type="text/javascript" language="javascript">
-
 function submit_list_form(){
 	document.getElementById("user_list_form").submit();
 	//for(x in document.getElementById("user_list_form"))
@@ -9,93 +8,71 @@ function submit_list_form(){
 	//alert(document.getElementById("user_list_form"));
 }
 
-
-
 $(function(){
-
 	// add multiple select / deselect functionality
 	$("#selectall_user_ed").click(function () {
 		  $('.enabled_disable').attr('checked', this.checked);
 	});
-
 	// if all checkbox are selected, check the selectall checkbox
 	// and viceversa
 	$(".enabled_disable").click(function(){
-
 		if($(".enabled_disable").length == $(".enabled_disable:checked").length) {
 			$("#selectall_user_ed").attr("checked", "checked");
 		} else {
 			$("#selectall_user_ed").removeAttr("checked");
 		}
-
 	});
 });
 
-
- function set_admin_action(acc){
-	 
-	 if(acc==1){
-	 $("#selected_action").addClass("icon-user");
-	  $("#selected_action").removeClass("icon-trash");
-	  $("#selected_action").removeClass("icon-ban-circle");
-	  $("#admin_action").val(1);
-	 }
-	 
-	 if(acc==2){
-	 $("#selected_action").addClass("icon-ban-circle");
-	 $("#selected_action").removeClass("icon-user");
-	  $("#selected_action").removeClass("icon-trash");
-	   $("#admin_action").val(2);
-	 }
-	 
-	 if(acc==3){
-	  $("#selected_action").addClass("icon-trash");
-	  $("#selected_action").removeClass("icon-ban-circle");
-	  $("#selected_action").removeClass("icon-user");
-	   $("#admin_action").val(3);
-	 }
-	 
-	 
-	submit_list_form(); 
-	 
-  }
-
-
-function validate_all_user_action(){
-	
-	if($("#admin_action").val()==""){
-    alert("select user list");
-	return false;
+function set_admin_action(acc){
+	if(acc==1){
+		$("#selected_action").addClass("icon-user");
+		$("#selected_action").removeClass("icon-trash");
+		$("#selected_action").removeClass("icon-ban-circle");
+		$("#admin_action").val(1);
 	}
-	
+	if(acc==2){
+		$("#selected_action").addClass("icon-ban-circle");
+		$("#selected_action").removeClass("icon-user");
+		$("#selected_action").removeClass("icon-trash");
+		$("#admin_action").val(2);
+	}
+	if(acc==3){
+		$("#selected_action").addClass("icon-trash");
+		$("#selected_action").removeClass("icon-ban-circle");
+		$("#selected_action").removeClass("icon-user");
+		$("#admin_action").val(3);
+	}
+	submit_list_form(); 
 }
 
+function validate_all_user_action(){
+	if($("#admin_action").val()==""){
+		alert("select user list");
+		return false;
+	}
+}
 </script>
 {/literal}
 <legend>{#PLIGG_Visual_AdminPanel_User_Manage#}</legend>
 {include file="/admin/user_create.tpl"}
 <form action="{$my_base_url}{$my_pligg_base}/admin/admin_users.php" method="get" >
-<table border="0">
-	<tr>
-		
+	<table border="0">
+		<tr>
 			<td>
 				<div class="input-append">
 					<input type="hidden" name="mode" value="search">
 					{if isset($templatelite.get.keyword) && $templatelite.get.keyword neq ""}
-							{assign var=searchboxtext value=$templatelite.get.keyword|sanitize:2}
+						{assign var=searchboxtext value=$templatelite.get.keyword|sanitize:2}
 					{else}
-							{assign var=searchboxtext value=#PLIGG_Visual_Search_SearchDefaultText#}			
+						{assign var=searchboxtext value=#PLIGG_Visual_Search_SearchDefaultText#}			
 					{/if}
 					<input type="text" size="30" class="span7" name="keyword" value="{$searchboxtext}" onfocus="if(this.value == '{$searchboxtext}') {ldelim}this.value = '';{rdelim}" onblur="if (this.value == '') {ldelim}this.value = '{$searchboxtext}';{rdelim}"><button type="submit" class="btn">{#PLIGG_Visual_Search_Go#}</button>
 				</div>
 			</td>
-            
-            
-        
-            </tr>
-            
-          </table>
-          </form>
+		</tr>
+	</table>
+</form>
         
           
 
