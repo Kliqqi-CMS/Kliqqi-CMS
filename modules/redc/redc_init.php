@@ -17,7 +17,7 @@ if(defined('mnminclude')){
 		module_add_action('register_check_field', 'redc_check_field','');
 	}
 
-	$include_in_pages = array('module','admin_index','admin_widgets','admin_modules','admin_links','admin_comments','admin_users','admin_config','admin_categories','admin_page','admin_group','admin_editor');
+	$include_in_pages = array('module','admin_backup','admin_index','admin_widgets','admin_modules','admin_links','admin_comments','admin_users','admin_config','admin_categories','admin_page','admin_group','admin_editor');
 	if( do_we_load_module() ) {
 		module_add_action_tpl('tpl_header_admin_main_links', redc_tpl_path . 'redc_admin_main_link.tpl');
 
