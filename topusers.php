@@ -104,7 +104,7 @@ if ($users) {
 			$main_smarty->assign('user_published_votes_percent', '');
 		$main_smarty->assign('user_karma', $user->karma);
 		$main_smarty->assign('user_rank', $ranklist[$user->karma]);
-		$main_smarty->assign('user_avatar', get_avatar('large', "", $user->username, $user->email));
+		$main_smarty->assign('user_avatar', get_avatar('small', "", $user->username, $user->email));
 		
 		$users_table .= $main_smarty->fetch(The_Template . "/topusers_data.tpl");
 
