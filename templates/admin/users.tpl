@@ -153,7 +153,7 @@ function validate_all_user_action(){
 		</thead>
 		<tbody>
 			{section name=nr loop=$userlist}
-				<tr {if $userlist[nr].user_enabled eq '0'}class="tr_moderated"{/if}>
+				<tr class="{if $userlist[nr].user_enabled eq '0'}tr_moderated {/if}">
 				<td style="text-align:center;vertical-align:middle;">
 					{if $userlist[nr].user_level neq 'admin'}      
 						<input type="checkbox" name="enabled[{$userlist[nr].user_id}]" class="enabled_disable"  value="1"/>
