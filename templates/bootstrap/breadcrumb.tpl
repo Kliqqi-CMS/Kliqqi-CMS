@@ -1,6 +1,7 @@
 <!-- breadcrumb.tpl -->
 <ul class="breadcrumb">
 	<li><a href="{$my_base_url}{$my_pligg_base}">{#PLIGG_Visual_Home#}</a> <span class="divider">/</span></li>
+	{if $pagename eq "404"}<li class="active">{#PLIGG_Visual_404_Error#}</li>{/if}
 	{if $pagename eq "submit"}<li class="active">{#PLIGG_Visual_Submit#}</li>{/if}
 	{if $pagename eq "submit_groups"}<li><a href="{$URL_groups}">{#PLIGG_Visual_Groups#}</a> <span class="divider">/</span></li><li class="active">{#PLIGG_Visual_Submit_A_New_Group#}</li>{/if}
 	{if $pagename eq "groups"}<li class="active">{#PLIGG_Visual_Groups#}</li>{/if}
