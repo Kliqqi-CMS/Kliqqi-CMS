@@ -3,7 +3,7 @@
 	$module_info['desc'] = 'Allows you to attach images and files to an article';
 	$module_info['version'] = 1.10;
 	$module_info['update_url'] = 'http://forums.pligg.com/versioncheck.php?product=upload';
-	$module_info['homepage_url'] = 'http://forums.pligg.com/pligg-modules/17484-upload-module-file-image-attachment.html';
+	$module_info['homepage_url'] = 'http://forums.pligg.com/free-modules/13594-upload-module-file-image-attachment.html';
 	$module_info['settings_url'] = '../module.php?module=upload';
 	// this is where you set the modules "name" and "version" that is required
 	// if more that one module is required then just make a copy of that line

@@ -3,7 +3,7 @@
 	$module_info['desc'] = 'Allows the Admin users to edit templates easily by inserting code through a module';
 	$module_info['version'] = 1.00;
 	$module_info['update_url'] = 'http://forums.pligg.com/versioncheck.php?product=snippets';
-	$module_info['homepage_url'] = 'http://forums.pligg.com/pligg-modules/16306-admin-snippets.html';
+	$module_info['homepage_url'] = 'http://forums.pligg.com/free-modules/12648-admin-snippets.html';
 	$module_info['settings_url'] = '../module.php?module=admin_snippet';
 	
 	$module_info['db_add_table'][]=array(
