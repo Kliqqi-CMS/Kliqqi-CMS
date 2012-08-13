@@ -2,7 +2,35 @@
 {literal}
 <script type="text/javascript" language="javascript">
 function submit_list_form(){
+	
+	if($(".enabled_disable:checked").length==0) {
+		alert("please select users");
+		return false;
+	}
+	
+	val_action=$("#admin_action").val();
+	
+	if(val_action==3){
+		
+	var usernames ="";
+    $('.enabled_disable:checked').each(function(i){
+     usernames += $(this).attr("usernameval")+", ";
+    });
+		
+		
+		
+	 if(confirm("Are you sure that you want to killspam these users: "+usernames)){
+        
+      } else {
+         return false;
+      }
+
+	}
+	
+	
 	document.getElementById("user_list_form").submit();
+	
+	
 	//for(x in document.getElementById("user_list_form"))
 	//alert(x);
 	//alert(document.getElementById("user_list_form"));
@@ -133,7 +161,7 @@ function validate_all_user_action(){
 {if isset($usererror)}
 	<span class="error">{$usererror}</span><br/>
 {/if}
-<form name="user_list_form" id="user_list_form" action="{$my_base_url}{$my_pligg_base}/admin/admin_users.php" method="post" onsubmit="validate_all_user_action()">
+<form name="user_list_form" id="user_list_form" action="{$my_base_url}{$my_pligg_base}/admin/admin_users.php" method="post" onsubmit="return validate_all_user_action()">
 	<input type="hidden" name="frmsubmit" value="userlist" />	
 	<input type="hidden" name="admin_acction"  value="" id="admin_action"/>
 	{$hidden_token_admin_users_list}
@@ -156,7 +184,7 @@ function validate_all_user_action(){
 				<tr class="{if $userlist[nr].user_enabled eq '0'}tr_moderated {/if}">
 				<td style="text-align:center;vertical-align:middle;">
 					{if $userlist[nr].user_level neq 'admin'}      
-						<input type="checkbox" name="enabled[{$userlist[nr].user_id}]" class="enabled_disable"  value="1"/>
+						<input type="checkbox" name="enabled[{$userlist[nr].user_id}]" class="enabled_disable"  value="1" usernameval="{$userlist[nr].user_login}"/>
 					{/if} 
 					</td>
 					<td style="width:40px;text-align:center;vertical-align:middle;">{$userlist[nr].user_id}</td>
