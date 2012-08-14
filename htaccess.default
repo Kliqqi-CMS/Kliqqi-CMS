@@ -210,6 +210,8 @@ RewriteRule ^([^/]+)/page/([^/]+)/?$ index.php?category=$1&page=$2 [L]
 RewriteCond %{REQUEST_FILENAME} !-d
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteRule ^([^/]+)/([^/]+)/?$ story.php?title=$2&category=$1 [L]
+RewriteRule ^([^/]+)/([^/]+)/([0-9]+)/?$ story.php?title=$2&category=$1&comment_id=$3 [L] 
+RewriteRule ^([^/]+)/([^/]+)/reply/([0-9]+)/?$ story.php?title=$2&category=$1&comment_id=$3&reply=1 [L] 
 ##### URL Method 2 End #####
 
 ## Disable directory browsing
