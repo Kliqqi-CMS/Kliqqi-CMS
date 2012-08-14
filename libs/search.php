@@ -60,16 +60,30 @@ class Search {
 			$from_where .= " link_url LIKE '%$this->url%' ";
 		}
 
-		if ($this->filterToTimeFrame == 'today') 
-			$from_where .= " AND link_date > DATE_SUB(NOW(),INTERVAL 1 DAY) "; 
-		elseif ($this->filterToTimeFrame == 'yesterday') 
-			$from_where .= " AND link_date BETWEEN DATE_SUB(NOW(),INTERVAL 2 DAY) AND DATE_SUB(NOW(),INTERVAL 1 DAY) "; 
-		elseif ($this->filterToTimeFrame == 'week') 
-			$from_where .= " AND link_date > DATE_SUB(NOW(),INTERVAL 7 DAY) "; 
-		elseif ($this->filterToTimeFrame == 'month') 
-			$from_where .= " AND link_date > DATE_SUB(NOW(),INTERVAL 1 MONTH) "; 
-		elseif ($this->filterToTimeFrame == 'year') 
-			$from_where .= " AND link_date > DATE_SUB(NOW(),INTERVAL 1 YEAR) "; 
+		// Sort filters for published and upcoming pages
+		if ($this->filterToStatus == 'published') {
+			if ($this->filterToTimeFrame == 'today') 
+				$from_where .= " AND link_published_date > DATE_SUB(NOW(),INTERVAL 1 DAY) "; 
+			elseif ($this->filterToTimeFrame == 'yesterday') 
+				$from_where .= " AND link_published_date BETWEEN DATE_SUB(NOW(),INTERVAL 2 DAY) AND DATE_SUB(NOW(),INTERVAL 1 DAY) "; 
+			elseif ($this->filterToTimeFrame == 'week') 
+				$from_where .= " AND link_published_date > DATE_SUB(NOW(),INTERVAL 7 DAY) "; 
+			elseif ($this->filterToTimeFrame == 'month') 
+				$from_where .= " AND link_published_date > DATE_SUB(NOW(),INTERVAL 1 MONTH) "; 
+			elseif ($this->filterToTimeFrame == 'year') 
+				$from_where .= " AND link_published_date > DATE_SUB(NOW(),INTERVAL 1 YEAR) "; 
+		} else {
+			if ($this->filterToTimeFrame == 'today') 
+				$from_where .= " AND link_date > DATE_SUB(NOW(),INTERVAL 1 DAY) "; 
+			elseif ($this->filterToTimeFrame == 'yesterday') 
+				$from_where .= " AND link_date BETWEEN DATE_SUB(NOW(),INTERVAL 2 DAY) AND DATE_SUB(NOW(),INTERVAL 1 DAY) "; 
+			elseif ($this->filterToTimeFrame == 'week') 
+				$from_where .= " AND link_date > DATE_SUB(NOW(),INTERVAL 7 DAY) "; 
+			elseif ($this->filterToTimeFrame == 'month') 
+				$from_where .= " AND link_date > DATE_SUB(NOW(),INTERVAL 1 MONTH) "; 
+			elseif ($this->filterToTimeFrame == 'year') 
+				$from_where .= " AND link_date > DATE_SUB(NOW(),INTERVAL 1 YEAR) "; 
+		}
 		
 		/////sorojit: for user selected category display
 		if($_COOKIE['mnm_user'])
