@@ -4792,6 +4792,9 @@ button.close {
   .span8 {
     width: 770px;
   }
+  .span_comment {
+ 	width:100%;
+  }
   .span7 {
     width: 670px;
   }
