@@ -172,7 +172,7 @@ if(is_numeric($requestID)) {
 	$main_smarty->assign('the_story', $link->print_summary('full', true));
 	
 	
-	echo $parent_comment_id=sanitize($_GET['comment_id'], 3);
+	$parent_comment_id=sanitize($_GET['comment_id'], 3);
 	
 	if(isset($_GET['reply']) && !empty($parent_comment_id)){
 	$main_smarty->assign('the_comments', get_comments(true,0,$_GET['comment_id']));
