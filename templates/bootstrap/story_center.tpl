@@ -10,22 +10,33 @@
 	{if count($related_story) neq 0}<li><a data-toggle="tab" href="#related">{#PLIGG_Visual_Story_RelatedStory#}</a></li>{/if}
 	{checkActionsTpl location="tpl_pligg_story_tab_end"}
 </ul>
+<script language="javascript">
+var story_link="{$story_url}";
 {literal}
-	<script>
+	
 		$(function () {
 			$('#storytabs a[href="#comments"]').tab('show');
 			$('#storytabs a[href="#who_voted"]').tab('show');
 			$('#storytabs a[href="#who_downvoted"]').tab('show');
 			$('#storytabs a[href="#related"]').tab('show');
-		})
-	</script>
+		});
+		
+function show_replay_comment_form(id){
+   	document.location.href=story_link+'/reply/'+id+'#comment-reply-'+id;
+}
+
+function show_comments(id){
+		document.location.href=story_link+'/'+id+'#comment-'+id;
+}
+	
 {/literal}
+</script>
 <div id="tabbed" class="tab-content">
 	<div class="tab-pane fade active in" id="comments" >
 		<h3>{#PLIGG_Visual_Story_Comments#}</h3>
 		<a name="comments" href="#comments"></a>
 		{checkActionsTpl location="tpl_pligg_story_comments_start"}
-		<form action="" method="post" id="thisform">
+		
 			<ol class="comment-list">
 				{checkActionsTpl location="tpl_pligg_story_comments_individual_start"}
 					{$the_comments}
@@ -40,7 +51,7 @@
 					</div>
 				{/if}
 			</ol>	
-		</form>
+	
 		{checkActionsTpl location="tpl_pligg_story_comments_end"}
 	</div>
 	{if count($voter) neq 0}
@@ -100,3 +111,4 @@
 	{checkActionsTpl location="tpl_pligg_story_tab_end_content"}
 </div>
 <!--/story_center.tpl -->
+

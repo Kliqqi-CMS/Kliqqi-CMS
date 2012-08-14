@@ -20,7 +20,7 @@
 				{/if}
 			{/if}
 		</div>
-		<div class="span8 comment-right" id="wholecomment{$comment_id}">
+		<div class="span_comment comment-right" id="wholecomment{$comment_id}">
 			{if $user_logged_in == $user_userlogin || $isadmin eq 1}
 				<div class="btn-group pull-right">
 					<a class="btn dropdown-toggle" data-toggle="dropdown" href="#">
@@ -50,9 +50,12 @@
 				<span class="comment-date">
 					{$comment_age} {#PLIGG_Visual_Comment_Ago#} 
 				</span>
+                <span class="comment-reply">
+                <a href="#" onclick="show_comments('{$comment_id}')" id="comment-{$comment_id}">Permalink</a>
+                </span>
 				<span class="comment-reply">
 					{if $current_userid neq 0} 
-						<a data-toggle="modal" href="#replymodal-{$comment_id}" >{#PLIGG_Visual_Comment_Reply#}</a>
+						<a href="#" onclick="show_replay_comment_form('{$comment_id}')" id="comment-reply-{$comment_id}" >{#PLIGG_Visual_Comment_Reply#}</a>
 					{/if}
 				</span>
 				{if $comment_votes lt 0}
@@ -68,26 +71,7 @@
 			{/if}
 		</div>
 
-		{if $current_userid neq 0} 
-			{* Display comment form if replying to a comment *}
-			<div class="modal hide" id="replymodal-{$comment_id}">
-				<div class="modal-header">
-					<button type="button" class="close" data-dismiss="modal">×</button>
-					<h3>{#PLIGG_Visual_Comment_Send#}</h3>
-				</div>
-				<div class="modal-body">
-					<div id="reply-{$comment_id}"> 
-						<textarea name="reply_comment_content[{$comment_id}]" id="reply_comment_content-{$comment_id}" rows="5" style="width:98%;" />{$TheComment}</textarea>
-						<p>{#PLIGG_Visual_Comment_NoHTML#}</p>
-					</div>
-				</div>
-				<div class="modal-footer">
-					<a href="#" class="btn" data-dismiss="modal">{#PLIGG_Visual_View_User_Edit_Cancel#}</a>
-					<input type="submit" name="submit[{$comment_id}]" value="{#PLIGG_Visual_Comment_Submit#}" class="btn btn-primary" />
-				</div>
-			</div>
-		{/if}
-			
+					
 	</div>
 	{checkActionsTpl location="tpl_pligg_story_comments_single_end"}
 </li>

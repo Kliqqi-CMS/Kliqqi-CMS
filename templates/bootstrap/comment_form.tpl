@@ -3,6 +3,7 @@
 *************************************}
 <!-- comment_form.tpl -->
 <a name="discuss"></a>
+<form action="" method="post" id="thisform" name="mycomment_form">
 <div class="form-horizontal">
 	<fieldset>
 		{checkActionsTpl location="tpl_pligg_story_comments_submit_start"}
@@ -13,6 +14,7 @@
 				<p class="help-inline">{#PLIGG_Visual_Comment_NoHTML#}</p>
 			</div>
 		</div>
+        
 		{if isset($register_step_1_extra)}
 			{$register_step_1_extra}
 		{/if}
@@ -22,8 +24,11 @@
 			<input type="hidden" name="randkey" value="{$randkey}" />
 			<input type="hidden" name="link_id" value="{$link_id}" />
 			<input type="hidden" name="user_id" value="{$user_id}" />
+            <input type="hidden" name="parrent_comment_id" value="{$parrent_comment_id}" />
 			<input type="submit" name="submit" value="{#PLIGG_Visual_Comment_Submit#}" class="btn btn-primary" />
 		</div>
 	</fieldset>
-</div><!--/.form-horizontal -->
+</div>
+</form>
+<!--/.form-horizontal -->
 <!--/comment_form.tpl -->
