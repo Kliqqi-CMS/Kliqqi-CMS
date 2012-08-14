@@ -25,7 +25,7 @@ define('sidebar_stats_pligg_lang_conf', lang_loc . "/languages/lang_" . pligg_la
 
 // don't touch anything past this line.
 
-$sql = "SELECT user_login FROM " . table_users . " ORDER BY user_id DESC LIMIT 1";
+$sql = "SELECT user_login FROM " . table_users . " WHERE user_enabled = '1' ORDER BY user_id DESC LIMIT 1";
 $last_user = $db->get_var($sql);
 $main_smarty->assign('sidebar_stats_last_user', $last_user); 
 
