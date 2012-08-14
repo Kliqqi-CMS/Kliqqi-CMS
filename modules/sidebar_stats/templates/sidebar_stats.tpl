@@ -9,7 +9,7 @@
 		<tbody>
 			<tr>
 				<td><strong>{#Sidebar_Stats_Newest_Member#}</strong></td>
-				<td><a href="{$my_base_url}{$my_pligg_base}/user.php?login={$sidebar_stats_last_user}">{$sidebar_stats_last_user}</a></td>
+				<td>{* <a href="{$my_base_url}{$my_pligg_base}/user.php?login={$sidebar_stats_last_user}"> *}{$sidebar_stats_last_user}{* </a> *}</td>
 			</tr>
 			<tr>
 				<td><strong>{#Sidebar_Stats_Members#}</strong></td>
