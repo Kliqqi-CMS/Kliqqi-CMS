@@ -153,7 +153,9 @@ if(is_numeric($requestID)) {
 	$main_smarty->assign('related_story', related_stories($id, $link->tags, $link->category));
 
 	// meta tags
-	$main_smarty->assign('meta_description', strip_tags($link->truncate_content()));
+	$meta_description = preg_replace(array('/\r/', '/\n/'), '', $link->truncate_content());
+	$main_smarty->assign('meta_description', strip_tags($meta_description));
+
 	$main_smarty->assign('meta_keywords', $link->tags);
 	
 	//sidebar

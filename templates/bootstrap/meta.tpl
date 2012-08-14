@@ -6,7 +6,7 @@
 <meta http-equiv="expires" content="0" />
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />	
 {if $meta_description neq ""}
-	<meta name="description" content="{$meta_description}" />
+	<meta name="description" content="{$meta_description|truncate:"300"}" />
 {elseif $pagename eq "search"}
 	<meta name="description" content="{#PLIGG_Visual_Search_SearchResults#} {$templatelite.get.search|sanitize:2|stripslashes}" />
 {else}
