@@ -1,11 +1,11 @@
 ﻿{config_load file=comment_subscription_lang_conf}
 
-{* SUCCESS MESSAGE DEMO
-<div class="alert alert-success fade in">
-		<a data-dismiss="alert" class="close">×</a>
-		 MESSAGE HERE
-</div>
-*}
+{if $templatelite.post.submit}
+	<div class="alert alert-success">
+		<button class="close" data-dismiss="alert">×</button>
+		{#PLIGG_Comment_Subscription_Saved#}
+    </div>
+{/if}
 
 <legend> {#PLIGG_Comment_Subscription#}</legend>
 <p>{#PLIGG_Comment_Subscription_Instructions#}</p>

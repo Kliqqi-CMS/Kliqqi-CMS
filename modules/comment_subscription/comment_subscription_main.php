@@ -126,8 +126,6 @@ function comment_subscription_showpage(){
 			misc_data_update('cs_from', mysql_real_escape_string($_REQUEST['comment_subscription_from']));
 			misc_data_update('cs_from_email', mysql_real_escape_string($_REQUEST['comment_subscription_from_email']));
 			misc_data_update('cs_subject', mysql_real_escape_string($_REQUEST['comment_subscription_subject']));
-			header("Location: ".my_pligg_base."/module.php?module=comment_subscription");
-			die();
 		}
 		// breadcrumbs
 		$main_smarty->assign('navbar_where', $navwhere);
