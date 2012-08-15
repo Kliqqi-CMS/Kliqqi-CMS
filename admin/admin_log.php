@@ -1,6 +1,12 @@
 <?php
+include_once('../Smarty.class.php');
+$main_smarty = new Smarty;
+
 include('../config.php');
 include(mnminclude.'html1.php');
+include(mnminclude.'smartyvariables.php');
+
+check_referrer();
 
 // require user to log in
 force_authentication();
@@ -23,8 +29,8 @@ if ($_GET['clear'])
     exit;
 }
 
-print "<button onclick='document.location.href=\"admin_log.php?clear=1\"'>Clear log</button><br><br>";
-print "<pre>";
+// show the template
+$main_smarty->assign('tpl_center', '/admin/log');
+$main_smarty->display($template_dir . '/admin/admin.tpl');
 
-@readfile('../'.LOG_FILE);
 ?>
