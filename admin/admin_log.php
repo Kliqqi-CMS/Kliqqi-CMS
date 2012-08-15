@@ -29,6 +29,10 @@ if ($_GET['clear'])
     exit;
 }
 
+// pagename
+define('pagename', 'admin_log'); 
+$main_smarty->assign('pagename', pagename);
+
 // show the template
 $main_smarty->assign('tpl_center', '/admin/log');
 $main_smarty->display($template_dir . '/admin/admin.tpl');
