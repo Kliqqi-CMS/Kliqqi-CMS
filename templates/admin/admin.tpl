@@ -154,7 +154,7 @@
 											$error_log_content = file_get_contents($error_log_path);
 											$error_count = preg_match_all('/\[(\d{2})-(\w{3})-(\d{4}) (\d{2}:\d{2}:\d{2})\]/', $error_log_content, $matches);
 										{/php}
-										<li {if $pagename eq "admin_group"}class="active"{/if} id="manage_errors"><a href="{$my_base_url}{$my_pligg_base}/admin/admin_log.php">Error Log <span class="pull-right badge badge-gray">{php} echo $error_count; {/php}</span></a></li>
+										<li {if $pagename eq "admin_group"}class="active"{/if} id="manage_errors"><a href="{$my_base_url}{$my_pligg_base}/admin/admin_log.php">Error Log {php} if ($error_count != '0'){ echo '<span class="pull-right badge badge-gray">'.$error_count.'</span>'; } {/php}</a></li>
 										{checkActionsTpl location="tpl_pligg_admin_manage_sidebarnav_end"}
                                     </div>
 								</div>
