@@ -6,7 +6,6 @@
 	- clean : A wider see-through (uses your CSS background) theme with a grey line border
 	- custom : User-defined style. See the commented lines further below for an example.
 *}
-
 {literal}
 <script>
 var RecaptchaOptions = {
@@ -19,7 +18,6 @@ var RecaptchaOptions = {
 #recaptcha_image img {width: 100%; }
 </style>
 {/literal}
-
 <div class="control-group{if isset($register_captcha_error)} error{/if}">
 	<label for="input01" class="control-label">CAPTCHA</label>
 	<div class="controls">
@@ -40,10 +38,6 @@ var RecaptchaOptions = {
 		</div>
 	</div>
 </div>
-
-
-
-
 <?php 
 	require_once(captcha_captchas_path . '/reCaptcha/libs/recaptchalib.php');
 	$publickey = get_misc_data('reCaptcha_pubkey'); // you got this from the signup page
