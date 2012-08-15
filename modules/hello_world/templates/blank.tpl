@@ -1,1 +1,0 @@
-{config_load file=hello_world_lang_conf}
