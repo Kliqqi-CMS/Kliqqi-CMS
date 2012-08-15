@@ -136,6 +136,7 @@
 									</span>
 									<span class="badge accordion-heading-alert">
 										{if $pagename eq "admin_index"}
+											{* This needs to be moved into a PHP file and include the error log result *}
 											{math equation="a + b + c + d" a=$total b=$comments c=$members d=$grouptotal}
 										{/if}
 									</span>
@@ -148,7 +149,13 @@
 										<li{if $pagename eq "admin_group"} class="active"{/if} id="manage_groups"><a href="{$my_base_url}{$my_pligg_base}/admin/admin_group.php">Groups <span class="pull-right badge badge-gray">{$grouptotal}</span></a></li>
 										<li{if $pagename eq "admin_page" || $pagename eq "edit_page" || $pagename eq "submit_page"} class="active"{/if} id="manage_pages"><a href="{$my_base_url}{$my_pligg_base}/admin/admin_page.php">Pages</a></li> 
 										<li{if $pagename eq "admin_categories" || $pagename eq "admin_categories_tasks"} class="active"{/if} id="manage_categories"><a href="{$my_base_url}{$my_pligg_base}/admin/admin_categories.php">Categories</a></li> 
-									    {checkActionsTpl location="tpl_pligg_admin_manage_sidebarnav_end"}
+										{php}
+											$error_log_path = '../cache/log.php';
+											$lines = file($error_log_path); 
+											$error_count = count($lines);
+										{/php}
+										<li {if $pagename eq "admin_group"}class="active"{/if} id="manage_errors"><a href="{$my_base_url}{$my_pligg_base}/admin/admin_log.php">Error Log <span class="pull-right badge badge-gray">{php} echo $error_count; {/php}</span></a></li>
+										{checkActionsTpl location="tpl_pligg_admin_manage_sidebarnav_end"}
                                     </div>
 								</div>
 							</div>
