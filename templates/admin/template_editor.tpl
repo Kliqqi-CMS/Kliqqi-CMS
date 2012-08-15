@@ -30,7 +30,7 @@
 			<h3>{#PLIGG_Visual_AdminPanel_Editor_Choose#}</h3>
 			{#PLIGG_Visual_AdminPanel_Editor_Choose_Chmod#}<br />
 			<br />
-			<select name="the_file">
+			<select name="the_file" class="input-xlarge">
 				{foreach from=$files item=file}
 					<option value="{$file}">{$file}</option>
 				{/foreach}
