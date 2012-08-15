@@ -178,7 +178,7 @@ if($canIhaveAccess == 1) {
 	}
 	
 	// pagename
-	define('pagename', 'comments'); 
+	define('pagename', 'admin_comments'); 
 	$main_smarty->assign('pagename', pagename);
 	
 	// read the mysql database to get the pligg version
