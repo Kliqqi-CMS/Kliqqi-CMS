@@ -121,8 +121,14 @@ $main_smarty->assign('moderated_users_count', $moderated_users_count);
 $moderated_groups_count = $db->get_var('SELECT count(*) from ' . table_groups . ' where group_status = "disable";');
 $main_smarty->assign('moderated_groups_count', $moderated_groups_count);
 
+// Count the number of errors
+$error_log_path = '../cache/log.php';
+$error_log_content = file_get_contents($error_log_path);
+$error_count = preg_match_all('/\[(\d{2})-(\w{3})-(\d{4}) (\d{2}:\d{2}:\d{2})\]/', $error_log_content, $matches);
+$main_smarty->assign('error_count', $error_count);
+
 // Count moderated total
-$moderated_total_count = $moderated_groups_count+$moderated_users_count+$moderated_comments_count+$moderated_submissions_count;
+$moderated_total_count = $moderated_groups_count+$moderated_users_count+$moderated_comments_count+$moderated_submissions_count+$error_count;
 $main_smarty->assign('moderated_total_count', $moderated_total_count);
 
 $vars = '';

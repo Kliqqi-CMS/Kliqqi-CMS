@@ -148,12 +148,7 @@
 										<li{if $pagename eq "admin_group"} class="active"{/if} id="manage_groups"><a href="{$my_base_url}{$my_pligg_base}/admin/admin_group.php">Groups {if $moderated_groups_count != '0'}<span class="pull-right badge badge-gray">{$moderated_groups_count}</span>{/if}</a></li>
 										<li{if $pagename eq "admin_page" || $pagename eq "edit_page" || $pagename eq "submit_page"} class="active"{/if} id="manage_pages"><a href="{$my_base_url}{$my_pligg_base}/admin/admin_page.php">Pages</a></li> 
 										<li{if $pagename eq "admin_categories" || $pagename eq "admin_categories_tasks"} class="active"{/if} id="manage_categories"><a href="{$my_base_url}{$my_pligg_base}/admin/admin_categories.php">Categories</a></li> 
-										{php}
-											$error_log_path = '../cache/log.php';
-											$error_log_content = file_get_contents($error_log_path);
-											$error_count = preg_match_all('/\[(\d{2})-(\w{3})-(\d{4}) (\d{2}:\d{2}:\d{2})\]/', $error_log_content, $matches);
-										{/php}
-										<li {if $pagename eq "admin_log"}class="active"{/if} id="manage_errors"><a href="{$my_base_url}{$my_pligg_base}/admin/admin_log.php">Error Log {php} if ($error_count != '0'){ echo '<span class="pull-right badge badge-gray">'.$error_count.'</span>'; } {/php}</a></li>
+										<li {if $pagename eq "admin_log"}class="active"{/if} id="manage_errors"><a href="{$my_base_url}{$my_pligg_base}/admin/admin_log.php">Error Log {if $error_count != '0'}<span class="pull-right badge badge-gray">{$error_count}</span>{/if}</a></li>
 										{checkActionsTpl location="tpl_pligg_admin_manage_sidebarnav_end"}
                                     </div>
 								</div>
