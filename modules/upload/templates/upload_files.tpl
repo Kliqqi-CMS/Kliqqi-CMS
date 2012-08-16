@@ -78,7 +78,7 @@ var choose_url = '{#PLIGG_Upload_Choose_URL#}';
 	    <br />{$field}{php}if ($this->_vars['mandatory'][$this->_vars['i']+1] > 0) echo "<font color=red>*</font>";{/php}: <input type='text' size='57' name='field{php}echo $this->_vars['i']+1;{/php}' {php}if ($this->_vars['mandatory'][$this->_vars['i']+1] > 0) echo "id='mandatory'";{/php} value='{php}echo $values['field'.($this->_vars['i']+1)];{/php}'>
 	    {/foreach}
 		<br /><br />
-	    <input type='button' value='Upload' onclick='submitUploadForm(this.form)'>
+	    <input type='button' class="btn btn-primary" value='Upload' onclick='submitUploadForm(this.form)'>
 		
     	</form>
     </div>
@@ -89,6 +89,6 @@ var choose_url = '{#PLIGG_Upload_Choose_URL#}';
 <script>
 var upload_fields = {$upload_fields};
 </script>
-<button onclick='if (upload_fields < {$upload_maxnumber}) add_upload_field({$upload_maxnumber}); if (++upload_fields >= {$upload_maxnumber}) this.disabled=true;' {if $upload_fields>=$upload_maxnumber}disabled{/if}>{#PLIGG_Upload_Add_File#}</button>
-
+<button class="btn" onclick='if (upload_fields < {$upload_maxnumber}) add_upload_field({$upload_maxnumber}); if (++upload_fields >= {$upload_maxnumber}) this.disabled=true;' {if $upload_fields>=$upload_maxnumber}disabled{/if}>{#PLIGG_Upload_Add_File#}</button>
+<br /><br />
 {config_load file=upload_pligg_lang_conf}

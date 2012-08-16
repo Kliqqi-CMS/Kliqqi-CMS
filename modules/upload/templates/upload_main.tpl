@@ -180,7 +180,7 @@
 				<label><a href="#{#PLIGG_Upload_Add_Field#}">{#PLIGG_Upload_Add_Field#}</a>:</label>
 			</td>
 			<td colspan="3">
-				<input type='text' name='upload_new_field' class="span11">
+				<input type='text' class="btn" name='upload_new_field' class="span11">
 				<p class="help-block">{#PLIGG_Upload_Add_Field_Note#}</p>
 			</td>
 		</tr>
