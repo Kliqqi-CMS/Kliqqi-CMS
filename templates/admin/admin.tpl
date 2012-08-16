@@ -134,24 +134,18 @@
 											<li class="nav-header"><img src="{$my_base_url}{$my_pligg_base}/templates/admin/images/manage.png" width="16px" height="16px" /> {#PLIGG_Visual_AdminPanel_Manage_Nav#}</li>
 										</a>
 									</span>
-									{if $pagename eq "admin_index"}
-										{* This needs to be checked and moved into a PHP file and include the error log result *}
-										{math equation="a + b + c + d" a=$total b=$comments c=$members d=$grouptotal assign="manage_alert"}
-										{if $manage_alert neq ''}
-											<span class="badge accordion-heading-alert">
-												{if $pagename eq "admin_index"}
-													{$manage_alert}
-												{/if}
-											</span>
-										{/if}
+									{if $moderated_total_count neq ''}
+										<span class="badge accordion-heading-alert">
+											{$moderated_total_count}
+										</span>
 									{/if}
 								</div>
 								<div class="accordion-body collapse in" id="CollapseManage">
 									<div class="accordion-inner">
-										<li{if $pagename eq "admin_links"} class="active"{/if} id="manage_submissions"><a href="{$my_base_url}{$my_pligg_base}/admin/admin_links.php">Submissions {if $total != ''}<span class="pull-right badge badge-gray">{$total}</span>{/if}</a></li>
-										<li{if $pagename eq "admin_comments"} class="active"{/if} id="manage_comments"><a href="{$my_base_url}{$my_pligg_base}/admin/admin_comments.php">Comments {if $comments != ''}<span class="pull-right badge badge-gray">{$comments}</span>{/if}</a></li>
-										<li{if $pagename eq "admin_users" || $pagename eq "admin_user_validate"} class="active"{/if} id="manage_users"><a href="{$my_base_url}{$my_pligg_base}/admin/admin_users.php">Users {if $members != ''}<span class="pull-right badge badge-gray">{$members}</span>{/if}</a></li>
-										<li{if $pagename eq "admin_group"} class="active"{/if} id="manage_groups"><a href="{$my_base_url}{$my_pligg_base}/admin/admin_group.php">Groups {if $grouptotal != ''}<span class="pull-right badge badge-gray">{$grouptotal}</span>{/if}</a></li>
+										<li{if $pagename eq "admin_links"} class="active"{/if} id="manage_submissions"><a href="{$my_base_url}{$my_pligg_base}/admin/admin_links.php">Submissions {if $moderated_submissions_count != '0'}<span class="pull-right badge badge-gray">{$moderated_submissions_count}</span>{/if}</a></li>
+										<li{if $pagename eq "admin_comments"} class="active"{/if} id="manage_comments"><a href="{$my_base_url}{$my_pligg_base}/admin/admin_comments.php">Comments {if $moderated_comments_count != '0'}<span class="pull-right badge badge-gray">{$moderated_comments_count}</span>{/if}</a></li>
+										<li{if $pagename eq "admin_users" || $pagename eq "admin_user_validate"} class="active"{/if} id="manage_users"><a href="{$my_base_url}{$my_pligg_base}/admin/admin_users.php">Users {if $moderated_users_count != '0'}<span class="pull-right badge badge-gray">{$moderated_users_count}</span>{/if}</a></li>
+										<li{if $pagename eq "admin_group"} class="active"{/if} id="manage_groups"><a href="{$my_base_url}{$my_pligg_base}/admin/admin_group.php">Groups {if $moderated_groups_count != '0'}<span class="pull-right badge badge-gray">{$moderated_groups_count}</span>{/if}</a></li>
 										<li{if $pagename eq "admin_page" || $pagename eq "edit_page" || $pagename eq "submit_page"} class="active"{/if} id="manage_pages"><a href="{$my_base_url}{$my_pligg_base}/admin/admin_page.php">Pages</a></li> 
 										<li{if $pagename eq "admin_categories" || $pagename eq "admin_categories_tasks"} class="active"{/if} id="manage_categories"><a href="{$my_base_url}{$my_pligg_base}/admin/admin_categories.php">Categories</a></li> 
 										{php}

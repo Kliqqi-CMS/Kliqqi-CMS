@@ -92,16 +92,38 @@ $canIhaveAccess = $canIhaveAccess + checklevel('admin');
 if($canIhaveAccess == 1){$main_smarty->assign('isadmin', 1);}
 $canIhaveAccess = $canIhaveAccess + checklevel('moderator');
 if($canIhaveAccess == 1){$main_smarty->assign('isadmin', 1);}
+
 // show count of upcoming stories
-$queued = $db->get_var('SELECT count(*) from ' . table_links . ' where link_status = "queued";');
-$main_smarty->assign('queued', $queued);
+$upcoming_submissions_count = $db->get_var('SELECT count(*) from ' . table_links . ' where link_status = "queued";');
+$main_smarty->assign('queued', $upcoming_submissions_count);
 // Renaming queued variable to upcoming_count
-$main_smarty->assign('queued', $upcoming_count);
+$main_smarty->assign('upcoming_submissions_count', $upcoming_submissions_count);
 
 // Count variable for published stories
-$published = $db->get_var('SELECT count(*) from ' . table_links . ' where link_status = "published";');
-$main_smarty->assign('published', $published_count);
+$published_submissions_count = $db->get_var('SELECT count(*) from ' . table_links . ' where link_status = "published";');
+$main_smarty->assign('published', $published_submissions_count);
+// Renaming published variable to published_count
+$main_smarty->assign('published_submissions_count', $published_submissions_count);
 
+// Count variable for moderated stories
+$moderated_submissions_count = $db->get_var('SELECT count(*) from ' . table_links . ' where link_status != "published" AND link_status != "queued" AND link_status != "spam" AND link_status != "discard";');
+$main_smarty->assign('moderated_submissions_count', $moderated_submissions_count);
+
+// Count variable for moderated comments
+$moderated_comments_count = $db->get_var('SELECT count(*) from ' . table_comments . ' where comment_status = "moderated";');
+$main_smarty->assign('moderated_comments_count', $moderated_comments_count);
+
+// Count variable for moderated users
+$moderated_users_count = $db->get_var('SELECT count(*) from ' . table_users . ' where user_enabled = "0" AND user_level != "Spammer";');
+$main_smarty->assign('moderated_users_count', $moderated_users_count);
+
+// Count variable for moderated groups
+$moderated_groups_count = $db->get_var('SELECT count(*) from ' . table_groups . ' where group_status = "disable";');
+$main_smarty->assign('moderated_groups_count', $moderated_groups_count);
+
+// Count moderated total
+$moderated_total_count = $moderated_groups_count+$moderated_users_count+$moderated_comments_count+$moderated_submissions_count;
+$main_smarty->assign('moderated_total_count', $moderated_total_count);
 
 $vars = '';
 check_actions('all_pages_top', $vars);

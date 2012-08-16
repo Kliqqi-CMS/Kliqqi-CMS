@@ -56,7 +56,7 @@
 				</strong>
 			</td>
 			<td>
-				{$published}
+				{$published_submissions_count}
 			</td>
 		</tr>
 	{/if}
@@ -68,7 +68,7 @@
 				</strong>
 			</td>
 			<td>
-				{$queued}
+				{$upcoming_submissions_count}
 			</td>
 		</tr>
 	{/if}
