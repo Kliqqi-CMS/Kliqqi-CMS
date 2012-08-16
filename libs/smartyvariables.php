@@ -106,7 +106,7 @@ $main_smarty->assign('published', $published_submissions_count);
 $main_smarty->assign('published_submissions_count', $published_submissions_count);
 
 // Count variable for moderated stories
-$moderated_submissions_count = $db->get_var('SELECT count(*) from ' . table_links . ' where link_status != "published" AND link_status != "queued" AND link_status != "spam" AND link_status != "discard";');
+$moderated_submissions_count = $db->get_var('SELECT count(*) from ' . table_links . ' where link_status != "published" AND link_status != "queued" AND link_status != "spam" AND link_status != "discard" AND link_status != "page";');
 $main_smarty->assign('moderated_submissions_count', $moderated_submissions_count);
 
 // Count variable for moderated comments
