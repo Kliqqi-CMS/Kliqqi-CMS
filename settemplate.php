@@ -35,7 +35,8 @@ if(isset($_GET['template'])){
 		header('Location: ./index.php');
 		die();
 	}else{
-		$main_smarty->assign('message', 'Warning: Template <b>"' . sanitize($_GET['template'],3) . '"</b> does not exist!');
+	    
+		$main_smarty->assign('message', '<div class="alert alert-error">Warning: <strong>"' . sanitize($_GET['template'],3) . '"</strong> does not seem to exist!</div>');
 	}
 }
 

@@ -107,13 +107,13 @@ function redc_check_field(&$vars){
 		if (strrpos($email,$domain)===strlen($email)-strlen($domain))
 		    return;
 
-	    $vars['error'] = "Wrong email";
+	    $vars['error'] = "Forbidden Domain";
 	}
  	else
 	{
 	    foreach ($list as $domain)
 		if (strrpos($email,$domain)===strlen($email)-strlen($domain))
-		    $vars['error'] = "Wrong email";
+		    $vars['error'] = "Forbidden Domain";
 	}
 }
 
