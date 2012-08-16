@@ -4,32 +4,25 @@
 function submit_list_form(){
 	
 	if($(".enabled_disable:checked").length==0) {
-		alert("please select users");
+		alert("Please select users");
 		return false;
 	}
 	
 	val_action=$("#admin_action").val();
 	
 	if(val_action==3){
-		
-	var usernames ="";
-    $('.enabled_disable:checked').each(function(i){
-     usernames += $(this).attr("usernameval")+", ";
-    });
-		
-		
-		
-	 if(confirm("Are you sure that you want to killspam these users: "+usernames)){
+		var usernames ="";
+		$('.enabled_disable:checked').each(function(i){
+			usernames += $(this).attr("usernameval")+", ";
+		});
+		if(confirm("Are you sure that you want to killspam these users: "+usernames)){
         
-      } else {
-         return false;
-      }
-
+		} else {
+			return false;
+		}
 	}
 	
-	
 	document.getElementById("user_list_form").submit();
-	
 	
 	//for(x in document.getElementById("user_list_form"))
 	//alert(x);
@@ -89,7 +82,6 @@ function validate_all_user_action(){
 		<a href="admin_users.php?filter=disabled">Click here to review the {if $moderated_users_count eq "1"}acccount{else}accounts{/if}.</a>
 	</div>
 {/if}
-{include file="/admin/user_create.tpl"}
 <form action="{$my_base_url}{$my_pligg_base}/admin/admin_users.php" method="get" >
 	<table border="0">
 		<tr>
@@ -216,6 +208,7 @@ function validate_all_user_action(){
 		</tbody>
 	</table>
 </form>
+{include file="/admin/user_create.tpl"}
 <div style="float:right;margin:8px 2px 0 0;">
 	<a class="btn btn-success"  href="#createUserForm-modal" data-toggle="modal" title="{#PLIGG_Visual_AdminPanel_New_User#}">{#PLIGG_Visual_AdminPanel_New_User#}</a>
 </div>
