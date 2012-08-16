@@ -19,6 +19,48 @@
 	
 	{include file=$the_template"/title.tpl"}
 	
+	{if $pagename eq "submit"}
+		<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.3.0/jquery.min.js"></script>
+		{literal}
+		<script type="text/javascript">
+		$(function() 
+		{
+			$(".title").keyup(function() 
+			{
+				var title=$(this).val();
+				$(".story_title").html(title);
+				return false;
+			});
+			$(".story_category").keyup(function() 
+			{
+				var category=$(this).val();
+				$(".category").html(category);
+				return false;
+			});
+			$(".story_group").keyup(function() 
+			{
+				var story_group=$(this).val();
+				$(".story_group").html(story_group);
+				return false;
+			});
+			$(".tags").keyup(function() 
+			{
+				var tags=$(this).val();
+				$(".tags").html(tags);
+				return false;
+			});
+			$(".bodytext").keyup(function() 
+			{
+				var bodytext=$(this).val();
+				$(".bodytext").html(bodytext);
+				return false;
+			});
+			
+		});
+		</script>
+		{/literal}
+	{/if}
+	
 	<link rel="alternate" type="application/rss+xml" title="RSS 2.0" href="{$my_base_url}{$my_pligg_base}/rss.php"/>
 	<link rel="icon" href="{$my_pligg_base}/favicon.ico" type="image/x-icon"/>
 	{if $pagename eq 'published'}<link rel="canonical" href="{$my_base_url}{$my_pligg_base}/{$navbar_where.text2}/" />{/if}
@@ -107,7 +149,7 @@
 	
 	
 	{checkActionsTpl location="tpl_pligg_body_end"}
-	<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+	{if $pagename neq "submit"}<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>{/if}
 	<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.18/jquery-ui.min.js"></script>
 	<link href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.18/themes/smoothness/jquery-ui.css" media="all" rel="stylesheet" type="text/css" />
 	

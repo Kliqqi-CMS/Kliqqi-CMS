@@ -135,7 +135,7 @@
 										</a>
 									</span>
 									{if $pagename eq "admin_index"}
-										{* This needs to be moved into a PHP file and include the error log result *}
+										{* This needs to be checked and moved into a PHP file and include the error log result *}
 										{math equation="a + b + c + d" a=$total b=$comments c=$members d=$grouptotal assign="manage_alert"}
 										{if $manage_alert neq ''}
 											<span class="badge accordion-heading-alert">
