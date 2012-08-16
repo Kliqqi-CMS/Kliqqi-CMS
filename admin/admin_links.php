@@ -91,10 +91,13 @@ if($canIhaveAccess == 1) {
 			 	break;
 			case 'spam':
 			 	$filter_sql = " link_status = 'spam' ";
-			 	break;	
+			 	break;
 			case 'page':
 			 	$filter_sql = " link_status = 'page' ";
-			 	break;			
+			 	break;
+			case 'other':
+				$filter_sql = " link_status != 'queued' AND link_status != 'published' AND link_status != 'discard' AND link_status != 'spam' AND link_status != 'page'";
+				break;
 			default:
 				$filter_sql = " link_status = '".$db->escape($_GET["filter"])."'";
 				break;
