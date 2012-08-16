@@ -75,8 +75,8 @@ INSERT INTO `config` VALUES (96, 'Submit', 'maxTagsLength', '40', '40', 'number'
 INSERT INTO `config` VALUES (97, 'Submit', 'maxStoryLength', '3000', '3000', 'number', 'Maximum Story Length', 'Maximum number of characters for the story description.', 'define', NULL);
 INSERT INTO `config` VALUES (98, 'Submit', 'maxSummaryLength', '600', '600', 'number', 'Maximum Summary Length', 'Maximum number of characters for the story summary.', 'define', NULL);
 INSERT INTO `config` VALUES (99, 'Comments', 'maxCommentLength', '1200', '1200', 'number', 'Maximum Comment Length', 'Maximum number of characters for the comment.', 'define', NULL);
-INSERT INTO `config` VALUES (NULL, 'Voting', 'buries_to_spam', '0', '0', 'number', 'Buries to Mark as Spam', 'Number of buries before story is sent to spam state. <b>0</b> = disable feature.', 'define', NULL);
-INSERT INTO `config` VALUES (NULL, 'Comments', 'comment_buries_spam', '0', '0', 'number', 'Buries to Mark Comment as Spam', 'Number of buries before comment is sent to spam state. <b>0</b> = disable feature.', 'define', NULL);
+INSERT INTO `config` VALUES (NULL, 'Voting', 'buries_to_spam', '0', '0', 'number', 'Negative votes to remove submission', 'Number of negative votes story is sent to discard state. <b>0</b> = disable feature.', 'define', NULL);
+INSERT INTO `config` VALUES (NULL, 'Comments', 'comment_buries_spam', '0', '0', 'number', 'Negative votes to remove comment', 'Number of negative votes before comment is sent to discard state. <b>0</b> = disable feature.', 'define', NULL);
 INSERT INTO `config` VALUES (NULL, 'Voting', 'karma_to_publish', '100', '100', 'number', 'Karma to publish', 'Minimum karma value before story is sent to the front page.', 'define', NULL);
 INSERT INTO `config` VALUES (NULL, 'Submit', 'Submit_Complete_Step2', 'true', 'true', 'true / false', 'Complete submission on Submit Step 2?', 'Skip step 3 (preview) or not', 'define', NULL);
 INSERT INTO `config` VALUES (NULL, 'Misc', 'Independent_Subcategories', 'false', 'false', 'true / false', 'Show subcategories', 'Top level categories remain independent from subcategory content', 'define', NULL);

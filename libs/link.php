@@ -1004,7 +1004,7 @@ class Link {
 		}
 
 		if(($this->status == 'queued' || $this->status == 'discard') && buries_to_spam>0 && $this->reports>=buries_to_spam) {
-			$this->status='spam';
+			$this->status='discard';
 			$this->store_basic();
 
 			$vars = array('link_id' => $this->id);

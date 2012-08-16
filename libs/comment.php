@@ -313,7 +313,7 @@ class Comment {
 			$this->votes=$vote->count();
 
 			if(comment_buries_spam>0 && $vote->count_all("<0")>=comment_buries_spam) {
-				$this->status='spam';
+				$this->status='discard';
 				$this->store();
 
 				$vars = array('comment_id' => $this->id);

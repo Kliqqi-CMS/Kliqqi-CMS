@@ -360,12 +360,16 @@ if (!$errors) {
 
 	$result = $db->get_results("select * from `" . table_config . "` where `var_name` = 'buries_to_spam';");
 	if (count($result) == 0) {
-		$db->query("INSERT INTO `" . table_config . "` ( `var_id` , `var_page` , `var_name` , `var_value` , `var_defaultvalue` , `var_optiontext` , `var_title` , `var_desc` , `var_method` , `var_enclosein` ) VALUES (NULL, 'Voting', 'buries_to_spam', '0', '0', 'number', 'Buries to Mark as Spam', 'Number of buries before story is sent to spam state. <b>0</b> = disable feature.', 'define', NULL);");
+		$db->query("INSERT INTO `" . table_config . "` ( `var_id` , `var_page` , `var_name` , `var_value` , `var_defaultvalue` , `var_optiontext` , `var_title` , `var_desc` , `var_method` , `var_enclosein` ) VALUES (NULL, 'Voting', 'buries_to_spam', '0', '0', 'number', 'Negative votes to remove submission', 'Number of negative votes before story is sent to discard state. <b>0</b> = disable feature.', 'define', NULL);");
+	} else {
+		$db->query("UPDATE `" . table_config . "` SET var_title='Negative votes to remove submission', var_desc='Number of negative votes before story is sent to discard state. <b>0</b> = disable feature.' WHERE var_name='buries_to_spam'");
 	}
 
 	$result = $db->get_results("select * from `" . table_config . "` where `var_name` = 'comment_buries_spam';");
 	if (count($result) == 0) {
-		$db->query("INSERT INTO `" . table_config . "` ( `var_id` , `var_page` , `var_name` , `var_value` , `var_defaultvalue` , `var_optiontext` , `var_title` , `var_desc` , `var_method` , `var_enclosein` ) VALUES (NULL, 'Comments', 'comment_buries_spam', '0', '0', 'number', 'Buries to Mark Comment as Spam', 'Number of buries before comment is sent to spam state. <b>0</b> = disable feature.', 'define', NULL);");
+		$db->query("INSERT INTO `" . table_config . "` ( `var_id` , `var_page` , `var_name` , `var_value` , `var_defaultvalue` , `var_optiontext` , `var_title` , `var_desc` , `var_method` , `var_enclosein` ) VALUES (NULL, 'Comments', 'comment_buries_spam', '0', '0', 'number', 'Negative votes to remove comment', 'Number of negative votes before comment is sent to discard state. <b>0</b> = disable feature.', 'define', NULL);");
+	} else {
+		$db->query("UPDATE `" . table_config . "` SET var_title='Negative votes to remove comment', var_desc='Number of negative votes before comment is sent to discard state. <b>0</b> = disable feature.' WHERE var_name='comment_buries_spam'");
 	}
 	$db->query("DELETE from `" . table_config . "` where `var_name` = 'enable_friendly_caturls';");
 
