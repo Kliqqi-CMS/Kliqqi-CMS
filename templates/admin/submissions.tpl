@@ -9,7 +9,7 @@
 {if $moderated_submissions_count neq "0"}
 	<div class="alert">
 		There {if $moderated_submissions_count eq "1"}is{else}are{/if} <strong>{$moderated_submissions_count} {if $moderated_submissions_count eq "1"}story{else}stories{/if}</strong> awaiting moderation.<br />
-		<a href="admin_links.php?mode=search&filter=other">Click here to review {if $moderated_submissions_count eq "1"}it{else}them{/if}.</a>
+		<a href="admin_links.php?filter=other">Click here to review {if $moderated_submissions_count eq "1"}it{else}them{/if}.</a>
 	</div>
 {/if}
 <table class="table-condensed">

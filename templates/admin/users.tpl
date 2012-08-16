@@ -83,6 +83,12 @@ function validate_all_user_action(){
 </script>
 {/literal}
 <legend>{#PLIGG_Visual_AdminPanel_User_Manage#}</legend>
+{if $moderated_users_count neq "0"}
+	<div class="alert">
+		There {if $moderated_users_count eq "1"}is{else}are{/if} <strong>{$moderated_users_count} {if $moderated_users_count eq "1"}user{else}users{/if}</strong> awaiting moderation.<br />
+		<a href="admin_users.php?filter=disabled">Click here to review the {if $moderated_users_count eq "1"}acccount{else}accounts{/if}.</a>
+	</div>
+{/if}
 {include file="/admin/user_create.tpl"}
 <form action="{$my_base_url}{$my_pligg_base}/admin/admin_users.php" method="get" >
 	<table border="0">
@@ -101,11 +107,8 @@ function validate_all_user_action(){
 		</tr>
 	</table>
 </form>
-        
-          
-
 <form action="{$my_base_url}{$my_pligg_base}/admin/admin_users.php" method="get" >
-<table  border="0" width="100%">
+<table border="0" width="100%">
 <tr>
 	<td width="60%">
 		<div class="btn-group pull">
@@ -165,7 +168,7 @@ function validate_all_user_action(){
 	<input type="hidden" name="frmsubmit" value="userlist" />	
 	<input type="hidden" name="admin_acction"  value="" id="admin_action"/>
 	{$hidden_token_admin_users_list}
-	<table class="table table-bordered table-striped table-condensed tablesorter" id="tablesorter-userTable">
+	<table class="table table-bordered table-bordered table-condensed tablesorter" id="tablesorter-userTable">
 		<thead>
 			<tr>
 			   <th style="text-align:center; vertical-align:middle;">

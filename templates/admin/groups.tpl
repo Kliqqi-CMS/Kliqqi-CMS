@@ -14,7 +14,7 @@
 	</thead>
 	<tbody>
 	{foreach from=$groups item=group}
-		<tr>
+		<tr {if $group.group_status!='Enable'}class="tr_moderated"{/if}>
 			<td>
 				{if $group.group_status!='Enable'}
 					<a href='?mode=approve&group_id={$group.group_id}'><i class="icon icon-warning-sign" title="{#PLIGG_Visual_AdminPanel_Group_Approve#}" alt="{#PLIGG_Visual_AdminPanel_Group_Approve#}"></i></a>

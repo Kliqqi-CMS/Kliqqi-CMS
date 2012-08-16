@@ -19,8 +19,6 @@ include(mnminclude.'smartyvariables.php');
 include(mnminclude.'csrf.php');
 include(mnminclude.'document_class.php');
 
-
-
 check_referrer();
 
 // require user to log in
@@ -36,8 +34,6 @@ $canIhaveAccess = $canIhaveAccess + checklevel('admin');
 $canIhaveAccess = $canIhaveAccess + checklevel('moderator');
 
 $PliggDoc->add_js(my_base_url.my_pligg_base."/templates/admin/js/jquery.tablesorter.js");
-
-
 
 $PliggDoc->add_js("$(function() {
 				
@@ -696,11 +692,30 @@ if($canIhaveAccess == 1)
 		if ($pagesize <= 0) $pagesize = 30;
 		$main_smarty->assign('pagesize', $pagesize);
 	
-		if($_GET["filter"]) {
-		   $filter_sql = "WHERE user_level='".sanitize($_GET["filter"], 3)."'";
-		} else {
-		   $filter_sql = "WHERE user_level!='Spammer'";
-		}
+	if(isset($_GET["filter"])) {
+		switch (sanitize($_GET["filter"], 3)) {
+		 	case 'admin':
+				$filter_sql = " WHERE user_level='admin' ";
+				break;
+			case 'moderator':
+				$filter_sql = " WHERE user_level='moderator' ";
+				break;
+			case 'normal':
+				$filter_sql = " WHERE user_level='normal' ";
+				break;
+			case 'spammer':
+				$filter_sql = " WHERE user_level='Spammer' ";
+				break;
+			case 'disabled':
+				$filter_sql = " WHERE user_level!='Spammer' AND user_enabled='0' ";
+				break;
+			default:
+				$filter_sql = " WHERE user_level!='Spammer' ";
+				break;
+	  	}	
+	}else{
+	   $filter_sql = "WHERE user_level!='Spammer'";
+	}
 
 		// figure out what "page" of the results we're on
 		$offset=(get_current_page()-1)*$pagesize;

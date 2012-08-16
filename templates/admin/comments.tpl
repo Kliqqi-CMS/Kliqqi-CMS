@@ -6,6 +6,12 @@
 	{#PLIGG_Visual_AdminPanel_Comments_Legend#}
 {/if}
 </legend>
+{if $moderated_comments_count neq "0"}
+	<div class="alert">
+		There {if $moderated_comments_count eq "1"}is{else}are{/if} <strong>{$moderated_comments_count} {if $moderated_comments_count eq "1"}comment{else}comments{/if}</strong> awaiting moderation.<br />
+		<a href="admin_comments.php?filter=moderated">Click here to review {if $moderated_comments_count eq "1"}it{else}them{/if}.</a>
+	</div>
+{/if}
 <table>
 	<tr>
 		<form action="{$my_base_url}{$my_pligg_base}/admin/admin_comments.php" method="get">
