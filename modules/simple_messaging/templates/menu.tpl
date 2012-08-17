@@ -65,6 +65,7 @@ background: #fff;
 		</li>
 
 		{if $Allow_Friends neq "0"}	 
+			{*
 			<li class="tab3">
 				<a href="{$user_url_friends}">
 					<i class="icon icon-user"></i>
@@ -78,6 +79,7 @@ background: #fff;
 					{#PLIGG_MESSAGING_Users_Following_me#}
 				</a>
 			</li>
+			*}
 			
 			{*
 			{if $user_authenticated eq true} 

@@ -357,8 +357,9 @@ margin-right:6px;
 }
 
 .follow {
-padding:5px 5px 5px 5px;
-margin:0 0 2px 0;
+padding:3px 0 5px 5px;
+margin:0 0 2px;
+line-height:18px;
 }
 .follow a {color:#fff;}
 

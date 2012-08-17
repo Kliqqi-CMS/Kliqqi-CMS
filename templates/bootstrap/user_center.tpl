@@ -5,7 +5,74 @@
 <!-- user_center.tpl -->
 {checkActionsTpl location="tpl_pligg_profile_start"}
 <div style="margin:0 0 10px 0;">
-	<div id="user_search" class="span2" style="float:right;">
+	<div class="span6" style="margin-left:10px;">
+		<h1>
+			{if $UseAvatars neq "0"}
+				<img style="float:left;margin:0 15px 0 0;" src="{$Avatar_ImgSrc}" class="thumbnail" style="margin-bottom:4px;" alt="Avatar" />
+			{/if}
+			{$user_username}
+		</h1>
+		<div style="margin-top:2px;">
+			{checkActionsTpl location="tpl_user_profile_social_start"}
+			{if $user_skype}
+				<a href="callto://{$user_skype}" title="Skype {$user_username}" rel="nofollow" target="_blank"><img src="{$my_pligg_base}/templates/{$the_template}/images/skype_round.png" /></a>
+			{/if}
+			{if $user_facebook}
+				<a href="http://www.facebook.com/{$user_facebook}" title="{$user_username} on Facebook" rel="nofollow" target="_blank"><img src="{$my_pligg_base}/templates/{$the_template}/images/facebook_round.png" /></a>
+			{/if}
+			{if $user_twitter}
+				<a href="http://twitter.com/{$user_twitter}" title="{$user_username} on Twitter" rel="nofollow" target="_blank"><img src="{$my_pligg_base}/templates/{$the_template}/images/twitter_round.png" /></a>
+			{/if}
+			{if $user_linkedin}
+				<a href="http://www.linkedin.com/in/{$user_linkedin}" title="{$user_username} on LinkedIn" rel="nofollow" target="_blank"><img src="{$my_pligg_base}/templates/{$the_template}/images/linkedin_round.png" /></a>
+			{/if}
+			{if $user_googleplus}
+				<a href="https://plus.google.com/{$user_googleplus}" title="{$user_username} on Google+" rel="nofollow" target="_blank"><img src="{$my_pligg_base}/templates/{$the_template}/images/google_round.png" /></a>
+			{/if}
+			{if $user_pinterest}
+				<a href="http://pinterest.com/{$user_pinterest}/" title="{$user_username} on Pinterest" rel="nofollow" target="_blank"><img src="{$my_pligg_base}/templates/{$the_template}/images/pinterest_round.png" /></a>
+			{/if}
+			{checkActionsTpl location="tpl_user_profile_social_end"}
+		</div>
+		{checkActionsTpl location="tpl_show_extra_profile"}
+		<div style="font-size:0.85em;line-height:1.3em;margin-top:2px;">		
+			{if $user_publicemail ne ""}
+				{php}
+					// Method to try to trick automated email address collection bots
+					global $main_smarty;
+					$full_email = $this->_vars['user_publicemail'];
+					list($email_start,$_) = explode('@',$full_email); $email_domain = ''.$_;
+					$main_smarty->assign('email_start', $email_start);
+					$main_smarty->assign('email_domain', $email_domain);
+				{/php}
+				<script type="text/javascript">
+				<!--
+					var string1 = "{$email_start}";
+					var string2 = "@";
+					var string3 = "{$email_domain}";
+				//  document.write(string4);
+					document.write("<a href=" + "mail" + "to:" + string1 + string2 + string3 + ">Email</a> | ");
+				//-->
+				</script>
+			{/if}
+			{if $user_url ne "" && $user_karma > "20" || $user_login eq $user_logged_in}
+				<a href="{$user_url}" target="_blank" rel="nofollow">{$user_url}</a>
+				<br />
+			{/if}
+			{checkActionsTpl location="tpl_user_profile_details_start"}
+			{if $user_names ne ""}
+				{$user_names} is
+			{/if}
+			{if $user_occupation ne ""}
+				a {$user_occupation}
+			{/if}
+			{if $user_location ne ""}
+				from {$user_location}
+			{/if}
+			{checkActionsTpl location="tpl_user_profile_details_end"}
+		</div>
+	</div>
+	<div id="user_search" class="span2" style="margin-left:50px;">
 		<form action="{$my_pligg_base}/user.php" method="get" {php} global $URLMethod, $my_base_url, $my_pligg_base; if ($URLMethod==2) print "onsubmit='document.location.href=\"{$my_base_url}{$my_pligg_base}/user/search/\"+encodeURIComponent(this.keyword.value); return false;'";{/php}>
 			<div class="input-append">
 				<input type="hidden" name="view" value="search">
@@ -31,71 +98,6 @@
 		{/if}
 		<div class="span2 badge follow"><i class="icon icon-white icon-user"></i> {if count($following) neq 0}<a href="{$user_url_friends}">{/if}{$following|@count} {#PLIGG_Visual_User_Profile_View_Friends#}{if count($following) neq 0}</a>{/if}</div>
 		<div class="span2 badge follow"><i class="icon icon-white icon-user"></i> {if count($follower) neq 0}<a href="{$user_url_friends2}">{/if}{$follower|@count} {#PLIGG_Visual_User_Profile_View_Friends_2#}{if count($follower) neq 0}</a>{/if}</div>
-	</div>
-	<h1>
-		{if $UseAvatars neq "0"}
-			<img style="float:left;margin:0 15px 0 0;" src="{$Avatar_ImgSrc}" class="thumbnail" style="margin-bottom:4px;" alt="Avatar" />
-		{/if}
-		{$user_username}
-	</h1>
-	<div style="margin-top:2px;">
-		{checkActionsTpl location="tpl_user_profile_social_start"}
-		{if $user_skype}
-			<a href="callto://{$user_skype}" title="Skype {$user_username}" rel="nofollow" target="_blank"><img src="{$my_pligg_base}/templates/{$the_template}/images/skype_round.png" /></a>
-		{/if}
-		{if $user_facebook}
-			<a href="http://www.facebook.com/{$user_facebook}" title="{$user_username} on Facebook" rel="nofollow" target="_blank"><img src="{$my_pligg_base}/templates/{$the_template}/images/facebook_round.png" /></a>
-		{/if}
-		{if $user_twitter}
-			<a href="http://twitter.com/{$user_twitter}" title="{$user_username} on Twitter" rel="nofollow" target="_blank"><img src="{$my_pligg_base}/templates/{$the_template}/images/twitter_round.png" /></a>
-		{/if}
-		{if $user_linkedin}
-			<a href="http://www.linkedin.com/in/{$user_linkedin}" title="{$user_username} on LinkedIn" rel="nofollow" target="_blank"><img src="{$my_pligg_base}/templates/{$the_template}/images/linkedin_round.png" /></a>
-		{/if}
-		{if $user_googleplus}
-			<a href="https://plus.google.com/{$user_googleplus}" title="{$user_username} on Google+" rel="nofollow" target="_blank"><img src="{$my_pligg_base}/templates/{$the_template}/images/google_round.png" /></a>
-		{/if}
-		{if $user_pinterest}
-			<a href="http://pinterest.com/{$user_pinterest}/" title="{$user_username} on Pinterest" rel="nofollow" target="_blank"><img src="{$my_pligg_base}/templates/{$the_template}/images/pinterest_round.png" /></a>
-		{/if}
-		{checkActionsTpl location="tpl_user_profile_social_end"}
-	</div>
-	{checkActionsTpl location="tpl_show_extra_profile"}
-	<div style="font-size:0.85em;line-height:1.3em;margin-top:2px;">		
-		{if $user_publicemail ne ""}
-			{php}
-				// Method to try to trick automated email address collection bots
-				global $main_smarty;
-				$full_email = $this->_vars['user_publicemail'];
-				list($email_start,$_) = explode('@',$full_email); $email_domain = ''.$_;
-				$main_smarty->assign('email_start', $email_start);
-				$main_smarty->assign('email_domain', $email_domain);
-			{/php}
-			<script type="text/javascript">
-			<!--
-				var string1 = "{$email_start}";
-				var string2 = "@";
-				var string3 = "{$email_domain}";
-			//  document.write(string4);
-				document.write("<a href=" + "mail" + "to:" + string1 + string2 + string3 + ">Email</a> | ");
-			//-->
-			</script>
-		{/if}
-		{if $user_url ne "" && $user_karma > "20" || $user_login eq $user_logged_in}
-			<a href="{$user_url}" target="_blank" rel="nofollow">{$user_url}</a>
-			<br />
-		{/if}
-		{checkActionsTpl location="tpl_user_profile_details_start"}
-		{if $user_names ne ""}
-			{$user_names} is
-		{/if}
-		{if $user_occupation ne ""}
-			a {$user_occupation}
-		{/if}
-		{if $user_location ne ""}
-			from {$user_location}
-		{/if}
-		{checkActionsTpl location="tpl_user_profile_details_end"}
 	</div>
 	<div style="clear:both;"></div>
 </div>
@@ -280,22 +282,26 @@
 {if $user_view eq 'viewfriends'}
 	<legend>{#PLIGG_Visual_User_Profile_Your_Friends#}</legend>
 	{if $following}
-	  	<table>
-		<th style="width:250px;text-align:left;">{#PLIGG_Visual_User_Profile_Username#}</th>
-		{if check_for_enabled_module('simple_messaging',0.6) && $is_friend}<th style="width:90px;text-align:left;">{#PLIGG_Visual_User_Profile_Message#}</th>{/if}
-		<th style="width:60px;text-align:center;">{#PLIGG_Visual_User_Profile_Remove_Friend#}</th>
-		{foreach from=$following item=myfriend}
-			{php}
-				$this->_vars['friend_avatar'] = get_avatar('small', $this->_vars['myfriend']['user_avatar_source'], $this->_vars['myfriend']['user_login'], $this->_vars['myfriend']['user_email']);
-				$this->_vars['profileURL'] = getmyurl('user2', $this->_vars['myfriend']['user_login'], 'profile');
-				$this->_vars['removeURL'] = getmyurl('user_add_remove', $this->_vars['myfriend']['user_login'], 'removefriend');
-			{/php}
-			<tr>
-			<td><img src="{$friend_avatar}" align="absmiddle" /> <a href="{$profileURL}">{$myfriend.user_login}</a></td>
-			{if check_for_enabled_module('simple_messaging',0.6) && $is_friend}<td align="center"><a href="{$my_pligg_base}/module.php?module=simple_messaging&view=compose&return={$templatelite.server.REQUEST_URI|urlencode}&to={$myfriend.user_login}"><i class="icon icon-envelope"></i></a></td>{/if}
-			<td align="center"><a href = "{$removeURL}"><img src="{$my_pligg_base}/templates/{$the_template}/images/user_delete.gif" border=0></a></td>
-			</tr>
-		{/foreach}
+	  	<table class="table table-bordered table-condensed table-striped">
+			<thead>
+				<th style="width:250px;text-align:left;">{#PLIGG_Visual_User_Profile_Username#}</th>
+				{if check_for_enabled_module('simple_messaging',0.6) && $is_friend}<th style="width:90px;text-align:left;">{#PLIGG_Visual_User_Profile_Message#}</th>{/if}
+				<th style="width:60px;text-align:center;">{#PLIGG_Visual_User_Profile_Remove_Friend#}</th>
+			</thead>
+			<tbody>
+				{foreach from=$following item=myfriend}
+					{php}
+						$this->_vars['friend_avatar'] = get_avatar('small', $this->_vars['myfriend']['user_avatar_source'], $this->_vars['myfriend']['user_login'], $this->_vars['myfriend']['user_email']);
+						$this->_vars['profileURL'] = getmyurl('user2', $this->_vars['myfriend']['user_login'], 'profile');
+						$this->_vars['removeURL'] = getmyurl('user_add_remove', $this->_vars['myfriend']['user_login'], 'removefriend');
+					{/php}
+					<tr>
+					<td><img src="{$friend_avatar}" align="absmiddle" /> <a href="{$profileURL}">{$myfriend.user_login}</a></td>
+					{if check_for_enabled_module('simple_messaging',0.6) && $is_friend}<td align="center"><a href="{$my_pligg_base}/module.php?module=simple_messaging&view=compose&return={$templatelite.server.REQUEST_URI|urlencode}&to={$myfriend.user_login}"><i class="icon icon-envelope"></i></a></td>{/if}
+					<td align="center"><a href = "{$removeURL}"><img src="{$my_pligg_base}/templates/{$the_template}/images/user_delete.gif" border=0></a></td>
+					</tr>
+				{/foreach}
+			<tbody>
 		</table>
 	{else}
 		<br /><br />
@@ -306,15 +312,15 @@
 {if $user_view eq 'viewfriends2'}
 	<legend>{#PLIGG_Visual_User_Profile_Viewing_Friends_2a#}</legend>
 	{if $follower}
-	  	<table class="table table-bordered table-striped">
-			{if check_for_enabled_module('simple_messaging',0.6) && $is_friend}
-				<thead>
-					<tr>
-						<th>{#PLIGG_Visual_User_Profile_Username#}</th>
+	  	<table class="table table-bordered table-condensed table-striped">
+			<thead>
+				<tr>
+					<th>{#PLIGG_Visual_User_Profile_Username#}</th>
+					{if check_for_enabled_module('simple_messaging',0.6) && $is_friend}
 						<th>{#PLIGG_Visual_User_Profile_Message#}</th>
-					</tr>
-				</thead>
-			{/if}
+					{/if}
+				</tr>
+			</thead>
 			<tbody>
 				{foreach from=$follower item=myfriend}
 					{php}
