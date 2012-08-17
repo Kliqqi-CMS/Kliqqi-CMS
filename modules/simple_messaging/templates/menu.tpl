@@ -52,14 +52,14 @@ background: #fff;
 	<ul id="tabnav">
 		<li class="tab1" >
 			<a href="{$my_pligg_base}/module.php?module=simple_messaging&view=inbox" {if $modulepage eq "simple_messaging_inbox" || $modulepage eq "viewmsg"}style="background:#fff;border-bottom:1px solid #fff;"{/if}>
-				<img src="{$simple_messaging_img_path}email.png" alt="" align="absmiddle"/>
+				<i class="icon icon-inbox"></i>
 				{#PLIGG_MESSAGING_Inbox#}
 			</a>
 		</li>
 
 		<li class="tab2">
 			<a href="{$my_pligg_base}/module.php?module=simple_messaging&view=sent" {if $modulepage eq "simple_messaging_sent" ||  $modulepage eq "viewsentmsg"}style="background:#fff;border-bottom:1px solid #fff;"{/if}>
-				<img src="{$simple_messaging_img_path}reply.png" alt="" align="absmiddle"/>
+				<i class="icon icon-envelope"></i>
 				{#PLIGG_MESSAGING_Sent_Messages#}
 			</a>
 		</li>
@@ -67,14 +67,14 @@ background: #fff;
 		{if $Allow_Friends neq "0"}	 
 			<li class="tab3">
 				<a href="{$user_url_friends}">
-					<img src="{$simple_messaging_img_path}friends.png" alt="" align="absmiddle"/>
+					<i class="icon icon-user"></i>
 					{#PLIGG_MESSAGING_Users_Im_Following#}
 				</a>
 			</li>
 
 			<li class="tab4">
 				<a href="{$user_url_friends2}">
-					<img src="{$simple_messaging_img_path}friends2.png" alt="" align="absmiddle"/>
+					<i class="icon icon-user"></i>
 					{#PLIGG_MESSAGING_Users_Following_me#}
 				</a>
 			</li>
