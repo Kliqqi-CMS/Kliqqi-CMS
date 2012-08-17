@@ -87,7 +87,7 @@ if($action == 'main' || $action == 'disable' || $action == 'enable'){
 						echo '<td></td>';
 					}
 					echo '<td style="text-align:center;vertical-align:middle;">';
-					if ($versionupdate > 0 && $versionupdate!=$module->version){
+					if ($versionupdate > 0 && $versionupdate>$module->version){
 						if(isset($module_info['homepage_url'])){
 							$homepage_url = $module_info['homepage_url'];
 							echo " <a class='label label-important' href='" . $homepage_url . "' target='_blank' title='Upgrade to $versionupdate'>".$module->version."</a>";
