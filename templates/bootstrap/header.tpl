@@ -15,7 +15,7 @@
 			{if $user_authenticated eq true}
 				<div class="btn-group pull-right">
 					<a class="btn dropdown-toggle" data-toggle="dropdown" href="#">
-						<i class="icon-user"></i> {$user_logged_in}
+						<i class="icon-user"></i>{* <img src="{$Avatar_ImgSrc}" height="16px" width="16px" /> *} {$user_logged_in}
 						<span class="caret"></span>
 					</a>
 					<ul class="dropdown-menu">

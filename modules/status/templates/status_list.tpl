@@ -104,7 +104,7 @@
 		<h4 class="status_search_title">{#PLIGG_Status_Search_Updates#}</h4>
 		<div class="status_search_form">
 			{checkActionsTpl location="status_search_2"}
-			<input placeholder="Search status updates..." class="input-medium search-query status_search_input" name="ssearch" type="text" value="{$templatelite.post.ssearch|sanitize:2}">
+			<input placeholder="Search status updates..." class="input-medium status_search_input" name="ssearch" type="text" value="{$templatelite.post.ssearch|sanitize:2}">
 			{checkActionsTpl location="status_search_3"}
 			<input class="btn status_search_submission" value="{#PLIGG_Status_Search#}" type="submit">
 		</div>

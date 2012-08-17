@@ -10,27 +10,27 @@
 			{if $UseAvatars neq "0"}
 				<img style="float:left;margin:0 15px 0 0;" src="{$Avatar_ImgSrc}" class="thumbnail" style="margin-bottom:4px;" alt="Avatar" />
 			{/if}
-			{$user_username}
+			{$user_username|capitalize}
 		</h1>
 		<div style="margin-top:2px;">
 			{checkActionsTpl location="tpl_user_profile_social_start"}
 			{if $user_skype}
-				<a href="callto://{$user_skype}" title="Skype {$user_username}" rel="nofollow" target="_blank"><img src="{$my_pligg_base}/templates/{$the_template}/images/skype_round.png" /></a>
+				<a href="callto://{$user_skype}" title="Skype {$user_username|capitalize}" rel="nofollow" target="_blank"><img src="{$my_pligg_base}/templates/{$the_template}/images/skype_round.png" /></a>
 			{/if}
 			{if $user_facebook}
-				<a href="http://www.facebook.com/{$user_facebook}" title="{$user_username} on Facebook" rel="nofollow" target="_blank"><img src="{$my_pligg_base}/templates/{$the_template}/images/facebook_round.png" /></a>
+				<a href="http://www.facebook.com/{$user_facebook}" title="{$user_username|capitalize} on Facebook" rel="nofollow" target="_blank"><img src="{$my_pligg_base}/templates/{$the_template}/images/facebook_round.png" /></a>
 			{/if}
 			{if $user_twitter}
-				<a href="http://twitter.com/{$user_twitter}" title="{$user_username} on Twitter" rel="nofollow" target="_blank"><img src="{$my_pligg_base}/templates/{$the_template}/images/twitter_round.png" /></a>
+				<a href="http://twitter.com/{$user_twitter}" title="{$user_username|capitalize} on Twitter" rel="nofollow" target="_blank"><img src="{$my_pligg_base}/templates/{$the_template}/images/twitter_round.png" /></a>
 			{/if}
 			{if $user_linkedin}
-				<a href="http://www.linkedin.com/in/{$user_linkedin}" title="{$user_username} on LinkedIn" rel="nofollow" target="_blank"><img src="{$my_pligg_base}/templates/{$the_template}/images/linkedin_round.png" /></a>
+				<a href="http://www.linkedin.com/in/{$user_linkedin}" title="{$user_username|capitalize} on LinkedIn" rel="nofollow" target="_blank"><img src="{$my_pligg_base}/templates/{$the_template}/images/linkedin_round.png" /></a>
 			{/if}
 			{if $user_googleplus}
-				<a href="https://plus.google.com/{$user_googleplus}" title="{$user_username} on Google+" rel="nofollow" target="_blank"><img src="{$my_pligg_base}/templates/{$the_template}/images/google_round.png" /></a>
+				<a href="https://plus.google.com/{$user_googleplus}" title="{$user_username|capitalize} on Google+" rel="nofollow" target="_blank"><img src="{$my_pligg_base}/templates/{$the_template}/images/google_round.png" /></a>
 			{/if}
 			{if $user_pinterest}
-				<a href="http://pinterest.com/{$user_pinterest}/" title="{$user_username} on Pinterest" rel="nofollow" target="_blank"><img src="{$my_pligg_base}/templates/{$the_template}/images/pinterest_round.png" /></a>
+				<a href="http://pinterest.com/{$user_pinterest}/" title="{$user_username|capitalize} on Pinterest" rel="nofollow" target="_blank"><img src="{$my_pligg_base}/templates/{$the_template}/images/pinterest_round.png" /></a>
 			{/if}
 			{checkActionsTpl location="tpl_user_profile_social_end"}
 		</div>
@@ -227,7 +227,7 @@
 						{else}
 							<tr>
 								<td colspan="3">
-									<span style="text-transform:capitalize;">{$user_username}</span> {#PLIGG_Visual_User_Profile_No_Friends#}
+									{$user_username|capitalize} {#PLIGG_Visual_User_Profile_No_Friends#}
 								</td>
 							</tr>
 						{/if}
@@ -256,8 +256,11 @@
 			<tbody>
 				{section name=nr loop=$userlist}
 					<tr>
-						<td width="240px"><img src="{$userlist[nr].Avatar}" align="absmiddle" /> <a href="{$URL_user, $userlist[nr].user_login}">{$userlist[nr].user_login}</a></td>
-						<td width="120px">{*	{$userlist[nr].user_date}	*}
+						<td width="240px">
+							<img src="{$userlist[nr].Avatar}" align="absmiddle" /> 
+							<a href="{$URL_user, $userlist[nr].user_login}">{$userlist[nr].user_login}</a></td>
+						<td width="120px">
+							{* {$userlist[nr].user_date} *}
 							{php}
 								$pligg_date = $this->_vars['userlist'][$this->_sections['nr']['index']]['user_date'];
 								echo date("F d, Y", strtotime($pligg_date));
@@ -280,13 +283,13 @@
 {/if}
 {***********************************************************************************}
 {if $user_view eq 'viewfriends'}
-	<legend>{#PLIGG_Visual_User_Profile_Your_Friends#}</legend>
+	<legend>{#PLIGG_Visual_User_Profile_People#} {$user_username|capitalize} {#PLIGG_Visual_User_Profile_Your_Friends#}</legend>
 	{if $following}
 	  	<table class="table table-bordered table-condensed table-striped">
 			<thead>
-				<th style="width:250px;text-align:left;">{#PLIGG_Visual_User_Profile_Username#}</th>
-				{if check_for_enabled_module('simple_messaging',0.6) && $is_friend}<th style="width:90px;text-align:left;">{#PLIGG_Visual_User_Profile_Message#}</th>{/if}
-				<th style="width:60px;text-align:center;">{#PLIGG_Visual_User_Profile_Remove_Friend#}</th>
+				<th>{#PLIGG_Visual_User_Profile_Username#}</th>
+				{if check_for_enabled_module('simple_messaging',0.6) && $is_friend}<th>{#PLIGG_Visual_User_Profile_Message#}</th>{/if}
+				<th>{#PLIGG_Visual_User_Profile_Remove_Friend#}</th>
 			</thead>
 			<tbody>
 				{foreach from=$following item=myfriend}
@@ -296,21 +299,21 @@
 						$this->_vars['removeURL'] = getmyurl('user_add_remove', $this->_vars['myfriend']['user_login'], 'removefriend');
 					{/php}
 					<tr>
-					<td><img src="{$friend_avatar}" align="absmiddle" /> <a href="{$profileURL}">{$myfriend.user_login}</a></td>
-					{if check_for_enabled_module('simple_messaging',0.6) && $is_friend}<td align="center"><a href="{$my_pligg_base}/module.php?module=simple_messaging&view=compose&return={$templatelite.server.REQUEST_URI|urlencode}&to={$myfriend.user_login}"><i class="icon icon-envelope"></i></a></td>{/if}
-					<td align="center"><a href = "{$removeURL}"><img src="{$my_pligg_base}/templates/{$the_template}/images/user_delete.gif" border=0></a></td>
+						<td><img src="{$friend_avatar}" align="absmiddle" /> <a href="{$profileURL}">{$myfriend.user_login}</a></td>
+						{if check_for_enabled_module('simple_messaging',0.6) && $is_friend}<td align="center"><a href="{$my_pligg_base}/module.php?module=simple_messaging&view=compose&return={$templatelite.server.REQUEST_URI|urlencode}&to={$myfriend.user_login}"><i class="icon icon-envelope"></i></a></td>{/if}
+						<td align="center"><a href = "{$removeURL}"><img src="{$my_pligg_base}/templates/{$the_template}/images/user_delete.gif" border=0></a></td>
 					</tr>
 				{/foreach}
 			<tbody>
 		</table>
 	{else}
 		<br /><br />
-		<h3 style="text-align:center;"><span style="text-transform:capitalize;">{$user_username}</span> {#PLIGG_Visual_User_Profile_No_Friends#}</h3>
+		<h3 style="text-align:center;">{$user_username|capitalize} {#PLIGG_Visual_User_Profile_No_Friends#}</h3>
 	{/if}
 {/if}
 {***********************************************************************************}
 {if $user_view eq 'viewfriends2'}
-	<legend>{#PLIGG_Visual_User_Profile_Viewing_Friends_2a#}</legend>
+	<legend>{#PLIGG_Visual_User_Profile_Viewing_Friends_2a#} {$user_username|capitalize}</legend>
 	{if $follower}
 	  	<table class="table table-bordered table-condensed table-striped">
 			<thead>
@@ -337,7 +340,7 @@
 			</tbody>
 		</table>
 	{else}
-		<h3>{$user_username} {#PLIGG_Visual_User_Profile_No_Friends_2#}</h3>
+		<h3>{$user_username|capitalize} {#PLIGG_Visual_User_Profile_No_Friends_2#}</h3>
 	{/if}
 {/if}
 {***********************************************************************************}
