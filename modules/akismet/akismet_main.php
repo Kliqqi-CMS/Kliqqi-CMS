@@ -232,6 +232,35 @@ function akismet_showpage(){
 			$main_smarty->display($template_dir . '/admin/admin.tpl');
 		}
 
+		if($view == 'updateKey'){
+			if($_REQUEST['key']){
+				$wordpress_key = sanitize($_REQUEST['key'], 3);
+	
+			    // Verify key before save
+			    if(phpnum()>=5){
+				include akismet_lib_path . 'Akismet.class_5.php'; 
+
+				$akismet = new Akismet(my_base_url . my_pligg_base, $wordpress_key);
+				if (!$akismet->isKeyValid())
+					$main_smarty->assign('error', 1);
+				else
+					misc_data_update('wordpress_key', $wordpress_key);
+			    } else {
+				include akismet_lib_path . 'Akismet.class_4.php'; 
+                
+				$akismet = new Akismet(my_base_url . my_pligg_base, $wordpress_key); 
+				if (!$akismet->_isValidApiKey($wordpress_key)) 
+					$main_smarty->assign('error', 1);
+				else
+					misc_data_update('wordpress_key', $wordpress_key);
+			    }
+			} else {
+				$wordpress_key='';
+				misc_data_update('wordpress_key', $wordpress_key);
+			}
+			$view = 'manageKey';
+		}
+
 		if($view == 'manageKey'){
 			$wordpress_key = get_misc_data('wordpress_key');
 			$main_smarty->assign('wordpress_key', $wordpress_key);
@@ -241,13 +270,6 @@ function akismet_showpage(){
 
 			$main_smarty->assign('tpl_center', akismet_tpl_path . 'manageKey');
 			$main_smarty->display($template_dir . '/admin/admin.tpl');
-		}
-
-		if($view == 'updateKey'){
-			if(isset($_REQUEST['key'])){$wordpress_key = sanitize($_REQUEST['key'], 3);}else{$wordpress_key='';}
-			misc_data_update('wordpress_key', $wordpress_key);
-			header('Location: ' . URL_akismet);
-			die();
 		}
 
 		if($view == 'manageSpam'){
@@ -325,13 +347,11 @@ function akismet_showpage(){
 //				header('Location: ' . URL_akismet);
 				die();
 			}
-
 			$main_smarty = do_sidebar($main_smarty, $navwhere);
 			$main_smarty->assign('posttitle', " / " . $main_smarty->get_config_vars('PLIGG_Visual_Header_AdminPanel'));
 
 			$main_smarty->assign('tpl_center', akismet_tpl_path . 'manageSpamcomments');
 			$main_smarty->display($template_dir . '/admin/admin.tpl');
-
 		}
 		
 		if(phpnum()>=5)

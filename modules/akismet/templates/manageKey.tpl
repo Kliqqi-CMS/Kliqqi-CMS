@@ -1,4 +1,17 @@
 {config_load file=akismet_lang_conf}
+
+{if $error}
+	<div class="alert fade in">
+		<a data-dismiss="alert" class="close">x</a>
+		{#PLIGG_Akismet_Wrong_Key#}
+	</div>
+{elseif $templatelite.get.submit}
+	<div class="alert alert-success fade in">
+		<a data-dismiss="alert" class="close">x</a>
+		{#PLIGG_Akismet_Saved#}
+	</div>
+{/if}
+
 <fieldset>
 	<legend><img src="{$akismet_img_path}shield.png" align="absmiddle"/> {#PLIGG_Akismet_manage_key#}</legend>
 	<p>{#PLIGG_Akismet_api_description#}<p>
@@ -10,7 +23,7 @@
 			<strong>{#PLIGG_Akismet_api_key#} <input type="text" name="key" value="{$wordpress_key}">
 		</div>
 		<div style="float:left;margin:1px 0 0 4px;display:inline;">
-			<input type="submit" class="btn btn-primary" value="{#PLIGG_Akismet_api_update#}">
+			<input type="submit" name="submit" class="btn btn-primary" value="{#PLIGG_Akismet_api_update#}">
 		</div>
 	</form>
 	
