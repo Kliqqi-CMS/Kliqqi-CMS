@@ -180,12 +180,12 @@ function show_profile() {
 	$main_smarty->assign('user_location', $user->location);
 	$main_smarty->assign('user_occupation', $user->occupation);
 	$main_smarty->assign('user_language', !empty($user->language) ? $user->language : 'english');
-	$main_smarty->assign('user_aim', $user->aim);
-	$main_smarty->assign('user_msn', $user->msn);
-	$main_smarty->assign('user_yahoo', $user->yahoo);
-	$main_smarty->assign('user_gtalk', $user->gtalk);
+	$main_smarty->assign('user_facebook', $user->facebook);
+	$main_smarty->assign('user_twitter', $user->twitter);
+	$main_smarty->assign('user_linkedin', $user->linkedin);
+	$main_smarty->assign('user_googleplus', $user->googleplus);
 	$main_smarty->assign('user_skype', $user->skype);
-	$main_smarty->assign('user_irc', $user->irc);
+	$main_smarty->assign('user_pinterest', $user->pinterest);
 	$main_smarty->assign('user_karma', $user->karma);
 	$main_smarty->assign('user_joined', get_date($user->date));
 	$main_smarty->assign('user_avatar_source', $user->avatar_source);
@@ -325,23 +325,50 @@ function save_profile() {
 		$sql = "UPDATE " . table_users . " set user_categories='$select_checked' WHERE user_id = '{$user->id}'";	
 		$query = mysql_query($sql);
 		/////
-  
-      
-       
+		
+		// Santizie user input
 		$user->url=sanitize($_POST['url'], 3);
 		$user->public_email=sanitize($_POST['public_email'], 3);
 		$user->location=sanitize($_POST['location'], 3);
 		$user->occupation=sanitize($_POST['occupation'], 3);
-		$user->aim=sanitize($_POST['aim'], 3);
-		$user->msn=sanitize($_POST['msn'], 3);
-		$user->yahoo=sanitize($_POST['yahoo'], 3);
-		$user->gtalk=sanitize($_POST['gtalk'], 3);
+		$user->facebook=sanitize($_POST['facebook'], 3);
+		$user->twitter=sanitize($_POST['twitter'], 3);
+		$user->linkedin=sanitize($_POST['linkedin'], 3);
+		$user->googleplus=sanitize($_POST['googleplus'], 3);
 		$user->skype=sanitize($_POST['skype'], 3);
-		$user->irc=sanitize($_POST['irc'], 3);
+		$user->pinterest=sanitize($_POST['pinterest'], 3);
 		$user->names=sanitize($_POST['names'], 3);
-		if (user_language)
+		if (user_language){
 			$user->language=sanitize($_POST['language'], 3);
-	
+		}
+		
+		// Convert user input social URLs to username values
+		$facebookUrl = $user->facebook;
+		preg_match("/https?:\/\/(www\.)?facebook\.com\/([^\/]*)/", $facebookUrl, $matches);
+		if ($matches){
+			$user->facebook = $matches[2];
+		}
+		$twitterUrl = $user->twitter;
+		preg_match("/https?:\/\/(www\.)?twitter\.com\/(#!\/)?@?([^\/]*)/", $twitterUrl, $matches);
+		if ($matches){
+			$user->twitter = $matches[3];
+		}
+		$linkedinUrl = $user->linkedin;
+		preg_match("/https?:\/\/(www\.)?linkedin\.com\/in\/([^\/]*)/", $linkedinUrl, $matches);
+		if ($matches){
+			$user->linkedin = $matches[2];
+		}
+		$googleplusUrl = $user->googleplus;
+		preg_match("/https?:\/\/plus\.google\.com\/([^\/]*)/", $googleplusUrl, $matches);
+		if ($matches){
+			$user->googleplus = $matches[1];
+		}
+		$pinterestUrl = $user->pinterest;
+		preg_match("/https?:\/\/(www\.)?pinterest\.com\/([^\/]*)/", $pinterestUrl, $matches);
+		if ($matches){
+			$user->pinterest = $matches[2];
+		}
+		
 		// module system hook
 		$vars = '';
 		check_actions('profile_save', $vars);

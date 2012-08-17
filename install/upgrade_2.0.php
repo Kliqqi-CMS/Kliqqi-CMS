@@ -23,6 +23,29 @@ if ($old_version < $new_version) {
 	//echo $lang['UpgradingTables'] . '<br />';
 	echo '<li>Performing one-time Pligg 2.0 Upgrade</li><ul>';
 	
+	// Change some user profile fields
+	$sql = "ALTER TABLE ".table_users." CHANGE `user_aim` `user_facebook` VARCHAR( 64 ) CHARACTER SET utf8 COLLATE utf8_unicode_ci NULL DEFAULT NULL;";
+	$db->query($sql);
+	$sql = "UPDATE ".table_users." SET user_facebook='';";
+	$db->query($sql);
+	$sql = "ALTER TABLE ".table_users." CHANGE `user_msn` `user_twitter` VARCHAR( 64 ) CHARACTER SET utf8 COLLATE utf8_unicode_ci NULL DEFAULT NULL;";
+	$db->query($sql);
+	$sql = "UPDATE ".table_users." SET user_twitter='';";
+	$db->query($sql);
+	$sql = "ALTER TABLE ".table_users." CHANGE `user_yahoo` `user_linkedin` VARCHAR( 64 ) CHARACTER SET utf8 COLLATE utf8_unicode_ci NULL DEFAULT NULL;";
+	$db->query($sql);
+	$sql = "UPDATE ".table_users." SET user_linkedin='';";
+	$db->query($sql);
+	$sql = "ALTER TABLE ".table_users." CHANGE `user_gtalk` `user_googleplus` VARCHAR( 64 ) CHARACTER SET utf8 COLLATE utf8_unicode_ci NULL DEFAULT NULL;";
+	$db->query($sql);
+	$sql = "UPDATE ".table_users." SET user_googleplus='';";
+	$db->query($sql);
+	$sql = "ALTER TABLE ".table_users." CHANGE `user_irc` `user_pinterest` VARCHAR( 64 ) CHARACTER SET utf8 COLLATE utf8_unicode_ci NULL DEFAULT NULL;";
+	$db->query($sql);
+	$sql = "UPDATE ".table_users." SET user_pinterest='';";
+	$db->query($sql);
+	echo '<li>Changed user profile fields to match new social media sites</li>';
+	
 	// Change default avatar to new larger png files
 	$sql = "UPDATE ".table_config." SET var_defaultvalue='/avatars/Avatar_100.png' WHERE var_name='Default_Gravatar_Large';";
 	$db->query($sql);

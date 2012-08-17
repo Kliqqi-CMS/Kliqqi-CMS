@@ -4,6 +4,74 @@
 *************************************}
 <!-- user_center.tpl -->
 {checkActionsTpl location="tpl_pligg_profile_start"}
+<div style="margin:0 0 10px 0;">
+	<h1>
+		{if $UseAvatars neq "0"}
+			<img style="float:left;margin:0 15px 0 0;" src="{$Avatar_ImgSrc}" class="thumbnail" style="margin-bottom:4px;" alt="Avatar" />
+		{/if}
+		{$user_username}
+	</h1>
+	<div style="margin-top:2px;">
+		{checkActionsTpl location="tpl_user_profile_social_start"}
+		{if $user_skype}
+			<a href="callto://{$user_skype}" title="Skype {$user_username}" rel="nofollow" target="_blank"><img src="{$my_pligg_base}/templates/{$the_template}/images/skype_round.png" /></a>
+		{/if}
+		{if $user_facebook}
+			<a href="http://www.facebook.com/{$user_facebook}" title="{$user_username} on Facebook" rel="nofollow" target="_blank"><img src="{$my_pligg_base}/templates/{$the_template}/images/facebook_round.png" /></a>
+		{/if}
+		{if $user_twitter}
+			<a href="http://twitter.com/{$user_twitter}" title="{$user_username} on Twitter" rel="nofollow" target="_blank"><img src="{$my_pligg_base}/templates/{$the_template}/images/twitter_round.png" /></a>
+		{/if}
+		{if $user_linkedin}
+			<a href="http://www.linkedin.com/in/{$user_linkedin}" title="{$user_username} on LinkedIn" rel="nofollow" target="_blank"><img src="{$my_pligg_base}/templates/{$the_template}/images/linkedin_round.png" /></a>
+		{/if}
+		{if $user_googleplus}
+			<a href="https://plus.google.com/{$user_googleplus}" title="{$user_username} on Google+" rel="nofollow" target="_blank"><img src="{$my_pligg_base}/templates/{$the_template}/images/google_round.png" /></a>
+		{/if}
+		{if $user_pinterest}
+			<a href="http://pinterest.com/{$user_pinterest}/" title="{$user_username} on Pinterest" rel="nofollow" target="_blank"><img src="{$my_pligg_base}/templates/{$the_template}/images/pinterest_round.png" /></a>
+		{/if}
+		{checkActionsTpl location="tpl_user_profile_social_end"}
+	</div>
+	{checkActionsTpl location="tpl_show_extra_profile"}
+	<div style="font-size:0.85em;line-height:1.3em;margin-top:2px;">		
+		{if $user_publicemail ne ""}
+			{php}
+				// Method to try to trick automated email address collection bots
+				global $main_smarty;
+				$full_email = $this->_vars['user_publicemail'];
+				list($email_start,$_) = explode('@',$full_email); $email_domain = ''.$_;
+				$main_smarty->assign('email_start', $email_start);
+				$main_smarty->assign('email_domain', $email_domain);
+			{/php}
+			<script type="text/javascript">
+			<!--
+				var string1 = "{$email_start}";
+				var string2 = "@";
+				var string3 = "{$email_domain}";
+			//  document.write(string4);
+				document.write("<a href=" + "mail" + "to:" + string1 + string2 + string3 + ">Email</a> | ");
+			//-->
+			</script>
+		{/if}
+		{if $user_url ne "" && $user_karma > "20" || $user_login eq $user_logged_in}
+			<a href="{$user_url}" target="_blank" rel="nofollow">{$user_url}</a>
+			<br />
+		{/if}
+		{checkActionsTpl location="tpl_user_profile_details_start"}
+		{if $user_names ne ""}
+			{$user_names} is
+		{/if}
+		{if $user_occupation ne ""}
+			a {$user_occupation}
+		{/if}
+		{if $user_location ne ""}
+			from {$user_location}
+		{/if}
+		{checkActionsTpl location="tpl_user_profile_details_end"}
+	</div>
+	<div style="clear:both;"></div>
+</div>
 {checkActionsTpl location="tpl_user_center_just_below_header"}
 <ul class="nav nav-tabs" id="profiletabs">
 	{checkActionsTpl location="tpl_pligg_profile_sort_start"}
@@ -33,93 +101,6 @@
 	<div id="tabbed" class="tab-content">
 		<div class="tab-pane fade active in" id="personal_info">
 			{checkActionsTpl location="tpl_pligg_profile_info_start"}
-			<div class="span4">
-				<table class="table table-bordered table-striped">
-					<thead class="table_title">
-						<tr>
-							<th colspan="2">{#PLIGG_Visual_User_PersonalData#}</th>
-						</tr>
-					</thead>
-					<tbody>
-						<tr>
-							<td><strong>{#PLIGG_Visual_Login_Username#}:</strong></td>
-							<td>
-								{if $UseAvatars neq "0"}
-									<img src="{$Avatar_ImgSrc}" class="thumbnail" style="margin-bottom:4px;" alt="Avatar" />
-								{/if}
-								{$user_username}
-							</td>
-						</tr>			
-						{if $user_names ne ""}
-							<tr>
-								<td><strong>{#PLIGG_Visual_User_Profile_User#}:</strong></td>
-								<td>{$user_names}</td>
-							</tr>
-						{/if}
-						{if $user_url ne "" && $user_karma > "20" || $user_login eq $user_logged_in}
-							<tr>
-								<td><strong>{#PLIGG_Visual_User_Profile_Homepage#}:</strong></td>
-								<td><a href="{$user_url}" target="_blank" rel="nofollow">{$user_url}</a></td>
-							</tr>
-						{/if}
-						{if $user_publicemail ne ""}
-							<tr>
-								<td><strong>{#PLIGG_Visual_User_Profile_PublicEmail#}:</strong></td>
-								<td>{$user_publicemail}</td>
-							</tr>
-						{/if}
-						{if $user_location ne ""}
-							<tr>
-								<td><strong>{#PLIGG_Visual_Profile_Location#}:</strong></td>
-								<td>{$user_location}</td>
-							</tr>
-						{/if}
-						{if $user_occupation ne ""}
-							<tr>
-								<td><strong>{#PLIGG_Visual_Profile_Occupation#}:</strong></td>
-								<td>{$user_occupation}</td>
-							</tr>
-						{/if}
-						{if $user_aim ne ""}
-							<tr>
-								<td><strong>{#PLIGG_Visual_User_Profile_AIM#}:</strong></td>
-								<td>{$user_aim}</td>
-							</tr>
-						{/if}
-						{if $user_msn ne ""}
-							<tr>
-								<td><strong>{#PLIGG_Visual_User_Profile_MSN#}:</strong></td>
-								<td>{$user_msn}</td>
-							</tr>
-						{/if}
-						{if $user_yahoo ne ""}
-							<tr>
-								<td><strong>{#PLIGG_Visual_User_Profile_Yahoo#}:</strong></td>
-								<td>{$user_yahoo}</td>
-							</tr>
-						{/if}
-						{if $user_gtalk ne ""}
-							<tr>
-								<td><strong>{#PLIGG_Visual_User_Profile_GTalk#}:</strong></td>
-								<td>{$user_gtalk}</td>
-							</tr>
-						{/if}
-						{if $user_skype ne ""}
-							<tr>
-								<td><strong>{#PLIGG_Visual_User_Profile_Skype#}:</strong></td>
-								<td>{$user_skype}</td>
-							</tr>
-						{/if}
-						{if $user_irc ne ""}
-							<tr>
-								<td><strong>{#PLIGG_Visual_User_Profile_IRC#}:</strong></td>
-								<td><a href="{$user_irc}" target="_blank">{$user_irc}</a></td>
-							</tr>
-						{/if}
-					</tbody>
-				</table>
-				{checkActionsTpl location="tpl_show_extra_profile"}
-			</div>
 			{checkActionsTpl location="tpl_pligg_profile_info_middle"}
 			<div id="stats" class="span4">
 				<table class="table table-bordered table-striped">
@@ -403,8 +384,19 @@
 				</div>
 			</form>		
 		{/if}
-		<i class="icon icon-user"></i>
-		<a href="{$user_url_friends}">{#PLIGG_Visual_User_Profile_View_Friends#}</a>
+		<a style="color:#fff;" href="{$user_url_friends}">
+			<span class="label" style="background:#7E7E7E;padding:5px 8px;">
+				<i class="icon icon-white icon-user"></i>
+				{#PLIGG_Visual_User_Profile_View_Friends#}
+			</span>
+		</a>
+		&nbsp;
+		<a style="color:#fff;" href="{$user_url_friends2}">
+			<span class="label" style="background:#BCBCBC;padding:5px 8px;">
+				<i class="icon icon-white icon-user"></i>
+				{#PLIGG_Visual_User_Profile_View_Friends_2#}
+			</span>
+		</a>
 	{/if}
 	<h2>{#PLIGG_Visual_User_Profile_Viewing_Friends_2a#}</h2>
 	{if $friends}

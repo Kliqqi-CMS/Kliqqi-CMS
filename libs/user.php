@@ -25,12 +25,12 @@ class User {
 	var $occupation = '';
 	var $language = '';
 	var $url = '';
-	var $aim = '';
-	var $msn = '';
-	var $yahoo = '';
-	var $gtalk = '';
+	var $facebook = '';
+	var $twitter = '';
+	var $linkedin = '';
+	var $googleplus = '';
 	var $skype = '';
-	var $irc = '';
+	var $pinterest = '';
 	var $avatar_source = '';
 	// For stats
 	var $total_votes = 0;
@@ -132,12 +132,12 @@ function Create(){
 		$user_location = $db->escape($this->location);
 		$user_occupation = $db->escape($this->occupation);
 		$user_language = $db->escape($this->language);
-		$user_aim = $db->escape($this->aim);
-		$user_msn = $db->escape($this->msn);
-		$user_yahoo = $db->escape($this->yahoo);
-		$user_gtalk = $db->escape($this->gtalk);
+		$user_facebook = $db->escape($this->facebook);
+		$user_twitter = $db->escape($this->twitter);
+		$user_linkedin = $db->escape($this->linkedin);
+		$user_googleplus = $db->escape($this->googleplus);
 		$user_skype = $db->escape($this->skype);
-		$user_irc = $db->escape(htmlentities($this->irc));
+		$user_pinterest = $db->escape(htmlentities($this->pinterest));
 		$user_avatar_source = $db->escape($this->avatar_source);
 		if (strlen($user_pass) < 49){
 			$saltedpass=generateHash($user_pass);}
@@ -155,7 +155,7 @@ function Create(){
 					$sql .= ", " . $varname . " = '" . $varvalue . "' ";
 				}
 			}
-			$sql .= " , user_login='$user_login', user_occupation='$user_occupation', user_language='$user_language', user_location='$user_location', public_email='$user_public_email', user_level='$user_level', user_karma=$user_karma, user_date=FROM_UNIXTIME($user_date), user_pass='$saltedpass', user_email='$user_email', user_names='$user_names', user_url='$user_url', user_aim='$user_aim', user_msn='$user_msn', user_yahoo='$user_yahoo', user_gtalk='$user_gtalk', user_skype='$user_skype', user_irc='$user_irc' WHERE user_id=$this->id";
+			$sql .= " , user_login='$user_login', user_occupation='$user_occupation', user_language='$user_language', user_location='$user_location', public_email='$user_public_email', user_level='$user_level', user_karma=$user_karma, user_date=FROM_UNIXTIME($user_date), user_pass='$saltedpass', user_email='$user_email', user_names='$user_names', user_url='$user_url', user_facebook='$user_facebook', user_twitter='$user_twitter', user_linkedin='$user_linkedin', user_googleplus='$user_googleplus', user_skype='$user_skype', user_pinterest='$user_pinterest' WHERE user_id=$this->id";
 			//die($sql);
 			$db->query($sql);
 			//lets remove the old cached data
@@ -224,12 +224,12 @@ function Create(){
 			$this->occupation = $user->user_occupation;
 			$this->language = $user->user_language;
 			$this->url = $user->user_url;
-			$this->aim = $user->user_aim;
-			$this->msn = $user->user_msn;
-			$this->yahoo = $user->user_yahoo;
-			$this->gtalk = $user->user_gtalk;
+			$this->facebook = $user->user_facebook;
+			$this->twitter = $user->user_twitter;
+			$this->linkedin = $user->user_linkedin;
+			$this->googleplus = $user->user_googleplus;
 			$this->skype = $user->user_skype;
-			$this->irc = $user->user_irc;
+			$this->pinterest = $user->user_pinterest;
 			$this->read = true;
 
 			$this->extra_field = object_2_array($user, 0, 0);
@@ -271,12 +271,12 @@ function Create(){
 		$main_smarty->assign('user_location', $this->location);
 		$main_smarty->assign('user_occupation', $this->occupation);
 		$main_smarty->assign('user_language', $this->language);
-		$main_smarty->assign('user_aim', $this->aim);
-		$main_smarty->assign('user_msn', $this->msn);
-		$main_smarty->assign('user_yahoo', $this->yahoo);
-		$main_smarty->assign('user_gtalk', $this->gtalk);
+		$main_smarty->assign('user_facebook', $this->facebook);
+		$main_smarty->assign('user_twitter', $this->twitter);
+		$main_smarty->assign('user_linkedin', $this->linkedin);
+		$main_smarty->assign('user_googleplus', $this->googleplus);
 		$main_smarty->assign('user_skype', $this->skype);
-		$main_smarty->assign('user_irc', $this->irc);
+		$main_smarty->assign('user_pinterest', $this->pinterest);
 		$main_smarty->assign('user_karma', $this->karma);
 		$main_smarty->assign('user_joined', get_date($this->date));
 		$main_smarty->assign('user_login', $this->username);
