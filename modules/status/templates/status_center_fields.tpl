@@ -20,7 +20,7 @@ function checkall()
 	$this->_vars['settings'] = $settings;
 {/php}
 
-<table class="table table-bordered table-striped span4">
+<table class="masonry table table-bordered table-striped span4">
 	<thead class="table_title">
 		<tr>
 			<td colspan="2"><strong>{#PLIGG_Status_Settings#}</strong></td>

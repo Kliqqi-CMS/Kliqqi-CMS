@@ -355,6 +355,13 @@ clear:both;
 float:left;
 margin-right:6px;
 }
+
+.follow {
+padding:5px 5px 5px 5px;
+margin:0 0 2px 0;
+}
+.follow a {color:#fff;}
+
 .user_settings {
 margin:20px 0 0 0;
 padding:8px;

@@ -358,7 +358,7 @@ $CSRF->create('user_settings', true, true);
 			do_addfriend();
 			break;
 		case 'viewfriends':
-			do_viewfriends($current_user->user_id);
+			do_viewfriends($user->id);
 			break;
 		case 'viewfriends2':
 			do_viewfriends2();
@@ -371,6 +371,9 @@ $CSRF->create('user_settings', true, true);
 			//$main_smarty->assign('user_pagination', do_pages($rows, $page_size, $the_page, true));
 			break;  	
 	}
+	
+	do_viewfriends($user->id);
+	do_viewfriends2($user->id);
 
 // display the template
 	$main_smarty->assign('tpl_center', $the_template . '/user_center');
@@ -530,7 +533,7 @@ function do_viewfriends($user_id){
 	$friends = $friend->get_friend_list($user_id);
 
 	$main_smarty->assign('the_template',$the_template);
-	$main_smarty->assign('friends', $friends);
+	$main_smarty->assign('following', $friends);
 }
 
 function do_viewfriends2(){
@@ -539,7 +542,7 @@ function do_viewfriends2(){
 	$friends = $friend->get_friend_list_2();	
 
 	$main_smarty->assign('the_template',$the_template);
-	$main_smarty->assign('friends', $friends);
+	$main_smarty->assign('follower', $friends);
 }
 function do_member_groups()
 {

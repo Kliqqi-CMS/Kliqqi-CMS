@@ -88,10 +88,10 @@
 {checkActionsTpl location="tpl_pligg_profile_info_start"}
 <div id="profile_container" style="position: relative;">
 	{if $UseAvatars neq false}
-		<table class="table table-bordered table-striped span4" style="position: absolute; top: 0px; left: 0px;">
+		<table class="masonry table table-bordered table-striped span4" style="position: absolute; top: 0px; left: 0px;">
 			<thead class="table_title">
 				<tr>
-					<td colspan="2"><strong>{#PLIGG_Visual_Profile_UploadAvatar2#}</strong></td>
+					<th colspan="2">{#PLIGG_Visual_Profile_UploadAvatar2#}</th>
 				</tr>
 			</thead>
 			<tbody>
@@ -133,10 +133,10 @@
 	<form action="" method="post" id="thisform">
 		{checkActionsTpl location="tpl_profile_center_fields"}
 		{checkActionsTpl location="tpl_pligg_profile_info_middle"}
-		<table class="table table-bordered table-striped span4">
+		<table class="masonry table table-bordered table-striped span4">
 			<thead class="table_title">
 				<tr>
-					<td colspan="2"><strong>{#PLIGG_Visual_Profile_ModifyProfile#}</strong></td>
+					<th colspan="2">{#PLIGG_Visual_Profile_ModifyProfile#}</th>
 				</tr>
 			</thead>
 			<tbody>
@@ -215,55 +215,59 @@
 			{php}
 			}
 			{/php}
-			
 			</tbody>
 		</table>
 		{checkActionsTpl location="tpl_pligg_profile_settings_start"}		
-		<table class="table table-bordered table-striped span4">
+		<table class="masonry table table-bordered table-striped span4">
 			<thead class="table_title">
 				<tr>
-					<td colspan="2"><strong>{#PLIGG_Visual_User_Setting#}</strong></td>
+					<th colspan="2">{#PLIGG_Visual_User_Setting#}</th>
 				</tr>
-			</thead>		
-			{if $Allow_User_Change_Templates}
+			</thead>
+			<tbody>
+				{if $Allow_User_Change_Templates}
+					<tr>
+						<td><label>{#PLIGG_Visual_User_Setting_Template#}:</label></td>
+						<td><select name='template'>
+						{foreach from=$templates item=template}
+							<option {if $template==$current_template}selected{/if}>{$template}</option>
+						{/foreach}
+						</select>
+						</td>
+					</tr>
+				{/if}
 				<tr>
-					<td><label>{#PLIGG_Visual_User_Setting_Template#}:</label></td>
-					<td><select name='template'>
-					{foreach from=$templates item=template}
-						<option {if $template==$current_template}selected{/if}>{$template}</option>
+					<td><label>{#PLIGG_Visual_User_Setting_Categories#}:</label></td>
+					<td>
+					{foreach from=$category item=cat name="cate"}
+						<input type="checkbox" name="chack[]" value="{$cat.category__auto_id}" {if !in_array($cat.category__auto_id,$user_category)} checked="checked"{/if}>
+						{$cat.category_name}<br/>
 					{/foreach}
-					</select>
 					</td>
 				</tr>
-			{/if}
-			<tr>
-				<td><label>{#PLIGG_Visual_User_Setting_Categories#}:</label></td>
-				<td>
-				{foreach from=$category item=cat name="cate"}
-					<input type="checkbox" name="chack[]" value="{$cat.category__auto_id}" {if !in_array($cat.category__auto_id,$user_category)} checked="checked"{/if}>
-					{$cat.category_name}<br/>
-				{/foreach}
-				</td>
-			</tr>
+			</tbody>
 		</table>
 		{checkActionsTpl location="tpl_pligg_profile_settings_end"}
-		<table class="table table-bordered table-striped span4">
+		<table class="masonry table table-bordered table-striped span4">
 			<thead class="table_title">
 				<tr>
-					<td colspan="2"><strong>{#PLIGG_Visual_Profile_ChangePass#}</strong></td>
+					<th colspan="2">{#PLIGG_Visual_Profile_ChangePass#}</th>
 				</tr>
-			</thead>		<tr>
-				<td><label>{#PLIGG_Visual_Profile_OldPass#}:</label></td>
-				<td><input type="password" id="oldpassword" name="oldpassword" size="25" tabindex="13"/></td>
-			</tr>
-			<tr>
-				<td><label>{#PLIGG_Visual_Profile_NewPass#}:</label></td>
-				<td><input type="password" id="newpassword" name="newpassword" size="25" tabindex="14"/></td>
-			</tr>
-			<tr>
-				<td><label>{#PLIGG_Visual_Profile_VerifyNewPass#}:</label></td>
-				<td><input type="password" id="verify" name="newpassword2" size="25" tabindex="15"/></td>
-			</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td><label>{#PLIGG_Visual_Profile_OldPass#}:</label></td>
+					<td><input type="password" id="oldpassword" name="oldpassword" size="25" tabindex="13"/></td>
+				</tr>
+				<tr>
+					<td><label>{#PLIGG_Visual_Profile_NewPass#}:</label></td>
+					<td><input type="password" id="newpassword" name="newpassword" size="25" tabindex="14"/></td>
+				</tr>
+				<tr>
+					<td><label>{#PLIGG_Visual_Profile_VerifyNewPass#}:</label></td>
+					<td><input type="password" id="verify" name="newpassword2" size="25" tabindex="15"/></td>
+				</tr>
+			</tbody>
 		</table>
 	{* There is still an open <form> that needs to be closed *}
 </div>

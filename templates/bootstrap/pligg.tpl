@@ -190,14 +190,14 @@
 			$('#bodytext').wysihtml5();
 		</script>{/literal}
 	{/if}
-	{if $pagename eq "profile"}
+	{if $pagename eq "profile" || $pagename eq "user"}
 		{literal}
 		<script>
 		  $(function(){
 			var $container = $('#profile_container');
 			$container.imagesLoaded( function(){
 			  $container.masonry({
-				itemSelector : '.table'
+				itemSelector : '.masonry'
 			  });
 			});
 		  });

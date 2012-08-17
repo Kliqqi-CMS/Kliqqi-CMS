@@ -12,7 +12,7 @@
 	if ($fb_user->extra_field['user_fb'])
 	{
 	{/php}
-		<table class="table table-bordered table-striped span4">
+		<table class="masonry table table-bordered table-striped span4">
 			<thead class="table_title">
 				<tr>
 					<td colspan="2"><strong>Facebook</strong></td>
