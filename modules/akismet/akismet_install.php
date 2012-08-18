@@ -1,7 +1,7 @@
 <?php
 	$module_info['name'] = 'Akismet';
 	$module_info['desc'] = 'Akismet Anti-Spam Module';
-	$module_info['version'] = 0.6;
+	$module_info['version'] = 2.0;
 	$module_info['settings_url'] = '../module.php?module=akismet';
 	//$module_info['db_add_field'][]=array(table_prefix . 'links', 'akismet', 'TINYINT',  3, "UNSIGNED", 0, '0');
 	

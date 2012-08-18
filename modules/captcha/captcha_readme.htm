@@ -1,18 +1,38 @@
-<h2>Captcha</h2>
-<strong>Last Updated</strong> 2009/09/10<br>
-<strong>Requires:</strong> None
+<h1>Captcha</h1>
+<p>
+	<strong>Last Updated</strong> 2012/08/18<br>
+	<strong>Requirements:</strong> None
+</p>
 
-<h3>Description</h3>
-Allows admins to choose from various Captcha systems for user registration, story submission or comment submission.
+<h2>Description</h2>
+<p>Users must verify that they aren't a spam bot by providing a CAPTCHA answer. This module has a few different methods. ReCaptcha (default), Math, or Whitehat.</p>
 
-<h3>Revision History</h3>
-v1.0 2009/09/10 Yankidank - Added CAPTCHA option when submitting story or comment.<br />
-v0.9 2008/09/05 AshDigg	- Made module compatible with the new location of the admin folder.<br />
-v0.8 2008/08/03 AshDigg - Removed 'default' captcha. 'Whitehat' will now be the default.<br />
-v0.7 2007/12/16 AshDigg - Fix to make the module work with other registration modules.<br />
-v0.6 2007/12/16 AshDigg - Modified to work with new registration code.<br />
-v0.5 2007/12/15 AshDigg - Added ability to show Captcha on the first page of registration (if template supports it)<br />
-v0.4 2007/12/14 AshDigg - Added Math question<br />
-v0.3 2007/12/12 AshDigg - Bugfix<br />
-v0.2 2007/12/12 AshDigg - Added WhiteHat method<br />
-v0.1 2007/12/11 AshDigg - First version<br />
+<h3>ReCAPTCHA</h3>
+<p>The <a href="http://www.google.com/recaptcha">ReCAPTCHA</a> method is a Google-owned project and is considered to be the most secure. It generates two words, one of which needs to be typed correctly while the other one isn't seen as important.</p>
+<img class="thumbnail" src="../modules/captcha/images/recaptcha.png" />
+<br />
+
+<h3>Whitehat</h3>
+<p>Whitehat uses your own server to generate CAPTCHA images. It is seen as less effective at fighting spam bots due to the more legibile letters than what ReCAPTCHA provides.</p>
+<img class="thumbnail" src="../modules/captcha/images/whitehat.png" />
+<br />
+
+<h3>Math</h3>
+<p>The Match CAPTCHA method presents users with an elementary level math equation that they must solve.</p>
+<img class="thumbnail" src="../modules/captcha/images/math.png" />
+<br />
+
+<h2>Revision History</h2>
+<ul>
+	<li>v2.0 2012/08/18 Yankidank - Updated for Pligg 2.</li>
+	<li>v1.0 2009/09/10 Yankidank - Added CAPTCHA option when submitting story or comment.</li>
+	<li>v0.9 2008/09/05 AshDigg	- Made module compatible with the new location of the admin folder.</li>
+	<li>v0.8 2008/08/03 AshDigg - Removed 'default' captcha. 'Whitehat' will now be the default.</li>
+	<li>v0.7 2007/12/16 AshDigg - Fix to make the module work with other registration modules.</li>
+	<li>v0.6 2007/12/16 AshDigg - Modified to work with new registration code.</li>
+	<li>v0.5 2007/12/15 AshDigg - Added ability to show Captcha on the first page of registration (if template supports it)</li>
+	<li>v0.4 2007/12/14 AshDigg - Added Math question</li>
+	<li>v0.3 2007/12/12 AshDigg - Bugfix</li>
+	<li>v0.2 2007/12/12 AshDigg - Added WhiteHat method</li>
+	<li>v0.1 2007/12/11 AshDigg - First version</li>
+</ul>
