@@ -11,12 +11,16 @@
 			</a>
 			<ul class="dropdown-menu">
 				{if $user_logged_in eq $link_submitter || $isadmin}<li><a href="{$story_edit_url}"><i class="icon-pencil"></i> {#PLIGG_Visual_LS_Admin_Edit#}</a></li>{/if}
-				{if $isadmin}<li><a href="{$story_admin_url}"><i class="icon-resize-vertical"></i> {#PLIGG_Visual_LS_Admin_Status#}</a></li>{/if}
-				{if $isadmin}<li><a href="{$my_base_url}{$my_pligg_base}/admin/admin_users.php?mode=view&user={$link_submitter}"><i class="icon-user"></i> {#PLIGG_Visual_Comment_Manage_User#} {$link_submitter}</a></li>{/if}
-				{if $isadmin}{checkActionsTpl location="tpl_link_summary_admin_links"}{/if}
+				{if $isadmin}
+					<li><a href="{$story_admin_url}"><i class="icon-resize-vertical"></i> {#PLIGG_Visual_LS_Admin_Status#}</a></li>
+					<li><a href="{$my_base_url}{$my_pligg_base}/admin/admin_users.php?mode=view&user={$link_submitter}"><i class="icon-user"></i> {#PLIGG_Visual_Comment_Manage_User#} {$link_submitter}</a></li>
+				{/if}
+				{checkActionsTpl location="tpl_link_summary_admin_links"}
 				{if $link_group_id neq 0}<li><a target="story_status" href="javascript://" onclick="show_hide_user_links(document.getElementById('stories_status-{$link_shakebox_index}'));"><i class="icon-filter"></i> {#PLIGG_Visual_Group_Story_Status#}</a></li>{/if}
-				{if $isadmin}<li><a href="{$my_pligg_base}/admin/admin_users.php?mode=killspam&user={$link_submitter}"><i class="icon-ban-circle"></i> {#PLIGG_Visual_View_User_Killspam#}</a></li>{/if}
-				{if $isadmin}<li><a href="{$my_pligg_base}/delete.php?link_id={$link_id}"><i class="icon-trash"></i> {#PLIGG_Visual_AdminPanel_Discard#}</a></li>{/if}
+				{if $isadmin}
+					<li><a href="{$my_pligg_base}/admin/admin_users.php?mode=killspam&user={$link_submitter}"><i class="icon-ban-circle"></i> {#PLIGG_Visual_View_User_Killspam#}</a></li>
+					<li><a href="{$my_pligg_base}/delete.php?link_id={$link_id}"><i class="icon-trash"></i> {#PLIGG_Visual_AdminPanel_Discard#}</a></li>
+				{/if}
 			</ul>
 			<iframe height="0" width="0" frameborder="0" name="story_status" class="invisible"></iframe>
 			<span id="stories_status-{$link_shakebox_index}" style="display:none;">
