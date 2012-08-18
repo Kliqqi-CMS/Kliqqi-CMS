@@ -22,10 +22,10 @@
 						<td><a href="{$my_pligg_base}/admin/admin_users.php?mode=view&user={$link.user_login}">{$link.user_login|truncate:20}</a></td>
 						<td><a href="{$link.link_url}" target="_blank">{$link.link_url|truncate:70}</a></td>
 						<td style="text-align:center;">
-							{if $link.link_status eq "discard"}
-								<img src="{$my_pligg_base}/modules/akismet/images/page_white_delete.png" alt="{#PLIGG_Akismet_status_discarded#}" title="{#PLIGG_Akismet_status_discarded#}" />
+							{if $link.link_status eq "moderated"}
+								<img src="{$my_pligg_base}/modules/akismet/images/page_white_error.png" alt="{#PLIGG_Akismet_status_moderated#}" title="{#PLIGG_Akismet_status_moderated#}" />
 							{elseif $link.link_status eq "spam"}
-								<img src="{$my_pligg_base}/modules/akismet/images/page_white_error.png" alt="{#PLIGG_Akismet_status_spam#}" title="{#PLIGG_Akismet_status_spam#}" />
+								<img src="{$my_pligg_base}/modules/akismet/images/page_white_delete.png" alt="{#PLIGG_Akismet_status_spam#}" title="{#PLIGG_Akismet_status_spam#}" />
 							{/if}
 						</td>
 						<td><center><input type="radio" name="spam[{$link.link_id}]" id="spam-{$link.link_id}" value="spam"></center></td>

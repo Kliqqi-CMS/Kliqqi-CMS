@@ -134,8 +134,8 @@ function akismet_check_submit(&$vars){
 			akismet_link_to_spam($vars['linkres']->id);
 
 			totals_adjust_count($vars['linkres']->status, -1);
-			totals_adjust_count('discard', 1);
-			$vars['linkres']->status = 'discard';
+			totals_adjust_count('moderated', 1);
+			$vars['linkres']->status = 'moderated';
 		}
 		else {
 			// echo 'not spam';
@@ -172,8 +172,8 @@ function akismet_check_submit(&$vars){
 				akismet_link_to_spam($vars['linkres']->id);
 
 				totals_adjust_count($vars['linkres']->status, -1);
-				totals_adjust_count('discard', 1);
-				$vars['linkres']->status = 'discard';
+				totals_adjust_count('moderated', 1);
+				$vars['linkres']->status = 'moderated';
 			} else { 
 				// echo 'not spam';
 			} 
