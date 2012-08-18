@@ -187,11 +187,11 @@
 	{literal}
 	$(document).ready(function()
 	{
-		var count=5;
+		var count=10;
 		function last_msg_funtion() 
 		{ 
 			//alert("ankan");
-			count=count+5;
+			
 			//alert(count);
 			//var ID=$(".stories:last").attr("id");
 			
@@ -202,9 +202,11 @@
 			function(data){
 				if (data != "") {
 				$(".stories:last").after(data); 
+				$(".stories").removeClass("loader");
+				count=count+3;
 				}
 				//$('div#last_msg_loader').empty();
-				$(".stories").removeClass("loader");
+				
 			});
 		}; 
 
