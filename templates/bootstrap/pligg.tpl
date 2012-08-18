@@ -82,7 +82,7 @@
 			<div class="row">
 				{checkActionsTpl location="tpl_pligg_banner_top"}
 				<!-- START LEFT COLUMN -->
-			  {if $pagename eq "submit"}
+			  {if $pagename eq "submit" || $pagename eq "user" || $pagename eq "profile"}
 				<div class="span12">
 			  {else}
 				<div class="span9">
@@ -105,10 +105,8 @@
 					{checkActionsTpl location="tpl_pligg_content_end"}
 				</div><!--/span-->
 				<!-- END LEFT COLUMN -->
-		  
 				{checkActionsTpl location="tpl_pligg_columns_start"}	
-
-				{if $pagename neq "submit"}
+				{if $pagename neq "submit" && $pagename neq "user" && $pagename neq "profile" }
 					<!-- START RIGHT COLUMN -->
 					<div class="span3">
 						<div class="well sidebar-nav">

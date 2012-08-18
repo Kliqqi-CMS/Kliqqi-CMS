@@ -1074,6 +1074,7 @@ PLIGG_Visual_Email_Sent = "If the email address exists in our database you will 
 PLIGG_Visual_Profile_UsernameUpdated = "Your username has been updated"
 Pligg_Profile_No_Membership = "This user is not a member of any groups yet."
 PLIGG_Visual_Submit3Errors_Short_Tags = "Tags line is too short"
+PLIGG_Visual_User_Profile_Social = "Social"
 PLIGG_Visual_User_Profile_Facebook = "Facebook"
 PLIGG_Visual_User_Profile_Twitter = "Twitter"
 PLIGG_Visual_User_Profile_Linkedin = "Linkedin"

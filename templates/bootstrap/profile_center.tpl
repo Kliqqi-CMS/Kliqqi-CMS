@@ -62,7 +62,7 @@
 			{$user_names} is
 		{/if}
 		{if $user_occupation ne ""}
-			a {$user_occupation}
+			{if $user_names ne ""}a{/if} {$user_occupation}
 		{/if}
 		{if $user_location ne ""}
 			from {$user_location}

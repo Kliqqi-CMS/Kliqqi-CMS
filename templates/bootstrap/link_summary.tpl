@@ -4,9 +4,9 @@
 <!-- link_summary.tpl -->
 <div class="stories" id="xnews-{$link_shakebox_index}" {* if $link_shakebox_currentuser_reports gt 0} style="opacity:0.5;filter:alpha(opacity = 50)"{/if *}>
 	{if $isadmin || $user_logged_in eq $link_submitter}
-		<div class="btn-group pull-right">
+		<div class="btn-group pull-right admin-links">
 			<a class="btn dropdown-toggle" data-toggle="dropdown" href="#">
-			  <i class="icon-info-sign"></i> {#PLIGG_Visual_Admin_Links#}
+			  <i class="icon-cog"></i>
 			  <span class="caret"></span>
 			</a>
 			<ul class="dropdown-menu">
@@ -112,6 +112,26 @@
 				<a href="{$submitter_profile_url}">{$link_submitter}{if $submitter_rank neq ''} (#{$submitter_rank}){/if}</a> 
 				<i class="icon-time"></i>
 				{$link_submit_timeago} {#PLIGG_Visual_Comment_Ago#}
+				
+				<i class="icon-folder-open"></i> 
+				<a href="{$category_url}">{$link_category}</a>
+				{if $link_additional_cats}
+					{foreach from=$link_additional_cats item=name key=url}
+						<a href="{$url}">{$name}</a>
+					{/foreach}
+				{/if}
+				
+				{if $enable_tags}
+					{if $tags}
+						<i class="icon-tag"></i>
+						{section name=thistag loop=$tag_array}
+							{if $tag_array[thistag] neq ''}
+								<a href="{$tags_url_array[thistag]}">{$tag_array[thistag]}</a>
+							{/if}
+						{/section}
+					{/if}
+				{/if}
+				
 				{if $url_short neq "http://" && $url_short neq "://"}
 					<i class="icon-globe"></i>
 					<a href="{$url}" {if $open_in_new_window eq true} target="_blank"{/if}  {if $story_status neq "published"}rel="nofollow"{/if}>{$url_short}</a>
@@ -197,27 +217,7 @@
 			{/if}
 			{checkActionsTpl location="tpl_pligg_story_tools_end"}
 		</div>
-		<div class="story-tools-right">
-			<i class="icon-folder-open"></i> 
-			<a href="{$category_url}">{$link_category}</a>
-			{if $link_additional_cats}
-				{foreach from=$link_additional_cats item=name key=url}
-					<a href="{$url}">{$name}</a>
-				{/foreach}
-			{/if}
-			{if $enable_tags}
-				{if $tags}
-					| 
-					 <i class="icon-tag"></i>
-					{section name=thistag loop=$tag_array}
-						{if $tag_array[thistag] neq ''}
-							<a href="{$tags_url_array[thistag]}">{$tag_array[thistag]}</a>
-						{/if}
-					{/section}
-				{/if}
-			{/if}	
-		 </div><!-- /.story-tools-right -->
-		 <div style="clear:both;"></div>
+		<div style="clear:both;"></div>
 	</div><!-- /.storyfooter -->
 	{checkActionsTpl location="tpl_link_summary_end"}
 </div><!-- /.stories -->
