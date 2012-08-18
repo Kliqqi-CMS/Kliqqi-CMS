@@ -34,7 +34,7 @@ if(isset($catID)){$search->category = $catID;}
 $start_up=$_REQUEST['start_up'];
 $search->offset = $start_up;
 // pagesize set in the admin panel
-$search->pagesize =2;
+$search->pagesize =3;
 
 // since this is index, we only want to view "published" stories
 $search->filterToStatus = "published";
@@ -47,7 +47,7 @@ $search->do_setmek();
 $search->doSearch();
 
 $linksum_count = $search->countsql;
-$linksum_sql = $search->sql;
+echo $linksum_sql = $search->sql;
 
 $fetch_link_summary = true;
 include('libs/link_summary.php'); // this is the code that show the links / stories
