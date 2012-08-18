@@ -190,14 +190,33 @@
 		var count=10;
 		function last_msg_funtion() 
 		{ 
-			//alert("ankan");
-			
+			alert(count);
+			var dataString = "action=load_data&start_up="+count+"&catID="+catID+"&part="+part;
 			//alert(count);
+			$.ajax({
+			type: "POST",
+			url:my_pligg_url+"/load_data.php",
+			data: dataString,
+			beforeSend: function() {
+				//$(".stories:last").addClass("loader");
+			},
+			cache: false,
+			success: function(html)	{
+				if (html != "") {
+				$(".stories:last").after(html); 
+				$(".stories").removeClass("loader");
+				count=count+3;
+				}
+				
+				//parent.removeClass("loader");
+			} 
+		});
+			
 			//var ID=$(".stories:last").attr("id");
 			
 			//$('div#last_msg_loader').html('<img src="'+my_pligg_url+'/templates/bootstrap/css/images/ajax-loader.gif">');
-			$(".stories:last").addClass("loader");
-			$.post(my_pligg_url+"/load_data.php?action=load_data&start_up="+count+"&catID="+catID+"&part="+part,
+			//$(".stories:last").addClass("loader");
+			/*$.post(my_pligg_url+"/load_data.php?action=load_data&start_up="+count+"&catID="+catID+"&part="+part,
 
 			function(data){
 				if (data != "") {
@@ -207,7 +226,7 @@
 				}
 				//$('div#last_msg_loader').empty();
 				
-			});
+			});*/
 		}; 
 
 		$(window).scroll(function(){
