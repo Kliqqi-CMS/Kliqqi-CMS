@@ -8,7 +8,7 @@
 		{if $UseAvatars neq "0"}
 			<img style="float:left;margin:0 15px 0 0;" src="{$Avatar_ImgLarge}" class="thumbnail" style="margin-bottom:4px;" alt="Avatar" />
 		{/if}
-		{$user_username}
+		{$user_username|capitalize}
 	</h1>
 	<div style="margin-top:2px;">
 		{checkActionsTpl location="tpl_user_profile_social_start"}
