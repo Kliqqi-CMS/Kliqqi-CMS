@@ -50,7 +50,7 @@ $linksum_count = $search->countsql;
 echo $linksum_sql = $search->sql;
 
 $fetch_link_summary = true;
-include('libs/link_summary.php'); // this is the code that show the links / stories
+include(mnminclude.'link_summary.php'); // this is the code that show the links / stories
 //$main_smarty->assign('link_pagination', do_pages($rows, $page_size, "published", true));
 
 echo $link_summary_output;

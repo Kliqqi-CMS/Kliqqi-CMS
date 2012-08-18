@@ -190,12 +190,12 @@
 		var count=10;
 		function last_msg_funtion() 
 		{ 
-			//alert("ankan");
+			alert(my_pligg_url);
 			var dataString = "action=load_data&start_up="+count+"&catID="+catID+"&part="+part;
 			//alert(count);
 			$.ajax({
 			type: "POST",
-			url:my_base_url+my_pligg_base+"/load_data.php",
+			url:my_pligg_url+"/load_data.php",
 			data: dataString,
 			beforeSend: function() {
 				$(".stories:last").addClass("loader");
