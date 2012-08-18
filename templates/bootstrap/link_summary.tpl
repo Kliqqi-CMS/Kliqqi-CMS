@@ -209,10 +209,12 @@
 				<span id="linksummaryUnvote"><a href="javascript:{$link_shakebox_javascript_unvote}">{#PLIGG_Visual_Unvote_For_It#}</a></span>&nbsp; 
 			{/if}
 			{if $enable_group eq "true" && $user_logged_in}
-				<i class="icon-plus-sign"></i> 
-				<span class="group_sharing"><a href="javascript://" onclick="{if $get_group_membered}var replydisplay=document.getElementById('group_share-{$link_shakebox_index}').style.display ? '' : 'none';document.getElementById('group_share-{$link_shakebox_index}').style.display = replydisplay;{else}alert('{#PLIGG_Visual_No_Groups#}');{/if}">{#PLIGG_Visual_Group_Share#}</a></span>
-				<span id = "group_share-{$link_shakebox_index}" style="display:none;">
-					<div style="position:absolute;display:block;background:#fff;padding:10px;margin:10px 0 0 150px;font-size:12px;border:2px solid #000;">{$get_group_membered}</div>
+				<span class="group-tool-wrapper">
+					<i class="icon-plus-sign"></i> 
+					<span class="group_sharing"><a href="javascript://" onclick="{if $get_group_membered}var replydisplay=document.getElementById('group_share-{$link_shakebox_index}').style.display ? '' : 'none';document.getElementById('group_share-{$link_shakebox_index}').style.display = replydisplay;{else}alert('{#PLIGG_Visual_No_Groups#}');{/if}">{#PLIGG_Visual_Group_Share#}</a></span>
+					<span id = "group_share-{$link_shakebox_index}" style="display:none;">
+						<div class="group-share-popup">{$get_group_membered}</div>
+					</span>
 				</span>
 			{/if}
 			{checkActionsTpl location="tpl_pligg_story_tools_end"}
