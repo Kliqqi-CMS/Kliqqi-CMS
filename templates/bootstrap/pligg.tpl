@@ -82,7 +82,7 @@
 			<div class="row">
 				{checkActionsTpl location="tpl_pligg_banner_top"}
 				<!-- START LEFT COLUMN -->
-			  {if $pagename eq "submit" || $pagename eq "user" || $pagename eq "profile"}
+			  {if $pagename eq "submit"}
 				<div class="span12">
 			  {else}
 				<div class="span9">
@@ -105,8 +105,10 @@
 					{checkActionsTpl location="tpl_pligg_content_end"}
 				</div><!--/span-->
 				<!-- END LEFT COLUMN -->
+		  
 				{checkActionsTpl location="tpl_pligg_columns_start"}	
-				{if $pagename neq "submit" && $pagename neq "user" && $pagename neq "profile" }
+
+				{if $pagename neq "submit"}
 					<!-- START RIGHT COLUMN -->
 					<div class="span3">
 						<div class="well sidebar-nav">
@@ -175,8 +177,49 @@
     {/if}
     
 	{* JavaScript for tooltips on avatar hover *}
+    
+	{if #Auto_scroll# neq "false" }
+    <script type="text/javascript">
+	var my_pligg_url="{$my_base_url}{$my_pligg_base}";
+	var catID="{$catID}";
+	var part="{$part}";
 	{literal}
-		<script> 
+	$(document).ready(function()
+	{
+		var count=5;
+		function last_msg_funtion() 
+		{ 
+			//alert("ankan");
+			count=count+5;
+			//alert(count);
+			//var ID=$(".stories:last").attr("id");
+			
+			//$('div#last_msg_loader').html('<img src="'+my_pligg_url+'/templates/bootstrap/css/images/ajax-loader.gif">');
+			$(".stories:last").addClass("loader");
+			$.post(my_pligg_url+"/load_data.php?action=load_data&start_up="+count+"&catID="+catID+"&part="+part,
+
+			function(data){
+				if (data != "") {
+				$(".stories:last").after(data); 
+				}
+				//$('div#last_msg_loader').empty();
+				$(".stories").removeClass("loader");
+			});
+		}; 
+
+		$(window).scroll(function(){
+			if ($(window).scrollTop() == $(document).height() - $(window).height()){
+				last_msg_funtion();
+			}
+		}); 
+});
+
+{/literal}
+</script>
+{/if}
+	{literal}
+
+<script> 
 		$('.avatar-tooltip').tooltip()
 		</script>
 	{/literal}
@@ -188,14 +231,14 @@
 			$('#bodytext').wysihtml5();
 		</script>{/literal}
 	{/if}
-	{if $pagename eq "profile" || $pagename eq "user"}
+	{if $pagename eq "profile"}
 		{literal}
 		<script>
 		  $(function(){
 			var $container = $('#profile_container');
 			$container.imagesLoaded( function(){
 			  $container.masonry({
-				itemSelector : '.masonry'
+				itemSelector : '.table'
 			  });
 			});
 		  });

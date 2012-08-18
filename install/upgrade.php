@@ -383,6 +383,12 @@ if (!$errors) {
 		$db->query("INSERT INTO `" . table_config . "` VALUES (NULL, 'Submit', 'Multiple_Categories', 'false', 'false', 'true / false', 'Allow multiple categories', 'User may choose more than one category for each story', 'define', NULL)");
 	}
 
+    
+	$result = $db->get_results("select * from `" . table_config . "` where `var_name` = 'Auto_scroll';");
+	if (count($result) == 0) {
+		$db->query("INSERT INTO `" . table_config . "` VALUES (NULL, 'Misc', 'Auto_scroll', 'false', 'false', 'true / false', 'Enable Infinite Scroll', 'Enable Infinite Scroll', 'define', NULL)");
+	}
+	
 	//---------------
 	//out.php alter table 
 	$fieldexists = checkforfield('link_out', table_links);

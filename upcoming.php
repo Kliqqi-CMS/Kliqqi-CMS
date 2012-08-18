@@ -125,6 +125,7 @@ if(isset($search->ords)){$main_smarty->assign('paorder', $search->ords);}
 
 $fetch_link_summary = true;
 include('./libs/link_summary.php'); // this is the code that show the links / stories
+if(Auto_scroll==false)
 $main_smarty->assign('link_pagination', do_pages($rows, $page_size, "upcoming", true));
 
 // show the template

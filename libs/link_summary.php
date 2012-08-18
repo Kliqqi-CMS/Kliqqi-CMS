@@ -35,6 +35,20 @@ if(!defined('mnminclude')){header('Location: ../404error.php');die();}
 		$the_results = $links;
 	}
 	
+	//echo $catID;
+	if(Auto_scroll==true){
+	if(isset($_GET['part'])){
+		$main_smarty->assign('part', $db->escape($_GET['part']));
+		}
+	
+	if($catID!=0)
+	$main_smarty->assign('catID', $catID);
+	
+	$main_smarty->assign('Auto_scroll', Auto_scroll);
+	
+	}
+	
+	
 	if($the_results){
 		// find out if the logged in user voted / reported each of
 		// the stories that the search found and cache the results
@@ -67,11 +81,11 @@ if(!defined('mnminclude')){header('Location: ../404error.php');die();}
 			}
 		}
   		
-		// if count  = 0 then all the links are already cached
-		// so don't touch the db
+		// if count  = 0 then all the links are already cached		// so don't touch the db
 		// if count  > 0 then there is at least 1 link to get
 		// so get the SQL and add results to the cache
 
+        
 		if ( count ( $ids ) ) {
 			$sql .= 'link_id IN ('.implode(',',$ids).')';
 			foreach ( $db->get_results($sql) as $row ) {
@@ -81,6 +95,7 @@ if(!defined('mnminclude')){header('Location: ../404error.php');die();}
 				}
 			}
 		}
+
 
 		// get all authors at once from the users table
 		$sql = 'SELECT  *  FROM ' . table_users . ' WHERE ';
