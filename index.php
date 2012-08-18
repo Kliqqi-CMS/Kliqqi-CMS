@@ -136,7 +136,7 @@ $main_smarty->assign('URL_rss_page', getmyurl('rsspage', $category_data->categor
 
 $fetch_link_summary = true;
 include('./libs/link_summary.php'); // this is the code that show the links / stories
-if(Auto_scroll==false)
+if(Auto_scroll!=true)
 $main_smarty->assign('link_pagination', do_pages($rows, $page_size, "published", true));
 
 // show the template

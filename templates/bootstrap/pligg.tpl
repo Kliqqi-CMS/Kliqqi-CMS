@@ -177,8 +177,9 @@
     {/if}
     
 	{* JavaScript for tooltips on avatar hover *}
-    
-	{if #Auto_scroll# neq "false" }
+    {$Auto_scroll}
+	{if $Auto_scroll eq true}
+    {$Auto_scroll}
     <script type="text/javascript">
 	var my_pligg_url="{$my_base_url}{$my_pligg_base}";
 	var catID="{$catID}";
