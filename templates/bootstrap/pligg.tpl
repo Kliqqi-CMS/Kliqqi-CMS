@@ -177,7 +177,7 @@
     {/if}
     
 	{* JavaScript for tooltips on avatar hover *}
-    {$Auto_scroll}
+   
 	{if $Auto_scroll eq true}
     {$Auto_scroll}
     <script type="text/javascript">
