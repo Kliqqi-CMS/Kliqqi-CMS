@@ -155,7 +155,7 @@
 							{$story_content|nl2br}
 						{else}
 							{* The truncate modifier will cut off content after X characters. Read more: http://www.smarty.net/docsv2/en/language.modifier.truncate *}
-							{$story_content|truncate:500|@closetags}
+							{$story_content|nl2br}
 						{/if}
 					{/if}
 					{if $Enable_Extra_Field_1 eq 1}{if $link_field1 neq ""}<br/><b>{$Field_1_Title}:</b> {$link_field1}{/if}{/if}

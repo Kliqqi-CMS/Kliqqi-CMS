@@ -469,7 +469,11 @@ class Link {
 			if($this->link_summary == ""){
 				$smarty->assign('story_content', $this->truncate_content());
 			} else {
+				if(Auto_scroll==true)
+				$smarty->assign('story_content', $this->truncate_content());
+				else
 				$smarty->assign('story_content', $this->link_summary);
+				
 			}
 		}
 		if($type == "full"){
@@ -748,7 +752,22 @@ class Link {
 	}
 	//--------------------------------------
 	function truncate_content(){
-		if(utf8_strlen($this->content) > StorySummary_ContentTruncate){ return close_tags(utf8_substr($this->content, 0, StorySummary_ContentTruncate)) . "...";}
+		if(utf8_strlen($this->content) > StorySummary_ContentTruncate){
+			
+			 if(Auto_scroll==true){
+			  $content=	close_tags(utf8_substr($this->content, 0, StorySummary_ContentTruncate));
+			  $content.="&nbsp;<div class=\"read_more_article btn btn-primary \" storyid=\"".$this->id."\" >Read More</div>" ;
+			  $content.="<div class=\"read_more_story".$this->id." hide\" >";
+			  $content.=close_tags(utf8_substr($this->content, StorySummary_ContentTruncate,utf8_strlen($this->content) ));
+			  $content.="</div>";
+			 // echo $content;
+			  return $content;
+			 }else{
+			 
+			 return close_tags(utf8_substr($this->content, 0, StorySummary_ContentTruncate)) . "...";
+			 }
+			 
+			 }
 		return $this->content;
 	}
 

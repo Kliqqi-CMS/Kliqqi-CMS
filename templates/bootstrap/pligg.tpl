@@ -13,14 +13,13 @@
 	{if $Voting_Method eq 2}
 	<link rel="stylesheet" type="text/css" href="{$my_pligg_base}/templates/{$the_template}/css/star_rating/star.css" media="screen" />
 	{/if}
-	
+	<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
 	{checkForCss}
 	{checkForJs}
 	
 	{include file=$the_template"/title.tpl"}
 	
 	{if $pagename eq "submit"}
-		<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.3.0/jquery.min.js"></script>
 		{literal}
 		<script type="text/javascript">
 		$(function() 
@@ -149,7 +148,7 @@
 	
 	
 	{checkActionsTpl location="tpl_pligg_body_end"}
-	{if $pagename neq "submit"}<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>{/if}
+	
 	<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.18/jquery-ui.min.js"></script>
 	<link href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.18/themes/smoothness/jquery-ui.css" media="all" rel="stylesheet" type="text/css" />
 	
@@ -179,20 +178,29 @@
 	{* JavaScript for tooltips on avatar hover *}
    
 	{if $Auto_scroll eq true}
-    {$Auto_scroll}
     <script type="text/javascript">
 	var my_pligg_url="{$my_base_url}{$my_pligg_base}";
 	var catID="{$catID}";
 	var part="{$part}";
+	var total_row="{$total_row}";
 	{literal}
 	$(document).ready(function()
 	{
+		
+		 $(".read_more_article").live("click", function(){
+			 
+			 article_id = $(this).attr("storyid");
+             class_name="read_more_story"+article_id;
+			 $(".read_more_story"+article_id).removeClass('hide');			    		
+             $(".read_more_story"+article_id).fadeIn(1000);
+			 $(this).hide();
+			 
+		 });
+		
 		var count=10;
 		function last_msg_funtion() 
 		{ 
-			alert(my_pligg_url);
 			var dataString = "action=load_data&start_up="+count+"&catID="+catID+"&part="+part;
-			//alert(count);
 			$.ajax({
 			type: "POST",
 			url:my_pligg_url+"/load_data.php",
@@ -202,6 +210,7 @@
 			},
 			cache: false,
 			success: function(html)	{
+				
 				if (html != "") {
 				$(".stories:last").after(html); 
 				$(".stories").removeClass("loader");
@@ -231,9 +240,14 @@
 
 		$(window).scroll(function(){
 			if ($(window).scrollTop() == $(document).height() - $(window).height()){
+				
+				if(parseInt(total_row)>=count)
 				last_msg_funtion();
 			}
 		}); 
+		
+		
+		
 });
 
 {/literal}
