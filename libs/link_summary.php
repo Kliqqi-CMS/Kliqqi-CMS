@@ -35,8 +35,10 @@ if(!defined('mnminclude')){header('Location: ../404error.php');die();}
 		$the_results = $links;
 	}
 	
+	$main_smarty->assign('total_row', $rows);
+	
 	if(Auto_scroll==true){
-				$main_smarty->assign('total_row', $rows);
+				
 	if(isset($_GET['part'])){
 		$main_smarty->assign('part', $db->escape($_GET['part']));
 		}

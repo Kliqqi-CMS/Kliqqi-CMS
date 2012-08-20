@@ -177,12 +177,13 @@
     
 	{* JavaScript for tooltips on avatar hover *}
    
-	{if $Auto_scroll eq true}
+	
     <script type="text/javascript">
 	var my_pligg_url="{$my_base_url}{$my_pligg_base}";
 	var catID="{$catID}";
 	var part="{$part}";
 	var total_row="{$total_row}";
+	var Auto_scroll="{$Auto_scroll}";
 	{literal}
 	$(document).ready(function()
 	{
@@ -217,27 +218,14 @@
 				count=count+3;
 				}
 				
-				//parent.removeClass("loader");
+				
 			} 
 		});
 			
-			//var ID=$(".stories:last").attr("id");
 			
-			//$('div#last_msg_loader').html('<img src="'+my_pligg_url+'/templates/bootstrap/css/images/ajax-loader.gif">');
-			//$(".stories:last").addClass("loader");
-			/*$.post(my_pligg_url+"/load_data.php?action=load_data&start_up="+count+"&catID="+catID+"&part="+part,
-
-			function(data){
-				if (data != "") {
-				$(".stories:last").after(data); 
-				$(".stories").removeClass("loader");
-				count=count+3;
-				}
-				//$('div#last_msg_loader').empty();
-				
-			});*/
 		}; 
-
+      
+	   if(Auto_scroll==true){
 		$(window).scroll(function(){
 			if ($(window).scrollTop() == $(document).height() - $(window).height()){
 				
@@ -245,6 +233,23 @@
 				last_msg_funtion();
 			}
 		}); 
+	   }else{
+		   
+		   
+		 $(".stories:last").after("<Div  class='btn btn-primary contine_read_story '>Continue Reading</Div>"); 
+	
+		$(".contine_read_story").live("click", function(){
+			alert(total_row);
+			alert(count);
+			if(parseInt(total_row)>=count){
+				last_msg_funtion();
+			}else{	
+			$(this).hide();
+			$(".stories:last").after("<Div  class='btn btn-small '>No More Articles Found</Div>"); 
+			}
+			});
+	  
+	   }
 		
 		
 		
@@ -252,7 +257,8 @@
 
 {/literal}
 </script>
-{/if}
+
+
 	{literal}
 
 <script> 
