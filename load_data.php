@@ -34,7 +34,7 @@ if(isset($catID)){$search->category = $catID;}
 $start_up=$_REQUEST['start_up'];
 $search->offset = $start_up;
 // pagesize set in the admin panel
-$search->pagesize =3;
+$search->pagesize = $page_size;
 
 // since this is index, we only want to view "published" stories
 $search->filterToStatus = "published";
@@ -47,14 +47,12 @@ $search->do_setmek();
 $search->doSearch();
 
 $linksum_count = $search->countsql;
-echo $linksum_sql = $search->sql;
+$linksum_sql = $search->sql;
 
 $fetch_link_summary = true;
 include(mnminclude.'link_summary.php'); // this is the code that show the links / stories
 //$main_smarty->assign('link_pagination', do_pages($rows, $page_size, "published", true));
 
 echo $link_summary_output;
-
-
 
 ?>
