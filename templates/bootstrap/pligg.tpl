@@ -10,15 +10,6 @@
 	<link rel="stylesheet" type="text/css" href="{$my_pligg_base}/templates/{$the_template}/css/style.css" media="screen" />
 	<script type="text/javascript" src="{$my_pligg_base}/templates/{$the_template}/js/modernizr.min.js"></script>
 
-         <!--[if lt IE 9]>
-          <script src="//html5shiv.googlecode.com/svn/trunk/html5.js">
-          <style type="text/css">
-          abbr, article, aside, audio, bdi, canvas, data, datalist, details, figcaption, figure, footer, header, hgroup, mark, meter, nav, output, progress, section, summary, time, video {
-          display: block;
-            }
-          </style>
-          <![endif]—>
-
 	{if $Voting_Method eq 2}
 	<link rel="stylesheet" type="text/css" href="{$my_pligg_base}/templates/{$the_template}/css/star_rating/star.css" media="screen" />
 	{/if}
