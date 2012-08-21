@@ -102,8 +102,8 @@
 				<a href="{$user_url_friends2}"><span style="color:#000;font-weight:bold;font-size:1.4em;padding-right:5px;">{$follower|@count}</span><span style="color:#828282;">{#PLIGG_Visual_User_Profile_View_Friends_2#}</span></a>
 			{*
 			<div class="btn-group">
-				<a class="btn btn-info" href="{$user_url_friends}"><i class="icon icon-white icon-user"></i> {$following|@count} {#PLIGG_Visual_User_Profile_View_Friends#}</a>
-				<a class="btn btn-info" href="{$user_url_friends2}"><i class="icon icon-white icon-user"></i> {$follower|@count} {#PLIGG_Visual_User_Profile_View_Friends_2#}</a>
+				<a class="btn btn-info" href="{$user_url_friends}"><i class="icon-user"></i> {$following|@count} {#PLIGG_Visual_User_Profile_View_Friends#}</a>
+				<a class="btn btn-info" href="{$user_url_friends2}"><i class="icon-user"></i> {$follower|@count} {#PLIGG_Visual_User_Profile_View_Friends_2#}</a>
 			</div> 
 			*}
 		</div>

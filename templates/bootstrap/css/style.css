@@ -57,6 +57,15 @@ hr.soften {
   background-image:      -o-linear-gradient(left, rgba(0,0,0,0), rgba(0,0,0,.1), rgba(0,0,0,0));
   border: 0;
 }
+[class^="icon-"],
+[class*=" icon-"] {
+  opacity: 0.5;
+  filter: alpha(opacity=50);
+}
+.icon-white {
+  opacity: 1.0;
+  filter: alpha(opacity=100);
+}
 
 /********************* CATEGORY MENU ********************/
 .subhead {
@@ -309,7 +318,9 @@ padding: 1px 5px;
 }
 
 /**************** COMMENTS ******************/
-
+.span_comment {
+	width:100%;
+}
 .comment-list {
     list-style: none outside none;
     margin: 10px 0 20px;
@@ -575,6 +586,56 @@ table.tablesorter thead tr .headerSortUp {
 }
 table.tablesorter thead tr .headerSortDown {
 	background-image: url(images/desc.gif);
+}
+
+/************ FILE UPLOAD *************/
+.btn.btn-file {
+  overflow: hidden;
+  position: relative;
+  vertical-align: middle;
+}
+.btn.btn-file > input[type="file"] {
+  width: 100%;
+  position: absolute;
+  left: 0;
+  top: 0;
+  opacity: 0;
+  cursor: pointer;
+}
+.fileupload {
+  margin-bottom: 9px;
+}
+.fileupload .uneditable-input {
+  display: inline-block;
+  margin-bottom: 0px;
+  vertical-align: middle;
+}
+.fileupload .thumbnail {
+  overflow: hidden;
+  display: inline-block;
+  margin-bottom: 5px;
+  vertical-align: middle;
+  text-align: center;
+}
+.fileupload .thumbnail > img {
+  display: inline-block;
+  vertical-align: middle;
+  max-height: 100%;
+}
+.fileupload .btn {
+  vertical-align: middle;
+}
+.fileupload-exists .fileupload-new,
+.fileupload-new .fileupload-exists {
+  display: none;
+}
+.fileupload-inline .fileupload-controls {
+  display: inline;
+}
+.fileupload-new .input-append .btn-file {
+  -webkit-border-radius: 0 3px 3px 0;
+  -moz-border-radius: 0 3px 3px 0;
+  border-radius: 0 3px 3px 0;
 }
 
 /************* RECAPTCHA **************/
