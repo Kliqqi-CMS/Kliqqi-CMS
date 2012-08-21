@@ -14,39 +14,62 @@ include(mnminclude.'smartyvariables.php');
 $search=new Search();
 
 // check for some get/post
-if(isset($_REQUEST['from'])){$search->newerthan = sanitize($_REQUEST['from'], 3);}
-unset($_REQUEST['search']);
-unset($_POST['search']);
-unset($_GET['search']);
-if(isset($_REQUEST['search'])){$search->searchTerm = sanitize($_REQUEST['search'], 3);}
-if(isset($_REQUEST['search'])){$search->filterToStatus = "all";}
-if(!isset($_REQUEST['search'])){$search->orderBy = "link_published_date DESC, link_date DESC";}
-if(isset($_REQUEST['tag'])){$search->searchTerm = sanitize($_REQUEST['search'], 3); $search->isTag = true;}
-
-
+ 
+$page_name=$_REQUEST['pname'];
 $catID=$_REQUEST['catID'];
+$groupid=$_REQUEST['groupid'];
+$start_up=$_REQUEST['start_up'];
+$part=$_REQUEST['part'];
+$view=$_REQUEST['view'];
 
 
 if(isset($catID)){$search->category = $catID;}
+if(isset($part)){$search->setmek = $db->escape($part);}
 
 // figure out what "page" of the results we're on
 //$search->offset = (get_current_page()-1)*$page_size;
-$start_up=$_REQUEST['start_up'];
 $search->offset = $start_up;
 // pagesize set in the admin panel
-$search->pagesize = $page_size;
+$search->pagesize = 8;
 
 // since this is index, we only want to view "published" stories
 $search->filterToStatus = "published";
 
 // this is for the tabs on the top that filter
-if(isset($_GET['part'])){$search->setmek = $db->escape($_GET['part']);}
+
 $search->do_setmek();	
 
 // do the search
 $search->doSearch();
 
 $linksum_count = $search->countsql;
+
+if($page_name=='group_story'){
+	
+	$group_vote=4;
+
+
+	
+	if ($view == 'upcoming'){
+			$from_where .= " AND link_votes<$group_vote AND link_status='queued'";
+			$linksum_sql = "SELECT SQL_CALC_FOUND_ROWS * FROM " . table_links . " WHERE link_group_id = $groupid AND link_group_status!='discard' $from_where GROUP BY link_id ORDER BY link_published_date DESC, link_date DESC LIMIT $start_up, $page_size";
+	
+			
+	}elseif($view== 'published'){                
+			$from_where .= " AND ((link_votes >= $group_vote AND link_status = 'queued') OR link_status = 'published')";
+	
+			$linksum_sql = "SELECT SQL_CALC_FOUND_ROWS * FROM " . table_links . " WHERE link_group_id = $groupid AND link_group_status!='discard' $from_where GROUP BY link_id ORDER BY link_published_date DESC, link_date DESC LIMIT $start_up, $page_size";
+	
+	}elseif($view=="shared"){
+		$linksum_sql="SELECT SQL_CALC_FOUND_ROWS b.* FROM " . table_group_shared . " a
+						LEFT JOIN " . table_links . " b ON link_id=share_link_id
+						WHERE share_group_id = $groupid AND !ISNULL(link_id) $from_where 
+						GROUP BY link_id
+						ORDER BY link_published_date DESC, link_date DESC  LIMIT $start_up, $page_size";
+		
+	}
+
+}else
 $linksum_sql = $search->sql;
 
 $fetch_link_summary = true;

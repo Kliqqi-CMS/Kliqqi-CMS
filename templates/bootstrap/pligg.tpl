@@ -175,15 +175,8 @@
     {/if}
     
 	{* JavaScript for tooltips on avatar hover *}
-   
-	
+   	{literal}
     <script type="text/javascript">
-	var my_pligg_url="{$my_base_url}{$my_pligg_base}";
-	var catID="{$catID}";
-	var part="{$part}";
-	var total_row="{$total_row}";
-	var Auto_scroll="{$Auto_scroll}";
-	{literal}
 	$(document).ready(function()
 	{
 		
@@ -196,11 +189,30 @@
 			 $(this).hide();
 			 
 		 });
-		
+	});
+	</script>
+  	{/literal}
+ 
+     
+	{if $pagename eq 'index' or $pagename eq 'published' or $pagename eq 'upcoming' or $pagename eq 'group_story'}
+    <script type="text/javascript">
+	var my_pligg_url="{$my_base_url}{$my_pligg_base}";
+	var catID="{$catID}";
+	var part="{$part}";
+	var total_row="{$total_row}";
+	var Pager_setting="{$Pager_setting}";
+	var page_name="{$pagename}";
+	var groupID="{$groupID}";
+	var viewtype="{$viewtype}";
+	{literal}
+	$(document).ready(function()
+	{
+				
 		var count=10;
 		function last_msg_funtion() 
 		{ 
-			var dataString = "action=load_data&start_up="+count+"&catID="+catID+"&part="+part;
+			var dataString = "pname="+page_name+"&start_up="+count+"&catID="+catID+"&part="+part+"&groupid="+groupID+"&view="+viewtype;
+						
 			$.ajax({
 			type: "POST",
 			url:my_pligg_url+"/load_data.php",
@@ -214,7 +226,7 @@
 				if (html != "") {
 				$(".stories:last").after(html); 
 				$(".stories").removeClass("loader");
-				count=count+3;
+				count=count+8;
 				}
 				
 				
@@ -224,17 +236,16 @@
 			
 		}; 
       
-	   if(Auto_scroll==true){
+	   if(Pager_setting==2){
 		$(window).scroll(function(){
 			if ($(window).scrollTop() == $(document).height() - $(window).height()){
-				
 				if(parseInt(total_row)>=count)
 				last_msg_funtion();
 			}
 		}); 
-	   }else{
+	   }else if(Pager_setting==3){
 		   
-		   
+		 if(parseInt(total_row)>=count)  
 		 $(".stories:last").after("<Div  class='btn btn-primary contine_read_story '>Continue Reading</Div>"); 
 	
 		$(".contine_read_story").live("click", function(){
@@ -255,7 +266,7 @@
 
 {/literal}
 </script>
-
+{/if}
 
 	{literal}
 
@@ -288,3 +299,4 @@
 </body>
 </html>
 {/if}{*END Maintenance Mode *}
+

@@ -49,6 +49,9 @@ $privacy = $db->get_var("SELECT group_privacy FROM " . table_groups . " WHERE gr
 $view = sanitize(sanitize($_REQUEST["view"],1),3);
 if($requestID > 0)
 {
+	$main_smarty->assign('groupID', $requestID);
+	$main_smarty->assign('viewtype', $view);
+	
     if (($privacy!='private' || isMemberActive($requestID)=='active'))
     {
         switch ($view) {

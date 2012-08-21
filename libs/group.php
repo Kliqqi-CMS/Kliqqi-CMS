@@ -354,6 +354,7 @@ function group_stories($requestID,$catId)
 	global $db,$main_smarty,$the_template,$page_size,$cached_links;
 	if (!is_numeric($requestID)) die();
 
+    
 	$link = new Link;
 	$group_upcoming_display = "";
 	$group_published_display = "";
@@ -403,6 +404,8 @@ function group_stories($requestID,$catId)
 		}
 	}
 	$main_smarty->assign('group_display', $group_display);
+	$main_smarty->assign('total_row', $rows);
+	if(Auto_scroll==1)
 	$main_smarty->assign('group_story_pagination', do_pages($rows, $page_size, 'group_story', true));
 }
 //get the shared story for groups
@@ -456,6 +459,8 @@ function group_shared($requestID,$catId)
 		}
 	}
 	$main_smarty->assign('group_shared_display', $group_shared_display);
+	$main_smarty->assign('total_row', $rows);
+	if(Auto_scroll==1)
 	$main_smarty->assign('group_story_pagination', do_pages($rows, $page_size, 'group_story', true));
 }
 //displaying group as story

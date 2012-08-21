@@ -4,7 +4,7 @@ var remove_lang_text="{#PLIGG_MiscWords_Save_Links_Remove#}";
 var UserURLSave="{$user_url_saved}";
 {literal}
 $(function() {
-    $(".favorite").click(function() {
+    $(".favorite").live("click", function(){
 		var oparation = $(this).attr("id");
 		var return_value="";
 		var link_id=$(this).attr("linkid");

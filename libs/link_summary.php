@@ -37,7 +37,7 @@ if(!defined('mnminclude')){header('Location: ../404error.php');die();}
 	
 	$main_smarty->assign('total_row', $rows);
 	
-	if(Auto_scroll==true){
+	if(Auto_scroll==2 || Auto_scroll==3){
 				
 	if(isset($_GET['part'])){
 		$main_smarty->assign('part', $db->escape($_GET['part']));
@@ -46,7 +46,7 @@ if(!defined('mnminclude')){header('Location: ../404error.php');die();}
 	if($catID!=0)
 	$main_smarty->assign('catID', $catID);
 	
-	$main_smarty->assign('Auto_scroll',Auto_scroll);
+	
 	
 	}
 	

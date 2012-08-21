@@ -58,6 +58,8 @@ $main_smarty->assign('Allow_User_Change_Templates', Allow_User_Change_Templates)
 $main_smarty->assign('urlmethod', urlmethod);
 $main_smarty->assign('UseAvatars', do_we_use_avatars());
 $main_smarty->assign('Allow_Friends', Allow_Friends);
+$main_smarty->assign('Pager_setting', Auto_scroll);
+
 if($current_user->user_login){$main_smarty->assign('Current_User_Avatar_ImgSrc', get_avatar('small', "", "", "", $current_user->user_id));}
 
 //groups
