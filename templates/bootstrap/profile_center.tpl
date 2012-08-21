@@ -127,8 +127,8 @@
 </ul>
 {if $savemsg neq ""}<div class="alert alert-warning fade in"><a data-dismiss="alert" class="close">×</a>{$savemsg}</div>{/if} 
 {checkActionsTpl location="tpl_pligg_profile_info_start"}
-<div id="profile_container" style="position: relative;">
-	<form action="" method="post" id="thisform">
+<form action="" method="post" id="thisform">
+	<div id="profile_container" style="position: relative;">
 		{checkActionsTpl location="tpl_profile_center_fields"}
 		{checkActionsTpl location="tpl_pligg_profile_info_middle"}
 		<table class="masonry table table-bordered table-striped span4">
@@ -268,15 +268,14 @@
 				</tr>
 			</tbody>
 		</table>
-	{* There is still an open <form> that needs to be closed *}
-</div>
-<div style="clear:both;"></div>
-<div class="form-actions">
-	{$hidden_token_profile_change}
-	<input type="hidden" name="process" value="1">
-	<input type="hidden" name="user_id" value="{$user_id}">	
-	<input type="submit" name="save_profile" value="{#PLIGG_Visual_Profile_Save#}" class="btn btn-primary" tabindex="16">
-</div>
-	</form>
+	</div>
+	<div style="clear:both;"></div>
+	<div class="form-actions">
+		{$hidden_token_profile_change}
+		<input type="hidden" name="process" value="1">
+		<input type="hidden" name="user_id" value="{$user_id}">	
+		<input type="submit" name="save_profile" value="{#PLIGG_Visual_Profile_Save#}" class="btn btn-primary" tabindex="16">
+	</div>
+</form>
 {checkActionsTpl location="tpl_pligg_profile_end"}
 <!--/profile_center.tpl -->
