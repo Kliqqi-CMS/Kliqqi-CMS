@@ -47,11 +47,11 @@
 		</div>
 	{/if}
 	
-	<h1>
+	<h1 style="margin-bottom:0px;">
 		{$user_username|capitalize}
 	</h1>
 	
-	<div style="margin-top:2px;">
+	<div>
 		{checkActionsTpl location="tpl_user_profile_social_start"}
 		{if $user_skype}
 			<a href="callto://{$user_skype}" title="Skype {$user_username}" rel="nofollow" target="_blank"><img src="{$my_pligg_base}/templates/{$the_template}/img/skype_round.png" /></a>

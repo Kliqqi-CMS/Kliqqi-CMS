@@ -386,7 +386,7 @@ if (!$errors) {
     
 	$result = $db->get_results("select * from `" . table_config . "` where `var_name` = 'Auto_scroll';");
 	if (count($result) == 0) {
-		$db->query("INSERT INTO `" . table_config . "` VALUES (NULL, 'Misc', 'Auto_scroll', 'false', 'false', 'true / false', 'Pagination Results', 'Use normal pagination links, JavaScript to automatically add more articles to the bottom of the page, or pagination with a JavaScript button to load more articles.', 'define', NULL)");
+		$db->query("INSERT INTO `" . table_config . "` VALUES (NULL, 'Misc', 'Auto_scroll', '1', '1', 'number', 'Pagination Results', 'Use normal pagination links, JavaScript to automatically add more articles to the bottom of the page, or pagination with a JavaScript button to load more articles.', 'define', NULL)");
 	}
 	
 	//---------------

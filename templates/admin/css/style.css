@@ -99,10 +99,6 @@ box-sizing:content-box;
 
 /* SIDEBAR */
 
-.collapse {
-  overflow: visible;
-}
-
 .sidebar-nav {
     padding: 9px 0;
 }

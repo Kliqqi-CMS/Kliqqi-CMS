@@ -6,13 +6,13 @@
 {checkActionsTpl location="tpl_pligg_profile_start"}
 <div class="row-fluid" style="margin-bottom:10px;">
 	<div class="span9">
-		<h1>
+		<h1 style="margin-bottom:0px;">
 			{if $UseAvatars neq "0"}
 				<img style="float:left;margin:0 15px 0 0;" src="{$Avatar_ImgSrc}" class="thumbnail" style="margin-bottom:4px;" alt="Avatar" />
 			{/if}
 			{$user_username|capitalize}
 		</h1>
-		<div style="margin-top:2px;">
+		<div>
 			{checkActionsTpl location="tpl_user_profile_social_start"}
 			{if $user_skype}
 				<a href="callto://{$user_skype}" title="Skype {$user_username|capitalize}" rel="nofollow" target="_blank"><img src="{$my_pligg_base}/templates/{$the_template}/img/skype_round.png" /></a>

@@ -174,7 +174,6 @@
     {/literal}
     {/if}
     
-	{* JavaScript for tooltips on avatar hover *}
    	{literal}
     <script type="text/javascript">
 	$(document).ready(function()

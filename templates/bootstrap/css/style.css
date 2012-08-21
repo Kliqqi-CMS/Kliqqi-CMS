@@ -1,5 +1,6 @@
 @charset "UTF-8";
 /* CSS Document */
+body {font-size:0.8em;}
 a:hover {
 text-decoration:none;
 }
@@ -285,6 +286,8 @@ white-space:nowrap;
 border-radius: 4px;
 box-shadow: 0 1px 2px rgba(0,0,0,.5);
 }
+.read_more_article{}
+
 /**************** VOTE ******************/
 .votebox{
 float:left;

@@ -151,10 +151,10 @@
 				<span id="ls_contents-{$link_shakebox_index}">
 					{if $show_content neq 'FALSE'}
 						{if $pagename eq "story"}
-							{* The nl2br modifier will convert line breaks to <br> tags. Read more: http://www.smarty.net/docsv2/en/language.modifier.nl2br.tpl*}
+							{* The nl2br modifier will convert line breaks to <br> tags. http://www.smarty.net/docsv2/en/language.modifier.nl2br.tpl*}
 							{$story_content|nl2br}
 						{else}
-							{* The truncate modifier will cut off content after X characters. Read more: http://www.smarty.net/docsv2/en/language.modifier.truncate *}
+							{* The truncate modifier will cut off content after X characters. http://www.smarty.net/docsv2/en/language.modifier.truncate *}
 							{$story_content|nl2br}
 						{/if}
 					{/if}
