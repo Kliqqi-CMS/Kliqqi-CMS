@@ -62,6 +62,10 @@ font-size:0.8em;
 padding:0 0 0 1px;
 }
 
+pre {
+line-height:15px;
+}
+
 legend {
 	margin-bottom:8px;
 }
@@ -94,6 +98,11 @@ box-sizing:content-box;
 }
 
 /* SIDEBAR */
+
+.collapse {
+  overflow: visible;
+}
+
 .sidebar-nav {
     padding: 9px 0;
 }

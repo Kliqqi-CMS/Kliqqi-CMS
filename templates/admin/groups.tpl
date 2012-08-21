@@ -1,15 +1,15 @@
 <!-- groups.tpl -->
 <legend>{#PLIGG_Visual_AdminPanel_Manage_Groups#}</legend>
 <br />
-<table class="table table-bordered">
+<table class="table table-bordered table-condensed">
 	<thead>
 		<tr>
 			<th>{#PLIGG_Visual_AdminPanel_Group_Name#}</th>
 			<th>{#PLIGG_Visual_AdminPanel_Group_Author#}</th>
-			<th width="120px">{#PLIGG_Visual_AdminPanel_Group_Privacy#}</th>
-			<th width="120px">{#PLIGG_Visual_AdminPanel_Group_Date#}</th>
-			<th style="width:40px;text-align:center;">{#PLIGG_Visual_AdminPanel_Group_Edit#}</th>
-			<th style="width:50px;text-align:center;">{#PLIGG_Visual_AdminPanel_Group_Delete#}</th>
+			<th>{#PLIGG_Visual_AdminPanel_Group_Privacy#}</th>
+			<th>{#PLIGG_Visual_AdminPanel_Group_Date#}</th>
+			<th style="text-align:center;">{#PLIGG_Visual_AdminPanel_Group_Edit#}</th>
+			<th style="text-align:center;">{#PLIGG_Visual_AdminPanel_Group_Delete#}</th>
 		</tr>
 	</thead>
 	<tbody>

@@ -66,7 +66,7 @@
 								<div class="modal-body">
 									<div class="control-group">
 										{checkActionsTpl location="tpl_pligg_register_start"}
-										<form action="{$URL_register}" method="post" id="thisform" class="form-horizontal">
+										<form action="{$URL_register}" method="post" id="thisform" class="form-horizontal navbar-form ">
 										
 										<label class="control-label" for="input01">{#PLIGG_Visual_Register_Username#}</label>
 										<div class="controls">
@@ -152,7 +152,7 @@
 											<input type="hidden" name="processlogin" value="1"/>
 											<input type="hidden" name="return" value="{$get.return}"/>
 											<input id="signin_submit" class="btn btn-primary" style="margin:0;width:90%;" value="{#PLIGG_Visual_Login_LoginButton#}" tabindex="4" type="submit">
-											<a id="forgot_password_link" class="btn" style="margin:8px 0 6px 0;width:81%;" href="{$URL_login}">{#PLIGG_Visual_Login_ForgottenPassword#}?</a>
+											<a id="forgot_password_link" class="btn" style="margin:8px 0 0 12px;width:74%;" href="{$URL_login}">{#PLIGG_Visual_Login_ForgottenPassword#}?</a>
 										</div>
 									</form>
 								</li>

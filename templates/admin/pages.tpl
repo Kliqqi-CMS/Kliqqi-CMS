@@ -1,12 +1,12 @@
 <!-- pages.tpl -->
 <legend>{#PLIGG_Visual_AdminPanel_Manage_Pages#}</legend>
 <br />
-<table class="table table-bordered table-striped">
+<table class="table table-condensed table-bordered table-striped">
 	<thead>
 		<tr>
 			<th>{#PLIGG_Visual_AdminPanel_Page_Submit_Title#}</th>
-			<th style="width:80px;text-align:center;">{#PLIGG_Visual_AdminPanel_Page_Edit#}</th>
-			<th style="width:80px;text-align:center;">{#PLIGG_Visual_AdminPanel_Page_Delete#}</th>
+			<th style="text-align:center;">{#PLIGG_Visual_AdminPanel_Page_Edit#}</th>
+			<th style="text-align:center;">{#PLIGG_Visual_AdminPanel_Page_Delete#}</th>
 		</tr>
 	</thead>
 	<tbody>
