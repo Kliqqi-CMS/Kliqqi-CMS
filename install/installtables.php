@@ -652,7 +652,7 @@ foreach($stmts as $stmt) {
 }
 	
 
-$stmts = explode("\n", file_get_contents(dirname(__FILE__) . '/upgrade_config_table.sql'));
+$stmts = explode("\n", file_get_contents(dirname(__FILE__) . '/install_config_table.sql'));
 foreach($stmts as $stmt) {
 if (trim($stmt))
 {

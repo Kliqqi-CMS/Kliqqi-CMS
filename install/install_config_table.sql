@@ -81,3 +81,4 @@ INSERT INTO `config` VALUES (NULL, 'Voting', 'karma_to_publish', '100', '100', '
 INSERT INTO `config` VALUES (NULL, 'Submit', 'Submit_Complete_Step2', 'true', 'true', 'true / false', 'Complete submission on Submit Step 2?', 'Skip step 3 (preview) or not', 'define', NULL);
 INSERT INTO `config` VALUES (NULL, 'Misc', 'Independent_Subcategories', 'false', 'false', 'true / false', 'Show subcategories', 'Top level categories remain independent from subcategory content', 'define', NULL);
 INSERT INTO `config` VALUES (NULL, 'Submit', 'Multiple_Categories', 'false', 'false', 'true / false', 'Allow multiple categories', 'User may choose more than one category for each story', 'define', NULL);
+INSERT INTO `config` VALUES (NULL, 'Misc', 'Auto_scroll', '1', '1', '1-3', 'Pagination Results', 'Use normal pagination links, JavaScript to automatically add more articles to the bottom of the page, or pagination with a JavaScript button to load more articles.', 'define', NULL);
