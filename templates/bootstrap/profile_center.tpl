@@ -17,10 +17,26 @@
 			</div>
 			<form method="POST" enctype="multipart/form-data" name="image_upload_form" action="{$form_action}">
 				<div class="modal-body">
-					<div class="thumbnail" style="float:left;margin-right:10px;">
-						<img src="{$Avatar_ImgLarge}" title="{#PLIGG_Visual_Profile_CurrentAvatar#}">
+
+					<script type="text/javascript">
+					    $('.fileupload').fileupload()
+					</script>
+
+					<div class="fileupload fileupload-new" data-provides="fileupload">
+						<div class="fileupload-new thumbnail">
+							<img src="{$Avatar_ImgLarge}" title="{#PLIGG_Visual_Profile_CurrentAvatar#}" />
+						</div>
+						<div class="fileupload-preview fileupload-exists thumbnail" style="max-width:{$Avatar_Large}px;max-height:{$Avatar_Large}px;"></div>
+						<div>
+							<span class="btn btn-file">
+								<span class="fileupload-new"><i class="icon icon-picture"></i> Select Image</span>
+								<span class="fileupload-exists">Change</span>
+								<input type="file" class="fileupload" name="image_file"/>
+							</span>
+							<a href="#" class="btn btn-danger fileupload-exists" data-dismiss="fileupload">Remove</a>
+						</div>
 					</div>
-					<input type="file" class="fileupload" name="image_file"/>
+					
 				</div>
 				<div class="modal-footer">
 					<input type="hidden" name="avatar" value="uploaded"/>
