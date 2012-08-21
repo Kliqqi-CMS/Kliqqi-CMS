@@ -14,7 +14,7 @@
 		padding-top: 60px;
 		position: relative;
 		background-color: #fff;
-		background-image: url(./templates/admin/css/images/grid-18px-masked.png);
+		background-image: url(./templates/admin/css/img/grid-18px-masked.png);
 		background-repeat: repeat-x;
 		background-position: 0 40px;
 	}
@@ -43,7 +43,7 @@
 								<span class="icon-bar"></span>
 								<span class="icon-bar"></span>
 							</a>
-							<a class="brand" href="http://pligg.com/"><img src="./templates/admin/images/pligg.png" height="20px;" alt="Pligg CMS" title="Pligg CMS"/></a>
+							<a class="brand" href="http://pligg.com/"><img src="./templates/admin/img/pligg.png" height="20px;" alt="Pligg CMS" title="Pligg CMS"/></a>
 							<div class="nav-collapse">
 								<ul class="nav">
 									<li><a href="./index.php" title="Home">Home</a></li>
@@ -60,6 +60,11 @@
 			</div>
 			
 			<div class="span9">
+			
+				<legend><a href="#install" name="welcome">Welcome to Pligg!</a></legend>
+				<p>You are just a few steps away from starting your very first Pligg website! This page will guide you through installing Pligg for the first time, upgrading an existing Pligg website to the latest version, troubleshooting common issues, and backing up your Pligg site for safe keeping. </p>
+			
+				<p><strong>About Pligg:</strong> Pligg is an open source CMS that powers news and and user feedback websites. It is available to download for free from the project homepage: <a href="http://www.pligg.com/">http://www.pligg.com</a>.</p>
 				
 				<legend><a href="#install" name="install">Installation</a></legend>
 				<p><strong>Requirements:</strong> Pligg requires a modern version of PHP and MySQL and some PHP functions. To test if your server is capable of running Pligg please view the <a href="./install/troubleshooter.php">Troubleshooter</a>. If any elements appear in red on that page you may have a problem with either installing or running Pligg.</p>
@@ -181,9 +186,16 @@
 				
 				<legend><a href="#credits" name="credits">Credits</a></legend>
 				<p>This code was originally written by Ricardo Galli for the open source project known as <a href="http://www.meneame.net">Meneame</a>.</p>
-				<p>Many thanks to those who donated time and money to the Pligg project. Without their support we wouldn't be able to keep this project alive. If you are interested in becoming a part of the development team please contact us through the forum.</p>
-				<p><strong>A special thank you to all of the Pligg developers and translators.</strong></p>
+				<p>Many thanks to those who donated time and money to the Pligg project. Without their support we wouldn't be able to keep this project going. If you are interested in becoming a part of the development team please <a href="http://forums.pligg.com/sendmessage.php?do=mailmember&u=2">contact "Yankidank" through the forum</a>.</p>
 				
+				<p>Graphic design elements by the following authors or projects:
+					<ul>
+						<li><a href="http://glyphicons.com/" rel="nofollow" target="_blank">Bootstrap icons by Glyphicons.com</a></li>
+						<li><a href="http://vervex.deviantart.com/art/Somacro-29-300DPI-Social-Media-Icons-267955425?" rel="nofollow" target="_blank">Social Media Icons by Vervex</a></li>
+					</ul>
+				</p>
+				
+				<p><strong>A special thank you to all of the Pligg developers and translators.</strong></p>
 				
 				<legend><a href="#license" name="license">License</a></legend>
 				<p>Pligg's source code is published under the <a href="http://www.affero.org/oagpl.html">Affero General Public License</a>. You can view the license in the file LICENSE.txt and in the default "About" page that is included when you install Pligg.</p>
@@ -212,6 +224,7 @@
 						</style>
 						<ul class="nav nav-list not-admin-sidebar">
 							<li class="nav-header">Readme Shortcuts</li>
+							<li><a href="#welcome">Welcome</a></li>
 							<li><a href="#install">Installation</a></li>
 							<li><a href="#backup">Backup</a></li>
 							<li><a href="#upgrade">Upgrade</a></li>

@@ -6,7 +6,7 @@
 				<span class="icon-bar"></span>
 				<span class="icon-bar"></span>
 			</a>
-			<a class="brand" href="http://pligg.com/"><img src="../templates/admin/images/pligg.png" height="20px;" alt="Pligg CMS" title="Pligg CMS"/></a>
+			<a class="brand" href="http://pligg.com/"><img src="../templates/admin/img/pligg.png" height="20px;" alt="Pligg CMS" title="Pligg CMS"/></a>
 			<div class="nav-collapse">
 				<ul class="nav">
 					<li><a href="../" title="<?php echo $lang['Home'] ?>"><?php echo $lang['Home'] ?></a></li>

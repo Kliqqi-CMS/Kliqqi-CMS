@@ -223,7 +223,7 @@ function group_display($requestID)
 		if($group_avatar == "uploaded" && file_exists(mnmpath."avatars/groups_uploaded/".$group_id."_".group_avatar_size_width.".jpg"))
 			$imgsrc = my_base_url . my_pligg_base."/avatars/groups_uploaded/".$group_id."_".group_avatar_size_width.".jpg";
 		else
-			$imgsrc = my_base_url . my_pligg_base."/templates/".$the_template."/images/group_large.gif";
+			$imgsrc = my_base_url . my_pligg_base."/templates/".$the_template."/img/group_large.gif";
 		$main_smarty->assign('imgsrc', $imgsrc);
 		
 		//get group creator and his urls
@@ -499,7 +499,7 @@ function group_print_summary($requestID)
 		if($group_avatar == "uploaded" && file_exists(mnmpath."avatars/groups_uploaded/".$group_id."_".group_avatar_size_width.".jpg"))
 			$imgsrc = my_base_url . my_pligg_base."/avatars/groups_uploaded/".$group_id."_".group_avatar_size_width.".jpg";
 		else
-			$imgsrc = my_base_url . my_pligg_base."/templates/".$the_template."/images/group_large.gif";
+			$imgsrc = my_base_url . my_pligg_base."/templates/".$the_template."/img/group_large.gif";
 		$main_smarty->assign('imgsrc', $imgsrc);
 		
 		//get group creator and his url

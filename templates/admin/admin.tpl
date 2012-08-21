@@ -131,7 +131,7 @@
 								<div class="accordion-heading">
 									<span class="accordion-heading-title">
 										<a href="#CollapseManage" data-parent="#AdminAccordion" data-toggle="collapse" class="accordion-toggle">
-											<li class="nav-header"><img src="{$my_base_url}{$my_pligg_base}/templates/admin/images/manage.png" width="16px" height="16px" /> {#PLIGG_Visual_AdminPanel_Manage_Nav#}</li>
+											<li class="nav-header"><img src="{$my_base_url}{$my_pligg_base}/templates/admin/img/manage.png" width="16px" height="16px" /> {#PLIGG_Visual_AdminPanel_Manage_Nav#}</li>
 										</a>
 									</span>
 									{if $moderated_total_count neq ''}
@@ -156,7 +156,7 @@
 							<div class="accordion-group">
 								<div class="accordion-heading">
 									<a href="#CollapseSettings" data-parent="#AdminAccordion" data-toggle="collapse" class="accordion-toggle">
-										<li class="nav-header"><img src="{$my_base_url}{$my_pligg_base}/templates/admin/images/configure.png" width="16px" height="16px" /> Settings</li>
+										<li class="nav-header"><img src="{$my_base_url}{$my_pligg_base}/templates/admin/img/configure.png" width="16px" height="16px" /> Settings</li>
 									</a>
 								</div>
 								{*  Sample of hidden accordion. No "in" class, and height set to 0px *}
@@ -184,7 +184,7 @@
 							<div class="accordion-group">
 								<div class="accordion-heading">
 									<a href="#CollapseTemplate" data-parent="#AdminAccordion" data-toggle="collapse" class="accordion-toggle">
-										<li class="nav-header"><img src="{$my_base_url}{$my_pligg_base}/templates/admin/images/template.png" width="16px" height="16px" /> Template</li>
+										<li class="nav-header"><img src="{$my_base_url}{$my_pligg_base}/templates/admin/img/template.png" width="16px" height="16px" /> Template</li>
 									</a>
 								</div>
 								<div class="accordion-body collapse in" id="CollapseTemplate">
@@ -199,7 +199,7 @@
 								<div class="accordion-heading">
 									<span class="accordion-heading-title">
 										<a href="#CollapseModules" data-parent="#AdminAccordion" data-toggle="collapse" class="accordion-toggle">
-											<li class="nav-header"><img src="{$my_base_url}{$my_pligg_base}/templates/admin/images/module.png" width="16px" height="16px" /> Modules</li>
+											<li class="nav-header"><img src="{$my_base_url}{$my_pligg_base}/templates/admin/img/module.png" width="16px" height="16px" /> Modules</li>
 										</a>
 									</span>
 									<span class="badge accordion-heading-alert">
@@ -218,7 +218,7 @@
 								<div class="accordion-heading">
 									<span class="accordion-heading-title">
 										<a href="#CollapseWidgets" data-parent="#AdminAccordion" data-toggle="collapse" class="accordion-toggle">
-											<li class="nav-header"><img src="{$my_base_url}{$my_pligg_base}/templates/admin/images/widgets.png" width="16px" height="16px" /> Widgets</li>
+											<li class="nav-header"><img src="{$my_base_url}{$my_pligg_base}/templates/admin/img/widgets.png" width="16px" height="16px" /> Widgets</li>
 										</a>
 									</span>
 									<span class="badge accordion-heading-alert">

@@ -191,8 +191,8 @@ function showdel(id)
 				{/if}
 				{if $cat_array[thecat].spacercount > $submit_lastspacer}<ul></li>{/if}
 				<li id='cat{$cat_array[thecat].auto_id}'>{$cat_array[thecat].name}
-					<input value="Up" type="image" style="height:9px;width:11px;" src="{$my_base_url}{$my_pligg_base}/templates/admin/images/cat_up.gif" id='up{$cat_array[thecat].auto_id}' onclick="moveup({$cat_array[thecat].auto_id})" {if $cat_array[thecat].first}style='display:none;'{/if}>
-					<input value="Down" type="image" style="height:9px;width:11px;" src="{$my_base_url}{$my_pligg_base}/templates/admin/images/cat_down.gif" id='down{$cat_array[thecat].auto_id}' onclick="movedown({$cat_array[thecat].auto_id})" {if $cat_array[thecat].last}style='display:none;'{/if}>
+					<input value="Up" type="image" style="height:9px;width:11px;" src="{$my_base_url}{$my_pligg_base}/templates/admin/img/cat_up.gif" id='up{$cat_array[thecat].auto_id}' onclick="moveup({$cat_array[thecat].auto_id})" {if $cat_array[thecat].first}style='display:none;'{/if}>
+					<input value="Down" type="image" style="height:9px;width:11px;" src="{$my_base_url}{$my_pligg_base}/templates/admin/img/cat_down.gif" id='down{$cat_array[thecat].auto_id}' onclick="movedown({$cat_array[thecat].auto_id})" {if $cat_array[thecat].last}style='display:none;'{/if}>
 				{assign var=submit_lastspacer value=$cat_array[thecat].spacercount}
 			{/if}
 		{/section}

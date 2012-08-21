@@ -15,7 +15,7 @@ border-radius:0;
 }
 
 .loader{
-background-image:url(images/ajax-loader2.gif);
+background-image:url(../img/ajax-loader2.gif);
 background-repeat:no-repeat;
 }
 
@@ -35,8 +35,8 @@ cursor:pointer;
 }
 
 .tablesort th {background: #619acb;}
-.reverse_sort {background: #5688b3 url(../images/arrow_up.gif) no-repeat top left;}
-.forward_sort {background: #619acb url(../images/arrow_down.gif) no-repeat top left;}
+.reverse_sort {background: #5688b3 url(../img/arrow_up.gif) no-repeat top left;}
+.forward_sort {background: #619acb url(../img/arrow_down.gif) no-repeat top left;}
 .greyhighlight {background-color:#F3F3F3;padding:5px;border:1px dashed #DBDBDB;}
 
 .bigbutton {padding:4px;font-size:15px;}
@@ -303,15 +303,15 @@ margin-bottom:10px;
 }
 /* for sortable table header in top user page */
 table.tablesorter thead tr .header {
-	background-image: url(images/bg.gif);
+	background-image: url(../img/bg.gif);
 	background-repeat: no-repeat;
 	background-position: center right;
 	cursor: pointer;
 }
 
 table.tablesorter thead tr .headerSortUp {
-	background-image: url(images/asc.gif);
+	background-image: url(../img/asc.gif);
 }
 table.tablesorter thead tr .headerSortDown {
-	background-image: url(images/desc.gif);
+	background-image: url(../img/desc.gif);
 }

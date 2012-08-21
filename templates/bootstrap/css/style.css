@@ -570,22 +570,22 @@ width:282px;
 }
 /* for ajax loader */
 .loader{
-background-image:url(images/ajax-loader.gif);
+background-image:url(../img/ajax-loader.gif);
 background-repeat:no-repeat;
 }
 /* for sortable table header in top user page */
 table.tablesorter thead tr .header {
-	background-image: url(images/bg.gif);
+	background-image: url(../img/bg.gif);
 	background-repeat: no-repeat;
 	background-position: center right;
 	cursor: pointer;
 }
 
 table.tablesorter thead tr .headerSortUp {
-	background-image: url(images/asc.gif);
+	background-image: url(../img/asc.gif);
 }
 table.tablesorter thead tr .headerSortDown {
-	background-image: url(images/desc.gif);
+	background-image: url(../img/desc.gif);
 }
 
 /************ FILE UPLOAD *************/
