@@ -194,45 +194,46 @@
 					<td><label for="name" accesskey="1">{#PLIGG_Visual_User_Profile_Pinterest#}:</label></td>
 					<td><input type="text" name="pinterest" id="pinterest" tabindex="12" value="{$user_pinterest}"></td>	
 				</tr>
-				
-			{php}
-			if (user_language)
-			{
-			{/php}
-				{if count($languages) gt 1}
-					<tr>
-						<td><label for="name" accesskey="1">{#PLIGG_Visual_User_Profile_Language#}:</label></td>
-						<td><select name='language'>
-								{foreach from=$languages value=lang}
-									<option {if $lang==$user_language}selected{/if}>{$lang}</option>
-								{/foreach}
-							</select>
-						</td>
-					</tr>
-				{/if}
-			{php}
-			}
-			{/php}
 			</tbody>
 		</table>
 		{checkActionsTpl location="tpl_pligg_profile_settings_start"}		
 		<table class="masonry table table-bordered table-striped span4">
 			<thead class="table_title">
 				<tr>
-					<th colspan="2">{#PLIGG_Visual_User_Setting#}</th>
+					<th colspan="2">{#PLIGG_Visual_User_Display_Settings#}</th>
 				</tr>
 			</thead>
 			<tbody>
+				{php}
+				if (user_language)
+				{
+				{/php}
+					{if count($languages) gt 1}
+						<tr>
+							<td><label for="name" accesskey="1">{#PLIGG_Visual_User_Profile_Language#}:</label></td>
+							<td><select name='language'>
+									{foreach from=$languages value=lang}
+										<option {if $lang==$user_language}selected{/if}>{$lang|capitalize}</option>
+									{/foreach}
+								</select>
+							</td>
+						</tr>
+					{/if}
+				{php}
+				}
+				{/php}
 				{if $Allow_User_Change_Templates}
-					<tr>
-						<td><label>{#PLIGG_Visual_User_Setting_Template#}:</label></td>
-						<td><select name='template'>
-						{foreach from=$templates item=template}
-							<option {if $template==$current_template}selected{/if}>{$template}</option>
-						{/foreach}
-						</select>
-						</td>
-					</tr>
+					{if count($templates) gt 1}
+						<tr>
+							<td><label>{#PLIGG_Visual_User_Setting_Template#}:</label></td>
+							<td><select name='template'>
+							{foreach from=$templates item=template}
+								<option {if $template==$current_template}selected{/if}>{$template|capitalize}</option>
+							{/foreach}
+							</select>
+							</td>
+						</tr>
+					{/if}
 				{/if}
 				<tr>
 					<td><label>{#PLIGG_Visual_User_Setting_Categories#}:</label></td>
@@ -271,6 +272,7 @@
 </div>
 <div style="clear:both;"></div>
 <div class="form-actions">
+	{$hidden_token_profile_change}
 	<input type="hidden" name="process" value="1">
 	<input type="hidden" name="user_id" value="{$user_id}">	
 	<input type="submit" name="save_profile" value="{#PLIGG_Visual_Profile_Save#}" class="btn btn-primary" tabindex="16">
