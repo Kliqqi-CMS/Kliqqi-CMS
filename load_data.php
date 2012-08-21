@@ -30,7 +30,7 @@ if(isset($part)){$search->setmek = $db->escape($part);}
 //$search->offset = (get_current_page()-1)*$page_size;
 $search->offset = $start_up;
 // pagesize set in the admin panel
-$search->pagesize = 8;
+$search->pagesize = $page_size;
 
 // since this is index, we only want to view "published" stories
 $search->filterToStatus = "published";
