@@ -4,12 +4,37 @@
 <!-- profile_center.tpl -->
 {checkActionsTpl location="tpl_pligg_profile_start"}
 <div style="margin:0 0 10px 0;">
-	<h1>
-		{if $UseAvatars neq "0"}
+
+	{if $UseAvatars neq "0"}
+		<a href="#profileavatar" data-toggle="modal">
 			<img style="float:left;margin:0 15px 0 0;" src="{$Avatar_ImgLarge}" class="thumbnail" style="margin-bottom:4px;" alt="Avatar" />
-		{/if}
+		</a>
+		{* Avatar upload modal *}
+		<div class="modal hide fade" id="profileavatar" style="display: none;">
+			<div class="modal-header">
+				<button data-dismiss="modal" class="close" type="button">×</button>
+				<h3>Profile Avatar Upload</h3>
+			</div>
+			<form method="POST" enctype="multipart/form-data" name="image_upload_form" action="{$form_action}">
+				<div class="modal-body">
+					<div class="thumbnail" style="float:left;margin-right:10px;">
+						<img src="{$Avatar_ImgLarge}" title="{#PLIGG_Visual_Profile_CurrentAvatar#}">
+					</div>
+					<input type="file" class="fileupload" name="image_file"/>
+				</div>
+				<div class="modal-footer">
+					<input type="hidden" name="avatar" value="uploaded"/>
+					{$hidden_token_profile_change}
+					<input type="submit" name="action" class="btn btn-primary" value="{#PLIGG_Visual_Profile_AvatarUpload#}"/>
+				</div>
+			</form>
+		</div>
+	{/if}
+	
+	<h1>
 		{$user_username|capitalize}
 	</h1>
+	
 	<div style="margin-top:2px;">
 		{checkActionsTpl location="tpl_user_profile_social_start"}
 		{if $user_skype}
@@ -87,49 +112,6 @@
 {if $savemsg neq ""}<div class="alert alert-warning fade in"><a data-dismiss="alert" class="close">×</a>{$savemsg}</div>{/if} 
 {checkActionsTpl location="tpl_pligg_profile_info_start"}
 <div id="profile_container" style="position: relative;">
-	{if $UseAvatars neq false}
-		<table class="masonry table table-bordered table-striped span4" style="position: absolute; top: 0px; left: 0px;">
-			<thead class="table_title">
-				<tr>
-					<th colspan="2">{#PLIGG_Visual_Profile_UploadAvatar2#}</th>
-				</tr>
-			</thead>
-			<tbody>
-				<tr>
-					<td>
-						{if $user_avatar_source eq "useruploaded"}
-							{* This is the avatar upload form. It can't be inside of another form! *}
-							<form method="POST" enctype="multipart/form-data" name="image_upload_form" action="{$form_action}">
-								<div data-fileupload="image" class="fileupload fileupload-new"><input type="hidden">
-									<div style="width: 30px; height: 30px;" class="fileupload-new thumbnail"><img src="{$Avatar_ImgLarge}" title="{#PLIGG_Visual_Profile_CurrentAvatar#}"></div>
-									<div style="width: 30px; height: 30px; line-height: 30px;" class="fileupload-preview fileupload-exists thumbnail"></div>
-									<span class="btn btn-file"><span class="fileupload-new">Select image</span><span class="fileupload-exists">Change</span><input type="file" name="image_file" ><input type="hidden" name="avatar" value="uploaded"/></span>
-									<a data-dismiss="fileupload" class="btn fileupload-exists" href="#">Remove</a>
-									{*
-										<img src="{$Avatar_ImgLarge}" alt="Large Avatar"/>
-										<img src="{$Avatar_ImgSmall}" alt="Small Avatar"/>
-									*}
-									{$hidden_token_profile_change}
-									<input type="submit" value="{#PLIGG_Visual_Profile_AvatarUpload#}" name="action" class="btn"><br />
-								</div>
-							</form>
-						{/if}
-						
-						{* This is the main form for the page *}
-						<form action="" method="post" id="thisform">
-						{$hidden_token_profile_change}
-						
-						{if $UseAvatars neq false}
-							<input type="radio" name="avatarsource" value="" {if $user_avatar_source eq ""}CHECKED{/if}> {#PLIGG_Visual_Profile_UseDefaultAvatar#}<br />
-							<input type="radio" name="avatarsource" value="useruploaded" {if $user_avatar_source eq "useruploaded"}CHECKED{/if}> {#PLIGG_Visual_Profile_UploadAvatar#}<br/>
-							<input type=submit name="save_profile" value="{#PLIGG_Visual_Profile_Save#}" class="btn btn-primary">
-						{/if}
-					</td>
-				</tr>
-			</tbody>
-		</table>
-		<!--/$UseAvatars-->
-	{/if}
 	<form action="" method="post" id="thisform">
 		{checkActionsTpl location="tpl_profile_center_fields"}
 		{checkActionsTpl location="tpl_pligg_profile_info_middle"}
