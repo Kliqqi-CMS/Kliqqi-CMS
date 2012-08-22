@@ -266,7 +266,6 @@
 		 $(".stories:last").after("<Div  class='btn btn-primary contine_read_story '>Continue Reading</Div>"); 
 	
 		$(".contine_read_story").live("click", function(){
-			alert(total_row)
 			if(parseInt(total_row)>=count){
 				last_msg_funtion();
 			}else{	
