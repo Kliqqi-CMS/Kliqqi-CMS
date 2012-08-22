@@ -432,7 +432,7 @@ if (!$errors) {
 	}*/
 
 	// add in google site search
-	$sql = "UPDATE `" . table_config . "` set `var_value` = '3', `var_optiontext` = '1 - 3', `var_desc` = '<br /><b>1</b> = uses MySQL MATCH for FULLTEXT indexes (or something). <b>Problems are MySQL STOP words and words less than 4 characters. Note: these limitations do not affect clicking on a TAG to search by it.</b>\r\n<br /><b>2</b> = uses MySQL LIKE and is much slower, but returns better results. Also supports \"*\" and \"-\"\r\n<br /><b>3</b> = is a hybrid, using method 1 if possible, but method 2 if needed.' WHERE `var_id` = 43;";
+	$sql = "UPDATE `" . table_config . "` set `var_value` = '3', `var_optiontext` = '1 - 3', `var_desc` = '<br /><b>1</b> = uses MySQL MATCH for FULLTEXT indexes (or something). Problems are MySQL STOP words and words less than 4 characters. Note: these limitations do not affect clicking on a TAG to search by it.\r\n<br /><b>2</b> = uses MySQL LIKE and is much slower, but returns better results. Also supports \"*\" and \"-\"\r\n<br /><b>3</b> = is a hybrid, using method 1 if possible, but method 2 if needed.' WHERE `var_id` = 43;";
 	$db->query($sql);
 	
 	// uninstall the RSS importer so that the user has to re-install it to make sure
