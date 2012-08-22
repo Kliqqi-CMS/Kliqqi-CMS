@@ -73,7 +73,7 @@ display:inline;
 }
 
 .contine_read_story{
-width:100%;
+width:99%;
 text-align:center;
 padding:10px 0;
 opacity:0.8;
@@ -84,7 +84,7 @@ filter:alpha(opacity=80);
 }
 
 .no_stories_left {
-width:100%;
+width:99%;
 text-align:center;
 padding:10px 0;
 opacity:0.4;
