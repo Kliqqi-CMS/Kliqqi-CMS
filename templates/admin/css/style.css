@@ -10,10 +10,6 @@ border-color: #F4A2AD;
 color: #C80700;
 }
 
-.navbar-inner {
-border-radius:0;
-}
-
 .loader{
 background-image:url(../img/ajax-loader2.gif);
 background-repeat:no-repeat;
@@ -92,6 +88,12 @@ margin-bottom:0;
 }
 
 /* HEADER */
+.navbar {
+margin-bottom:20px;
+}
+.navbar-inner {
+border-radius:0;
+}
 .search-query {
 box-sizing:content-box;
 -moz-box-sizing:content-box;

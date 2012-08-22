@@ -89,7 +89,7 @@
 <body dir="{#PLIGG_Visual_Language_Direction#}">
 {if $pagename neq "admin_login"}
 	{checkActionsTpl location="tpl_pligg_admin_body_start"}
-	<div class="navbar">
+	<div class="navbar navbar-inverse navbar-static-top">
 		<div class="navbar-inner">
 			<div class="container-fluid">
 				<!-- .btn-navbar is used as the toggle for collapsed navbar content -->
