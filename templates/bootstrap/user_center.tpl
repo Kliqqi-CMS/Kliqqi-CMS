@@ -263,7 +263,7 @@
 				<tr>
 					<th>{#PLIGG_Visual_Login_Username#}</th>
 					<th>{#PLIGG_Visual_User_Profile_Joined#}</th>
-					<th>{#PLIGG_Visual_User_Profile_Social#}</th>
+					<th>{#PLIGG_User_Profile_Social#}</th>
 					<th>Add/Remove</th>
 				</tr>
 			</thead>

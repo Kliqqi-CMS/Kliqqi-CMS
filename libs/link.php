@@ -757,7 +757,7 @@ class Link {
 			
 			 if(Auto_scroll==true){
 			  $content=	close_tags(utf8_substr($this->content, 0, StorySummary_ContentTruncate));
-			  $content.="&nbsp;<div class=\"read_more_article btn btn-primary \" storyid=\"".$this->id."\" >Read More</div>" ;
+			  $content.="<div class=\"read_more_article\" storyid=\"".$this->id."\" > Read More</div>" ;
 			  $content.="<div class=\"read_more_story".$this->id." hide\" >";
 			  $content.=close_tags(utf8_substr($this->content, StorySummary_ContentTruncate,utf8_strlen($this->content) ));
 			  $content.="</div>";

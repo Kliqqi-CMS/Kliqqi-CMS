@@ -183,7 +183,8 @@
 			 
 			 article_id = $(this).attr("storyid");
              class_name="read_more_story"+article_id;
-			 $(".read_more_story"+article_id).removeClass('hide');			    		
+			 $(".read_more_story"+article_id).removeClass('hide');
+			$(".read_more_story"+article_id).addClass('show_full_content');			 
              $(".read_more_story"+article_id).fadeIn(1000);
 			 $(this).hide();
 			 
@@ -263,20 +264,18 @@
 	   }else if(Pager_setting==3){
 		   
 		 if(parseInt(total_row)>=count)  
-		 $(".stories:last").after("<Div  class='btn btn-primary contine_read_story '>Continue Reading</Div>"); 
+		 $(".stories:last").after("<div class='btn contine_read_story'>{/literal}{#PLIGG_Continue_Reading#}{literal}</div>"); 
 	
 		$(".contine_read_story").live("click", function(){
 			if(parseInt(total_row)>=count){
 				last_msg_funtion();
 			}else{	
 			$(this).hide();
-			$(".stories:last").after("<Div  class='btn btn-small '>No More Articles Found</Div>"); 
+			$(".stories:last").after("<div  class='btn no_stories_left'>{/literal}{#PLIGG_No_More_Articles#}{literal}</div>"); 
 			}
 			});
 	  
 	   }
-		
-		
 		
 });
 

@@ -56,22 +56,22 @@
 	<div>
 		{checkActionsTpl location="tpl_user_profile_social_start"}
 		{if $user_skype}
-			<a href="callto://{$user_skype}" title="Skype {$user_username}" rel="nofollow" target="_blank"><img src="{$my_pligg_base}/templates/{$the_template}/img/skype_round.png" /></a>
+			<a href="callto://{$user_skype}" title="{#PLIGG_Visual_User_Profile_Skype#} {$user_username|capitalize}" rel="nofollow" target="_blank"><img src="{$my_pligg_base}/templates/{$the_template}/img/skype_round.png" /></a>
 		{/if}
 		{if $user_facebook}
-			<a href="http://www.facebook.com/{$user_facebook}" title="{$user_username} on Facebook" rel="nofollow" target="_blank"><img src="{$my_pligg_base}/templates/{$the_template}/img/facebook_round.png" /></a>
+			<a href="http://www.facebook.com/{$user_facebook}" title="{$user_username|capitalize} on {#PLIGG_User_Profile_Facebook#}" rel="nofollow" target="_blank"><img src="{$my_pligg_base}/templates/{$the_template}/img/facebook_round.png" /></a>
 		{/if}
 		{if $user_twitter}
-			<a href="http://twitter.com/{$user_twitter}" title="{$user_username} on Twitter" rel="nofollow" target="_blank"><img src="{$my_pligg_base}/templates/{$the_template}/img/twitter_round.png" /></a>
+			<a href="http://twitter.com/{$user_twitter}" title="{$user_username|capitalize} on {#PLIGG_User_Profile_Twitter#}" rel="nofollow" target="_blank"><img src="{$my_pligg_base}/templates/{$the_template}/img/twitter_round.png" /></a>
 		{/if}
 		{if $user_linkedin}
-			<a href="http://www.linkedin.com/in/{$user_linkedin}" title="{$user_username} on LinkedIn" rel="nofollow" target="_blank"><img src="{$my_pligg_base}/templates/{$the_template}/img/linkedin_round.png" /></a>
+			<a href="http://www.linkedin.com/in/{$user_linkedin}" title="{$user_username|capitalize} on {#PLIGG_User_Profile_Linkedin#}" rel="nofollow" target="_blank"><img src="{$my_pligg_base}/templates/{$the_template}/img/linkedin_round.png" /></a>
 		{/if}
 		{if $user_googleplus}
-			<a href="https://plus.google.com/{$user_googleplus}" title="{$user_username} on Google+" rel="nofollow" target="_blank"><img src="{$my_pligg_base}/templates/{$the_template}/img/google_round.png" /></a>
+			<a href="https://plus.google.com/{$user_googleplus}" title="{$user_username|capitalize} on {#PLIGG_User_Profile_Googleplus#}" rel="nofollow" target="_blank"><img src="{$my_pligg_base}/templates/{$the_template}/img/google_round.png" /></a>
 		{/if}
 		{if $user_pinterest}
-			<a href="http://pinterest.com/{$user_pinterest}/" title="{$user_username} on Pinterest" rel="nofollow" target="_blank"><img src="{$my_pligg_base}/templates/{$the_template}/img/pinterest_round.png" /></a>
+			<a href="http://pinterest.com/{$user_pinterest}/" title="{$user_username|capitalize} on {#PLIGG_User_Profile_Pinterest#}" rel="nofollow" target="_blank"><img src="{$my_pligg_base}/templates/{$the_template}/img/pinterest_round.png" /></a>
 		{/if}
 		{checkActionsTpl location="tpl_user_profile_social_end"}
 	</div>
@@ -171,29 +171,36 @@
 					<td><label for="name" accesskey="1">{#PLIGG_Visual_Profile_Location#}:</label></td>
 					<td><input type="text" name="location" id="location" tabindex="9" value="{$user_location}"></td>
 				</tr>
+			</tbody>
+			<thead>
+				<tr>
+					<th colspan="2">{#PLIGG_User_Profile_Social#}</th>
+				</tr>
+			</thead>
+			<tbody>
 				<tr>
 					<td><label for="name" accesskey="1">{#PLIGG_Visual_User_Profile_Skype#}:</label></td>
 					<td><input type="text" name="skype" id="skype" tabindex="10" value="{$user_skype}"></td>
 				</tr>
 				
 				<tr>
-					<td><label for="name" accesskey="1">{#PLIGG_Visual_User_Profile_Facebook#}:</label></td>
+					<td><label for="name" accesskey="1">{#PLIGG_User_Profile_Facebook#}:</label></td>
 					<td><input type="text" name="facebook" id="facebook" tabindex="2" value="{$user_facebook}"></td>
 				</tr>
 				<tr>
-					<td><label for="name" accesskey="1">{#PLIGG_Visual_User_Profile_Twitter#}:</label></td>
+					<td><label for="name" accesskey="1">{#PLIGG_User_Profile_Twitter#}:</label></td>
 					<td><input type="text" name="twitter" id="twitter" tabindex="4" value="{$user_twitter}"></td>
 				</tr>
 				<tr>
-					<td><label for="name" accesskey="1">{#PLIGG_Visual_User_Profile_Linkedin#}:</label></td>
+					<td><label for="name" accesskey="1">{#PLIGG_User_Profile_Linkedin#}:</label></td>
 					<td><input type="text" name="linkedin" id="linkedin" tabindex="6" value="{$user_linkedin}"></td>
 				</tr>
 				<tr>
-					<td><label for="name" accesskey="1">{#PLIGG_Visual_User_Profile_Googleplus#}:</label></td>
+					<td><label for="name" accesskey="1">{#PLIGG_User_Profile_Googleplus#}:</label></td>
 					<td><input type="text" name="googleplus" id="googleplus" tabindex="8" value="{$user_googleplus}"></td>
 				</tr>
 				<tr>
-					<td><label for="name" accesskey="1">{#PLIGG_Visual_User_Profile_Pinterest#}:</label></td>
+					<td><label for="name" accesskey="1">{#PLIGG_User_Profile_Pinterest#}:</label></td>
 					<td><input type="text" name="pinterest" id="pinterest" tabindex="12" value="{$user_pinterest}"></td>	
 				</tr>
 			</tbody>
@@ -202,7 +209,7 @@
 		<table class="masonry table table-bordered table-striped span4">
 			<thead class="table_title">
 				<tr>
-					<th colspan="2">{#PLIGG_Visual_User_Display_Settings#}</th>
+					<th colspan="2">{#PLIGG_User_Display_Settings#}</th>
 				</tr>
 			</thead>
 			<tbody>
