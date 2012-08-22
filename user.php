@@ -322,33 +322,58 @@ $CSRF->create('user_settings', true, true);
 // a hook	
 	$vars = '';
 	check_actions('user_post_views', $vars);
-
+   //for auto scrolling
+   if(Auto_scroll==2 || Auto_scroll==3){
+      			$main_smarty->assign("scrollpageSize",$page_size);
+				$main_smarty->assign('curuserid',$current_user->user_id);
+				$main_smarty->assign('userid',$user->id);
+				$main_smarty->assign('viewtype', $view);
+	}
+	
 // determine which user page to display
 	Global $db, $main_smarty, $view, $user, $rows, $page_size, $offset;
 	$the_page = 'profile';
 	switch ($view) {
 		case 'history':
 			do_history();
+			if(Auto_scroll==2 || Auto_scroll==3){
+      			$main_smarty->assign('total_row', $rows);
+			}else
 			$main_smarty->assign('user_pagination', do_pages($rows, $page_size, $the_page, true));
 			break;
 		case 'published':
 			do_published();
+			if(Auto_scroll==2 || Auto_scroll==3){
+      			$main_smarty->assign('total_row', $rows);
+			}else
 			$main_smarty->assign('user_pagination', do_pages($rows, $page_size, $the_page, true));
 			break;
 		case 'shaken':
 			do_shaken();
+			if(Auto_scroll==2 || Auto_scroll==3){
+      			$main_smarty->assign('total_row', $rows);
+			}else
 			$main_smarty->assign('user_pagination', do_pages($rows, $page_size, $the_page, true));
 			break;	
 		case 'commented':
 			do_commented();
+			if(Auto_scroll==2 || Auto_scroll==3){
+      			$main_smarty->assign('total_row', $rows);
+			}else
 			$main_smarty->assign('user_pagination', do_pages($rows, $page_size, $the_page, true));
 			break;
 		case 'voted':
 			do_voted();
+			if(Auto_scroll==2 || Auto_scroll==3){
+      			$main_smarty->assign('total_row', $rows);
+			}else
 			$main_smarty->assign('user_pagination', do_pages($rows, $page_size, $the_page, true));
 			break;	
 		case 'saved':
 			do_stories();
+			if(Auto_scroll==2 || Auto_scroll==3){
+      			$main_smarty->assign('total_row', $rows);
+			}else
 			$main_smarty->assign('user_pagination', do_pages($rows, $page_size, $the_page, true));
 			break;  
 		case 'removefriend':

@@ -49,8 +49,7 @@ $privacy = $db->get_var("SELECT group_privacy FROM " . table_groups . " WHERE gr
 $view = sanitize(sanitize($_REQUEST["view"],1),3);
 if($requestID > 0)
 {
-	$main_smarty->assign('groupID', $requestID);
-	$main_smarty->assign('viewtype', $view);
+	//For Infinit scrolling and continue reading option 
 	
     if (($privacy!='private' || isMemberActive($requestID)=='active'))
     {
@@ -89,6 +88,13 @@ $main_smarty->assign('group_members', get_group_members($requestID));
 
 if($view == '') $view = 'published';
 $main_smarty->assign('groupview', $view);
+
+if(Auto_scroll==2 || Auto_scroll==3){
+		$main_smarty->assign('groupID', $requestID);
+		$main_smarty->assign('viewtype', $view);
+	}
+	
+
 if ($view == 'upcoming')
     $main_smarty->assign('URL_rss_page', getmyurl('rssgroup', $requestTitle, 'upcoming'));
 elseif ($view == 'published')

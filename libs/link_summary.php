@@ -35,19 +35,21 @@ if(!defined('mnminclude')){header('Location: ../404error.php');die();}
 		$the_results = $links;
 	}
 	
-	$main_smarty->assign('total_row', $rows);
 	
+	//For Infinit scrolling and continue reading option 
 	if(Auto_scroll==2 || Auto_scroll==3){
-				
-	if(isset($_GET['part'])){
-		$main_smarty->assign('part', $db->escape($_GET['part']));
-		}
+		
+		$main_smarty->assign('total_row', $rows);			
+		if(isset($_GET['part'])){
+			$main_smarty->assign('part', $db->escape($_GET['part']));
+		}  
+		
+		if(isset($_GET['order'])){
+			$main_smarty->assign('searchOrder', $db->escape($_GET['order']));
+			}
 	
-	if($catID!=0)
-	$main_smarty->assign('catID', $catID);
-	
-	
-	
+		if($catID!=0)
+			$main_smarty->assign('catID', $catID);
 	}
 	
 	

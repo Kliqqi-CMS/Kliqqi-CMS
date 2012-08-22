@@ -193,8 +193,9 @@
   	{/literal}
  
      
-	{if $pagename eq 'index' or $pagename eq 'published' or $pagename eq 'upcoming' or $pagename eq 'group_story'}
+	{if $pagename eq 'index' or $pagename eq 'published' or $pagename eq 'upcoming' or $pagename eq 'group_story' or $pagename eq 'user'}
     <script type="text/javascript">
+	
 	var my_pligg_url="{$my_base_url}{$my_pligg_base}";
 	var catID="{$catID}";
 	var part="{$part}";
@@ -203,18 +204,32 @@
 	var page_name="{$pagename}";
 	var groupID="{$groupID}";
 	var viewtype="{$viewtype}";
+	var pageSize="{$scrollpageSize}";
+	var searchorder="{$searchOrder}";
+	var group_vote="{$group_vote}";
+	var userid="{$userid}";
+	var curuserid="{$curuserid}";
+	
 	{literal}
 	$(document).ready(function()
 	{
-		if(page_name=="group_story")		
-		var count=5;
-		else
-		var count=10;
+		
+		var count;
+		count=parseInt(pageSize);
 		
 		function last_msg_funtion() 
 		{ 
-			var dataString = "pname="+page_name+"&start_up="+count+"&catID="+catID+"&part="+part+"&groupid="+groupID+"&view="+viewtype;
-						
+			var data="";
+			
+			if(page_name=="index" || page_name=="upcoming" || page_name=="published")
+			 data="&catID="+catID+"&part="+part+"&sorder="+searchorder;
+			else if(page_name=="group_story")
+			 data="&groupid="+groupID+"&view="+viewtype+"&group_vote="+group_vote+"&catID="+catID; 
+			else if(page_name=="user")
+			 data="&view="+viewtype+"&userid="+userid+"&curuserid="+curuserid; 
+			
+			var dataString = "pname="+page_name+"&start_up="+count+"&pagesize="+pageSize+data;
+								
 			$.ajax({
 			type: "POST",
 			url:my_pligg_url+"/load_data.php",
@@ -228,7 +243,7 @@
 				if (html != "") {
 				$(".stories:last").after(html); 
 				$(".stories").removeClass("loader");
-				count=count+8;
+				count=count+parseInt(pageSize);
 				}
 				
 				
@@ -251,7 +266,7 @@
 		 $(".stories:last").after("<Div  class='btn btn-primary contine_read_story '>Continue Reading</Div>"); 
 	
 		$(".contine_read_story").live("click", function(){
-			
+			alert(total_row)
 			if(parseInt(total_row)>=count){
 				last_msg_funtion();
 			}else{	
@@ -302,3 +317,4 @@
 </html>
 {/if}{*END Maintenance Mode *}
 
+ 

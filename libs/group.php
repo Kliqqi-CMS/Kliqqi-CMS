@@ -383,6 +383,8 @@ function group_stories($requestID,$catId)
         }
 
 	$group_vote = group_check_to_publish($requestID);
+	
+	
 	if ($_GET['view'] == 'upcoming')
 		$from_where .= " AND link_votes<$group_vote AND link_status='queued'";
 	else                
@@ -404,8 +406,16 @@ function group_stories($requestID,$catId)
 		}
 	}
 	$main_smarty->assign('group_display', $group_display);
-	$main_smarty->assign('total_row', $rows);
-	if(Auto_scroll==1)
+	
+	//for auto scrolling
+	if(Auto_scroll==2 || Auto_scroll==3){
+      $main_smarty->assign("scrollpageSize",$page_size);
+	  $main_smarty->assign('total_row', $rows);
+	  $main_smarty->assign("group_vote",$group_vote);
+	  if($catId)
+	  $main_smarty->assign('catID', $catId);
+	  
+	}else
 	$main_smarty->assign('group_story_pagination', do_pages($rows, $page_size, 'group_story', true));
 }
 //get the shared story for groups
@@ -459,9 +469,19 @@ function group_shared($requestID,$catId)
 		}
 	}
 	$main_smarty->assign('group_shared_display', $group_shared_display);
-	$main_smarty->assign('total_row', $rows);
-	if(Auto_scroll==1)
-	$main_smarty->assign('group_story_pagination', do_pages($rows, $page_size, 'group_story', true));
+	
+	
+	//for auto scrolling
+    if(Auto_scroll==2 || Auto_scroll==3){
+      $main_smarty->assign("scrollpageSize",$page_size);
+      $main_smarty->assign('total_row', $rows);
+	  if($catId)
+	  $main_smarty->assign('catID', $catId);
+	  
+	  $main_smarty->assign('total_row', $rows);
+	  
+	}else  
+	  $main_smarty->assign('group_story_pagination', do_pages($rows, $page_size, 'group_story', true));
 }
 //displaying group as story
 function group_print_summary($requestID)

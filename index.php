@@ -137,8 +137,13 @@ $main_smarty->assign('URL_rss_page', getmyurl('rsspage', $category_data->categor
 
 $fetch_link_summary = true;
 include('./libs/link_summary.php'); // this is the code that show the links / stories
-if(Auto_scroll==1)
-$main_smarty->assign('link_pagination', do_pages($rows, $page_size, "published", true));
+
+//For Infinit scrolling and continue reading option 
+if(Auto_scroll==2 || Auto_scroll==3){
+   $main_smarty->assign("scrollpageSize",$page_size);
+ 
+}else
+   $main_smarty->assign('link_pagination', do_pages($rows, $page_size, "published", true));
 
 // show the template
 $main_smarty->assign('tpl_center', $the_template . '/index_center');
