@@ -77,7 +77,7 @@
 	</div>
 	{checkActionsTpl location="tpl_show_extra_profile"}
 	<div style="font-size:0.85em;line-height:1.3em;margin-top:2px;">		
-		{if $user_publicemail ne ""}
+		{if $user_publicemail != ""}
 			{php}
 				// Method to try to trick automated email address collection bots
 				global $main_smarty;
@@ -96,19 +96,26 @@
 			//-->
 			</script>
 		{/if}
-		{if $user_url ne "" && $user_karma > "20" || $user_login eq $user_logged_in}
+		{if $user_url != "" && $user_karma > "20" || $user_login eq $user_logged_in}
 			<a href="{$user_url}" target="_blank" rel="nofollow">{$user_url}</a>
 			<br />
 		{/if}
 		{checkActionsTpl location="tpl_user_profile_details_start"}
-		{if $user_names ne ""}
-			{$user_names} is
+		{if $user_names != ""}
+			{$user_names}
+			{if $user_occupation != "" || $user_location != ""}	is {/if}
 		{/if}
-		{if $user_occupation ne ""}
-			{if $user_names ne ""}a{/if} {$user_occupation}
+		{if $user_occupation != ""}
+			{if $user_names != ""} a {/if}
+			{$user_occupation}
 		{/if}
-		{if $user_location ne ""}
-			from {$user_location}
+		{if $user_location != ""}
+			{if $user_occupation != "" && $user_location != ""}
+				 from 
+			{else}
+				 From 
+			{/if}
+			{$user_location}
 		{/if}
 		{checkActionsTpl location="tpl_user_profile_details_end"}
 	</div>
