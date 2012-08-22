@@ -2,7 +2,7 @@
 ********* Header Template ***********
 *************************************}
 <!-- header.tpl -->
-<div class="navbar navbar-static-top">
+<div class="navbar navbar-inverse navbar-static-top">
 	<div class="navbar-inner">
 		<div class="container">
 			{* The next few lines form the button that appears in the navbar when the page width is small *}
