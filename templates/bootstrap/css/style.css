@@ -439,6 +439,24 @@ padding:0 0 0 5px;
 }
 
 /**************** USER PROFILE ******************/
+.thumbnail {
+width: 100px;
+float: left;
+margin-right: 10px;
+padding: 0;
+position: relative;
+overflow: hidden;
+}
+.edit-avatar {
+position: absolute;
+bottom: 0;
+display: none;
+margin: 4px;
+width: 72px;
+}
+.thumbnail:hover .edit-avatar {
+display: block;
+}
 .checked {
 clear:both;
 }

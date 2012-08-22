@@ -175,6 +175,7 @@ text-decoration:underline;
 
 .accordion-body {
 	background:#ffffff;
+	width: 100%;
 }
 
 .accordion-inner > li > a {
