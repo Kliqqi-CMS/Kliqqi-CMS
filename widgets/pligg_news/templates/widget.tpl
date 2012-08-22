@@ -1,14 +1,13 @@
 {literal}
 <style type="text/css">
 .pligg_news_title {
+	font-size:15px;
 	border-bottom:1px dotted #ddd;
 	padding: 5px 0 2px 0;
 	margin:0 0 2px 0;
 }
 .pligg_news_paragraph {
-	padding-bottom:5px;
-	font-size:12px;
-	line-height:13px;
+	line-height:1.4em;
 }
 .pligg_news_paragraph strong {
 	font-weight:normal;

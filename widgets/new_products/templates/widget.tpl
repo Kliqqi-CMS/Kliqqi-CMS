@@ -25,7 +25,9 @@ width:325px;
 margin:0 0 0 10px;
 }
 .pro_title h3 {
-line-height:20px;
+line-height:0.9em;
+margin:0;
+padding:0;
 }
 .pro_title h3 a,.pro_title h3 a:visited{
 font-size:13px;
@@ -34,6 +36,7 @@ font-size:13px;
 margin:2px 0 0 0;
 }
 .pro_description p{
+	line-height:1.4em;
 }
 .pro_description p strong{
 font-weight:normal;

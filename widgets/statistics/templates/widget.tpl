@@ -1,5 +1,5 @@
 {checkActionsTpl location="tpl_pligg_admin_stats_widget_start"}
-<table class="table table-condensed table-striped" style="font-size:1.1em;">
+<table class="table table-condensed table-striped" style="margin-bottom:0;">
 	{if $sw_version eq "1"}
 		<tr>
 			<td>
