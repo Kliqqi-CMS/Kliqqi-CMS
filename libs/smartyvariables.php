@@ -60,7 +60,10 @@ $main_smarty->assign('UseAvatars', do_we_use_avatars());
 $main_smarty->assign('Allow_Friends', Allow_Friends);
 $main_smarty->assign('Pager_setting', Auto_scroll);
 
-if($current_user->user_login){$main_smarty->assign('Current_User_Avatar_ImgSrc', get_avatar('small', "", "", "", $current_user->user_id));}
+if($current_user->user_login){
+	$main_smarty->assign('Current_User_Avatar', $avatars = get_avatar('all', "", "", "", $current_user->user_id));
+	$main_smarty->assign('Current_User_Avatar_ImgSrc', $avatars['small']);
+}
 
 //groups
 $main_smarty->assign('enable_group', enable_group);

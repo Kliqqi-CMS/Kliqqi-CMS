@@ -91,7 +91,8 @@ $CSRF->create('user_settings', true, true);
 
 // avatars
 	$main_smarty->assign('UseAvatars', do_we_use_avatars());
-	$main_smarty->assign('Avatar_ImgSrc', get_avatar('large', '', $user->username, $user->email));
+	$main_smarty->assign('Avatar', $avatars = get_avatar('all', '', $user->username, $user->email));
+	$main_smarty->assign('Avatar_ImgSrc', $avatars['large']);
 	
 // User Homepage URL
 	if ($user->url != "") {

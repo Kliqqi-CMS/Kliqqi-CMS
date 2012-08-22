@@ -568,8 +568,9 @@ class Link {
 		$smarty->assign('link_group_id', $this->link_group_id);
 		$smarty->assign('instpath', my_base_url . my_pligg_base . "/");		
 		$smarty->assign('UseAvatars', do_we_use_avatars());
-		$smarty->assign('Avatar_ImgSrc', get_avatar('large', "", "", "", $this->userid));
-        $smarty->assign('Avatar_ImgSrcs', get_avatar('small', "", "", "", $this->userid));
+		$smarty->assign('Avatar', $avatars = get_avatar('all', "", "", "", $this->userid));
+		$smarty->assign('Avatar_ImgSrc', $avatars['large']);
+	        $smarty->assign('Avatar_ImgSrcs', $avatars['small']);
 
 		$canIhaveAccess = 0;
 		$canIhaveAccess = $canIhaveAccess + checklevel('admin');

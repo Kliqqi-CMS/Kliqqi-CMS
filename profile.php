@@ -161,8 +161,9 @@ function show_profile() {
 
 	// assign avatar source to smarty
 	$main_smarty->assign('UseAvatars', do_we_use_avatars());
-	$main_smarty->assign('Avatar_ImgLarge', get_avatar('large', $user->avatar_source, $user->username, $user->email));
-	$main_smarty->assign('Avatar_ImgSmall', get_avatar('small', $user->avatar_source, $user->username, $user->email));
+	$main_smarty->assign('Avatar', $avatars = get_avatar('all', '', $user->username, $user->email));
+	$main_smarty->assign('Avatar_ImgLarge', $avatars['large']);
+	$main_smarty->assign('Avatar_ImgSmall', $avatars['small']);
 
 	// module system hook
 	$vars = '';

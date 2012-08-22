@@ -48,7 +48,10 @@ function who_voted($storyid, $avatar_size, $condition){
 	$voters = $db->get_results($sql);
 	$voters = object_2_array($voters);
 	foreach($voters as $key => $val)
-		$voters[$key]['Avatar_ImgSrc'] = get_avatar($avatar_size, "", $val['user_login'], $val['user_email']);
+ 	{
+		$voters[$key]['Avatar'] = get_avatar('all', "", $val['user_login'], $val['user_email']);
+		$voters[$key]['Avatar_ImgSrc'] = $voters[$key]['Avatar']['large'];
+	}
 	return $voters;	
 }
 
@@ -183,10 +186,16 @@ function get_avatar($size = "large", $avatarsource, $user_name = "", $user_email
 	$user = "";
 
 	
-	if($size == "large"){$imgsize = Avatar_Large;}else{$imgsize = Avatar_Small;}
+	if ($size == "large")
+		$imgsize = Avatar_Large;
+	elseif ($size == "small")
+		$imgsize = Avatar_Small;
+	elseif ($size == "original")
+		$imgsize = 'original';
 
 	// use the user uploaded avatars ?
 	if(Enable_User_Upload_Avatar == true && $avatarsource == "useruploaded"){
+	    if ($imgsize) {
 		$imgsrc = my_base_url . my_pligg_base . '/avatars/user_uploaded/' . $user_id . "_" . $imgsize . ".jpg";
 		if (file_exists(mnmpath.'avatars/user_uploaded/'.$user_id . "_" . $imgsize . ".jpg"))
 		    return latest_avatar($imgsrc, mnmpath.'avatars/user_uploaded/'.$user_id . "_" . $imgsize . ".jpg");
@@ -195,10 +204,30 @@ function get_avatar($size = "large", $avatarsource, $user_name = "", $user_email
 		    $imgsrc = my_base_url . my_pligg_base . '/avatars/user_uploaded/' . $user_name . "_" . $imgsize . ".jpg";
 		    return latest_avatar($imgsrc, mnmpath.'avatars/user_uploaded/'.$user_name . "_" . $imgsize . ".jpg");
 		}
+	    } else {
+		$dir = mnmpath.'avatars/user_uploaded';
+		$avatars = array( 'large' => my_base_url . my_pligg_base . Default_Gravatar_Large,
+				  'small' => my_base_url . my_pligg_base . Default_Gravatar_Small
+				);
+		if ($dh = opendir($dir)) {
+        	    while (($file = readdir($dh)) !== false)
+			if (preg_match("/^$user_id\_(.+)\.jpg\$/", $file, $m))
+			{
+			    $imgsrc = my_base_url . my_pligg_base . '/avatars/user_uploaded/' . $file;
+			    $avatars[$m[1]] = latest_avatar($imgsrc, $dir . $file);
+			    if ($m[1] == Avatar_Large)
+				$avatars['large'] = $avatars[$m[1]];
+			    elseif ($m[1] == Avatar_Small)
+				$avatars['small'] = $avatars[$m[1]];
+        	    	}
+	            closedir($dh);
+		    return $avatars;
+    		}	    
+	    }
 	}
 	
-	if($size == "large"){return my_base_url . my_pligg_base . Default_Gravatar_Large;}
-	if($size == "small"){return my_base_url . my_pligg_base . Default_Gravatar_Small;}
+	if ($size == "large") {return my_base_url . my_pligg_base . Default_Gravatar_Large;}
+	if ($size == "small") {return my_base_url . my_pligg_base . Default_Gravatar_Small;}
 }
 
 function do_sidebar($var_smarty, $navwhere = '') {

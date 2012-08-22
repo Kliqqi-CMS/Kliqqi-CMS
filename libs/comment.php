@@ -213,8 +213,9 @@ class Comment {
 
 		// avatars
 			$smarty->assign('UseAvatars', do_we_use_avatars());
-			$smarty->assign('Avatar_ImgSrc', get_avatar('large', "", $this->username, ""));
-			$smarty->assign('Avatar_ImgSrc_Small', get_avatar('small', "", $this->username, ""));
+			$smarty->assign('Avatar', $avatars = get_avatar('all', '', $this->username, ''));
+			$smarty->assign('Avatar_ImgSrc', $avatars['large']);
+			$smarty->assign('Avatar_ImgSrc_Small', $avatars['small']);
 
 		// does the person logged in have admin or moderator status?
 			$canIhaveAccess = 0;
