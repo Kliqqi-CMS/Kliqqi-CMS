@@ -308,7 +308,7 @@ function member_display($requestID)
 			//get group creator and his url,avatar
 			$member_name = get_group_username($member_user_id);
 			$group_member_url = getmyurl('user', $member_name);
-			$group_member_avatar = get_avatar('large', "", "", "", $member_user_id);
+			$group_member_avatar = get_avatar('small', "", "", "", $member_user_id);
 			
 			$member_display .= '<tr><td><a href="' . $group_member_url . '" class="group_member"><img src="' . $group_member_avatar . '" alt="' . $member_name . '" align="absmiddle" /></a></td><td><a href="' . $group_member_url . '" class="group_member">' . $member_name . '</a></td>';
 			if($gcreator == $current_user->user_id)
@@ -318,7 +318,7 @@ function member_display($requestID)
 						$main_smarty->assign('is_group_admin', 'true');
 						$member_display .= '<td>'.$member_role.'</td><td><a class="btn" href="#groupadminlinks-'.$index.'" data-toggle="modal"><i class="icon-edit" title="'.$change_role.'"></i> Edit</a></td><td>&nbsp;</td>';
 					} else {
-						$member_display .= '<td>'.$member_role.'</td><td><a class="btn" href="#groupadminlinks-'.$index.'" data-toggle="modal"><i class="icon-edit" title="'.$change_role.'"></i> Edit</a></td><td><a class="btn btn-danger" href="'.my_base_url . my_pligg_base . '/join_group.php?activate=false&group_id='.$requestID.'&user_id='.$member_user_id.'"><i class="icon-white icon-flag"></i> Deactivate</a></td>';
+						$member_display .= '<td>'.$member_role.'</td><td><a class="btn" href="#groupadminlinks-'.$index.'" data-toggle="modal"><i class="icon-edit" title="'.$change_role.'"></i> Edit</a></td><td><a class="btn btn-danger" href="'.my_base_url . my_pligg_base . '/join_group.php?activate=false&group_id='.$requestID.'&user_id='.$member_user_id.'">Deactivate</a></td>';
 					}
 					$member_display .= '<div class="modal hide fade" id="groupadminlinks-'.$index.'" style="display: none;">
 						<div class="modal-header">
@@ -338,7 +338,7 @@ function member_display($requestID)
 						</div>
 					</div>';
 				} else {
-					$member_display .= '<td>&nbsp;</td><td>&nbsp;</td><td><a class="btn btn-success" href="'.my_base_url . my_pligg_base . '/join_group.php?activate=true&group_id='.$requestID.'&user_id='.$member_user_id.'"><i class="icon-white icon-flag"></i> Activate</a></td>';
+					$member_display .= '<td>&nbsp;</td><td>&nbsp;</td><td><a class="btn btn-success" href="'.my_base_url . my_pligg_base . '/join_group.php?activate=true&group_id='.$requestID.'&user_id='.$member_user_id.'">Activate</a></td>';
 				}
 			}
 				$index=$index+1;
