@@ -206,8 +206,11 @@
 	{literal}
 	$(document).ready(function()
 	{
-				
+		if(page_name=="group_story")		
+		var count=5;
+		else
 		var count=10;
+		
 		function last_msg_funtion() 
 		{ 
 			var dataString = "pname="+page_name+"&start_up="+count+"&catID="+catID+"&part="+part+"&groupid="+groupID+"&view="+viewtype;
