@@ -7,7 +7,7 @@
 
 	{if $UseAvatars neq "0"}
 		<a href="#profileavatar" data-toggle="modal">
-			<div class="thumbnail">
+			<div class="thumbnail avatar_thumb">
 				<img style="float:left;margin:0 15px 0 0;" src="{$Avatar_ImgLarge}" style="margin-bottom:4px;" alt="Avatar" />
 				<a href="#profileavatar" data-toggle="modal" class="btn btn-small edit-avatar">Edit Avatar</a>
 			</div>

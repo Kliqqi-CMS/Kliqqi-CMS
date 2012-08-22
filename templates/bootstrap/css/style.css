@@ -439,7 +439,7 @@ padding:0 0 0 5px;
 }
 
 /**************** USER PROFILE ******************/
-.thumbnail {
+.avatar_thumb {
 width: 100px;
 float: left;
 margin-right: 10px;
@@ -454,7 +454,7 @@ display: none;
 margin: 4px;
 width: 72px;
 }
-.thumbnail:hover .edit-avatar {
+.avatar_thumb:hover .edit-avatar {
 display: block;
 }
 .checked {
