@@ -2,6 +2,7 @@
 ***** Advanced Search Template ******
 *************************************}
 <!-- search_advanced_center.tpl -->
+{checkActionsTpl location="tpl_pligg_search_advanced_start"}
 <script>
 	{literal}
 	function SEO2submit(form)
@@ -113,4 +114,5 @@
 		</fieldset>
 	</form>
 </div>
+{checkActionsTpl location="tpl_pligg_search_advanced_end"}
 <!--/search_advanced_center.tpl -->

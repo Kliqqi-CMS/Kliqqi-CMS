@@ -5,6 +5,7 @@
 {if $pagename neq "submit"}
 	{checkActionsTpl location="tpl_pligg_sidebar2_start"}
 	<!-- START SEARCH -->
+	{checkActionsTpl location="tpl_pligg_search_start"}
 	<script type="text/javascript">
 		{if !isset($searchboxtext)}
 			{assign var=searchboxtext value=#PLIGG_Visual_Search_SearchDefaultText#}			
@@ -18,6 +19,7 @@
 		</form>
 	</div>
 	<div class="clear"></div>
+	{checkActionsTpl location="tpl_pligg_search_end"}
 	<!-- END SEARCH -->
 	{checkActionsTpl location="tpl_pligg_sidebar_middle"}
 	{assign var=sidebar_module value="about_box"}{include file=$the_template_sidebar_modules."/wrapper.tpl"}
