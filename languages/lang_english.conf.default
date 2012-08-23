@@ -190,6 +190,9 @@ PLIGG_Visual_EditComment_ToReturn = "to return to the story"
 PLIGG_Visual_EditComment_Click = "Click "
 PLIGG_Visual_EditComment_Here = "here"
 PLIGG_Visual_EditComment_NotYours = "This does not appear to be your comment."
+PLIGG_Continue_Reading= "Continue Reading"
+PLIGG_No_More_Articles= "No More Articles"
+
 
 
 //<SECTION>LINK_SUMMARY</SECTION><ADDED>1.00</ADDED>
