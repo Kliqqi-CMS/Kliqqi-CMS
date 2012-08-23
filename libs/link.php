@@ -736,6 +736,7 @@ class Link {
 		return $smarty;
 	}
 
+
 	//sharing membered group list
 	function get_group_membered()
 	{

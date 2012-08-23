@@ -447,7 +447,8 @@ function do_pages($total, $page_size, $thepage, $fetch = false) {
 		$output .= "</ul></div>\n";
 	}	
 	
-	if ($URLMethod == 2) {                       
+	if ($URLMethod == 2) {           
+	            
 
 		$query=preg_replace('(login=)', '/', str_replace('amp;','&',sanitize($_SERVER['QUERY_STRING'],3)));	//remove login= from query string //
 		$query=preg_replace('(view=)', '/', $query);	                    //remove view= from query string //
