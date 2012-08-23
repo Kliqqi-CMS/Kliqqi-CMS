@@ -168,7 +168,7 @@ RewriteRule ^status/([0-9]+)/?$ modules/status/status.php?id=$1 [L]
 RewriteRule ^toolbar/(\d+)/?$ modules/pligg_web_toolbar/toolbar.php?id=$1
 RewriteRule ^sitemapindex.xml module.php?module=xml_sitemaps_show_sitemap [L]
 RewriteRule ^sitemap-([0-9a-z]+).xml module.php?module=xml_sitemaps_show_sitemap&i=$1 [L]
-
+RewriteRule ^sitemap.xml/?$ sitemap.php [L]
 ## Pages
 RewriteRule ^about/?$ page.php?page=about [L]
 RewriteRule ^static/([^/]+)/?$ page.php?page=$1 [L]
