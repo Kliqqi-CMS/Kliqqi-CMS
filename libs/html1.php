@@ -460,6 +460,7 @@ function do_pages($total, $page_size, $thepage, $fetch = false) {
 		$query=preg_replace('/&/', '', $query);							//whack any ampersands	//	
 		$query=preg_replace('/module\/pagestatistics/', '', $query);
 		$query=preg_replace('/search\/(.*)/', '$1'. '/', $query);
+		if($thepage!=group_story)
 		$query=preg_replace('/(?<!s)category\/(.*)/', '$1'. '/', $query);
 		$query=preg_replace('/\/+/','/',$query);
 		$query=preg_replace('/^\//','',$query);

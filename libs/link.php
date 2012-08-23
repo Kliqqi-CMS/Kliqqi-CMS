@@ -406,6 +406,8 @@ class Link {
 	function fill_smarty($smarty, $type='full'){
 
 		static $link_index=0;
+		
+		$link_index=$this->id;
 		global $current_user, $globals, $the_template, $db, $ranklist;
 
 	    if (!$ranklist)
@@ -727,7 +729,7 @@ class Link {
 		$smarty->assign('my_pligg_base', my_pligg_base);
 		$smarty->assign('Default_Gravatar_Large', Default_Gravatar_Large);
 			
-		$link_index++;
+		//$link_index++;
 		$vars['smarty'] = $smarty;
 		check_actions('lib_link_summary_fill_smarty', $vars);
 
