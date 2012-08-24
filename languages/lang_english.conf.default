@@ -1080,7 +1080,7 @@ PLIGG_User_Profile_Twitter = "Twitter"
 PLIGG_User_Profile_Linkedin = "Linkedin"
 PLIGG_User_Profile_Googleplus = "Google+"
 PLIGG_User_Profile_Pinterest = "Pinterest"
-PLIGG_Visual_Display_Settings = "Display Settings"
+PLIGG_User_Display_Settings = "Display Settings"
 PLIGG_Continue_Reading = "Continue Reading"
 PLIGG_No_More_Articles = "No More Articles Found"
 // End 2.0.0 Language File
