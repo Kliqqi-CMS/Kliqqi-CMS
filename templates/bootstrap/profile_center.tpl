@@ -8,7 +8,7 @@
 	{if $UseAvatars neq "0"}
 		<a href="#profileavatar" data-toggle="modal">
 			<div class="thumbnail avatar_thumb">
-				<img style="float:left;margin:0 15px 0 0;" src="{$Avatar_ImgLarge}" style="margin-bottom:4px;" alt="Avatar" />
+				<img style="float:left;margin:0 15px 0 0;" src="{$Avatar.large}" style="margin-bottom:4px;" alt="Avatar" />
 				<a href="#profileavatar" data-toggle="modal" class="btn btn-small edit-avatar">Edit Avatar</a>
 			</div>
 		</a>
@@ -26,7 +26,7 @@
 
 				<div class="fileupload fileupload-new" data-provides="fileupload">
 					<div class="fileupload-new thumbnail">
-						<img src="{$Avatar_ImgLarge}" title="{#PLIGG_Visual_Profile_CurrentAvatar#}" />
+						<img src="{$Avatar.large}" title="{#PLIGG_Visual_Profile_CurrentAvatar#}" />
 					</div>
 					<div class="fileupload-preview fileupload-exists thumbnail" style="max-width:{$Avatar_Large}px;max-height:{$Avatar_Large}px;"></div>
 					<div>

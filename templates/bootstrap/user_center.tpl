@@ -8,7 +8,7 @@
 	<div class="span9">
 		<h1 style="margin-bottom:0px;">
 			{if $UseAvatars neq "0"}
-				<img style="float:left;margin:0 15px 0 0;" src="{$Avatar_ImgSrc}" class="thumbnail" style="margin-bottom:4px;" alt="Avatar" />
+				<img style="float:left;margin:0 15px 0 0;" src="{$Avatar.large}" class="thumbnail" style="margin-bottom:4px;" alt="Avatar" />
 			{/if}
 			{$user_username|capitalize}
 		</h1>

@@ -8,7 +8,7 @@
 	{checkActionsTpl location="tpl_pligg_story_comments_single_start"}
 	<div class="comment-wrapper clearfix" {if $comment_status neq "published"}style="background-color: #FFFBE4;border:1px solid #DFDFDF;"{/if}>
 		<div class="span1 comment-left">
-			{if $UseAvatars neq "0"}<a href="{$user_view_url}"><img src="{$Avatar_ImgSrc_Small}" align="absmiddle" class="avatar" alt="{$user_username}" title="{$user_username}" /></a>{/if}      
+			{if $UseAvatars neq "0"}<a href="{$user_view_url}"><img src="{$Avatar.small}" align="absmiddle" class="avatar" alt="{$user_username}" title="{$user_username}" /></a>{/if}      
 			{if $Enable_Comment_Voting eq 1}
 				<br />
 				{if $comment_user_vote_count eq 0 && $current_userid neq $comment_author}
