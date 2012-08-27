@@ -8,7 +8,47 @@
 	<div class="span9">
 		<h1 style="margin-bottom:0px;">
 			{if $UseAvatars neq "0"}
-				<img style="float:left;margin:0 15px 0 0;" src="{$Avatar.large}" class="thumbnail" style="margin-bottom:4px;" alt="Avatar" />
+				{if $user_login eq $user_logged_in}<a href="#profileavatar" data-toggle="modal">{/if}
+					<div class="thumbnail avatar_thumb">
+						<img style="float:left;margin:0 15px 0 0;" src="{$Avatar.large}" style="margin-bottom:4px;" alt="Avatar" />
+						{if $user_login eq $user_logged_in}<a href="#profileavatar" data-toggle="modal" class="btn btn-small edit-avatar">Edit Avatar</a>{/if}
+					</div>
+				{if $user_login eq $user_logged_in}</a>{/if}
+				{* Avatar upload modal *}
+				<div class="modal hide fade" id="profileavatar" style="display: none;">
+					<div class="modal-header">
+						<button data-dismiss="modal" class="close" type="button">×</button>
+						<h3>Profile Avatar Upload</h3>
+					</div>
+					<div class="modal-body">
+						<form method="POST" enctype="multipart/form-data" name="image_upload_form" action="{$form_action}">
+						<script type="text/javascript">
+							$('.fileupload').fileupload()
+						</script>
+	
+						<div class="fileupload fileupload-new" data-provides="fileupload">
+							<div class="fileupload-new thumbnail">
+								<img src="{$Avatar.large}" title="{#PLIGG_Visual_Profile_CurrentAvatar#}" />
+							</div>
+							<div class="fileupload-preview fileupload-exists thumbnail" style="max-width:{$Avatar_Large}px;max-height:{$Avatar_Large}px;"></div>
+							<div>
+								<span class="btn btn-file">
+									<span class="fileupload-new"><i class="icon icon-picture"></i> Browse</span>
+									<span class="fileupload-exists"><i class="icon icon-picture"></i> Browse</span>
+									<input type="file" class="fileupload" name="image_file"/>
+								</span>
+								<a href="#" class="btn btn-danger fileupload-exists" data-dismiss="fileupload">Remove</a>
+							</div>
+						</div>
+						
+					</div>
+					<div class="modal-footer">
+						<input type="hidden" name="avatar" value="uploaded"/>
+						{$hidden_token_profile_change}
+						<input type="submit" name="action" class="btn btn-primary" value="{#PLIGG_Visual_Profile_AvatarUpload#}"/>
+						</form>
+					</div>
+				</div>
 			{/if}
 			{$user_username|capitalize}
 		</h1>
@@ -55,19 +95,26 @@
 				//-->
 				</script>
 			{/if}
-			{if $user_url ne "" && $user_karma > "20" || $user_login eq $user_logged_in}
+			{if $user_url != "" && $user_karma > "20" || $user_login eq $user_logged_in}
 				<a href="{$user_url}" target="_blank" rel="nofollow">{$user_url}</a>
 				<br />
 			{/if}
 			{checkActionsTpl location="tpl_user_profile_details_start"}
-			{if $user_names ne ""}
-				{$user_names} is
+			{if $user_names != ""}
+				{$user_names}
+				{if $user_occupation != "" || $user_location != ""}	is {/if}
 			{/if}
-			{if $user_occupation ne ""}
-				{if $user_names ne ""}a{/if} {$user_occupation}
+			{if $user_occupation != ""}
+				{if $user_names != ""} a {/if}
+				{$user_occupation}
 			{/if}
-			{if $user_location ne ""}
-				from {$user_location}
+			{if $user_location != ""}
+				{if $user_occupation != "" || $user_names != ""}
+					 from 
+				{elseif $user_location != ""}
+					 From 
+				{/if}
+				{$user_location}
 			{/if}
 			{checkActionsTpl location="tpl_user_profile_details_end"}
 		</div>
@@ -79,7 +126,11 @@
 					<input type="hidden" name="view" value="search">
 					<input type="text" name="keyword" class="input-medium" placeholder="{#PLIGG_Visual_User_Search_Users#}"><button type="submit" class="btn">{#PLIGG_Visual_Search_Go#}</button>
 				</div>
-			</form>		
+			</form>	
+			<div class="btn-group">
+				<a class="btn btn-small" href="{$user_url_friends}"><i class="icon-user"></i> {$following|@count} {#PLIGG_Visual_User_Profile_View_Friends#}</a>
+				<a class="btn btn-small" href="{$user_url_friends2}"><i class="icon-user"></i> {$follower|@count} {#PLIGG_Visual_User_Profile_View_Friends_2#}</a>
+			</div> 
 			{if $user_login neq $user_logged_in}
 				{if check_for_enabled_module('simple_messaging',0.6) && $is_friend}
 					{if $friends}
@@ -87,7 +138,7 @@
 					{/if}
 				{/if}
 				{if $is_friend gt 0}
-					<td><img src="{$my_pligg_base}/templates/{$the_template}/img/user_delete.gif" align="absmiddle" /> <a href="{$user_url_remove}">{#PLIGG_Visual_User_Profile_Remove_Friend#} {$user_login} {#PLIGG_Visual_User_Profile_Remove_Friend_2#}</a>
+					<a href="{$user_url_remove}" class="btn btn-small btn-danger">{#PLIGG_Unfollow#}{* {$user_login|capitalize} *}</a>
 					{if $user_authenticated eq true}
 						{checkActionsTpl location="tpl_user_center"}
 					{/if}
@@ -97,15 +148,6 @@
 					{/if}   
 				{/if}
 			{/if}
-				<a href="{$user_url_friends}"><span style="color:#000;font-weight:bold;font-size:1.4em;padding-right:5px;">{$following|@count}</span><span style="color:#828282;">{#PLIGG_Visual_User_Profile_View_Friends#}</span></a>
-				<br />
-				<a href="{$user_url_friends2}"><span style="color:#000;font-weight:bold;font-size:1.4em;padding-right:5px;">{$follower|@count}</span><span style="color:#828282;">{#PLIGG_Visual_User_Profile_View_Friends_2#}</span></a>
-			{*
-			<div class="btn-group">
-				<a class="btn btn-info" href="{$user_url_friends}"><i class="icon-user"></i> {$following|@count} {#PLIGG_Visual_User_Profile_View_Friends#}</a>
-				<a class="btn btn-info" href="{$user_url_friends2}"><i class="icon-user"></i> {$follower|@count} {#PLIGG_Visual_User_Profile_View_Friends_2#}</a>
-			</div> 
-			*}
 		</div>
 	</div>
 	<div style="clear:both;"></div>
