@@ -34,9 +34,9 @@ else
 ?>
 var a = document.getElementsByTagName('A');
 for (var i=0; i<a.length; i++)
-    if (a[i].id.indexOf('xvotes-<?=$_POST['id']?>')==0)
-	a[i].innerHTML = '<?=$m[1]?>';
-<?
+    if (a[i].id.indexOf('xvotes-<?php =$_POST['id']?>')==0)
+	a[i].innerHTML = ''<?php =$link->votes?>';
+<?php 
 function error($mess)
 {
     ob_end_clean();
