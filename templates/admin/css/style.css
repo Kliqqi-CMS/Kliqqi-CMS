@@ -141,6 +141,9 @@ text-shadow:0 1px 0 #505050;
 }
 .nav .nav-header {
 color:#ffffff;
+cursor:pointer;
+padding: 5px 15px;
+margin-left:0px;
 }
 
 .accordion-heading-title {
@@ -178,6 +181,8 @@ text-decoration:underline;
 .accordion-body {
 	background:#ffffff;
 	width: 100%;
+	display:none;
+	
 }
 
 .accordion-inner > li > a {

@@ -20,6 +20,8 @@
 	<script type="text/javascript" src="{$my_base_url}{$my_pligg_base}/templates/admin/js/jquery/jquery.pnotify.js"></script>
 	<script type="text/javascript" src="{$my_base_url}{$my_pligg_base}/templates/admin/js/jquery/jquery.masonry.min.js"></script>
 	<script type="text/javascript" src="{$my_base_url}{$my_pligg_base}/templates/admin/js/bootstrap.js"></script>
+    <script type="text/javascript" src="{$my_base_url}{$my_pligg_base}/templates/admin/js/jquery/jquery.cookie.js"></script>
+     <script type="text/javascript" src="{$my_base_url}{$my_pligg_base}/templates/admin/js/leftmenu.js"></script>
 	{if $pagename eq "admin_index"}
 		<script type="text/javascript" src="{$my_base_url}{$my_pligg_base}/templates/admin/js/jquery/jquery.ui.widget.js"></script> 
 		<script type="text/javascript" src="{$my_base_url}{$my_pligg_base}/templates/admin/js/jquery/jquery.ui.mouse.js"></script> 
@@ -126,13 +128,14 @@
 			<div class="span3">
 				<div class="well sidebar-nav">
 					<ul class="nav nav-list">
+                  
 						<div id="AdminAccordion" class="accordion">
 							<div class="accordion-group">
 								<div class="accordion-heading">
 									<span class="accordion-heading-title">
-										<a href="#CollapseManage" data-parent="#AdminAccordion" data-toggle="collapse" class="accordion-toggle">
+										
 											<li class="nav-header"><img src="{$my_base_url}{$my_pligg_base}/templates/admin/img/manage.png" width="16px" height="16px" /> {#PLIGG_Visual_AdminPanel_Manage_Nav#}</li>
-										</a>
+									
 									</span>
 									{if $moderated_total_count neq ''}
 										<span class="badge accordion-heading-alert">
@@ -140,7 +143,7 @@
 										</span>
 									{/if}
 								</div>
-								<div class="accordion-body collapse in" id="CollapseManage">
+								<div class="accordion-body " id="CollapseManage">
 									<div class="accordion-inner">
 										<li{if $pagename eq "admin_links"} class="active"{/if} id="manage_submissions"><a href="{$my_base_url}{$my_pligg_base}/admin/admin_links.php">Submissions {if $moderated_submissions_count != '0'}<span class="pull-right badge badge-gray">{$moderated_submissions_count}</span>{/if}</a></li>
 										<li{if $pagename eq "admin_comments"} class="active"{/if} id="manage_comments"><a href="{$my_base_url}{$my_pligg_base}/admin/admin_comments.php">Comments {if $moderated_comments_count != '0'}<span class="pull-right badge badge-gray">{$moderated_comments_count}</span>{/if}</a></li>
@@ -155,12 +158,12 @@
 							</div>
 							<div class="accordion-group">
 								<div class="accordion-heading">
-									<a href="#CollapseSettings" data-parent="#AdminAccordion" data-toggle="collapse" class="accordion-toggle">
+									
 										<li class="nav-header"><img src="{$my_base_url}{$my_pligg_base}/templates/admin/img/configure.png" width="16px" height="16px" /> Settings</li>
-									</a>
+								
 								</div>
 								{*  Sample of hidden accordion. No "in" class, and height set to 0px *}
-								<div class="accordion-body collapse" style="height: 0px;" id="CollapseSettings">
+								<div class="accordion-body "  id="CollapseSettings">
 									<div class="accordion-inner">
 										<li{if $pagename eq "admin_config" && $templatelite.get.page eq "Anonymous"} class="active"{/if} id="settings_anonymous"><a href="{$my_base_url}{$my_pligg_base}/admin/admin_config.php?page=Anonymous">Anonymous</a></li>
 										<li{if $pagename eq "admin_config" && $templatelite.get.page eq "AntiSpam"} class="active"{/if} id="settings_antispam"><a href="{$my_base_url}{$my_pligg_base}/admin/admin_config.php?page=AntiSpam">AntiSpam</a></li>
@@ -183,11 +186,11 @@
 							</div>
 							<div class="accordion-group">
 								<div class="accordion-heading">
-									<a href="#CollapseTemplate" data-parent="#AdminAccordion" data-toggle="collapse" class="accordion-toggle">
+									
 										<li class="nav-header"><img src="{$my_base_url}{$my_pligg_base}/templates/admin/img/template.png" width="16px" height="16px" /> Template</li>
-									</a>
+								
 								</div>
-								<div class="accordion-body collapse in" id="CollapseTemplate">
+								<div class="accordion-body " id="CollapseTemplate">
 									<div class="accordion-inner">
 										<li{if $pagename eq "admin_config" && $templatelite.get.page eq "Template"} class="active"{/if} id="template_settings"><a href="{$my_base_url}{$my_pligg_base}/admin/admin_config.php?page=Template">Template Settings</a></li>
 										<li{if $pagename eq "admin_editor"} class="active"{/if} id="template_editor"><a href="{$my_base_url}{$my_pligg_base}/admin/admin_editor.php">{#PLIGG_Visual_AdminPanel_Template_Nav#} Editor</a></li>
@@ -198,15 +201,15 @@
 							<div class="accordion-group">
 								<div class="accordion-heading">
 									<span class="accordion-heading-title">
-										<a href="#CollapseModules" data-parent="#AdminAccordion" data-toggle="collapse" class="accordion-toggle">
+										
 											<li class="nav-header"><img src="{$my_base_url}{$my_pligg_base}/templates/admin/img/module.png" width="16px" height="16px" /> Modules</li>
-										</a>
+									
 									</span>
 									<span class="badge accordion-heading-alert">
 										<a href="{$my_base_url}{$my_pligg_base}/admin/admin_modules.php">3</a>
 									</span>
 								</div>
-								<div class="accordion-body collapse in" id="CollapseModules">
+								<div class="accordion-body " id="CollapseModules">
 									<div class="accordion-inner">
 										<li{if $pagename eq "admin_modules"}{php} if ($_GET["status"] == ""){ echo ' class="active"'; } {/php}{/if} id="modules_installed"><a href="{$my_base_url}{$my_pligg_base}/admin/admin_modules.php" {if $pagename eq "admin_modules"}class="active"{/if} >Installed {#PLIGG_Visual_AdminPanel_Modules_Nav#} <span class="pull-right badge badge-gray">2</span></a></li> 
 										<li{if $pagename eq "admin_modules"}{php} if ($_GET["status"] == "uninstalled"){ echo ' class="active"'; } {/php}{/if} id="modules_uninstalled"><a href="{$my_base_url}{$my_pligg_base}/admin/admin_modules.php?status=uninstalled" {if $pagename eq "admin_modules"}{php} if ($_GET["status"] == "uninstalled"){ echo ' class="active"'; } {/php}{/if} >Uninstalled {#PLIGG_Visual_AdminPanel_Modules_Nav#} <span class="pull-right badge badge-gray">1</span></a></li> 
@@ -217,15 +220,15 @@
 							<div class="accordion-group">
 								<div class="accordion-heading">
 									<span class="accordion-heading-title">
-										<a href="#CollapseWidgets" data-parent="#AdminAccordion" data-toggle="collapse" class="accordion-toggle">
+										
 											<li class="nav-header"><img src="{$my_base_url}{$my_pligg_base}/templates/admin/img/widgets.png" width="16px" height="16px" /> Widgets</li>
-										</a>
+										
 									</span>
 									<span class="badge accordion-heading-alert">
 										<a href="{$my_base_url}{$my_pligg_base}/admin/admin_widgets.php">1</a>
 									</span>
 								</div>
-								<div class="accordion-body collapse in" id="CollapseWidgets">
+								<div class="accordion-body " id="CollapseWidgets">
 									<div class="accordion-inner">
 										<li {if $pagename eq "admin_widgets"}{php} if ($_GET["status"] == ""){ echo 'class="active"'; } {/php}{/if} id="widgets_installed"><a href="{$my_base_url}{$my_pligg_base}/admin/admin_widgets.php">Installed {#PLIGG_Visual_AdminPanel_Widgets_Nav#} <span class="pull-right badge badge-gray">1</span></a></li> 
 										<li {if $pagename eq "admin_widgets"}{php} if ($_GET["status"] == "uninstalled"){ echo 'class="active"'; } {/php}{/if} id="widgets_uninstalled"><a href="{$my_base_url}{$my_pligg_base}/admin/admin_widgets.php?status=uninstalled">Uninstalled {#PLIGG_Visual_AdminPanel_Widgets_Nav#}</a></li>
