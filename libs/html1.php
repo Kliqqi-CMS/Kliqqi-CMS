@@ -184,7 +184,6 @@ function get_avatar($size = "large", $avatarsource, $user_name = "", $user_email
 		if(isset($user->login)){$user_email = $user->login;}
 	}
 	$user = "";
-
 	
 	if ($size == "large")
 		$imgsize = Avatar_Large;
@@ -194,6 +193,9 @@ function get_avatar($size = "large", $avatarsource, $user_name = "", $user_email
 		$imgsize = 'original';
 
 	// use the user uploaded avatars ?
+	$avatars = array( 'large' => my_base_url . my_pligg_base . Default_Gravatar_Large,
+			  'small' => my_base_url . my_pligg_base . Default_Gravatar_Small
+			);
 	if(Enable_User_Upload_Avatar == true && $avatarsource == "useruploaded"){
 	    if ($imgsize) {
 		$imgsrc = my_base_url . my_pligg_base . '/avatars/user_uploaded/' . $user_id . "_" . $imgsize . ".jpg";
@@ -206,9 +208,6 @@ function get_avatar($size = "large", $avatarsource, $user_name = "", $user_email
 		}
 	    } else {
 		$dir = mnmpath.'avatars/user_uploaded';
-		$avatars = array( 'large' => my_base_url . my_pligg_base . Default_Gravatar_Large,
-				  'small' => my_base_url . my_pligg_base . Default_Gravatar_Small
-				);
 		if ($dh = opendir($dir)) {
         	    while (($file = readdir($dh)) !== false)
 			if (preg_match("/^$user_id\_(.+)\.jpg\$/", $file, $m))
@@ -221,10 +220,11 @@ function get_avatar($size = "large", $avatarsource, $user_name = "", $user_email
 				$avatars['small'] = $avatars[$m[1]];
         	    	}
 	            closedir($dh);
-		    return $avatars;
     		}	    
+		return $avatars;
 	    }
-	}
+	} elseif (!$imgsize) 
+	    return $avatars;
 	
 	if ($size == "large") {return my_base_url . my_pligg_base . Default_Gravatar_Large;}
 	if ($size == "small") {return my_base_url . my_pligg_base . Default_Gravatar_Small;}
