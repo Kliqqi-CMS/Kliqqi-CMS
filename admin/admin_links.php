@@ -126,6 +126,7 @@ if($canIhaveAccess == 1) {
 				'link_title' => $link->title,
 				'link_status' => $link->status,
 				'link_author' => $user->username,
+				'link_date' => date("d-m-Y",$link->date),
 			);
 		}
 		$main_smarty->assign('template_stories', $template_stories);
@@ -139,45 +140,65 @@ if($canIhaveAccess == 1) {
 	$main_smarty->assign('posttitle', " / " . $main_smarty->get_config_vars('PLIGG_Visual_Header_AdminPanel'));
 	
 	// if admin changes the link status
-	if (isset($_GET['action']) && sanitize($_GET['action'], 3) == "bulkmod" && isset($_POST['submit'])) {
+	if (isset($_GET['action']) && sanitize($_GET['action'], 3) == "bulkmod" && isset($_POST['admin_acction'])) {
+		
 		$CSRF->check_expired('admin_links_edit');
 		if ($CSRF->check_valid(sanitize($_POST['token'], 3), 'admin_links_edit')){
 			$comment = array();
-			foreach ($_POST["link"] as $k => $v) {
-			    if ($v != $_POST['old'][$k])
-				$comment[intval($k)] = sanitize($v, 3);
+			
+			
+			$admin_acction=$_POST['admin_acction'];
+            		
+			foreach ($_POST["link"] as $key => $v) {
+			    
+				if($admin_acction=="published" || $admin_acction=="queued" || $admin_acction=="discard" || $admin_acction=="spam"){
+					$link_status=$db->get_var('select link_status from ' . table_links . '  WHERE link_id = "'.$key.'"');
+					if($link_status!=$admin_acction){
+								
+						if ($admin_acction == "published") {
+							$db->query('UPDATE `' . table_links . '` SET `link_status` = "published", link_published_date = now() WHERE `link_id` = "'.$key.'"');
+							$vars = array('link_id' => $key);
+							check_actions('link_published', $vars);
+						}
+						elseif ($admin_acction == "queued") {
+							$db->query('UPDATE `' . table_links . '` SET `link_status` = "queued", link_published_date=0 WHERE `link_id` = "'.$key.'"');
+						}
+						elseif ($admin_acction == "discard") {
+							$db->query('UPDATE `' . table_links . '` SET `link_status` = "discard" WHERE `link_id` = "'.$key.'"');
+		
+							$vars = array('link_id' => $key);
+							check_actions('story_discard', $vars);
+						}
+						elseif ($admin_acction == "spam") {
+							
+							
+							$user_id = $db->get_var($sql="SELECT link_author FROM `" . table_links . "` WHERE `link_id` = ".$key.";");
+							$db->query('UPDATE `' . table_links . '` SET `link_status` = "spam" WHERE `link_id` = "'.$key.'"');
+							$vars = array('link_id' => $key);
+							 check_actions('story_discard', $vars);
+							$user = new User;
+							$user->id = $user_id;
+							$user->read();
+							
+							if ($user->level!='admin' && $user->level!="Spammer")
+							{
+							    killspam($user_id);
+								$killspammed[$user_id] = 1;
+								}
+							}
+					
+								
+						}
+					
+				}
+				
 			}
-			$killspammed = array();
-			foreach($comment as $key => $value) {
-				if ($value == "published") {
-					$db->query('UPDATE `' . table_links . '` SET `link_status` = "published", link_published_date = now() WHERE `link_id` = "'.$key.'"');
-					$vars = array('link_id' => $key);
-					check_actions('link_published', $vars);
-				}
-				elseif ($value == "queued") {
-					$db->query('UPDATE `' . table_links . '` SET `link_status` = "queued", link_published_date=0 WHERE `link_id` = "'.$key.'"');
-				}
-				elseif ($value == "discard") {
-					$db->query('UPDATE `' . table_links . '` SET `link_status` = "discard" WHERE `link_id` = "'.$key.'"');
-
-					$vars = array('link_id' => $key);
-					check_actions('story_discard', $vars);
-				}
-				elseif ($value == "spam") {
-					$user_id = $db->get_var($sql="SELECT link_author FROM `" . table_links . "` WHERE `link_id` = ".$key.";");
-					if (!$killspammed[$user_id])
-					{
-						killspam($user_id);
-						$killspammed[$user_id] = 1;
-					}
-				}
-			}
-
+			
 			totals_regenerate();
 			//header("Location: ".my_pligg_base."/admin/admin_links.php?page=".sanitize($_GET['page'],3));
 			$redirect_url=$_SERVER['HTTP_REFERER'];
 			header("Location:". $redirect_url);
-			die();
+			exit();
 		} else {
 		    $CSRF->show_invalid_error(1);
 		    exit;

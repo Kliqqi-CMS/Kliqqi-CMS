@@ -1,4 +1,70 @@
 <!-- submissions.tpl -->
+{literal}
+<script type="text/javascript" language="javascript">
+function submit_list_form(){
+	
+	if($(".enabled_disable:checked").length==0) {
+		alert("Please select news");
+		return false;
+	}
+	
+	val_action=$("#admin_action").val();
+	
+	
+	
+	if(val_action=="spam"){
+		var usernames ="";
+		$('.enabled_disable:checked').each(function(i){
+			usernames += $(this).attr("usernameval")+", ";
+		});
+		if(confirm("Are you sure that you want to killspam these users: "+usernames)){
+        
+		} else {
+			return false;
+		}
+	}
+	
+
+	document.getElementById("user_list_form").submit();
+	
+	//for(x in document.getElementById("user_list_form"))
+	//alert(x);
+	//alert(document.getElementById("user_list_form"));
+}
+
+$(function(){
+	// add multiple select / deselect functionality
+	$("#selectall_user_ed").click(function () {
+		  $('.enabled_disable').attr('checked', this.checked);
+	});
+	// if all checkbox are selected, check the selectall checkbox
+	// and viceversa
+	$(".enabled_disable").click(function(){
+		if($(".enabled_disable").length == $(".enabled_disable:checked").length) {
+			$("#selectall_user_ed").attr("checked", "checked");
+		} else {
+			$("#selectall_user_ed").removeAttr("checked");
+		}
+	});
+});
+
+function set_admin_action(acc){
+
+	$("#admin_action").val(acc);
+	
+	submit_list_form(); 
+}
+
+function validate_all_user_action(){
+	
+	if($("#admin_action").val()==""){
+		alert("select news list");
+		return false;
+	}
+	
+}
+</script>
+{/literal}
 <legend>
 {if $templatelite.get.user}
 	{$templatelite.get.user|sanitize:2}'s {#PLIGG_Visual_TopUsers_TH_News#}
@@ -12,8 +78,36 @@
 		<a href="admin_links.php?filter=other">Click here to review {if $moderated_submissions_count eq "1"}it{else}them{/if}.</a>
 	</div>
 {/if}
+
+
 <table class="table-condensed">
 	<tr>
+    <td><div class="btn-group pull">
+			<a class="btn dropdown-toggle" href="#" data-toggle="dropdown">
+			<i id="selected_action"></i>
+			{#PLIGG_Visual_AdminPanel_Apply_Changes#}
+			<span class="caret"></span>
+			</a>
+			<ul class="dropdown-menu">
+				<li>
+					<a  onclick="set_admin_action('published')" href="#">
+					
+					{#PLIGG_Visual_AdminPanel_Publish#}
+				</a>
+				</li>
+				<li>
+					<a  onclick="set_admin_action('queued')" href="#">
+					{#PLIGG_Visual_AdminPanel_Upcoming#}
+					</a>
+				</li>
+                <li><a  onclick="set_admin_action('discard')" href="#">{#PLIGG_Visual_AdminPanel_Discard#}</a></li>
+				<li>
+					<a onclick="set_admin_action('spam')" href="#">
+							{#PLIGG_Visual_AdminPanel_Spam#}
+					</a>
+				</li>
+			</ul>
+		</div></td>
 		<form action="{$my_base_url}{$my_pligg_base}/admin/admin_links.php" method="get">
 		<td>
 			<div class="input-append">
@@ -50,38 +144,55 @@
 			</select>
 		</td>
 		</form>
-<form name="bulk_moderate" action="{$my_base_url}{$my_pligg_base}/admin/admin_links.php?action=bulkmod&page={$templatelite.get.page|sanitize:2}" method="post">
-		<td style="float:right;"><input type="submit" class="btn btn-primary" name="submit" onclick="return confirm_spam()" value="{#PLIGG_Visual_AdminPanel_Apply_Changes#}" /></td>
+        
+<!--<form name="bulk_moderate" action="{$my_base_url}{$my_pligg_base}/admin/admin_links.php?action=bulkmod&page={$templatelite.get.page|sanitize:2}" method="post">-->
+		<!--<td style="float:right;"><input type="submit" class="btn btn-primary" name="submit" onclick="return confirm_spam()" value="{#PLIGG_Visual_AdminPanel_Apply_Changes#}" /></td>-->
 	</tr>
 </table>
+<form name="bulk_moderate" id="user_list_form" action="{$my_base_url}{$my_pligg_base}/admin/admin_links.php?action=bulkmod&page={$templatelite.get.page|sanitize:2}" method="post" onsubmit="return validate_all_user_action()">
+<input type="hidden" name="admin_acction"  value="" id="admin_action"/>
 {$hidden_token_admin_links_edit}
 <table class="table table-bordered table-condensed">
 	<tr>
+    <th> <input type='checkbox'  id="selectall_user_ed" name="all1"  ></th>
 		<th>{#PLIGG_Visual_View_Links_Author#}</th>
 		<th>{#PLIGG_Visual_View_Links_New_Window#}</th>
-		<th nowrap style="text-align:center;"><input type='checkbox' name='all1' onclick='mark_all_publish();' style="display:none;"><a onclick='mark_all_publish();'>{#PLIGG_Visual_AdminPanel_Publish#}</a></th>
-		<th nowrap style="text-align:center;"><input type='checkbox' name='all2' onclick='mark_all_queued();' style="display:none;"><a onclick='mark_all_queued();'>{#PLIGG_Visual_AdminPanel_Upcoming#}</a></th>
-		<th nowrap style="text-align:center;"><input type='checkbox' name='all3' onclick='mark_all_spam();' style="display:none;"><a onclick='mark_all_spam();'>{#PLIGG_Visual_AdminPanel_Spam#}</a></th>
-		<th nowrap style="text-align:center;"><input type='checkbox' name='all4' onclick='mark_all_discard();' style="display:none;"><a onclick='mark_all_discard();'>{#PLIGG_Visual_AdminPanel_Discard#}</a></th>
+		<th nowrap style="text-align:center;">{#PLIGG_Visual_AdminPanel_Group_Date#}</th>
+		<th nowrap style="text-align:center;">{#PLIGG_Visual_View_Links_Status#}</th>
+	
 	</tr>
 	{section name=id loop=$template_stories}
 	<tr {if $template_stories[id].link_status=='moderated'}class="tr_moderated"{/if}>
-		<td><a href="{$my_base_url}{$my_pligg_base}/admin/admin_users.php?mode=view&user={$template_stories[id].link_author}" title="{$template_stories[id].link_author}'s Articles" id="link-{$template_stories[id].link_id}-author">{$template_stories[id].link_author}</a></td>
+		
+        <td style="text-align:center;vertical-align:middle;">
+					{if $userlist[nr].user_level neq 'admin'}      
+						<input type="checkbox" name="link[{$template_stories[id].link_id}]" class="enabled_disable"  value="1" usernameval="{$template_stories[id].link_author}"/>
+					{/if} 
+					</td>
+        <td><a href="{$my_base_url}{$my_pligg_base}/admin/admin_users.php?mode=view&user={$template_stories[id].link_author}" title="{$template_stories[id].link_author}'s Articles" id="link-{$template_stories[id].link_id}-author">{$template_stories[id].link_author}</a></td>
 		<td>
 			<div style="margin:0 6px 0 0;padding:0;float:left;">
-				<a href='{$my_pligg_base}/editlink.php?id={$template_stories[id].link_id}'><i class="icon icon-edit" title="{#PLIGG_Visual_AdminPanel_Page_Edit#}" alt="{#PLIGG_Visual_AdminPanel_Page_Edit#}"></i>
+				<a href='{$my_pligg_base}/editlink.php?id={$template_stories[id].link_id}'><i class="icon icon-edit" title="{#PLIGG_Visual_AdminPanel_Page_Edit#}" alt="{#PLIGG_Visual_AdminPanel_Page_Edit#}"></i></a>
 			</div>
-			<a href="{$my_base_url}{$my_pligg_base}/story.php?title={$template_stories[id].link_title_url}" title="{$template_stories[id].link_title|truncate:50:"...":true}">{$template_stories[id].link_title}</a>
-			<input type='hidden' name='old[{$template_stories[id].link_id}]' id="link-{$template_stories[id].link_id}-old" value='{$template_stories[id].link_status}'>
+			<a href="{$my_base_url}{$my_pligg_base}/story.php?title={$template_stories[id].link_title_url}" title="{$template_stories[id].link_title|truncate:50:"...":true}" >{$template_stories[id].link_title}</a>
+			
 		</td>
-		<td style="text-align:center;vertical-align:middle;"><input type="radio" name="link[{$template_stories[id].link_id}]" id="link-{$template_stories[id].link_id}" value="published" {if $template_stories[id].link_status=='published'}checked{/if}></td>
-		<td style="text-align:center;vertical-align:middle;"><input type="radio" name="link[{$template_stories[id].link_id}]" id="link-{$template_stories[id].link_id}" value="queued" {if $template_stories[id].link_status=='queued'}checked{/if}></td>
-		<td style="text-align:center;vertical-align:middle;"><input type="radio" name="link[{$template_stories[id].link_id}]" id="link-{$template_stories[id].link_id}" value="spam" {if $template_stories[id].link_status=='spam'}checked{/if}></td>
-		<td style="text-align:center;vertical-align:middle;"><input type="radio" name="link[{$template_stories[id].link_id}]" id="link-{$template_stories[id].link_id}" value="discard" {if $template_stories[id].link_status=='discard'}checked{/if}></td>
+		<td style="text-align:center;vertical-align:middle;"> {$template_stories[id].link_date} </td>
+		<td style="text-align:center;vertical-align:middle;">
+        {if $template_stories[id].link_status=='queued'} 
+       	 {#PLIGG_Visual_AdminPanel_Upcoming#}
+        {elseif $template_stories[id].link_status=='published'}
+         {#PLIGG_Visual_AdminPanel_Published#}
+        {elseif $template_stories[id].link_status=='discard'}
+         {#PLIGG_Visual_AdminPanel_Discarded#}
+        {elseif $template_stories[id].link_status=='spam'} 
+         {#PLIGG_Visual_AdminPanel_Spam#}
+        {/if}
+        </td>
+		
 	</tr>	
 	{/section}
 </table>
-<div style="float:right;margin:8px 2px 0 0;"><input type="submit" class="btn btn-primary" name="submit" onclick="return confirm_spam()" value="{#PLIGG_Visual_AdminPanel_Apply_Changes#}" /></div>
 <div style="clear:both;"> </div>
 </form>
 <div style="float:right;margin-top:6px;"><a data-toggle="modal" href="{$my_base_url}{$my_pligg_base}/admin/admin_delete_stories.php" class="btn btn-danger" title="{#PLIGG_Visual_AdminPanel_Delete_Stories#}"><i class="icon-trash icon-white"></i> {#PLIGG_Visual_AdminPanel_Delete_Stories#}</a></div>

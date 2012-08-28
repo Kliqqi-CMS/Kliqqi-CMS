@@ -193,7 +193,7 @@ if($canIhaveAccess == 1)
 			// code to prevent CSRF
 			$CSRF->create('admin_users_resetpass', true, true);
 	
-			$usersql = mysql_query('SELECT * FROM ' . table_users . ' where user_id="'.sanitize($_GET["user"], 3).'"');
+			$usersql = mysql_query('SELECT * FROM ' . table_users . ' where user_id="'.sanitize($_GET["user"], 3).'" or user_login="'.sanitize($_GET["user"], 3).'"');
 			$userdata = array();				
 			while ($rows = mysql_fetch_array ($usersql, MYSQL_ASSOC)) array_push ($userdata, $rows);
 			
