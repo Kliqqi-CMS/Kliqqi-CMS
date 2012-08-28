@@ -15,10 +15,10 @@ var story_link="{$story_url}";
 {literal}
 	
 		$(function () {
-			$('#storytabs a[href="#comments"]').tab('show');
 			$('#storytabs a[href="#who_voted"]').tab('show');
 			$('#storytabs a[href="#who_downvoted"]').tab('show');
 			$('#storytabs a[href="#related"]').tab('show');
+			$('#storytabs a[href="#comments"]').tab('show');
 		});
 		
 function show_replay_comment_form(id){
