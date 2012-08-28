@@ -82,32 +82,19 @@ function validate_all_user_action(){
 
 <table class="table-condensed">
 	<tr>
-    <td><div class="btn-group pull">
-			<a class="btn dropdown-toggle" href="#" data-toggle="dropdown">
-			<i id="selected_action"></i>
-			{#PLIGG_Visual_AdminPanel_Apply_Changes#}
-			<span class="caret"></span>
-			</a>
-			<ul class="dropdown-menu">
-				<li>
-					<a  onclick="set_admin_action('published')" href="#">
-					
-					{#PLIGG_Visual_AdminPanel_Publish#}
+		<td>
+			<div class="btn-group pull">
+				<a class="btn dropdown-toggle" href="#" data-toggle="dropdown">
+					<i id="selected_action"></i> {#PLIGG_Visual_AdminPanel_Apply_Changes#} <span class="caret"></span>
 				</a>
-				</li>
-				<li>
-					<a  onclick="set_admin_action('queued')" href="#">
-					{#PLIGG_Visual_AdminPanel_Upcoming#}
-					</a>
-				</li>
-                <li><a  onclick="set_admin_action('discard')" href="#">{#PLIGG_Visual_AdminPanel_Discard#}</a></li>
-				<li>
-					<a onclick="set_admin_action('spam')" href="#">
-							{#PLIGG_Visual_AdminPanel_Spam#}
-					</a>
-				</li>
-			</ul>
-		</div></td>
+				<ul class="dropdown-menu">
+					<li><a onclick="set_admin_action('published')" href="#">{#PLIGG_Visual_AdminPanel_Publish#}</a></li>
+					<li><a onclick="set_admin_action('queued')" href="#">{#PLIGG_Visual_AdminPanel_Upcoming#}</a></li>
+					<li><a onclick="set_admin_action('discard')" href="#">{#PLIGG_Visual_AdminPanel_Discard#}</a></li>
+					<li><a onclick="set_admin_action('spam')" href="#">{#PLIGG_Visual_AdminPanel_Spam#}</a></li>
+				</ul>
+			</div>
+		</td>
 		<form action="{$my_base_url}{$my_pligg_base}/admin/admin_links.php" method="get">
 		<td>
 			<div class="input-append">

@@ -136,6 +136,19 @@ $main_smarty->assign('error_count', $error_count);
 $moderated_total_count = $moderated_groups_count+$moderated_users_count+$moderated_comments_count+$moderated_submissions_count+$error_count;
 $main_smarty->assign('moderated_total_count', $moderated_total_count);
 
+$admin_backup_dir = "../admin/backup/";
+if (glob($admin_backup_dir . "*.sql") != false) {
+	$sqlcount = count(glob($admin_backup_dir . "*.sql"));
+} else {
+	$sqlcount = 0;
+}
+if (glob($admin_backup_dir . "*.zip") != false) {
+	$zipcount = count(glob($admin_backup_dir . "*.zip"));
+} else {
+	$zipcount = 0;
+}
+$main_smarty->assign('backup_count', $sqlcount+$zipcount);
+
 $vars = '';
 check_actions('all_pages_top', $vars);
 
