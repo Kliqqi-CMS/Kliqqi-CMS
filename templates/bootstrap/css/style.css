@@ -359,9 +359,7 @@ padding: 1px 5px;
 }
 
 /**************** COMMENTS ******************/
-.span_comment {
-	width:100%;
-}
+.span_comment {}
 .comment-list {
     list-style: none outside none;
     margin: 10px 0 20px;
@@ -376,11 +374,15 @@ padding: 1px 5px;
     margin-bottom: 0px;
 }
 .comment-left {
-    margin:0;
+    float: left;
+    margin: 0;
+    width: 5%;
 }
 
 .comment-right {
-	margin:0;
+	float: left;
+    margin: -5px 0 0 0;
+    width: 95%;
 }
 
 .child-comment{

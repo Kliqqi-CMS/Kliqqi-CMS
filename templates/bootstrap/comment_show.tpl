@@ -1,13 +1,12 @@
 ﻿{************************************
 **** Individual Comment Template ****
- INFO: http://forums.pligg.com/glossary/3-templates/67-comment_show-tpl.html
 *************************************}
 <!-- comment_show.tpl -->
 <li class="comment">
 	<a id="c{$comment_id}"></a>
 	{checkActionsTpl location="tpl_pligg_story_comments_single_start"}
 	<div class="comment-wrapper clearfix" {if $comment_status neq "published"}style="background-color: #FFFBE4;border:1px solid #DFDFDF;"{/if}>
-		<div class="span1 comment-left">
+		<div class="comment-left">
 			{if $UseAvatars neq "0"}<a href="{$user_view_url}"><img src="{$Avatar.small}" align="absmiddle" class="avatar" alt="{$user_username}" title="{$user_username}" /></a>{/if}      
 			{if $Enable_Comment_Voting eq 1}
 				<br />
@@ -71,8 +70,6 @@
 				<p id="comment_content-{$comment_id}" style="display:none">{$comment_content}</p>
 			{/if}
 		</div>
-
-					
 	</div>
 	{checkActionsTpl location="tpl_pligg_story_comments_single_end"}
 </li>
