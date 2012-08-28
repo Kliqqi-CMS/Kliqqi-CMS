@@ -21,10 +21,11 @@
 			{/if}
 		</div>
 		<div class="span_comment comment-right" id="wholecomment{$comment_id}">
+
 			{if $user_logged_in == $user_userlogin || $isadmin eq 1}
-				<div class="btn-group pull-right">
+				<div class="btn-group pull-right admin-links">
 					<a class="btn dropdown-toggle" data-toggle="dropdown" href="#">
-					  <i class="icon-info-sign"></i> {#PLIGG_Visual_Admin_Links#}
+					  <i class="icon-cog"></i>
 					  <span class="caret"></span>
 					</a>
 					<ul class="dropdown-menu">
