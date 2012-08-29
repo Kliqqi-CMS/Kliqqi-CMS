@@ -19,11 +19,243 @@ if(!defined('mnminclude')){header('Location: ../404error.php');die();}
 
 	$ezsql_mysql_str = array
 	(
-		1 => '<h2>Error establishing a database connection!</h2><ol><li>Are you sure you have the correct user/password?<li>Are you sure that you have typed the correct hostname?<li>Are you sure that the database server is running?<li>Have you run the <a href = "./install/install.php">Pligg Installer?</a></ol>',
-		2 => 'Error establishing mySQL database connection. Correct user/password? Correct hostname? Database server running?',
-		3 => 'Require $dbname to select a database',
-		4 => 'MySQL database connection is not active',
-		5 => 'Unexpected error while trying to select database'
+		1 => '<!DOCTYPE html>
+			<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+			<head>
+				<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+				<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+				<link rel="stylesheet" type="text/css" href="./templates/admin/css/bootstrap.css" media="screen" />
+				<link rel="stylesheet" type="text/css" href="./templates/admin/css/bootstrap-responsive.css">
+				<link rel="stylesheet" type="text/css" href="./templates/admin/css/style.css" media="screen" />
+				<style type="text/css">
+				body {
+					padding-top: 40px;
+					position: relative;
+					background-color: #fff;
+					background-image: url(./templates/admin/img/grid-18px-masked.png);
+					background-repeat: repeat-x;
+				}
+				.navbar-fixed-top, .navbar-fixed-bottom {
+					position:absolute;
+				}
+				.navbar .nav > li > a {
+					padding-top:11px;
+				}
+				</style>
+				<title>Error!</title>
+			</head>
+			<body>
+				<div class="container">
+					<section id="maincontent">
+						<div class="row">
+							<div class="span12">
+								<legend>Error establishing a database connection!</legend>
+								<ol>
+									<li>Does the file /libs/dbconnect.php exist?</li>
+									<li>Does the above file have the correct database username and password combination?</li>
+									<li>Are you sure that you have typed the correct hostname? Typically this value is set to "localhost".</li>
+									<li>Are you sure that the database server is running?</li>
+									<li>Have you run the <a href = "./install/install.php">Pligg Installer</a> yet?</li>
+								</ol>
+							</div>
+						</div><!--/.row-->
+					</section><!--/#maincontent-->
+				</div><!--/.container-->
+				<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+				<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.18/jquery-ui.min.js"></script>
+				<link href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.18/themes/smoothness/jquery-ui.css" media="all" rel="stylesheet" type="text/css" />
+				<!--[if lt IE 7]>
+				<script type="text/javascript" src="../templates/admin/js/jquery/jquery.dropdown.js"></script>
+				<![endif]-->
+				<script type="text/javascript" src="../templates/admin/js/bootstrap.js"></script>
+			</body>
+			</html>',
+		2 => '<!DOCTYPE html>
+			<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+			<head>
+				<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+				<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+				<link rel="stylesheet" type="text/css" href="./templates/admin/css/bootstrap.css" media="screen" />
+				<link rel="stylesheet" type="text/css" href="./templates/admin/css/bootstrap-responsive.css">
+				<link rel="stylesheet" type="text/css" href="./templates/admin/css/style.css" media="screen" />
+				<style type="text/css">
+				body {
+					padding-top: 40px;
+					position: relative;
+					background-color: #fff;
+					background-image: url(./templates/admin/img/grid-18px-masked.png);
+					background-repeat: repeat-x;
+				}
+				.navbar-fixed-top, .navbar-fixed-bottom {
+					position:absolute;
+				}
+				.navbar .nav > li > a {
+					padding-top:11px;
+				}
+				</style>
+				<title>Error!</title>
+			</head>
+			<body>
+				<div class="container">
+					<section id="maincontent">
+						<div class="row">
+							<div class="span12">
+								<legend>Error establishing mySQL database connection!</legend>
+								<ol>
+									<li>Does the file /libs/dbconnect.php exist?</li>
+									<li>Does the above file have the correct database username and password combination?</li>
+									<li>Are you sure that you have typed the correct hostname? Typically this value is set to "localhost".</li>
+									<li>Are you sure that the database server is running?</li>
+									<li>Have you run the <a href = "./install/install.php">Pligg Installer</a> yet?</li>
+								</ol>
+							</div>
+						</div><!--/.row-->
+					</section><!--/#maincontent-->
+				</div><!--/.container-->
+				<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+				<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.18/jquery-ui.min.js"></script>
+				<link href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.18/themes/smoothness/jquery-ui.css" media="all" rel="stylesheet" type="text/css" />
+				<!--[if lt IE 7]>
+				<script type="text/javascript" src="../templates/admin/js/jquery/jquery.dropdown.js"></script>
+				<![endif]-->
+				<script type="text/javascript" src="../templates/admin/js/bootstrap.js"></script>
+			</body>
+			</html>',
+		3 => '<!DOCTYPE html>
+			<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+			<head>
+				<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+				<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+				<link rel="stylesheet" type="text/css" href="./templates/admin/css/bootstrap.css" media="screen" />
+				<link rel="stylesheet" type="text/css" href="./templates/admin/css/bootstrap-responsive.css">
+				<link rel="stylesheet" type="text/css" href="./templates/admin/css/style.css" media="screen" />
+				<style type="text/css">
+				body {
+					padding-top: 40px;
+					position: relative;
+					background-color: #fff;
+					background-image: url(./templates/admin/img/grid-18px-masked.png);
+					background-repeat: repeat-x;
+				}
+				.navbar-fixed-top, .navbar-fixed-bottom {
+					position:absolute;
+				}
+				.navbar .nav > li > a {
+					padding-top:11px;
+				}
+				</style>
+				<title>Error!</title>
+			</head>
+			<body>
+				<div class="container">
+					<section id="maincontent">
+						<div class="row">
+							<div class="span12">
+								<legend>Error establishing mySQL database connection!</legend>
+								<p>Require a $dbname to select a database.</p>
+							</div>
+						</div><!--/.row-->
+					</section><!--/#maincontent-->
+				</div><!--/.container-->
+				<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+				<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.18/jquery-ui.min.js"></script>
+				<link href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.18/themes/smoothness/jquery-ui.css" media="all" rel="stylesheet" type="text/css" />
+				<!--[if lt IE 7]>
+				<script type="text/javascript" src="../templates/admin/js/jquery/jquery.dropdown.js"></script>
+				<![endif]-->
+				<script type="text/javascript" src="../templates/admin/js/bootstrap.js"></script>
+			</body>
+			</html>',
+		4 => '<!DOCTYPE html>
+			<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+			<head>
+				<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+				<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+				<link rel="stylesheet" type="text/css" href="./templates/admin/css/bootstrap.css" media="screen" />
+				<link rel="stylesheet" type="text/css" href="./templates/admin/css/bootstrap-responsive.css">
+				<link rel="stylesheet" type="text/css" href="./templates/admin/css/style.css" media="screen" />
+				<style type="text/css">
+				body {
+					padding-top: 40px;
+					position: relative;
+					background-color: #fff;
+					background-image: url(./templates/admin/img/grid-18px-masked.png);
+					background-repeat: repeat-x;
+				}
+				.navbar-fixed-top, .navbar-fixed-bottom {
+					position:absolute;
+				}
+				.navbar .nav > li > a {
+					padding-top:11px;
+				}
+				</style>
+				<title>Error!</title>
+			</head>
+			<body>
+				<div class="container">
+					<section id="maincontent">
+						<div class="row">
+							<div class="span12">
+								<legend>Error establishing mySQL database connection!</legend>
+								<p>MySQL database connection is not active.</p>
+							</div>
+						</div><!--/.row-->
+					</section><!--/#maincontent-->
+				</div><!--/.container-->
+				<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+				<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.18/jquery-ui.min.js"></script>
+				<link href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.18/themes/smoothness/jquery-ui.css" media="all" rel="stylesheet" type="text/css" />
+				<!--[if lt IE 7]>
+				<script type="text/javascript" src="../templates/admin/js/jquery/jquery.dropdown.js"></script>
+				<![endif]-->
+				<script type="text/javascript" src="../templates/admin/js/bootstrap.js"></script>
+			</body>
+			</html>',
+		5 => '<!DOCTYPE html>
+			<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+			<head>
+				<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+				<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+				<link rel="stylesheet" type="text/css" href="./templates/admin/css/bootstrap.css" media="screen" />
+				<link rel="stylesheet" type="text/css" href="./templates/admin/css/bootstrap-responsive.css">
+				<link rel="stylesheet" type="text/css" href="./templates/admin/css/style.css" media="screen" />
+				<style type="text/css">
+				body {
+					padding-top: 40px;
+					position: relative;
+					background-color: #fff;
+					background-image: url(./templates/admin/img/grid-18px-masked.png);
+					background-repeat: repeat-x;
+				}
+				.navbar-fixed-top, .navbar-fixed-bottom {
+					position:absolute;
+				}
+				.navbar .nav > li > a {
+					padding-top:11px;
+				}
+				</style>
+				<title>Error!</title>
+			</head>
+			<body>
+				<div class="container">
+					<section id="maincontent">
+						<div class="row">
+							<div class="span12">
+								<legend>Error establishing mySQL database connection!</legend>
+								<p>Unexpected error while trying to select database.</p>
+							</div>
+						</div><!--/.row-->
+					</section><!--/#maincontent-->
+				</div><!--/.container-->
+				<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+				<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.18/jquery-ui.min.js"></script>
+				<link href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.18/themes/smoothness/jquery-ui.css" media="all" rel="stylesheet" type="text/css" />
+				<!--[if lt IE 7]>
+				<script type="text/javascript" src="../templates/admin/js/jquery/jquery.dropdown.js"></script>
+				<![endif]-->
+				<script type="text/javascript" src="../templates/admin/js/bootstrap.js"></script>
+			</body>
+			</html>',
 	);
 
 	/**********************************************************************
