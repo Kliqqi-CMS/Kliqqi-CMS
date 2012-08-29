@@ -1,5 +1,5 @@
 <?php
-// This file is for performing an upgrade from Pligg 1.0 to 2.0.
+// This file is for performing an upgrade from Pligg 1.2.2 to 2.0.
 
 // Report all PHP errors
 // error_reporting(E_ALL);

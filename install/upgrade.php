@@ -811,7 +811,7 @@ if (!$errors) {
 		//
 		//
 	} else {
-		include_once('upgrade_2.0.php');
+		include_once('version/2.0.php');
 		$sql = "UPDATE `" . table_misc_data . "` SET `data` = '2.0.0' WHERE `name` = 'pligg_version';";
 		$db->query($sql);
         	//Captcha upgrade:
