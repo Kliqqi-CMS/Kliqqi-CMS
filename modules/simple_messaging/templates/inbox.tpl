@@ -19,7 +19,7 @@
 					<tr id="msg_row_{$msg_array[themessage].id}">
 						<td><a href="{$my_pligg_base}/user.php?login={$msg_array[themessage].sender_name}">{$msg_array[themessage].sender_name}</a></td>
 						<td>
-							{if $msg_array[themessage].readed eq 0}<strong> <img src="{$simple_messaging_path}images/new.png" align="absmiddle" /> </strong>{/if}
+							{if $msg_array[themessage].read eq 0}<strong> <img src="{$simple_messaging_path}images/new.png" align="absmiddle" /> </strong>{/if}
 							<a href="{$URL_simple_messaging_viewmsg}{$msg_array[themessage].id}">
 								{$msg_array[themessage].title}
 							</a>

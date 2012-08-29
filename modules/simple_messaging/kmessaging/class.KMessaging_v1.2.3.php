@@ -32,13 +32,13 @@
 
 // New Version 1.2 so structural bugs have been arranjed
 // 1.2.1 -- Author: AshDigg from the Pligg Team
-//		added $id = $idMsg to GetAllMesseges() and GetMessage() arrays
+//		added $id = $idMsg to GetAllmessages() and GetMessage() arrays
 // 1.2.2 -- Author: AshDigg from the Pligg Team 
 //		renamed $order to $sort
-//		fixed bug with GetAllMesseges() switch on $sort -- missing break; so it always used the last item
+//		fixed bug with GetAllmessages() switch on $sort -- missing break; so it always used the last item
 //		added sort by date asc / desc
 // 1.2.3 -- Author: AshDigg from the Pligg Team 
-//		added $filter to GetAllMesseges()
+//		added $filter to GetAllmessages()
 
 
 
@@ -51,7 +51,7 @@ CREATE TABLE `msgtbl` (
   `sender` int(11) NOT NULL default '0',
   `receiver` int(11) NOT NULL default '0',
   `senderLevel` int(11) NOT NULL default '0',
-  `readed` int(11) NOT NULL default '0',
+  `read` int(11) NOT NULL default '0',
   `date` timestamp NOT NULL default CURRENT_TIMESTAMP on update CURRENT_TIMESTAMP,
   PRIMARY KEY  (`idMsg`)
 );
@@ -60,8 +60,8 @@ CREATE TABLE `msgtbl` (
 /*
 	Sample:
 	$message = new KMessaging(true);
-	$message->SendMessege('Promotion','Today we have a brand new promotion from the pack number5',10,30,3);//user 10 sends a message to user 30 and have a level of 3
-	$array = $message->GetAllMesseges(0,30);
+	$message->SendMessage('Promotion','Today we have a brand new promotion from the pack number5',10,30,3);//user 10 sends a message to user 30 and have a level of 3
+	$array = $message->GetAllmessages(0,30);
 */
 
 
@@ -124,22 +124,22 @@ var $DBHost = EZSQL_DB_HOST;
 	}
 	
 	/**
-	* @return Int 0		Messege sended succesfully
+	* @return Int 0		Message sent succesfully
 	* @return Int 1		No title
 	* @return Int 2		No body
 	* @return Int 3		Invalid Sender
 	* @return Int 4		Invalid Receiver
 	* @return Int 5		Invalid Sender Level
-	* @return Int 6		Error inputing in Database
+	* @return Int 6		Error inputing to Database
 	*
 	* @param String $title
 	* @param String $body
 	* @param Int $sender
 	* @param Int $receiver
 	*
-	* @desc Send messege to $receiver
+	* @desc Send message to $receiver
 	*/
-	function SendMessege($title ,$body ,$sender ,$receiver ,$senderLevel)
+	function SendMessage($title ,$body ,$sender ,$receiver ,$senderLevel)
 	{
 		if( strlen($title) == 0 )
 			return 1;
@@ -151,7 +151,7 @@ var $DBHost = EZSQL_DB_HOST;
 			return 4;
 		if( strlen($senderLevel) == 0)
 			return 5;
-		$sql = "INSERT INTO ".$this->tblName." (title,body,sender,receiver,senderLevel,readed) VALUES ('$title','$body',$sender,$receiver,$senderLevel,0)";
+		$sql = "INSERT INTO ".$this->tblName." (title,body,sender,receiver,senderLevel,read) VALUES ('$title','$body',$sender,$receiver,$senderLevel,0)";
 		//echo $sql;
 		$result = mysql_query($sql);
 		if($result)
@@ -161,10 +161,10 @@ var $DBHost = EZSQL_DB_HOST;
 	}
 	/**
 	* @return int 1		 When msgId equal to 0
-	* @return int 2      When no Messege in database with that msgId
-	* @return String 	 Returns the title of the messege
+	* @return int 2      When no Message in database with that msgId
+	* @return String 	 Returns the title of the message
 	* @param int $msgId
-	* @desc This function is used to return the title of a especific messege
+	* @desc This function is used to return the title of a especific message
 	*/
 	function GetTitle($msgId)
 	{
@@ -179,10 +179,10 @@ var $DBHost = EZSQL_DB_HOST;
 	
 	/**
 	* @return int 1		When msgId equal to 0
-	* @return int 2		When no Messege in database with that msgId
-	* @return String 	Returns the body of the messege
+	* @return int 2		When no Message in database with that msgId
+	* @return String 	Returns the body of the message
 	* @param int $msgId
-	* @desc This function is used to return the body of a especific messege
+	* @desc This function is used to return the body of a especific message
 	*/
 	function GetBody($msgId)
 	{
@@ -196,10 +196,10 @@ var $DBHost = EZSQL_DB_HOST;
 	}
 	/**
 	* @return int 1				When msgId equal to 0
-	* @return int 2				When no Messege in database with that msgId
-	* @return int Other int 	Return the userId that sent this messege
+	* @return int 2				When no Message in database with that msgId
+	* @return int Other int 	Return the userId that sent this message
 	* @param int $msgId
-	* @desc This function is used to return the userId from the sender of a especific messege
+	* @desc This function is used to return the userId from the sender of a especific message
 	*/
 	function GetSenderID($msgId)
 	{
@@ -213,10 +213,10 @@ var $DBHost = EZSQL_DB_HOST;
 	}
 	/**
 	* @return int 1				When msgId equal to 0
-	* @return int 2				When no Messege in database with that msgId
-	* @return int Other int 	Return the userId that is the receiver this messege
+	* @return int 2				When no Message in database with that msgId
+	* @return int Other int 	Return the userId that is the receiver this message
 	* @param int $msgId
-	* @desc This function is used to return the userId from the receiver of a especific messege
+	* @desc This function is used to return the userId from the receiver of a especific message
 	*/
 	function GetReceiverID($msgId)
 	{
@@ -230,10 +230,10 @@ var $DBHost = EZSQL_DB_HOST;
 	}
 	/**
 	* @return int 1				When msgId equal to 0
-	* @return int 2				When no Messege in database with that msgId
+	* @return int 2				When no Message in database with that msgId
 	* @return int Other int 	Return the date when the message was sent
 	* @param int $msgId
-	* @desc This function is used to return the send date of a especific messege
+	* @desc This function is used to return the send date of a especific message
 	*/
 	function GetSendDate( $msgId ){
 		if(strlen($msgId) == 0)
@@ -246,43 +246,43 @@ var $DBHost = EZSQL_DB_HOST;
 	}
 	/**
 	* @return int 1		When msgId equal to 0
-	* @return int 2		When no Messege in database with that msgId
-	* @return array 	Returns the an array with all the fields of the table were messeges are stored
+	* @return int 2		When no Message in database with that msgId
+	* @return array 	Returns the an array with all the fields of the table were messages are stored
 	* @param int $msgId
-	* @desc This function is used to return the messege, and all is specifications
+	* @desc This function is used to return the message, and all is specifications
 	*/
-	function GetMessege($msgId)
+	function GetMessage($msgId)
 	{
-		$messege = array();
+		$message = array();
 		if(strlen($msgId) == 0)
 			return 1;
 		$result = mysql_query("SELECT * FROM ".$this->tblName." WHERE idMsg=$msgId");
 		if(mysql_num_rows($result) == 0)
 			return 2;
 		$row = mysql_fetch_object($result);
-		$messege['id'] = $row->idMsg;
-		$messege['receiver'] = $row->receiver;
-		$messege['sender'] = $row->sender;
-		$messege['title'] = $row->title;
-		$messege['body'] = nl2br($row->body);
-		$messege['senderLevel'] = $row->senderLevel;
-		$messege['readed'] = $row->readed & 1;
-		$messege['date'] = $row->date;
-		return $messege;
+		$message['id'] = $row->idMsg;
+		$message['receiver'] = $row->receiver;
+		$message['sender'] = $row->sender;
+		$message['title'] = $row->title;
+		$message['body'] = nl2br($row->body);
+		$message['senderLevel'] = $row->senderLevel;
+		$message['read'] = $row->read & 1;
+		$message['date'] = $row->date;
+		return $message;
 	}
 	
 	/**
-	* @return Int 0		Marked Readed succesfully
+	* @return Int 0		Marked Read succesfully
 	* @return Int 1		When msgId equal to 0
 	* @return Int 2		Error while updating database
 	* @param unknown $msgId
-	* @desc Marks the messege has readed
+	* @desc Marks the message has read
 	*/
 	function MarkAsRead($msgId)
 	{
 		if(strlen($msgId) == 0)
 			return 1;
-		$result = mysql_query("UPDATE ".$this->tblName." SET readed=readed|1 WHERE idMsg=$msgId");
+		$result = mysql_query("UPDATE ".$this->tblName." SET read=read|1 WHERE idMsg=$msgId");
 		if($result)
 			return 0;
 		else 
@@ -290,14 +290,14 @@ var $DBHost = EZSQL_DB_HOST;
 	}
 	
 	/**
-	* @return Int 1			Error while collectic info on database
-	* @return Int 2			No messeges with this settings
-	* @return Array			Returns one array with all messeges
+	* @return Int 1			Error while gathering info on database
+	* @return Int 2			No messages with this settings
+	* @return Array			Returns one array with all messages
 	* 
 	* @param Int $order		Can take values from 0 to 5(0-> Order By senderLevel Ascendent,
 	*													1-> Order By senderLevel Descendent,
-	*													2-> Order By readed messege Ascendent,
-	*													3-> Order By readed messege Descendent)
+	*													2-> Order By read message Ascendent,
+	*													3-> Order By read message Descendent)
 	*													4-> Order By date received - oldest first)
 	*													5-> Order By date received - newest first)
 	* @param Int $filter	Can take values from 0 to 1(
@@ -307,9 +307,9 @@ var $DBHost = EZSQL_DB_HOST;
 	* @param Int $receiver
 	* @param Int $sender
 	*
-	* @desc This function outputs all messeges ordered by $order field and filtered by sender and/or receiver or none to display all messeges
+	* @desc This function outputs all messages ordered by $order field and filtered by sender and/or receiver or none to display all messages
 	*/
-	function GetAllMesseges($sort = 0, $receiver = '', $sender = '', $filter = 0)
+	function GetAllmessages($sort = 0, $receiver = '', $sender = '', $filter = 0)
 	{
 		switch( $sort )
 		{
@@ -320,10 +320,10 @@ var $DBHost = EZSQL_DB_HOST;
 				$order = 'senderLevel DESC';
 				break;
 			case 2:
-				$order = 'readed ASC';
+				$order = 'read ASC';
 				break;
 			case 3:
-				$order = 'readed DESC';
+				$order = 'read DESC';
 				break;
 			case 4:
 				$order = '`date` ASC';
@@ -339,17 +339,17 @@ var $DBHost = EZSQL_DB_HOST;
 			case 0:
 				break;
 			case 1:
-				$where = ' AND readed&1 = 0 ';			
+				$where = ' AND read&1 = 0 ';			
 				break;
 			case 2:
-				$where = ' AND readed&1 = 1 ';			
+				$where = ' AND read&1 = 1 ';			
 				break;
 		}
 
 		if(strlen($receiver) > 0 && strlen($sender) > 0)
 			$where = ' AND ';
 		
-		$where = ((strlen($receiver) > 0)?'readed&4=0 AND receiver=' . $receiver:'') . $where . ((strlen($sender) > 0)?'readed&2=0 AND sender=' . $sender:'');
+		$where = ((strlen($receiver) > 0)?'read&4=0 AND receiver=' . $receiver:'') . $where . ((strlen($sender) > 0)?'read&2=0 AND sender=' . $sender:'');
 		
 		$sql = "SELECT * FROM ".$this->tblName." WHERE $where ORDER BY $order";
 		//echo $sql;
@@ -358,22 +358,22 @@ var $DBHost = EZSQL_DB_HOST;
 		if( !$result )
 			return 1;
 		$num = mysql_num_rows($result);
-		$messege = '';
+		$message = '';
 		for($i = 0 ; $i < $num ; $i++ )
 		{
 			$row = mysql_fetch_object($result);
-			$messege[$i]['id'] = $row->idMsg;
-			$messege[$i]['receiver'] = $row->receiver;
-			$messege[$i]['sender'] = $row->sender;
-			$messege[$i]['title'] = $row->title;
-			$messege[$i]['body'] = $row->body;
-			$messege[$i]['senderLevel'] = $row->senderLevel;
-			$messege[$i]['readed'] = $row->readed&1;	
-			$messege[$i]['date'] = $row->date;
+			$message[$i]['id'] = $row->idMsg;
+			$message[$i]['receiver'] = $row->receiver;
+			$message[$i]['sender'] = $row->sender;
+			$message[$i]['title'] = $row->title;
+			$message[$i]['body'] = $row->body;
+			$message[$i]['senderLevel'] = $row->senderLevel;
+			$message[$i]['read'] = $row->read&1;	
+			$message[$i]['date'] = $row->date;
 		}
-		if( !is_array($messege) )
+		if( !is_array($message) )
 			return 2;
-		return $messege;
+		return $message;
 			
 		
 	}
@@ -387,16 +387,16 @@ var $DBHost = EZSQL_DB_HOST;
 	* @param Int $who 0	Delete from the database
 	* @param Int $who 1	Hide from the sender
 	* @param Int $who 2	Hide from the recipient
-	* @desc Delete messege
+	* @desc Delete message
 	*/
-	function DeleteMessege($msgId,$who=0)
+	function DeleteMessage($msgId,$who=0)
 	{
 		if(strlen($msgId) == 0)
 			return 1;
 		if ($who==1)
-		    $result = mysql_query("UPDATE ".$this->tblName." SET readed=readed|2 WHERE idMsg=$msgId");
+		    $result = mysql_query("UPDATE ".$this->tblName." SET read=read|2 WHERE idMsg=$msgId");
 		elseif ($who==2)
-		    $result = mysql_query("UPDATE ".$this->tblName." SET readed=readed|4 WHERE idMsg=$msgId");
+		    $result = mysql_query("UPDATE ".$this->tblName." SET read=read|4 WHERE idMsg=$msgId");
 		elseif ($who==0)
 		    $result = mysql_query("DELETE FROM ".$this->tblName." WHERE idMsg=$msgId");
 		if($result)

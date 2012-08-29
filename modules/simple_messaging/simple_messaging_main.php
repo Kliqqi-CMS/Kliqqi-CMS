@@ -8,7 +8,7 @@ function get_new_messages(){
 	// get the new messages
 		if ($current_user->user_id > 0) {
 			$message = new KMessaging(true);	
-			$array = $message->GetAllMesseges(5, $current_user->user_id, '', 1);
+			$array = $message->GetAllMessages(5, $current_user->user_id, '', 1);
 			if(is_array($array)){
 				$message_count = count($array);
 				$main_smarty->assign('messages', $message_count);
@@ -60,7 +60,7 @@ function simple_messaging_showpage(){
 		$main_smarty->assign('modulename_sm', modulename_sm);
 		
 		$message = new KMessaging(true);
-		$array = $message->GetAllMesseges(5, $current_user->user_id);
+		$array = $message->GetAllMessages(5, $current_user->user_id);
 		if(is_array($array)){
 			$message_count = count($array);
 			$main_smarty->assign('messages', $message_count);
@@ -120,7 +120,7 @@ function simple_messaging_showpage(){
 		
 		define('modulepage', 'simple_messaging_sent'); 
 		$message = new KMessaging(true);
-		$array = $message->GetAllMesseges(5, '', $current_user->user_id);
+		$array = $message->GetAllMessages(5, '', $current_user->user_id);
 		if(is_array($array)){
 			$message_count = count($array);
 			$main_smarty->assign('messages', $message_count);

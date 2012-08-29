@@ -15,7 +15,7 @@ $sql = "SELECT data FROM " . table_misc_data . " WHERE name = 'pligg_version'";
 $pligg_version = $db->get_var($sql);
 
 $old_version = str_replace('.', '' , $pligg_version);
-$new_version = '200';
+$new_version = '201';
 
 // Check if you need to run the one time upgrade to Pligg 2.0
 if ($old_version < $new_version) {
@@ -23,6 +23,11 @@ if ($old_version < $new_version) {
 	//echo $lang['UpgradingTables'] . '<br />';
 	echo '<li>Performing one-time Pligg 2.0 Upgrade</li><ul>';
 	
+	// Change "readed" to "read" and "messege" to "message"
+	$sql = "ALTER TABLE ".table_messages." CHANGE `readed` `read` INT( 11 ) NOT NULL DEFAULT '0';";
+	$db->query($sql);
+	echo '<li>Renaming Simple Messaging Database Fields</li>';
+		
 	// Change some user profile fields
 	$sql = "ALTER TABLE ".table_users." CHANGE `user_aim` `user_facebook` VARCHAR( 64 ) CHARACTER SET utf8 COLLATE utf8_unicode_ci NULL DEFAULT NULL;";
 	$db->query($sql);
