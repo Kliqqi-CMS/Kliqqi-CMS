@@ -1,4 +1,5 @@
 <?php
+
 include_once('Smarty.class.php');
 $main_smarty = new Smarty;
 
@@ -8,7 +9,6 @@ include(mnminclude.'group.php');
 include(mnminclude.'link.php');
 include(mnminclude.'tags.php');
 include(mnminclude.'smartyvariables.php');
-
 
 check_referrer();
 

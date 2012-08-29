@@ -1,4 +1,7 @@
 <?php
+// This file is used to regenerate karma scores manually. 
+// It is designed to be run by a cronjob.
+
 /*
 
 include('../config.php');

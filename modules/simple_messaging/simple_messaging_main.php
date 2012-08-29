@@ -1,5 +1,5 @@
 <?php   
-include_once(mnminclude.'../3rdparty/kmessaging/class.KMessaging.php');
+include_once(mnminclude.'../modules/simple_messaging/kmessaging/class.KMessaging.php');
 
 function get_new_messages(){
 

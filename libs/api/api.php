@@ -10,13 +10,13 @@
 	Download Pligg API website at http://api.jum.name
 	Release date : 27/09/08
 	*/
-
-/* REMOVE TO ACTIVATE
+	
+/* REMOVE THIS LINE TO ACTIVATE (as well as a line at the bottom)
 
 	$version = '0.1';
 	include_once '../../config.php';
 	include_once '../../settings.php';
-	include_once '../../libs/dbconnect.php';
+	include_once '../libs/dbconnect.php';
 
 	mysql_connect(EZSQL_DB_HOST,EZSQL_DB_USER,EZSQL_DB_PASSWORD);
 	mysql_select_db(EZSQL_DB_NAME);
@@ -31,10 +31,9 @@
 	$filter = 1; // 0 = not filter (fast), 1 = filter (slow)
 	// End API Configuration
 	
-	
 	$username = sanitize(trim($_REQUEST['username']), 3);
 	$password = sanitize(trim($_REQUEST['password']), 3);
-	$fn = sanitize(trim($_REQUEST['fn']), 3); // login, submit, list , version, ping
+	$fn = sanitize(trim($_REQUEST['fn']), 3);				// login, submit, list , version, ping
 	$category = sanitize(trim($_REQUEST['category']), 3); 	// category id
 	$url = sanitize(trim($_REQUEST['url']), 3); 			// http://www.domain.com
 	$title = sanitize(trim($_REQUEST['title']), 3); 		// Title of story
@@ -329,5 +328,7 @@
 			echo $xml_output;
 		}
 	}
- REMOVE TO ACTIVATE */
+	
+REMOVE THIS LINE TO ACTIVATE */
+
 ?>

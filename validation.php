@@ -1,4 +1,5 @@
 <?php
+
 include_once('Smarty.class.php');
 $main_smarty = new Smarty;
 
@@ -7,11 +8,11 @@ include(mnminclude.'html1.php');
 include(mnminclude.'link.php');
 include(mnminclude.'smartyvariables.php');
 
-//GOT THE VALUES FROM THE END USER
+// Get values from the end user
 $rcode=$db->escape(trim($_GET['code']));
 $username=$db->escape(trim($_GET['uid']));
 
-//RETRIVE VALUES FROM DATABASE
+// Retrieve values from database
 $user=("SELECT user_email, user_pass, user_karma, user_lastlogin FROM " . table_users . " WHERE user_login = '$username'");
 global $db;
 $result = $db->get_row ($user);
@@ -23,7 +24,7 @@ if($result)
 else
 	$main_smarty->assign('error', $main_smarty->get_config_vars('PLIGG_Validation_No_Results'));
 
-//COMPARE BOTH VALUES
+// Compare values
 if($rcode==$decode)
 {
 	$lastlogin = $db->get_var("SELECT user_lastlogin FROM " . table_users . " WHERE user_login = '$username'");
