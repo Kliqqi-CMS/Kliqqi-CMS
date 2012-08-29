@@ -7,7 +7,6 @@
 $include='../config.php';
 if (file_exists($include)) { 
 	include_once($include);
-#	include(mnminclude.'html1.php');
 }
 
 // Get your Pligg Version
@@ -15,7 +14,7 @@ $sql = "SELECT data FROM " . table_misc_data . " WHERE name = 'pligg_version'";
 $pligg_version = $db->get_var($sql);
 
 $old_version = str_replace('.', '' , $pligg_version);
-$new_version = '201';
+$new_version = '200';
 
 // Check if you need to run the one time upgrade to Pligg 2.0
 if ($old_version < $new_version) {
