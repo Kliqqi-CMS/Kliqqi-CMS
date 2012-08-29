@@ -94,7 +94,7 @@
 			</div><!-- /.votebox -->
 		{/if}
 		<div class="title" id="title-{$link_shakebox_index}">
-			<h2>
+			<h2>{$url}
 				{checkActionsTpl location="tpl_pligg_story_title_start"}
 				{if $use_title_as_link eq true}
 					{if $url_short neq "http://" && $url_short neq "://"}
@@ -120,8 +120,8 @@
 				<i class="icon-folder-open"></i> 
 				<a href="{$category_url}">{$link_category}</a>
 				{if $link_additional_cats}
-					{foreach from=$link_additional_cats item=name key=url}
-						<a href="{$url}">{$name}</a>
+					{foreach from=$link_additional_cats item=catname key=caturl}
+						<a href="{$caturl}">{$catname}</a>
 					{/foreach}
 				{/if}
 				
@@ -220,7 +220,7 @@
 						<div class="group-share-popup">{$get_group_membered}</div>
 					</span>
 				</span>
-			{/if}
+			{/if}{$url}
 			{checkActionsTpl location="tpl_pligg_story_tools_end"}
 		</div>
 		<div style="clear:both;"></div>
