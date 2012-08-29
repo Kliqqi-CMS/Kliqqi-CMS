@@ -48,19 +48,19 @@ $(function(){
 function set_admin_action(acc){
 	if(acc==1){
 		$("#selected_action").addClass("icon-user");
-		$("#selected_action").removeClass("icon-trash");
 		$("#selected_action").removeClass("icon-ban-circle");
+		$("#selected_action").removeClass("icon-trash");
 		$("#admin_action").val(1);
 	}
 	if(acc==2){
-		$("#selected_action").addClass("icon-ban-circle");
+		$("#selected_action").addClass("icon-trash");
 		$("#selected_action").removeClass("icon-user");
-		$("#selected_action").removeClass("icon-trash");
+		$("#selected_action").removeClass("icon-ban-circle");
 		$("#admin_action").val(2);
 	}
 	if(acc==3){
-		$("#selected_action").addClass("icon-trash");
-		$("#selected_action").removeClass("icon-ban-circle");
+		$("#selected_action").addClass("icon-ban-circle");
+		$("#selected_action").removeClass("icon-trash");
 		$("#selected_action").removeClass("icon-user");
 		$("#admin_action").val(3);
 	}
@@ -118,13 +118,13 @@ function validate_all_user_action(){
 				</li>
 				<li>
 					<a  onclick="set_admin_action('2')" href="#">
-					<i class="icon-ban-circle"></i>
+					<i class="icon-trash"></i>
 					{#PLIGG_Visual_User_Profile_Disabled#}
 					</a>
 				</li>
 				<li>
 					<a onclick="set_admin_action('3')" href="#">
-					<i class="icon-trash"></i>
+					<i class="icon-ban-circle"></i>
 					{#PLIGG_Visual_KillSpam#}
 					</a>
 				</li>
@@ -196,11 +196,11 @@ function validate_all_user_action(){
 					<td>{$userlist[nr].user_date}</td>
 					<td style="text-align:center;vertical-align:middle;">
 						{if $userlist[nr].user_level eq 'Spammer'}
-							<i class="icon-trash" title="Spammer"></i>
+							<i class="icon-ban-circle" title="Spammer"></i>
 						{elseif $userlist[nr].user_enabled eq 1}
 							<i class="icon-user" title="Enabled"></i>
 						{else}
-							<i class="icon-ban-circle" title="Disabled"></i>
+							<i class="icon-trash" title="Disabled"></i>
 						{/if}
 					</td> 
 				</tr>
