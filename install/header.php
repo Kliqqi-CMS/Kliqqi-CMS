@@ -26,7 +26,7 @@ if($language != 'local'){
 		padding-top: 60px;
 		position: relative;
 		background-color: #fff;
-		background-image: url(../templates/admin/css/img/grid-18px-masked.png);
+		background-image: url(../templates/admin/img/grid-18px-masked.png);
 		background-repeat: repeat-x;
 		background-position: 0 40px;
 	}
