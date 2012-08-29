@@ -36,6 +36,9 @@ if($language != 'local'){
 	.navbar .nav > li > a {
 		padding-top:11px;
 	}
+	.popover {
+		width:500px;
+	}
 	</style>
 	
 	<title>Pligg CMS <?php $lang['installer'] ?></title>

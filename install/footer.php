@@ -7,7 +7,7 @@
 		<div id="footer">
 			<span class="subtext"> 
 				<a href="http://pligg.com/" target="_blank">Pligg Content Management System</a> 
-				| Need Web Hosting? Check out our <a href="http://pligg.com/hosting/" target="_blank">Preferred Hosts</a> 
+				| Need Web Hosting? Check out our <a href="http://pligg.com/hosting/" target="_blank">Preferred Web Hosts</a> 
 			</span>
 		</div>
 	</footer>
@@ -25,4 +25,3 @@
 
 </body>
 </html>
-
