@@ -4,16 +4,6 @@
 // Report all PHP errors
 // error_reporting(E_ALL);
 
-$include='../config.php';
-if (file_exists($include)) { 
-	include_once($include);
-}
-
-// Get your Pligg Version
-$sql = "SELECT data FROM " . table_misc_data . " WHERE name = 'pligg_version'";
-$pligg_version = $db->get_var($sql);
-
-$old_version = str_replace('.', '' , $pligg_version);
 $new_version = '200';
 
 // Check if you need to run the one time upgrade to Pligg 2.0
@@ -208,7 +198,7 @@ if ($old_version < $new_version) {
 <hr />
 <a href=\"#top\"><i class=\"icon icon-arrow-up\" style=\"opacity:1.0;\"></i> Top</a><br /><br />', '', '', 'Frequently Asked Questions,FAQ,Help', 'Frequently Asked Questions', '', '', '', '', '', '', '', '', '', '', '', '', '', 0, 0);";
 	$db->query($sql);
-	echo '<li>Created FAQ Page...</li>';
+	echo '<li>Created FAQ Page</li>';
 
 	// Finished 2.0 upgrade
 	echo'</ul>';

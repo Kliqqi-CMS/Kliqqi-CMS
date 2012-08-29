@@ -60,7 +60,6 @@ function pligg_createtables($conn) {
 	echo 'Creating table: \'comments\'...<br />';
 	mysql_query( $sql, $conn );
 
-
 	$sql = 'DROP TABLE IF EXISTS `' . table_friends . '`;';
 	mysql_query( $sql, $conn );
 
