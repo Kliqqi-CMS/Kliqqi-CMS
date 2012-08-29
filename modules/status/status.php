@@ -3,7 +3,7 @@ session_start();
 
 $_SERVER["SCRIPT_NAME"] = str_replace('/modules/status', '', $_SERVER["SCRIPT_NAME"]);
 chdir('../../');
-include_once('Smarty.class.php');
+include_once('internal/Smarty.class.php');
 $main_smarty = new Smarty;
 
 include('config.php');

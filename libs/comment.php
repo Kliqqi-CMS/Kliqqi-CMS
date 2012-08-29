@@ -122,7 +122,7 @@ class Comment {
 		static $link_index=0;
 
 		// setup smarty
-			include_once('Smarty.class.php');
+			include_once('internal/Smarty.class.php');
 			$smarty = new Smarty;
 			$smarty->compile_dir = "cache/templates_c/";
 			$smarty->template_dir = "templates/";

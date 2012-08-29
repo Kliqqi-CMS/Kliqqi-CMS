@@ -1,6 +1,6 @@
 {php}
 
-include_once('Smarty.class.php');
+include_once('internal/Smarty.class.php');
 if(!isset($main_smarty)){$main_smarty = new Smarty;}
 // If we're calling this page through another page like index.php, $main_smarty will already be set
 // If we're calling this page directly, set main_smarty

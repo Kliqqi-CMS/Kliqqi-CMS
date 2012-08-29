@@ -30,7 +30,7 @@ if (!$this->force_compile && file_exists($this->compile_dir.'c_'.$name) && (file
 
 if (!is_object($this->_config_obj))
 {
-	require_once(TEMPLATE_LITE_DIR . "class.config.php");
+	require_once(TEMPLATE_LITE_DIR . "internal/class.config.php");
 	$this->_config_obj = new $this->config_class;
 	$this->_config_obj->overwrite = $this->config_overwrite;
 	$this->_config_obj->booleanize = $this->config_booleanize;

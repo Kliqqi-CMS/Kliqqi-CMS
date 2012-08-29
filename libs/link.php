@@ -359,7 +359,7 @@ class Link {
 		// DB 09/03/08
 		if(!is_numeric($this->id)){return false;}
 		/////
-		include_once('./Smarty.class.php');
+		include_once('../internal/Smarty.class.php');
 
 		$main_smarty = new Smarty;
 		$main_smarty->compile_check=false;

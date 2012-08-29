@@ -6,7 +6,7 @@
 		<ul class="sidebar-stories">
 			{checkActionsTpl location="tpl_widget_saved_start"}	
 			{php}
-			include_once('Smarty.class.php');
+			include_once('internal/Smarty.class.php');
 			$main_smarty = new Smarty;
 
 			include_once('config.php');

@@ -61,7 +61,6 @@ if($current_user->user_login){
 
 //groups
 $main_smarty->assign('enable_group', enable_group);
-
 $main_smarty->assign('group_submit_level', group_submit_level);
 $group_submit_level = group_submit_level;
 $current_user_level = $current_user->user_level;

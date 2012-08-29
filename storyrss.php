@@ -7,7 +7,7 @@
 // 	storyrss.php?title=Story_title&rows=100&time=86600
 //
 
-include_once('Smarty.class.php');
+include_once('internal/Smarty.class.php');
 $main_smarty = new Smarty;
 
 include('config.php');

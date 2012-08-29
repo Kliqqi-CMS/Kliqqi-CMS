@@ -3,8 +3,7 @@ ini_set('display_errors', 1);
 error_reporting(E_ALL ^ E_NOTICE);
 
 chdir('../');
-include_once('../Smarty.class.php');
-$main_smarty = new Smarty;
+include_once('../internal/Smarty.class.php');$main_smarty = new Smarty;
 
 include('../config.php');
 ini_set('display_errors', 1);

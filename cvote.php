@@ -2,7 +2,7 @@
 
 if(isset($_POST['id'])){
 
-	include_once('Smarty.class.php');
+	include_once('internal/Smarty.class.php');
 	$main_smarty = new Smarty;
 
 	include('config.php');
@@ -11,7 +11,6 @@ if(isset($_POST['id'])){
 	include(mnminclude.'smartyvariables.php');
 
 	check_referrer();
-
 	
 	$comment = new Comment;
 	$comment->id=sanitize($_POST['id'], 3);

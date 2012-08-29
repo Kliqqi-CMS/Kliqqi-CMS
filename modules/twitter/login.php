@@ -1,8 +1,7 @@
 <?php
 set_time_limit(300);
 chdir('../');
-include_once('../Smarty.class.php');
-$main_smarty = new Smarty;
+include_once('../internal/Smarty.class.php');$main_smarty = new Smarty;
 
 $do_not_include_in_pages_core[] = 'login';
 include('../config.php');

@@ -1,5 +1,5 @@
 <?php
-include_once('Smarty.class.php');
+include_once('internal/Smarty.class.php');
 $main_smarty = new Smarty;
 
 include('config.php');

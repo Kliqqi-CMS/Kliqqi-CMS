@@ -3,8 +3,7 @@
 // FB oauth login
 //
 chdir('../');
-include_once('../Smarty.class.php');
-$main_smarty = new Smarty;
+include_once('../internal/Smarty.class.php');$main_smarty = new Smarty;
 
 $do_not_include_in_pages_core[] = 'fb';
 include('../config.php');

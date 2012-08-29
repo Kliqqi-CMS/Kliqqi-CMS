@@ -1,6 +1,6 @@
 <?php
 session_start();
-include_once('../../Smarty.class.php');
+include_once('../../internal/Smarty.class.php');
 $main_smarty = new Smarty;
 $main_smarty->compile_dir = "../../cache/templates_c";
 

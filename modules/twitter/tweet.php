@@ -3,8 +3,7 @@
 error_reporting(E_ALL ^ E_NOTICE ^ E_WARNING);
 
 chdir('../');
-include_once('../Smarty.class.php');
-$main_smarty = new Smarty;
+include_once('../internal/Smarty.class.php');$main_smarty = new Smarty;
 
 $do_not_include_in_pages_core[] = 'tweet';
 include('../config.php');

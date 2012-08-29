@@ -1034,7 +1034,7 @@ if (!$errors) {
 	}
 	
 	echo '<li>Clearing cache/templates_c directory...</li>';
-	include_once('../Smarty.class.php');
+	include_once('../internal/Smarty.class.php');
 	$smarty = new Smarty;
 	$smarty->config_dir= '';
 	$smarty->compile_dir = "../cache/templates_c";
