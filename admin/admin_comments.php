@@ -166,7 +166,7 @@ if($canIhaveAccess == 1) {
 				$link->store();
 				$link='';
 			}
-			header("Location: ".my_pligg_base."/admin/comments.php?page=".sanitize($_GET['page'],3));
+			header("Location: ".my_pligg_base."/admin/admin_comments.php?page=".sanitize($_GET['page'],3));
 			die();
 
 		} else {

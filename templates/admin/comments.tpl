@@ -54,7 +54,7 @@
 		<td style="float:right;"><input type="submit" class="btn btn-primary" name="submit" onclick="return confirm_spam()" value="{#PLIGG_Visual_AdminPanel_Apply_Changes#}" /></td>
 	</tr>
 </table>
-{$hidden_token_admin_comments_edit}
+{$hidden_token_comments_edit}
 <table class="table table-bordered table-condensed">
 	<thead>
 		<tr>
