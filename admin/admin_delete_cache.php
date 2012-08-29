@@ -65,9 +65,11 @@ function recursive_remove_directory($directory, $empty=TRUE)
 		// and scan through the items inside
 		while (FALSE !== ($item = readdir($handle)))
 		{
+			//print $item."\n";
+			
 			// if the filepointer is not the current directory
 			// or the parent directory
-			if($item != '.' && $item != '..')
+			if($item != '.' && $item != '..' && $item != '.htaccess' && $item != 'log.php' && $item != 'index.html')
 			{
 				// we build the new path to delete
 				$path = $directory.'/'.$item;
@@ -98,13 +100,7 @@ function recursive_remove_directory($directory, $empty=TRUE)
 				return FALSE;
 			}
 		}
-		
-		//rebuild blank index.html files
-		 $html = '';
-		 
-		 file_put_contents('../cache/index.html', $html);
-		 file_put_contents('../cache/admin_c/index.html', $html);
-		 file_put_contents('../cache/templates_c/index.html', $html);		
+
 			
 		// return success
 		return TRUE;
