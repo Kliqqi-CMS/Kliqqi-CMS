@@ -47,7 +47,7 @@
 	{checkActionsTpl location="tpl_pligg_breadcrumb_end"}
 	{if $pagename eq "published" || $pagename eq "index" || $pagename eq "upcoming" || $pagename eq "cloud" || $pagename eq "groups" || $pagename eq "live" || $pagename eq "live_published" || $pagename eq "live_unpublished" || $pagename eq "live_comments" }
 		{* Sort Dropdown *}
-		<div class="btn-group pull-right" style="margin-top:-8px;margin-right:-14px;">
+		<div class="btn-group pull-right breadcrumb-right">
 			<ul class="nav nav-pills">
 				<li class="dropdown pull-right">
 					<a href="#" data-toggle="dropdown" class="dropdown-toggle">Sort <span class="caret"></span></a>

@@ -211,6 +211,16 @@ filter:alpha(opacity=40);
 #categories .subnav .dropdown-menu  a:hover .caret {
 	border-left: 4px solid #000;
 }
+/****************** BREADCRUMB ******************/
+
+.dropdown-menu li {
+display:block;
+}
+.breadcrumb-right {
+font-size:1.0em;
+margin-top:-7px;
+margin-right:-14px;
+}
 
 /********************* STORY ********************/
 .stories {
