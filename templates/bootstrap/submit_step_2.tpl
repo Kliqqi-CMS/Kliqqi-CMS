@@ -144,7 +144,7 @@
 					<div class="title" id="title-{$link_shakebox_index}">
 						<h2>
 							{checkActionsTpl location="tpl_pligg_story_title_start"}
-							<span class="story_title"></span>
+							<span class="story_title">&nbsp;</span>
 							{checkActionsTpl location="tpl_pligg_story_title_end"}
 						</h2>
 						<span class="subtext">
@@ -178,7 +178,7 @@
 					{if $viewtype neq "short"}
 						<span class="news-body-text">
 							<span id="ls_contents-{$link_shakebox_index}">
-								<span class="bodytext"></span>
+								<span class="bodytext">&nbsp;</span>
 								<div class="clearboth"></div> 
 							</span>
 						</span>
@@ -199,9 +199,9 @@
 						{checkActionsTpl location="tpl_pligg_story_tools_end"}
 					</div>
 					<div class="story-tools-right">
-						<i class="icon-folder-open"></i> <a><span class="category"></span></a>
+						<i class="icon-folder-open"></i> <a><span class="category">&nbsp;</span></a>
 						{if $enable_tags}
-							<a><span class="tags"></span></a>
+							<i class="icon-tag"></i> <a><span class="tags"></span></a>
 						{/if}	
 					 </div><!-- /.story-tools-right -->
 					 <div style="clear:both;"></div>
