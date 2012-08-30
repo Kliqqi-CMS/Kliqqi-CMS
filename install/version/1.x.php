@@ -162,8 +162,9 @@ if ($old_version < $new_version) {
     
 	$result = $db->get_results("select * from `" . table_config . "` where `var_name` = 'Auto_scroll';");
 	if (count($result) == 0) {
-		$db->query("INSERT INTO `" . table_config . "` VALUES (NULL, 'Misc', 'Auto_scroll', '1', '1', '1-3', 'Pagination Results', 'Use normal pagination links (1), JavaScript that will automatically add more articles to the bottom of the page (2), or a JavaScript button to load more articles (3).', 'define', NULL)");
+		$db->query("INSERT INTO `" . table_config . "` VALUES (NULL, 'Misc', 'Auto_scroll', '1', '1', '1-3', 'Pagination Mode', '<strong>1.</strong> Use normal pagination links <br /><strong>2.</strong> JavaScript that automatically adds more articles to the bottom of the page<br /><strong>3</strong> JavaScript button to manually load more articles', 'define', NULL)");
 	}
+
 	
 	// out.php alter table 
 	$fieldexists = checkforfield('link_out', table_links);
