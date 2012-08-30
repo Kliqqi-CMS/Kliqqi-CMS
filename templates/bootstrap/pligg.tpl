@@ -6,7 +6,6 @@
 	
 	<link rel="stylesheet" type="text/css" href="{$my_pligg_base}/templates/{$the_template}/css/bootstrap.css" media="screen" />
 	<link rel="stylesheet" type="text/css" href="{$my_pligg_base}/templates/{$the_template}/css/jquery.pnotify.css" media="screen" />
-	{if $pagename eq "submit"}<link rel="stylesheet" type="text/css" href="{$my_pligg_base}/templates/{$the_template}/css/bootstrap-wysihtml5.css"></link>{/if}
 	<link rel="stylesheet" type="text/css" href="{$my_pligg_base}/templates/{$the_template}/css/style.css" media="screen" />
 	<script type="text/javascript" src="{$my_pligg_base}/templates/{$the_template}/js/modernizr.min.js"></script>
 
@@ -285,19 +284,11 @@
 {/if}
 
 	{literal}
-
-<script> 
+		<script> 
 		$('.avatar-tooltip').tooltip()
 		</script>
 	{/literal}
-	
-	{if $pagename eq "submit"}
-		<script src="{$my_pligg_base}/templates/{$the_template}/js/wysihtml5-0.3.0_rc3.js"></script>
-		<script src="{$my_pligg_base}/templates/{$the_template}/js/bootstrap-wysihtml5.js"></script>
-		{literal}<script>
-			$('#bodytext').wysihtml5();
-		</script>{/literal}
-	{/if}
+
 	{if $pagename eq "profile"}
 		{literal}
 		<script>
