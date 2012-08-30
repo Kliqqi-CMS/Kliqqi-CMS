@@ -94,7 +94,7 @@
 			</div><!-- /.votebox -->
 		{/if}
 		<div class="title" id="title-{$link_shakebox_index}">
-			<h2>{$url}
+			<h2>
 				{checkActionsTpl location="tpl_pligg_story_title_start"}
 				{if $use_title_as_link eq true}
 					{if $url_short neq "http://" && $url_short neq "://"}
@@ -220,7 +220,7 @@
 						<div class="group-share-popup">{$get_group_membered}</div>
 					</span>
 				</span>
-			{/if}{$url}
+			{/if}
 			{checkActionsTpl location="tpl_pligg_story_tools_end"}
 		</div>
 		<div style="clear:both;"></div>
