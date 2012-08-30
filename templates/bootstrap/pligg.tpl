@@ -122,11 +122,12 @@
 			{checkActionsTpl location="tpl_pligg_banner_bottom"}
 			</div><!--/.row-->
 		</section><!--/#maincontent-->
-		
-		<hr>
-		<footer class="footer">
-			{include file=$tpl_footer.".tpl"}
-		</footer>
+		{if $Auto_scroll != '2'}
+			<hr>
+			<footer class="footer">
+				{include file=$tpl_footer.".tpl"}
+			</footer>
+		{/if}
 		
 	</div><!--/.container-->
 	

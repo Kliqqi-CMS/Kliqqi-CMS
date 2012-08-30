@@ -5,7 +5,14 @@
 <div id="footer">
 	{checkActionsTpl location="tpl_pligg_footer_start"}
 	<span class="subtext"> 
-		Copyright &copy; {php} echo date('Y'); {/php} {#PLIGG_Visual_Name#} 
+		Copyright &copy; {php} echo date('Y'); {/php} {#PLIGG_Visual_Name#}
+		| <a href="{$URL_topusers}">{#PLIGG_Visual_Top_Users#}</a>
+		{if $Enable_Tags}
+			| <a href="{$URL_tagcloud}">{#PLIGG_Visual_Tags#}</a>
+		{/if}
+		{if $Enable_Live}
+			| <a href="{$URL_live}">{#PLIGG_Visual_Live#}</a>
+		{/if}
 		| Pligg <a href="http://pligg.com/" target="_blank">Content Management System</a> 
 		| <a href="http://pligg.com/hosting/" target="_blank">Web Hosting</a> 
 		| <a href="{$URL_advancedsearch}">{#PLIGG_Visual_Search_Advanced#}</a> 

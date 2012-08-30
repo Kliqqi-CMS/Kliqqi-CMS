@@ -56,7 +56,7 @@ PLIGG_Visual_This_Year = "Year"
 //<SECTION>QUEUED</SECTION><ADDED>1.00</ADDED> 	 
 PLIGG_Visual_Pligg_Queued_Sort = "Sort"
 PLIGG_Visual_Pligg_Queued_Sort_By = "by"
-PLIGG_Visual_Pligg_Queued = "Upcoming News"
+PLIGG_Visual_Pligg_Queued = "Upcoming"
 PLIGG_Visual_Pligg_Sort_News_By = "Sort news by"
 PLIGG_Visual_Pligg_Newest_St = "Newest"
 PLIGG_Visual_Pligg_Oldest_St = "Oldest"

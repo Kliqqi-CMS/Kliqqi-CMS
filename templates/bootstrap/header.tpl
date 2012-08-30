@@ -44,12 +44,24 @@
 					{if $enable_group eq "true"}	
 						<li {if $pagename eq "groups" || $pagename eq "submit_groups" || $pagename eq "group_story"}class="active current"{/if}><a href="{$URL_groups}"><span>{#PLIGG_Visual_Groups#}</span></a></li>
 					{/if}
-						<li {if $pagename eq "topusers"}class="active current"{/if}><a href="{$URL_topusers}"><span>{#PLIGG_Visual_Top_Users#}</span></a></li>
-					{if $Enable_Tags}
-						<li {if $pagename eq "cloud"}class="active current"{/if}><a href="{$URL_tagcloud}"><span>{#PLIGG_Visual_Tags#}</span></a></li>
-					{/if}
-					{if $Enable_Live}
-						<li {if $pagename eq "live"}class="active current"{/if}><a href="{$URL_live}"><span>{#PLIGG_Visual_Live#}</span></a></li>
+					{if $Auto_scroll == '2'}
+						<li class="dropdown">
+							<a data-toggle="dropdown" class="dropdown-toggle" href="#">More <b class="caret"></b></a>
+							<ul class="dropdown-menu">
+								<li><a href="{$URL_advancedsearch}">{#PLIGG_Visual_Search_Advanced#}</a> 
+								{if $Enable_Live}
+									<li><a href="{$URL_live}">{#PLIGG_Visual_Live#}</a></li>
+								{/if}
+								{if $Enable_Tags}
+									<li><a href="{$URL_tagcloud}">{#PLIGG_Visual_Tags#}</a></li>
+								{/if}
+								<li><a href="{$URL_topusers}">{#PLIGG_Visual_Top_Users#}</a></li>
+								{if $URL_rss_page}
+									<li><a href="{$URL_rss_page}" target="_blank">RSS</a></li>
+								{/if}
+								<li><a href="{$my_base_url}{$my_pligg_base}/rssfeeds.php">{#PLIGG_Visual_RSS_Feeds#}</a></li>
+							</ul>
+						</li>
 					{/if}
 					{checkActionsTpl location="tpl_pligg_navbar_end"}
 					{if $user_authenticated neq true}
