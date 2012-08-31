@@ -47,7 +47,15 @@ class FileBackup {
 	function MakeAvatarBackup() {
 		include ('zip.php');
 		$xlist = array();
-		$files = $this->filelist("./avatars/",1,0); // call the function
+		//echo mnmpath;
+		 $pos = strrpos($_SERVER["SCRIPT_NAME"], "/");
+		//echo $_SERVER['DOCUMENT_ROOT'];
+	   //echo $path = substr($_SERVER["SCRIPT_NAME"], 0, $pos);
+	//echo my_pligg_base."/avatars/";
+		$files = $this->filelist($_SERVER['DOCUMENT_ROOT'].my_pligg_base."/avatars/",1,0); // call the function
+		//echo "<pre>";
+		//print_r($files);
+		
 		foreach ($files as $list) {//print array
 		   if($list['dir'] == 0){
 			   	$xlist[] = $list['path'] . $list['name'];
@@ -56,11 +64,13 @@ class FileBackup {
 		
 		// Random 5 characters to append to file names to prevent name guessing
 		$rand = substr(md5(microtime()),rand(0,26),5);
-		
+		//print_r($xlist);
+		//die("aaa");
 		// code from http://www.phpit.net/article/creating-zip-tar-archives-dynamically-php/
 		$zipname = 'Avatars'."_".date("Y-m-d_H-i-s").'_'.$rand.'.zip';
 		$zipfile = New Archive_Zip('./backup/' . $zipname);
-		$zipfile->create($xlist);
+		$p_params= array('remove_path' =>$_SERVER['DOCUMENT_ROOT'].my_pligg_base);
+		$zipfile->create($xlist,$p_params);
 		echo 'Zip file created -- <a href = "' . './backup/' . $zipname . '">'.$zipname.'</a>';
 		$this->success = 1;
 	}
@@ -80,6 +90,8 @@ class FileBackup {
 	*/
 	function filelist ($startdir="./", $searchSubdirs=1, $directoriesonly=0, $maxlevel="all", $level=1) {
 	   //list the directory/file names that you want to ignore
+	  // echo $startdir;
+	   
 	   $ignoredDirectory[] = ".";
 	   $ignoredDirectory[] = "..";
 	   $ignoredDirectory[] = "_vti_cnf";
