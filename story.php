@@ -133,8 +133,6 @@ if(is_numeric($requestID)) {
 	$main_smarty->assign('login_url', getmyurl("login", $_SERVER['REQUEST_URI']));
 
 	// for show who voted
-	
-	
 	$main_smarty->assign('user_url', getmyurl('userblank', ""));
 	$main_smarty->assign('voter', who_voted($id, 'large', '>0'));
 	$main_smarty->assign('downvoter', who_voted($id, 'large', '<0'));
