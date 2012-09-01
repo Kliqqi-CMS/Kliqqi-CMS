@@ -147,7 +147,6 @@ if(is_numeric($requestID)) {
 	// meta tags
 	$meta_description = preg_replace(array('/\r/', '/\n/'), '', $link->truncate_content());
 	$main_smarty->assign('meta_description', strip_tags($meta_description));
-
 	$main_smarty->assign('meta_keywords', $link->tags);
 	
 	//sidebar

@@ -59,14 +59,12 @@ if($time > 0) {
 			break;
 		default:
 			header("Location: $my_pligg_base/404error.php");
-//			$main_smarty->assign('tpl_center', '404error');
-//			$main_smarty->display($the_template . '/pligg.tpl');
 			die();
 			break;
 	}
 
 	$from  = "FROM " . table_links .
-		        " LEFT JOIN " . table_groups . " ON group_id=link_group_id ";
+		    " LEFT JOIN " . table_groups . " ON group_id=link_group_id ";
 #			" LEFT JOIN " . table_categories . " ON category_id=link_category ".
 #			" LEFT JOIN " . table_users . " ON link_author=user_id ";
 	if($status == 'shared') {
@@ -161,7 +159,11 @@ if ($links) {
 			echo "	<pubDate>".date('D, d M Y H:i:s T', time()-misc_timezone*3600)."</pubDate>\n";
 		echo "	<dc:creator>" . $user->username . "</dc:creator>\n";
 		echo "	<category>" . htmlspecialchars($category_name) . "</category>\n";
-		echo "	<votes>" . $link->votes . "</votes>\n";
+		// Calculate total vote count based on votes-downvotes
+		$vote_total = $link->votes - $link->reports;
+		echo "	<votes>" . $vote_total . "</votes>\n";
+		echo "	<upvotes>" . $link->votes . "</upvotes>\n";
+		echo "	<downvotes>" . $link->reports . "</downvotes>\n";
 		echo "	<guid>".getmyFullurl("storyURL", $link->category_safe_names($link->category), urlencode($link->title_url), $link->id)."</guid>\n";
 
 		// module system hook
