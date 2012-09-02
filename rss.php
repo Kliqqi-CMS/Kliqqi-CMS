@@ -152,7 +152,11 @@ if ($links) {
 		if ($story_url != '' && $story_url != 'http://'){
 			echo '	<source>'.htmlspecialchars($story_url).'</source>';
 		}
-		echo "\n	<description><![CDATA[ " . htmlspecialchars($link->content) . " ]]></description>\n";
+		$description = htmlspecialchars($link->content);
+		$description = preg_replace('/\r/', ' ', $description);
+		$description = preg_replace('/\n/', ' <br />', $description);
+
+		echo "\n	<description><![CDATA[ " . $description . " ]]></description>\n";
 		if (!empty($link_date))
 			echo "	<pubDate>".date('D, d M Y H:i:s T', $link->$link_date-misc_timezone*3600)."</pubDate>\n";
 		else 
