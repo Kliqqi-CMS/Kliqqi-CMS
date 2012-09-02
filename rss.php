@@ -144,20 +144,20 @@ if ($links) {
 		$link->link_summary = str_replace("â€", "\"", $link->link_summary);		
 		
 		echo "<item>\n";
-		echo "	<title>". $link->title . "</title>\n"; 
+		echo "	<title>". htmlspecialchars($link->title) . "</title>\n"; 
 		echo "	<link>".getmyFullurl("storyURL", $link->category_safe_names($link->category), urlencode($link->title_url), $link->id)."</link>\n";
 		$vars = array('link' => $link);
 		check_actions('rss_add_data', $vars);
 		$story_url = $link->url;
 		if ($story_url != '' && $story_url != 'http://'){
-			echo '	<source url="'.urlencode($story_url).'">'. $link->title .'</source>';
+			echo '	<source>'.htmlspecialchars($story_url).'</source>';
 		}
-		echo "\n	<description><![CDATA[ " . $link->content . " ]]></description>\n";
+		echo "\n	<description><![CDATA[ " . htmlspecialchars($link->content) . " ]]></description>\n";
 		if (!empty($link_date))
 			echo "	<pubDate>".date('D, d M Y H:i:s T', $link->$link_date-misc_timezone*3600)."</pubDate>\n";
 		else 
 			echo "	<pubDate>".date('D, d M Y H:i:s T', time()-misc_timezone*3600)."</pubDate>\n";
-		echo "	<dc:creator>" . $user->username . "</dc:creator>\n";
+		echo "	<dc:creator>" . htmlspecialchars($user->username) . "</dc:creator>\n";
 		echo "	<category>" . htmlspecialchars($category_name) . "</category>\n";
 		// Calculate total vote count based on votes-downvotes
 		$vote_total = $link->votes - $link->reports;
