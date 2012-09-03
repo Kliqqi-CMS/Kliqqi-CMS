@@ -113,6 +113,8 @@ RewriteRule ^upcoming/(year|month|week|today|yesterday|recent|alltime)/page/(\d+
 RewriteRule ^upcoming/(year|month|week|today|yesterday|recent|alltime)/category/([^/]+)/page/(\d+)/?$ upcoming.php?part=$1&category=$2&page=$3 [L]
 RewriteRule ^user/?$ user.php [L]
 RewriteRule ^user/search/([^/]+)/?$ user.php?view=search&keyword=$1 [L]
+RewriteRule ^user/profile/([^/]+)/following/?$ user.php?login=$1&view=viewfriends [L]
+RewriteRule ^user/profile/([^/]+)/followers/?$ user.php?login=$1&view=viewfriends2 [L]
 RewriteRule ^user/([^/]+)/?$ user.php?view=$1 [L]
 RewriteRule ^user/([^/]+)/([^/]+)/?$ user.php?view=$1&login=$2 [L]
 RewriteRule ^user/([^/]+)/link/([0-9+]+)/?$ user_add_remove_links.php?action=$1&link=$2 [L]
