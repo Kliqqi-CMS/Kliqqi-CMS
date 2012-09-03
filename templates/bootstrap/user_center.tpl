@@ -415,7 +415,7 @@
 			</tbody>
 		</table>
 	{else}
-		<h3>{$user_username|capitalize} {#PLIGG_Visual_User_Profile_No_Friends_2#}</h3>
+		<h4>{#PLIGG_Visual_User_Profile_No_Friends_2#} {$user_username|capitalize}</h4>
 	{/if}
 {/if}
 {***********************************************************************************}
