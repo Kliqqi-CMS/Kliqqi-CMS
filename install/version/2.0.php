@@ -4,13 +4,28 @@
 // Report all PHP errors
 // error_reporting(E_ALL);
 
-$new_version = '200';
+$new_version = '201';
 
 // Check if you need to run the one time upgrade to Pligg 2.0
 if ($old_version < $new_version) {
 
 	//echo $lang['UpgradingTables'] . '<br />';
 	echo '<li>Performing one-time Pligg 2.0 Upgrade</li><ul>';
+	
+	// Change default captcha to SolveMedia
+	$sql = "UPDATE `" . table_misc_data . "` SET `data` = 'solvemedia' WHERE `pligg_misc_data`.`name` = 'captcha_method';";
+	$db->query($sql);
+	$sql = "INSERT INTO `" . table_misc_data . "` ( `name` , `data` ) VALUES ('adcopy_lang', 'en');";
+	$db->query($sql);
+	$sql = "INSERT INTO `" . table_misc_data . "` ( `name` , `data` ) VALUES ('adcopy_theme', 'white');";
+	$db->query($sql);
+	$sql = "INSERT INTO `" . table_misc_data . "` ( `name` , `data` ) VALUES ('adcopy_pubkey', 'KLoj-jfX2UP0GEYOmYX.NOWL0ReUhErZ');";
+	$db->query($sql);
+	$sql = "INSERT INTO `" . table_misc_data . "` ( `name` , `data` ) VALUES ('adcopy_privkey', 'Dm.c-mjmNP7Fhz-hKOpNz8l.NAMGp0wO');";
+	$db->query($sql);
+	$sql = "INSERT INTO `" . table_misc_data . "` ( `name` , `data` ) VALUES ('adcopy_hashkey', 'nePptHN4rt.-UVLPFScpSuddqdtFdu2N');";
+	$db->query($sql);
+	echo '<li>Changed default CAPTCHA to Solve Media</li>';	
 	
 	// Change "readed" to "read" and "messege" to "message"
 	$sql = "ALTER TABLE ".table_messages." CHANGE `readed` `read` INT( 11 ) NOT NULL DEFAULT '0';";
