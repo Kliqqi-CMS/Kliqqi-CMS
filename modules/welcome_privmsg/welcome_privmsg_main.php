@@ -5,7 +5,7 @@ function welcome_privmsg_send(&$registration_details)
 	global $username, $main_smarty, $current_user;
 
 	include_once(mnminclude.'user.php');
-	include_once('../simple_messaging/kmessaging/class.KMessaging.php');
+	include_once('/modules/simple_messaging/kmessaging/class.KMessaging.php');
 
 	$siteName = $main_smarty->get_config_vars('PLIGG_Visual_Name'); 
 	
@@ -16,7 +16,7 @@ function welcome_privmsg_send(&$registration_details)
 	define('welcome_privmsg_subject', 'Welcome to '.$siteName);
 	
 	// Message Body
-	define('welcome_privmsg_body', 'Thanks for registering on our site.  If you have any questions, be sure to visit our FAQ section. Sincerely, Webmaster');
+	define('welcome_privmsg_body', 'Thanks for registering on our site!');
 			
 	// Check User ID != 0
 	if ($registration_details['id'] > 0)
