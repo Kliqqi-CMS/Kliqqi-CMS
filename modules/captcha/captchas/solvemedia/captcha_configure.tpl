@@ -14,14 +14,15 @@
 	<input type="hidden" name="captcha" value="solvemedia">
 	<input type="hidden" name="action" value="configure">
 	
-	A 'Public Key', a 'Private Key', and a 'Hash Key' are required. Sign up at the <a href="http://portal.solvemedia.com/portal/public/signup">Solve Media portal</a> to obtain them.<br />
-	To change your keys enter them in the input fields below and click the Submit Keys button.<br />
+	{* A 'Public Key', a 'Private Key', and a 'Hash Key' are required. Sign up at the <a href="http://portal.solvemedia.com/portal/public/signup">Solve Media portal</a> to obtain them.<br /> *}
+	To change your Solve Media settings, change the fields below and click on the Save Settings button.<br />
 	<br />
 	<table class="table table-bordered table-striped" cellpadding="0" cellspacing="0">
 		<thead>
 			<tr><th colspan="2">{#Pligg_Captcha_Solve_Media#} Settings</th><tr>
 		</thead>
 		<tbody>
+			{*
 			<tr>
 				<td>
 					Public Key: 
@@ -47,6 +48,7 @@
 				</td>
 			</tr>
 			<tr>
+			*}
 				<td>
 					Theme:
 				</td>
