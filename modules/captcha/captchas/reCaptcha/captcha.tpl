@@ -38,8 +38,8 @@ var RecaptchaOptions = {
 		</div>
 	</div>
 </div>
-<?php 
+{php}
 	require_once(captcha_captchas_path . '/reCaptcha/libs/recaptchalib.php');
 	$publickey = get_misc_data('reCaptcha_pubkey'); // you got this from the signup page
 	echo recaptcha_get_html($publickey);
-?>
+{/php}

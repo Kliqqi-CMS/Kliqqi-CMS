@@ -2,7 +2,7 @@
 ********* Header Template ***********
 *************************************}
 <!-- header.tpl -->
-<div class="navbar navbar-inverse navbar-static-top">
+<div class="navbar navbar-static-top">
 	<div class="navbar-inner">
 		<div class="container">
 			{* The next few lines form the button that appears in the navbar when the page width is small *}
@@ -111,7 +111,10 @@
 										</div>
 										
 										{if isset($register_step_1_extra)}
-											{if $captcha_method eq "reCaptcha"}
+											{if $captcha_method eq "solvemedia"}
+												<br />
+												{$register_step_1_extra}
+											{elseif $captcha_method eq "reCaptcha"}
 												{$register_step_1_extra}
 											{elseif $captcha_method eq "WhiteHat"}
 												<label class="control-label" for="input01">CAPTCHA</label>

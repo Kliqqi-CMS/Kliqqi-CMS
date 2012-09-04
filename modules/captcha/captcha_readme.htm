@@ -1,30 +1,35 @@
-<h1>Captcha</h1>
+<h2>Captcha</h2>
 <p>
 	<strong>Last Updated</strong> 2012/08/18<br>
 	<strong>Requirements:</strong> None
 </p>
 
-<h2>Description</h2>
-<p>Users must verify that they aren't a spam bot by providing a CAPTCHA answer. This module has a few different methods. ReCaptcha (default), Math, or Whitehat.</p>
+<h3>Description</h3>
+<p>Users must verify that they aren't a spam bot by providing a CAPTCHA answer. This module has a few different methods: Solve Media, ReCaptcha, Math, or Whitehat.</p>
 
-<h3>ReCAPTCHA</h3>
+<h4>Solve Media</h4>
+<p><a href="http://solvemedia.com/">Solve Media</a> provides one of the most secure CAPTCHA methods available through advanced tracking that detects possible spam bots and reacts by presenting them with more difficult CAPTCHAs. Another benefit to Solve Media is the ability to sign up for their revenue sharing program. By default Pligg uses it's own API key, so any revenue gained without changing the API key is being contributed to the Pligg project.</p>
+<img class="thumbnail" src="../modules/captcha/images/solve_media.png" />
+<br />
+
+<h4>ReCAPTCHA</h4>
 <p>The <a href="http://www.google.com/recaptcha">ReCAPTCHA</a> method is a Google-owned project and is considered to be the most secure. It generates two words, one of which needs to be typed correctly while the other one isn't seen as important.</p>
 <img class="thumbnail" src="../modules/captcha/images/recaptcha.png" />
 <br />
 
-<h3>Whitehat</h3>
+<h4>Whitehat</h4>
 <p>Whitehat uses your own server to generate CAPTCHA images. It is seen as less effective at fighting spam bots due to the more legibile letters than what ReCAPTCHA provides.</p>
 <img class="thumbnail" src="../modules/captcha/images/whitehat.png" />
 <br />
 
-<h3>Math</h3>
+<h4>Math</h4>
 <p>The Match CAPTCHA method presents users with an elementary level math equation that they must solve.</p>
 <img class="thumbnail" src="../modules/captcha/images/math.png" />
 <br />
 
-<h2>Revision History</h2>
+<h3>Revision History</h3>
 <ul>
-	<li>v2.0 2012/08/18 Yankidank - Updated for Pligg 2.</li>
+	<li>v2.0 2012/08/18 Yankidank - Updated for Pligg 2. Added Solve Media.</li>
 	<li>v1.0 2009/09/10 Yankidank - Added CAPTCHA option when submitting story or comment.</li>
 	<li>v0.9 2008/09/05 AshDigg	- Made module compatible with the new location of the admin folder.</li>
 	<li>v0.8 2008/08/03 AshDigg - Removed 'default' captcha. 'Whitehat' will now be the default.</li>
