@@ -4,7 +4,7 @@
 // Report all PHP errors
 // error_reporting(E_ALL);
 
-$new_version = '201';
+$new_version = '200';
 
 // Check if you need to run the one time upgrade to Pligg 2.0
 if ($old_version < $new_version) {
