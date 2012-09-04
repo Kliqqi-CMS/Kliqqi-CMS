@@ -191,5 +191,8 @@ if ($current_user->user_id > 0 && $current_user->authenticated)
 	$main_smarty->assign('user_rss', getmyurl('rssuser', $login));
 	$main_smarty->assign('URL_Profile', getmyurl('profile'));
 	$main_smarty->assign('user_url_member_groups', getmyurl('user2', $login, 'member_groups	'));
+
+	$main_smarty->assign('isAdmin', checklevel('admin'));
+	$main_smarty->assign('isModerator', checklevel('moderator'));
 }
 ?>
