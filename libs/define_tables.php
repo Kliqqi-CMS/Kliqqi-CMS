@@ -34,6 +34,8 @@ if(!defined('tables_defined')){
 	define('table_widgets', table_prefix . "widgets" );
 	define('table_old_urls', table_prefix . "old_urls" );
 	define('table_additional_categories', table_prefix . "additional_categories" );
+	define('table_block',table_prefix .'block');
 	define('tables_defined', true);
+	
 }
 ?>

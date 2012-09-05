@@ -1,3 +1,4 @@
+{if $Enable_Tags && $pagename neq "cloud"}
 {checkActionsTpl location="tpl_widget_tags_start"}
 {php}
 	include_once(mnminclude.'tags.php');
@@ -24,3 +25,4 @@
 	{/section}
 </div>
 {checkActionsTpl location="tpl_widget_tags_end"}
+{/if}

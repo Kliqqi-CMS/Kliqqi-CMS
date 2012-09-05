@@ -177,6 +177,7 @@
 								</div>
 								<div class="accordion-body " id="CollapseTemplate">
 									<ul class="accordion-inner">
+                                       <li{if $pagename eq "admin_config" && $templatelite.get.page eq "template_widgets"} class="active"{/if} id="template_widgets"><a href="{$my_base_url}{$my_pligg_base}/admin/admin_template_widgets.php">Template Widgets</a></li>
 										<li{if $pagename eq "admin_config" && $templatelite.get.page eq "Template"} class="active"{/if} id="template_settings"><a href="{$my_base_url}{$my_pligg_base}/admin/admin_config.php?page=Template">Template Settings</a></li>
 										<li{if $pagename eq "admin_editor"} class="active"{/if} id="template_editor"><a href="{$my_base_url}{$my_pligg_base}/admin/admin_editor.php">{#PLIGG_Visual_AdminPanel_Template_Nav#} Editor</a></li>
 									    {checkActionsTpl location="tpl_pligg_admin_template_sidebarnav_end"}

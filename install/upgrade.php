@@ -234,13 +234,28 @@ if (!$errors) {
 	// End Language File Upgrade
 
 	echo '<p>'.$lang['UpgradingTables'] . '<ul>';
-
+    
 	$tableexists = checkfortable(table_misc_data);
 	if (!$tableexists) {
 		$sql = "CREATE TABLE `" . table_misc_data . "` (
 			`name` VARCHAR( 20 ) NOT NULL ,
 			`data` TEXT NOT NULL ,
 			PRIMARY KEY ( `name` )
+			) ENGINE = MyISAM;";
+		$db->query($sql);
+		
+	$tableexists = checkfortable(table_block);
+	
+	if (!$tableexists) {
+		$sql = "CREATE TABLE `" . table_block . "` (
+			`bid` int(11) NOT NULL AUTO_INCREMENT,
+  			`name` varchar(250) NOT NULL,
+  			`callback_tpl` varchar(250) NOT NULL,
+ 			`enabled` int(11) NOT NULL,
+ 			`region` varchar(250) NOT NULL,
+  			`weight` int(11) NOT NULL,
+ 			`module` varchar(250) NOT NULL,
+ 			 PRIMARY KEY (`bid`)
 			) ENGINE = MyISAM;";
 		$db->query($sql);
 		
