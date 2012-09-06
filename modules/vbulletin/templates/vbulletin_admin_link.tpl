@@ -1,0 +1,1 @@
+<li><a href="{$my_pligg_base}/module.php?module=vbulletin" {if $modulename eq "vbulletin"}class="navcur"{else}class="nav"{/if} >vBulletin Module</a></li>
