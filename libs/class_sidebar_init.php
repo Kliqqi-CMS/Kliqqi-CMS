@@ -31,7 +31,8 @@ class sidebar{
 		  $i++;
 		}
 		
-		$main_smarty->assign('dynBlocks',$dynBlocks);
+		if ($main_smarty)
+			$main_smarty->assign('dynBlocks',$dynBlocks);
 		
 	}
 	
