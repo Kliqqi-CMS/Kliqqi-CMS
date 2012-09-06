@@ -267,34 +267,6 @@ if (!$errors) {
 		$db->query($sql);
 	}
 	
-	$tableexists = checkfortable(table_block);
-	if (!$tableexists) {
-		$sql = "CREATE TABLE `" . table_block . "` (
-			`bid` int(11) NOT NULL AUTO_INCREMENT,
-  			`name` varchar(250) NOT NULL,
-  			`callback_tpl` varchar(250) NOT NULL,
- 			`enabled` int(11) NOT NULL,
- 			`region` varchar(250) NOT NULL,
-  			`weight` int(11) NOT NULL,
- 			`module` varchar(250) NOT NULL,
- 			 PRIMARY KEY (`bid`)
-			) ENGINE = MyISAM;";
-		$db->query($sql);
-		
-		$sql = "INSERT INTO `" . table_block . "` ( `name` , `callback_tpl`, `enabled`, `region`, `weight`, `module` ) VALUES ('Sidebar Comments', 'tpl_pligg_sidebar_comments',1,'',1,'sidebar_comments');";
-		$db->query($sql);
-		
-		$sql = "INSERT INTO `" . table_block . "` ( `name` , `callback_tpl`, `enabled`, `region`, `weight`, `module` ) VALUES ('Sidebar Stories', 'tpl_pligg_sidebar_stories',1,'',2,'sidebar_stories');";
-		$db->query($sql);
-		
-		$sql = "INSERT INTO `" . table_block . "` ( `name` , `callback_tpl`, `enabled`, `region`, `weight`, `module` ) VALUES ('Sidebar Saved', 'tpl_pligg_sidebar_saved',1,'',3,'sidebar_saved');";
-		$db->query($sql);
-		
-		$sql = "INSERT INTO `" . table_block . "` ( `name` , `callback_tpl`, `enabled`, `region`, `weight`, `module` ) VALUES ('Tag Cloud', 'tags.tpl',1,'',4,'template_include');";
-		$db->query($sql);
-		
-	}
-	
 	echo '<li>Regenerating the totals table</li>';
 	totals_regenerate();
 	

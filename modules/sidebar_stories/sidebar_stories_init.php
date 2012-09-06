@@ -10,10 +10,7 @@
 	if( do_we_load_module() ) {		
 		if(is_object($main_smarty)){
 			$main_smarty->plugins_dir[] = sidebar_stories_plugins_path;
-
-			module_add_action_tpl('tpl_pligg_sidebar_stories', sidebar_stories_tpl_path . 'sidebar_stories_index.tpl');
-
+			module_add_action_tpl('widget_sidebar_stories', sidebar_stories_tpl_path . 'sidebar_stories_index.tpl');
 		}
-		// module_add_action_tpl('tpl_pligg_below_center', sidebar_stories_tpl_path . '<your tpl name>.tpl');
 	}
 ?>

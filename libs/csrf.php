@@ -67,7 +67,7 @@ class CSRF {
 		}
 	}
 
-	function check_expired($name, $time = 600){
+	function check_expired($name, $time = 1000){
 		// check to see if time (seconds) has passed since the token was created.
 		$token_age = time() - $this->get_time($name);
 		if ($token_age >= $time) {

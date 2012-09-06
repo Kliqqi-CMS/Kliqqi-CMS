@@ -1,6 +1,6 @@
 <?php
 	$module_info['name'] = 'Sidebar Stories';
 	$module_info['desc'] = 'Displays published and upcoming stories in the sidebar.';
-	$module_info['version'] = 0.3;
-	// $module_info['requires'][] = array('', 0.2);
+	$module_info['version'] = 2.0;
+	$module_info['db_sql'][] = "INSERT INTO `" . table_block . "` ( `name` , `callback_tpl`, `enabled`, `region`, `weight`, `module` ) VALUES ('Sidebar Stories', 'widget_sidebar_stories',1,'',1,'sidebar_stories')";
 ?>
