@@ -103,6 +103,6 @@ Function ProFeed($prourl,$proitems) {
 // Number of items to display
 $proitems = $this->_vars['product_count'];
 
-ProFeed("http://www.pligg.com/pro/feed.php",$proitems);
+ProFeed("http://feeds.feedburner.com/PliggPro",$proitems);
 
 {/php}
