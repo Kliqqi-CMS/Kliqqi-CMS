@@ -1,4 +1,4 @@
-{************************************
+{{************************************
 ********* Header Template ***********
 *************************************}
 <!-- header.tpl -->
@@ -15,9 +15,33 @@
 			{if $user_authenticated eq true}
 				<div class="btn-group pull-right">
 					<a class="btn dropdown-toggle" data-toggle="dropdown" href="#">
-						<i class="icon-user"></i>{* <img src="{$Avatar_ImgSrc}" height="16px" width="16px" /> *} {$user_logged_in}
+		{php}
+		global $main_smarty, $current_user;
+
+		if ($current_user->user_id > 0 && $current_user->authenticated) {
+				$login=$current_user->user_login;
+		}
+
+		// Read the users information from the database
+		$user=new User();
+		$user->username = $login;
+		if(!$user->read()) {
+			echo "invalid user";
+			die;
+		}
+
+		// Assign smarty variables to use in the template.
+			$main_smarty->assign('Avatar_ImgLarge', get_avatar('large', $user->avatar_source, $user->username, $user->email));
+			$main_smarty->assign('Avatar_ImgSmall', get_avatar('small', $user->avatar_source, $user->username, $user->email));
+			$main_smarty->assign('user_names', $user->names);
+			$main_smarty->assign('user_id', $user->id);
+			$main_smarty->assign('user_username', $user->username);
+
+		{/php}
+                <img src="{$my_base_url}{$my_pligg_base}/avatars/user_uploaded/{$user_id}_15.jpg" width="16px" height="16px" onerror="this.src='{$my_pligg_base}/avatars/Avatar_32.png'; this.title='Loading...';"/> &nbsp;  {$user_logged_in}
 						<span class="caret"></span>
 					</a>
+
 					<ul class="dropdown-menu">
 						{checkActionsTpl location="tpl_pligg_profile_sort_start"}
 						<li><a href="{$URL_userNoVar}" class="navbut{$nav_pd}">{#PLIGG_Visual_Profile#}</a></li>
@@ -89,7 +113,7 @@
 										<div class="controls">
 											{if isset($form_email_error)}
 												{ foreach value=error from=$form_email_error }
-													<div class="alert alert-block alert-error fade in"><button data-dismiss="alert" class="close">×</button>{$error}</div>
+													<div class="alert alert-block alert-error fade in"><button data-dismiss="alert" class="close">Ã—</button>{$error}</div>
 												{ /foreach }
 											{/if}
 											<input type="text" class="input-large reg_email" id="reg_email" placeholder="" name="reg_email">
@@ -99,7 +123,7 @@
 										<div class="controls">
 											{if isset($form_password_error)}
 												{ foreach value=error from=$form_password_error }
-													<div class="alert alert-block alert-error fade in"><button data-dismiss="alert" class="close">×</button>{$error}</div>
+													<div class="alert alert-block alert-error fade in"><button data-dismiss="alert" class="close">Ã—</button>{$error}</div>
 												{ /foreach }
 											{/if}
 											<input type="password" class="input-large" id="reg_password" name="reg_password" placeholder="{if isset($reg_password)}{$reg_password}{/if}">
