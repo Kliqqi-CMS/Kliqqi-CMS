@@ -34,7 +34,7 @@
 			<div class="control-group">
 				<label for="search" class="control-label">{#PLIGG_Visual_Search_Keywords#}</label>
 				<div class="controls">
-					<input name="search" type="text" class="input-xlarge" />
+					<input autofocus="autofocus" name="search" type="text" class="input-xlarge" />
 					<p class="help-block">{#PLIGG_Visual_Search_Keywords_Instructions#}</p>
 				</div>
 			</div>

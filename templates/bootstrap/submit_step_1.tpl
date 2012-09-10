@@ -22,7 +22,7 @@
 		<div class="submit_form">
 			<h3>{#PLIGG_Visual_Submit1_NewsSource#}</h3>
 			<label for="url">{#PLIGG_Visual_Submit1_NewsURL#}:</label>
-			<input type="text" name="url" class="span6" id="url" placeholder="http://" />
+			<input autofocus="autofocus" type="text" name="url" class="span6" id="url" placeholder="http://" />
 			{checkActionsTpl location="tpl_pligg_submit_step1_end"}
 			<input type="hidden" name="phase" value="1">
 			<input type="hidden" name="randkey" value="{$submit_rand}">

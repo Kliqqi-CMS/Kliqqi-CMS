@@ -17,7 +17,7 @@
 							</div>
 						{ /foreach }
 					{/if}
-					<input type="text" name="reg_username" class="input-large reg_username" id="reg_username" value="{if isset($reg_username)}{$reg_username}{/if}" size="25" tabindex="10" maxlength="32"/>
+					<input autofocus="autofocus" type="text" name="reg_username" class="input-large reg_username" id="reg_username" value="{if isset($reg_username)}{$reg_username}{/if}" size="25" tabindex="10" maxlength="32"/>
 					<br/><span class="reg_usernamecheckitvalue"></span>
 				</div>
 			</div>

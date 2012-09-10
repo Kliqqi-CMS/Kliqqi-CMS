@@ -10,7 +10,7 @@
 		<div class="control-group">
 			<label for="fileInput" class="control-label">{#PLIGG_Visual_Comment_Send#}</label>
 			<div class="controls">
-				<textarea name="comment_content" id="comment_content" class="comment-form" rows="6" />{if isset($TheComment)}{$TheComment}{/if}</textarea>
+				<textarea autofocus="autofocus" name="comment_content" id="comment_content" class="comment-form" rows="6" />{if isset($TheComment)}{$TheComment}{/if}</textarea>
 				<p class="help-inline">{#PLIGG_Visual_Comment_NoHTML#}</p>
 			</div>
 		</div>

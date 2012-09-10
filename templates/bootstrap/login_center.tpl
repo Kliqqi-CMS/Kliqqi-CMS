@@ -16,7 +16,7 @@
 			<p>{#PLIGG_Visual_Login_Have_Account#}</p>
 			<form action="{$URL_login}" method="post">	
 				<strong>{#PLIGG_Visual_Login_Username#}/{#PLIGG_Visual_Register_Email#}:</strong><br />
-				<input type="text" name="username" class="login" value="{if isset($login_username)}{$login_username}{/if}" tabindex="1" /><br />
+				<input autofocus="autofocus" type="text" name="username" class="login" value="{if isset($login_username)}{$login_username}{/if}" tabindex="1" /><br />
 				<strong>{#PLIGG_Visual_Login_Password#}:</strong><br />
 				<input type="password" name="password" class="login" tabindex="2" /><br />
 				<input type="hidden" name="processlogin" value="1"/>
