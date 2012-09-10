@@ -41,16 +41,31 @@ $main_smarty = do_sidebar($main_smarty);
 
 if($canIhaveAccess == 1){
 	
-	/***
-	if ($_POST["enabled"]) {
-		foreach($_POST["enabled"] as $id => $value) 
+
+	if ($_GET["acc"]=="add") {
+		
+		$callback_tpl=$_GET['callback_tpl'];
+		$name=$_GET['name'];
+		$m_type=$_GET['m_type'];
+		$blocks = $db->get_results("SELECT * from " .table_block . " where callback_tpl='".$callback_tpl."' ");
+		if(count($blocks)==0)
 		{
-			$sql = "UPDATE " . table_widgets . " set enabled = $value where id=$id";
-			$db->query($sql);
+			mysql_query("insert into " .table_block . " set name='".$name."', callback_tpl='".$callback_tpl."', module='".$m_type."', enabled='1'") or die(mysql_error());
+			header("Location: admin_template_widgets.php");
+		    exit;
 		}
-		header("Location: admin_template_widgets.php");
-		exit;
+		
 	}
+	
+	
+	if ($_GET["acc"]=="removed") {
+		$bid=$_GET['bid'];
+		mysql_query("delete from " .table_block . " where bid='".$bid."'") or die(mysql_error());
+			header("Location: admin_template_widgets.php");
+		    exit;
+		
+	}
+	/***
 
 	if($_GET['action'] == 'disable'){
 		$module = $db->escape(sanitize($_REQUEST['module'],3));
@@ -111,13 +126,29 @@ if($_GET['action'] == 'remove'){
 	die();
 }	
 */
+$dynSidebar->get_module_widthgets();
+$dynSidebar->get_themes_widthgets();
 
 	$res_block = mysql_query('SELECT * from ' .table_block . ' order by weight ASC');
 	if(count(mysql_num_rows($res_block)>0)){
 		while($blk=mysql_fetch_array($res_block))
 		$blocks[]=$blk; 
 	}
+
+$i=0;	
+$all_width=$dynSidebar->all_widget;
+$all_widthgets=$dynSidebar->all_widget;
+for($i=0; $i<count($all_width); $i++){
+
+if (in_array_r($all_width[$i]['callback_tpl'], $blocks)){
+unset($all_widthgets[$i]);
+
+}
+
 	
+}
+
+	 $main_smarty->assign('unwidgets',array_values($all_widthgets));	
 	
     $main_smarty->assign('allBlocks',$blocks);	
 
