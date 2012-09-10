@@ -17,7 +17,7 @@ $(document).ready(function(){
 </script>
 {/literal}
 <p>{#PLIGG_Admin_Template_Widget_Description#}</p>
-
+<legend style="border:none;">Uninstalled Widgets</legend>
 <table class="table table-bordered">
 	<tbody>
 		{section name=prid loop=$unwidgets}
@@ -25,7 +25,7 @@ $(document).ready(function(){
 		{/section}
 	</tbody>
 </table>
-
+<legend style="border:none;">Installed widgets </legend>
 <table id="contentLeft" class="table table-bordered">
 	<tbody>
 		{section name=nrid loop=$allBlocks}
