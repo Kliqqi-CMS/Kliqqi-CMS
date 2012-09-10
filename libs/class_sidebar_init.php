@@ -73,7 +73,7 @@ class sidebar{
 		$path=mnmpath."templates/".The_Template."/sidebar_modules";
 		if ($handle = opendir($path)) {
 		while (false !== ($entry = readdir($handle))) {
-			if($entry!="index.html" && $entry!="wrapper.tpl" && $entry!="wrapper2.tpl" && $entry!="" && $entry!="." && $entry!=".."){
+			if($entry!="index.html" && $entry!="wrapper.tpl" && $entry!="wrapper2.tpl" && $entry!="" && $entry!="." && $entry!=".." && $entry!=".svn"){
 			$name=str_replace(".tpl","",$entry);
 			$name=str_replace(".php","",$name);
 			$name=str_replace("_"," ",$name);
