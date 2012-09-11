@@ -40,8 +40,17 @@ if ($old_version < $new_version) {
 		$db->query($sql);
 		
 	}
+	
+	
+	$sql = "ALTER TABLE `" . table_modules . "` ADD  `weight` INT NOT NULL";
+	$db->query($sql);
+	
 	echo '<li>Order modules via the admin panel</li>';
 	
+	
+
+
+		
 	// Change default captcha to SolveMedia
 	$sql = "UPDATE `" . table_misc_data . "` SET `data` = 'solvemedia' WHERE `pligg_misc_data`.`name` = 'captcha_method';";
 	$db->query($sql);

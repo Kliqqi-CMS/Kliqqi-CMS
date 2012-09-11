@@ -28,12 +28,13 @@
 
 		// if this query is changed, be sure to also change it in admin_modules_center.tpl
 		$db->cache_queries = false;
-		$modules = $db->get_results($sql='SELECT * from ' . table_modules . ' where enabled=1;');
+		$modules = $db->get_results($sql='SELECT * from ' . table_modules . ' where enabled=1 order by weight ASC;');
 
 		if($modules){
 			// for each module...
 			foreach($modules as $module) {
-				$file=mnmmodules . $module->folder . '/' . $module->folder . '_init.php';
+				 $file=mnmmodules . $module->folder . '/' . $module->folder . '_init.php';
+				
 				// if this module has an init file then include it
 				if (file_exists($file)) {		include_once($file);	}
 			}

@@ -1,4 +1,21 @@
 <!-- modules.tpl -->
+{literal}
+<script type="text/javascript">
+$(document).ready(function(){ 
+	
+	$(function() {
+		$("#contentLeft tbody").sortable({ opacity: 0.6, cursor: 'move', update: function() {
+			var order = $(this).sortable("serialize") + '&action=updateRecordsListings'; 
+			$.post("admin_update_module_widgets.php", order, function(theResponse){
+				$("#contentRight").html(theResponse);
+			}); 															 
+		}								  
+		});
+	});
+
+});	
+</script>
+{/literal}
 {checkActionsTpl location="tpl_admin_modules_top"}
 {php}
 global $db, $main_smarty;	
@@ -30,14 +47,14 @@ if($action == 'main' || $action == 'disable' || $action == 'enable'){
 	echo '<form name="bulk_moderate" method="post">';
 	echo '<div class="module_apply"><input type="submit" class="btn btn-primary" name="submit" value="'.$main_smarty->get_config_vars('PLIGG_Visual_AdminPanel_Apply_Changes').'" id="apply_changes" /></div>';
 	echo '<br />';
-	echo '<table class="table table-bordered">';
+	echo '<table class="table table-bordered" id="contentLeft">';
 	echo '<thead><tr><th style="text-align:center;">Enabled</th><th>Details</th><th>Requires</th><th>Version</th><th>Homepage</th><th>Settings</th><th>Uninstall</th></tr></thead><tbody>';	
-	$modules = $db->get_results('SELECT * from ' . table_modules . ' order by name asc;');
+	$modules = $db->get_results('SELECT * from ' . table_modules . ' order by weight asc;');
 	if($modules){
 		foreach($modules as $module) {
 			if (file_exists(mnmmodules . $module->folder))
 			{	
-				echo '<tr>';
+				echo '<tr id="recordsArray_'.$module->id.'">';
 				echo '<td style="text-align:center;vertical-align:middle;">';
 				echo "<input type=\"hidden\" name=\"enabled[{$module->id}]\" id=\"enabled_{$module->id}\" value=\"{$module->enabled}\">";
 				echo "<input type='checkbox' onclick='document.getElementById(\"enabled_{$module->id}\").value=this.checked ? 1 : 0;' ";
