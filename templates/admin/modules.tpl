@@ -54,7 +54,7 @@ if($action == 'main' || $action == 'disable' || $action == 'enable'){
 		foreach($modules as $module) {
 			if (file_exists(mnmmodules . $module->folder))
 			{	
-				echo '<tr id="recordsArray_'.$module->id.'">';
+				echo '<tr id="recordsArray_'.$module->id.'" style="cursor:move;">';
 				echo '<td style="text-align:center;vertical-align:middle;">';
 				echo "<input type=\"hidden\" name=\"enabled[{$module->id}]\" id=\"enabled_{$module->id}\" value=\"{$module->enabled}\">";
 				echo "<input type='checkbox' onclick='document.getElementById(\"enabled_{$module->id}\").value=this.checked ? 1 : 0;' ";
