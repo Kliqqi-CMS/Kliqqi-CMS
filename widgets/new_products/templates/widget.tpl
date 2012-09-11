@@ -87,7 +87,7 @@ Function ProFeed($prourl,$proitems) {
 		echo '<div class="pro_item">';
 		echo '	<div class="pro_left">';
 		echo '		<div class="pro_thumb"><a href="'.$pro_url.'"><div style="text-align:center;"><img src="'.$pro_thumb.'" /></div></a></div>';
-		echo '		<div class="pro_price"><p><a href="'.$pro_url.'">'.$pro_price.'</a></p></div>';
+		echo '		<div class="pro_price"><p><a href="'.$pro_url.'">&#36;'.$pro_price.'</a></p></div>';
 		echo '	</div>';
 		echo '	<div class="pro_right">';
 		echo '		<div class="pro_details">';
@@ -102,7 +102,8 @@ Function ProFeed($prourl,$proitems) {
 
 // Number of items to display
 $proitems = $this->_vars['product_count'];
-
-ProFeed("http://feeds.feedburner.com/PliggPro",$proitems);
+ProFeed("http://pligg.com/wp-content/recent-global-posts-feed.php?posttype=product",$proitems);
+// Need to switch this to Feedburner after Pligg.com re-launch
+//ProFeed("http://feeds.feedburner.com/PliggPro",$proitems);
 
 {/php}
