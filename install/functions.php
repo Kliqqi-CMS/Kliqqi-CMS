@@ -19,11 +19,11 @@ function isWriteable ( $canContinue, $file, $mode, $desc )
 
 function Message( $message, $good )
 {
-	if ( $good )
+	if ( $good ){
 		$yesno = '<b><font color="green">Yes</font></b>';
-	else
+	} else {
 		$yesno = '<b><font color="red">No</font></b>';
-
+	}
 	echo '<tr><td class="normal">'. $message .'</td><td>'. $yesno .'</td></tr>';
 }
 //end old functions
