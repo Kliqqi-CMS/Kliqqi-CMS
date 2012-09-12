@@ -15,7 +15,7 @@
 				{if isset($form_password_error)}
 					{ foreach value=error from=$form_password_error }
 						<div class="alert">
-							<button class="close" data-dismiss="alert">×</button>
+							<button class="close" data-dismiss="alert">Ã—</button>
 							{$error}
 						</div>
 					{ /foreach }
