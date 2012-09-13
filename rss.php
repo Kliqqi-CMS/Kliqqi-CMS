@@ -10,6 +10,10 @@ include(mnminclude.'search.php');
 include(mnminclude.'user.php');
 include_once(mnminclude.'smartyvariables.php');
 
+// pagename
+define('pagename', 'rss'); 
+$main_smarty->assign('pagename', pagename);
+
 $rows = isset($_GET['rows']) && is_numeric($_GET['rows']) ? $_GET['rows'] : 20;
 $status = sanitize($_GET['status'], 3) != '' ? sanitize($_GET['status'], 3) : 'published';
 $time = isset($_GET['time']) && is_numeric($_GET['time']) ? $_GET['time'] : 0;
@@ -150,12 +154,12 @@ if ($links) {
 		check_actions('rss_add_data', $vars);
 		$story_url = $link->url;
 		if ($story_url != '' && $story_url != 'http://'){
-			echo '	<source>'.htmlspecialchars($story_url).'</source>';
+			echo "	<source>".htmlspecialchars($story_url)."</source>\n";
 		}
 		$description = htmlspecialchars($link->content);
 		$description = preg_replace('/\r/', ' ', $description);
 		$description = preg_replace('/\n/', ' <br />', $description);
-		echo "\n	<description><![CDATA[ " . $description . " ]]></description>\n";
+		echo "	<description><![CDATA[ " . $description . " ]]></description>\n";
 		if (!empty($link_date))
 			echo "	<pubDate>".date('D, d M Y H:i:s T', $link->$link_date-misc_timezone*3600)."</pubDate>\n";
 		else 
