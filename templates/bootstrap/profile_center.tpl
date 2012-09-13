@@ -128,7 +128,7 @@
 			</form>	
 			<div class="btn-group">
 				<a class="btn btn-small" href="{$user_url_friends}"><i class="icon-user"></i> {$following|@count} {#PLIGG_Visual_User_Profile_View_Friends#}</a>
-				<a class="btn btn-small" href="{$user_url_friends2}"><i class="icon-user"></i> {$follower|@count} {#PLIGG_Visual_User_Profile_View_Friends_2#}</a>
+				<a class="btn btn-small" href="{$user_url_friends2}"><i class="icon-user"></i> {$follower|@count} {#PLIGG_Visual_User_Profile_Your_Friends#}</a>
 			</div> 
 			{if $user_login neq $user_logged_in}
 				{if check_for_enabled_module('simple_messaging',0.6) && $is_friend}
@@ -143,7 +143,7 @@
 					{/if}
 				{else}
 					{if $user_authenticated eq true} 					
-						<img src="{$my_pligg_base}/templates/{$the_template}/img/user_add.gif" align="absmiddle" /> <a href="{$user_url_add}">{#PLIGG_Visual_User_Profile_Add_Friend#} {$user_login} {#PLIGG_Visual_User_Profile_Add_Friend_2#}</a>
+						<img src="{$my_pligg_base}/templates/{$the_template}/img/user_add.gif" align="absmiddle" /> <a href="{$user_url_add}">{#PLIGG_Visual_User_Profile_Add_Friend#} {$user_login}</a>
 					{/if}   
 				{/if}
 			{/if}
