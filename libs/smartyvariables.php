@@ -129,6 +129,19 @@ $main_smarty->assign('error_count', $error_count);
 $moderated_total_count = $moderated_groups_count+$moderated_users_count+$moderated_comments_count+$moderated_submissions_count+$error_count;
 $main_smarty->assign('moderated_total_count', $moderated_total_count);
 
+//count installed update require modules 
+$res=mysql_query('SELECT id from ' . table_modules . ' where latest_version>version') or die(mysql_error());
+$no_row=mysql_num_rows($res);
+$main_smarty->assign('no_module_update_require', $no_row);
+
+//count uninstalled update required module
+$main_smarty->assign('un_no_module_update_require', $_COOKIE['module_update_require_un']);
+
+//count total update required
+$total_update_required_mod=$no_row+$_COOKIE['module_update_require_un'];
+$main_smarty->assign('total_update_required_mod', $total_update_required_mod);
+
+
 $admin_backup_dir = "../admin/backup/";
 if (glob($admin_backup_dir . "*.sql") != false) {
 	$sqlcount = count(glob($admin_backup_dir . "*.sql"));

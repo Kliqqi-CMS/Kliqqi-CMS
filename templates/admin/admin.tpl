@@ -190,13 +190,13 @@
 										<li class="nav-header"><img src="{$my_base_url}{$my_pligg_base}/templates/admin/img/module.png" width="16px" height="16px" /> Modules</li>
 									</span>
 									<span class="badge accordion-heading-alert">
-										<a href="{$my_base_url}{$my_pligg_base}/admin/admin_modules.php">3</a>
+										<a href="{$my_base_url}{$my_pligg_base}/admin/admin_modules.php">{$total_update_required_mod}</a>
 									</span>
 								</div>
 								<div class="accordion-body " id="CollapseModules">
 									<ul class="accordion-inner">
-										<li{if $pagename eq "admin_modules"}{php} if ($_GET["status"] == ""){ echo ' class="active"'; } {/php}{/if} id="modules_installed"><a href="{$my_base_url}{$my_pligg_base}/admin/admin_modules.php" {if $pagename eq "admin_modules"}class="active"{/if} >Installed {#PLIGG_Visual_AdminPanel_Modules_Nav#} <span class="pull-right badge badge-gray">2</span></a></li> 
-										<li{if $pagename eq "admin_modules"}{php} if ($_GET["status"] == "uninstalled"){ echo ' class="active"'; } {/php}{/if} id="modules_uninstalled"><a href="{$my_base_url}{$my_pligg_base}/admin/admin_modules.php?status=uninstalled" {if $pagename eq "admin_modules"}{php} if ($_GET["status"] == "uninstalled"){ echo ' class="active"'; } {/php}{/if} >Uninstalled {#PLIGG_Visual_AdminPanel_Modules_Nav#} <span class="pull-right badge badge-gray">1</span></a></li> 
+										<li{if $pagename eq "admin_modules"}{php} if ($_GET["status"] == ""){ echo ' class="active"'; } {/php}{/if} id="modules_installed"><a href="{$my_base_url}{$my_pligg_base}/admin/admin_modules.php" {if $pagename eq "admin_modules"}class="active"{/if} >Installed {#PLIGG_Visual_AdminPanel_Modules_Nav#} <span class="pull-right badge badge-gray">{$no_module_update_require}</span></a></li> 
+										<li{if $pagename eq "admin_modules"}{php} if ($_GET["status"] == "uninstalled"){ echo ' class="active"'; } {/php}{/if} id="modules_uninstalled"><a href="{$my_base_url}{$my_pligg_base}/admin/admin_modules.php?status=uninstalled" {if $pagename eq "admin_modules"}{php} if ($_GET["status"] == "uninstalled"){ echo ' class="active"'; } {/php}{/if} >Uninstalled {#PLIGG_Visual_AdminPanel_Modules_Nav#} <span class="pull-right badge badge-gray">{$un_no_module_update_require}</span></a></li> 
 										{checkActionsTpl location="tpl_header_admin_main_links"}
 									</ul>
 								</div>
