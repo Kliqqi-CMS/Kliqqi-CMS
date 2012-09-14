@@ -540,7 +540,7 @@ if(!defined('mnminclude')){header('Location: ../404error.php');die();}
 		global $main_smarty, $the_template;
 	
 		if(isset($main_smarty)){
-			$main_smarty->compile_dir = "cache/templates_c/";
+			$main_smarty->compile_dir = "cache/";
 			$main_smarty->template_dir = "templates/";
 			$main_smarty->cache_dir = "cache/";
 			$main_smarty->config_dir = "";

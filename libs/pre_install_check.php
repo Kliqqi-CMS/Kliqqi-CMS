@@ -17,13 +17,9 @@ if($do_check == true){
 		$file = dirname(__FILE__) . '/../libs/dbconnect.php'; 
 		if (!file_exists($file)) { $errors[]="<strong>/libs/dbconnect.php was not found!</strong><br />Try renaming 'dbconnect.php.default' to 'dbconnect.php'"; }
 
-		$file= dirname(__FILE__) . '/../cache/templates_c'; 
-		if (!file_exists($file)) { $errors[]="<strong>/cache/templates_c/ was not found!</strong><br />Create a directory called templates_c in your cache directory."; }
-		elseif (!is_writable($file)) { $errors[]="<strong>/cache/templates_c/ is not writable!</strong><br />Please chmod this directory to 777"; }
-
 		$file= dirname(__FILE__) . '/../cache'; 
-		if (!file_exists($file)) { $errors[]="<strong>/cache/ was not found!</strong> Create a directory called cache in your root directory."; }
-		elseif (!is_writable($file)) { $errors[]="<strong>/cache/ is not writable!</strong><br />Please chmod this directory to 777"; }
+		if (!file_exists($file)) { $errors[]="<strong>/cache/ was not found!</strong> Create a directory called cache in your root directory and CHMOD it to 777."; }
+		elseif (!is_writable($file)) { $errors[]="<strong>/cache/ is not writable!</strong><br />Please CHMOD this directory to 777"; }
 
 		if (sizeof($errors)) {	
 			$output = '';

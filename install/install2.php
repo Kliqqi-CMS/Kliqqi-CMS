@@ -14,10 +14,6 @@ $file='../libs/dbconnect.php';
 if (!file_exists($file)) { $errors[]="$file " . $lang['DbconnectNotFound'] ; }
 elseif (!is_writable($file)) { $errors[]="$file " . $lang['NotEditable'] ; }
 
-$file='../cache/templates_c';
-if (!file_exists($file)) { $errors[]="$file " . $lang['TemplatesCNotFound'] ; }
-elseif (!is_writable($file)) { $errors[]="$file " . $lang['NotEditable'] ; }
-
 $file='../cache';
 if (!file_exists($file)) { $errors[]="$file " . $lang['CacheNotFound'] ; }
 elseif (!is_writable($file)) { $errors[]="$file " . $lang['NotEditable'] ; }

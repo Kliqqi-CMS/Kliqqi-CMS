@@ -4,7 +4,7 @@ if(!defined('mnminclude')){header('Location: ../404error.php');die();}
 
 include mnminclude.'extra_fields_smarty.php';
 
-$main_smarty->compile_dir = mnmpath."cache/templates_c/";
+$main_smarty->compile_dir = mnmpath."cache/";
 $main_smarty->template_dir = mnmpath."templates/";
 $main_smarty->cache_dir = mnmpath."cache/";
 

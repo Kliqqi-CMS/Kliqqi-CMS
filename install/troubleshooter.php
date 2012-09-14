@@ -43,7 +43,7 @@ $mysqlversion = preg_replace($pattern, $replacement, $mysqlversion);
 
 
 // Tally up how many items are fulfilled.
-$required = 25; // This should be the number of checks being performed
+$required = 23; // This should be the number of checks being performed
 $tally = 0;
 if (glob("../languages/*.conf")) { $tally = $tally+1;}
 if (phpversion() > 4) { $tally = $tally+1; }
@@ -61,8 +61,6 @@ if (is_writable('../admin/backup/')) { $tally = $tally+1; }
 if (is_writable('../avatars/groups_uploaded/')) { $tally = $tally+1; }
 if (is_writable('../avatars/user_uploaded/')) { $tally = $tally+1; }
 if (is_writable('../cache/')) { $tally = $tally+1; }
-if (is_writable('../cache/admin_c/')) { $tally = $tally+1; }
-if (is_writable('../cache/templates_c/')) { $tally = $tally+1; }
 if (is_writable('../languages/')) { $tally = $tally+1; }
 foreach (glob("../languages/*.conf") as $filename) { $required = $required+1; if (is_writable($filename)) {$tally = $tally+1;} }
 if (is_writable('../languages/installer_lang.php')) { $tally = $tally+1; }
@@ -170,14 +168,6 @@ if (!is_writable($file)) { echo '<tr><td><i class="icon icon-remove"></i></td><t
 if (is_writable($file)) { echo '<tr><td><i class="icon icon-ok"></i></td><td>'.$file.'</span></td></tr>'; }
 
 $file='../cache/';
-if (!is_writable($file)) { echo '<tr><td><i class="icon icon-remove"></i></td><td>'.$file.' is not writable! Please chmod this directory to 777.</span></td></tr>'; }
-if (is_writable($file)) { echo '<tr><td><i class="icon icon-ok"></i></td><td>'.$file.'</span></td></tr>'; }
-
-$file='../cache/admin_c/';
-if (!is_writable($file)) { echo '<tr><td><i class="icon icon-remove"></i></td><td>'.$file.' is not writable! Please chmod this directory to 777.</span></td></tr>'; }
-if (is_writable($file)) { echo '<tr><td><i class="icon icon-ok"></i></td><td>'.$file.'</span></td></tr>'; }
-
-$file='../cache/templates_c/';
 if (!is_writable($file)) { echo '<tr><td><i class="icon icon-remove"></i></td><td>'.$file.' is not writable! Please chmod this directory to 777.</span></td></tr>'; }
 if (is_writable($file)) { echo '<tr><td><i class="icon icon-ok"></i></td><td>'.$file.'</span></td></tr>'; }
 

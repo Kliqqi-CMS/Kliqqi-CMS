@@ -35,8 +35,6 @@
 			<li>/avatars/groups_uploaded/</li>
 			<li>/avatars/user_uploaded/</li>
 			<li>/cache/</li>
-			<li>/cache/admin_c/</li>
-			<li>/cache/templates_c/</li>
 			<li>/languages/ (CHMOD 0777 all of the files contained within this folder)</li>
 		</ol>
 		<li>CHMOD 0666 the following files</li>
@@ -106,8 +104,7 @@
 	
 // Errors
 	$lang['NotFound'] = 'was not found!';
-	$lang['TemplatesCNotFound'] = 'was not found! Create a directory called /templates_c in your /cache directory.';
-	$lang['CacheNotFound'] = 'was not found! Create a directory called /cache in your root directory.';
+	$lang['CacheNotFound'] = 'was not found! Create a directory called /cache in your root directory and set it to CHMOD 777.';
 	$lang['DbconnectNotFound'] = 'was not found! Try renaming dbconnect.php.default to dbconnect.php';
 	$lang['SettingsNotFound'] = 'was not found! Try renaming settings.php.default to settings.php';
 	$lang['ZeroBytes'] = 'is 0 bytes.';

@@ -124,7 +124,7 @@ class Comment {
 		// setup smarty
 			include_once('internal/Smarty.class.php');
 			$smarty = new Smarty;
-			$smarty->compile_dir = "cache/templates_c/";
+			$smarty->compile_dir = "cache/";
 			$smarty->template_dir = "templates/";
 			$smarty->config_dir = "";
 			$smarty->assign('pligg_language', pligg_language);

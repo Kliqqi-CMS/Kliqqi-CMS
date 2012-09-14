@@ -2,7 +2,7 @@
 session_start();
 include_once('../../internal/Smarty.class.php');
 $main_smarty = new Smarty;
-$main_smarty->compile_dir = "../../cache/templates_c";
+$main_smarty->compile_dir = "../../cache";
 
 include('../../config.php');
 include('../../libs/html1.php');

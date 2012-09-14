@@ -270,11 +270,11 @@ if (!$errors) {
 	echo '<li>Regenerating the totals table</li>';
 	totals_regenerate();
 	
-	echo '<li>Clearing cache/templates_c directory</li>';
+	echo '<li>Clearing /cache directory</li>';
 	include_once('../internal/Smarty.class.php');
 	$smarty = new Smarty;
 	$smarty->config_dir= '';
-	$smarty->compile_dir = "../cache/templates_c";
+	$smarty->compile_dir = "../cache";
 	$smarty->template_dir = "../templates";
 	$smarty->config_dir = "..";
 	$smarty->clear_compiled_tpl();

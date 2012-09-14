@@ -11,8 +11,7 @@ Disallow: /3rdparty/
 Disallow: /admin/
 Disallow: /admin/admin_index.php
 Disallow: /backup/
-Disallow: /cache/templates_c/
-Disallow: /cache/admin_c/
+Disallow: /cache/
 Disallow: /install/
 Disallow: /internal/
 Disallow: /languages/
