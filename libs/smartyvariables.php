@@ -132,7 +132,7 @@ $main_smarty->assign('moderated_total_count', $moderated_total_count);
 //count installed update require modules 
 $res=mysql_query('SELECT id from ' . table_modules . ' where latest_version>version') or die(mysql_error());
 $no_row=mysql_num_rows($res);
-$main_smarty->assign('no_module_update_require', $no_row);
+$main_smarty->assign('in_no_module_update_require', $no_row);
 
 //count uninstalled update required module
 $main_smarty->assign('un_no_module_update_require', $_COOKIE['module_update_require_un']);
