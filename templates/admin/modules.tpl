@@ -21,84 +21,84 @@ $(document).ready(function(){
 <legend>{$module_management_name}</legend>
 <p>{$module_management_desc}</p>
 {if $status neq ""}
-<ul  class="nav nav-tabs">
-		
-		<li class="{if $status eq "installed"}active{/if}" ><a href="admin_modules.php?status=installed" >Installed</a></li>
-			<li  class="{if $status eq "uninstalled"}active{/if}" ><a href="admin_modules.php?status=uninstalled" >Uninstalled</a></li>
-		
-			
-</ul>
-<div class="tab-content" >
-
-
-
-{if $status eq "installed"}
-{if $no_module_update_require neq '0'}
- <div class="alert">
- There are {$no_module_update_require} modules awaiting for update <a href="admin_modules.php?token=1">Click here</a> to view them .
-</div>
+	<ul class="nav nav-tabs">
+		<li class="{if $status eq "installed"}active{/if}" ><a href="admin_modules.php?status=installed">Installed</a></li>
+		<li class="{if $status eq "uninstalled"}active{/if}" ><a href="admin_modules.php?status=uninstalled">Uninstalled</a></li>
+	</ul>
+	<div class="tab-content" >
+		{if $status eq "installed"}
+			{if $no_module_update_require neq '0'}
+				<div class="alert">
+					There are updates available for {$no_module_update_require} modules. <a href="admin_modules.php?token=1">Click here</a> to review them.
+				</div>
+			{/if}
+			<form name="bulk_moderate" method="post">
+				{* 
+				<div class="module_apply">
+					<input type="submit" class="btn btn-primary" name="submit" value="{$btn_apply_change}" id="apply_changes" />
+				</div>
+				<br />
+				*}
+				<table class="table table-bordered" id="contentLeft">
+				<thead>
+					<tr>
+						{* <th style="text-align:center;">Enabled</th> *}
+						<th>Details</th><th>Requires</th>
+						<th>Version</th><th>Homepage</th>
+						<th>Settings</th>
+						<th>Uninstall</th>
+					</tr>
+				</thead>
+				<tbody>
+					{section name=nr1 loop=$module_info}	
+						<tr id="recordsArray_{$module_info[nr1].id}"  style="cursor:move;">
+							{*
+							<td style="text-align:center;vertical-align:middle;">
+								{$module_info[nr1].first_row}
+							</td>
+							*}
+							<td>{$module_info[nr1].dname} {$module_info[nr1].desc}</td>
+							<td style="text-align:center;vertical-align:middle;">{$module_info[nr1].requires}</td>
+							<td style="text-align:center;vertical-align:middle;">{$module_info[nr1].version}</td>
+							<td style="text-align:center;vertical-align:middle;">{$module_info[nr1].homepage_url}</td>
+							<td style="text-align:center;vertical-align:middle;">{$module_info[nr1].settings_url}</td>
+							<td style="text-align:center;vertical-align:middle;">
+								<a class="btn btn-danger btn-mini" href="?action=remove&module={$module_info[nr1].name}">{$btn_module_remove}</a>
+							</td>
+						</tr>
+					{/section}
+				</tbody>
+				</table>    
+			</form>
+		{else if $status eq "uninstalled"}	
+			{if $no_module_update_require neq '0'}
+				<div class="alert">
+					There are updates available for {$no_module_update_require} modules. <a href="admin_modules.php?status=uninstalled&updkey={$updatekey}&token=1">Click here</a> to review them.
+				</div>
+			{/if}
+			<table class="table table-bordered">
+				<thead>
+					<tr>
+						<th>Details</th>
+						<th>Requires</th>
+						<th style="text-align:center;">Version</th>
+						<th style="text-align:center;">Homepage</th>
+						<th style="text-align:center;">Install</th>
+					</tr>
+				</thead>
+				<tbody>	
+					{section name=nr loop=$module_info}	
+						<tr>
+							<td>{$module_info[nr].dname} <br/> {$module_info[nr].desc}</td>
+							<td>{$module_info[nr].requires}</td>
+							<td style="text-align:center;vertical-align:middle;"><span class="label">{$module_info[nr].version}</span></td>
+							<td>{$module_info[nr].homepage_url}</td>
+							<td style="text-align:center;vertical-align:middle;"><a class="btn btn-success btn-mini" href="?action=install&module={$module_info[nr].value}">Install</a></td>
+						</tr>
+					{/section}
+				</tbody>
+			</table>
+		{/if}
+	</div>
 {/if}
-<form name="bulk_moderate" method="post">
-<div class="module_apply">
-<input type="submit" class="btn btn-primary" name="submit" value="{$btn_apply_change}" id="apply_changes" />
-</div>
-<br />
-<table class="table table-bordered" id="contentLeft">
-<thead><tr><th style="text-align:center;">Enabled</th><th>Details</th><th>Requires</th><th>Version</th><th>Homepage</th><th>Settings</th><th>Uninstall</th></tr></thead><tbody>
-{section name=nr1 loop=$module_info}	
-<tr id="recordsArray_{$module_info[nr1].id}"  style="cursor:move;">
-<td style="text-align:center;vertical-align:middle;">
-{$module_info[nr1].first_row}
-</td>
-<td>{$module_info[nr1].dname} {$module_info[nr1].desc}</td>
-<td style="text-align:center;vertical-align:middle;">{$module_info[nr1].requires}</td>
-<td style="text-align:center;vertical-align:middle;">{$module_info[nr1].version}</td>
-<td style="text-align:center;vertical-align:middle;">{$module_info[nr1].homepage_url}</td>
-<td style="text-align:center;vertical-align:middle;">{$module_info[nr1].settings_url}</td>
-<td style="text-align:center;vertical-align:middle;">
-				<a class="btn btn-danger btn-mini" href="?action=remove&module={$module_info[nr1].name}">{$btn_module_remove}</a>
-</td>
-</tr>
-{/section}
-</tbody>
-</table>    
-</form>
-{else if $status eq "uninstalled"}	
-
-{if $no_module_update_require neq '0'}
- <div class="alert">
- There are {$no_module_update_require} modules awaiting for update <a href="admin_modules.php?status=uninstalled&updkey={$updatekey}&token=1">Click here</a> to view them .
-</div>
-{/if}
-
-<div id="uninstalled" class="active tab-pane fade in">
-<div id="uninstalled" class="tab-pane fade in">    
-<table class="table table-bordered">
-<thead>
-<tr><th>Details</th>
-<th>Requires</th>
-<th style="text-align:center;">Version</th>
-<th style="text-align:center;">Homepage</th>
-<th style="text-align:center;">Install</th></tr>
-</thead>
-<tbody>	
-{section name=nr loop=$module_info}	
-<tr>
-<td>{$module_info[nr].dname} <br/> {$module_info[nr].desc}</td>
-<td>{$module_info[nr].requires}</td>
-<td style="text-align:center;vertical-align:middle;"><span class="label">{$module_info[nr].version}</span></td>
-<td>{$module_info[nr].homepage_url}</td>
-<td style="text-align:center;vertical-align:middle;"><a class="btn btn-success btn-mini" href="?action=install&module={$module_info[nr].value}">Install</a></td></tr>
-{/section}
-
-</tbody></table>
-
-</div>
-
-</div>
-{/if}
-</div>
-{/if}
-
-
 <!--/modules.tpl -->

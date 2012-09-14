@@ -1,7 +1,7 @@
 <?php
 	$module_info['name'] = 'Dropbox Backup';
 	$module_info['desc'] = 'This module allows you to send backups of your site to your Dropbox account.';
-	$module_info['version'] = 0.1;
+	$module_info['version'] = 1.1;
 	$module_info['settings_url'] = '../module.php?module=dropbox_backup';
 	$module_info['update_url'] = 'http://forums.pligg.com/versioncheck.php?product=dropbox_backup';
 	$module_info['homepage_url'] = 'http://forums.pligg.com/free-modules/22701-dropbox-backup.html';
