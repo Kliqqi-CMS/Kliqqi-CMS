@@ -164,7 +164,7 @@ function validate_all_user_action(){
 				<a href="{$my_base_url}{$my_pligg_base}/story.php?id={$template_comments[id].comment_link_id}#c{$template_comments[id].comment_id}" title="{$template_comments[id].comment_content_long|truncate:50:"...":true}">{$template_comments[id].comment_content}</a>
 				<input type='hidden' name='old[{$template_comments[id].comment_id}]' id="comment-{$template_comments[id].comment_id}-old" value='{$template_comments[id].comment_status}'>
 			</td>
-			<td >{$template_comments[id].comment_date}</td>
+			<td width="240px">{$template_comments[id].comment_date}</td>
 			<td style="text-align:center;vertical-align:middle;">{$template_comments[id].comment_status}</td>
 			
 		</tr>
