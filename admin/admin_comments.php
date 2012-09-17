@@ -121,44 +121,42 @@ if($canIhaveAccess == 1) {
 	$main_smarty->assign('navbar_where', $navwhere);
 	$main_smarty->assign('posttitle', " / " . $main_smarty->get_config_vars('PLIGG_Visual_Header_AdminPanel'));
 	
-	if (isset($_GET['action']) && sanitize($_GET['action'], 3) == "bulkmod" && isset($_POST['submit'])) {
+	if (isset($_GET['action']) && sanitize($_GET['action'], 3) == "bulkmod" && isset($_POST['admin_acction'])) {
 		$CSRF->check_expired('comments_edit');
 		$killspammed = array();
+		$admin_acction=$_POST['admin_acction'];
+		
 		if ($CSRF->check_valid(sanitize($_POST['token'], 3), 'comments_edit')){
-			$comment = array();
-			foreach ($_POST["comment"] as $k => $v) {
-				$comment[intval($k)] = sanitize($v, 3);
-			}
-			foreach($comment as $key => $value) {
-				if ($value == "published") {
+			
+			
+			
+			foreach($_POST["comment"] as $key => $value) {
+				
+				$comment_status=$db->get_var('select comment_status from ' . table_comments . '  WHERE comment_id = "'.$key.'"');
+				
+				if($comment_status!=$admin_acction){
+				
+				if ($admin_acction == "published") {
 					$db->query($sql='UPDATE `' . table_comments . '` SET `comment_status` = "published" WHERE `comment_id` = "'.$key.'"');
 				}
-				elseif ($value == "moderated") {
+				elseif ($admin_acction == "moderated") {
 					$db->query($sql='UPDATE `' . table_comments . '` SET `comment_status` = "moderated" WHERE `comment_id` = "'.$key.'"');
 				}
-				elseif ($value == "discard" || $value == "delete") {
+				elseif ($admin_acction == "discard" || $admin_acction == "delete") {
 					$db->query($sql='UPDATE `' . table_comments . '` SET `comment_status` = "discard" WHERE `comment_id` = "'.$key.'"');
 
 				   	$vars = array('comment_id' => $key);
 				   	check_actions('comment_discard', $vars);
 				}
-				elseif ($value == "spam" && !$killspammed[$user_id]) {
+				elseif ($admin_acction == "spam" && !$killspammed[$user_id]) {
 					$user_id = $db->get_var("SELECT comment_user_id FROM `" . table_comments . "` WHERE `comment_id` = ".$key.";");
 #					$db->query($sql='UPDATE `' . table_comments . '` SET `comment_status` = "spam" WHERE `comment_id` = "'.$key.'"');
 					killspam($user_id);
 					$killspammed[$user_id] = 1;
 				}
-
-				$comment = new Comment;
-				$comment->id=$key;
-				$comment->read();
+                }
+						
 			
-				$link = new Link;
-				$link->id=$comment->link;
-				$link->read();
-				$link->recalc_comments();
-				$link->store();
-				$link='';
 			}
 			header("Location: ".my_pligg_base."/admin/admin_comments.php?page=".sanitize($_GET['page'],3));
 			die();
