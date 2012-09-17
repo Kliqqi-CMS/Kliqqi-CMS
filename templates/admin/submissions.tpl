@@ -82,7 +82,7 @@ function validate_all_user_action(){
 
 <table class="table-condensed">
 	<tr>
-		<td>
+		<td width="30%">
 			<div class="btn-group pull">
 				<a class="btn dropdown-toggle" href="#" data-toggle="dropdown">
 					<i id="selected_action"></i> {#PLIGG_Visual_AdminPanel_Apply_Changes#} <span class="caret"></span>
@@ -96,7 +96,7 @@ function validate_all_user_action(){
 			</div>
 		</td>
 		<form action="{$my_base_url}{$my_pligg_base}/admin/admin_links.php" method="get">
-		<td>
+		<td align="right" width="30%">
 			<div class="input-append">
 				<input type="hidden" name="mode" value="search">
 				{if isset($templatelite.get.keyword) && $templatelite.get.keyword neq ""}
@@ -108,7 +108,7 @@ function validate_all_user_action(){
 				<input type="text" size="30" class="span7" name="keyword" value="{$searchboxtext}" onfocus="if(this.value == '{$searchboxtext}') {ldelim}this.value = '';{rdelim}" onblur="if (this.value == '') {ldelim}this.value = '{$searchboxtext}';{rdelim}"><button type="submit" class="btn">{#PLIGG_Visual_Search_Go#}</button>
 			</div>
 		</td>
-		<td>
+		<td align="right" width="20%">
 			<select name="filter" style="margin-right:10px;"onchange="this.form.submit()">
 				<option value="all" {if $templatelite.get.filter == "all"} selected="selected" {/if}>{#PLIGG_Visual_AdminPanel_All#}</option>
 				<option value="published" {if $templatelite.get.filter == "published"} selected="selected" {/if}>{#PLIGG_Visual_AdminPanel_Published#}</option>
@@ -121,7 +121,7 @@ function validate_all_user_action(){
 				<option value="week" {if $templatelite.get.filter == "week"} selected="selected" {/if}>{#PLIGG_Visual_AdminPanel_Week#}</option>
 			</select>
 		</td>
-		<td>
+		<td align="right" width="20%">
 			<select name="pagesize" onchange="this.form.submit()">
 				<option value="15" {if isset($pagesize) && $pagesize == 15}selected{/if}>Show 15</option>
 				<option value="30" {if isset($pagesize) && $pagesize == 30}selected{/if}>Show 30</option>
@@ -132,10 +132,11 @@ function validate_all_user_action(){
 		</td>
 		</form>
         
-<!--<form name="bulk_moderate" action="{$my_base_url}{$my_pligg_base}/admin/admin_links.php?action=bulkmod&page={$templatelite.get.page|sanitize:2}" method="post">-->
-		<!--<td style="float:right;"><input type="submit" class="btn btn-primary" name="submit" onclick="return confirm_spam()" value="{#PLIGG_Visual_AdminPanel_Apply_Changes#}" /></td>-->
+
 	</tr>
 </table>
+<br />
+
 <form name="bulk_moderate" id="user_list_form" action="{$my_base_url}{$my_pligg_base}/admin/admin_links.php?action=bulkmod&page={$templatelite.get.page|sanitize:2}" method="post" onsubmit="return validate_all_user_action()">
 <input type="hidden" name="admin_acction"  value="" id="admin_action"/>
 {$hidden_token_admin_links_edit}

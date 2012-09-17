@@ -82,27 +82,11 @@ function validate_all_user_action(){
 		<a href="admin_users.php?filter=disabled">Click here to review the {if $moderated_users_count eq "1"}acccount{else}accounts{/if}.</a>
 	</div>
 {/if}
-<form action="{$my_base_url}{$my_pligg_base}/admin/admin_users.php" method="get" >
-	<table border="0">
-		<tr>
-			<td>
-				<div class="input-append">
-					<input type="hidden" name="mode" value="search">
-					{if isset($templatelite.get.keyword) && $templatelite.get.keyword neq ""}
-						{assign var=searchboxtext value=$templatelite.get.keyword|sanitize:2}
-					{else}
-						{assign var=searchboxtext value=#PLIGG_Visual_Search_SearchDefaultText#}			
-					{/if}
-					<input type="text" size="30" class="span7" name="keyword" value="{$searchboxtext}" onfocus="if(this.value == '{$searchboxtext}') {ldelim}this.value = '';{rdelim}" onblur="if (this.value == '') {ldelim}this.value = '{$searchboxtext}';{rdelim}"><button type="submit" class="btn">{#PLIGG_Visual_Search_Go#}</button>
-				</div>
-			</td>
-		</tr>
-	</table>
-</form>
+
 <form action="{$my_base_url}{$my_pligg_base}/admin/admin_users.php" method="get" >
 <table border="0" width="100%">
 <tr>
-	<td width="60%">
+	<td  width="30%">
 		<div class="btn-group pull">
 			<a class="btn dropdown-toggle" href="#" data-toggle="dropdown">
 			<i id="selected_action"></i>
@@ -131,7 +115,22 @@ function validate_all_user_action(){
 			</ul>
 		</div>
 	</td>
-	<td  align="right" width="50">
+    <td align="right"  width="30%"><table border="0">
+		<tr>
+			<td>
+				<div class="input-append">
+					<input type="hidden" name="mode" value="search">
+					{if isset($templatelite.get.keyword) && $templatelite.get.keyword neq ""}
+						{assign var=searchboxtext value=$templatelite.get.keyword|sanitize:2}
+					{else}
+						{assign var=searchboxtext value=#PLIGG_Visual_Search_SearchDefaultText#}			
+					{/if}
+					<input type="text" size="30" class="span7" name="keyword" value="{$searchboxtext}" onfocus="if(this.value == '{$searchboxtext}') {ldelim}this.value = '';{rdelim}" onblur="if (this.value == '') {ldelim}this.value = '{$searchboxtext}';{rdelim}"><button type="submit" class="btn">{#PLIGG_Visual_Search_Go#}</button>
+				</div>
+			</td>
+		</tr>
+	</table></td>
+	<td  align="right"  width="20%">
 		<select name="filter" style="margin-right:10px;"onchange="this.form.submit()">
 			<option value="">-- User Level --</option>
 			<option value="admin" {if $templatelite.get.filter == "admin"} selected="selected" {/if}>Admin</option>
@@ -140,7 +139,7 @@ function validate_all_user_action(){
 			<option value="spammer" {if $templatelite.get.filter == "spammer"} selected="selected" {/if}>Spammer</option>
 		</select>
 	</td>
-	<td align="right">
+	<td align="right" width="20%">
 		<select name="pagesize" onchange="this.form.submit()">
 			<option value="15" {if isset($pagesize) && $pagesize == 15}selected{/if}>Show 15</option>
 			<option value="30" {if isset($pagesize) && $pagesize == 30}selected{/if}>Show 30</option>

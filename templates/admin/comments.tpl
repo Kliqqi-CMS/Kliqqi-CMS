@@ -142,7 +142,7 @@ function validate_all_user_action(){
 <form name="bulk_moderate" id="user_list_form" action="{$my_base_url}{$my_pligg_base}/admin/admin_comments.php?action=bulkmod&page={$templatelite.get.page|sanitize:2}" method="post">
 <input type="hidden" name="admin_acction"  value="" id="admin_action"/>
 {$hidden_token_comments_edit}
-<table class="table table-bordered table-condensed">
+<table class="table table-bordered table-condensed" width="100%" >
 	<thead>
 		<tr>  <th> <input type='checkbox'  id="selectall_user_ed" name="all1"  ></th>
 			<th style="width:125px;">{#PLIGG_Visual_View_Links_Author#}</th>
@@ -157,14 +157,14 @@ function validate_all_user_action(){
 		<tr {if $template_comments[id].comment_status=='moderated'}class="tr_moderated"{/if}>
         <td><input type="checkbox" name="comment[{$template_comments[id].comment_id}]" class="enabled_disable"  value="1" usernameval="{$template_comments[id].comment_author}"/></td>
 			<td><a href="{$my_base_url}{$my_pligg_base}/admin/admin_users.php?mode=view&user={$template_comments[id].comment_author}" title="{$template_comments[id].comment_author}'s Profile" id="comment-{$template_comments[id].comment_id}-author">{$template_comments[id].comment_author}</a></td>
-			<td>
+			<td style="text-align:justify;">
 				<div style="margin:0 5px 0 0;padding:0;float:left;">
 					<a href="{$my_base_url}{$my_pligg_base}/edit.php?id={$template_comments[id].comment_link_id}&commentid={$template_comments[id].comment_id}"><i class="icon icon-edit" title="{#PLIGG_Visual_AdminPanel_Page_Edit#}" alt="{#PLIGG_Visual_AdminPanel_Page_Edit#}"></i></a>
 				</div>
 				<a href="{$my_base_url}{$my_pligg_base}/story.php?id={$template_comments[id].comment_link_id}#c{$template_comments[id].comment_id}" title="{$template_comments[id].comment_content_long|truncate:50:"...":true}">{$template_comments[id].comment_content}</a>
 				<input type='hidden' name='old[{$template_comments[id].comment_id}]' id="comment-{$template_comments[id].comment_id}-old" value='{$template_comments[id].comment_status}'>
 			</td>
-			<td width="140px">{$template_comments[id].comment_date}</td>
+			<td >{$template_comments[id].comment_date}</td>
 			<td style="text-align:center;vertical-align:middle;">{$template_comments[id].comment_status}</td>
 			
 		</tr>
