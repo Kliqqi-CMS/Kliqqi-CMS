@@ -10,8 +10,6 @@ function submit_list_form(){
 	
 	val_action=$("#admin_action").val();
 	
-	
-	
 	if(val_action=="spam"){
 		var usernames ="";
 		$('.enabled_disable:checked').each(function(i){
@@ -24,7 +22,6 @@ function submit_list_form(){
 		}
 	}
 	
-
 	document.getElementById("user_list_form").submit();
 	
 	//for(x in document.getElementById("user_list_form"))
@@ -49,28 +46,24 @@ $(function(){
 });
 
 function set_admin_action(acc){
-
 	$("#admin_action").val(acc);
-	
 	submit_list_form(); 
 }
 
 function validate_all_user_action(){
-	
 	if($("#admin_action").val()==""){
 		alert("select news list");
 		return false;
 	}
-	
 }
 </script>
 {/literal}
 <legend>
-{if $templatelite.get.user}
-	{$templatelite.get.user|sanitize:2}'s {#PLIGG_Visual_TopUsers_TH_News#}
-{else}
-	{#PLIGG_Visual_AdminPanel_Links#}
-{/if}
+	{if $templatelite.get.user}
+		{$templatelite.get.user|sanitize:2}'s {#PLIGG_Visual_TopUsers_TH_News#}
+	{else}
+		{#PLIGG_Visual_AdminPanel_Links#}
+	{/if}
 </legend>
 {if $moderated_submissions_count neq "0"}
 	<div class="alert">
@@ -78,7 +71,6 @@ function validate_all_user_action(){
 		<a href="admin_links.php?filter=other">Click here to review {if $moderated_submissions_count eq "1"}it{else}them{/if}.</a>
 	</div>
 {/if}
-
 
 <table class="table-condensed">
 	<tr>
@@ -131,12 +123,9 @@ function validate_all_user_action(){
 			</select>
 		</td>
 		</form>
-        
-
 	</tr>
 </table>
 <br />
-
 <form name="bulk_moderate" id="user_list_form" action="{$my_base_url}{$my_pligg_base}/admin/admin_links.php?action=bulkmod&page={$templatelite.get.page|sanitize:2}" method="post" onsubmit="return validate_all_user_action()">
 <input type="hidden" name="admin_acction"  value="" id="admin_action"/>
 {$hidden_token_admin_links_edit}
@@ -150,33 +139,30 @@ function validate_all_user_action(){
 	</tr>
 	{section name=id loop=$template_stories}
 	<tr {if $template_stories[id].link_status=='moderated'}class="tr_moderated"{/if}>
-		
         <td style="text-align:center;vertical-align:middle;">
-					{if $userlist[nr].user_level neq 'admin'}      
-						<input type="checkbox" name="link[{$template_stories[id].link_id}]" class="enabled_disable"  value="1" usernameval="{$template_stories[id].link_author}"/>
-					{/if} 
-					</td>
+			{if $userlist[nr].user_level neq 'admin'}      
+				<input type="checkbox" name="link[{$template_stories[id].link_id}]" class="enabled_disable"  value="1" usernameval="{$template_stories[id].link_author}"/>
+			{/if} 
+		</td>
         <td><a href="{$my_base_url}{$my_pligg_base}/admin/admin_users.php?mode=view&user={$template_stories[id].link_author}" title="{$template_stories[id].link_author}'s Articles" id="link-{$template_stories[id].link_id}-author">{$template_stories[id].link_author}</a></td>
 		<td>
 			<div style="margin:0 6px 0 0;padding:0;float:left;">
 				<a href='{$my_pligg_base}/editlink.php?id={$template_stories[id].link_id}'><i class="icon icon-edit" title="{#PLIGG_Visual_AdminPanel_Page_Edit#}" alt="{#PLIGG_Visual_AdminPanel_Page_Edit#}"></i></a>
 			</div>
 			<a href="{$my_base_url}{$my_pligg_base}/story.php?title={$template_stories[id].link_title_url}" title="{$template_stories[id].link_title|truncate:50:"...":true}" >{$template_stories[id].link_title}</a>
-			
 		</td>
-		<td style="text-align:center;vertical-align:middle;"> {$template_stories[id].link_date} </td>
+		<td style="text-align:center;vertical-align:middle;">{$template_stories[id].link_date}</td>
 		<td style="text-align:center;vertical-align:middle;">
-        {if $template_stories[id].link_status=='queued'} 
-       	 {#PLIGG_Visual_AdminPanel_Upcoming#}
-        {elseif $template_stories[id].link_status=='published'}
-         {#PLIGG_Visual_AdminPanel_Published#}
-        {elseif $template_stories[id].link_status=='discard'}
-         {#PLIGG_Visual_AdminPanel_Discarded#}
-        {elseif $template_stories[id].link_status=='spam'} 
-         {#PLIGG_Visual_AdminPanel_Spam#}
-        {/if}
+			{if $template_stories[id].link_status=='queued'} 
+				{#PLIGG_Visual_AdminPanel_Upcoming#}
+			{elseif $template_stories[id].link_status=='published'}
+				{#PLIGG_Visual_AdminPanel_Published#}
+			{elseif $template_stories[id].link_status=='discard'}
+				{#PLIGG_Visual_AdminPanel_Discarded#}
+			{elseif $template_stories[id].link_status=='spam'} 
+				{#PLIGG_Visual_AdminPanel_Spam#}
+			{/if}
         </td>
-		
 	</tr>	
 	{/section}
 </table>

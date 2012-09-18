@@ -1,4 +1,4 @@
-﻿<!-- users.tpl -->
+<!-- users.tpl -->
 {literal}
 <script type="text/javascript" language="javascript">
 function submit_list_form(){
@@ -84,72 +84,72 @@ function validate_all_user_action(){
 {/if}
 
 <form action="{$my_base_url}{$my_pligg_base}/admin/admin_users.php" method="get" >
-<table border="0" width="100%">
-<tr>
-	<td  width="30%">
-		<div class="btn-group pull">
-			<a class="btn dropdown-toggle" href="#" data-toggle="dropdown">
-			<i id="selected_action"></i>
-			{#PLIGG_Visual_AdminPanel_Apply_Changes#}
-			<span class="caret"></span>
-			</a>
-			<ul class="dropdown-menu">
-				<li>
-					<a  onclick="set_admin_action('1')" href="#">
-					<i class="icon-user"></i>
-					{#PLIGG_Visual_User_Profile_Enabled#}
-				</a>
-				</li>
-				<li>
-					<a  onclick="set_admin_action('2')" href="#">
-					<i class="icon-trash"></i>
-					{#PLIGG_Visual_User_Profile_Disabled#}
-					</a>
-				</li>
-				<li>
-					<a onclick="set_admin_action('3')" href="#">
-					<i class="icon-ban-circle"></i>
-					{#PLIGG_Visual_KillSpam#}
-					</a>
-				</li>
-			</ul>
-		</div>
-	</td>
-    <td align="right"  width="30%"><table border="0">
+	<table border="0" width="100%">
 		<tr>
-			<td>
-				<div class="input-append">
-					<input type="hidden" name="mode" value="search">
-					{if isset($templatelite.get.keyword) && $templatelite.get.keyword neq ""}
-						{assign var=searchboxtext value=$templatelite.get.keyword|sanitize:2}
-					{else}
-						{assign var=searchboxtext value=#PLIGG_Visual_Search_SearchDefaultText#}			
-					{/if}
-					<input type="text" size="30" class="span7" name="keyword" value="{$searchboxtext}" onfocus="if(this.value == '{$searchboxtext}') {ldelim}this.value = '';{rdelim}" onblur="if (this.value == '') {ldelim}this.value = '{$searchboxtext}';{rdelim}"><button type="submit" class="btn">{#PLIGG_Visual_Search_Go#}</button>
+			<td  width="30%">
+				<div class="btn-group pull">
+					<a class="btn dropdown-toggle" href="#" data-toggle="dropdown">
+						<i id="selected_action"></i>
+						{#PLIGG_Visual_AdminPanel_Apply_Changes#}
+						<span class="caret"></span>
+					</a>
+					<ul class="dropdown-menu">
+						<li>
+							<a  onclick="set_admin_action('1')" href="#">
+								<i class="icon-user"></i>
+								{#PLIGG_Visual_User_Profile_Enabled#}
+							</a>
+						</li>
+						<li>
+							<a  onclick="set_admin_action('2')" href="#">
+								<i class="icon-trash"></i>
+								{#PLIGG_Visual_User_Profile_Disabled#}
+							</a>
+						</li>
+						<li>
+							<a onclick="set_admin_action('3')" href="#">
+								<i class="icon-ban-circle"></i>
+								{#PLIGG_Visual_KillSpam#}
+							</a>
+						</li>
+					</ul>
 				</div>
 			</td>
+			<td align="right"  width="30%"><table border="0">
+				<tr>
+					<td>
+						<div class="input-append">
+							<input type="hidden" name="mode" value="search">
+							{if isset($templatelite.get.keyword) && $templatelite.get.keyword neq ""}
+								{assign var=searchboxtext value=$templatelite.get.keyword|sanitize:2}
+							{else}
+								{assign var=searchboxtext value=#PLIGG_Visual_Search_SearchDefaultText#}			
+							{/if}
+							<input type="text" size="30" class="span7" name="keyword" value="{$searchboxtext}" onfocus="if(this.value == '{$searchboxtext}') {ldelim}this.value = '';{rdelim}" onblur="if (this.value == '') {ldelim}this.value = '{$searchboxtext}';{rdelim}"><button type="submit" class="btn">{#PLIGG_Visual_Search_Go#}</button>
+						</div>
+					</td>
+				</tr>
+			</table></td>
+			<td  align="right"  width="20%">
+				<select name="filter" style="margin-right:10px;"onchange="this.form.submit()">
+					<option value="">-- User Level --</option>
+					<option value="admin" {if $templatelite.get.filter == "admin"} selected="selected" {/if}>Admin</option>
+					<option value="moderator" {if $templatelite.get.filter == "moderator"} selected="selected" {/if}>Moderator</option>
+					<option value="normal" {if $templatelite.get.filter == "normal"} selected="selected" {/if}>Normal</option>
+					<option value="spammer" {if $templatelite.get.filter == "spammer"} selected="selected" {/if}>Spammer</option>
+				</select>
+			</td>
+			<td align="right" width="20%">
+				<select name="pagesize" onchange="this.form.submit()">
+					<option value="15" {if isset($pagesize) && $pagesize == 15}selected{/if}>Show 15</option>
+					<option value="30" {if isset($pagesize) && $pagesize == 30}selected{/if}>Show 30</option>
+					<option value="50" {if isset($pagesize) && $pagesize == 50}selected{/if}>Show 50</option>
+					<option value="100" {if isset($pagesize) && $pagesize == 100}selected{/if}>Show 100</option>
+					<option value="200" {if isset($pagesize) && $pagesize == 200}selected{/if}>Show 200</option>
+				</select>
+			</td>
 		</tr>
-	</table></td>
-	<td  align="right"  width="20%">
-		<select name="filter" style="margin-right:10px;"onchange="this.form.submit()">
-			<option value="">-- User Level --</option>
-			<option value="admin" {if $templatelite.get.filter == "admin"} selected="selected" {/if}>Admin</option>
-			<option value="moderator" {if $templatelite.get.filter == "moderator"} selected="selected" {/if}>Moderator</option>
-			<option value="normal" {if $templatelite.get.filter == "normal"} selected="selected" {/if}>Normal</option>
-			<option value="spammer" {if $templatelite.get.filter == "spammer"} selected="selected" {/if}>Spammer</option>
-		</select>
-	</td>
-	<td align="right" width="20%">
-		<select name="pagesize" onchange="this.form.submit()">
-			<option value="15" {if isset($pagesize) && $pagesize == 15}selected{/if}>Show 15</option>
-			<option value="30" {if isset($pagesize) && $pagesize == 30}selected{/if}>Show 30</option>
-			<option value="50" {if isset($pagesize) && $pagesize == 50}selected{/if}>Show 50</option>
-			<option value="100" {if isset($pagesize) && $pagesize == 100}selected{/if}>Show 100</option>
-			<option value="200" {if isset($pagesize) && $pagesize == 200}selected{/if}>Show 200</option>
-		</select>
-	</td>
-</tr>
-</table>
+	</table>
 </form>
 
 {if isset($usererror)}
