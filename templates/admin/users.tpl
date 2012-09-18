@@ -162,9 +162,7 @@ function validate_all_user_action(){
 	<table class="table table-bordered table-bordered table-condensed tablesorter" id="tablesorter-userTable">
 		<thead>
 			<tr>
-			   <th style="text-align:center; vertical-align:middle;">
-				 <input type='checkbox'  id="selectall_user_ed" name="all1"  >
-				</th>
+				<th style="text-align:center;vertical-align:middle;"><input type='checkbox' id="selectall_user_ed" name="all1"></th>
 				<th style="width:40px;text-align:center;">ID</th>
 				<th>{#PLIGG_Visual_Login_Username#}</th>
 				<th style="text-align:center;">{#PLIGG_Visual_View_User_Level#}</th>

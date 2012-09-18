@@ -142,12 +142,11 @@ function validate_all_user_action(){
 {$hidden_token_admin_links_edit}
 <table class="table table-bordered table-condensed">
 	<tr>
-    <th> <input type='checkbox'  id="selectall_user_ed" name="all1"  ></th>
+		<th style="text-align:center;vertical-align:middle;"><input type='checkbox' id="selectall_user_ed" name="all1"></th>
 		<th>{#PLIGG_Visual_View_Links_Author#}</th>
 		<th>{#PLIGG_Visual_View_Links_New_Window#}</th>
 		<th nowrap style="text-align:center;">{#PLIGG_Visual_AdminPanel_Group_Date#}</th>
 		<th nowrap style="text-align:center;">{#PLIGG_Visual_View_Links_Status#}</th>
-	
 	</tr>
 	{section name=id loop=$template_stories}
 	<tr {if $template_stories[id].link_status=='moderated'}class="tr_moderated"{/if}>

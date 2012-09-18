@@ -144,12 +144,12 @@ function validate_all_user_action(){
 {$hidden_token_comments_edit}
 <table class="table table-bordered table-condensed" width="100%" >
 	<thead>
-		<tr>  <th> <input type='checkbox'  id="selectall_user_ed" name="all1"  ></th>
+		<tr>
+			<th style="text-align:center;vertical-align:middle;"><input type='checkbox' id="selectall_user_ed" name="all1" ></th>
 			<th style="width:125px;">{#PLIGG_Visual_View_Links_Author#}</th>
 			<th>{#PLIGG_MiscWords_Comment#}</th>
 			<th>{#PLIGG_Visual_User_NewsSent#}</th>
 			<th nowrap style="text-align:center;">{#PLIGG_Visual_View_Links_Status#}</th>
-			
 		</tr>
 	</thead>
 	{if isset($template_comments)}
