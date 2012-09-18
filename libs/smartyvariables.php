@@ -129,7 +129,7 @@ $main_smarty->assign('error_count', $error_count);
 $moderated_total_count = $moderated_groups_count+$moderated_users_count+$moderated_comments_count+$moderated_submissions_count+$error_count;
 $main_smarty->assign('moderated_total_count', $moderated_total_count);
 
-//count installed update require modules 
+//count installed module with updates available
 $res_update_mod=mysql_query('SELECT folder from ' . table_modules . ' where latest_version>version') or die(mysql_error());
 if(mysql_num_rows($res_update_mod)>0){
 		$num_update_mod=0;
@@ -140,10 +140,10 @@ while($modules_folders=mysql_fetch_array($res_update_mod)){
 }
 $main_smarty->assign('in_no_module_update_require', $num_update_mod);
 
-//count uninstalled update required moduleod
+//count uninstalled modules with updates available
 $main_smarty->assign('un_no_module_update_require', $_COOKIE['module_update_require_un']);
 
-//count total update required
+//count total module updates required
 $total_update_required_mod=$num_update_mod+$_COOKIE['module_update_require_un'];
 $main_smarty->assign('total_update_required_mod', $total_update_required_mod);
 
