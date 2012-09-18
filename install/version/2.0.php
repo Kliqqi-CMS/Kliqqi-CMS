@@ -4,53 +4,18 @@
 // Report all PHP errors
 // error_reporting(E_ALL);
 
-$new_version = '201';
+$new_version = '200';
 
 // Check if you need to run the one time upgrade to Pligg 2.0
 if ($old_version < $new_version) {
 
 	//echo $lang['UpgradingTables'] . '<br />';
 	echo '<li>Performing one-time Pligg 2.0 Upgrade</li><ul>';
-	
-	// Making modules orderable
-	$tableexists = checkfortable(table_block);
-	if (!$tableexists) {
-		$sql = "CREATE TABLE `" . table_block . "` (
-			`bid` int(11) NOT NULL AUTO_INCREMENT,
-  			`name` varchar(250) NOT NULL,
-  			`callback_tpl` varchar(250) NOT NULL,
- 			`enabled` int(11) NOT NULL,
- 			`region` varchar(250) NOT NULL,
-  			`weight` int(11) NOT NULL,
- 			`module` varchar(250) NOT NULL,
- 			 PRIMARY KEY (`bid`)
-			) ENGINE = MyISAM;";
-		$db->query($sql);
-		
-		$sql = "INSERT INTO `" . table_block . "` ( `name` , `callback_tpl`, `enabled`, `region`, `weight`, `module` ) VALUES ('Sidebar Comments', 'widget_sidebar_comments',1,'',1,'sidebar_comments');";
-		$db->query($sql);
-		
-		$sql = "INSERT INTO `" . table_block . "` ( `name` , `callback_tpl`, `enabled`, `region`, `weight`, `module` ) VALUES ('Sidebar Stories', 'widget_sidebar_stories',1,'',2,'sidebar_stories');";
-		$db->query($sql);
-		
-		$sql = "INSERT INTO `" . table_block . "` ( `name` , `callback_tpl`, `enabled`, `region`, `weight`, `module` ) VALUES ('Sidebar Saved', 'widget_sidebar_saved',1,'',3,'sidebar_saved');";
-		$db->query($sql);
-		
-		$sql = "INSERT INTO `" . table_block . "` ( `name` , `callback_tpl`, `enabled`, `region`, `weight`, `module` ) VALUES ('Tag Cloud', 'tags.tpl',1,'',4,'template_include');";
-		$db->query($sql);
-		
-	}
-	
-	
+
 	$sql = "ALTER TABLE `" . table_modules . "` ADD  `weight` INT NOT NULL";
 	$db->query($sql);
+	echo '<li>Order modules via the Admin Panel</li>';
 	
-	echo '<li>Order modules via the admin panel</li>';
-	
-	
-
-
-		
 	// Change default captcha to SolveMedia
 	$sql = "UPDATE `" . table_misc_data . "` SET `data` = 'solvemedia' WHERE `pligg_misc_data`.`name` = 'captcha_method';";
 	$db->query($sql);
