@@ -94,7 +94,7 @@ Function ProFeed($prourl,$proitems) {
 		{
 			$pro_url = $rss->channel->item[$i]->link;
 			$pro_title = $rss->channel->item[$i]->title;
-			$pro_desc = $rss->channel->item[$i]->description;
+			$pro_desc = $rss->channel->item[$i]->excerpt;
 			$pro_price = $rss->channel->item[$i]->price;
 			$pro_thumb = $rss->channel->item[$i]->thumbnail;
 			echo '<div class="pro_item">';
