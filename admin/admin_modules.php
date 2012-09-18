@@ -63,6 +63,7 @@ if($status=="uninstalled")
 		}
 	}
 	
+	
 	// For each of the folders found, make sure they're not already in the database
 	$modules = $db->get_results('SELECT * from ' . table_modules . ' order by name asc;');
 	if($modules)
@@ -73,7 +74,7 @@ if($status=="uninstalled")
 			{
 				foreach($foundfolders as $key => $value)
 				{
-					if ($module->folder == $value)
+					if ($module->folder == $value  && file_exists(mnmmodules . $module->folder))
 					{
 						unset($foundfolders[$key]);
 					}
@@ -99,6 +100,7 @@ if($status=="uninstalled")
 			}
 		}
 	}
+	
 	
 	$module_info_data=array();
 	if(isset($foundfolders) && is_array($foundfolders))
@@ -182,8 +184,7 @@ if($status=="uninstalled")
 				} else {
 					$module_info_data[$i]['requires']="&nbsp;";
 				}
-			}
-			
+				
 			if(isset($module_info['homepage_url']))
 			{
 				$homepage_url = $module_info['homepage_url'];
@@ -193,6 +194,10 @@ if($status=="uninstalled")
 			}
 			
 			$i++;	
+				
+			}
+			
+			
 		}
 	}
 
