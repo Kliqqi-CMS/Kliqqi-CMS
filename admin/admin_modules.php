@@ -1,5 +1,5 @@
 <?php
-
+ob_start();
 include_once('../internal/Smarty.class.php');
 $main_smarty = new Smarty;
 
@@ -209,10 +209,6 @@ if($status=="uninstalled")
 } elseif($status=='installed') {
 	// Installed Modules
 	
-	$res=mysql_query('SELECT id from ' . table_modules . ' where latest_version>version') or die(mysql_error());
-	$no_row=mysql_num_rows($res);
-	$main_smarty->assign('no_module_update_require', $no_row);
-
 	$main_smarty->assign('btn_apply_change', $main_smarty->get_config_vars('PLIGG_Visual_AdminPanel_Apply_Changes'));
 	$main_smarty->assign('btn_module_remove', $main_smarty->get_config_vars('PLIGG_Visual_AdminPanel_Module_Remove'));
 
@@ -220,17 +216,24 @@ if($status=="uninstalled")
     if($token==1)
 	{
 		$modules = $db->get_results('SELECT * from ' . table_modules . ' where latest_version>version order by weight asc;');
+		
 	} else {	
 		$modules = $db->get_results('SELECT * from ' . table_modules . ' order by weight asc;');
 	}
 	
+	
+	
 	if($modules)
 	{
+		
 		$module_info_data=array();
-		$i=0;
+		 $i=0;
+		
 		foreach($modules as $module) {
+					
 			if (file_exists(mnmmodules . $module->folder))
 			{
+				
 				$module_info_data[$i]['id']=$module->id;
 				$module_info_data[$i]['enabled']= $module->enabled;
 				$module_info_data[$i]['name']= $module->name;
@@ -249,20 +252,31 @@ if($status=="uninstalled")
 				if($module_info = include_module_settings($module->folder))
 				{
 					$versionupdate = '';
-					if(isset($module_info['update_url']))
+					
+					
+					if($module_info['update_url']!="")
 					{
 						$updateurl  = $module_info['update_url'];					   
 						$versionupdate = safe_file_get_contents($updateurl);
-					}
+					
 					if (preg_match('/(\d+[\d\.]+)/',$versionupdate,$m) && $m[1] != $module->latest_version)
 					{
 						$versionupdate = $m[1];
+						
 						$db->query($sql="UPDATE `". table_modules . "` SET `latest_version`='$versionupdate' WHERE `id`='".$module->id."'");
 					} else {
-                    	$versionupdate = $module->latest_version;
+						
+                    	//$versionupdate = $module->latest_version;
+						if($versionupdate=="Invalid Product ID" )
+						 $db->query("UPDATE `". table_modules . "` SET `latest_version`=0 WHERE `id`='".$module->id."'");
 					}
+					
+				  }else{
+					  $db->query("UPDATE `". table_modules . "` SET `latest_version`=0 WHERE `id`='".$module->id."'"); 
+				  }
 				}
 				
+				//echo "<br/>".$module->name."update url:".$module_info['update_url']."vn:".$versionupdate;
 				// Get module description
 				if($module_info['desc']!="")
 				{
@@ -293,7 +307,7 @@ if($status=="uninstalled")
 							{
 								$require_data.= $requirement[2];
 							} else {
-								echo $requirement[0];
+								$require_data.= $requirement[0];
 							}
 							if ($requirement[3])
 							{
@@ -338,13 +352,34 @@ if($status=="uninstalled")
 					$module_info_data[$i]['settings_url']="&nbsp;" ;
 				}
 				
-				$i++;
+				
+				
+			 $i++;	
 			}
+			
+			
 		}
-		$main_smarty->assign('module_info', $module_info_data);
+		
+	}
+	
+$update_require_modules = $db->get_results('SELECT * from ' . table_modules . ' where latest_version>version order by weight asc;');
+if(count($update_require_modules)){
+	$num_update_required=0;
+	foreach($update_require_modules as $module) {
+			if (file_exists(mnmmodules . $module->folder))
+			$num_update_required++;
+			
 	}
 }
 
+$main_smarty->assign('no_module_update_require', $num_update_required);
+$main_smarty->assign('module_info', $module_info_data);	
+}
+
+
+
+
+//print_r($module_info_data);
 $action=$_GET['action'];
 
 if($canIhaveAccess == 1){
@@ -415,9 +450,9 @@ if($action == 'install')
 
 if($action == 'remove')
 {
-	echo $module = $db->escape(sanitize($_REQUEST['module'],3));
-	echo $sql = "SELECT * FROM " . table_modules . " WHERE `name` = '" . $module . "';";
-	echo "ankan";
+	 $module = $db->escape(sanitize($_REQUEST['module'],3));
+	 $sql = "SELECT * FROM " . table_modules . " WHERE `name` = '" . $module . "';";
+	
 	$row = $db->get_row($sql);
 	if(($module_info = include_module_settings($row->folder)) && $module_info['uninstall'])
 	{
