@@ -125,7 +125,7 @@ function uploadFile($absolute_path, $file, $extdir) {
 						} else {
 							if(@unlink($upload_file))
 								return(1);
-						}						
+						}
 					}
 					else {
 						echo "<script> alert('";
