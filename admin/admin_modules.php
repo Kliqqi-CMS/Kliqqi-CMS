@@ -185,19 +185,17 @@ if($status=="uninstalled")
 					$module_info_data[$i]['requires']="&nbsp;";
 				}
 				
-			if(isset($module_info['homepage_url']))
-			{
-				$homepage_url = $module_info['homepage_url'];
-				$module_info_data[$i]['homepage_url']= " <a class='btn btn-mini' href='" . $homepage_url . "' target='_blank'>Homepage</a>";
-			} else {
-				$module_info_data[$i]['homepage_url']="&nbsp;";	
+				if(isset($module_info['homepage_url']))
+				{
+					$homepage_url = $module_info['homepage_url'];
+					$module_info_data[$i]['homepage_url']= " <a class='btn btn-mini' href='" . $homepage_url . "' target='_blank'>Homepage</a>";
+				} else {
+					$module_info_data[$i]['homepage_url']="&nbsp;";	
+				}
+			
+				$i++;	
+			
 			}
-			
-			$i++;	
-				
-			}
-			
-			
 		}
 	}
 
@@ -329,24 +327,30 @@ if($status=="uninstalled")
 				}
 
 				$module_info_data[$i]['requires']=$require_data;
-
-				if ($versionupdate > 0 && $versionupdate>$module->version)
-				{
-					if(isset($module_info['homepage_url']))
-					{
-						$homepage_url = $module_info['homepage_url'];
-						$module_info_data[$i]['version']= " <a class='label label-important' href='" . $homepage_url . "' target='_blank' title='Upgrade to $versionupdate'>".$module->version."</a>";
-					}
-				} else {
-					$module_info_data[$i]['version']= '<span class="label">'.$module->version.'</span></td>';
-				}
-
+				
 				if(isset($module_info['homepage_url']))
 				{
 					$homepage_url = $module_info['homepage_url'];
 					$module_info_data[$i]['homepage_url']= '<a class="btn btn-mini" href="' . $homepage_url . '">Homepage</a>';
 				} else {
 					$module_info_data[$i]['homepage_url']="&nbsp;" ;
+				}
+
+				if ($versionupdate > 0 && $versionupdate>$module->version)
+				{
+					// Update available and is greater than installed version
+					if ($module_info_data[$i]['homepage_url'] == "&nbsp;"){
+						$module_info_data[$i]['version']= "<a class='btn disabled btn-mini' href='" . $homepage_url . "' title='No Upgrade URL Provided'>Download Update</a></td>";
+					} else {
+						$module_info_data[$i]['version']= "<a class='btn btn-success btn-mini' href='" . $homepage_url . "' title='Upgrade to $versionupdate'>Download Update</a></td>";
+					}
+				} else {
+					// Version numbers may be funny. Needs further testing.
+					if ($module_info_data[$i]['homepage_url'] == "&nbsp;"){
+						$module_info_data[$i]['version']= "<a class='btn disabled btn-mini' href='" . $homepage_url . "' title='No Upgrade URL Provided'>Download Update</a></td>";
+					} else {
+						$module_info_data[$i]['version']= "<a class='btn btn-success btn-mini' href='" . $homepage_url . "' title='Upgrade to $versionupdate'>Download Update</a></td>";
+					}		
 				}
 
 				if(isset($module_info['settings_url']))
@@ -357,32 +361,24 @@ if($status=="uninstalled")
 					$module_info_data[$i]['settings_url']="&nbsp;" ;
 				}
 				
-				
-				
 			 $i++;	
 			}
-			
-			
 		}
-		
 	}
-	
-$update_require_modules = $db->get_results('SELECT * from ' . table_modules . ' where latest_version>version order by weight asc;');
-if(count($update_require_modules)){
-	$num_update_required=0;
-	foreach($update_require_modules as $module) {
-			if (file_exists(mnmmodules . $module->folder))
-			$num_update_required++;
-			
+
+	$update_require_modules = $db->get_results('SELECT * from ' . table_modules . ' where latest_version>version order by weight asc;');
+	if(count($update_require_modules)){
+		$num_update_required=0;
+		foreach($update_require_modules as $module) {
+				if (file_exists(mnmmodules . $module->folder))
+				$num_update_required++;
+				
+		}
 	}
+
+	$main_smarty->assign('no_module_update_require', $num_update_required);
+	$main_smarty->assign('module_info', $module_info_data);	
 }
-
-$main_smarty->assign('no_module_update_require', $num_update_required);
-$main_smarty->assign('module_info', $module_info_data);	
-}
-
-
-
 
 //print_r($module_info_data);
 $action=$_GET['action'];
@@ -429,7 +425,7 @@ if($canIhaveAccess == 1){
 
 	if (!function_exists('clear_module_cache'))
 	{
-		echo "Your template is not compatible with this version of Pligg. Missing the 'clear_modules_cache' function in admin_modules_center.tpl.";
+		echo "Your template is not compatible with this version of Pligg. Missing the 'clear_modules_cache' function in modules.tpl.";
 	} else {
 		echo $output;
 	}

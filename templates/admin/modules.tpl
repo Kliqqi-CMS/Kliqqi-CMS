@@ -43,10 +43,16 @@ $(document).ready(function(){
 				<thead>
 					<tr>
 						{* <th style="text-align:center;">Enabled</th> *}
-						<th>Details</th><th>Requires</th>
-						<th>Version</th><th>Homepage</th>
-						<th>Settings</th>
-						<th>Uninstall</th>
+						<th>Details</th>
+						<th>Requires</th>
+						<th style="text-align:center;">Homepage</th>
+						{php} if (!isset($_GET['token'])) { {/php}
+							<th style="text-align:center;">Settings</th>
+						{php} } {/php}
+						<th style="text-align:center;">Uninstall</th>
+						{php} if (isset($_GET['token'])) { {/php}
+							<th style="text-align:center;">Update</th>
+						{php} } {/php}
 					</tr>
 				</thead>
 				<tbody>
@@ -58,13 +64,19 @@ $(document).ready(function(){
 							</td>
 							*}
 							<td>{$module_info[nr1].dname} {$module_info[nr1].desc}</td>
-							<td style="text-align:center;vertical-align:middle;">{$module_info[nr1].requires}</td>
-							<td style="text-align:center;vertical-align:middle;">{$module_info[nr1].version}</td>
+							<td style="vertical-align:middle;">{$module_info[nr1].requires}</td>
 							<td style="text-align:center;vertical-align:middle;">{$module_info[nr1].homepage_url}</td>
-							<td style="text-align:center;vertical-align:middle;">{$module_info[nr1].settings_url}</td>
+							{php} if (!isset($_GET['token'])) { {/php}
+								<td style="text-align:center;vertical-align:middle;">{$module_info[nr1].settings_url}</td>
+							{php} } {/php}
 							<td style="text-align:center;vertical-align:middle;">
 								<a class="btn btn-danger btn-mini" href="?action=remove&module={$module_info[nr1].name}">{$btn_module_remove}</a>
 							</td>
+							{php} if (isset($_GET['token'])) { {/php}
+								<td style="text-align:center;vertical-align:middle;">
+									{$module_info[nr1].version}
+								</td>
+							{php} } {/php}
 						</tr>
 					{/section}
 				</tbody>
@@ -81,19 +93,25 @@ $(document).ready(function(){
 					<tr>
 						<th>Details</th>
 						<th>Requires</th>
-						<th style="text-align:center;">Version</th>
 						<th style="text-align:center;">Homepage</th>
 						<th style="text-align:center;">Install</th>
+						{php} if (isset($_GET['token'])) { {/php}
+							<th style="text-align:center;">Update</th>
+						{php} } {/php}
 					</tr>
 				</thead>
 				<tbody>	
 					{section name=nr loop=$module_info}	
 						<tr>
-							<td>{$module_info[nr].dname} <br/> {$module_info[nr].desc}</td>
-							<td>{$module_info[nr].requires}</td>
-							<td style="text-align:center;vertical-align:middle;"><span class="label">{$module_info[nr].version}</span></td>
-							<td>{$module_info[nr].homepage_url}</td>
-							<td style="text-align:center;vertical-align:middle;"><a class="btn btn-success btn-mini" href="?action=install&module={$module_info[nr].value}">Install</a></td>
+							<td style="vertical-align:middle;">{$module_info[nr].dname} <br/> {$module_info[nr].desc} {$requirement_failed}</td>
+							<td style="vertical-align:middle;">{$module_info[nr].requires}</td>
+							<td style="text-align:center;vertical-align:middle;">{$module_info[nr].homepage_url}</td>
+							<td style="text-align:center;vertical-align:middle;"><a class="btn {if $requirement_failed eq 'false'}disabled{else}btn-success{/if} btn-mini" href="?action=install&module={$module_info[nr].value}">Install</a></td>
+							{php} if (isset($_GET['token'])) { {/php}
+								<td style="text-align:center;vertical-align:middle;">
+									{$module_info[nr].version}
+								</td>
+							{php} } {/php}
 						</tr>
 					{/section}
 				</tbody>
