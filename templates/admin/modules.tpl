@@ -109,12 +109,22 @@ $(document).ready(function(){
 					</tr>
 				</thead>
 				<tbody>	
-					{section name=nr loop=$module_info}	
+					{section name=nr loop=$module_info}
+						{php}
+							// Check to see if all requirements are met for install
+							$requires = $this->_vars['module_info'][$this->_sections['nr']['index']]['requires'];
+							$needle = 'label-important';
+							if (strpos($requires,$needle) !== false) {
+								$requirements_met = 'false';
+							} else {
+								$requirements_met = 'true';
+							}
+						{/php}
 						<tr>
 							<td style="vertical-align:middle;">{$module_info[nr].dname} <br/> {$module_info[nr].desc} {$requirement_failed}</td>
 							<td style="vertical-align:middle;">{$module_info[nr].requires}</td>
 							<td style="text-align:center;vertical-align:middle;">{$module_info[nr].homepage_url}</td>
-							<td style="text-align:center;vertical-align:middle;"><a class="btn {if $requirement_failed eq 'false'}disabled{else}btn-success{/if} btn-mini" href="?action=install&module={$module_info[nr].value}">Install</a></td>
+							<td style="text-align:center;vertical-align:middle;"><a class="btn {php} if ($requirements_met == 'false'){ echo 'disabled'; }else{ echo 'btn-success'; } {/php} btn-mini" href="?action=install&module={$module_info[nr].value}">Install</a></td>
 							{php} if (isset($_GET['token'])) { {/php}
 								<td style="text-align:center;vertical-align:middle;">
 									{$module_info[nr].version}
