@@ -138,12 +138,12 @@ if($status=="uninstalled")
 				{
 					$module_info_data[$i]['dname']="<a href='?action=readme&module=". $value ."'>".$module_info['name']."</a>";
 				} else {
-					$module_info_data[$i]['dname']="<strong>".$module_info['name']."<strong>";
+					$module_info_data[$i]['dname']="".$module_info['name']."";
 				}
 				
 				if(is_array($text))
 				{
-					$module_info_data[$i]['desc']=@implode("<br/>",$text);
+					$module_info_data[$i]['desc']=@implode("",$text);
 				} else {
 					$module_info_data[$i]['desc']=$module_info['desc'];
 				}
@@ -283,7 +283,7 @@ if($status=="uninstalled")
 				// Get module description
 				if($module_info['desc']!="")
 				{
-					$module_info_data[$i]['desc']= "<br/>".$module_info['desc'];
+					$module_info_data[$i]['desc']= "".$module_info['desc'];
 				}
 				
 				// Get module requirements

@@ -71,7 +71,7 @@ $(document).ready(function(){
 								{$module_info[nr1].first_row}
 							</td>
 							*}
-							<td>{$module_info[nr1].dname} {$module_info[nr1].desc}</td>
+							<td>{$module_info[nr1].dname}<br />{$module_info[nr1].desc}</td>
 							<td style="vertical-align:middle;">{$module_info[nr1].requires}</td>
 							<td style="text-align:center;vertical-align:middle;">{$module_info[nr1].homepage_url}</td>
 							{php} if (!isset($_GET['token'])) { {/php}
