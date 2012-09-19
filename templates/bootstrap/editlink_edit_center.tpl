@@ -88,21 +88,29 @@
 		<input readonly type=text name=remLen size="3" class="span1" value="{$StorySummary_ContentTruncate}"> {#PLIGG_Visual_Submit2_SummaryCharactersLeft#}
 		<br />
 	{/if}
+	<br />
 	<strong>{#PLIGG_Visual_Submit2_Category#}: </strong>
 	<span class="field-description">{#PLIGG_Visual_Submit2_CatInstruct#}</span>
 	<br />
-	<select {if $Multiple_Categories}name="category[]" multiple size=10{else}name="category"{/if}>
+	{if $Multiple_Categories}
 		{section name=thecat loop=$cat_array}
-			<option value = "{$cat_array[thecat].auto_id}"{if $cat_array[thecat].auto_id eq $submit_category || in_array($cat_array[thecat].auto_id,$submit_additional_cats)} selected="selected"{/if}>
-			{if $cat_array[thecat].spacercount lt $lastspacer}{$cat_array[thecat].spacerdiff|repeat_count:''}{/if}
-			{if $cat_array[thecat].spacercount gt $lastspacer}{/if}
-			{$cat_array[thecat].spacercount|repeat_count:'&nbsp;&nbsp;&nbsp;'}
-			{$cat_array[thecat].name} 
-			&nbsp;&nbsp;&nbsp;       
-			{assign var=lastspacer value=$cat_array[thecat].spacercount}					
-			</option>
+			{$cat_array[thecat].spacercount|repeat_count:'&nbsp;&nbsp;&nbsp;&nbsp;'}
+				 <input type="checkbox" name="category[]" value="{$cat_array[thecat].auto_id}" {if $cat_array[thecat].auto_id == $submit_category  || in_array($cat_array[thecat].auto_id,$submit_additional_cats)}checked{/if}> {$cat_array[thecat].name}<br />							
 		{/section}
-	</select>
+	{else}
+		<select {if $Multiple_Categories}name="category[]" multiple size=10{else}name="category"{/if}>
+			{section name=thecat loop=$cat_array}
+				<option value = "{$cat_array[thecat].auto_id}"{if $cat_array[thecat].auto_id eq $submit_category || in_array($cat_array[thecat].auto_id,$submit_additional_cats)} selected="selected"{/if}>
+				{if $cat_array[thecat].spacercount lt $lastspacer}{$cat_array[thecat].spacerdiff|repeat_count:''}{/if}
+				{if $cat_array[thecat].spacercount gt $lastspacer}{/if}
+				{$cat_array[thecat].spacercount|repeat_count:'&nbsp;&nbsp;&nbsp;'}
+				{$cat_array[thecat].name} 
+				&nbsp;&nbsp;&nbsp;       
+				{assign var=lastspacer value=$cat_array[thecat].spacercount}					
+				</option>
+			{/section}
+		</select>
+	{/if}
 	<br />
 	{if $canIhaveAccess eq 1}
 		<strong>{#PLIGG_Visual_EditStory_Notify#}: </strong>
