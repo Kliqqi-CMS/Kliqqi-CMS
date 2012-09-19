@@ -1,6 +1,6 @@
 <?php
 	$module_info['name'] = 'Upload';
-	$module_info['desc'] = 'Allows you to attach images and files to an article';
+	$module_info['desc'] = 'Attach images and files to an article';
 	$module_info['version'] = 2.00;
 	$module_info['update_url'] = 'http://forums.pligg.com/versioncheck.php?product=upload';
 	$module_info['homepage_url'] = 'http://forums.pligg.com/free-modules/13594-upload-module-file-image-attachment.html';
