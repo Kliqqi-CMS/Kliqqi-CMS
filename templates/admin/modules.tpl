@@ -19,6 +19,14 @@ $(document).ready(function(){
 {checkActionsTpl location="tpl_admin_modules_top"}
 
 <legend>{$module_management_name}</legend>
+{if $action eq "readme"}
+<a class="btn" href="admin_modules.php"><i class="icon-arrow-left"></i>{$module_readme_return}</a><hr />
+{if $found eq "yes"}
+{$readme_content}
+{else}
+{$not_found}
+{/if}
+{else}
 <p>{$module_management_desc}</p>
 {if $status neq ""}
 	<ul class="nav nav-tabs">
@@ -118,5 +126,6 @@ $(document).ready(function(){
 			</table>
 		{/if}
 	</div>
+{/if}
 {/if}
 <!--/modules.tpl -->

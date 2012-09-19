@@ -383,6 +383,29 @@ if($status=="uninstalled")
 //print_r($module_info_data);
 $action=$_GET['action'];
 
+
+if($action == 'readme'){
+	$main_smarty->assign('action', 'readme');
+	$module = sanitize($_REQUEST['module'],3);
+	$main_smarty->assign('module_management_name', $main_smarty->get_config_vars('PLIGG_Visual_AdminPanel_Module_Readme'));
+	$main_smarty->assign('module_readme_return', $main_smarty->get_config_vars('PLIGG_Visual_AdminPanel_Module_Return'));
+	
+	
+	if(file_exists('../modules/' . $module . '/' . $module . '_readme.htm')){
+		$main_smarty->assign('found','yes');
+		$myFile = '../modules/' . $module . '/' . $module . '_readme.htm';
+        $fh = fopen($myFile, 'r');
+		$theData = fread($fh,filesize($myFile));
+		fclose($fh);
+		$main_smarty->assign('readme_content', $theData);
+	} else {
+		$main_smarty->assign('found','no');
+		$main_smarty->assign('not_found', $main_smarty->get_config_vars('PLIGG_Visual_AdminPanel_Module_Readme_Not_Found'));
+		
+	}
+}else
+$main_smarty->assign('action', '');
+
 if($canIhaveAccess == 1){
 	if ($_POST["enabled"])
 	{
@@ -444,7 +467,10 @@ if($action == 'install')
 	} else {
 		die('No install file exists.');
 	}
-	$db->query("INSERT IGNORE INTO " . table_modules . " (`name`, `version`, `folder`, `enabled`) values ('".$name."', '" . $version . "', '".$module."', 1);");
+	
+	$res_total_module = mysql_query('SELECT * from ' . table_modules );
+	$total_module=mysql_num_rows($res_total_module);
+	$db->query("INSERT IGNORE INTO " . table_modules . " (`name`, `version`, `folder`, `enabled`,`weight`) values ('".$name."', '" . $version . "', '".$module."', 1,'".$total_module."');");
 	clear_module_cache();
 	header('Location: admin_modules.php?status=uninstalled');
 }
