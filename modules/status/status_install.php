@@ -1,6 +1,6 @@
 <?php
 	$module_info['name'] = 'Status Update Module';
-	$module_info['desc'] = 'Adds a micro-blogging status update feature to your Pligg website.';
+	$module_info['desc'] = 'Adds features to turn profile pages into a service similar to Twitter.';
 	$module_info['version'] = '1.3';
 	$module_info['settings_url'] = '../module.php?module=status';
 	// Add new columns

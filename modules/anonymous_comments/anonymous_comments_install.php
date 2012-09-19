@@ -1,6 +1,6 @@
 <?php	
 	$module_info['name'] = 'Anonymous Comments';
-	$module_info['desc'] = 'Allows user to submit anonymous comments.';
+	$module_info['desc'] = 'Allows any user to submit a comment without registering an account.';
 	$module_info['version'] = 0.1;
 	$module_info['requires'][] = array('anonymous', 0.1, 'Anonymous Mode', '');
 	$module_info['requires'][] = array('hc', 1, 'Human Check', '');

@@ -1,6 +1,6 @@
 <?php
 	$module_info['name'] = 'Admin Snippets';
-	$module_info['desc'] = 'Allows the Admin users to edit templates easily by inserting code through a module';
+	$module_info['desc'] = 'Easily insert code into your template file through module hooks. A great way to add analytics or advertisements.';
 	$module_info['version'] = 1.00;
 	$module_info['update_url'] = 'http://forums.pligg.com/versioncheck.php?product=snippets';
 	$module_info['homepage_url'] = 'http://forums.pligg.com/free-modules/12648-admin-snippets.html';

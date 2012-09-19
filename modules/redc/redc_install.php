@@ -1,6 +1,6 @@
 <?php
-	$module_info['name'] = 'Registration Email Domain Check module';
-	$module_info['desc'] = 'This module will allow admins to set up a whitelist or blacklist for allowed email registration domains.';
+	$module_info['name'] = 'Registration Email Domain Check';
+	$module_info['desc'] = 'Admins set up a whitelist or blacklist for allowed or forbidden email address domains during registration.';
 	$module_info['version'] = 1.0;
 //	$module_info['update_url'] = 'http://forums.pligg.com/versioncheck.php?product=redc';
 //	$module_info['homepage_url'] = 'http://www.pligg.com/pro/catalog/modules/redc.html';

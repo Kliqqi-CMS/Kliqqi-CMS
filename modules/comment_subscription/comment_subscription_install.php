@@ -1,6 +1,6 @@
 <?php
 	$module_info['name'] = 'Comment Subscription';
-	$module_info['desc'] = 'This module will allow users to subscribe to email alerts when comments are posted on stories they follow.';
+	$module_info['desc'] = 'This module allows users to subscribe to an article and receive a HTML formatted email whenever a new comment is submitted.';
 	$module_info['version'] = 1.1;
 	$module_info['settings_url'] = '../module.php?module=comment_subscription';
 	// Add new columns
