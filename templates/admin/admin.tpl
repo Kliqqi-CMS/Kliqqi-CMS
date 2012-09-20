@@ -99,19 +99,16 @@
 					<span class="icon-bar"></span>
 					<span class="icon-bar"></span>
 					<span class="icon-bar"></span>
-				</a>	
-				<a class="brand" href="{$my_base_url}{$my_pligg_base}/admin/admin_index.php">{#PLIGG_Visual_AdminPanel#} Panel</a>
+				</a>
+				<a class="brand" href="http://pligg.com/"><img src="{$my_base_url}{$my_pligg_base}/templates/admin/img/pligg.png" /></a>
 				<!-- Everything you want hidden at 940px or less, place within here -->
 				<div class="nav-collapse">
 					<ul class="nav">
 						<li><a href="{$my_base_url}{$my_pligg_base}/">{#PLIGG_Visual_Home#}</a></li>
+						<li><a href="{$my_base_url}{$my_pligg_base}/">{#PLIGG_Visual_AdminPanel#} Panel</a></li>
 						{checkActionsTpl location="tpl_header_admin_links"}
+						<li><a href="{$URL_logout}">{#PLIGG_Visual_Logout#}</a></li>
 					</ul>
-					<div class="pull-right">
-						<ul class="nav">
-							<li><a href="{$URL_logout}">{#PLIGG_Visual_Logout#}</a></li>
-						</ul>
-					</div>
 				</div><!--/.nav-collapse -->
 			</div>
 		</div>
