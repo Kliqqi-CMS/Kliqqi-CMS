@@ -13,7 +13,10 @@
 
 $absolute_path = $dir_location;
 */
-	
+
+define('modulename', 'zip_install'); 
+$main_smarty->assign('modulename', modulename);
+
 function zip_install_preview_admin() {
 	global $main_smarty, $the_template, $db, $my_pligg_base;
 
