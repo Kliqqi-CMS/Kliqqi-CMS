@@ -5,7 +5,7 @@ function welcome_privmsg_send(&$registration_details)
 	global $username, $main_smarty, $current_user;
 
 	include_once(mnminclude.'user.php');
-	include_once('../simple_messaging/kmessaging/class.KMessaging.php');
+	include_once('./modules/simple_messaging/kmessaging/class.KMessaging.php');
 
 	$siteName = $main_smarty->get_config_vars('PLIGG_Visual_Name'); 
 	
