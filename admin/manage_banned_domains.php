@@ -39,7 +39,7 @@ if($canIhaveAccess == 1){
 		$main_smarty->assign('tpl_center', '/admin/banned_domain_add');
 		$main_smarty->display($template_dir . '/admin/admin.tpl');
 	}
-	elseif(isset($_REQUEST['remove'])){
+	elseif(isset($_GET["remove"])){
 		
 		// Get the local antispam file name from the database settings
 		global $USER_SPAM_RULESET;
@@ -47,8 +47,8 @@ if($canIhaveAccess == 1){
 
 		$somecontent = strtoupper(sanitize($_REQUEST['remove'], 3)) . "\n";
 		
-		if (isset($_GET["domain"])){
-			$domain = sanitize($_GET["domain"], 3);
+		if (isset($_GET["remove"])){
+			$domain = sanitize($_GET["remove"], 3);
 		} else {
 			$main_smarty->assign('errorText', "No domain was specified");
 			$main_smarty->assign('tpl_center', '/admin/banned_domains');
@@ -58,29 +58,25 @@ if($canIhaveAccess == 1){
 		
 		if (is_writable($filename)) {
 
-			
-			if (!$handle = fopen($filename, 'a')) {
-				$main_smarty->assign('errorText', "Cannot open file ($filename)");
-				$main_smarty->assign('tpl_center', '/admin/banned_domains');
-				$main_smarty->display($template_dir . '/admin/admin.tpl');
-				exit;
-			}
-			if (fwrite($handle) === FALSE) {
-				$main_smarty->assign('errorText', "Cannot write to file ($filename)");
-				$main_smarty->assign('tpl_center', '/admin/banned_domains');
-				$main_smarty->display($template_dir . '/admin/admin.tpl');
-				exit;
-			}
-			
-			// Delete the domain from the antispam file
-			
+			// retrieve file into a string
+			$txt = file_get_contents($filename);
+			// replace the line with $_GET["file"], assuming line break is \n
+			$txt = str_replace(trim($domain),'', $txt);
+			// strip out any empty lines
+			$txt = preg_replace('/^\n+|^[\t\s]*\n+/m','',$txt);
+			// write the string back to the file
+			file_put_contents($filename, $txt);
+	
+			// Prepare the antispam file data for display
+			$lines = file('../'.$USER_SPAM_RULESET);
+			$main_smarty->assign('lines', $lines);
+		   
 			$main_smarty->assign('errorText', "Removed the domain $domain from $filename");
 			$main_smarty->assign('filename', $filename);
 			$main_smarty->assign('domain', $domain);
-			$main_smarty->assign('tpl_center', '/admin/banned_domain_added');
+			$main_smarty->assign('tpl_center', '/admin/banned_domains');
 			$main_smarty->display($template_dir . '/admin/admin.tpl');
 
-			fclose($handle);
 		}
 		
 		$main_smarty->assign('errorText', "The file $filename is not writable");
