@@ -5,6 +5,13 @@
 		{$errorText}
     </div>
 {/if}
+<p>Want to quickly add a domain to the list? Use this form to add a custom domain.</p>
+
+<form action="manage_banned_domains.php" method="get">
+    <input type="text" name="add" placeholder="domain.com">
+	<button type="submit" class="btn btn-danger">Ban Domain</button>
+</form>
+
 <ol>
 	{section name=line loop=$lines}
 		<li><a href="manage_banned_domains.php?id=0&remove={$lines[line]}">Remove</a> - {$lines[line]} </li>

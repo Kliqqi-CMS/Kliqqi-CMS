@@ -44,8 +44,6 @@ if($canIhaveAccess == 1){
 		// Get the local antispam file name from the database settings
 		global $USER_SPAM_RULESET;
 		$filename = '../'.$USER_SPAM_RULESET;
-
-		$somecontent = strtoupper(sanitize($_REQUEST['remove'], 3)) . "\n";
 		
 		if (isset($_GET["remove"])){
 			$domain = sanitize($_GET["remove"], 3);
@@ -58,13 +56,9 @@ if($canIhaveAccess == 1){
 		
 		if (is_writable($filename)) {
 
-			// retrieve file into a string
 			$txt = file_get_contents($filename);
-			// replace the line with $_GET["file"], assuming line break is \n
 			$txt = str_replace(trim($domain),'', $txt);
-			// strip out any empty lines
 			$txt = preg_replace('/^\n+|^[\t\s]*\n+/m','',$txt);
-			// write the string back to the file
 			file_put_contents($filename, $txt);
 	
 			// Prepare the antispam file data for display
