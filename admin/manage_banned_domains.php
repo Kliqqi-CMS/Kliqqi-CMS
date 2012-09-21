@@ -21,13 +21,14 @@ $sql = "SELECT data FROM " . table_misc_data . " WHERE name = 'pligg_version'";
 $pligg_version = $db->get_var($sql);
 $main_smarty->assign('version_number', $pligg_version);
 
-// sidebar
-$main_smarty = do_sidebar($main_smarty);
-
 // breadcrumbs and page title
 $navwhere['text1'] = $main_smarty->get_config_vars('PLIGG_Visual_Ban_This_URL');
 $main_smarty->assign('navbar_where', $navwhere);
 $main_smarty->assign('posttitle', " / " . $main_smarty->get_config_vars('PLIGG_Visual_Ban_This_URL'));
+
+// pagename
+define('pagename', 'banned_domains'); 
+$main_smarty->assign('pagename', pagename);
 
 if(isset($_REQUEST["id"]) && is_numeric($_REQUEST["id"])){$id = $_REQUEST["id"];}
 
@@ -38,6 +39,54 @@ if($canIhaveAccess == 1){
 		$main_smarty->assign('tpl_center', '/admin/banned_domain_add');
 		$main_smarty->display($template_dir . '/admin/admin.tpl');
 	}
+	elseif(isset($_REQUEST['remove'])){
+		
+		// Get the local antispam file name from the database settings
+		global $USER_SPAM_RULESET;
+		$filename = '../'.$USER_SPAM_RULESET;
+
+		$somecontent = strtoupper(sanitize($_REQUEST['remove'], 3)) . "\n";
+		
+		if (isset($_GET["domain"])){
+			$domain = sanitize($_GET["domain"], 3);
+		} else {
+			$main_smarty->assign('errorText', "No domain was specified");
+			$main_smarty->assign('tpl_center', '/admin/banned_domains');
+			$main_smarty->display($template_dir . '/admin/admin.tpl');
+			exit;
+		}
+		
+		if (is_writable($filename)) {
+
+			
+			if (!$handle = fopen($filename, 'a')) {
+				$main_smarty->assign('errorText', "Cannot open file ($filename)");
+				$main_smarty->assign('tpl_center', '/admin/banned_domains');
+				$main_smarty->display($template_dir . '/admin/admin.tpl');
+				exit;
+			}
+			if (fwrite($handle) === FALSE) {
+				$main_smarty->assign('errorText', "Cannot write to file ($filename)");
+				$main_smarty->assign('tpl_center', '/admin/banned_domains');
+				$main_smarty->display($template_dir . '/admin/admin.tpl');
+				exit;
+			}
+			
+			// Delete the domain from the antispam file
+			
+			$main_smarty->assign('errorText', "Removed the domain $domain from $filename");
+			$main_smarty->assign('filename', $filename);
+			$main_smarty->assign('domain', $domain);
+			$main_smarty->assign('tpl_center', '/admin/banned_domain_added');
+			$main_smarty->display($template_dir . '/admin/admin.tpl');
+
+			fclose($handle);
+		}
+		
+		$main_smarty->assign('errorText', "The file $filename is not writable");
+		$main_smarty->assign('tpl_center', '/admin/banned_domains');
+		$main_smarty->display($template_dir . '/admin/admin.tpl');
+	}
 	elseif(isset($_REQUEST['add'])){
 		$main_smarty->assign('story_id', sanitize($_REQUEST['id'], 3));
 		$main_smarty->assign('domain_to_ban',  sanitize($_REQUEST['add'], 3));
@@ -45,7 +94,10 @@ if($canIhaveAccess == 1){
 		$main_smarty->display($template_dir . '/admin/admin.tpl');
 	}
 	elseif(isset($_REQUEST['doban'])){
-		$filename = '../local-antispam.log';
+		// Get the local antispam file name from the database settings
+		global $USER_SPAM_RULESET;
+		$filename = '../'.$USER_SPAM_RULESET;
+		
 		$somecontent = strtoupper(sanitize($_REQUEST['doban'], 3)) . "\n";
 		if (is_writable($filename)) {
 		   if (!$handle = fopen($filename, 'a')) {
@@ -76,9 +128,10 @@ if($canIhaveAccess == 1){
 			$main_smarty->display($template_dir . '/admin/admin.tpl');
 		}
 	}
-	elseif(isset($_REQUEST['list']))
+	else
 	{
-		$lines = file('../local-antispam.log');
+		global $USER_SPAM_RULESET;
+		$lines = file('../'.$USER_SPAM_RULESET);
 		$main_smarty->assign('lines', $lines);
 		$main_smarty->assign('tpl_center', '/admin/banned_domains');
 		$main_smarty->display($template_dir . '/admin/admin.tpl');

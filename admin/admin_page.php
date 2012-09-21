@@ -36,7 +36,6 @@ $main_smarty->assign('isAdmin', $canIhaveAccess);
 // sidebar
 $main_smarty = do_sidebar($main_smarty);
 
-
 // pagename
 define('pagename', 'admin_page'); 
 $main_smarty->assign('pagename', pagename);
