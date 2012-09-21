@@ -204,6 +204,7 @@ if($status=="uninstalled")
 	$main_smarty->assign('no_module_update_require', $updatecount);
 	$expire=time()+60*60*24*60;
     setcookie("module_update_require_un", $updatecount, $expire);
+	setcookie("module_update_require_un_ex", $updatecount, $expire,"/",$_SERVER["HTTP_HOST"]);
 	$main_smarty->assign('module_info', $module_info_data);
 	
 	//echo "<pre>";

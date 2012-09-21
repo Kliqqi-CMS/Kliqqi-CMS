@@ -14,6 +14,7 @@ include_once(mnminclude.'smartyvariables.php');
 define('pagename', 'module'); 
 $main_smarty->assign('pagename', pagename);
 
+$main_smarty->assign('un_no_module_update_require', $_COOKIE['module_update_require_un_ex']);
 $vars = '';
 check_actions('module_page', $vars);
 
