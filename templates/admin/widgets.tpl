@@ -12,61 +12,136 @@
 		echo '<p>'.$main_smarty->get_config_vars('PLIGG_Visual_AdminPanel_Widget_Description').'</p>';
 		echo '	<ul id="widgettabs" class="nav nav-tabs">';
 			if ($_GET["status"] != 'uninstalled'){
-				echo '<li class="active"><a href="#installed" data-toggle="tab" id="installed">Installed</a></li>';
-				echo '<li><a href="#uninstalled" data-toggle="tab" id="uninstalled">Uninstalled</a></li>';
+				echo '<li class="active"><a href="admin_widgets.php" id="installed">Installed</a></li>';
+				echo '<li><a href="admin_widgets.php?status=uninstalled" id="uninstalled">Uninstalled</a></li>';
 			} else {
-				echo '<li><a href="#installed" data-toggle="tab" id="installed">Installed</a></li>';
-				echo '<li class="active" id="uninstalled"><a href="#uninstalled" data-toggle="tab">Uninstalled</a></li>';
+				echo '<li><a href="admin_widgets.php" id="installed">Installed</a></li>';
+				echo '<li class="active"><a href="admin_widgets.php?status=uninstalled">Uninstalled</a></li>';
 			}
 		echo '	</ul>';
 		// Tab Wrapper
-		echo '	<div class="tab-content" id="tabbed">';
-		// Install tab status
 		if ($_GET["status"] != 'uninstalled'){
-			echo '<div id="installed" class="active tab-pane fade in">';
-		} else {
-			echo '<div id="installed" class="tab-pane fade in">';
-		}
-		echo '<form name="bulk_moderate" method="post">';
-		echo '<div class="apply_widgets"><input type="submit" class="btn btn-primary" name="submit" value="'.$main_smarty->get_config_vars('PLIGG_Visual_AdminPanel_Apply_Changes').'" id="apply_changes" /></div>';
-		echo '<br />';
-		echo '<table class="table table-bordered">';
-		echo '<thead><tr><th style="text-align:center;">Enabled</th><th>Details</th><th>Homepage</th><th>Uninstall</th></tr></thead></tbody>';	
-		$widgets = $db->get_results('SELECT * from ' . table_widgets . ' order by name asc;');
-		if($widgets){
-			foreach($widgets as $widget) {
-				if (file_exists(mnmpath . '/widgets/' . $widget->folder)){
-					echo '<tr>';
-					echo '<td style="text-align:center;vertical-align:middle;">';
-					echo "<input type=\"hidden\" name=\"enabled[{$widget->id}]\" id=\"enabled_{$widget->id}\" value=\"{$widget->enabled}\">";
-					echo "<input type='checkbox' onclick='document.getElementById(\"enabled_{$widget->id}\").value=this.checked ? 1 : 0;' ";
-					if($widget->enabled)
-						echo "checked";
-					echo ">";
-					echo '</td>';
-					echo '<td><a href = "?action=readme&widget=' . $widget->folder . '">' . $widget->name . '</a> (Version ' . $widget->version . ')';
-					// echo '<br />' . $widget_info['desc'] . '';
-					$versionupdate = '';
-					if(isset($widget_info['update_url'])){
-						$updateurl  = $widget_info['update_url'];					   
-						$versionupdate = safe_file_get_contents($updateurl);
-					}
-					if (preg_match('/(\d+[\d\.]+)/',$versionupdate,$m) && $m[1] != $widget->latest_version){
-						$versionupdate = $m[1];
-						$db->query($sql="UPDATE `". table_widgets . "` SET `latest_version`='$versionupdate' WHERE `id`='{$widget->id}'");
-					} else {
-						$versionupdate = $widget->latest_version;
-					}
-					if ($versionupdate > 0){
-						if(isset($widget_info['homepage_url'])){
+			echo '<form name="bulk_moderate" method="post">';
+			echo '<div class="apply_widgets"><input type="submit" class="btn btn-primary" name="submit" value="'.$main_smarty->get_config_vars('PLIGG_Visual_AdminPanel_Apply_Changes').'" id="apply_changes" /></div>';
+			echo '<br />';
+			echo '<table class="table table-bordered">';
+			echo '<thead><tr><th style="text-align:center;">Enabled</th><th>Details</th><th>Homepage</th><th>Uninstall</th></tr></thead></tbody>';	
+			$widgets = $db->get_results('SELECT * from ' . table_widgets . ' order by name asc;');
+			if($widgets){
+				foreach($widgets as $widget) {
+					if (file_exists(mnmpath . '/widgets/' . $widget->folder)){
+						echo '<tr>';
+						echo '<td style="text-align:center;vertical-align:middle;">';
+						echo "<input type=\"hidden\" name=\"enabled[{$widget->id}]\" id=\"enabled_{$widget->id}\" value=\"{$widget->enabled}\">";
+						echo "<input type='checkbox' onclick='document.getElementById(\"enabled_{$widget->id}\").value=this.checked ? 1 : 0;' ";
+						if($widget->enabled)
+							echo "checked";
+						echo ">";
+						echo '</td>';
+						echo '<td><a href = "?action=readme&widget=' . $widget->folder . '">' . $widget->name . '</a> (Version ' . $widget->version . ')';
+						// echo '<br />' . $widget_info['desc'] . '';
+						$versionupdate = '';
+						if(isset($widget_info['update_url'])){
+							$updateurl  = $widget_info['update_url'];					   
+							$versionupdate = safe_file_get_contents($updateurl);
+						}
+						if (preg_match('/(\d+[\d\.]+)/',$versionupdate,$m) && $m[1] != $widget->latest_version){
+							$versionupdate = $m[1];
+							$db->query($sql="UPDATE `". table_widgets . "` SET `latest_version`='$versionupdate' WHERE `id`='{$widget->id}'");
+						} else {
+							$versionupdate = $widget->latest_version;
+						}
+						if ($versionupdate > 0){
+							if(isset($widget_info['homepage_url'])){
+								$homepage_url = $widget_info['homepage_url'];
+								echo " <a class='btn ' href='" . $homepage_url . "' target='_blank'>Upgrade $versionupdate</a>";
+							}
+						}
+						if($widget_info = include_widget_settings($widget->folder)){
+							$description =  $widget_info['desc'];
+							if($description != ''){
+								echo '<br />' . $description;
+							}
+							if(isset($widget_info['requires'])){
+								$requires = $widget_info['requires'];
+								if(is_array($requires)){
+									echo '<br /><strong>Requires:</strong> ';
+									foreach($requires as $requirement){
+										if(check_for_enabled_widget($requirement[0], $requirement[1])){
+											echo '<i class="icon icon-ok" alt="Pass"></i> ';
+										} else {
+											echo '<i class="icon icon-remove" alt="Fail"></i> ';
+										}
+										echo '' . $requirement[0] . ' Version ' . $requirement[1] .' &nbsp;&nbsp; ';
+									}
+								}
+							}
+							echo '</td>';
+						} else {
+							echo '<td></td>';
+						}
+						if(isset($widget_info['homepage_url']) && $widget_info['homepage_url'] != ''){
 							$homepage_url = $widget_info['homepage_url'];
-							echo " <a class='btn ' href='" . $homepage_url . "' target='_blank'>Upgrade $versionupdate</a>";
+							echo '<td style="text-align:center;vertical-align:middle;"><a class="btn " href="' . $homepage_url . '">Homepage</a></td>';
+						} else {
+							echo '<td></td>';
+						}
+						echo '<td style="text-align:center;vertical-align:middle;">';
+						echo '<a class="btn btn-danger btn-mini" href="?action=remove&widget=' . $widget->name . '">'.$main_smarty->get_config_vars('PLIGG_Visual_AdminPanel_Module_Remove').'</a>';
+						echo '</td></tr>';
+					}
+				}
+			} else {
+				echo '<h3>There are no widgets installed!</h3>';
+			}
+			echo '</tbody></table>';
+			echo '<div class="apply_widgets"><input type="submit" class="btn btn-primary" name="submit" value="'.$main_smarty->get_config_vars('PLIGG_Visual_AdminPanel_Apply_Changes').'" /></div>';
+			echo '</form>';
+		} else {
+			echo '<table class="table table-bordered">';
+			echo '<thead><tr><th>Details</th><th style="text-align:center;">Install</th></tr></thead><tbody>';	
+			// find all the folders in the widgets folder
+			$dir = '../widgets/';
+			if (is_dir($dir)) {
+			   if ($dh = opendir($dir)) {
+				   while (($file = readdir($dh)) !== false) {
+						if(is_dir($dir . $file)){
+							if($file != '.' && $file != '..'){
+								$foundfolders[] = $file;
+							}
+						}
+				   }
+				   closedir($dh);
+			   }
+			}
+			// For each of the folders found, make sure they're not already in the database
+			$widgets = $db->get_results('SELECT * from ' . table_widgets . ' order by name asc;');
+			if($widgets){
+				foreach($widgets as $widget) {
+					if(isset($foundfolders) && is_array($foundfolders)){
+						foreach($foundfolders as $key => $value){
+							if ($widget->folder == $value){
+								unset($foundfolders[$key]);
+							}
 						}
 					}
-					if($widget_info = include_widget_settings($widget->folder)){
-						$description =  $widget_info['desc'];
-						if($description != ''){
-							echo '<br />' . $description;
+				}		
+			}
+			if(isset($foundfolders) && is_array($foundfolders)){
+				asort($foundfolders);
+				foreach($foundfolders as $key => $value){
+					$text = '';
+					if($widget_info = include_widget_settings($value)){
+						$text[] = $widget_info['desc'];
+						$version = $widget_info['version'];
+						$name = $widget_info['name'];
+						if(file_exists('../widgets/' . $widget->folder . '/' . $widget->folder . '_readme.htm')){
+							echo '<tr><td><a href="?action=readme&widget=' . $value . '">' . $name . '</a> ( Version '.$version.' )';
+						} else {
+							echo '<tr><td><strong>' . $name . '</strong> ( Version '.$version.' )';
+						}
+						if(is_array($text)){
+							foreach($text as $tex){echo '<br />'.$tex;}
 						}
 						if(isset($widget_info['requires'])){
 							$requires = $widget_info['requires'];
@@ -82,106 +157,15 @@
 								}
 							}
 						}
-						echo '</td>';
-					} else {
-						echo '<td></td>';
+						echo '</td><td style="text-align:center;vertical-align:middle;"><a class="btn btn-success btn-mini" href="?action=install&widget=' . $value . '">Install</a></td></tr>';
 					}
-					if(isset($widget_info['homepage_url']) && $widget_info['homepage_url'] != ''){
-						$homepage_url = $widget_info['homepage_url'];
-						echo '<td style="text-align:center;vertical-align:middle;"><a class="btn " href="' . $homepage_url . '">Homepage</a></td>';
-					} else {
-						echo '<td></td>';
-					}
-					echo '<td style="text-align:center;vertical-align:middle;">';
-					echo '<a class="btn btn-danger btn-mini" href="?action=remove&widget=' . $widget->name . '">'.$main_smarty->get_config_vars('PLIGG_Visual_AdminPanel_Module_Remove').'</a>';
-					echo '</td></tr>';
 				}
+			} else {
+				// This is where folders are found but don't have the install file.
+				echo '<strong>No uninstalled widgets found!</strong><br />';
 			}
-		} else {
-			echo '<h3>There are no widgets installed!</h3>';
+			echo '</tbody></table>';
 		}
-		echo '</tbody></table>';
-		echo '<div class="apply_widgets"><input type="submit" class="btn btn-primary" name="submit" value="'.$main_smarty->get_config_vars('PLIGG_Visual_AdminPanel_Apply_Changes').'" /></div>';
-		echo '</form>';
-		// End installed wrapper
-		echo '</div>';
-		// Uninstall tab status
-		if ($_GET["status"] == 'uninstalled'){
-			echo '<div id="uninstalled" class="active tab-pane fade in">';
-		} else {
-			echo '<div id="uninstalled" class="tab-pane fade in">';
-		}
-		echo '<table class="table table-bordered">';
-		echo '<thead><tr><th>Details</th><th style="text-align:center;">Install</th></tr></thead><tbody>';	
-		// find all the folders in the widgets folder
-		$dir = '../widgets/';
-		if (is_dir($dir)) {
-		   if ($dh = opendir($dir)) {
-			   while (($file = readdir($dh)) !== false) {
-					if(is_dir($dir . $file)){
-						if($file != '.' && $file != '..'){
-							$foundfolders[] = $file;
-						}
-					}
-			   }
-			   closedir($dh);
-		   }
-		}
-		// For each of the folders found, make sure they're not already in the database
-		$widgets = $db->get_results('SELECT * from ' . table_widgets . ' order by name asc;');
-		if($widgets){
-			foreach($widgets as $widget) {
-				if(isset($foundfolders) && is_array($foundfolders)){
-					foreach($foundfolders as $key => $value){
-						if ($widget->folder == $value){
-							unset($foundfolders[$key]);
-						}
-					}
-				}
-			}		
-		}
-		if(isset($foundfolders) && is_array($foundfolders)){
-			asort($foundfolders);
-			foreach($foundfolders as $key => $value){
-				$text = '';
-				if($widget_info = include_widget_settings($value)){
-					$text[] = $widget_info['desc'];
-					$version = $widget_info['version'];
-					$name = $widget_info['name'];
-					if(file_exists('../widgets/' . $widget->folder . '/' . $widget->folder . '_readme.htm')){
-						echo '<tr><td><a href="?action=readme&widget=' . $value . '">' . $name . '</a> ( Version '.$version.' )';
-					} else {
-						echo '<tr><td><strong>' . $name . '</strong> ( Version '.$version.' )';
-					}
-					if(is_array($text)){
-						foreach($text as $tex){echo '<br />'.$tex;}
-					}
-					if(isset($widget_info['requires'])){
-						$requires = $widget_info['requires'];
-						if(is_array($requires)){
-							echo '<br /><strong>Requires:</strong> ';
-							foreach($requires as $requirement){
-								if(check_for_enabled_widget($requirement[0], $requirement[1])){
-									echo '<i class="icon icon-ok" alt="Pass"></i> ';
-								} else {
-									echo '<i class="icon icon-remove" alt="Fail"></i> ';
-								}
-								echo '' . $requirement[0] . ' Version ' . $requirement[1] .' &nbsp;&nbsp; ';
-							}
-						}
-					}
-					echo '</td><td style="text-align:center;vertical-align:middle;"><a class="btn btn-success btn-mini" href="?action=install&widget=' . $value . '">Install</a></td></tr>';
-				}
-			}
-		} else {
-			// This is where folders are found but don't have the install file.
-			echo '<strong>No uninstalled widgets found!</strong><br />';
-		}
-		echo '</tbody></table>';
-		// End the uninstalled module wrapper
-		echo '</div>';
-		// End tab wrapper
-		echo '</div>';
 	}
 	if($action == 'readme'){
 		$widget = sanitize($_REQUEST['widget'],3);
