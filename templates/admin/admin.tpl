@@ -112,8 +112,8 @@
 				<!-- Everything you want hidden at 940px or less, place within here -->
 				<div class="nav-collapse">
 					<ul class="nav">
-						<li><a href="{$my_base_url}{$my_pligg_base}/">{#PLIGG_Visual_Home#}</a></li>
 						<li><a href="{$my_base_url}{$my_pligg_base}/admin/admin_index.php">{#PLIGG_Visual_AdminPanel#} Panel</a></li>
+						<li><a href="{$my_base_url}{$my_pligg_base}/">{#PLIGG_Visual_Home#}</a></li>
 						{checkActionsTpl location="tpl_header_admin_links"}
 						<li><a href="{$URL_logout}">{#PLIGG_Visual_Logout#}</a></li>
 					</ul>
