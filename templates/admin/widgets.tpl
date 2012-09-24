@@ -22,50 +22,73 @@
 		// Tab Wrapper
 		if ($_GET["status"] != 'uninstalled'){
 			echo '<form name="bulk_moderate" method="post">';
+			/*
 			echo '<div class="apply_widgets"><input type="submit" class="btn btn-primary" name="submit" value="'.$main_smarty->get_config_vars('PLIGG_Visual_AdminPanel_Apply_Changes').'" id="apply_changes" /></div>';
 			echo '<br />';
+			*/
 			echo '<table class="table table-bordered">';
-			echo '<thead><tr><th style="text-align:center;">Enabled</th><th>Details</th><th>Homepage</th><th>Uninstall</th></tr></thead></tbody>';	
+			echo '<thead>
+					<tr>
+						';
+						/* <th style="text-align:center;">Enabled</th> */
+			echo '		<th>Details</th>';
+			// echo ' 		<th>Version</th>';
+			// echo ' 		<th>Requires</th>';
+			echo '		<th>Homepage</th>
+						<th>Uninstall</th>
+					</tr>
+				</thead>
+				<tbody>';	
 			$widgets = $db->get_results('SELECT * from ' . table_widgets . ' order by name asc;');
 			if($widgets){
 				foreach($widgets as $widget) {
 					if (file_exists(mnmpath . '/widgets/' . $widget->folder)){
 						echo '<tr>';
-						echo '<td style="text-align:center;vertical-align:middle;">';
-						echo "<input type=\"hidden\" name=\"enabled[{$widget->id}]\" id=\"enabled_{$widget->id}\" value=\"{$widget->enabled}\">";
-						echo "<input type='checkbox' onclick='document.getElementById(\"enabled_{$widget->id}\").value=this.checked ? 1 : 0;' ";
-						if($widget->enabled)
-							echo "checked";
-						echo ">";
-						echo '</td>';
-						echo '<td><a href = "?action=readme&widget=' . $widget->folder . '">' . $widget->name . '</a> (Version ' . $widget->version . ')';
-						// echo '<br />' . $widget_info['desc'] . '';
-						$versionupdate = '';
-						if(isset($widget_info['update_url'])){
-							$updateurl  = $widget_info['update_url'];					   
-							$versionupdate = safe_file_get_contents($updateurl);
-						}
-						if (preg_match('/(\d+[\d\.]+)/',$versionupdate,$m) && $m[1] != $widget->latest_version){
-							$versionupdate = $m[1];
-							$db->query($sql="UPDATE `". table_widgets . "` SET `latest_version`='$versionupdate' WHERE `id`='{$widget->id}'");
-						} else {
-							$versionupdate = $widget->latest_version;
-						}
-						if ($versionupdate > 0){
-							if(isset($widget_info['homepage_url'])){
-								$homepage_url = $widget_info['homepage_url'];
-								echo " <a class='btn ' href='" . $homepage_url . "' target='_blank'>Upgrade $versionupdate</a>";
-							}
-						}
+						/*
+							echo '	<td style="text-align:center;vertical-align:middle;">';
+							echo "	<input type=\"hidden\" name=\"enabled[{$widget->id}]\" id=\"enabled_{$widget->id}\" value=\"{$widget->enabled}\">";
+							echo "	<input type='checkbox' onclick='document.getElementById(\"enabled_{$widget->id}\").value=this.checked ? 1 : 0;' ";
+							if($widget->enabled)
+								echo "checked";
+							echo ">";
+							echo '	</td>';
+						*/
+						echo '	<td><a href = "?action=readme&widget=' . $widget->folder . '">' . $widget->name . '</a>';
 						if($widget_info = include_widget_settings($widget->folder)){
 							$description =  $widget_info['desc'];
 							if($description != ''){
 								echo '<br />' . $description;
 							}
+							echo '</td>';
+						} else {
+							echo '<td></td>';
+						}
+						/*
+							echo '	<td style="text-align:center;">' . $widget->version . '</td>';
+							$versionupdate = '';
+							if(isset($widget_info['update_url'])){
+								$updateurl  = $widget_info['update_url'];					   
+								$versionupdate = safe_file_get_contents($updateurl);
+							}
+							if (preg_match('/(\d+[\d\.]+)/',$versionupdate,$m) && $m[1] != $widget->latest_version){
+								$versionupdate = $m[1];
+								$db->query($sql="UPDATE `". table_widgets . "` SET `latest_version`='$versionupdate' WHERE `id`='{$widget->id}'");
+							} else {
+								$versionupdate = $widget->latest_version;
+							}
+							if ($versionupdate > 0){
+								if(isset($widget_info['homepage_url'])){
+									$homepage_url = $widget_info['homepage_url'];
+									echo " <a class='btn ' href='" . $homepage_url . "' target='_blank'>Upgrade $versionupdate</a>";
+								}
+							}
+						*/
+						/*
+							// Requirements is Currently Broken
 							if(isset($widget_info['requires'])){
 								$requires = $widget_info['requires'];
 								if(is_array($requires)){
-									echo '<br /><strong>Requires:</strong> ';
+									echo '<td>';
 									foreach($requires as $requirement){
 										if(check_for_enabled_widget($requirement[0], $requirement[1])){
 											echo '<i class="icon icon-ok" alt="Pass"></i> ';
@@ -74,12 +97,12 @@
 										}
 										echo '' . $requirement[0] . ' Version ' . $requirement[1] .' &nbsp;&nbsp; ';
 									}
+									echo '</td>';
 								}
+							} else {
+								echo '<td></td>';
 							}
-							echo '</td>';
-						} else {
-							echo '<td></td>';
-						}
+						*/
 						if(isset($widget_info['homepage_url']) && $widget_info['homepage_url'] != ''){
 							$homepage_url = $widget_info['homepage_url'];
 							echo '<td style="text-align:center;vertical-align:middle;"><a class="btn " href="' . $homepage_url . '">Homepage</a></td>';
@@ -95,7 +118,9 @@
 				echo '<h3>There are no widgets installed!</h3>';
 			}
 			echo '</tbody></table>';
+			/*
 			echo '<div class="apply_widgets"><input type="submit" class="btn btn-primary" name="submit" value="'.$main_smarty->get_config_vars('PLIGG_Visual_AdminPanel_Apply_Changes').'" /></div>';
+			*/
 			echo '</form>';
 		} else {
 			echo '<table class="table table-bordered">';
