@@ -143,7 +143,7 @@ function validate_all_user_action(){
 		{if isset($template_comments)}
 			{section name=id loop=$template_comments}
 			<tr {if $template_comments[id].comment_status=='moderated'}class="tr_moderated"{/if}>
-			<td><input type="checkbox" name="comment[{$template_comments[id].comment_id}]" class="enabled_disable"  value="1" usernameval="{$template_comments[id].comment_author}"/></td>
+			<td style="text-align:center;"><input type="checkbox" name="comment[{$template_comments[id].comment_id}]" class="enabled_disable"  value="1" usernameval="{$template_comments[id].comment_author}"/></td>
 				<td><a href="{$my_base_url}{$my_pligg_base}/admin/admin_users.php?mode=view&user={$template_comments[id].comment_author}" title="{$template_comments[id].comment_author}'s Profile" id="comment-{$template_comments[id].comment_id}-author">{$template_comments[id].comment_author}</a></td>
 				<td style="text-align:justify;">
 					<div style="margin:0 5px 0 0;padding:0;float:left;">
