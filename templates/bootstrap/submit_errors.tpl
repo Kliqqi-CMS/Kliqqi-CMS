@@ -22,7 +22,7 @@
 			<p><a href="{$submit_search}"><strong>{#PLIGG_Visual_Submit2Errors_DupeArticleURL_Instruct2#}</strong></a></p>
 			<br style="clear: both;" /><br style="clear: both;" />
 			<form id="thisform">
-				<input type=button onclick="javascript:gPageIsOkToExit=true;window.history.go(-1);" value="{#PLIGG_Visual_Submit2Errors_Back#}" class="btn btn-primary" />
+				<input type="button" onclick="javascript:gPageIsOkToExit=true;window.history.go(-1);" value="{#PLIGG_Visual_Submit2Errors_Back#}" class="btn btn-primary" />
 			</form>
 		</div>
 	{/if}
