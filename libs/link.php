@@ -456,6 +456,10 @@ class Link {
 		$smarty->assign('title_url', urlencode($this->title_url));
 		$smarty->assign('enc_title_short', urlencode($title_short));
 		$smarty->assign('story_url', $this->get_internal_url());
+		$previd = $db->get_var("SELECT link_title_url FROM ".table_links." WHERE link_status = 'published' AND link_id < $this->id ORDER BY link_id DESC LIMIT 1");
+        $nextid = $db->get_var("SELECT link_title_url FROM ".table_links." WHERE link_status = 'published' AND link_id > $this->id ORDER BY link_id ASC  LIMIT 1");
+        $smarty->assign('story_prev_url', getmyurl("storytitle", $previd));
+        $smarty->assign('story_next_url', getmyurl("storytitle", $nextid));
 		$smarty->assign('story_edit_url', getmyurl("editlink", $this->id));
 		$smarty->assign('story_admin_url', getmyurl("admin_modify", $this->id));
 		$smarty->assign('story_comment_count', $this->comments());
