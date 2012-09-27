@@ -140,8 +140,11 @@ while($modules_folders=mysql_fetch_array($res_update_mod)){
 }
 $main_smarty->assign('in_no_module_update_require', $num_update_mod);
 
+$res_for_update=mysql_query("select var_value from " . table_config . "  where var_name = 'uninstall_module_updates'");
+$data_for_update_uninstall_mod=mysql_fetch_array($res_for_update);
 //count uninstalled modules with updates available
-$main_smarty->assign('un_no_module_update_require', $_COOKIE['module_update_require_un']);
+
+$main_smarty->assign('un_no_module_update_require', $data_for_update_uninstall_mod['var_value']);
 
 //count total module updates required
 $total_update_required_mod=$num_update_mod+$_COOKIE['module_update_require_un'];

@@ -202,11 +202,20 @@ if($status=="uninstalled")
 	$updatekey=implode(",", $update_key);
 	$main_smarty->assign('updatekey', $updatekey);
 	$main_smarty->assign('no_module_update_require', $updatecount);
-	$expire=time()+60*60*24*60;
-    setcookie("module_update_require_un", $updatecount, $expire);
-	setcookie("module_update_require_un_ex", $updatecount, $expire,"/",$_SERVER["HTTP_HOST"]);
+	//$expire=time()+60*60*24*60;
+    //setcookie("module_update_require_un", $updatecount, $expire);
+	//setcookie("module_update_require_un_ex", $updatecount, $expire,"/",$_SERVER["HTTP_HOST"]);
 	$main_smarty->assign('module_info', $module_info_data);
 	
+	$res_for_update=mysql_query("select * from " . table_config . "  where var_name = 'uninstall_module_updates'");
+	
+	if(mysql_num_rows($res_for_update)<=0){
+	 mysql_query("INSERT INTO " . table_config . " set var_value =".$updatecount." , var_name = 'uninstall_module_updates'");
+	}else{
+	$sql = "UPDATE " . table_config . " set var_value =".$updatecount." where `var_name` = 'uninstall_module_updates';";
+		//echo $sql;
+		$db->query($sql);
+	}
 	//echo "<pre>";
 	//print_r($module_info_data);
 	
