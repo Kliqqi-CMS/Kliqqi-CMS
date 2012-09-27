@@ -8,10 +8,11 @@
 	{checkActionsTpl location="tpl_pligg_group_end"}
 	<ul id="storytabs" class="nav nav-tabs">
 		{checkActionsTpl location="tpl_pligg_group_sort_start"}
-		{if $groupview eq "published"}<li class="active"><a href="{$groupview_published}"><span class="active">{#PLIGG_Visual_Group_Published#}</span></a>{else}<li><a href="{$groupview_published}">{#PLIGG_Visual_Group_Published#}</a>{/if}</li>
-		{if $groupview eq "upcoming"}<li class="active"><a href="{$groupview_upcoming}"><span class="active">{#PLIGG_Visual_Group_Upcoming#}</span></a>{else}<li><a href="{$groupview_upcoming}">{#PLIGG_Visual_Group_Upcoming#}</a>{/if}</li>
-		{if $groupview eq "shared"}<li class="active"><a href="{$groupview_sharing}"><span class="active">{#PLIGG_Visual_Group_Shared#}</span></a>{else}<li><a href="{$groupview_sharing}">{#PLIGG_Visual_Group_Shared#}</a>{/if}</li>
-		{if $groupview eq "members"}<li class="active"><a href="{$groupview_members}"><span class="active">{#PLIGG_Visual_Group_Member#}</span></a>{else}<li><a href="{$groupview_members}">{#PLIGG_Visual_Group_Member#}</a>{/if}</li>
+		{if $groupview eq "published"}<li class="active"><a href="{$groupview_published}"><span class="active">{#PLIGG_Visual_Group_Published#}</span> <span class="badge badge-gray">{$group_published_rows}</span></a>{else}<li><a href="{$groupview_published}">{#PLIGG_Visual_Group_Published#} <span class="badge badge-gray">{$group_published_rows}</span></a>{/if}</li>
+		{if $groupview eq "upcoming"}
+        <li class="active"><a href="{$groupview_upcoming}"><span class="active">{#PLIGG_Visual_Group_Upcoming#}</span> <span class="badge badge-gray">{$group_upcoming_rows}</span></a>{else}<li><a href="{$groupview_upcoming}">{#PLIGG_Visual_Group_Upcoming#} <span class=" badge badge-gray">{$group_upcoming_rows}</span></a>{/if}</li>
+		{if $groupview eq "shared"}<li class="active"><a href="{$groupview_sharing}"><span class="active">{#PLIGG_Visual_Group_Shared#}</span> <span class="badge badge-gray">{$group_shared_rows}</span></a>{else}<li><a href="{$groupview_sharing}">{#PLIGG_Visual_Group_Shared#} <span class="badge badge-gray">{$group_shared_rows}</span></a>{/if}</li>
+		{if $groupview eq "members"}<li class="active"><a href="{$groupview_members}"><span class="active">{#PLIGG_Visual_Group_Member#}</span></a>{else}<li><a href="{$groupview_members}">{#PLIGG_Visual_Group_Member#}{/if}</li>
 		{checkActionsTpl location="tpl_pligg_group_sort_end"}
 	</ul>
 	<div class="tab-content" id="tabbed">

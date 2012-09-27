@@ -1,8 +1,6 @@
 <?php
-
 include_once('internal/Smarty.class.php');
 $main_smarty = new Smarty;
-
 include('config.php');
 include(mnminclude.'html1.php');
 include(mnminclude.'link.php');
@@ -37,6 +35,7 @@ $main_smarty = do_sidebar($main_smarty);
 
 // pagename
 define('pagename', 'group_story'); 
+
 $main_smarty->assign('pagename', pagename); 
 
 $privacy = $db->get_var("SELECT group_privacy FROM " . table_groups . " WHERE group_id = '$requestID';");
@@ -47,15 +46,28 @@ if($requestID > 0)
 	
     if (($privacy!='private' || isMemberActive($requestID)=='active'))
     {
+		 $main_smarty->assign('group_shared_rows', group_shared($requestID,$catID,1));
+		 $main_smarty->assign('group_published_rows', group_stories($requestID,$catID,'published',1));
+		 $main_smarty->assign('group_upcoming_rows', group_stories($requestID,$catID,'upcoming',1));
+		
         switch ($view) {
             case 'shared':
                 group_shared($requestID,$catID);
                 break;
+			 case 'published':
+                group_stories($requestID,$catID,'published');
+                break;
+			
+			 case 'upcoming':
+                group_stories($requestID,$catID,'upcoming');
+                break;
+					
             case 'members':
                 member_display($requestID);
                 break;
             default:
-                group_stories($requestID,$catID);
+                group_stories($requestID,$catID,$view);
+				
         }
     }
     else
