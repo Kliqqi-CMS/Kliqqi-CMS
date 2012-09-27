@@ -349,7 +349,7 @@ function member_display($requestID)
 		$main_smarty->assign('member_display', $member_display);
 }
 //get the upcoming story for groups
-function group_stories($requestID,$catId)
+function group_stories($requestID,$catId,$view,$flag=0)
 {
 	global $db,$main_smarty,$the_template,$page_size,$cached_links;
 	if (!is_numeric($requestID)) die();
@@ -385,18 +385,28 @@ function group_stories($requestID,$catId)
 	$group_vote = group_check_to_publish($requestID);
 	
 	
-	if ($_GET['view'] == 'upcoming')
-		$from_where .= " AND link_votes<$group_vote AND link_status='queued'";
+	if ($view == 'upcoming')
+		$from_where .= " AND link_votes<=$group_vote AND link_status='queued'";
 	else                
 		$from_where .= " AND ((link_votes >= $group_vote AND link_status = 'queued') OR link_status = 'published')";
 
 	$offset = (get_current_page()-1)*$page_size;
+	if($flag==1){
+	$sql = "SELECT SQL_CALC_FOUND_ROWS * FROM " . table_links . " WHERE link_group_id = $requestID AND link_group_status!='discard' $from_where GROUP BY link_id ORDER BY link_published_date DESC, link_date DESC ";
+	}else{
 	$sql = "SELECT SQL_CALC_FOUND_ROWS * FROM " . table_links . " WHERE link_group_id = $requestID AND link_group_status!='discard' $from_where GROUP BY link_id ORDER BY link_published_date DESC, link_date DESC LIMIT $offset, $page_size";
+	}
+	
+	
 	// Search on additional categories
 	if ($catId && Multiple_Categories)
 	    $sql = str_replace("WHERE", " LEFT JOIN ".table_additional_categories. " ON ac_link_id=link_id WHERE", $sql);
 	$links = $db->get_results($sql);
    	$rows = $db->get_var("SELECT FOUND_ROWS()");
+	
+	if($flag==1)
+	 return $rows;
+	
 	if ($links) {
 		foreach($links as $dblink) {
 			$link->id=$dblink->link_id;
@@ -419,7 +429,7 @@ function group_stories($requestID,$catId)
 	$main_smarty->assign('group_story_pagination', do_pages($rows, $page_size, 'group_story', true));
 }
 //get the shared story for groups
-function group_shared($requestID,$catId)
+function group_shared($requestID,$catId,$flag=0)
 {
 	global $db,$main_smarty,$the_template, $page_size,$cached_links;
 	if (!is_numeric($requestID)) die();
@@ -450,16 +460,30 @@ function group_shared($requestID,$catId)
         }
 
 	$offset = (get_current_page()-1)*$page_size;
+	
+	if($flag==1){
+	$sql="SELECT SQL_CALC_FOUND_ROWS b.* FROM " . table_group_shared . " a
+				    LEFT JOIN " . table_links . " b ON link_id=share_link_id
+				    WHERE share_group_id = $requestID AND !ISNULL(link_id) $from_where 
+				    GROUP BY link_id
+				    ORDER BY link_published_date DESC, link_date DESC ";
+	}else{
 	$sql="SELECT SQL_CALC_FOUND_ROWS b.* FROM " . table_group_shared . " a
 				    LEFT JOIN " . table_links . " b ON link_id=share_link_id
 				    WHERE share_group_id = $requestID AND !ISNULL(link_id) $from_where 
 				    GROUP BY link_id
 				    ORDER BY link_published_date DESC, link_date DESC  LIMIT $offset, $page_size";
+		
+	}
 	// Search on additional categories
 	if ($catId && Multiple_Categories)
 	    $sql = str_replace("WHERE", " LEFT JOIN ".table_additional_categories. " ON ac_link_id=link_id WHERE", $sql);
 	$links = $db->get_results($sql);
    	$rows  = $db->get_var("SELECT FOUND_ROWS()");
+	
+	if($flag==1)
+	return $rows;
+	
 	if ($links) {
 		foreach($links as $dblink) {
 			$link->id=$dblink->link_id;
