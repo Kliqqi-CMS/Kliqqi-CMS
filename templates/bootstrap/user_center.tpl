@@ -17,7 +17,7 @@
 				{* Avatar upload modal *}
 				<div class="modal hide fade" id="profileavatar" style="display: none;">
 					<div class="modal-header">
-						<button data-dismiss="modal" class="close" type="button">×</button>
+						<button data-dismiss="modal" class="close" type="button">&times;</button>
 						<h3>Profile Avatar Upload</h3>
 					</div>
 					<div class="modal-body">

@@ -11,7 +11,7 @@
 
 {if $templatelite.post.fb_key}
 	<div class="alert alert-success fade in">
-		<a data-dismiss="alert" class="close">×</a>
+		<a data-dismiss="alert" class="close">&times;</a>
 		{#PLIGG_FB_Saved#}
 	</div>
 {/if}

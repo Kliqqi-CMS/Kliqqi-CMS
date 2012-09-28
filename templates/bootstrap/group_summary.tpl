@@ -57,7 +57,7 @@
 				{if $Avatar_uploaded neq ''}
 					<br />
 					<div class="alert">
-						<button class="close" data-dismiss="alert">×</button>
+						<button class="close" data-dismiss="alert">&times;</button>
 						{$Avatar_uploaded}
 					</div>
 				{/if}
@@ -65,7 +65,7 @@
 				<div class="modal hide fade" id="groupavatar" style="display: none;">
 					<form method="POST" enctype="multipart/form-data" name="image_upload_form" action="{$form_action}">
 						<div class="modal-header">
-							<button data-dismiss="modal" class="close" type="button">×</button>
+							<button data-dismiss="modal" class="close" type="button">&times;</button>
 							<h3>Group Avatar Upload</h3>
 						</div>
 						<div class="modal-body">

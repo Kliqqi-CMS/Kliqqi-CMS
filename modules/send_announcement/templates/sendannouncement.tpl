@@ -24,7 +24,7 @@
 		announcement();
 		{/php}
 		<div class="alert fade in">
-			<a class="close" data-dismiss="alert" href="#">×</a>
+			<a class="close" data-dismiss="alert" href="#">&times;</a>
 			<h4 class="alert-heading">{#Pligg_Send_Announcemet#}</h4>
 			{#Pligg_Send_Announcement_Sent#}
 		</div>

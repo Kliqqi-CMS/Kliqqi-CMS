@@ -112,7 +112,7 @@ recursive_remove_directory('../cache',TRUE);
 
 ?>
 <div class="modal-header">
-	<a class="close" data-dismiss="modal">×</a>
+	<a class="close" data-dismiss="modal">&times;</a>
 	<h3><?php echo $main_smarty->get_config_vars('PLIGG_Visual_AdminPanel_Cleared_Cache') ?></h3>
 </div>
 <div class="modal-body">

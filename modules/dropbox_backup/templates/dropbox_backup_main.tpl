@@ -2,12 +2,12 @@
 
 {if $error}
 	<div class="alert alert-error">
-		<a data-dismiss="alert" class="close">×</a>
+		<a data-dismiss="alert" class="close">&times;</a>
 		{$error}
     </div>
 {elseif $templatelite.post.submit}
 	<div class="alert alert-success">
-		<a data-dismiss="alert" class="close">×</a>
+		<a data-dismiss="alert" class="close">&times;</a>
 		{#PLIGG_Dropbox_Backup_Saved#}
     </div>
 {/if}
@@ -58,7 +58,7 @@
 {if $message}
 	<div class="span8">
 		<div class="alert alert-{$status}">
-			<a data-dismiss="alert" class="close">×</a>
+			<a data-dismiss="alert" class="close">&times;</a>
 			{$message}
 		</div>
 	</div>

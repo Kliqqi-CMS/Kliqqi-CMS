@@ -23,7 +23,7 @@ var RecaptchaOptions = {
 	<div class="controls">
 		{if isset($register_captcha_error)}
 			<div class="alert alert-error">
-				<button class="close" data-dismiss="alert">×</button>
+				<button class="close" data-dismiss="alert">&times;</button>
 				{$register_captcha_error}
 			</div>
 		{/if}

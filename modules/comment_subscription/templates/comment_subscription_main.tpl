@@ -2,7 +2,7 @@
 
 {if $templatelite.post.submit}
 	<div class="alert alert-success">
-		<button class="close" data-dismiss="alert">×</button>
+		<button class="close" data-dismiss="alert">&times;</button>
 		{#PLIGG_Comment_Subscription_Saved#}
     </div>
 {/if}

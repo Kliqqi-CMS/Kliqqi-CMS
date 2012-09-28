@@ -12,7 +12,7 @@
 					{if isset($form_username_error)}
 						{ foreach value=error from=$form_username_error }
 							<div style="margin:10px 0 0 0;" class="alert">
-								<button class="close" data-dismiss="alert">×</button>
+								<button class="close" data-dismiss="alert">&times;</button>
 								{$error}
 							</div>
 						{ /foreach }
@@ -27,7 +27,7 @@
 					{if isset($form_email_error)}
 						{ foreach value=error from=$form_email_error }
 							<div style="margin:10px 0 0 0;" class="alert">
-								<button class="close" data-dismiss="alert">×</button>
+								<button class="close" data-dismiss="alert">&times;</button>
 								{$error}
 							</div>
 						{ /foreach }
@@ -43,7 +43,7 @@
 					{if isset($form_password_error)}
 						{ foreach value=error from=$form_password_error }
 							<div style="margin:10px 0 0 0;" class="alert">
-								<button class="close" data-dismiss="alert">×</button>
+								<button class="close" data-dismiss="alert">&times;</button>
 								{$error}
 							</div>
 						{ /foreach }

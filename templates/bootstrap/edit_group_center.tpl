@@ -5,13 +5,13 @@
 {if $is_group_admin eq '1'}
 	{if $errors}
 		<div class="alert">
-			<button class="close" data-dismiss="alert">×</button>
+			<button class="close" data-dismiss="alert">&times;</button>
 			{$errors}
 		</div>
 	{/if}
 	{if $Avatar_uploaded neq ''}
 		<div class="alert alert-success">
-			<button class="close" data-dismiss="alert">×</button>
+			<button class="close" data-dismiss="alert">&times;</button>
 			{$Avatar_uploaded}
 		</div>
 	{/if}

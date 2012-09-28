@@ -24,7 +24,7 @@ $local_version = $match[1];
 	if (version_compare($external_version, $local_version, '<=')) {
 		// You're up to date
 	}else{
-		echo '	<div class="alert"><button class="close" data-dismiss="alert">×</button>';				
+		echo '	<div class="alert"><button class="close" data-dismiss="alert">&times;</button>';				
 		echo $lang['VersionCheckOld'];
 		echo '	</div>';
 	}

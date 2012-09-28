@@ -2,7 +2,7 @@
 
 {if isset($msg)}
 	<div class="alert fade in">
-		<a data-dismiss="alert" class="close">×</a>
+		<a data-dismiss="alert" class="close">&times;</a>
 		{$msg}
 	</div>
 {/if}

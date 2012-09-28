@@ -6,7 +6,7 @@
 	<fieldset>
 		{if $error}
 			<div class="alert">
-				<button class="close" data-dismiss="alert">×</button>
+				<button class="close" data-dismiss="alert">&times;</button>
 				{$error}
 			</div>
 		{/if}

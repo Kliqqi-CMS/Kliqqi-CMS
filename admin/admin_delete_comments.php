@@ -56,7 +56,7 @@ while($comment = mysql_fetch_object($result))
         delete_comment($comment->comment_id);
 ?>
 <div class="modal-header">
-	<a class="close" data-dismiss="modal">×</a>
+	<a class="close" data-dismiss="modal">&times;</a>
 	<h3><?php echo $main_smarty->get_config_vars('PLIGG_Visual_AdminPanel_Discarded_Comments_Removed') ?></h3>
 </div>
 <div class="modal-body">

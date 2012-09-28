@@ -68,7 +68,7 @@
 </head>
 <body dir="{#PLIGG_Visual_Language_Direction#}" {$body_args}>
 	{if $maintenance_mode eq "true" && $user_level eq 'admin'}
-		<div class="alert alert-error" style="margin-bottom:0;"><button class="close" data-dismiss="alert">×</button>{#PLIGG_Maintenance_Admin_Warning#}</div>
+		<div class="alert alert-error" style="margin-bottom:0;"><button class="close" data-dismiss="alert">&times;</button>{#PLIGG_Maintenance_Admin_Warning#}</div>
 	{/if}
 	{checkActionsTpl location="tpl_pligg_body_start"}
 	{include file=$tpl_header.".tpl"}

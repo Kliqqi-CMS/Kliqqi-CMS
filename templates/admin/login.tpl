@@ -10,7 +10,7 @@ background-color: #eee;
 	<div class="login_content">
 		{if $errorMsg ne ""}
 			<div class="alert alert-warning">
-				<a class="close" data-dismiss="alert" href="#">×</a>
+				<a class="close" data-dismiss="alert" href="#">&times;</a>
 				{$errorMsg}
 			</div>
 		{/if}

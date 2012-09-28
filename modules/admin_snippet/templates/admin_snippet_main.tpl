@@ -6,7 +6,7 @@
 
 {if $snippet_error}
 	<div class="alert fade in">
-		<a data-dismiss="alert" class="close">×</a>
+		<a data-dismiss="alert" class="close">&times;</a>
 		{$snippet_error}
 	</div>
 {/if}

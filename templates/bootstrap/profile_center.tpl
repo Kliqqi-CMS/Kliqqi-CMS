@@ -16,7 +16,7 @@
 				{* Avatar upload modal *}
 				<div class="modal hide fade" id="profileavatar" style="display: none;">
 					<div class="modal-header">
-						<button data-dismiss="modal" class="close" type="button">×</button>
+						<button data-dismiss="modal" class="close" type="button">&times;</button>
 						<h3>Profile Avatar Upload</h3>
 					</div>
 					<div class="modal-body">
@@ -165,7 +165,7 @@
 	<li><a href="{$user_url_saved}">{#PLIGG_Visual_User_NewsSaved#}</a></li>
 	{checkActionsTpl location="tpl_pligg_profile_sort_end"}
 </ul>
-{if $savemsg neq ""}<div class="alert alert-warning fade in"><a data-dismiss="alert" class="close">×</a>{$savemsg}</div>{/if} 
+{if $savemsg neq ""}<div class="alert alert-warning fade in"><a data-dismiss="alert" class="close">&times;</a>{$savemsg}</div>{/if} 
 {checkActionsTpl location="tpl_pligg_profile_info_start"}
 <form action="" method="post" id="thisform">
 	<div id="profile_container" style="position: relative;">

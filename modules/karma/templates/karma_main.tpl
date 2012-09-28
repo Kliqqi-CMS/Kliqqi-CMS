@@ -2,12 +2,12 @@
 
 {if $error}
 	<div class="alert alert-error">
-		<button class="close" data-dismiss="alert">×</button>
+		<button class="close" data-dismiss="alert">&times;</button>
 		{$error}
     </div>
 {elseif $templatelite.post.submit}
 	<div class="alert alert-success">
-		<button class="close" data-dismiss="alert">×</button>
+		<button class="close" data-dismiss="alert">&times;</button>
 		{#PLIGG_Karma_Saved#}
     </div>
 {/if}

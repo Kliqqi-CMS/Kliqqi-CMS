@@ -322,7 +322,7 @@ function member_display($requestID)
 					}
 					$member_display .= '<div class="modal hide fade" id="groupadminlinks-'.$index.'" style="display: none;">
 						<div class="modal-header">
-							<button data-dismiss="modal" class="close" type="button">×</button>
+							<button data-dismiss="modal" class="close" type="button">&times;</button>
 							<h3>Group User Management</h3>
 						</div>
 						<div class="modal-body">
