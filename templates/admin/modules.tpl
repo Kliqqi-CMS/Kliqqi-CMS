@@ -35,7 +35,7 @@ $(document).ready(function(){
 	</ul>
 	<div class="tab-content" >
 		{if $status eq "installed"}
-			{if $no_module_update_require neq '0'}
+			{if $no_module_update_require gt '0'}
 				<div class="alert">
 					There are updates available for {$no_module_update_require} modules. <a href="admin_modules.php?token=1">Click here</a> to review them.
 				</div>

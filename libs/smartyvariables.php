@@ -131,8 +131,8 @@ $main_smarty->assign('moderated_total_count', $moderated_total_count);
 
 //count installed module with updates available
 $res_update_mod=mysql_query('SELECT folder from ' . table_modules . ' where latest_version>version') or die(mysql_error());
+$num_update_mod=0;
 if(mysql_num_rows($res_update_mod)>0){
-		$num_update_mod=0;
 while($modules_folders=mysql_fetch_array($res_update_mod)){
 	if (file_exists(mnmmodules . $modules_folders['folder']))
 			$num_update_mod++;
@@ -147,7 +147,7 @@ $data_for_update_uninstall_mod=mysql_fetch_array($res_for_update);
 $main_smarty->assign('un_no_module_update_require', $data_for_update_uninstall_mod['var_value']);
 
 //count total module updates required
-$total_update_required_mod=$num_update_mod+$_COOKIE['module_update_require_un'];
+$total_update_required_mod=$num_update_mod+$data_for_update_uninstall_mod['var_value'];
 $main_smarty->assign('total_update_required_mod', $total_update_required_mod);
 
 
