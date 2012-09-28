@@ -377,6 +377,7 @@ if($status=="uninstalled")
 	}
 
 	$update_require_modules = $db->get_results('SELECT * from ' . table_modules . ' where latest_version>version order by weight asc;');
+	print_r($update_require_modules);
 	if(count($update_require_modules)){
 		$num_update_required=0;
 		foreach($update_require_modules as $module) {
