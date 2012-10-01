@@ -15,14 +15,35 @@ function module_add_action($location, $the_function, $variables, $weight = array
 
 function module_add_action_tpl($location, $the_tpl, $weight = array ('weight' => 0) )
 {
+	
 	global $script_name, $module_actions_tpl, $include_in_pages, $do_not_include_in_pages;
 	if(is_array($include_in_pages)){
 		if (in_array($script_name, $include_in_pages) || in_array('all', $include_in_pages)) {
 			if(is_array($do_not_include_in_pages) && in_array($script_name, $do_not_include_in_pages)) 
 				return;
-			$module_actions_tpl[$location][$the_tpl] = $weight;
+			$module_actions_tpl[$location][$the_tpl] = get_module_weight($the_tpl,$weight);
 		}
 	}
+}
+
+
+
+
+function get_module_weight($the_tpl,$weight){
+	global $db;
+	if($weight['weight']==0){
+		$folder_array=explode("/",$the_tpl);
+		if($folder_array[2]!=""){
+		$mysql="SELECT weight from " .table_modules . " where folder='".$folder_array[2]."' and enabled=1 ";
+		$mod_weight = $db->get_var($mysql);
+		$weight['weight']=$mod_weight;
+		}
+		
+	}
+	
+	
+	return $weight;
+	
 }
 
 function module_add_css($the_css, $weight = array ('weight' => 0) )
@@ -85,10 +106,11 @@ function check_actions($location, &$vars)
 
 function actioncmp($a, $b)
 {
-    if ($a['weight'] == $b['weight']) {
+    
+	if ($a['weight'] == $b['weight']) {
         return 0;
     }
-    return ($a['weight'] > $b['weight']) ? -1 : 1;
+    return ($a['weight'] < $b['weight']) ? -1 : 1;
 }
 
 function check_actions_tpl($location,&$smarty)
@@ -98,11 +120,24 @@ function check_actions_tpl($location,&$smarty)
     	$smarty->assign("location",$location);
 	if($module_actions_tpl[$location]){
 		uasort($module_actions_tpl[$location], 'actioncmp');
+		//$weight=sort_cloumn($module_actions_tpl[$location]);
+		//array_multisort($weight, SORT_ASC,  $module_actions_tpl[$location]);
+		
+		
 		foreach ( $module_actions_tpl[$location] as $kk => $vv ) {
         	        $smarty->display($kk);
 		}
 	}
 } 
+
+function sort_cloumn($myArray){
+	$sort_numcie=array();
+	foreach($myArray as $c=>$key) {
+        $sort_numcie[] = $key['weight'];
+       }
+	   
+	   return $sort_numcie;
+}
 
 function check_for_enabled_module($name, $version)
 {
