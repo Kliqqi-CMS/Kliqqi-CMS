@@ -191,9 +191,7 @@ if (!file_exists(dirname(__FILE__) . '/languages/lang_'.$language.'.conf')) {
 include_once(mnmmodules . 'modules_init.php');
 include mnminclude.'utf8/utf8.php';
 include_once(mnminclude.'dbtree.php');
-include_once(mnminclude.'class_sidebar_init.php');
-$dynSidebar=new sidebar();
-$dynSidebar->init_widthgets();
+
 
 function loadCategoriesForCache($clear_cache = false) {
 	global $db;
