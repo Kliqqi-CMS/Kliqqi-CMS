@@ -84,6 +84,7 @@
 									<li><a href="{$URL_rss_page}" target="_blank">RSS</a></li>
 								{/if}
 								<li><a href="{$my_base_url}{$my_pligg_base}/rssfeeds.php">{#PLIGG_Visual_RSS_Feeds#}</a></li>
+								{checkActionsTpl location="tpl_pligg_header_more_end"}
 							</ul>
 						</li>
 					{/if}
