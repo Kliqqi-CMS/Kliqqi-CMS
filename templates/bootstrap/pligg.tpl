@@ -66,7 +66,7 @@
 	{if $pagename eq 'story'}<link rel="canonical" href="{$my_base_url}{$my_pligg_base}{$navbar_where.link2}" />{/if}
 	{checkActionsTpl location="tpl_pligg_head_end"}
 </head>
-<body dir="{#PLIGG_Visual_Language_Direction#}" {$body_args}>
+<body dir="{#PLIGG_Visual_Language_Direction#}" {$body_args} {checkActionsTpl location="tpl_pligg_body_onload"}>
 	{if $maintenance_mode eq "true" && $user_level eq 'admin'}
 		<div class="alert alert-error" style="margin-bottom:0;"><button class="close" data-dismiss="alert">&times;</button>{#PLIGG_Maintenance_Admin_Warning#}</div>
 	{/if}
