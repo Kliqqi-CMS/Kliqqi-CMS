@@ -15,7 +15,7 @@ function spam_trigger_showpage(){
 
 	force_authentication();
 	$canIhaveAccess = 0;
-	$canIhaveAccess = $canIhaveAccess + checklevel('admin');
+	$canIhaveAccess = $canIhaveAccess + checklevel('god');
 	
 	if($canIhaveAccess == 1)
 	{	
@@ -57,7 +57,7 @@ function spam_trigger_editlink()
 {
 	global $db, $current_user, $linkres;
 
-	if (checklevel('admin') || checklevel('moderator')) return;
+	if (checklevel('god') || checklevel('admin')) return;
 	if (!is_numeric($_POST['id'])) return;
 
 	$settings = get_spam_trigger_settings();
@@ -68,6 +68,7 @@ function spam_trigger_editlink()
 	{
 		$_SESSION['spam_trigger_story_error'] = 'deleted';
 		spam_trigger_killspam($current_user->user_id);
+		$linkres->status = 'spam';
 	}
 	// discard story
 	elseif ($settings['spam_medium'] && !spam_trigger_check($str, $settings['spam_medium']))
@@ -87,7 +88,7 @@ function spam_trigger_do_submit3($vars)
 {
 	global $db, $current_user;
 
-	if (checklevel('admin') || checklevel('moderator')) return;
+	if (checklevel('god') || checklevel('admin')) return;
 	$linkres = $vars['linkres'];
 	if (!$linkres->id) return;
 
@@ -99,6 +100,7 @@ function spam_trigger_do_submit3($vars)
 	{
 		$_SESSION['spam_trigger_story_error'] = 'deleted';
 		spam_trigger_killspam($current_user->user_id);
+		$linkres->status = 'spam';
 	}
 	// discard story
 	elseif ($settings['spam_medium'] && !spam_trigger_check($str, $settings['spam_medium']))
@@ -144,9 +146,14 @@ function spam_trigger_comment($vars)
 
 function spam_trigger_killspam($id)
 {
-	global $db;
+	global $db, $current_user;
 #	include_once(mnminclude.'link.php');
 #	include_once(mnminclude.'votes.php');
+	$oldlevel = $current_user->user_level;
+	$current_user->user_level = 'admin';
+	killspam($id);
+	$current_user->user_level = $oldlevel;
+	return;
 
 	$db->query('UPDATE `' . table_users . "` SET user_enabled=0, `user_pass` = '63205e60098a9758101eeff9df0912ccaaca6fca3e50cdce3', user_level='Spammer' WHERE `user_id` = $id");
 	$db->query('UPDATE `' . table_links . '` SET `link_status` = "discard" WHERE `link_author` = "'.$id.'"');
