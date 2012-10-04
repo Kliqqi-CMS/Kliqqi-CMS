@@ -44,7 +44,7 @@ function rss_import_showpage(){
 		if (!$tableexists) {
 			echo "First Run, Creating Tables<hr />";
 			include_once( 'create_feed_tables.php' );
-			die("<hr />If there are no errors then refresh this page to continue");
+			die("<hr />Errors be damned! We're going to refresh this page now. <br />If you see any errors above please check your error log.<META HTTP-EQUIV='refresh' CONTENT='5'>");
 		}
 		
 		$filename = 'create_feed_tables.php';
