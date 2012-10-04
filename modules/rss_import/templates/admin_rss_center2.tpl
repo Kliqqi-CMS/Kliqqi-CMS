@@ -7,16 +7,15 @@
 <script src="./modules/rss_import/js/EditInPlace.js" type="text/javascript"></script>
 
 	<style type="text/css">
-		.eip_editable { background-color: #ff9;border-left:0px;border-bottom:1px solid #828177;border-right:1px solid #828177; }
-		.eip_savebutton { background-color: #36f; color: #fff; }
-		.eip_cancelbutton { background-color: #000; color: #fff; }
+		.eip_editable { background-color: #ff9;cursor: pointer;}
+		.eip_savebutton { }
+		.eip_cancelbutton { margin-left:4px;}
 		.eip_saving { background-color: #903; color: #fff; padding: 3px; }
-		.eip_empty { color: #afafaf; }	
-		.emptytext {padding:0px 4px;border-top:2px solid #828177;border-left:2px solid #828177;border-bottom:1px solid #B0B0B0;border-right:1px solid #B0B0B0;background:#F5F5F5;}
+		.eip_empty { color: #afafaf;cursor: pointer; }
 	</style>
 {/literal}
 
-<fieldset><legend><img src="{$my_pligg_base}/modules/rss_import/images/manage_rss.gif" align="absmiddle"/> {#PLIGG_RSS_Import#}</legend>
+<legend>{#PLIGG_RSS_Import#}</legend>
 
 <br />
 <img src="{$my_pligg_base}/modules/rss_import/images/feed_add.gif" align="absmiddle"/> 
@@ -45,69 +44,126 @@ function verify(){
 {/literal}
 
 {foreach from=$FeedList item=feed_id}
-<?php global $main_smarty; $main_smarty->assign('fid', $_GET['feed_id']); ?>
-{if $feed_id eq $fid} 
+	<?php global $main_smarty; $main_smarty->assign('fid', $_GET['feed_id']); ?>
+	{if $feed_id eq $fid} 
 
-<h2>Edit the feed</h2>	
-  <b><img src="{$my_pligg_base}/modules/rss_import/images/feed_bullet.gif" align="absmiddle"/> Feed Name: </b> <span class="emptytext">{eipItem 
-item=qeip_FeedName unique=$feed_id ShowJS=TRUE}</span><br>
-	<div style="margin-left:30px">
-	<b>Feed URL: </b><span class="emptytext">{eipItem item=qeip_FeedURL unique=$feed_id ShowJS=TRUE}</span><br>
-
-	<img src= "{$my_pligg_base}/modules/rss_import/images/feed_delete.gif" align="absmiddle"/> 
-	<a href = "module.php?module=rss_import&action=dropfeed&feed_id={$feed_id}" onClick="return verify()">
-	Delete this feed</a>
-
-	<br />
-	<img src="{$my_pligg_base}/modules/rss_import/images/feed_go.gif" align="absmiddle"/> <a href = "module.php?module=rss_import&action=exportfeed&feed_id={$feed_id}">Export this feed</a>
-	<br />
-	<img src="{$my_pligg_base}/modules/rss_import/images/feed_go.gif" align="absmiddle"/> <a href = "module.php?module=rss_import&action=examinefeed&feed_id={$feed_id}">Examine this feed</a>
-	<br>
-	<img src="{$my_pligg_base}/modules/rss_import/images/feed_go.gif" align="absmiddle"/> <a href = "module.php?module=rss_import_do_import&override={$feed_id}">Import this feed</a>
-	<br><br>
-	- <b>Feed Frequency (hours): </b><span class="emptytext">{eipItem item=qeip_FeedFreqHours unique=$feed_id ShowJS=TRUE}</span> -- how often to check for new items.<br>
-	<br />
-	- <b>Feed Order: </b><span class="emptytext">{eipItem item=qeip_FeedLastItemFirst unique=$feed_id ShowJS=TRUE}</span> -- Do we start with the last items first? 0 = no, 1 = yes<br>
-	<br />	
-	- <b>Feed Random Votes: </b><span class="emptytext">{eipItem item=qeip_FeedRandomVoteEnable unique=$feed_id ShowJS=TRUE}</span> -- Do we use a random number of votes? 0 = no, 1 = yes<br>
-	<br />	
-	- <b>Feed Votes (if not random): </b><span class="emptytext">{eipItem item=qeip_FeedVotes unique=$feed_id ShowJS=TRUE}</span> -- how many votes new items recieve (limit 200)<br>
-	<br />
-	- <b>Feed Votes Minimum (if random): </b><span class="emptytext">{eipItem item=qeip_FeedRandomVotesMin unique=$feed_id ShowJS=TRUE}</span> -- how many votes new items recieve (limit 200)<br>
-	- <b>Feed Votes Maximum (if random): </b><span class="emptytext">{eipItem item=qeip_FeedRandomVotesMax unique=$feed_id ShowJS=TRUE}</span> -- how many votes new items recieve (limit 200)<br>
-	<br />
-	- <b>Feed Items Limit: </b><span class="emptytext">{eipItem item=qeip_FeedItemLimit unique=$feed_id ShowJS=TRUE}</span> -- how many new items to take from the feed when it's checked<br>
-	- <b>Feed URL Dupes: </b><span class="emptytext">{eipItem item=qeip_FeedURLDupe unique=$feed_id ShowJS=TRUE}</span> -- Allow duplicate URL's 0=No, 1=Yes, Allow<br>
-	- <b>Feed Title Dupes: </b><span class="emptytext">{eipItem item=qeip_FeedTitleDupe unique=$feed_id ShowJS=TRUE}</span> -- Allow duplicate Title's 0=No, 1=Yes, Allow<br>
-	- <b>Feed Submitter Id (number): </b><span class="emptytext">{eipItem item=qeip_FeedSubmitter unique=$feed_id ShowJS=TRUE}</span></p> -- The ID of the person who will be listed as the submitter<br>
-	- <b>Feed Category Id (number): </b><span class="emptytext">{eipItem item=qeip_FeedCategory unique=$feed_id ShowJS=TRUE}</span> -- The ID of the category to place these items into<br>
-	
-	<br>
-	{* get a list of all field_links where `feed_id` = $feed_id and put them into the smarty variable "FeedLinks" *}
-		{feedsListFeedLinks varname=FeedLinks feedid=$feed_id}
+		<h3>Edit the feed</h3>	
+		<strong>Feed Name:</strong> <span class="emptytext">{eipItem item=qeip_FeedName unique=$feed_id ShowJS=TRUE}</span>
+		<br />
+		<strong>Feed URL:</strong> <span class="emptytext">{eipItem item=qeip_FeedURL unique=$feed_id ShowJS=TRUE}</span>
+		<br />
+		<img src="{$my_pligg_base}/modules/rss_import/images/feed_delete.gif" align="absmiddle"/> <a href="module.php?module=rss_import&action=dropfeed&feed_id={$feed_id}" onClick="return verify()">Delete this feed</a>
+		<br />
+		<img src="{$my_pligg_base}/modules/rss_import/images/feed_go.gif" align="absmiddle"/> <a href = "module.php?module=rss_import&action=exportfeed&feed_id={$feed_id}">Export this feed</a>
+		<br />
+		<img src="{$my_pligg_base}/modules/rss_import/images/feed_go.gif" align="absmiddle"/> <a href = "module.php?module=rss_import&action=examinefeed&feed_id={$feed_id}">Examine this feed</a>
+		<br />
+		<img src="{$my_pligg_base}/modules/rss_import/images/feed_go.gif" align="absmiddle"/> <a href = "module.php?module=rss_import_do_import&override={$feed_id}">Import this feed</a>
+		<br /><br />
+		<table class="table table-bordered">
+			<thead>
+				<tr>
+					<th>Title</th>
+					<th>Value (click to edit)</th>
+					<th>Description</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td>Feed Frequency (hours)</td>
+					<td><span class="emptytext tablevalue">{eipItem item=qeip_FeedFreqHours unique=$feed_id ShowJS=TRUE}</span></td>
+					<td>How often to check for new items.</td>
+				</tr>
+				<tr>
+					<td>Feed Order</td>
+					<td><span class="emptytext tablevalue">{eipItem item=qeip_FeedLastItemFirst unique=$feed_id ShowJS=TRUE}</span></td>
+					<td>Do we start with the last items first? 0 = no, 1 = yes</td>
+				</tr>
+				<tr>	
+					<td>Feed Random Votes</td>
+					<td><span class="emptytext tablevalue">{eipItem item=qeip_FeedRandomVoteEnable unique=$feed_id ShowJS=TRUE}</span></td>
+					<td>Do we use a random number of votes? 0 = no, 1 = yes</td>
+				</tr>
+				<tr>	
+					<td>Feed Votes (if not random)</td>
+					<td><span class="emptytext tablevalue">{eipItem item=qeip_FeedVotes unique=$feed_id ShowJS=TRUE}</span>
+					<td>How many votes new items recieve (limit 200)
+				</tr>
+				<tr>
+					<td>Feed Votes Minimum (if random)</td>
+					<td><span class="emptytext tablevalue">{eipItem item=qeip_FeedRandomVotesMin unique=$feed_id ShowJS=TRUE}</span>
+					<td>How many votes new items recieve (limit 200)
+				</tr>
+				<tr>
+					<td>Feed Votes Maximum (if random)</td>
+					<td><span class="emptytext tablevalue">{eipItem item=qeip_FeedRandomVotesMax unique=$feed_id ShowJS=TRUE}</span>
+					<td>How many votes new items recieve (limit 200)</td>
+				</tr>
+				<tr>
+					<td>Feed Items Limit</td>
+					<td><span class="emptytext tablevalue">{eipItem item=qeip_FeedItemLimit unique=$feed_id ShowJS=TRUE}</span></td>
+					<td>how many new items to take from the feed when it's checked</td>
+				</tr>
+				<tr>
+					<td>Feed URL Dupes</td>
+					<td><span class="emptytext tablevalue">{eipItem item=qeip_FeedURLDupe unique=$feed_id ShowJS=TRUE}</span></td>
+					<td>Allow duplicate URL's 0=No, 1=Yes, Allow</td>
+				</tr>
+				<tr>
+					<td>Feed Title Dupes</td>
+					<td><span class="emptytext tablevalue">{eipItem item=qeip_FeedTitleDupe unique=$feed_id ShowJS=TRUE}</span></td>
+					<td>Allow duplicate Title's 0=No, 1=Yes, Allow</td>
+				</tr>
+				<tr>
+					<td>Feed Submitter Id (number)</td>
+					<td><span class="emptytext tablevalue">{eipItem item=qeip_FeedSubmitter unique=$feed_id ShowJS=TRUE}</span></td>
+					<td>The ID of the person who will be listed as the submitter</td>
+				</tr>
+				<tr>
+					<td>Feed Category Id (number)</td>
+					<td><span class="emptytext tablevalue">{eipItem item=qeip_FeedCategory unique=$feed_id ShowJS=TRUE}</span></td>
+					<td>The ID of the category to place these items into</td>
+				</tr>
+				<br>
+				{* get a list of all field_links where `feed_id` = $feed_id and put them into the smarty variable "FeedLinks" *}
+					{feedsListFeedLinks varname=FeedLinks feedid=$feed_id}
+			</tbody>
+		</table>
+		<h4>Feed Content</h4>
+		<p>Below is where you associate feed fields with Pligg fields, which tells the Pligg RSS Importer what data should be used where. For example you will want to connect the feed's title value to your Pligg link_title value.</p>
 		
-	{foreach from=$FeedLinks item=feed_link_id}
-		{* get a list of fields in the RSS feed and put them into the smarty variable "eip_select" for the EIP selectbox to use *}
-			{feedsListFeedFields feed_id=$feed_id}
-	
-		-- <b>feed field name</b>: <span class="emptytext">{eipItem item=qeip_FeedLink_FeedField unique=$feed_link_id ShowJS=TRUE}</span>
+		<table class="table table-bordered">
+			<thead>
+				<tr>
+					<th>Feed Field Name</th>
+					<th>Pligg Field Name</th>
+					<th>Remove Item</th>
+				</tr>
+			</thead>
+			<tbody>
+				{foreach from=$FeedLinks item=feed_link_id}					
+					<tr>
+						{* get a list of fields in the RSS feed and put them into the smarty variable "eip_select" for the EIP selectbox to use *}
+						{feedsListFeedFields feed_id=$feed_id}
+						
+						<td><span class="emptytext">{eipItem item=qeip_FeedLink_FeedField unique=$feed_link_id ShowJS=TRUE}</span></td>
 
-		{* get a list of pligg fields and put them into the smarty variable "eip_select" for the EIP selectbox to use *}
-			{feedsListPliggLinkFields}
-			
-		--- <b>pligg field name</b>: <span class="emptytext">{eipItem item=qeip_FeedLink_PliggField unique=$feed_link_id ShowJS=TRUE}</span>
-
-		--- <a href = "module.php?module=rss_import&action=dropfieldlink&FeedLinkId={$feed_link_id}">Remove this link</a>
- 		<br>
-
-	{/foreach}
-	
-	-- <a href = "module.php?module=rss_import&action=addnewfieldlink&FeedLinkId={$feed_id}">Add a new field link</a>
-	</div>
-	<hr>
-	
-{/if}
+						{* get a list of pligg fields and put them into the smarty variable "eip_select" for the EIP selectbox to use *}
+						{feedsListPliggLinkFields}
+						
+						<td><span class="emptytext">{eipItem item=qeip_FeedLink_PliggField unique=$feed_link_id ShowJS=TRUE}</span></td>
+						<td><a href = "module.php?module=rss_import&action=dropfieldlink&FeedLinkId={$feed_link_id}">Remove this item</a></td>
+					</tr>
+				{/foreach}
+				<tr>
+					<td colspan="3">
+						<a href = "module.php?module=rss_import&action=addnewfieldlink&FeedLinkId={$feed_id}">Add a new field item</a>
+					</td>
+				</tr>
+			</tbody>
+		</table>
+	{/if}
 {/foreach}
-<br/>
-</fieldset>
+
+<br /><br />
 {config_load file=rss_import_pligg_lang_conf}

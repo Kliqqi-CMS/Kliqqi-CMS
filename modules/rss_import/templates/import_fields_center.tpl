@@ -1,5 +1,5 @@
 {config_load file=rss_import_lang_conf}
-<legend><img src="{$my_pligg_base}/modules/rss_import/images/manage_rss.gif" align="absmiddle"/> {#PLIGG_RSS_Import#}</legend>
+<legend>{#PLIGG_RSS_Import#}</legend>
 
 {php}
 

@@ -8,18 +8,17 @@
 <script src="./modules/rss_import/js/EditInPlace.js" type="text/javascript"></script>
 
 	<style type="text/css">
-		.eip_editable { background-color: #ff9;border-left:0px;border-bottom:1px solid #828177;border-right:1px solid #828177; }
-		.eip_savebutton { background-color: #36f; color: #fff; }
-		.eip_cancelbutton { background-color: #000; color: #fff; }
+		.eip_editable { background-color: #ff9;cursor: pointer;}
+		.eip_savebutton { }
+		.eip_cancelbutton { margin-left:4px;}
 		.eip_saving { background-color: #903; color: #fff; padding: 3px; }
-		.eip_empty { color: #afafaf; }	
-		.emptytext {padding:0px 4px;border-top:2px solid #828177;border-left:2px solid #828177;border-bottom:1px solid #B0B0B0;border-right:1px solid #B0B0B0;background:#F5F5F5;}
+		.eip_empty { color: #afafaf;cursor: pointer; }	
 	</style>
 {/literal}
 
-<fieldset><legend><img src="{$my_pligg_base}/modules/rss_import/images/manage_rss.gif" align="absmiddle"/> {#PLIGG_RSS_Import#}</legend>
+<legend>{#PLIGG_RSS_Import#}</legend>
 
-<img src="{$my_pligg_base}/modules/rss_import/images/feed_go.gif" align="absmiddle"/><a href="module.php?module=rss_import_do_import"><strong>Import all feeds</strong></a>
+<img src="{$my_pligg_base}/modules/rss_import/images/feed_go.gif" align="absmiddle"/> <a href="module.php?module=rss_import_do_import"><strong>Import all feeds</strong></a>
 <hr>
 <img src="{$my_pligg_base}/modules/rss_import/images/feed_add.gif" align="absmiddle"/> <a href="module.php?module=rss_import&action=addnewfeed"><strong>Add a new feed</strong></a>
 <br />
@@ -41,7 +40,7 @@
 {literal}
 <script>
 function verify(){
-    msg = "Are you absolutely sure that you want to delete this feed?";
+    msg = "Are you sure that you want to delete this feed?";
     //all we have to do is return the return value of the confirm() method
     return confirm(msg);
     }
@@ -50,30 +49,19 @@ function verify(){
 
 {foreach from=$FeedList item=feed_id}
 	
-  <b><img src="{$my_pligg_base}/modules/rss_import/images/feed_bullet.gif" align="absmiddle"/> Feed Name: </b><span class="emptytext">{eipItem item=qeip_FeedName unique=$feed_id ShowJS=TRUE}</span><br>
-	<div style="margin-left:30px">
-	<b>Feed URL: </b><span class="emptytext">{eipItem item=qeip_FeedURL unique=$feed_id ShowJS=TRUE}</span><br>
+	<strong>Feed Name: </strong><span class="emptytext">{eipItem item=qeip_FeedName unique=$feed_id ShowJS=TRUE}</span><br>
+	<strong>Feed URL: </strong><span class="emptytext">{eipItem item=qeip_FeedURL unique=$feed_id ShowJS=TRUE}</span><br>
 
-	<img src="{$my_pligg_base}/modules/rss_import/images/feed_go.gif" align="absmiddle"/> <a href = 
-"module.php?module=rss_import&action=editfeed&feed_id={$feed_id}">Edit</a> &nbsp;
-
-	<img src="{$my_pligg_base}/modules/rss_import/images/feed_delete.gif" align="absmiddle"/> <a href = 
-"module.php?module=rss_import&action=dropfeed&feed_id={$feed_id}" onClick="return verify()">Delete</a> &nbsp;
-	
-	<img src="{$my_pligg_base}/modules/rss_import/images/feed_go.gif" align="absmiddle"/> <a href = 
-"module.php?module=rss_import&action=exportfeed&feed_id={$feed_id}">Export</a> &nbsp;
-
-	<img src="{$my_pligg_base}/modules/rss_import/images/feed_go.gif" align="absmiddle"/> <a href = 
-"module.php?module=rss_import&action=examinefeed&feed_id={$feed_id}">Examine</a> &nbsp;
-
-	<img src="{$my_pligg_base}/modules/rss_import/images/feed_go.gif" align="absmiddle"/> <a href = 
-"module.php?module=rss_import_do_import&override={$feed_id}">Import</a> &nbsp;
+	<img src="{$my_pligg_base}/modules/rss_import/images/feed_go.gif" align="absmiddle"/> <a href="module.php?module=rss_import&action=editfeed&feed_id={$feed_id}">Edit</a> &nbsp;
+	<img src="{$my_pligg_base}/modules/rss_import/images/feed_delete.gif" align="absmiddle"/> <a href="module.php?module=rss_import&action=dropfeed&feed_id={$feed_id}" onClick="return verify()">Delete</a> &nbsp;
+	<img src="{$my_pligg_base}/modules/rss_import/images/feed_go.gif" align="absmiddle"/> <a href="module.php?module=rss_import&action=exportfeed&feed_id={$feed_id}">Export</a> &nbsp;
+	<img src="{$my_pligg_base}/modules/rss_import/images/feed_go.gif" align="absmiddle"/> <a href="module.php?module=rss_import&action=examinefeed&feed_id={$feed_id}">Examine</a> &nbsp;
+	<img src="{$my_pligg_base}/modules/rss_import/images/feed_go.gif" align="absmiddle"/> <a href="module.php?module=rss_import_do_import&override={$feed_id}">Import</a> &nbsp;
 
 	<br>
-	</div>
 	<hr>
 	
 {/foreach}
 <br/>
-</fieldset>
+
 {config_load file=rss_import_pligg_lang_conf}
