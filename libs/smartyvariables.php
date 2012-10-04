@@ -125,8 +125,23 @@ $error_log_content = file_get_contents($error_log_path);
 $error_count = preg_match_all('/\[(\d{2})-(\w{3})-(\d{4}) (\d{2}:\d{2}:\d{2})\]/', $error_log_content, $matches);
 $main_smarty->assign('error_count', $error_count);
 
+// Count number of file backups
+$admin_backup_dir = "../admin/backup/";
+if (glob($admin_backup_dir . "*.sql") != false) {
+	$sqlcount = count(glob($admin_backup_dir . "*.sql"));
+} else {
+	$sqlcount = 0;
+}
+if (glob($admin_backup_dir . "*.zip") != false) {
+	$zipcount = count(glob($admin_backup_dir . "*.zip"));
+} else {
+	$zipcount = 0;
+}
+$main_smarty->assign('backup_count', $sqlcount+$zipcount);
+$backup_count = $sqlcount+$zipcount;
+
 // Count moderated total
-$moderated_total_count = $moderated_groups_count+$moderated_users_count+$moderated_comments_count+$moderated_submissions_count+$error_count;
+$moderated_total_count = $moderated_groups_count+$moderated_users_count+$moderated_comments_count+$moderated_submissions_count+$error_count+$backup_count;
 $main_smarty->assign('moderated_total_count', $moderated_total_count);
 
 //count installed module with updates available
@@ -149,20 +164,6 @@ $main_smarty->assign('un_no_module_update_require', $data_for_update_uninstall_m
 //count total module updates required
 $total_update_required_mod=$num_update_mod+$data_for_update_uninstall_mod['var_value'];
 $main_smarty->assign('total_update_required_mod', $total_update_required_mod);
-
-
-$admin_backup_dir = "../admin/backup/";
-if (glob($admin_backup_dir . "*.sql") != false) {
-	$sqlcount = count(glob($admin_backup_dir . "*.sql"));
-} else {
-	$sqlcount = 0;
-}
-if (glob($admin_backup_dir . "*.zip") != false) {
-	$zipcount = count(glob($admin_backup_dir . "*.zip"));
-} else {
-	$zipcount = 0;
-}
-$main_smarty->assign('backup_count', $sqlcount+$zipcount);
 
 $vars = '';
 check_actions('all_pages_top', $vars);
