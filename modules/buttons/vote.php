@@ -1,4 +1,10 @@
 <?php
+/**
+ * Proxy script for AJAX voting calls
+ *
+ * 
+ * http://www.pligg.domain/modules/buttons/vote.php?id=6&user=1&md5=d2a0e309be40a671fbb25e6249d2d235&value=-10&unvote=1
+ */
 header ("Expires: ".gmdate("D, d M Y H:i:s", time())." GMT"); 
 header ("Last-Modified: " . gmdate("D, d M Y H:i:s") . " GMT"); 
 header ("Cache-Control: no-cache, must-revalidate"); 
@@ -6,41 +12,35 @@ header ("Pragma: no-cache");
 
 chdir('../../');
 
-#include('config.php');
-#$_SERVER['HTTP_REFERER'] = my_base_url . my_pligg_base;
-
 $_SERVER['HTTP_REFERER'] = '';
 $_POST['id'] = $_GET['id'];
 $_POST['md5'] = $_GET['md5'];
 $_POST['user'] = $_GET['user'];
 $_POST['value'] = $_GET['value'];
+$_POST['unvote'] = $_GET['unvote'];
 
+// To catch die() messages 
+register_shutdown_function('shutdown');
+
+// Call vote_total to process button click
 ob_start();
-include('vote.php');
-$output = ob_get_contents();
-ob_end_clean();
+include('vote_total.php');
 
-if(Voting_Method == 1)
-{
-    if (!preg_match('/^(\d+)\s*~/',$output,$m))
-	exit;
-}
-else
-{
-    if (!preg_match('/~(\d+)$/',$output,$m))
-	exit;
-}
 
-?>
-var a = document.getElementsByTagName('A');
-for (var i=0; i<a.length; i++)
-    if (a[i].id.indexOf('xvotes-<?php =$_POST['id']?>')==0)
-	a[i].innerHTML = ''<?php =$link->votes?>';
-<?php 
-function error($mess)
+/**
+ * Shutdown function
+ * Grab output from the buffer and return proper JSON
+ */
+function shutdown()
 {
+    $output = array(
+	'htmlid' => $_GET['id'],
+	'value'  => $_GET['value']
+    );
+    $output['message'] = ob_get_contents();
     ob_end_clean();
-    print "alert('$mess');";
-    exit;
+
+    $callback = $_GET['callback'];
+    print "$callback(".json_encode($output).')';
 }
 ?>

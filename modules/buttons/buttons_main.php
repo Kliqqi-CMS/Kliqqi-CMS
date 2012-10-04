@@ -43,18 +43,18 @@ function buttons_showpage(){
 #			$main_smarty->assign('error', $error);
 		}
 		// breadcrumbs
-			$navwhere['text1'] = $main_smarty->get_config_vars('PLIGG_Visual_Header_AdminPanel');
-			$navwhere['link1'] = getmyurl('admin', '');
-			$navwhere['text2'] = "Modify buttons";
-			$navwhere['link2'] = my_pligg_base . "/module.php?module=buttons";
-			$main_smarty->assign('navbar_where', $navwhere);
-			$main_smarty->assign('posttitle', " / " . $main_smarty->get_config_vars('PLIGG_Visual_Header_AdminPanel'));
-		// breadcrumbs
+		$navwhere['text1'] = $main_smarty->get_config_vars('PLIGG_Visual_Header_AdminPanel');
+		$navwhere['link1'] = getmyurl('admin', '');
+		$navwhere['text2'] = "Modify buttons";
+		$navwhere['link2'] = my_pligg_base . "/module.php?module=buttons";
+		$main_smarty->assign('navbar_where', $navwhere);
+		$main_smarty->assign('posttitle', " / " . $main_smarty->get_config_vars('PLIGG_Visual_Header_AdminPanel'));
+		
 		define('modulename', 'buttons'); 
 		$main_smarty->assign('modulename', modulename);
-		
 		define('pagename', 'admin_modify_buttons'); 
 		$main_smarty->assign('pagename', pagename);
+		
 		$main_smarty->assign('settings', str_replace('"','&#034;',get_buttons_settings()));
 		$main_smarty->assign('tpl_center', buttons_tpl_path . 'buttons_main');
 		$main_smarty->display($template_dir . '/admin/admin.tpl');

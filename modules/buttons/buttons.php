@@ -1,4 +1,4 @@
-<?
+<?php
 header ("Expires: ".gmdate("D, d M Y H:i:s", time())." GMT"); 
 header ("Last-Modified: " . gmdate("D, d M Y H:i:s") . " GMT"); 
 header ("Cache-Control: no-cache, must-revalidate"); 
@@ -6,9 +6,12 @@ header ("Pragma: no-cache");
 header ("Content-type: application/javascript");
 
 chdir('../');
-include_once('../internal/Smarty.class.php');$main_smarty = new Smarty;
+include_once('../internal/Smarty.class.php');
+$main_smarty = new Smarty;
 
+$do_not_include_in_pages_core[] = 'buttons';
 include('../config.php');
+
 include(mnminclude.'html1.php');
 include(mnminclude.'link.php');
 include_once(mnminclude.'utils.php');
@@ -19,155 +22,129 @@ $domain = preg_replace('/^www/','',$_SERVER['HTTP_HOST']);
 if (!strstr($domain,'.') || strpos($domain,'localhost:')===0) $domain='';
 setcookie ("referrer", "1", 0, '/', $domain); 
 
-$urls = explode('|',$_GET['urls']);
-if (!in_array($_SERVER['HTTP_REFERER'],$urls))
-    $urls[] = $_SERVER['HTTP_REFERER'];
+#ini_set('display_errors', 1);
+#error_reporting(E_ALL ^ E_NOTICE ^ E_WARNING);
+
+// Current link URL (or page URL if no href specified)
+$url = $_GET['urls'];
+if (parse_url($url)===FALSE) $url = '';
 ?>
-var a = document.getElementsByTagName('A');
+// Load style.css
+$('head').append('<link rel="stylesheet" media="screen" href="<?=my_base_url . my_pligg_base . '/modules/buttons/evb.php'?>" type="text/css" />');
 
-(function ()
-{
-    var s = document.createElement('LINK');
-    s1 = document.getElementsByTagName('SCRIPT')[0];
-    s.type = 'text/css';
-    s.rel = "stylesheet";
-    s.media = "screen";
-    s.async = true;
-//    s.href = '<?=my_base_url . my_pligg_base . (file_exists(mnmpath.'/cache/evb.css') ? '/cache/evb.css' : '/modules/buttons/evb.css') ?>';
-    s.href = '<?=my_base_url . my_pligg_base . '/modules/buttons/evb.php'?>';
-    s1.parentNode.insertBefore(s, s1);
+$(function() {
+    // All appropriate links on the page replace with Vote div code
+    $('a.PliggButton').map( function(i, val) {
+	if (val.href=='<?php echo $url ?>') {
+    <?php
+    if (!$url) $url = $_SERVER['HTTP_REFERER'];
+    if (!$url) die('} }); });');
 
-for (var i=0; i<a.length; i++)
-{
-    c=" "+a[i].className+" ";
-    if(c.match(/( PliggButton )/))
-    {
-<?
-#print "vote".anonymous_vote;
-#exit;
-foreach ($urls as $url)
-{
-    $link = $db->get_row("SELECT * FROM ".table_links." WHERE link_url='".$db->escape($url)."' AND link_status!='discard'");
+    $link = $db->get_row($sql="SELECT * FROM ".table_links." WHERE link_url='".$db->escape($url)."' AND link_status!='discard'");
     if (!$link)
     {
+	// Search without www if not found
 	if (preg_match('/\/\/www\./i',$url))
 	    $url1 = preg_replace('/\/\/www\./i','//',$url);
 	else
 	    $url1 = preg_replace('/\/\//i','//www.',$url);
         $link = $db->get_row("SELECT * FROM ".table_links." WHERE link_url='".$db->escape($url1)."' AND link_status!='discard'");
     }
-    if($url==$_SERVER['HTTP_REFERER'])
-	print "if (a[i].href=='' || a[i].href=='{$_SERVER['HTTP_REFERER']}') {";
-    else
-	print "if (a[i].href=='$url') {";
 
-    // Page not added to Pligg
+    // Page not added to Pligg yet
     if (!$link)
     {
-?>
-	form=document.createElement("form");
-	if (a[i].href)
-	    form.action = '<?=my_base_url . my_pligg_base . '/submit.php?url='?>' + escape(a[i].href);
-	else
-	    form.action = '<?=my_base_url . my_pligg_base . '/submit.php?url='.urlencode($url);?>';
-	form.method = 'post';
-	form.id='form'+i;
-	a[i].parentNode.appendChild(form);
+	$rand = rand();
 
-	if (a[i].rev)
-	{
-            text = document.createElement("textarea");
-	    text.name = "category";
-	    text.value= a[i].rev;
-	    text.style.display='none';
-	    form.appendChild(text);
-	}
-	if (a[i].rel)
-	{
-            text = document.createElement("textarea");
-	    text.name = "tags";
-	    text.value= a[i].rel;
-	    text.style.display='none';
-	    form.appendChild(text);
-	}
-	if (a[i].title)
-	{
-            text = document.createElement("textarea");
-	    text.name = "title";
-	    text.value= a[i].title;
-	    text.style.display='none';
-	    form.appendChild(text);
-	}
-	if (a[i].childNodes.length>0 && a[i].childNodes[0].innerHTML)
-	{
-            text = document.createElement("textarea");
-	    text.name = "description";
-	    text.value= a[i].childNodes[0].innerHTML;
-	    text.style.display='none';
-	    form.appendChild(text);
-	}
-	a[i].style.display = 'none';
+    // Create submit form 
+    ?>
+	form = $("<form id='form<?php echo $rand?>' method='post' action='<?=my_base_url . my_pligg_base . '/submit.php?url='.urlencode($url); ?>'></form>");
+	if (val.rev)
+	    form.append("<textarea style='display:none;' name='category'>"+val.rev+"</textarea>");
+	if (val.rel)
+	    form.append("<textarea style='display:none;' name='tags'>"+val.rel+"</textarea>");
+	if (val.title)
+	    form.append("<textarea style='display:none;' name='title'>"+val.title+"</textarea>");
+	if (val.childNodes.length>0 && val.childNodes[0].innerHTML)
+	    form.append("<textarea style='display:none;' name='description'>"+val.childNodes[0].innerHTML+"</textarea>");
+	$('body').append(form);
 
-<?
-  	$onclick = "document.getElementById(\\\"form\"+i+\"\\\").submit();return false;";
-	$url = "href='#' onclick='$onclick'";
-	$link->link_votes = 0;
+    <?php
+  	$onclick = "$('#form$rand').submit(); return false;";
+	$url = "href='#' onclick=\"$onclick\"";
+    	$main_smarty->assign('link_shakebox_votes', 0);
+    	$main_smarty->assign('link_shakebox_index', $rand);
+    	$main_smarty->assign('link_shakebox_javascript_vote', $onclick);
+    	$main_smarty->assign('link_shakebox_javascript_report', $onclick);
     }
     // User logged in
     elseif ($current_user->user_id || (anonymous_vote && anonymous_vote!=='false'))
     {
-	$onclick = "crossvote({$current_user->user_id},{$link->link_id},\"+i+\",\\\"".md5($current_user->user_id.$link->link_randkey)."\\\",10)";
-	$url = "href='". my_base_url . my_pligg_base . "/story.php?title={$link->link_title_url}'";
+		$url = "href='". my_base_url . my_pligg_base . "/story.php?title={$link->link_title_url}'";
     }
     // User not logged in
     else
     {
-	$onclick =  "document.location.href=\\\"" . my_base_url . my_pligg_base . "/login.php?return=".my_pligg_base."/story.php?title={$link->link_title_url}\\\"";
-	$url = "href='". my_base_url . my_pligg_base . "/story.php?title={$link->link_title_url}'";
+		$main_smarty->assign('login_url', my_base_url . my_pligg_base . "/login.php?return=".my_pligg_base."/story.php?title={$link->link_title_url}\"");
+		$url = "href='". my_base_url . my_pligg_base . "/story.php?title={$link->link_title_url}'";
     }
-?>
-	div=document.createElement("div");
-	a[i].parentNode.appendChild(div);
-        if(c.match(/( PliggSmall)/))
-	    div.innerHTML = "<div class='evb_small_wrapper'>\
-				<div class='evb_small_vote_count'><a id='xvotes-<?=$link->link_id?>' <?=$url?>><?=$link->link_votes?></a></div>\
-				<div id='evb_small_vote_button' onclick='<?=$onclick?>' onMouseDown='changeSmBgImage()' onMouseUp='unchangeBgImage();'>\
-					<div class='evb_small_vote_text'>Vote</div>\
-				</div>\
-				<div style='clear:both;'> </div>\
-			</div>";
-	else
-	    div.innerHTML = "<div class='evb_large_wrapper'>\
-				<div class='evb_large_vote_count'><a id='xvotes-<?=$link->link_id?>' <?=$url?>><?=$link->link_votes?></a></div>\
-				<div class='evb_large_vote_text'>Votes</div>\
-				<div id='evb_large_button' onclick='<?=$onclick?>' onMouseDown='changeLgBgImage()' onMouseUp='unchangeBgImage();'></div>\
-			</div>";
-	}
-<?
-}
-?>
+
+    // Fill smarty vars with found link
+    if ($link)
+    {
+    	$linkres = new Link;
+    	$linkres->id=$link->link_id;
+    	if ($linkres->read())
+      		$main_smarty = $linkres->fill_smarty($main_smarty);
     }
-}
-})()
+    $main_smarty->assign('url', $url);
+    ?>
+	div=$("<div></div>");
 
-function changeLgBgImage (image , id) {
-  // The position change value should be half of the image height. In this case the height of the button image source is 42px, so the value is set to -21px.
-  document.getElementById('evb_large_button').style.backgroundPosition = '0px -21px';
-}
-function changeSmBgImage (image , id) {
-  // The position change value should be half of the image height. In this case the height of the button image source is 34px, so the value is set to -17px
-  document.getElementById('evb_small_vote_button').style.backgroundPosition = '0px -17px';
-}
-function unchangeBgImage (image , id) {
-  document.getElementById('evb_large_button').style.backgroundPosition = '0px 0px';
-  document.getElementById('evb_small_vote_button').style.backgroundPosition = '0px 0px';
-}
+//        if(val.className.match(/( PliggSmall)/))
+//	else
+	    div.html("<?php echo str_replace(array("\n",'"',"\r"), array("\\\n",'\"',''), $main_smarty->fetch('buttons/templates/buttons_large.tpl'));?>");
+	$(val).append(div);
+    }
+    });
+});
 
-function crossvote(user, id, htmlid, md5, value)
+function vote(user, id, htmlid, md5, value)
 {
-	var s = document.createElement('SCRIPT'), s1 = document.getElementsByTagName('SCRIPT')[0];
-	s.type = 'text/javascript';
-	s.async = true;
-	s.src = '<?=my_base_url . my_pligg_base . '/modules/buttons/vote.php?'?>' + "id=" + id + "&user=" + user + "&md5=" + md5 + "&value=" + value;
-	s1.parentNode.insertBefore(s, s1);
+    $.getJSON('<?=my_base_url . my_pligg_base . '/modules/buttons/vote.php?'?>' + "id=" + id + "&user=" + user + "&md5=" + md5 + "&value=" + value + '&callback=?', 
+	function(data) { 
+		if (data.message.match (new RegExp ("^ERROR:"))) {
+			alert(data.message);
+   		} else {
+			var anchor = $('#xvote-'+data.htmlid+' > .'+(data.value>0 ? 'btn-danger' : 'btn-success'));
+			if (anchor.length)
+				anchor.removeClass(data.value>0 ? 'btn-danger' : 'btn-success')
+					.attr('href', anchor.attr('href').replace(/unvote/,'vote'))
+					.children('i').removeClass('icon-white');
+
+			var anchor = $('#xvote-'+data.htmlid+' > a:'+(data.value>0 ? 'first' : 'last'));
+			anchor.addClass(data.value>0 ? 'btn-success' : 'btn-danger')
+				.attr('href', anchor.attr('href').replace(/vote/,'unvote'))
+				.children('i').addClass('icon-white');
+				
+			$('#xnews-'+data.htmlid+' .votenumber').html(data.message.split('~')[0]);
+		}
+  	});
+}
+
+function unvote(user, id, htmlid, md5, value)
+{
+    $.getJSON('<?=my_base_url . my_pligg_base . '/modules/buttons/vote.php?'?>' + "id=" + id + "&user=" + user + "&md5=" + md5 + "&value=" + value + '&unvote=true&callback=?', 
+	function(data) { 
+		if (data.message.match (new RegExp ("^ERROR:"))) {
+			alert(data.message);
+   		} else {
+			var anchor = $('#xvote-'+data.htmlid+' > a:'+(data.value>0 ? 'first' : 'last'));
+			anchor.removeClass(data.value>0 ? 'btn-success' : 'btn-danger')
+				.attr('href', anchor.attr('href').replace(/unvote/,'vote'))
+				.children('i').removeClass('icon-white');
+				
+			$('#xnews-'+data.htmlid+' .votenumber').html(data.message.split('~')[0]);
+		}
+  	});
 }
