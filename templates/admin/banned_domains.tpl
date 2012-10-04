@@ -12,10 +12,11 @@
 	<button type="submit" class="btn btn-danger">Ban Domain</button>
 </form>
 
+{if $lines|@count != '0'}
 <ol>
 	{section name=line loop=$lines}
 		<li><a href="manage_banned_domains.php?id=0&remove={$lines[line]}">Remove</a> - {$lines[line]} </li>
 	{/section}
-	
 </ol>
+{/if}
 <!--/banned_domains.tpl -->
