@@ -177,7 +177,10 @@ function do_submit1() {
 	$main_smarty->assign('Submit_Show_URL_Input', $Submit_Show_URL_Input);
 	$main_smarty->assign('Submit_Require_A_URL', Submit_Require_A_URL);
 
-
+	// check if URL is valid format
+	$pattern = '/^(([\w]+:)?\/\/)?(([\d\w]|%[a-fA-f\d]{2,2})+(:([\d\w]|%[a-fA-f\d]{2,2})+)?@)?([\d\w][-\d\w]{0,253}[\d\w]\.)+[\w]{2,4}(:[\d]+)?(\/([-+_~.\d\w]|%[a-fA-f\d]{2,2})*)*(\?(&amp;?([-+_~.\d\w]|%[a-fA-f\d]{2,2})=?)*)?(#([-+_~.\d\w]|%[a-fA-f\d]{2,2})*)?$/'; 
+	$isLink = preg_match($pattern, $url); // Returns true if a link
+	
 	if($url == "http://" || $url == ""){
 		if(Submit_Require_A_URL == false){
 			$linkres->valid = true;}
@@ -185,6 +188,8 @@ function do_submit1() {
 			$linkres->valid = false;
 		}
 		$linkres->url_title = "";
+	} elseif ($isLink == false){
+		$linkres->valid = false;
 	}
 	
 	$vars = array("url" => $url,'linkres'=>$linkres);
