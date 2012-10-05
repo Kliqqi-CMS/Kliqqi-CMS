@@ -124,8 +124,9 @@ function do_submit1() {
 	$url = htmlspecialchars(sanitize($_POST['url'], 3));
 	$url = str_replace('&amp;', '&', $url);  
 	$url = html_entity_decode($url);
-	if (strpos($url,'http')!==0)
+	if (strpos($url,'http')!==0){
 	    $url = "http://$url";
+	}
 	
 	$linkres=new Link;
 	$linkres->randkey = sanitize($_POST['randkey'], 3);
@@ -193,7 +194,6 @@ function do_submit1() {
 	if(!$linkres->valid) {
 		$main_smarty->assign('submit_error', 'invalidurl');
 		$main_smarty->assign('tpl_center', $the_template . '/submit_errors');
-		
 		$main_smarty->display($the_template . '/pligg.tpl');
 		return;
 	}
@@ -317,20 +317,23 @@ function do_submit2() {
 	$main_smarty->assign('Submit_Show_URL_Input', Submit_Show_URL_Input);
 	$main_smarty->assign('Submit_Require_A_URL', Submit_Require_A_URL);
 	$main_smarty->assign('link_id', sanitize($_POST['id'], 3));
-	define('pagename', 'submit'); 
+	define('pagename', 'submit');
 	$main_smarty->assign('pagename', pagename);
 
 	if($current_user->authenticated != TRUE){
 		$vars = array('username' => $current_user->user_login);
 		check_actions('register_check_errors', $vars);
 	}
+	
 	check_actions('submit2_check_errors', $vars);
+	
 	if($vars['error'] == true){
-	}else
-	{
+		// No action
+	}
 
 	$linkres=new Link;
 	$linkres->id = sanitize($_POST['id'], 3);
+	
 	if($_SESSION['step']!=1)die('Wrong step');
 	if(!is_numeric($linkres->id))die();
 	if(!$linkres->verify_ownership($current_user->user_id))	die($main_smarty->get_config_vars('PLIGG_Visual_Submit2Errors_NoAccess'));
@@ -347,10 +350,10 @@ function do_submit2() {
 	{
 	    $linkres->category=sanitize($_POST['category'][0], 3);
 	    $linkres->additional_cats=array_slice($_POST['category'],1);
-	}
-	else
+	} else {
 	    $linkres->category=sanitize($_POST['category'], 3);
-
+	}
+	
 	$thecat = get_cached_category_data('category_id', $linkres->category);
 	$main_smarty->assign('request_category_name', $thecat->category_name);
 
@@ -359,23 +362,22 @@ function do_submit2() {
 	$linkres->tags = tags_normalize_string(stripslashes(sanitize($_POST['tags'], 3)));
 	$linkres->content = close_tags(stripslashes(sanitize($_POST['bodytext'], 4, $Story_Content_Tags_To_Allow)));
 	//$linkres->content = str_replace("\n", "<br />", $linkres->content);
-	// Steef 2k7-07 security fix start ----------------------------------------------------------
-		if(isset($_POST['link_field1'])){$linkres->link_field1 = sanitize($_POST['link_field1'], 4, $Story_Content_Tags_To_Allow);}
-		if(isset($_POST['link_field2'])){$linkres->link_field2 = sanitize($_POST['link_field2'], 4, $Story_Content_Tags_To_Allow);}
-		if(isset($_POST['link_field3'])){$linkres->link_field3 = sanitize($_POST['link_field3'], 4, $Story_Content_Tags_To_Allow);}
-		if(isset($_POST['link_field4'])){$linkres->link_field4 = sanitize($_POST['link_field4'], 4, $Story_Content_Tags_To_Allow);}
-		if(isset($_POST['link_field5'])){$linkres->link_field5 = sanitize($_POST['link_field5'], 4, $Story_Content_Tags_To_Allow);}
-		if(isset($_POST['link_field6'])){$linkres->link_field6 = sanitize($_POST['link_field6'], 4, $Story_Content_Tags_To_Allow);}
-		if(isset($_POST['link_field7'])){$linkres->link_field7 = sanitize($_POST['link_field7'], 4, $Story_Content_Tags_To_Allow);}
-		if(isset($_POST['link_field8'])){$linkres->link_field8 = sanitize($_POST['link_field8'], 4, $Story_Content_Tags_To_Allow);}
-		if(isset($_POST['link_field9'])){$linkres->link_field9 = sanitize($_POST['link_field9'], 4, $Story_Content_Tags_To_Allow);}
-		if(isset($_POST['link_field10'])){$linkres->link_field10 = sanitize($_POST['link_field10'], 4, $Story_Content_Tags_To_Allow);}
-		if(isset($_POST['link_field11'])){$linkres->link_field11 = sanitize($_POST['link_field11'], 4, $Story_Content_Tags_To_Allow);}
-		if(isset($_POST['link_field12'])){$linkres->link_field12 = sanitize($_POST['link_field12'], 4, $Story_Content_Tags_To_Allow);}
-		if(isset($_POST['link_field13'])){$linkres->link_field13 = sanitize($_POST['link_field13'], 4, $Story_Content_Tags_To_Allow);}
-		if(isset($_POST['link_field14'])){$linkres->link_field14 = sanitize($_POST['link_field14'], 4, $Story_Content_Tags_To_Allow);}
-		if(isset($_POST['link_field15'])){$linkres->link_field15 = sanitize($_POST['link_field15'], 4, $Story_Content_Tags_To_Allow);}
-	// Steef 2k7-07 security fix end --------------------------------------------------------------
+
+	if(isset($_POST['link_field1'])){$linkres->link_field1 = sanitize($_POST['link_field1'], 4, $Story_Content_Tags_To_Allow);}
+	if(isset($_POST['link_field2'])){$linkres->link_field2 = sanitize($_POST['link_field2'], 4, $Story_Content_Tags_To_Allow);}
+	if(isset($_POST['link_field3'])){$linkres->link_field3 = sanitize($_POST['link_field3'], 4, $Story_Content_Tags_To_Allow);}
+	if(isset($_POST['link_field4'])){$linkres->link_field4 = sanitize($_POST['link_field4'], 4, $Story_Content_Tags_To_Allow);}
+	if(isset($_POST['link_field5'])){$linkres->link_field5 = sanitize($_POST['link_field5'], 4, $Story_Content_Tags_To_Allow);}
+	if(isset($_POST['link_field6'])){$linkres->link_field6 = sanitize($_POST['link_field6'], 4, $Story_Content_Tags_To_Allow);}
+	if(isset($_POST['link_field7'])){$linkres->link_field7 = sanitize($_POST['link_field7'], 4, $Story_Content_Tags_To_Allow);}
+	if(isset($_POST['link_field8'])){$linkres->link_field8 = sanitize($_POST['link_field8'], 4, $Story_Content_Tags_To_Allow);}
+	if(isset($_POST['link_field9'])){$linkres->link_field9 = sanitize($_POST['link_field9'], 4, $Story_Content_Tags_To_Allow);}
+	if(isset($_POST['link_field10'])){$linkres->link_field10 = sanitize($_POST['link_field10'], 4, $Story_Content_Tags_To_Allow);}
+	if(isset($_POST['link_field11'])){$linkres->link_field11 = sanitize($_POST['link_field11'], 4, $Story_Content_Tags_To_Allow);}
+	if(isset($_POST['link_field12'])){$linkres->link_field12 = sanitize($_POST['link_field12'], 4, $Story_Content_Tags_To_Allow);}
+	if(isset($_POST['link_field13'])){$linkres->link_field13 = sanitize($_POST['link_field13'], 4, $Story_Content_Tags_To_Allow);}
+	if(isset($_POST['link_field14'])){$linkres->link_field14 = sanitize($_POST['link_field14'], 4, $Story_Content_Tags_To_Allow);}
+	if(isset($_POST['link_field15'])){$linkres->link_field15 = sanitize($_POST['link_field15'], 4, $Story_Content_Tags_To_Allow);}
 
 	if(!isset($_POST['summarytext'])){
 		$linkres->link_summary = utf8_substr(sanitize($_POST['bodytext'], 4, $Story_Content_Tags_To_Allow), 0, StorySummary_ContentTruncate - 1);
@@ -389,14 +391,15 @@ function do_submit2() {
 			//$linkres->link_summary = close_tags(str_replace("\n", "<br />", $linkres->link_summary));
 		}
 	}
-		//get link_group_id
-		if((isset($_REQUEST['link_group_id']))&&($_REQUEST['link_group_id']!='')){
-			$linkres->link_group_id = intval($_REQUEST['link_group_id']);
-		}
-		else{
-			$linkres->link_group_id=0;
-		}
 	
+	//get link_group_id
+	if((isset($_REQUEST['link_group_id']))&&($_REQUEST['link_group_id']!='')){
+		$linkres->link_group_id = intval($_REQUEST['link_group_id']);
+	}
+	else{
+		$linkres->link_group_id=0;
+	}
+
 	$linkres->store();
 	tags_insert_string($linkres->id, $dblang, $linkres->tags);
 
@@ -404,43 +407,46 @@ function do_submit2() {
 		return;
 	}
 
-		//comment subscription
-		if(isset($_POST['comment_subscription']))
-		{
-			
-			$vars = array('link_id' => $linkres->id);
-			check_actions('comment_subscription_insert_function', $vars);
-		}	
-		//comment subscription
-		if(isset($_POST['timestamp_date_day']))
-		{
-			//open date
-			$timestamp_date_day = $_POST['timestamp_date_day'];
-			$timestamp_date_month = $_POST['timestamp_date_month'];
-			$timestamp_date_year = $_POST['timestamp_date_year'];
-			if (!is_numeric($timestamp_date_day) || !is_numeric($timestamp_date_month) || !is_numeric($timestamp_date_year))
-				$timestamp_date = date("m-d-Y");
-			else
-				$timestamp_date = $timestamp_date_month."-".$timestamp_date_day."-".$timestamp_date_year;
-			
-			$vars = array('link_id' => $linkres->id);
-			$vars = array('timestamp_date' => $timestamp_date,'link_id' => $linkres->id);
-			check_actions('comment_subscription_insert_function', $vars);
+	//comment subscription
+	if(isset($_POST['comment_subscription']))
+	{
+		
+		$vars = array('link_id' => $linkres->id);
+		check_actions('comment_subscription_insert_function', $vars);
+	}
+	
+	//comment subscription
+	if(isset($_POST['timestamp_date_day']))
+	{
+		//open date
+		$timestamp_date_day = $_POST['timestamp_date_day'];
+		$timestamp_date_month = $_POST['timestamp_date_month'];
+		$timestamp_date_year = $_POST['timestamp_date_year'];
+		if (!is_numeric($timestamp_date_day) || !is_numeric($timestamp_date_month) || !is_numeric($timestamp_date_year)){
+			$timestamp_date = date("m-d-Y");
+		} else {
+			$timestamp_date = $timestamp_date_month."-".$timestamp_date_day."-".$timestamp_date_year;
 		}
+		$vars = array('link_id' => $linkres->id);
+		$vars = array('timestamp_date' => $timestamp_date,'link_id' => $linkres->id);
+		check_actions('comment_subscription_insert_function', $vars);
+	}
 
 	$vars = '';
 	check_actions('submit_step_3_after_first_store', $vars);
-	if ($vars['error'] == true && link_catcha_errors('captcha_error'))
-			return;
-
+	
+	if ($vars['error'] == true && link_catcha_errors('captcha_error')){
+		return;
+	}
+	
 	$linkres->read(FALSE);
 	$edit = true;
 	$link_title = $linkres->title;
 	$link_content = $linkres->content;
 	$link_title = stripslashes(sanitize($_POST['title'], 3));
 	$main_smarty->assign('the_story', $linkres->print_summary('full', true));
-	
 	$main_smarty->assign('tags', $linkres->tags);
+	
 	if (!empty($linkres->tags)) {
 		$tags_words = str_replace(",", ", ", $linkres->tags);
 		$tags_url = urlencode($linkres->tags);
@@ -453,6 +459,7 @@ function do_submit2() {
 	} else {
 		$main_smarty->assign('submit_url', '');
 	}
+	
 	$data = parse_url($linkres->url);
 	$main_smarty->assign('url_short', $data['host']);
 	$main_smarty->assign('submit_url_title', $linkres->url_title);
@@ -460,12 +467,13 @@ function do_submit2() {
 	$main_smarty->assign('submit_type', $linkres->type());
 	$main_smarty->assign('submit_title', str_replace('"',"&#034;",$link_title));
 	$main_smarty->assign('submit_content', $link_content);
+	
 	if(isset($trackback)){
 		$main_smarty->assign('submit_trackback', $trackback);
 	} else {
 		$main_smarty->assign('submit_trackback', '');
 	}
-			
+	
 	$main_smarty->assign('tpl_extra_fields', $the_template . '/submit_extra_fields');
 	$main_smarty->assign('tpl_center', $the_template . '/submit_step_3');
 	
@@ -473,9 +481,9 @@ function do_submit2() {
 	$vars = '';	
 	check_actions('do_submit2', $vars);
 	$_SESSION['step'] = 2;
-	if (Submit_Complete_Step2)
+	if (Submit_Complete_Step2){
 	    do_submit3();
-	else
+	} else {
 	    $main_smarty->display($the_template . '/pligg.tpl');
 	}
 }
@@ -486,9 +494,10 @@ function do_submit3() {
 
 	$linkres=new Link;
 	$linkres->id = sanitize($_POST['id'], 3);
+	
 	if(!is_numeric($linkres->id))die();
-
 	if(!Submit_Complete_Step2 && $_SESSION['step']!=2)die('Wrong step');
+	
 	$linkres->read();
 
 	totals_adjust_count($linkres->status, -1);
@@ -527,15 +536,14 @@ function do_submit3() {
 
 	$vars = array('linkres'=>$linkres);
 	check_actions('submit_pre_redirect', $vars);
-	if ($vars['redirect'])
+	if ($vars['redirect']) {
 	    header('Location: '.$vars['redirect']);
-	elseif($linkres->link_group_id == 0)
+	} elseif($linkres->link_group_id == 0){
 		header("Location: " . getmyurl('upcoming'));
-	else
-	{
+	} else {
 		$redirect = getmyurl("group_story", $linkres->link_group_id);
 		header("Location: $redirect");
-	}	
+	}
 	die;
 }
 
