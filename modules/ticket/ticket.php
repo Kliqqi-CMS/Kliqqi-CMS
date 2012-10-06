@@ -42,7 +42,7 @@ if($canIhaveAccess != 0){
 			$db->query("DELETE FROM ".table_prefix."tags WHERE tag_link_id='$story_id' AND tag_words='$tag_old' ");
 		
 			// Insert new tag into pligg_tags table
-			$db->query("INSERT INTO ".table_prefix."tags (tag_link_id, tag_date, tag_words) VALUES ($story_id, '$timestamp', '$tag_new' ");
+			$db->query("INSERT INTO ".table_prefix."tags (tag_link_id, tag_date, tag_words) VALUES ('$story_id', '$timestamp', '$tag_new')");
 
 		} else {
 			// Do nothing
@@ -66,7 +66,7 @@ if($canIhaveAccess != 0){
 			// Set the new pligg_tags values
 			$timestamp = date('Y-m-d H:i:s',time());
 			// Insert into pligg_tags table
-			$db->query("INSERT INTO ".table_prefix."tags (tag_link_id, tag_date, tag_words) VALUES ($story_id, '$timestamp', '$tag_new' ");
+			$db->query("INSERT INTO ".table_prefix."tags (tag_link_id, tag_date, tag_words) VALUES ('$story_id', '$timestamp', '$tag_new')");
 		} elseif (preg_match("/$tag_old/", $tags)) {
 			// Replace any existing ticket tags
 			$tags = str_replace($tag_old, $tag_new, $tags);
@@ -74,7 +74,7 @@ if($canIhaveAccess != 0){
 			$db->query("DELETE FROM ".table_prefix."tags WHERE tag_link_id='$story_id' AND tag_words='$tag_old' ");
 		
 			// Insert new tag into pligg_tags table
-			$db->query("INSERT INTO ".table_prefix."tags (tag_link_id, tag_date, tag_words) VALUES ($story_id, '$timestamp', '$tag_new' ");
+			$db->query("INSERT INTO ".table_prefix."tags (tag_link_id, tag_date, tag_words) VALUES ('$story_id', '$timestamp', '$tag_new')");
 		}
 		
 		// Set the new story tags
@@ -95,7 +95,7 @@ if($canIhaveAccess != 0){
 			// Set the new pligg_tags values
 			$timestamp = date('Y-m-d H:i:s',time());
 			// Insert into pligg_tags table
-			$db->query("INSERT INTO ".table_prefix."tags (tag_link_id, tag_date, tag_words) VALUES ($story_id, '$timestamp', '$tag_new' ");
+			$db->query("INSERT INTO ".table_prefix."tags (tag_link_id, tag_date, tag_words) VALUES ('$story_id', '$timestamp', '$tag_new')");
 		} elseif (preg_match("/$tag_old/", $tags)) {
 			// Replace any existing ticket tags
 			$tags = str_replace($tag_old, $tag_new, $tags);
@@ -103,7 +103,7 @@ if($canIhaveAccess != 0){
 			$db->query("DELETE FROM ".table_prefix."tags WHERE tag_link_id='$story_id' AND tag_words='$tag_old' ");
 		
 			// Insert new tag into pligg_tags table
-			$db->query("INSERT INTO ".table_prefix."tags (tag_link_id, tag_date, tag_words) VALUES ($story_id, '$timestamp', '$tag_new' ");
+			$db->query("INSERT INTO ".table_prefix."tags (tag_link_id, tag_date, tag_words) VALUES ('$story_id', '$timestamp', '$tag_new')");
 		}
 		
 		// Set the new story tags
@@ -124,7 +124,7 @@ if($canIhaveAccess != 0){
 			// Set the new pligg_tags values
 			$timestamp = date('Y-m-d H:i:s',time());
 			// Insert into pligg_tags table
-			$db->query("INSERT INTO ".table_prefix."tags (tag_link_id, tag_date, tag_words) VALUES ($story_id, '$timestamp', '$tag_new' ");
+			$db->query("INSERT INTO ".table_prefix."tags (tag_link_id, tag_date, tag_words) VALUES ('$story_id', '$timestamp', '$tag_new')");
 		} elseif (preg_match("/$tag_old/", $tags)) {
 			// Replace any existing ticket tags
 			$tags = str_replace($tag_old, $tag_new, $tags);
@@ -132,7 +132,7 @@ if($canIhaveAccess != 0){
 			$db->query("DELETE FROM ".table_prefix."tags WHERE tag_link_id='$story_id' AND tag_words='$tag_old' ");
 		
 			// Insert new tag into pligg_tags table
-			$db->query("INSERT INTO ".table_prefix."tags (tag_link_id, tag_date, tag_words) VALUES ($story_id, '$timestamp', '$tag_new' ");
+			$db->query("INSERT INTO ".table_prefix."tags (tag_link_id, tag_date, tag_words) VALUES ('$story_id', '$timestamp', '$tag_new')");
 		}
 		
 		// Set the new story tags
@@ -153,7 +153,7 @@ if($canIhaveAccess != 0){
 			// Set the new pligg_tags values
 			$timestamp = date('Y-m-d H:i:s',time());
 			// Insert into pligg_tags table
-			$db->query("INSERT INTO ".table_prefix."tags (tag_link_id, tag_date, tag_words) VALUES ($story_id, '$timestamp', '$tag_new' ");
+			$db->query("INSERT INTO ".table_prefix."tags (tag_link_id, tag_date, tag_words) VALUES ('$story_id', '$timestamp', '$tag_new')");
 		} elseif (preg_match("/$tag_old/", $tags)) {
 			// Replace any existing ticket tags
 			$tags = str_replace($tag_old, $tag_new, $tags);
@@ -161,7 +161,7 @@ if($canIhaveAccess != 0){
 			$db->query("DELETE FROM ".table_prefix."tags WHERE tag_link_id='$story_id' AND tag_words='$tag_old' ");
 		
 			// Insert new tag into pligg_tags table
-			$db->query("INSERT INTO ".table_prefix."tags (tag_link_id, tag_date, tag_words) VALUES ($story_id, '$timestamp', '$tag_new' ");
+			$db->query("INSERT INTO ".table_prefix."tags (tag_link_id, tag_date, tag_words) VALUES ('$story_id', '$timestamp', '$tag_new')");
 		}
 		
 		// Set the new story tags
@@ -177,6 +177,7 @@ if($canIhaveAccess != 0){
 	$db->query("TRUNCATE TABLE ".table_tag_cache);
 	$db->query($sql="INSERT INTO ".table_tag_cache." select tag_words, count(DISTINCT link_id) as count FROM ".table_tags.", ".table_links." WHERE tag_lang='en' and link_id = tag_link_id and (link_status='published' OR link_status='queued') GROUP BY tag_words order by count desc");
 	
+	// Send the user back to where they came from
 	header('Location: ' . $_SERVER['HTTP_REFERER']);
 	
 } else {
