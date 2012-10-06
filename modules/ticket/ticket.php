@@ -1,7 +1,14 @@
 <?php
 
 /* This file is used to parse GET data sent from the ticket_index.tpl file */
-include_once('../../config.php');
+
+chdir('../');
+include_once('../internal/Smarty.class.php');
+$main_smarty = new Smarty;
+include('../config.php');
+
+ini_set('display_errors', 1);
+error_reporting(E_ALL ^ E_NOTICE ^ E_WARNING);
 
 $canIhaveAccess = 0;
 $canIhaveAccess = $canIhaveAccess + checklevel('admin');
