@@ -82,26 +82,27 @@ if($canIhaveAccess != 0){
 
 	if ($ticket == 'accepted'){
 		{/php}
-			| <span class="btn btn-mini btn-info ticket_accepted">{#Ticket_Task#} {#Ticket_Status_Accepted#}</span>
+			| <a href="{$my_base_url}{$my_pligg_base}/search.php?search=accepted&tag=true" class="btn btn-mini btn-info ticket_accepted">{#Ticket_Task#} {#Ticket_Status_Accepted#}</a>
 		{php}
 	}
 	if ($ticket == 'completed'){
 		{/php}
-			| <span class="btn btn-mini btn-success ticket_completed">{#Ticket_Task#} {#Ticket_Status_Completed#}</span>
+			| <a href="{$my_base_url}{$my_pligg_base}/search.php?search=completed&tag=true" class="btn btn-mini btn-success ticket_completed">{#Ticket_Task#} {#Ticket_Status_Completed#}</a>
 		{php}
 	}
 	if ($ticket == 'rejected'){
 		{/php}
-			| <span class="btn btn-mini btn-danger ticket_rejected">{#Ticket_Task#} {#Ticket_Status_Rejected#}</span>
+			| <a href="{$my_base_url}{$my_pligg_base}/search.php?search=rejected&tag=true" class="btn btn-mini btn-danger ticket_rejected">{#Ticket_Task#} {#Ticket_Status_Rejected#}</a>
 		{php}
 	}
 	if ($ticket == 'cannot reproduce'){
 		{/php}
-			| <span class="btn btn-mini btn-warning ticket_rejected">{#Ticket_Status_Reproduce#} {#Ticket_Task#}</span>
+			| <a href="{$my_base_url}{$my_pligg_base}/search.php?search=cannot+reproduce&tag=true" class="btn btn-mini btn-warning ticket_rejected">{#Ticket_Status_Reproduce#} {#Ticket_Task#}</a>
 		{php}
 	}
-
+	
 }
+
 {/php}
 
 {config_load file=ticket_pligg_lang_conf}
