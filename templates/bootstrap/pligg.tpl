@@ -355,10 +355,6 @@
 		</script>
 	{/if}
 
-	{if $pagename eq "live"}
-		{include file=$the_template"/functions/live_pagianation.tpl"}
-	{/if}
-
 	{literal}
 		<script> 
 		$('.avatar-tooltip').tooltip()
