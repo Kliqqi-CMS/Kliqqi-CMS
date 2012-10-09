@@ -22,7 +22,7 @@
 		{literal}
 		<script type="text/javascript">
 		$(function()
-		{
+		{	
 			$(".title").keyup(function() 
 			{
 				var title=$(this).val();
@@ -192,7 +192,7 @@
   	{/literal}
  
      
-	{if $pagename eq 'index' or $pagename eq 'published' or $pagename eq 'upcoming' or $pagename eq 'group_story' or $pagename eq 'user'}
+	{if $pagename eq 'index' or $pagename eq 'published' or $pagename eq 'upcoming' or $pagename eq 'group_story' or $pagename eq 'user' or $pagename eq 'topusers'}
     <script type="text/javascript">
 	
 	var my_pligg_url="{$my_base_url}{$my_pligg_base}";
@@ -266,11 +266,11 @@
 		}); 
 	   }else if(Pager_setting==3){
 		   
-			if(parseInt(total_row)>=count)  
+			if(parseInt(total_row)>count)  
 			$(".stories:last").after("<div class='btn contine_read_story'>{/literal}{#PLIGG_Continue_Reading#}{literal}</div>"); 
 			
 			$(".contine_read_story").live("click", function(){
-				if(parseInt(total_row)>=count){
+				if(parseInt(total_row)>count){
 					last_msg_funtion();
 				}else{	
 					$(this).hide();
@@ -278,10 +278,9 @@
 				}
 			});
 	   }
-});
-
-{/literal}
-</script>
+	});
+	{/literal}
+	</script>
 	{/if}
 	
 	{if $pagename eq 'groups'}
@@ -343,7 +342,7 @@
 				$(".group_container:last").after("<div class='btn contine_read_story'>{/literal}{#PLIGG_Continue_Reading#}{literal}</div>"); 
 				
 				$(".contine_read_story").live("click", function(){
-					if(parseInt(total_row_for_group)>=count){
+					if(parseInt(total_row_for_group)>count){
 						last_msg_funtion_for_group();
 					}else{	
 						$(this).hide();
@@ -354,6 +353,10 @@
 		})
 		{/literal}			
 		</script>
+	{/if}
+
+	{if $pagename eq "live"}
+		{include file=$the_template"/functions/live_pagianation.tpl"}
 	{/if}
 
 	{literal}
