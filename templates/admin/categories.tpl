@@ -200,6 +200,6 @@ function showdel(id)
 </div>
 <hr />
 <p>Pligg allows users to select what categories they see from their profile settings page. If you add a new category after users have de-selected a category, they won't be able to see that new category. To make it so that all users category settings are reset to see all cateogires, click on the button below.</p> 
-<div class="btn"><a href="admin_categories.php?action=reset">{#PLIGG_Visual_Categories_Reset#}</a></div>
+<a href="admin_categories.php?action=reset" class="btn btn-warning">{#PLIGG_Visual_Categories_Reset#}</a>
 <div style="clear:both;"> </div>
 <!--/categories.tpl -->
