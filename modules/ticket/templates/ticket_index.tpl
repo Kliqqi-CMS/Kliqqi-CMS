@@ -97,7 +97,7 @@ if($canIhaveAccess != 0){
 	}
 	if ($ticket == 'cannot reproduce'){
 		{/php}
-			| <a href="{$my_base_url}{$my_pligg_base}/search.php?search=cannot+reproduce&tag=true" class="btn btn-mini btn-warning ticket_rejected">{#Ticket_Status_Reproduce#} {#Ticket_Task#}</a>
+			| <a href="{$my_base_url}{$my_pligg_base}/search.php?search=cannot+reproduce&tag=true" class="btn btn-mini btn-warning ticket_rejected">{#Ticket_Status_Reproduce#}</a>
 		{php}
 	}
 	
