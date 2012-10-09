@@ -119,7 +119,7 @@ if($canIhaveAccess == 1)
 }
 else{
 //	echo "<br />We're sorry, but you do not have administrative privileges on this site.<br />If you wish to be promoted, please contact the site administrator.<br />";
-	header("Location: " . getmyurl('login', $_SERVER['REQUEST_URI']));
+	header("Location: " . getmyurl('admin_login', $_SERVER['REQUEST_URI']));
 }
 
 ?>

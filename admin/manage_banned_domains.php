@@ -132,6 +132,6 @@ else
 //	$main_smarty->assign('errorText', "<br />We're sorry, but you do not have administrative privileges on this site.<br />If you wish to be promoted, please contact the site administrator.<br />");
 //	$main_smarty->assign('tpl_center', '/admin/banned_domain_add');
 //	$main_smarty->display($template_dir . '/admin/admin.tpl');
-	header("Location: " . getmyurl('login', $_SERVER['REQUEST_URI']));
+	header("Location: " . getmyurl('admin_login', $_SERVER['REQUEST_URI']));
 }
 ?>

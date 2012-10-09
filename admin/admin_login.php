@@ -69,7 +69,7 @@ if( (isset($_POST["processlogin"]) && is_numeric($_POST["processlogin"])) || (is
 			if(strlen(sanitize($_POST['return'], 3)) > 1) {
 				$return = sanitize($_POST['return'], 3);
 			} else {
-				$return =  my_pligg_base.'/';
+				$return =  my_pligg_base.'/admin/admin_index.php';
 			}
 			
 			define('logindetails', $username . ";" . $password . ";" . $return);
@@ -88,9 +88,10 @@ if( (isset($_POST["processlogin"]) && is_numeric($_POST["processlogin"])) || (is
 		}
 	}
 }   
- 
+
 // misc smarty 
 $main_smarty->assign('errorMsg',$errorMsg);  
+$main_smarty->assign('post_username',$username);  
 
 // pagename
 define('pagename', 'admin_login'); 

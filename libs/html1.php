@@ -371,7 +371,7 @@ function force_authentication() {
 	global $current_user;
 
 	if(!$current_user->authenticated) {
-		header("Location: " . getmyurl('login', $_SERVER['REQUEST_URI']));
+		header("Location: " . getmyurl('admin_login', $_SERVER['REQUEST_URI']));
 		die;
 	}
 	return true;
@@ -660,6 +660,7 @@ function getmyurl($x, $var1="", $var2="", $var3="") {
 		If ($x == "search") {return my_pligg_base."/search.php?search=" . $var1;}
 		If ($x == "advancedsearch") {return my_pligg_base."/advancedsearch.php";}
 		If ($x == "search_url") {return my_pligg_base."/search.php?search=" . $var1;}
+		If ($x == "admin_login") {return my_pligg_base."/admin/admin_login.php?return=" . $var1;}
 		If ($x == "login") {return my_pligg_base."/login.php?return=" . $var1;}
 		If ($x == "logout") {return my_pligg_base."/login.php?op=logout&return=" . $var1;}
 		If ($x == "register") {return my_pligg_base."/register.php";}
@@ -765,6 +766,7 @@ function getmyurl($x, $var1="", $var2="", $var3="") {
 		If ($x == "search") {return my_pligg_base."/search" . ($var1 ? '/'.$var1 : '') . "/";}
 		If ($x == "advancedsearch") {return my_pligg_base."/advanced-search/";}
 		If ($x == "search_url") {return my_pligg_base."/search/" . urlencode(str_replace('/','|',$var1)) . "/";}
+		If ($x == "admin_login") {return my_pligg_base."/admin/admin_login.php?return=" . urlencode($var1);}
 		If ($x == "login") {return my_pligg_base."/login.php?return=" . urlencode($var1);}
 		If ($x == "logout") {return my_pligg_base."/login.php?op=logout&return=".my_pligg_base;}
 		If ($x == "register") {return my_pligg_base."/register/";}

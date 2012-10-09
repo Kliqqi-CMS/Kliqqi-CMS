@@ -19,7 +19,7 @@ background-color: #eee;
 			<form action="{$my_pligg_base}/admin/admin_login.php" method="post">
 				<fieldset>
 					<div class="clearfix login_username">
-						<input type="text" name="username" placeholder="{#PLIGG_Visual_Register_Username#}">
+						<input type="text" name="username" {if $post_username}value="{$post_username}"{else}placeholder="{#PLIGG_Visual_Register_Username#}{/if}">
 					</div>
 					<div class="clearfix login_password">
 						<input type="password" name="password" placeholder="{#PLIGG_Visual_Register_Password#}">

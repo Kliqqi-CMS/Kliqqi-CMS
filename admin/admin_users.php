@@ -41,7 +41,7 @@ $PliggDoc->get_js();
 if($canIhaveAccess == 0){	
 //	$main_smarty->assign('tpl_center', '/admin/access_denied');
 //	$main_smarty->display($template_dir . '/admin/admin.tpl');		
-	header("Location: " . getmyurl('login', $_SERVER['REQUEST_URI']));
+	header("Location: " . getmyurl('admin_login', $_SERVER['REQUEST_URI']));
 	die();
 }
 
