@@ -38,7 +38,7 @@ if($_REQUEST["sortby"])
 }
 
 $rows = $db->get_var("SELECT count(*) FROM " . table_groups . " WHERE group_status='Enable'");
-$main_smarty->assign('total_row', $rows);
+$main_smarty->assign('total_row_for_group', $rows);
 
 
 
