@@ -19,7 +19,7 @@ $main_smarty->assign('navbar_where', $navwhere);
 $main_smarty->assign('posttitle', $main_smarty->get_config_vars('PLIGG_Visual_Breadcrumb_TopUsers'));
 
 // figure out what "page" of the results we're on
-$offset=(get_current_page()-1)*$top_users_size;
+$offset=(get_current_page()-1)* $page_size;
 
 // put the table headers in an array for the top users tpl file
 $header_items = array($main_smarty->get_config_vars('PLIGG_Visual_TopUsers_TH_User'), $main_smarty->get_config_vars('PLIGG_Visual_TopUsers_TH_News'), $main_smarty->get_config_vars('PLIGG_Visual_TopUsers_TH_PublishedNews'), $main_smarty->get_config_vars('PLIGG_Visual_TopUsers_TH_Comments'), $main_smarty->get_config_vars('PLIGG_Visual_TopUsers_TH_TotalVotes'), $main_smarty->get_config_vars('PLIGG_Visual_TopUsers_TH_PublishedVotes'));
@@ -61,26 +61,34 @@ $from_where_clauses = array(
 $from_where = ' FROM ' . table_users . $from_where_clauses[$sortby];
 
 $users = $db->get_results("SELECT user_karma, COUNT(*) FROM " . table_users . " WHERE user_karma > 0 $whether_to_show_user GROUP BY user_karma ORDER BY user_karma DESC", ARRAY_N);
+
+
 $ranklist = array();
 $rank = 1;
 if ($users)
     foreach ($users as $dbuser)
     {
-	$ranklist[$dbuser[0]] = $rank;
-	$rank += $dbuser[1];
+		$ranklist[$dbuser[0]] = $rank;
+		$rank += $dbuser[1];
     }
 
 $user = new User;
 $rows = $db->get_var("select count(*) as count $from_where $order_by");
-$users = $db->get_results("$select $from_where $order_by LIMIT $offset,$top_users_size");
+$users = $db->get_results("$select $from_where $order_by LIMIT $offset, 30");
 $users_table = '';
+//echo "$select $from_where $order_by LIMIT $offset, $page_size";
+
+//echo "<pre>";
 if ($users) {
 	
 	foreach($users as $dbuser) {
+	
 		$user->id=$dbuser->user_id;
 		$user->read();
 		$user->all_stats();
-		
+		//echo getmyurl("user", $user->username);
+		//print_r($users);
+		//die;
 		$main_smarty->assign('user_userlink', getmyurl("user", $user->username));
 		$main_smarty->assign('user_username', $user->username);
 		$main_smarty->assign('user_total_links', $user->total_links);
@@ -115,7 +123,16 @@ $main_smarty->assign('pagename', pagename);
 $main_smarty = do_sidebar($main_smarty);
 
 $main_smarty->assign('headers', $header_items);
-$main_smarty->assign('topusers_pagination', do_pages($rows, $top_users_size, "topusers", true));
+$main_smarty->assign('total_row_for_topusers', $rows);
+
+
+//For Infinit scrolling and continue reading option 
+if(Auto_scroll==2 || Auto_scroll==3){
+   $main_smarty->assign("scrollpageSize", $page_size);
+ 
+}else
+	$main_smarty->assign('topusers_pagination', do_pages($rows, $top_users_size, "topusers", true));
+
 // show the template
 $main_smarty->assign('tpl_center', $the_template . '/topusers_center');
 $main_smarty->display($the_template . '/pligg.tpl');
