@@ -15,7 +15,7 @@ background-color: #eee;
 			</div>
 		{/if}
 		<div class="login_form">
-			<h2>Login</h2>
+			<h2>Admin Login</h2>
 			<form action="{$my_pligg_base}/admin/admin_login.php" method="post">
 				<fieldset>
 					<div class="clearfix login_username">
