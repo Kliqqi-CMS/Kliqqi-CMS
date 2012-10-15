@@ -8,6 +8,11 @@ include(mnminclude.'html1.php');
 include(mnminclude.'link.php');
 include(mnminclude.'smartyvariables.php');
 
+/*echo "<pre>";
+print_r($_REQUEST);
+echo "</pre>";*/
+//die;
+
 check_referrer();
 
 // sidebar
@@ -24,7 +29,10 @@ if($canIhaveAccess == 0){
 	header("Location: " . getmyurl('login', $_SERVER['REQUEST_URI']));
 	die();
 }
+
+
 function dowork(){	
+
 	$canIhaveAccess = 0;
 	$canIhaveAccess = $canIhaveAccess + checklevel('admin');
 	if($canIhaveAccess == 1)
@@ -52,15 +60,17 @@ function dowork(){
 		}
 	}
 }	
+
 // pagename
 define('pagename', 'delete'); 
 $main_smarty->assign('pagename', pagename);
 if(isset($_REQUEST['link_id'])){
+
 	global $db;
 	$link_id = $_REQUEST['link_id'];
 	if(!is_numeric($link_id)){die();}
-	$linkres=new Link;
-	$linkres->id=$link_id;
+	$linkres = new Link;
+	$linkres->id = $link_id;
 	$linkres->read();
 	//echo $linkres->status;
 	totals_adjust_count($linkres->status, -1);
@@ -70,6 +80,38 @@ if(isset($_REQUEST['link_id'])){
 	$vars = array('link_id' => $linkres->id);
 	check_actions('admin_story_delete', $vars);
 	
+	/*********find out the page slug dynamically ***********/
+	$linkslugvalue =  $db->get_results("SELECT ".table_links.".link_category, ".table_categories.".category_safe_name FROM ".table_categories." LEFT JOIN ".table_links. " ON ".table_links.".link_category = ".table_categories.".category__auto_id WHERE ".table_links.".link_id = '".$link_id."' LIMIT 0,1");
+	
+	
+	$linkslug = '';
+	foreach($linkslugvalue as $slug)
+		$linkslug = $slug->category_safe_name;
+
+	if($linkslug != ''){
+		
+		$redirectUrl = $linkslug;
+	}
+	if(isset($_REQUEST['pnme']) and $_REQUEST['pnme'] != 'story' and $_REQUEST['pnme'] != 'published'){
+		
+		$arr = explode("/", substr($_SERVER['HTTP_REFERER'],0, -1));
+		
+		if(end($arr) != ''){
+			$secndlnk = end($arr);
+			array_pop($arr);
+			$firstlnk = end($arr);
+			
+			if($secndlnk != ''){
+				$redirectUrl = $firstlnk."/".$secndlnk;
+			} else{
+				$redirectUrl = $firstlnk;
+			}
+		}
+	} 
+	if(isset($_REQUEST['pnme']) and $_REQUEST['pnme'] != 'story' and $_REQUEST['pnme'] != 'published'){
+		
+		$redirectUrl = $_REQUEST['pnme'].'/'.$linkslug;
+	}
 	$link_delete = $db->query(" Delete from ".table_links." where link_id =".$linkres->id);
 	//echo $link_delete."<br />";
 	$vote_delete = $db->query(" Delete from ".table_votes." where vote_link_id =".$linkres->id);
@@ -86,13 +128,20 @@ if(isset($_REQUEST['link_id'])){
 	$db->query("DELETE FROM ".table_additional_categories." WHERE ac_link_id =".$linkres->id);
 
 	$db->query("DELETE FROM ".table_tag_cache);
+
+    if ($_SERVER['HTTP_REFERER'] && strpos($_SERVER['HTTP_REFERER'], $my_base_url.$my_pligg_base) === 0){
 	
-    if ($_SERVER['HTTP_REFERER'] && strpos($_SERVER['HTTP_REFERER'],$my_base_url.$my_pligg_base)===0)
-	    header('Location: '.$_SERVER['HTTP_REFERER']);
-	else
-	header('Location: '.$my_base_url.$my_pligg_base);
+	  header('Location: '.$my_pligg_base.'/'.$redirectUrl);
+	}
+	else{
+		
+		header('Location: '.$my_pligg_base.'/'.$redirectUrl);
+	}
 }
+
+
 if(isset($_REQUEST['comment_id'])){
+
 	global $db;
 	$comment_id = $_REQUEST['comment_id'];
 	if(!is_numeric($comment_id)){die();}
@@ -115,7 +164,8 @@ if(isset($_REQUEST['comment_id'])){
 	$link->recalc_comments();
 	$link->store();
 	$link='';
-	if ($_SERVER['HTTP_REFERER'] && strpos($_SERVER['HTTP_REFERER'],$my_base_url.$my_pligg_base)===0)
+	
+	if ($_SERVER['HTTP_REFERER'] && strpos($_SERVER['HTTP_REFERER'], $my_base_url.$my_pligg_base)===0)
 	    header('Location: '.$_SERVER['HTTP_REFERER']);
 	else
 	    header('Location: '.$my_base_url.$my_pligg_base);
