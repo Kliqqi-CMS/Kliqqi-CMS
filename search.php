@@ -1,41 +1,44 @@
 <?php
 
-include_once('internal/Smarty.class.php');
-$main_smarty = new Smarty;
+	include_once('internal/Smarty.class.php');
+	$main_smarty = new Smarty;
+	
+	include('config.php');
+	include(mnminclude.'html1.php');
+	include(mnminclude.'link.php');
+	include(mnminclude.'tags.php');
+	include(mnminclude.'search.php');
+	include(mnminclude.'smartyvariables.php');
 
-include('config.php');
-include(mnminclude.'html1.php');
-include(mnminclude.'link.php');
-include(mnminclude.'tags.php');
-include(mnminclude.'search.php');
-include(mnminclude.'smartyvariables.php');
+	$_REQUEST['search'] = str_replace(array('://',':/'),array(':\\',':\\'),$_REQUEST['search']);
+	if (strstr($_REQUEST['search'],'/') && $URLMethod == 2)
+	{
+		$post = preg_split('/\//',$_REQUEST['search']);
+		$_GET['search'] = $_REQUEST['search'] = $post[0];
+		for ($i=1; $i+1<sizeof($post); $i+=2)
+		$_GET[$post[$i]] = $_REQUEST[$post[$i]] = $post[$i+1];
+	
+		$get = array();
+		foreach ($_GET as $k => $v)
+		$get[$k] = stripslashes(htmlentities(strip_tags($v),ENT_QUOTES,'UTF-8'));
+		$get['return'] = addslashes($get['return']);
+		$main_smarty->assign('get',$get);           
+	}
 
-$_REQUEST['search'] = str_replace(array('://',':/'),array(':\\',':\\'),$_REQUEST['search']);
-if (strstr($_REQUEST['search'],'/') && $URLMethod == 2)
-{
-    $post = preg_split('/\//',$_REQUEST['search']);
-    $_GET['search'] = $_REQUEST['search'] = $post[0];
-    for ($i=1; $i+1<sizeof($post); $i+=2)
-	$_GET[$post[$i]] = $_REQUEST[$post[$i]] = $post[$i+1];
+	$_REQUEST['search'] = str_replace(array(':\\',':\\','|'),array('://',':/','/'),$_REQUEST['search']);
+	#$_GET['search'] = $_REQUEST['search'] = sanitize(str_replace(array(':\\',':\\','|'),array('://',':/','/'),$_REQUEST['search']),2);
+	if ($_REQUEST['search'] == '-')
+		$_GET['search'] = $_REQUEST['search'] = '';
+	
+	// module system hook
+	$vars = '';
+	check_actions('search_top', $vars);
+	
+	$search = new Search();
 
-    $get = array();
-    foreach ($_GET as $k => $v)
-	$get[$k] = stripslashes(htmlentities(strip_tags($v),ENT_QUOTES,'UTF-8'));
-    $get['return'] = addslashes($get['return']);
-    $main_smarty->assign('get',$get);           
-}
-
-$_REQUEST['search'] = str_replace(array(':\\',':\\','|'),array('://',':/','/'),$_REQUEST['search']);
-#$_GET['search'] = $_REQUEST['search'] = sanitize(str_replace(array(':\\',':\\','|'),array('://',':/','/'),$_REQUEST['search']),2);
-if ($_REQUEST['search'] == '-')
-    $_GET['search'] = $_REQUEST['search'] = '';
-
-// module system hook
-$vars = '';
-check_actions('search_top', $vars);
-
-$search=new Search();
-	if(isset($_REQUEST['from'])){$search->newerthan = sanitize($_REQUEST['from'], 3);}
+	if(isset($_REQUEST['from'])){
+		$search->newerthan = sanitize($_REQUEST['from'], 3);
+	}
 	if (preg_match('/^\s*((http[s]?:\/+)?(www\.)?([\w_\-\d]+\.)+\w{2,4}(\/[\w_\-\d\.]+)*\/?(\?[^\s]*)?)\s*$/i',$_REQUEST['search'],$m))
 	    $_REQUEST['url'] = $m[1];
 	else
@@ -109,7 +112,8 @@ else
 
 	$linksum_count = $search->countsql;
 	$linksum_sql = $search->sql;
-
+	
+	$main_smarty->assign('sql', $linksum_sql);
 	// pagename	
 	define('pagename', 'search'); 
 	$main_smarty->assign('pagename', pagename);
@@ -121,12 +125,18 @@ else
 		$main_smarty->assign('posttitle', $main_smarty->get_config_vars('PLIGG_Visual_Search_NoResults') . ' ' . stripslashes($search->searchTerm) . stripslashes($search->url));
 		$main_smarty->assign('pagename', 'noresults');
 	}
-
+	
 	$pages = do_pages($rows, $page_size, "search", true);
 
 	if($_REQUEST['tag'])
 	    $pages = str_replace('/search/','/tag/',$pages);
-	$main_smarty->assign('search_pagination', $pages);
+		
+	if(Auto_scroll==2 || Auto_scroll==3){
+	   $main_smarty->assign("scrollpageSize", $page_size);
+	}else
+		$main_smarty->assign('search_pagination', $pages);
+		
+	$main_smarty->assign('total_row_for_search', $rows);
 }
 
 // show the template
