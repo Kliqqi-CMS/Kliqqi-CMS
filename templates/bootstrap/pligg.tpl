@@ -20,7 +20,7 @@
 	
 	{if $pagename eq "submit"}
 		{literal}
-		<script type="text/javascript">
+			<script type="text/javascript">
 		$(function()
 		{	
 			$(".title").keyup(function() 
@@ -89,10 +89,10 @@
 					{literal}
 						<script type="text/javascript" language="JavaScript">
 						function checkForm() {
-						answer = true;
-						if (siw && siw.selectingSomething)
-							answer = false;
-						return answer;
+							answer = true;
+							if (siw && siw.selectingSomething)
+								answer = false;
+							return answer;
 						}//
 						</script>
 					{/literal}
@@ -139,13 +139,11 @@
 		{include file=$the_template"/functions/vote_comments.tpl"}
 	{/if}
 	
-	
      {if $anonymous_vote eq "false" and $user_logged_in eq ""}
 		{include file=$the_template"/modal_login_form.tpl"}
      {elseif $votes_per_ip>0 and $user_logged_in eq ""}  
         {include file=$the_template"/modal_login_form.tpl"}  
 	 {/if}
-	
 	
 	{checkActionsTpl location="tpl_pligg_body_end"}
 	
@@ -201,11 +199,14 @@
 		{include file=$the_template"/functions/topusers_pagination.tpl"}
 	{/if}
 	
-	
 	{if $pagename eq 'groups'}
 		{include file=$the_template"/functions/groups_pagination.tpl"}
 	{/if}
-
+	
+	{if $pagename eq 'search'}
+		{include file=$the_template"/functions/search_pagination.tpl"}
+	{/if}
+	
 	{literal}
 		<script> 
 		$('.avatar-tooltip').tooltip()
