@@ -20,7 +20,8 @@
 				{if $link_group_id neq 0}<li><a target="story_status" href="javascript://" onclick="show_hide_user_links(document.getElementById('stories_status-{$link_shakebox_index}'));"><i class="icon-filter"></i> {#PLIGG_Visual_Group_Story_Status#}</a></li>{/if}
 				{if $isadmin}
 					<li><a href="{$my_pligg_base}/admin/admin_users.php?mode=killspam&user={$link_submitter}"><i class="icon-ban-circle"></i> {#PLIGG_Visual_View_User_Killspam#}</a></li>
-					<li><a href="{$my_pligg_base}/delete.php?link_id={$link_id}"><i class="icon-trash"></i> {#PLIGG_Visual_AdminPanel_Discard#}</a></li>
+					
+						<li><a href="{$my_pligg_base}/delete.php?link_id={$link_id}&pnme={$pagename}"><i class="icon-trash"></i>{#PLIGG_Visual_AdminPanel_Discard#}</a></li>
 				{/if}
 			</ul>
 			<iframe height="0" width="0" frameborder="0" name="story_status" class="invisible"></iframe>
