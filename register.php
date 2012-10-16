@@ -20,6 +20,8 @@ $main_smarty->assign('posttitle', $main_smarty->get_config_vars('PLIGG_Visual_Br
 // pagename
 define('pagename', 'register'); 
 $main_smarty->assign('pagename', pagename);
+$main_smarty->assign('user_language', 'english');
+
 
 // sidebar
 $main_smarty = do_sidebar($main_smarty);
@@ -34,6 +36,7 @@ if($pligg_regfrom != ''){
 			$email = sanitize($_POST["reg_email"], 3);
 			$password = sanitize($_POST["reg_password"], 3);
 			$password2 = sanitize($_POST["reg_password2"], 3);
+			$user_language = sanitize($_POST["user_language"], 3);
 			break;
 
 		case 'sidebar':
@@ -42,18 +45,18 @@ if($pligg_regfrom != ''){
 			$password = sanitize($_POST["password"], 3);
 			$password2 = sanitize($_POST["password2"], 3);	
 			break;
-
 	}
 
 	if(isset($username)){$main_smarty->assign('reg_username', htmlspecialchars($username,ENT_QUOTES));}
 	if(isset($email)){$main_smarty->assign('reg_email', htmlspecialchars($email,ENT_QUOTES));}
 	if(isset($password)){$main_smarty->assign('reg_password', htmlspecialchars($password,ENT_QUOTES));}
 	if(isset($password2)){$main_smarty->assign('reg_password2', htmlspecialchars($password2,ENT_QUOTES));}
-
-	$error = register_check_errors($username, $email, $password, $password2);
+	if(isset($user_language)){$main_smarty->assign('user_language', htmlspecialchars($user_language,ENT_QUOTES));}
+	
+	$error = register_check_errors($username, $email, $password, $password2, $user_language);
 
 	if($error == false){
-		register_add_user($username, $email, $password, $password2);
+		register_add_user($username, $email, $password, $password2, $user_language);
 	} else {
 //		print "Error";
 		print_r($form_email_error);
@@ -146,19 +149,24 @@ function register_check_errors($username, $email, $password, $password2){
 	return $error;
 }
 
-function register_add_user($username, $email, $password, $password2){
+function register_add_user($username, $email, $password, $password2, $user_language){
 
 	global $current_user;
 
 	$user = new User();
+	
+	$user->user_language = $user_language;
 	$user->username = $username;
 	$user->pass = $password;
 	$user->email = $email;
+	
+	
 	if($user->Create()){
 
 		$user->read('short');
 		
 		$registration_details = array(
+			'user_language' => $user_language,
 			'username' => $username,
 			'password' => $password,
 			'email' => $email,
@@ -177,6 +185,5 @@ function register_add_user($username, $email, $password, $password2){
 		}
 		die();
 	}
-
 }
 ?>
