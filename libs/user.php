@@ -44,9 +44,11 @@ class User {
 function Create(){
 		global $db, $main_smarty,$the_template,$my_base_url,$my_pligg_base;
 		
+		if($this->user_language == ''){return 'english';}
 		if($this->username == ''){return false;}
 		if($this->pass == ''){return false;}
 		if($this->email == ''){return false;}
+		
 
 		if (!user_exists($this->username)) {
 
@@ -55,7 +57,8 @@ function Create(){
 			$saltedpass=generateHash($this->pass);
 			
 			if(pligg_validate()){
-				if ($db->query("INSERT IGNORE INTO " . table_users . " (user_login, user_email, user_pass, user_date, user_ip,user_categories) VALUES ('".$this->username."', '".$this->email."', '".$saltedpass."', now(), '".$userip."', '')")) {
+				if ($db->query("INSERT IGNORE INTO " . table_users . " (user_login, user_email, user_pass, user_date, user_ip,user_categories,user_language) VALUES ('".$this->username."', '".$this->email."', '".$saltedpass."', now(), '".$userip."', '', '".$this->user_language."')")) {
+				
 					$result = $db->get_row("SELECT user_email, user_pass, user_karma, user_lastlogin FROM " . table_users . " WHERE user_login = '".$this->username."'");
 					$encode=md5($this->email . $result->user_karma .  $this->username. pligg_hash().$main_smarty->get_config_vars('PLIGG_Visual_Name'));
 
@@ -98,7 +101,7 @@ function Create(){
 				}
 			} else{
 			
-					if ($db->query("INSERT IGNORE INTO " . table_users . " (user_login, user_email, user_pass, user_date, user_ip, user_lastlogin,user_categories) VALUES ('".$this->username."', '".$this->email."', '".$saltedpass."', now(), '".$userip."', now(),'')")) {
+					if ($db->query("INSERT IGNORE INTO " . table_users . " (user_login, user_email, user_pass, user_date, user_ip, user_lastlogin,user_categories,user_language) VALUES ('".$this->username."', '".$this->email."', '".$saltedpass."', now(), '".$userip."', now(),'','".$this->user_language."')")) {
 						return true;
 					} else {
 						return false;
@@ -199,7 +202,7 @@ function Create(){
 				}	
 			}
 
-			$this->id =$user->user_id;
+			$this->id = $user->user_id;
 			$this->username = $user->user_login;
 			$this->level = $user->user_level;
 			$this->email = $user->user_email;
@@ -259,8 +262,8 @@ function Create(){
 	
 	function fill_smarty($main_smarty, $stats = 1){
 		global $db;
-                $vars = '';
-                check_actions('profile_show', $vars);
+		$vars = '';
+		check_actions('profile_show', $vars);
 		$main_smarty->assign('user_publicemail', $this->public_email);
 		$main_smarty->assign('user_location', $this->location);
 		$main_smarty->assign('user_occupation', $this->occupation);
@@ -283,8 +286,8 @@ function Create(){
 		if ($users)
 		    foreach ($users as $dbuser)
 		    {
-			$ranklist[$dbuser[0]] = $rank;
-			$rank += $dbuser[1];
+				$ranklist[$dbuser[0]] = $rank;
+				$rank += $dbuser[1];
 		    }
 		$main_smarty->assign('user_rank', $ranklist[$this->karma]);
 
@@ -455,5 +458,4 @@ function canIChangeUser($user_level) {
         die;
     } 
 }	
-
 ?>
