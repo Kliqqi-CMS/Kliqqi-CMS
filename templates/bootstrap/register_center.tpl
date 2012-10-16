@@ -8,7 +8,7 @@
 		<form action="{$URL_register}" class="form-horizontal" method="post" id="thisform">
 			
 			<div class="control-group">
-				<label class="control-label">{#PLIGG_Visual_Register_Userlanguage#}</label>
+				<label class="control-label">aaa{#PLIGG_Visual_Register_Userlanguage#}</label>
 				<div class="controls">					
 			<input autofocus="autofocus" type="text" name="user_language" class="input-large" id="user_language" value="{$user_language}" size="25" tabindex="10" maxlength="32"/>
 				</div>
