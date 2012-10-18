@@ -28,17 +28,19 @@ function start() {
 }
 
 function get_data() {
-	if (busy) return;
+	if (busy) 
+		return;
 	busy = true;
 	url  = window.location.href.replace(/\/live.*?$/, '/live2.php?time=' + timestamp);
-
-    	$.get(url, function (data) {
+		
+	$.get(url, function (data) {
 		busy = false;
 
-		// We get new_data array
+	// We get new_data array
 		var new_data = Array();
 		eval (data);
-		new_items= new_data.length;
+		new_items = new_data.length;
+		
 		if(new_items > 0) {
 			clearInterval(animation_timer);
 			next_update = Math.round(0.5*next_update + 0.5*min_update/(new_items*2));
@@ -63,7 +65,7 @@ function get_data() {
 			next_update = 100;
 		}
 		timer = setTimeout('get_data()', next_update)
-	}, "text");
+}, "text");
 
 	requests++;
 	return false;
@@ -106,6 +108,7 @@ function shift_items(n) {
 }
 
 function to_html(data) {
+
 	var ts=new Date(data.ts*1000);
 	var timeStr;
 

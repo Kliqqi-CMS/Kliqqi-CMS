@@ -59,7 +59,7 @@
 					}else{	
 						$(this).hide();
 						
-						$('#tablesorter-demo').after("<div  class='btn no_stories_left'>{/literal}{#PLIGG_No_More_Articles#}{literal}</div>");
+						$('#tablesorter-demo').after("<div class='btn no_stories_left'>{/literal}{#PLIGG_No_More_Articles#}{literal}</div>");
 					}
 				});
 		   }
