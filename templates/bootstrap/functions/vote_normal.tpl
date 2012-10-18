@@ -17,7 +17,7 @@ function vote (user, id, htmlid, md5, value)
     var link_title=$(dynamic_class).attr("title");
 	
 	
-    if (!anonymous_vote) {
+    if (!anonymous_vote && user=="") {
         window.location= my_base_url + my_pligg_base + "/login.php?return="+location.href;
     } else {
 		
@@ -71,7 +71,7 @@ function unvote (user, id, htmlid, md5, value)
 	//alert("from unvote"+user);
 	//alert(anonymous_vote);
 	
-    if (!anonymous_vote) {
+    if (!anonymous_vote && user== "") {
         window.location= my_base_url + my_pligg_base + "/login.php?return="+location.href;
     } else {
     	$.post(url, mycontent, function (data) {
