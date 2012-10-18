@@ -74,11 +74,13 @@
 					<div id="xvote-{$link_shakebox_index}" class="votebutton">
 						{if $anonymous_vote eq "false" and $user_logged_in eq ""}
 							
-							<a class="btn btn-mini btn-success linkVote_{$link_id}" href="javascript:{$link_shakebox_javascript_unvote}" title="{$title_short}">
+							<a data-toggle="modal" href="#LoginModal" class="btn btn-mini btn-success linkVote_{$link_id}" href="javascript:{$link_shakebox_javascript_unvote}" title="{$title_short}">
 								<i class="icon-white icon-thumbs-up"></i>
 							</a>
 								
-							<a data-toggle="modal" href="#LoginModal" class="btn btn-mini {if $link_shakebox_currentuser_reports eq 1}btn-danger{/if}"><i class="{if $link_shakebox_currentuser_reports eq 1}icon-white {/if}icon-thumbs-down"></i></a>
+							<a data-toggle="modal" href="#LoginModal" class="btn btn-mini {if $link_shakebox_currentuser_reports eq 1}btn-danger{/if}">
+								<i class="{if $link_shakebox_currentuser_reports eq 1}icon-white {/if}icon-thumbs-down"></i>
+							</a>
                         
                         {else}
 						
@@ -237,7 +239,7 @@
 					<i class="icon-star"></i> <span id="linksummarySaveLink">
 					<a id="add" linkid="{$link_id}" title="{$title_short}" class="favorite" >{#PLIGG_MiscWords_Save_Links_Save#}</a>
 				{else}
-					<i class="icon-star-empty"></i> <span id="linksummaryRemoveLink">
+					<i class="icon-star-empty"></i><span id="linksummaryRemoveLink">
 					<a id="remove" linkid="{$link_id}" title="{$title_short}" class="favorite" >{#PLIGG_MiscWords_Save_Links_Remove#}</a>
 				{/if}
 				</span>&nbsp;
