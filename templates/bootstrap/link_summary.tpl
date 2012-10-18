@@ -75,26 +75,26 @@
 						{if $anonymous_vote eq "false" and $user_logged_in eq ""}
 							
 							<a data-toggle="modal" href="#LoginModal" class="btn btn-mini btn-success linkVote_{$link_id}" href="javascript:{$link_shakebox_javascript_unvote}" title="{$title_short}">
-								<i class="icon-white icon-thumbs-up"></i>a
+								<i class="icon-white icon-thumbs-up"></i>
 							</a>
 								
 							<a data-toggle="modal" href="#LoginModal" class="btn btn-mini {if $link_shakebox_currentuser_reports eq 1}btn-danger{/if}">
-								<i class="{if $link_shakebox_currentuser_reports eq 1}icon-white {/if}icon-thumbs-down"></i>b
+								<i class="{if $link_shakebox_currentuser_reports eq 1}icon-white {/if}icon-thumbs-down"></i>
 							</a>
                         
                         {else}
 						
 							{if $votes_per_ip eq 1 and $link_shakebox_currentuser_votes eq 0}
 								<a class="btn btn-mini btn-success linkVote_{$link_id}" href="javascript:{$link_shakebox_javascript_unvote}" title="{$title_short}">
-									<i class="icon-white icon-thumbs-up"></i>c
+									<i class="icon-white icon-thumbs-up"></i>
 								</a>
 							{elseif $votes_per_ip gt $vote_from_this_ip}
 								<a class="btn btn-mini linkVote_{$link_id}" href="javascript:{$link_shakebox_javascript_vote}" title="{$title_short}" >
-									<i class="icon-thumbs-up"></i>d
+									<i class="icon-thumbs-up"></i>
 								</a>	
 							{else}
 								<a class="btn btn-mini linkVote_{$link_id}" data-toggle="modal" href="#LoginModal"  title="{$title_short}" >
-									<i class="icon-thumbs-up"></i>e
+									<i class="icon-thumbs-up"></i>
 								</a>
 							{/if}
 							
@@ -103,12 +103,12 @@
 							{if $link_shakebox_currentuser_reports eq 0}
 								<!-- Bury It -->
 								<a class="btn btn-mini linkVote_{$link_id}" {if $report_from_this_ip neq 0 and $user_logged_in eq ""} data-toggle="modal" href="#LoginModal" {else} href="javascript:{$link_shakebox_javascript_report}" {/if} title="{$title_short}" >
-									<i class="icon-thumbs-down"></i>f
+									<i class="icon-thumbs-down"></i>
 								</a>
 							{elseif $link_shakebox_currentuser_reports eq 1}
 								<!-- Already Buried -->
 								<a class="btn btn-mini btn-danger linkVote_{$link_id}"   href="javascript:{$link_shakebox_javascript_unbury}" title="{$title_short}" }>
-									<i class="icon-white icon-thumbs-down"></i>g
+									<i class="icon-white icon-thumbs-down"></i>
 								</a>
 							{/if}
 						{/if}
