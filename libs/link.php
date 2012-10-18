@@ -651,8 +651,10 @@ class Link {
 	        
 		$this->get_current_user_votes($current_user->user_id);
 		if(votes_per_ip > 0){
-		$smarty->assign('vote_from_this_ip', $this->vote_from_this_ip);
-		$smarty->assign('report_from_this_ip', $this->report_from_this_ip);
+			$smarty->assign('vote_from_this_ip', $this->vote_from_this_ip);
+			$smarty->assign('report_from_this_ip', $this->report_from_this_ip);
+			$smarty->assign('votes_per_ip', votes_per_ip);
+			
 		}
 		$smarty->assign('link_shakebox_currentuser_votes', $this->current_user_votes);
 		$smarty->assign('link_shakebox_currentuser_reports', $this->current_user_reports);
