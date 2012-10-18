@@ -16,7 +16,8 @@ function vote (user, id, htmlid, md5, value)
 	dynamic_class=".linkVote_"+id;
     var link_title=$(dynamic_class).attr("title");
 	
-    if (!anonymous_vote && user==0) {
+	
+    if (!anonymous_vote) {
         window.location= my_base_url + my_pligg_base + "/login.php?return="+location.href;
     } else {
 		
@@ -65,7 +66,12 @@ function unvote (user, id, htmlid, md5, value)
 	dynamic_class=".linkVote_"+id;
     var link_title=$(dynamic_class).attr("title");
 	
-    if (!anonymous_vote && user==0) {
+	
+	//user = 2;
+	//alert("from unvote"+user);
+	//alert(anonymous_vote);
+	
+    if (!anonymous_vote) {
         window.location= my_base_url + my_pligg_base + "/login.php?return="+location.href;
     } else {
     	$.post(url, mycontent, function (data) {
