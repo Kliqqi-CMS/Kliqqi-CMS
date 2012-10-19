@@ -108,9 +108,12 @@ if(isset($_REQUEST['link_id'])){
 			}
 		}
 	} 
-	if(isset($_REQUEST['pnme']) and $_REQUEST['pnme'] != 'story' and $_REQUEST['pnme'] != 'published'){
+	if(isset($_REQUEST['pnme']) and $_REQUEST['pnme'] != 'story' and $_REQUEST['pnme'] != 'published' and $_REQUEST['pnme'] != 'group_story'){
 		
 		$redirectUrl = $_REQUEST['pnme'].'/'.$linkslug;
+	}
+	if(isset($_REQUEST['pnme']) and $_REQUEST['pnme'] == 'index'){
+		$redirectUrl = $linkslug;
 	}
 	$link_delete = $db->query(" Delete from ".table_links." where link_id =".$linkres->id);
 	//echo $link_delete."<br />";
@@ -130,11 +133,10 @@ if(isset($_REQUEST['link_id'])){
 	$db->query("DELETE FROM ".table_tag_cache);
 
     if ($_SERVER['HTTP_REFERER'] && strpos($_SERVER['HTTP_REFERER'], $my_base_url.$my_pligg_base) === 0){
-	
-	  header('Location: '.$my_pligg_base.'/'.$redirectUrl);
+		
+	  	header('Location: '.$my_pligg_base.'/'.$redirectUrl);
 	}
 	else{
-		
 		header('Location: '.$my_pligg_base.'/'.$redirectUrl);
 	}
 }
