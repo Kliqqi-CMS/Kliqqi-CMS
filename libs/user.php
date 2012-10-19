@@ -44,7 +44,6 @@ class User {
 function Create(){
 		global $db, $main_smarty,$the_template,$my_base_url,$my_pligg_base;
 		
-		if($this->user_language == ''){return 'english';}
 		if($this->username == ''){return false;}
 		if($this->pass == ''){return false;}
 		if($this->email == ''){return false;}
@@ -57,10 +56,10 @@ function Create(){
 			$saltedpass=generateHash($this->pass);
 			
 			if(pligg_validate()){
-				if ($db->query("INSERT IGNORE INTO " . table_users . " (user_login, user_email, user_pass, user_date, user_ip,user_categories,user_language) VALUES ('".$this->username."', '".$this->email."', '".$saltedpass."', now(), '".$userip."', '', '".$this->user_language."')")) {
+				if ($db->query("INSERT IGNORE INTO " . table_users . " (user_login, user_email, user_pass, user_date, user_ip,user_categories) VALUES ('".$this->username."', '".$this->email."', '".$saltedpass."', now(), '".$userip."', '')")) {
 				
 					$result = $db->get_row("SELECT user_email, user_pass, user_karma, user_lastlogin FROM " . table_users . " WHERE user_login = '".$this->username."'");
-					$encode=md5($this->email . $result->user_karma .  $this->username. pligg_hash().$main_smarty->get_config_vars('PLIGG_Visual_Name'));
+					$encode = md5($this->email . $result->user_karma .  $this->username. pligg_hash().$main_smarty->get_config_vars('PLIGG_Visual_Name'));
 
 					$username = $this->username;
 					$password = $this->pass;
@@ -88,7 +87,7 @@ function Create(){
 					$mail->Subject = $main_smarty->get_config_vars('PLIGG_PassEmail_Subject_verification');
 					$mail->CharSet = 'utf-8';
 					$mail->Body = $message;
-//print_r($mail);					
+				
 					
 					if(!$mail->Send())
 					{
@@ -101,7 +100,7 @@ function Create(){
 				}
 			} else{
 			
-					if ($db->query("INSERT IGNORE INTO " . table_users . " (user_login, user_email, user_pass, user_date, user_ip, user_lastlogin,user_categories,user_language) VALUES ('".$this->username."', '".$this->email."', '".$saltedpass."', now(), '".$userip."', now(),'','".$this->user_language."')")) {
+					if ($db->query("INSERT IGNORE INTO " . table_users . " (user_login, user_email, user_pass, user_date, user_ip, user_lastlogin,user_categories) VALUES ('".$this->username."', '".$this->email."', '".$saltedpass."', now(), '".$userip."', now(),'')")) {
 						return true;
 					} else {
 						return false;
