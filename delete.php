@@ -115,7 +115,7 @@ if(isset($_REQUEST['link_id'])){
 	if(isset($_REQUEST['pnme']) and $_REQUEST['pnme'] == 'index'){
 		$redirectUrl = $linkslug;
 	}
-	$link_delete = $db->query(" Delete from ".table_links." where link_id =".$linkres->id);
+	/*$link_delete = $db->query(" Delete from ".table_links." where link_id =".$linkres->id);
 	//echo $link_delete."<br />";
 	$vote_delete = $db->query(" Delete from ".table_votes." where vote_link_id =".$linkres->id);
 	//echo $vote_delete."<br />";
@@ -130,7 +130,7 @@ if(isset($_REQUEST['link_id'])){
 
 	$db->query("DELETE FROM ".table_additional_categories." WHERE ac_link_id =".$linkres->id);
 
-	$db->query("DELETE FROM ".table_tag_cache);
+	$db->query("DELETE FROM ".table_tag_cache);*/
 
     if ($_SERVER['HTTP_REFERER'] && strpos($_SERVER['HTTP_REFERER'], $my_base_url.$my_pligg_base) === 0){
 		
