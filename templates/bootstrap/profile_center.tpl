@@ -255,7 +255,7 @@
 				if (user_language)
 				{
 				{/php}
-					{if count($languages) gt 1}
+					{*if count($languages) gt 1*}
 						<tr>
 							<td><label for="name" accesskey="1">{#PLIGG_Visual_User_Profile_Language#}:</label></td>
 							<td><select name='language'>
@@ -265,7 +265,7 @@
 								</select>
 							</td>
 						</tr>
-					{/if}
+					{*/if*}
 				{php}
 				}
 				{/php}
