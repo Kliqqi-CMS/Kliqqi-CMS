@@ -6,16 +6,6 @@
 	<div class="span5 register-left">
 		{checkActionsTpl location="tpl_pligg_register_start"}
 		<form action="{$URL_register}" class="form-horizontal" method="post" id="thisform">
-			
-			<div class="control-group">
-				<label class="control-label">Choose Language</label>
-				<div class="controls">					
-			<input autofocus="autofocus" type="text" name="user_language" class="input-large" id="user_language" value="{$user_language}" size="25" tabindex="10" maxlength="32"/>
-				</div>
-			</div>
-			
-			
-			
 			<div class="control-group">
 				<label class="control-label">{#PLIGG_Visual_Register_Username#}</label>
 				<div class="controls">
