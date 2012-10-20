@@ -207,8 +207,8 @@ if ($current_user->user_id > 0 && $current_user->authenticated)
 	$main_smarty->assign('user_url_commented', getmyurl('user2', $login, 'commented'));
 	$main_smarty->assign('user_url_saved', getmyurl('user2', $login, 'saved'));
 	$main_smarty->assign('user_url_setting', getmyurl('profile'));
-	$main_smarty->assign('user_url_friends', getmyurl('user_friends', $login, 'viewfriends'));
-	$main_smarty->assign('user_url_friends2', getmyurl('user_friends', $login, 'viewfriends2'));
+	$main_smarty->assign('user_url_friends', getmyurl('user_friends', $login, 'following'));
+	$main_smarty->assign('user_url_friends2', getmyurl('user_friends', $login, 'followers'));
 	$main_smarty->assign('user_url_add', getmyurl('user_add_remove', $login, 'addfriend'));
 	$main_smarty->assign('user_url_remove', getmyurl('user_add_remove', $login, 'removefriend'));
 	$main_smarty->assign('user_rss', getmyurl('rssuser', $login));

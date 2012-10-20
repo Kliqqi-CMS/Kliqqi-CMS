@@ -1084,5 +1084,5 @@ PLIGG_Follow = "Follow"
 PLIGG_Unfollow = "Unfollow"
 PLIGG_Visual_AdminPanel_Backup_None = "No backups have been generated yet! Start by clicking on one of the buttons above."
 PLIGG_Admin_Template_Widget_Title = "Template Widget Management"
-PLIGG_Admin_Template_Widget_Description = "Drag and drop the items below to manage their display order in the template."
+PLIGG_Admin_Template_Widget_Description = "Drag and drop the items below to manage their display order in the template sidebar."
 // End 2.0.0 Language File

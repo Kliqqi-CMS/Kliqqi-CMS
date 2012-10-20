@@ -98,8 +98,8 @@ function simple_messaging_showpage(){
 			}
 		}
 		
-		$main_smarty->assign('user_url_friends', getmyurl('user_friends', $login, 'viewfriends'));
-		$main_smarty->assign('user_url_friends2', getmyurl('user_friends', $login, 'viewfriends2'));
+		$main_smarty->assign('user_url_friends', getmyurl('user_friends', $login, 'following'));
+		$main_smarty->assign('user_url_friends2', getmyurl('user_friends', $login, 'followers'));
 
 		$main_smarty = do_sidebar($main_smarty, $navwhere);
 		$main_smarty->assign('posttitle', "Inbox");
@@ -157,8 +157,8 @@ function simple_messaging_showpage(){
 				}
 			}
 
-		$main_smarty->assign('user_url_friends', getmyurl('user_friends', $login, 'viewfriends'));
-		$main_smarty->assign('user_url_friends2', getmyurl('user_friends', $login, 'viewfriends2'));
+		$main_smarty->assign('user_url_friends', getmyurl('user_friends', $login, 'following'));
+		$main_smarty->assign('user_url_friends2', getmyurl('user_friends', $login, 'followers'));
 	
 		$main_smarty = do_sidebar($main_smarty, $navwhere);
 		$main_smarty->assign('posttitle', "Inbox");
@@ -185,8 +185,8 @@ function simple_messaging_showpage(){
 
 		if($msgToName == ''){die('error, invalid to');}
 		
-		$main_smarty->assign('user_url_friends', getmyurl('user_friends', $login, 'viewfriends'));
-		$main_smarty->assign('user_url_friends2', getmyurl('user_friends', $login, 'viewfriends2'));
+		$main_smarty->assign('user_url_friends', getmyurl('user_friends', $login, 'following'));
+		$main_smarty->assign('user_url_friends2', getmyurl('user_friends', $login, 'followers'));
 
 		$main_smarty = do_sidebar($main_smarty, $navwhere);
 		$main_smarty->assign('posttitle', "Inbox");
@@ -268,8 +268,8 @@ function simple_messaging_showpage(){
 		$main_smarty->assign('js_reply', "lightbox_do_on_activate('view_message~!~action=reply~!~replyID=" . $array['id'] . "~!~view=small_msg_compose~!~login=" . $array['sender_name'] . "');");
 		$main_smarty->assign('js_delete', "lightbox_do_on_activate('view_message~!~view=small_msg_confirm_delete~!~msgid=" . $array['id'] . "');");
 		
-		$main_smarty->assign('user_url_friends', getmyurl('user_friends', $login, 'viewfriends'));
-		$main_smarty->assign('user_url_friends2', getmyurl('user_friends', $login, 'viewfriends2'));
+		$main_smarty->assign('user_url_friends', getmyurl('user_friends', $login, 'following'));
+		$main_smarty->assign('user_url_friends2', getmyurl('user_friends', $login, 'followers'));
 
 		$main_smarty = do_sidebar($main_smarty, $navwhere);
 		$main_smarty->assign('posttitle', "Inbox");
@@ -332,8 +332,8 @@ function simple_messaging_showpage(){
 		$main_smarty->assign('msg_subject', 're: ' . $array['title']);
 		$main_smarty->assign('return', URL_simple_messaging_viewmsg . $msg_id);
 		
-		$main_smarty->assign('user_url_friends', getmyurl('user_friends', $login, 'viewfriends'));
-		$main_smarty->assign('user_url_friends2', getmyurl('user_friends', $login, 'viewfriends2'));
+		$main_smarty->assign('user_url_friends', getmyurl('user_friends', $login, 'following'));
+		$main_smarty->assign('user_url_friends2', getmyurl('user_friends', $login, 'followers'));
 
 		$main_smarty = do_sidebar($main_smarty, $navwhere);
 		$main_smarty->assign('posttitle', "Inbox");

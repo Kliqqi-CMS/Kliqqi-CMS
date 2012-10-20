@@ -3,6 +3,26 @@
  This template controls the main user profile page, and the user history pages
 *************************************}
 <!-- user_center.tpl -->
+
+{***********************************************************************************}
+
+{if $user_view eq 'removefriend'}
+	<div class="alert">
+		<button class="close" data-dismiss="alert">&times;</button>
+		{#PLIGG_Visual_User_Profile_Friend_Removed#}
+	</div>
+{/if}
+
+{***********************************************************************************}
+
+{if $user_view eq 'addfriend'}
+	<div class="alert">
+		<button class="close" data-dismiss="alert">&times;</button>
+		{#PLIGG_Visual_User_Profile_Friend_Added#}
+	</div>
+{/if}
+
+{***********************************************************************************}
 {checkActionsTpl location="tpl_pligg_profile_start"}
 <div class="row-fluid" style="margin-bottom:10px;">
 	<div class="span9">
@@ -143,8 +163,8 @@
 						{checkActionsTpl location="tpl_user_center"}
 					{/if}
 				{else}
-					{if $user_authenticated eq true} 					
-						<img src="{$my_pligg_base}/templates/{$the_template}/img/user_add.gif" align="absmiddle" /> <a href="{$user_url_add}">{#PLIGG_Visual_User_Profile_Add_Friend#} {$user_login}</a>
+					{if $user_authenticated eq true} 
+						<a class="btn btn-success" href="{$user_url_add}">{#PLIGG_Visual_User_Profile_Add_Friend#} {$user_login}</a>
 					{/if}   
 				{/if}
 			{/if}
@@ -155,7 +175,7 @@
 {checkActionsTpl location="tpl_user_center_just_below_header"}
 <ul class="nav nav-tabs" id="profiletabs">
 	{checkActionsTpl location="tpl_pligg_profile_sort_start"}
-	<li {if $user_view eq 'profile'}class="active"{/if}><a {if $user_view eq 'profile'}data-toggle="tab" href="#personal_info"{else}href="{$user_url_personal_data}"{/if} class="navbut{$nav_pd}">{#PLIGG_Visual_User_PersonalData#}</a></li>
+	<li {if $user_view eq 'profile' || $user_view eq 'removefriend' || $user_view eq 'addfriend'}class="active"{/if}><a {if $user_view eq 'profile'}data-toggle="tab" href="#personal_info"{else}href="{$user_url_personal_data}"{/if} class="navbut{$nav_pd}">{#PLIGG_Visual_User_PersonalData#}</a></li>
 	{if $user_login eq $user_logged_in}
 		<li {if $pagename eq 'profile'}class="active"{/if}><a href="{$URL_Profile}" class="navbut{$nav_set}">{#PLIGG_Visual_User_Setting#}</a></li>
 	{/if}
@@ -168,7 +188,7 @@
 	{checkActionsTpl location="tpl_pligg_profile_sort_end"}
 </ul>
 {***********************************************************************************}
-{if $user_view eq 'profile'}
+{if $user_view eq 'profile' || $user_view eq 'removefriend' || $user_view eq 'addfriend'}
 	<div id="profile_container" style="position: relative;">
 		<div class="row-fluid">
 			{checkActionsTpl location="tpl_pligg_profile_info_start"}
@@ -274,7 +294,7 @@
 										{checkActionsTpl location="tpl_pligg_profile_friend_td"}
 										{if $user_login eq $user_logged_in}
 											<td>
-												<a href="{$removeURL}"><img src="{$my_pligg_base}/templates/{$the_template}/img/delete.gif" style="border:0;text-decoration:none;"/></a>
+												<a class="btn btn-danger" href="{$removeURL}">Unfollow</a>
 											</td>
 										{/if}
 									</tr>
@@ -357,8 +377,8 @@
 	{/if}
 {/if}
 {***********************************************************************************}
-{if $user_view eq 'viewfriends'}
-	<legend>{$user_username|capitalize} {#PLIGG_Visual_User_Profile_Your_Friends#}</legend>
+{if $user_view eq 'following'}
+	<legend>{#PLIGG_Visual_User_Profile_People#} {$user_username|capitalize} {#PLIGG_Visual_User_Profile_Is_Following#}</legend>
 	{if $following}
 	  	<table class="table table-bordered table-condensed table-striped">
 			<thead>
@@ -376,7 +396,7 @@
 					<tr>
 						<td><img src="{$friend_avatar}" align="absmiddle" /> <a href="{$profileURL}">{$myfriend.user_login}</a></td>
 						{if check_for_enabled_module('simple_messaging',0.6) && $is_friend}<td align="center"><a href="{$my_pligg_base}/module.php?module=simple_messaging&view=compose&return={$templatelite.server.REQUEST_URI|urlencode}&to={$myfriend.user_login}"><i class="icon icon-envelope"></i></a></td>{/if}
-						<td align="center"><a href = "{$removeURL}"><img src="{$my_pligg_base}/templates/{$the_template}/img/user_delete.gif" border=0></a></td>
+						<td align="center"><a href="{$removeURL}" class="btn btn-danger">Unfollow</a></td>
 					</tr>
 				{/foreach}
 			<tbody>
@@ -387,7 +407,7 @@
 	{/if}
 {/if}
 {***********************************************************************************}
-{if $user_view eq 'viewfriends2'}
+{if $user_view eq 'followers'}
 	<legend>{#PLIGG_Visual_User_Profile_Viewing_Friends_2a#} {$user_username|capitalize}</legend>
 	{if $follower}
 	  	<table class="table table-bordered table-condensed table-striped">
@@ -397,6 +417,7 @@
 					{if check_for_enabled_module('simple_messaging',0.6) && $is_friend}
 						<th>{#PLIGG_Visual_User_Profile_Message#}</th>
 					{/if}
+					<th>Add/Remove</th>
 				</tr>
 			</thead>
 			<tbody>
@@ -410,6 +431,16 @@
 					<tr>
 						<td><img src="{$friend_avatar}" align="absmiddle" /> <a href="{$profileURL}">{$myfriend.user_login}</a></td>
 						{if check_for_enabled_module('simple_messaging',0.6) && $is_friend}<td><a href="{$my_pligg_base}/module.php?module=simple_messaging&view=compose&to={$myfriend.user_login}&return={$templatelite.server.REQUEST_URI|urlencode}"><i class="icon icon-envelope"></i></a></td>{/if}
+						{if $user_authenticated eq true}
+							{*
+							{if $is_friend gt 0}
+								<td><a class="btn btn-danger" href="{$removeURL}">Unfollow</a></td>
+							{else}
+							
+							{/if}
+							*}
+								<td><a class="btn btn-success" href="{$user_url_add}">{#PLIGG_Visual_User_Profile_Add_Friend#}</a></td>
+						{/if}
 					</tr>
 				{/foreach}
 			</tbody>
@@ -417,14 +448,6 @@
 	{else}
 		<h4>{#PLIGG_Visual_User_Profile_No_Friends_2#} {$user_username|capitalize}</h4>
 	{/if}
-{/if}
-{***********************************************************************************}
-{if $user_view eq 'removefriend'}
-	<h3>{#PLIGG_Visual_User_Profile_Friend_Removed#}</h3>
-{/if}
-{***********************************************************************************}
-{if $user_view eq 'addfriend'}
-	<h3 style="text-align:center;">{#PLIGG_Visual_User_Profile_Friend_Added#}</h3>
 {/if}
 {***********************************************************************************}
 {if isset($user_page)}

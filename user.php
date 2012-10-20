@@ -109,8 +109,8 @@ $CSRF->create('user_settings', true, true);
 	$main_smarty->assign('user_url_news_voted', getmyurl('user2', $login, 'voted'));
 	$main_smarty->assign('user_url_commented', getmyurl('user2', $login, 'commented'));
 	$main_smarty->assign('user_url_saved', getmyurl('user2', $login, 'saved'));
-	$main_smarty->assign('user_url_friends', getmyurl('user_friends', $login, 'viewfriends'));
-	$main_smarty->assign('user_url_friends2', getmyurl('user_friends', $login, 'viewfriends2'));
+	$main_smarty->assign('user_url_friends', getmyurl('user_friends', $login, 'following'));
+	$main_smarty->assign('user_url_friends2', getmyurl('user_friends', $login, 'followers'));
 	$main_smarty->assign('user_url_add', getmyurl('user_add_remove', $login, 'addfriend'));
 	$main_smarty->assign('user_url_remove', getmyurl('user_add_remove', $login, 'removefriend'));
 	$main_smarty->assign('user_rss', getmyurl('rssuser', $login));
@@ -132,7 +132,7 @@ $CSRF->create('user_settings', true, true);
 	$main_smarty->assign('user_view', $view);
 
 	if ($view == 'profile') {
-		do_viewfriends($user->id);
+		do_following($user->id);
 		$main_smarty->assign('view_href', '');
 		$main_smarty->assign('nav_pd', 4);
 	} else {
@@ -247,12 +247,12 @@ $CSRF->create('user_settings', true, true);
 		$main_smarty->assign('nav_s', 3);
 	}	
 
-	if ($view == 'viewfriends') {
+	if ($view == 'following') {
 		$navwhere['text3'] = $main_smarty->get_config_vars('PLIGG_Visual_User_Profile_Viewing_Friends');
 		$post_title .= " | " . $main_smarty->get_config_vars('PLIGG_Visual_User_Profile_Viewing_Friends');
 		}
 
-	if ($view == 'viewfriends2') {
+	if ($view == 'followers') {
 		$navwhere['text3'] = $main_smarty->get_config_vars('PLIGG_Visual_User_Profile_Viewing_Friends_2a');
 		$post_title .= " | " . $main_smarty->get_config_vars('PLIGG_Visual_User_Profile_Viewing_Friends_2');
 		}
@@ -377,11 +377,11 @@ $CSRF->create('user_settings', true, true);
 		case 'addfriend':
 			do_addfriend();
 			break;
-		case 'viewfriends':
-			do_viewfriends($user->id);
+		case 'following':
+			do_following($user->id);
 			break;
-		case 'viewfriends2':
-			do_viewfriends2();
+		case 'followers':
+			do_followers();
 			break;
 		case 'sendmessage':
 			do_sendmessage();
@@ -392,8 +392,8 @@ $CSRF->create('user_settings', true, true);
 			break;  	
 	}
 	
-	do_viewfriends($user->id);
-	do_viewfriends2($user->id);
+	do_following($user->id);
+	do_followers($user->id);
 
 // display the template
 	$main_smarty->assign('tpl_center', $the_template . '/user_center');
@@ -547,7 +547,7 @@ function do_addfriend (){
 	$friend->add($user->id);
 }
 
-function do_viewfriends($user_id){
+function do_following($user_id){
 	global $db, $main_smarty, $user, $the_template;
 	$friend = new Friend;
 	$friends = $friend->get_friend_list($user_id);
@@ -556,7 +556,7 @@ function do_viewfriends($user_id){
 	$main_smarty->assign('following', $friends);
 }
 
-function do_viewfriends2(){
+function do_followers(){
 	global $db, $main_smarty, $user, $the_template;
 	$friend = new Friend;
 	$friends = $friend->get_friend_list_2();	
