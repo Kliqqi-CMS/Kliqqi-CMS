@@ -28,24 +28,18 @@ $users = $db->get_results("SELECT user_karma, COUNT(*) FROM " . table_users . " 
 		}
 		
 		
-	$users = $db->get_results("SELECT user_id FROM pligg_users WHERE user_karma > 0 AND user_enabled = 1 AND user_level <> 'Spammer' AND (user_login != 'anonymous' OR user_lastip) ORDER BY user_karma DESC LIMIT $start_up,$page_size");
-	
-	
+	$users = $db->get_results("SELECT user_id FROM pligg_users WHERE user_karma > 0 AND user_enabled = 1 AND user_level <> 'Spammer' AND (user_login != 'anonymous' OR user_lastip) ORDER BY user_karma DESC LIMIT $start_up, $page_size");
 	
 	$user = new User;
 	
 	if ($users) {
-		
+		pr($users);die;
 		foreach($users as $dbuser) {
 			
 			$user->id=$dbuser->user_id;
 			$user->read();
 			$user->all_stats();
 			
-			//echo getmyurl("user", $user->username)."<br/>";
-			//echo $user->username;
-			//echo 'hii';
-			//die;
 			$main_smarty->assign('user_userlink', getmyurl("user", $user->username));
 			$main_smarty->assign('user_username', $user->username);
 			$main_smarty->assign('user_total_links', $user->total_links);
@@ -67,7 +61,5 @@ $users = $db->get_results("SELECT user_karma, COUNT(*) FROM " . table_users . " 
 			
 			echo $users_table = $main_smarty->fetch(The_Template . "/topusers_data.tpl");
 		}
-		//echo The_Template;
-		//die;
 	}
 ?>
