@@ -35,7 +35,7 @@
 			 }
 			else if(page_name=="user"){
 			 	data="&view="+viewtype+"&userid="+userid+"&curuserid="+curuserid; 
-			 	my_pligg_url+"/load_data.php";
+			 	url = my_pligg_url+"/load_data.php";
 			 }
 			
 			var dataString = "pname="+page_name+"&start_up="+count+"&pagesize="+pageSize+data;
@@ -51,6 +51,7 @@
 					success: function(html)	{
 						
 						if (html != "") {
+							
 							$(".stories:last").after(html); 
 							$(".stories").removeClass("loader");
 							count=count+parseInt(pageSize);
@@ -72,7 +73,7 @@
 			$(".stories:last").after("<div class='btn contine_read_story'>{/literal}{#PLIGG_Continue_Reading#}{literal}</div>"); 
 			
 			$(".contine_read_story").live("click", function(){
-				if(parseInt(total_row)>count){
+				if(parseInt(total_row) > count){
 					last_msg_funtion();
 				}else{	
 					$(this).hide();
