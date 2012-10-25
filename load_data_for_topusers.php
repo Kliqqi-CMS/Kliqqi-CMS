@@ -33,7 +33,11 @@ $users = $db->get_results("SELECT user_karma, COUNT(*) FROM " . table_users . " 
 	$user = new User;
 	
 	if ($users) {
-		pr($users);die;
+	
+		echo "<pre>";
+		print_r($users);
+		echo "</pre>";
+		die;
 		foreach($users as $dbuser) {
 			
 			$user->id=$dbuser->user_id;
