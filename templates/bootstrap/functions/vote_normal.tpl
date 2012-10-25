@@ -37,17 +37,23 @@ function vote (user, id, htmlid, md5, value)
 				.attr('href', anchor.attr('href').replace(/vote/,'unvote'))
 				.children('i').addClass('icon-white');
 				
-		     if(value==10)
+		     if(value==10){
+			  
 			  like_dislike_text='You like';
-			 else if(value==-10)
-			  like_dislike_text='You dislike';	
+			  notify_icon = 'icon-thumbs-up'
+			 }
+			 else if(value==-10){
+			 	
+			  	like_dislike_text='You dislike';
+				notify_icon = 'icon-thumbs-down';
+			  }
 			    
 			 $.pnotify({
-								pnotify_text: like_dislike_text+' &quot;'+link_title+'&quot;',
-								pnotify_sticker: false,
-								pnotify_history: false,
-								pnotify_notice_icon: 'icon-thumbs-down'
-							});	
+							pnotify_text: like_dislike_text+' &quot;'+link_title+'&quot;',
+							pnotify_sticker: false,
+							pnotify_history: false,
+							pnotify_notice_icon: notify_icon
+						});	
 			
 
 			if (Voting_Method == 2){
@@ -63,8 +69,8 @@ function unvote (user, id, htmlid, md5, value)
 {
     var url = my_pligg_base + "/vote_total.php";
     var mycontent = "unvote=true&id=" + id + "&user=" + user + "&md5=" + md5 + "&value=" + value;
-	dynamic_class=".linkVote_"+id;
-    var link_title=$(dynamic_class).attr("title");
+	dynamic_class = ".linkVote_"+id;
+    var link_title = $(dynamic_class).attr("title");
 	
 	
 	//user = 2;
@@ -106,4 +112,3 @@ function unvote (user, id, htmlid, md5, value)
 }
 {/literal}
 </script>
-
