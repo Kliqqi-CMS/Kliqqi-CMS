@@ -13,6 +13,6 @@ class Smarty extends Template_Lite{
 
     function Smarty()
     {
-            }
+	}
 }
 ?>
