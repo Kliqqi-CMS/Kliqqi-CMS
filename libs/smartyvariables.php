@@ -38,6 +38,9 @@ if(isset($_GET['category']) && sanitize($_GET['category'], 3) != ''){$main_smart
 if(isset($_GET['search']) && sanitize($_GET['search'], 3) != ''){$main_smarty->assign('request_search', sanitize($_GET['search'], 3));}
 if(isset($_POST['username']) && sanitize($_GET['username'], 3) != ''){$main_smarty->assign('login_username', sanitize($_POST['username'], 3));}
 
+
+
+$main_smarty->assign('votes_per_ip', votes_per_ip);
 $main_smarty->assign('dblang', $dblang);
 $main_smarty->assign('pligg_language', pligg_language);
 $main_smarty->assign('user_logged_in', $current_user->user_login);
@@ -53,6 +56,12 @@ $main_smarty->assign('urlmethod', urlmethod);
 $main_smarty->assign('UseAvatars', do_we_use_avatars());
 $main_smarty->assign('Allow_Friends', Allow_Friends);
 $main_smarty->assign('Pager_setting', Auto_scroll);
+
+
+
+
+
+
 
 if($current_user->user_login){
 	$main_smarty->assign('Current_User_Avatar', $avatars = get_avatar('all', "", "", "", $current_user->user_id));
