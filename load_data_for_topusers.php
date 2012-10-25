@@ -12,7 +12,7 @@
 	
 	$users_display = "";
 	
-	$start_up = isset($_REQUEST['start_up'])? $_REQUEST['start_up'] : "";
+	$start_up = isset($_REQUEST['start_up']) ? $_REQUEST['start_up'] : "";
 	$page_size = isset($_REQUEST['pagesize']) ? $_REQUEST['pagesize'] : "";
 	
 	
