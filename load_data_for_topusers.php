@@ -15,6 +15,8 @@
 	$start_up = isset($_REQUEST['start_up']) ? $_REQUEST['start_up'] : "";
 	$page_size = isset($_REQUEST['pagesize']) ? $_REQUEST['pagesize'] : "";
 	
+	echo "SELECT user_id FROM pligg_users WHERE user_karma > 0 AND user_enabled = 1 AND user_level <> 'Spammer' AND (user_login != 'anonymous' OR user_lastip) ORDER BY user_karma DESC LIMIT $start_up, $page_size";
+	die;
 	
 $users = $db->get_results("SELECT user_karma, COUNT(*) FROM " . table_users . " WHERE user_karma > 0 $whether_to_show_user GROUP BY user_karma ORDER BY user_karma DESC", ARRAY_N);
 	
@@ -32,7 +34,6 @@ $users = $db->get_results("SELECT user_karma, COUNT(*) FROM " . table_users . " 
 	
 	if ($users) {
 	
-		
 		foreach($users as $dbuser) {
 			
 			$user->id=$dbuser->user_id;
