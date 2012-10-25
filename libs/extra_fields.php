@@ -1,5 +1,4 @@
 <?php
-
 if(!defined('mnminclude')){header('Location: ../404error.php');die();}
 
 //Extra fields

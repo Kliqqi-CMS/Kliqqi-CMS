@@ -1,16 +1,17 @@
 <?php
-
 if(!defined('mnminclude')){header('Location: ../404error.php');die();}
 
 	global $main_smarty, $cached_totals, $new_search, $cached_links, $current_user, $cached_saved_links, $fetch_link_summary;
 	$link = new Link;
-
+	
 	if ($new_search) {
+		
 		// used on the search page
 		$rows = $new_search['count'];
 		$new_search = $new_search['rows'];
 		$the_results = $new_search;
 	} else {
+		
 		// used in the index and upcoming pages
 		$ls_debug = false;
 		if($ls_debug == true){echo '--' . sanitize($linksum_count,3) . '--<br />';}
@@ -40,7 +41,7 @@ if(!defined('mnminclude')){header('Location: ../404error.php');die();}
 		
 		if(isset($_GET['order'])){
 			$main_smarty->assign('searchOrder', $db->escape($_GET['order']));
-			}
+		}
 	
 		if($catID!=0)
 			$main_smarty->assign('catID', $catID);
@@ -48,6 +49,7 @@ if(!defined('mnminclude')){header('Location: ../404error.php');die();}
 	
 	
 	if($the_results){
+			
 		// find out if the logged in user voted / reported each of
 		// the stories that the search found and cache the results
 		require_once(mnminclude.'votes.php');

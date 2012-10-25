@@ -1,6 +1,6 @@
 <?php
-
 class Search {
+
 	var $newerthan = NULL;
 	var $searchTerm = '';
 	var $filterToStatus = 'all';
@@ -29,7 +29,8 @@ class Search {
 	var $s_date = 0;
 	
   
-	function doSearch() {
+	function doSearch($limit) {
+		
 		global $db, $current_user, $main_smarty;
 		$search_clause = $this->get_search_clause();
 
@@ -149,14 +150,16 @@ class Search {
 		    $group_list = '';
 		    $from_where .= " AND (".table_groups.".group_privacy!='private' OR ISNULL(".table_groups.".group_privacy))";
 		}
-
+		
+		if(intval($limit) <= 0)
+			$limit = $this->pagesize;
+		
 		if($this->searchTerm == "" && $this->url == ""){
 			// like when on the index or upcoming pages.
-			$this->sql = "SELECT link_id $from_where $search_clause GROUP BY link_id $this->orderBy LIMIT $this->offset,$this->pagesize";
+			$this->sql = "SELECT link_id $from_where $search_clause GROUP BY link_id $this->orderBy LIMIT $this->offset, $limit";
 		}else{
 			$this->sql = "SELECT link_id, link_date, link_published_date $from_where $search_clause";
 		}
-		
 		
 		###### START Advanced Search ######
 		if($this->adv){
@@ -285,7 +288,7 @@ class Search {
 			$this->searchTerm = $buffKeyword;
 			
 		}
-#echo $this->sql."<br><br>";
+		#echo $this->sql."<br><br>";
 		###### END Advanced Search ######
 		
 		
@@ -300,7 +303,8 @@ class Search {
 		// do various searches and put the results in the $foundlinks array
 		// if isTag == true then Just search JUST tags
 		// if !== true, then search normal (title, desc,etc) AND tags
-
+		
+		
 		global $db;
 
 		if(!isset($this->searchTerm)){return false;}
@@ -365,11 +369,11 @@ class Search {
 		$returnme['rows'] = $results;
 		$returnme['count'] = count($sortarray);
 		
-		
 		return $returnme;
 	}
 
 	function get_search_clause($option='') {
+	
 		global $db;
 		if(!empty($this->searchTerm)) {
 			// make sure there is a search term
@@ -389,9 +393,9 @@ class Search {
 					}
 					$sq .= ")";
 					if(Voting_Method == 2)
-                        	                $where = " AND ".$sq." GROUP BY " . table_links . ".link_id, `link_votes` ORDER BY avg(vote_value) DESC ";
+						$where = " AND ".$sq." GROUP BY " . table_links . ".link_id, `link_votes` ORDER BY avg(vote_value) DESC ";
 					else
-                                	        $where = " AND ".$sq." GROUP BY " . table_links . ".link_id, `link_votes` ORDER BY `link_votes` DESC";
+						$where = " AND ".$sq." GROUP BY " . table_links . ".link_id, `link_votes` ORDER BY `link_votes` DESC";
 				// ---
 				
 			} else {
