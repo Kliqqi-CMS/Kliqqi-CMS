@@ -30,14 +30,15 @@ $users = $db->get_results("SELECT user_karma, COUNT(*) FROM " . table_users . " 
 		
 	$users = $db->get_results("SELECT user_id FROM pligg_users WHERE user_karma > 0 AND user_enabled = 1 AND user_level <> 'Spammer' AND (user_login != 'anonymous' OR user_lastip) ORDER BY user_karma DESC LIMIT $start_up, $page_size");
 	
+	echo "SELECT user_id FROM pligg_users WHERE user_karma > 0 AND user_enabled = 1 AND user_level <> 'Spammer' AND (user_login != 'anonymous' OR user_lastip) ORDER BY user_karma DESC LIMIT $start_up, $page_size";
 	$user = new User;
-	
+	echo "<pre>";
+	print_r($users);
+	echo "</pre>";
+	die;
 	if ($users) {
 	
-		echo "<pre>";
-		print_r($users);
-		echo "</pre>";
-		die;
+		
 		foreach($users as $dbuser) {
 			
 			$user->id=$dbuser->user_id;
