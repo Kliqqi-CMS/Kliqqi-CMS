@@ -127,13 +127,18 @@ function cat_safe_name($cat_id) {
 
 
 function sanitize($var, $santype = 1, $allowable_tags = ''){
-        if ($santype == 1) {return strip_tags($var, $allowable_tags = '');}
-        elseif ($santype == 2) {return htmlentities(strip_tags($var, $allowable_tags),ENT_QUOTES,'UTF-8');}
+
+	if ($santype == 1) {
+		return strip_tags($var, $allowable_tags = '');
+	}
+	elseif ($santype == 2) {
+		return htmlentities(strip_tags($var, $allowable_tags),ENT_QUOTES,'UTF-8');
+	}
 	elseif ($santype == 3) {
-                return addslashes(strip_tags($var, $allowable_tags));
+		return addslashes(strip_tags($var, $allowable_tags));
 	}
 	elseif ($santype == 4) {
-              	return stripslashes(preg_replace('/<([^>]+)>/es', "'<'.sanitize('\\1',5).'>'",strip_tags($var, $allowable_tags)));
+		return stripslashes(preg_replace('/<([^>]+)>/es', "'<'.sanitize('\\1',5).'>'",strip_tags($var, $allowable_tags)));
 	}
 	elseif ($santype == 5) {
 		return preg_replace('/\son\w+\s*=/is','',$var);
@@ -253,7 +258,7 @@ function do_sidebar($var_smarty, $navwhere = '') {
 	// if it is, use it
 
     if(isset($_GET['category'])){
-                $thecat = sanitize($_GET['category'], 3);
+		$thecat = sanitize($_GET['category'], 3);
 	}else{
 		$thecat = '';
 	}
@@ -1051,21 +1056,21 @@ function check_referrer()
     if (sizeof($_GET)>0 || sizeof($_POST)>0)
     {
         if ($_SERVER['HTTP_REFERER'])
-	{
-	    $base = $my_pligg_base;
-	    if (!$base) $base = '/';
-	    $_SERVER['HTTP_REFERER'] = sanitize($_SERVER['HTTP_REFERER'],3);
-	    if (strpos(preg_replace('/^.+:\/\/(www\.)?/','',$_SERVER['HTTP_REFERER']).'/',preg_replace('/^.+:\/\/(www\.)?/','',$my_base_url).$base)!==0) 
-	    {
-		unset($_SESSION['xsfr']);
-	    	die("Wrong Referrer '{$_SERVER['HTTP_REFERER']}'");
-	    }
-	}	
-	elseif ($xsfr_first_page)
-	{
-	    unset($_SESSION['xsfr']);
-	    die('Wrong security code');
-	}
+		{
+			$base = $my_pligg_base;
+			if (!$base) $base = '/';
+			$_SERVER['HTTP_REFERER'] = sanitize($_SERVER['HTTP_REFERER'],3);
+			if (strpos(preg_replace('/^.+:\/\/(www\.)?/','',$_SERVER['HTTP_REFERER']).'/',preg_replace('/^.+:\/\/(www\.)?/','',$my_base_url).$base)!==0) 
+			{
+				unset($_SESSION['xsfr']);
+					die("Wrong Referrer '{$_SERVER['HTTP_REFERER']}'");
+			}
+		}	
+		elseif ($xsfr_first_page)
+		{
+			unset($_SESSION['xsfr']);
+			die('Wrong security code');
+		}
     }
 }
 
