@@ -15,7 +15,7 @@ if($do_check == true){
 		elseif (filesize($file) <= 0) { $errors[]="/settings.php is 0 bytes!"; }
 
 		$file = dirname(__FILE__) . '/../libs/dbconnect.php'; 
-		if (!file_exists($file)) { $errors[]="<strong>/libs/dbconnect.php was not found!</strong><br />Try renaming 'dbconnect.php.default' to 'dbconnect.php'"; }
+		if (!file_exists($file)) { $errors[]="<strong>/libs/dbconnect.php was not found!</strong><br />Try renaming '/libs/dbconnect.php.default' to '/libs/dbconnect.php'"; }
 
 		$file= dirname(__FILE__) . '/../cache'; 
 		if (!file_exists($file)) { $errors[]="<strong>/cache/ was not found!</strong> Create a directory called cache in your root directory and CHMOD it to 777."; }
