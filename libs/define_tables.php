@@ -20,9 +20,6 @@ if(!defined('tables_defined')){
 	define('table_formulas', table_prefix . "formulas" );
 	define('table_saved_links', table_prefix . "saved_links" );
 	define('table_totals', table_prefix . "totals" );
-	define('table_feeds', table_prefix . "feeds" );
-	define('table_feed_import_fields', table_prefix . "feed_import_fields" );
-	define('table_feed_link', table_prefix . "feed_link" );
 	define('table_misc_data', table_prefix . "misc_data" );
 	define('table_redirects', table_prefix . "redirects" );
 	define('table_groups', table_prefix . "groups" );
@@ -34,7 +31,6 @@ if(!defined('tables_defined')){
 	define('table_widgets', table_prefix . "widgets" );
 	define('table_old_urls', table_prefix . "old_urls" );
 	define('table_additional_categories', table_prefix . "additional_categories" );
-	define('table_block', table_prefix . "block" );
 	define('tables_defined', true);
 }
 ?>

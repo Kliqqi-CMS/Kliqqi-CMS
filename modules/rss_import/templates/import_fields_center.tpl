@@ -188,7 +188,7 @@ $Story_Content_Tags_To_Allow = Story_Content_Tags_To_Allow_Normal;
 			}
 		}
 
-		$sql = "UPDATE `" . table_feeds . "` SET `feed_last_check` = FROM_UNIXTIME(" . (time()-300) . ") WHERE `feed_id` = $feed->feed_id;";
+		$sql = "UPDATE `" . table_prefix . "_feeds` SET `feed_last_check` = FROM_UNIXTIME(" . (time()-300) . ") WHERE `feed_id` = $feed->feed_id;";
 		//echo $sql;
 		$db->query($sql);
 		
