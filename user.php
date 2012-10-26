@@ -12,7 +12,7 @@ include(mnminclude.'friend.php');
 include(mnminclude.'smartyvariables.php');
 include(mnminclude.'csrf.php');
 
-$offset=(get_current_page()-1)*$page_size;
+$offset=(get_current_page()-1)* $page_size;
 $main_smarty = do_sidebar($main_smarty);
 
 define('pagename', 'user'); 
@@ -107,6 +107,11 @@ $CSRF->create('user_settings', true, true);
 	$main_smarty->assign('user_url_news_published', getmyurl('user2', $login, 'published'));
 	$main_smarty->assign('user_url_news_unpublished', getmyurl('user2', $login, 'shaken'));
 	$main_smarty->assign('user_url_news_voted', getmyurl('user2', $login, 'voted'));
+	
+	$main_smarty->assign('user_url_news_upvoted', getmyurl('user2', $login, 'upvoted'));
+	$main_smarty->assign('user_url_news_dwnvoted', getmyurl('user2', $login, 'dwnvoted'));
+	
+	
 	$main_smarty->assign('user_url_commented', getmyurl('user2', $login, 'commented'));
 	$main_smarty->assign('user_url_saved', getmyurl('user2', $login, 'saved'));
 	$main_smarty->assign('user_url_friends', getmyurl('user_friends', $login, 'following'));
@@ -137,7 +142,7 @@ $CSRF->create('user_settings', true, true);
 		$main_smarty->assign('nav_pd', 4);
 	} else {
 		$main_smarty->assign('nav_pd', 3);
-		}
+	}
 
 	if ($view == 'voted') {
 		$page_header .= $main_smarty->get_config_vars('PLIGG_Visual_User_NewsVoted');
@@ -147,7 +152,28 @@ $CSRF->create('user_settings', true, true);
 		$main_smarty->assign('nav_nv', 4);
 	 } else {
 		$main_smarty->assign('nav_nv', 3);
-		}	
+	}	
+	
+	if ($view == 'upvoted') {
+		$page_header .= $main_smarty->get_config_vars('PLIGG_Visual_User_UpVoted');
+		$navwhere['text3'] = $main_smarty->get_config_vars('PLIGG_Visual_User_UpVoted');
+		$post_title .= " | " . $main_smarty->get_config_vars('PLIGG_Visual_User_UpVoted');
+		$main_smarty->assign('view_href', 'upvoted');
+		$main_smarty->assign('nav_nv', 4);
+	 } else {
+		$main_smarty->assign('nav_nv', 3);
+	}
+
+	if ($view == 'dwnvoted') {
+			$page_header .= $main_smarty->get_config_vars('PLIGG_Visual_User_DownVoted');
+			$navwhere['text3'] = $main_smarty->get_config_vars('PLIGG_Visual_User_DownVoted');
+			$post_title .= " | " . $main_smarty->get_config_vars('PLIGG_Visual_User_DownVoted');
+			$main_smarty->assign('view_href', 'dwnvoted');
+			$main_smarty->assign('nav_nv', 4);
+		 } else {
+			$main_smarty->assign('nav_nv', 3);
+		}
+
 
 	if ($view == 'history') {
 		$page_header .= $main_smarty->get_config_vars('PLIGG_Visual_User_NewsSent');
@@ -355,21 +381,38 @@ $CSRF->create('user_settings', true, true);
 			if(Auto_scroll==2 || Auto_scroll==3){
       			$main_smarty->assign('total_row', $rows);
 			}else
-			$main_smarty->assign('user_pagination', do_pages($rows, $page_size, $the_page, true));
+				$main_smarty->assign('user_pagination', do_pages($rows, $page_size, $the_page, true));
 			break;
 		case 'voted':
 			do_voted();
 			if(Auto_scroll==2 || Auto_scroll==3){
       			$main_smarty->assign('total_row', $rows);
 			}else
-			$main_smarty->assign('user_pagination', do_pages($rows, $page_size, $the_page, true));
+				$main_smarty->assign('user_pagination', do_pages($rows, $page_size, $the_page, true));
 			break;	
+		case 'upvoted':
+			do_updwnvoted('up');
+			if(Auto_scroll==2 || Auto_scroll==3){
+      			$main_smarty->assign('total_row', $rows);
+			}else
+				$main_smarty->assign('user_pagination', do_pages($rows, $page_size, $the_page, true));
+			break;
+		case 'dwnvoted':
+			do_updwnvoted('dwn');
+			if(Auto_scroll==2 || Auto_scroll==3){
+      			$main_smarty->assign('total_row', $rows);
+			}else
+				$main_smarty->assign('user_pagination', do_pages($rows, $page_size, $the_page, true));
+			break;	
+			
+			
+			
 		case 'saved':
 			do_stories();
 			if(Auto_scroll==2 || Auto_scroll==3){
       			$main_smarty->assign('total_row', $rows);
 			}else
-			$main_smarty->assign('user_pagination', do_pages($rows, $page_size, $the_page, true));
+				$main_smarty->assign('user_pagination', do_pages($rows, $page_size, $the_page, true));
 			break;  
 		case 'removefriend':
 			do_removefriend();
@@ -450,7 +493,9 @@ function do_voted () {
 	$output = '';
 	$link = new Link;
 	$rows = $db->get_var("SELECT count(*) FROM " . table_links . ", " . table_votes . " WHERE vote_user_id=$user->id AND vote_link_id=link_id AND vote_value > 0 AND (link_status='published' OR link_status='queued')");
-	$links = $db->get_results($sql="SELECT DISTINCT * FROM " . table_links . ", " . table_votes . " WHERE vote_user_id=$user->id AND vote_link_id=link_id AND vote_value > 0  AND (link_status='published' OR link_status='queued') ORDER BY link_date DESC LIMIT $offset,$page_size");
+	
+	$links = $db->get_results($sql="SELECT DISTINCT * FROM " . table_links . ", " . table_votes . " WHERE vote_user_id=$user->id AND vote_link_id=link_id AND vote_value > 0  AND (link_status='published' OR link_status='queued') ORDER BY link_date DESC LIMIT $offset, $page_size");
+	
 	if ($links) {
 		foreach($links as $dblink) {
 			$link->id=$dblink->link_id;
@@ -462,6 +507,33 @@ function do_voted () {
 	}
 	$main_smarty->assign('user_page', $output);
 }
+function do_updwnvoted ($status = null) {
+	global $db, $main_smarty, $rows, $user, $offset, $page_size,$cached_links;
+
+	$output = '';
+	$link = new Link;
+	
+	if($status == 'up'){
+		$vote_value = " > 0";
+	}else{
+		$vote_value = " < 0";
+	}
+	$rows = $db->get_var("SELECT count(*) FROM " . table_links . ", " . table_votes . " WHERE vote_user_id=$user->id AND vote_link_id=link_id AND vote_value ".$vote_value." AND (link_status='published' OR link_status='queued')");
+	
+	$links = $db->get_results($sql="SELECT DISTINCT * FROM " . table_links . ", " . table_votes . " WHERE vote_user_id=$user->id AND vote_link_id=link_id AND vote_value ".$vote_value."  AND (link_status='published' OR link_status='queued') ORDER BY link_date DESC LIMIT $offset, $page_size");
+	
+	if ($links) {
+		foreach($links as $dblink) {
+			$link->id=$dblink->link_id;
+			$cached_links[$dblink->link_id] = $dblink;
+			$link->read();
+			$link->rating = $dblink->vote_value/2;
+			$output .= $link->print_summary('summary', true);
+		}
+	}
+	$main_smarty->assign('user_page', $output);
+}
+
 
 function do_history () {
 	global $db, $main_smarty, $rows, $user, $offset, $page_size,$cached_links;
