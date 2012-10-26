@@ -1085,4 +1085,7 @@ PLIGG_Unfollow = "Unfollow"
 PLIGG_Visual_AdminPanel_Backup_None = "No backups have been generated yet! Start by clicking on one of the buttons above."
 PLIGG_Admin_Template_Widget_Title = "Template Widget Management"
 PLIGG_Admin_Template_Widget_Description = "Drag and drop the items below to manage their display order in the template sidebar."
+PLIGG_Visual_UpVoted = "Upvoted"
+PLIGG_Visual_DownVoted = "Downvoted"
+
 // End 2.0.0 Language File
