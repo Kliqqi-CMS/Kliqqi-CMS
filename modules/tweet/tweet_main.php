@@ -100,7 +100,7 @@ function tweet_post($linkres,$when)
 
 	try {
     		$to = new TwitterOauth($settings['consumer_key'], $settings['consumer_secret'], $settings['access_key'], $settings['access_secret']);
-    		$tweetJson = json_decode($to->OAuthRequest('http://twitter.com/statuses/update.json', $options, 'POST'),true);
+    		$tweetJson = json_decode($to->OAuthRequest('http://api.twitter.com/1/statuses/update.json', $options, 'POST'),true);
 	} catch (exception $e) {
 		print_r($e);
 	}
