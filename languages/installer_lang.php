@@ -78,6 +78,7 @@
 	$lang['AdminPassword'] = 'Admin Password';
 	$lang['ConfirmPassword'] = 'Confirm Password';
 	$lang['AdminEmail'] = 'Admin E-mail';
+	$lang['SiteTitleLabel'] = 'Website Name';
 	$lang['CreateAdmin'] = 'Create Admin Account';
 
 // Step 5

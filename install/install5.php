@@ -15,13 +15,12 @@ include_once mnminclude.'db.php';
 include_once mnminclude.'html1.php';
 
 // Check user input here
-if (!$_POST['adminlogin'] ||
-    !$_POST['adminpassword'] ||
-    !$_POST['adminemail'])
-    	$errors[] = $lang['Error5-1'];
-elseif ($_POST['adminpassword'] != $_POST['adminpassword2'])
-    	$errors[] = $lang['Error5-2'];
-		
+if (!$_POST['adminlogin'] || !$_POST['adminpassword'] || !$_POST['adminemail']) {
+	$errors[] = $lang['Error5-1'];
+} elseif ($_POST['adminpassword'] != $_POST['adminpassword2']) {
+    $errors[] = $lang['Error5-2'];
+}
+	
 if (!$errors) {
 	include_once( '../config.php' );
 	include_once( '../libs/admin_config.php' );
@@ -32,12 +31,35 @@ if (!$errors) {
 	$sql = "INSERT INTO `" . table_users . "` (`user_id`, `user_login`, `user_level`, `user_modification`, `user_date`, `user_pass`, `user_email`, `user_names`, `user_karma`, `user_url`, `user_lastlogin`, `user_ip`, `user_lastip`, `last_reset_request`, `user_enabled`) VALUES (1, '".$db->escape($_POST['adminlogin'])."', 'admin', now(), now(), '$saltedpass', '".$db->escape($_POST['adminemail'])."', '', '10.00', 'http://pligg.com', now(), '0', '0', now(), '1');";
 	$db->query( $sql );
 
-	//done
+	// If user specified a site title, change language files.
+	if (isset($_POST['sitetitle']) && $_POST['sitetitle'] != ''){
+		// Change the value for PLIGG_Visual_Name in the language files
+		$replacement = 'PLIGG_Visual_Name = "'.strip_tags($_POST['sitetitle']).'"';
+		if (glob("../languages/*.conf")) {
+			foreach (glob("../languages/*.conf") as $filename) {
+				$filedata = file_get_contents($filename);
+				$filedata = preg_replace('/PLIGG_Visual_Name = \"(.*)\"/iu',$replacement,$filedata);
+				// print $filedata;
+				
+				// Write the changes to the language files
+				$lang_file = fopen($filename, "w");
+				fwrite($lang_file, $filedata);
+				fclose($lang_file);
+			}
+		}
+	}
+	
+	// Output success message
 	$output='<p><strong>' . $lang['InstallSuccess'] . '</strong></p>
 	<br /><legend>' . $lang['WhatToDo'] . '</legend>
 	<div class="donext"><ol>
 		' . $lang['WhatToDoList'] . '
 	</ol></div>';
+	
+	if ($_POST['sitetitle'] != ''){
+		// Change the site title (PLIGG_Visual_Name) in the language file
+		
+	}
 }
 
 if (isset($errors)) {
