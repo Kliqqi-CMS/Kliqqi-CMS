@@ -264,8 +264,22 @@ function upload_save_files()
 function generate_thumbs($fname,$link_id,$settings,$orig_id,$only_size='')
 {
     global $db, $current_user;
+    
+    try
+    {
+        if (!($str = @file_get_contents($fname)))   throw new Exception("Can't read file $fname");  
+    }
+    catch(Exception $e)
+    {
+    $c = curl_init();
+        curl_setopt($c, CURLOPT_RETURNTRANSFER, 1);
+        curl_setopt($c, CURLOPT_URL, $fname);
+        $contents = curl_exec($c);
+        curl_close($c);
 
-    if (!($str = @file_get_contents($fname)))   return "Can't read file $fname"; 
+        if ($contents) $str = $contents;
+            else return $e->getMessage();
+    }
     if (!($img = @imagecreatefromstring($str))) 
 	return; 
     else	
