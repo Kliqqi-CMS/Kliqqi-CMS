@@ -1,5 +1,4 @@
 <script type="text/javascript">
-	
 	var my_pligg_url="{$my_base_url}{$my_pligg_base}";
 	var catID="{$catID}";
 	var part="{$part}";
