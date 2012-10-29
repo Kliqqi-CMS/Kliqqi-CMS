@@ -24,7 +24,7 @@
 		{ 
 			var data="";
 			var url = "";
-			
+		
 			if(page_name=="index" || page_name=="upcoming" || page_name=="published"){
 			 	data="&catID="+catID+"&part="+part+"&sorder="+searchorder;
 			 	url = my_pligg_url+"/load_data.php";
@@ -50,11 +50,14 @@
 					cache: false,
 					success: function(html)	{
 						
-						if (html != "") {
+						if ($.trim(html) != "") {
 							
 							$(".stories:last").after(html); 
 							$(".stories").removeClass("loader");
 							count=count+parseInt(pageSize);
+						} else{
+						
+							$(".stories").removeClass("loader");
 						}
 					} 
 			});
