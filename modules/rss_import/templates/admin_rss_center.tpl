@@ -12,7 +12,8 @@
 		.eip_savebutton { }
 		.eip_cancelbutton { margin-left:4px;}
 		.eip_saving { background-color: #903; color: #fff; padding: 3px; }
-		.eip_empty { color: #afafaf;cursor: pointer; }	
+		.eip_empty { color: #afafaf;cursor: pointer; }
+		.accordion-body {display:block !important;}	
 	</style>
 {/literal}
 
@@ -39,6 +40,10 @@
 
 {literal}
 <script>
+$(document).ready(function(){
+	alert('hii');
+});
+
 function verify(){
     msg = "Are you sure that you want to delete this feed?";
     //all we have to do is return the return value of the confirm() method
