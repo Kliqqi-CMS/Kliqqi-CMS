@@ -63,7 +63,7 @@
 							
 							
 							
-							{*if $user_logged_in*}
+							{if $user_logged_in}
 								{if $setmeka eq "upvoted"}
 									<li id="active" href="{$index_url_upvoted}">
 									<a href="{$index_url_upvoted}" id="current"><span class="active">Most {#PLIGG_Visual_User_UpVoted#}</span></a>
@@ -85,7 +85,7 @@
 									<li><a href="{$index_url_commented}">Most {#PLIGG_Visual_User_NewsCommented#}</a>
 								{/if}
 								</li>
-							{*/if*}
+							{/if}
 							
 							
 							
@@ -121,28 +121,30 @@
 							
 						{elseif $pagename eq "groups"}
 						
-							{if $sortby eq "upvoted"}
-								<li id="active" href="{$index_url_upvoted}">
-								<a href="{$index_url_upvoted}" id="current"><span class="active">Most {#PLIGG_Visual_User_UpVoted#}</span></a>
-							{else}
-								<li><a href="{$index_url_upvoted}">Most {#PLIGG_Visual_User_UpVoted#}</a>
+						
+							{if $user_logged_in}
+								{if $sortby eq "upvoted"}
+									<li id="active" href="{$index_url_upvoted}">
+									<a href="{$index_url_upvoted}" id="current"><span class="active">Most {#PLIGG_Visual_User_UpVoted#}</span></a>
+								{else}
+									<li><a href="{$index_url_upvoted}">Most {#PLIGG_Visual_User_UpVoted#}</a>
+								{/if}
+								</li>
+								{if $sortby eq "dwnvoted"}
+									<li id="active" href="{$index_url_dwnvoted}">
+									<a href="{$index_url_dwnvoted}" id="current"><span class="active">Most {#PLIGG_Visual_User_DownVoted#}</span></a>
+								{else}
+									<li><a href="{$index_url_dwnvoted}">Most {#PLIGG_Visual_User_DownVoted#}</a>
+								{/if}
+								</li>
+								{if $sortby eq "commented"}
+									<li id="active" href="{$index_url_commented}">
+									<a href="{$index_url_commented}" id="current"><span class="active">Most {#PLIGG_Visual_User_NewsCommented#}</span></a>
+								{else}
+									<li><a href="{$index_url_commented}">Most {#PLIGG_Visual_User_NewsCommented#}</a>
+								{/if}
+								</li>
 							{/if}
-							</li>
-							{if $sortby eq "dwnvoted"}
-								<li id="active" href="{$index_url_dwnvoted}">
-								<a href="{$index_url_dwnvoted}" id="current"><span class="active">Most {#PLIGG_Visual_User_DownVoted#}</span></a>
-							{else}
-								<li><a href="{$index_url_dwnvoted}">Most {#PLIGG_Visual_User_DownVoted#}</a>
-							{/if}
-							</li>
-							{if $sortby eq "commented"}
-								<li id="active" href="{$index_url_commented}">
-								<a href="{$index_url_commented}" id="current"><span class="active">Most {#PLIGG_Visual_User_NewsCommented#}</span></a>
-							{else}
-								<li><a href="{$index_url_commented}">Most {#PLIGG_Visual_User_NewsCommented#}</a>
-							{/if}
-							</li>
-							
 						
 						
 						
