@@ -18,6 +18,7 @@ Disallow: /languages/
 Disallow: /libs/
 Disallow: /live/
 Disallow: /LICENSE.txt
+Disallow: /logs/
 Disallow: /modules/
 Disallow: /plugins/
 Disallow: /readme.html
@@ -48,5 +49,5 @@ Disallow: /month/
 Disallow: /year/
 Disallow: /alltime/
 Disallow: /upvoted/
-Disallow: /dwnvoted/
+Disallow: /downvoted/
 Disallow: /commented/

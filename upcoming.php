@@ -69,7 +69,7 @@ if(isset($_GET['category'])){
 	
 	
 	$main_smarty->assign('index_url_upvoted', getmyurl('upcoming_sort', 'upvoted', sanitize($_GET['category'],2)));
-	$main_smarty->assign('index_url_dwnvoted', getmyurl('upcoming_sort', 'dwnvoted', sanitize($_GET['category'],2)));
+	$main_smarty->assign('index_url_downvoted', getmyurl('upcoming_sort', 'downvoted', sanitize($_GET['category'],2)));
 	$main_smarty->assign('index_url_commented', getmyurl('upcoming_sort', 'commented', sanitize($_GET['category'],2)));
 
 	
@@ -85,7 +85,7 @@ if(isset($_GET['category'])){
 	$main_smarty->assign('index_url_alltime', getmyurl('upcoming_sort', 'alltime'));
 	
 	$main_smarty->assign('index_url_upvoted', getmyurl('upcoming_sort', 'upvoted'));
-	$main_smarty->assign('index_url_dwnvoted', getmyurl('upcoming_sort', 'dwnvoted'));
+	$main_smarty->assign('index_url_downvoted', getmyurl('upcoming_sort', 'downvoted'));
 	$main_smarty->assign('index_url_commented', getmyurl('upcoming_sort', 'commented'));
 
 	

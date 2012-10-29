@@ -134,7 +134,7 @@ if($page_name=='group_story'){
 		$load_page=1;
 		break;
 		
-		case 'dwnvoted':
+		case 'downvoted':
 		$sql="SELECT DISTINCT * FROM " . table_links . ", " . table_votes . " WHERE vote_user_id=$userid AND vote_link_id=link_id AND vote_value < 0  AND (link_status='published' OR link_status='queued') ORDER BY link_votes ASC LIMIT $start_up, $page_size";
 		$load_page=1;
 		break;

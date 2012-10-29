@@ -109,7 +109,7 @@ $CSRF->create('user_settings', true, true);
 	$main_smarty->assign('user_url_news_voted', getmyurl('user2', $login, 'voted'));
 	
 	$main_smarty->assign('user_url_news_upvoted', getmyurl('user2', $login, 'upvoted'));
-	$main_smarty->assign('user_url_news_dwnvoted', getmyurl('user2', $login, 'dwnvoted'));
+	$main_smarty->assign('user_url_news_downvoted', getmyurl('user2', $login, 'downvoted'));
 	
 	
 	$main_smarty->assign('user_url_commented', getmyurl('user2', $login, 'commented'));
@@ -164,11 +164,11 @@ $CSRF->create('user_settings', true, true);
 		$main_smarty->assign('nav_nv', 3);
 	}
 
-	if ($view == 'dwnvoted') {
+	if ($view == 'downvoted') {
 			$page_header .= $main_smarty->get_config_vars('PLIGG_Visual_User_DownVoted');
 			$navwhere['text3'] = $main_smarty->get_config_vars('PLIGG_Visual_User_DownVoted');
 			$post_title .= " | " . $main_smarty->get_config_vars('PLIGG_Visual_User_DownVoted');
-			$main_smarty->assign('view_href', 'dwnvoted');
+			$main_smarty->assign('view_href', 'downvoted');
 			$main_smarty->assign('nav_nv', 4);
 		 } else {
 			$main_smarty->assign('nav_nv', 3);
@@ -391,14 +391,14 @@ $CSRF->create('user_settings', true, true);
 				$main_smarty->assign('user_pagination', do_pages($rows, $page_size, $the_page, true));
 			break;	
 		case 'upvoted':
-			do_updwnvoted('up');
+			do_updownvoted('up');
 			if(Auto_scroll==2 || Auto_scroll==3){
       			$main_smarty->assign('total_row', $rows);
 			}else
 				$main_smarty->assign('user_pagination', do_pages($rows, $page_size, $the_page, true));
 			break;
-		case 'dwnvoted':
-			do_updwnvoted('dwn');
+		case 'downvoted':
+			do_updownvoted('dwn');
 			if(Auto_scroll==2 || Auto_scroll==3){
       			$main_smarty->assign('total_row', $rows);
 			}else
@@ -507,7 +507,7 @@ function do_voted () {
 	}
 	$main_smarty->assign('user_page', $output);
 }
-function do_updwnvoted ($status = null) {
+function do_updownvoted ($status = null) {
 	global $db, $main_smarty, $rows, $user, $offset, $page_size, $cached_links;
 
 	$output = '';
