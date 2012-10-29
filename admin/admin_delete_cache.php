@@ -69,7 +69,7 @@ function recursive_remove_directory($directory, $empty=TRUE)
 			
 			// if the filepointer is not the current directory
 			// or the parent directory
-			if($item != '.' && $item != '..' && $item != '.htaccess' && $item != 'log.php' && $item != 'index.html')
+			if($item != '.' && $item != '..' && $item != '.htaccess' && $item != 'index.html')
 			{
 				// we build the new path to delete
 				$path = $directory.'/'.$item;

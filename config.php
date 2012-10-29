@@ -2,11 +2,11 @@
 
 ini_set('include_path', '.');
 
-define('LOG_FILE','cache/log.php');
+define('LOG_FILE','logs/error.log');
 
 error_reporting(E_ALL ^ E_NOTICE ^ E_WARNING);
 ini_set('display_errors','Off');
-ini_set('error_log','cache/log.php');
+ini_set('error_log','logs/error.log');
 
 // Template Caching
 // 0 = off

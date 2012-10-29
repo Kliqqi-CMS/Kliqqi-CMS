@@ -66,16 +66,13 @@
 				<p><strong>About Pligg:</strong> Pligg is an open source CMS that powers news and and user feedback websites. It is available to download for free from the project homepage: <a href="http://www.pligg.com/">http://www.pligg.com</a>.</p>
 				
 				<legend><a href="#install" name="install">Installation</a></legend>
-				<p><strong>Requirements:</strong> Pligg requires a modern version of PHP and MySQL and some PHP functions. To test if your server is capable of running Pligg please view the <a href="./install/troubleshooter.php">Troubleshooter</a>. If any elements appear in red on that page you may have a problem with either installing or running Pligg.</p>
+				<p><strong>Requirements:</strong> Pligg requires a modern version of PHP and MySQL and some PHP functions. To test if your server is capable of running Pligg please view the <a href="./install/troubleshooter.php">Troubleshooter</a>. If any errors appear on that page you may have a problem with either installing or running Pligg.</p>
 				
 				<ol>
 					<li>Create a mysql database. If you are unfamiliar with how to create a mysql database, please contact your web host or search their support site. Please pay careful attention when creating a database and write down your database name, username, password, and host somewhere.</li>
 					<li>Rename the /language/lang_english.conf.default file to lang_english.conf. Same instructions apply to any other language file that you might use that are located in the /languages directory.</li>
-					<li>Rename the file approvedips.log.default to approvedips.log</li>
-					<li>Rename the file bannedips.log.default to bannedips.log</li>
-					<li>Rename the file settings.php.default to settings.php</li>
-					<li>Rename the file local-antispam.log.default to local-antispam.log</li>
 					<li>Rename the /libs/dbconnect.php.default file to dbconnect.php</li>
+					<li>Rename the directory /logs.default to /logs</li>
 					<li>Upload the files to your server.</li>
 					<li>CHMOD 755 the following directories and files. If you experience any errors try 777.
 						<ul>
@@ -83,10 +80,8 @@
 							<li>/avatars/groups_uploaded/</li>
 							<li>/avatars/user_uploaded/</li>
 							<li>/cache/</li>
-							<li>/languages/ (And all of the files contained in this folder should be CHMOD 777)</li>
-							<li>approvedips.log</li>
-							<li>bannedips.log</li>
-							<li>local-antispam.log</li>
+							<li>/languages/ (all files contained in this folder should be CHMOD 777)</li>
+							<li>/logs/ (all files contained should be CHMOD 777)</li>
 						</ul>
 					</li>
 					<li>CHMOD 666 the following files
@@ -95,25 +90,20 @@
 							<li>settings.php</li>
 						</ul>
 					</li>
-					
 					<li>Open /install/index.php in your web browser. If you are reading this document after you uploaded it to your server, click on the install link at the top of the page.
 						<ul>
 							<li>Select a language from the list. </li>
 							<li>Fill out your database name, username, password, host, and your desired table prefix.</li>
 							<li>Create an admin account. Please write down the login credentials for future reference.</li>
-							<li>Make sure there are no error messages! If you see an error message, or if installation fails, create a new thread on the <a href="http://forums.pligg.com/">Pligg forums</a></li>
+							<li>Make sure there are no error messages! If you see an error message, or if installation fails, create a new thread on the <a href="http://forums.pligg.com/">Pligg Forums</a>.</li>
 						</ul>
 					</li>
-					
 					<li>Delete your /install folder.</li>
-
 					<li>CHMOD 644 libs/dbconnect.php</li>
-
 					<li>Open /index.php</li>
-
 					<li>Log in to the admin account using the credentials generated during the install process.</li>
 					<li>Log in to the admin panel ( /admin ).</li>
-					<li>Configure your Pligg site to your liking. Don't forget to use the Modify Language page to change your site's name.</li> 
+					<li>Configure your Pligg site to your liking.</li> 
 				</ol>
 				<br />
 		
@@ -129,7 +119,7 @@
 				</ol>
 				<br />
 				
-				
+
 				<legend><a href="#upgrade" name="upgrade">Upgrading</a></legend>
 				<div class="well">
 				Please be sure to <strong>make a backup of your MySQL databases	and files before upgrading</strong> to the latest version of Pligg. Some upgrades might require that you upgrade your MySQL database, so please make backups whenever upgrading.<br />
@@ -161,7 +151,7 @@
 							<li>/avatars/user_uploaded/</li>
 							<li>/cache/</li>
 							<li>/languages/</li>
-							<li>/languages/lang_english.conf</li>
+							<li>/languages/lang_english.conf (plus any other language files that you wish to use)</li>
 						</ul>
 					</li>
 					<li>Run the upgrade from /install/upgrade.php<br />
@@ -197,7 +187,7 @@
 				<legend>Questions / Comments?</legend>
 				<p>Support questions should be posted as a thread on the <a href="http://www.pligg.com/forum/">Pligg Forum</a></p>
 				<p>Please report security flaws to the <a href="http://www.pligg.com/contact.php">Security Issue Contact Form</a> on pligg.com. Please don't contact us directly for any other purposes.</p>
-				<p>If you would like to translate Pligg to another language you can <a href="http://www.pligg.com/blog/translate/">apply to do so here</a>, and please join the <a href="http://groups.google.com/group/pligg-translators">Translate Pligg Group</a> on Google Groups.</p>
+				<p>If you would like to translate Pligg to another language you can <a href="http://www.pligg.com/translate/">apply to do so here</a>, and please join the <a href="http://groups.google.com/group/pligg-translators">Translate Pligg Group</a> on Google Groups.</p>
 				
 			</div>
 			
@@ -447,6 +437,8 @@
 		</div><!--/.row-->
 	</section><!--/#maincontent-->
 	
+	<hr />
+
 	<footer class="footer">
 		<div id="footer">
 			<span class="subtext"> 
