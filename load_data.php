@@ -1,4 +1,5 @@
 <?php
+
 include_once('internal/Smarty.class.php');
 $main_smarty = new Smarty;
 
@@ -23,6 +24,8 @@ $groupid=$_REQUEST['groupid'];
 $start_up=$_REQUEST['start_up'];
 $part=$_REQUEST['part'];
 $view=$_REQUEST['view'];
+
+
 $sorder=$_REQUEST['sorder'];
 $group_vote=$_REQUEST['group_vote'];
 $userid=$_REQUEST['userid'];
@@ -46,13 +49,13 @@ $search->offset = $start_up;
 $search->pagesize = $page_size;
 
 if($page_name=="upcoming"){  // For upcomming page
-// since this is upcoming, we only want to view "queued" stories
-$search->filterToStatus = "queued";
+	// since this is upcoming, we only want to view "queued" stories
+	$search->filterToStatus = "queued";
 }else{ // For Index page
-// since this is index, we only want to view "published" stories
-$search->filterToStatus = "published";
+	// since this is index, we only want to view "published" stories
+	$search->filterToStatus = "published";
 }
-// this is for the tabs on the top that filter
+	// this is for the tabs on the top that filter
 
 $search->do_setmek();	
 
@@ -64,7 +67,7 @@ $search->doSearch();
 if($page_name=='group_story'){
 	
 	if ($catID)
-	$from_where=gen_query_forCatId($catID);
+		$from_where=gen_query_forCatId($catID);
 
     
 	
@@ -117,17 +120,16 @@ if($page_name=='group_story'){
 		break;
 		
 		case 'commented':
-		$sql="SELECT DISTINCT * FROM " . table_links . ", " . table_comments . " WHERE comment_status='published' AND comment_user_id=$userid AND comment_link_id=link_id AND (link_status='published' OR link_status='queued')  ORDER BY link_date DESC LIMIT $start_up,$page_size";
+		$sql="SELECT DISTINCT * FROM " . table_links . ", " . table_comments . " WHERE comment_status='published' AND comment_user_id=$userid AND comment_link_id=link_id AND (link_status='published' OR link_status='queued')  ORDER BY link_date DESC LIMIT $start_up, $page_size";
 		$load_page=1;
 		break;
 		
 		case 'voted':
-		$sql="SELECT DISTINCT * FROM " . table_links . ", " . table_votes . " WHERE vote_user_id=$userid AND vote_link_id=link_id AND vote_value > 0  AND (link_status='published' OR link_status='queued') ORDER BY link_date DESC LIMIT $start_up,$page_size";
+		$sql="SELECT DISTINCT * FROM " . table_links . ", " . table_votes . " WHERE vote_user_id=$userid AND vote_link_id=link_id AND vote_value > 0  AND (link_status='published' OR link_status='queued') ORDER BY link_date DESC LIMIT $start_up, $page_size";
 		$load_page=1;
 		break;
 		
 		case 'upvoted':
-		
 		$sql="SELECT DISTINCT * FROM " . table_links . ", " . table_votes . " WHERE vote_user_id=$userid AND vote_link_id=link_id AND vote_value > 0  AND (link_status='published' OR link_status='queued') ORDER BY link_date DESC LIMIT $start_up, $page_size";
 		$load_page=1;
 		break;
@@ -184,12 +186,10 @@ if($load_page==1){
 	echo $link_summary_output;
 }
 
-
 function gen_query_forCatId($catId){
 	
-	
 	if ($catId) 
-        {
+	{
 		$child_cats = '';
 		// do we also search the subcategories? 
 		if(! Independent_Subcategories){
@@ -212,7 +212,6 @@ function gen_query_forCatId($catId){
 		$from_where = " AND (link_category=$catId " . $child_cat_sql . ")";
         }	
 		
- return $from_where	;	
-	
+	 return $from_where	;	
 }
 ?>
