@@ -199,7 +199,7 @@ else {
 	$main_smarty->assign('index_url_alltime', getmyurl('index_sort', 'alltime'));
 	
 	$main_smarty->assign('index_url_upvoted', getmyurl('index_sort', 'upvoted'));
-	$main_smarty->assign('index_url_dwnvoted', getmyurl('index_sort', 'dwnvoted'));
+	$main_smarty->assign('index_url_downvoted', getmyurl('index_sort', 'downvoted'));
 	$main_smarty->assign('index_url_commented', getmyurl('index_sort', 'commented'));
 
 }
@@ -220,7 +220,7 @@ if ($current_user->user_id > 0 && $current_user->authenticated)
 	$main_smarty->assign('user_url_news_voted', getmyurl('user2', $login, 'voted'));
 	
 	$main_smarty->assign('user_url_news_upvoted', getmyurl('user2', $login, 'upvoted'));
-	$main_smarty->assign('user_url_news_dwnvoted', getmyurl('user2', $login, 'dwnvoted'));
+	$main_smarty->assign('user_url_news_downvoted', getmyurl('user2', $login, 'downvoted'));
 	$main_smarty->assign('user_url_commented', getmyurl('user2', $login, 'commented'));
 	
 	$main_smarty->assign('user_url_saved', getmyurl('user2', $login, 'saved'));

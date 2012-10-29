@@ -73,9 +73,9 @@ class Search {
 				
 				$this->searchTerm = "upvoted";
 			}
-			else if($this->filterToTimeFrame == 'dwnvoted'){
+			else if($this->filterToTimeFrame == 'downvoted'){
 
-				$this->searchTerm = "dwnvoted";
+				$this->searchTerm = "downvoted";
 			}
 			else if($this->filterToTimeFrame == 'commented'){
 				
@@ -98,9 +98,9 @@ class Search {
 				
 				$this->searchTerm = "upvoted";
 			}
-			else if($this->filterToTimeFrame == 'dwnvoted'){
+			else if($this->filterToTimeFrame == 'downvoted'){
 
-				$this->searchTerm = "dwnvoted";
+				$this->searchTerm = "downvoted";
 			}
 			else if($this->filterToTimeFrame == 'commented'){
 				
@@ -196,7 +196,7 @@ class Search {
 			
 			 $this->sql = "SELECT DISTINCT * FROM " . table_links . ", " . table_votes . " WHERE ".$usrclause." vote_link_id=link_id AND vote_value > 0  AND (link_status='published' OR link_status='queued') ORDER BY link_votes DESC LIMIT $this->offset, $limit"; //link_date
 			
-		} else if($this->searchTerm == 'dwnvoted'){
+		} else if($this->searchTerm == 'downvoted'){
 		
 			if($current_user->user_id){
 				$usrclause = "vote_user_id=$current_user->user_id AND ";
@@ -613,7 +613,7 @@ class Search {
 				$this->orderBy = $order_clauses['newest'];
 		}
 		
-		$timeFrames = array ('today', 'yesterday', 'week', 'month', 'year', 'alltime','upvoted', 'dwnvoted', 'commented');
+		$timeFrames = array ('today', 'yesterday', 'week', 'month', 'year', 'alltime','upvoted', 'downvoted', 'commented');
 		if ( in_array ($setmek, $timeFrames) ) {
 			if ($setmek == 'alltime')
 				$this->filterToTimeFrame = '';
