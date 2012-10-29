@@ -84,14 +84,16 @@
 					</div>
 				</div>
 			{/if}
-			{if $Submit_Show_URL_Input eq 1}
-				<div class="control-group">
-					<label for="input01" class="control-label">{#PLIGG_Visual_Submit2_Trackback#}</label>
-					<div class="controls">
-						<input type="text" name="trackback" tabindex="17" id="trackback" class="span5" value="{$submit_trackback}" size="54" />
+			{*
+				{if $Submit_Show_URL_Input eq 1}
+					<div class="control-group">
+						<label for="input01" class="control-label">{#PLIGG_Visual_Submit2_Trackback#}</label>
+						<div class="controls">
+							<input type="text" name="trackback" tabindex="17" id="trackback" class="span5" value="{$submit_trackback}" size="54" />
+						</div>
 					</div>
-				</div>
-			{/if}
+				{/if}
+			*}
 			{checkActionsTpl location="submit_step_2_pre_extrafields"}
 			{include file=$tpl_extra_fields.".tpl"}
 			{if isset($register_step_1_extra)}
