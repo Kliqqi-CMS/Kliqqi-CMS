@@ -51,11 +51,11 @@ if(!defined('mnminclude')){header('Location: ../404error.php');die();}
 							<div class="span12">
 								<legend>Error establishing a database connection!</legend>
 								<ol>
+									<li>Have you run the <a href = "./install/install.php">Pligg Installer</a> yet?</li>
 									<li>Does the file /libs/dbconnect.php exist?</li>
 									<li>Does the above file have the correct database username and password combination?</li>
 									<li>Are you sure that you have typed the correct hostname? Typically this value is set to "localhost".</li>
 									<li>Are you sure that the database server is running?</li>
-									<li>Have you run the <a href = "./install/install.php">Pligg Installer</a> yet?</li>
 								</ol>
 							</div>
 						</div><!--/.row-->
