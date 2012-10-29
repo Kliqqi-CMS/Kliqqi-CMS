@@ -91,6 +91,21 @@ if ($old_version < $new_version) {
 	$sql = "UPDATE ".table_config." SET var_defaultvalue='100' WHERE var_name='group_avatar_size_height';";
 	$db->query($sql);
 	echo '<li>Changed group avatar height/width size setting to 100px</li>';
+	
+	// Change log file locations to new /logs directory
+	$sql = "UPDATE ".table_config." SET var_value='logs/antispam.log' WHERE var_name='$MAIN_SPAM_RULESET';";
+	$db->query($sql);
+	$sql = "UPDATE ".table_config." SET var_defaultvalue='logs/antispam.log' WHERE var_name='$MAIN_SPAM_RULESET';";
+	$db->query($sql);
+	$sql = "UPDATE ".table_config." SET var_value='logs/local-antispam.log' WHERE var_name='$USER_SPAM_RULESET';";
+	$db->query($sql);
+	$sql = "UPDATE ".table_config." SET var_defaultvalue='logs/local-antispam.log' WHERE var_name='$USER_SPAM_RULESET';";
+	$db->query($sql);
+	$sql = "UPDATE ".table_config." SET var_value='logs/spamlog.log' WHERE var_name='$SPAM_LOG_BOOK';";
+	$db->query($sql);
+	$sql = "UPDATE ".table_config." SET var_defaultvalue='logs/spamlog.log' WHERE var_name='$SPAM_LOG_BOOK';";
+	$db->query($sql);
+	echo '<li>Changed log file locations</li>';
 		
 	// Re-create user avatars
 	$user_image_path = mnmpath."avatars/user_uploaded" . "/";
