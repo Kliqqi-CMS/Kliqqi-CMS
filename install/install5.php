@@ -25,7 +25,7 @@ if (!$errors) {
 	include_once( '../config.php' );
 	include_once( '../libs/admin_config.php' );
 	
-	echo "Adding the Admin user account...<br />";
+//	echo "Adding the Admin user account...<br />";
 	$userip=$db->escape($_SERVER['REMOTE_ADDR']);
 	$saltedpass=generateHash($_POST['adminpassword']);
 	$sql = "INSERT INTO `" . table_users . "` (`user_id`, `user_login`, `user_level`, `user_modification`, `user_date`, `user_pass`, `user_email`, `user_names`, `user_karma`, `user_url`, `user_lastlogin`, `user_ip`, `user_lastip`, `last_reset_request`, `user_enabled`) VALUES (1, '".$db->escape($_POST['adminlogin'])."', 'admin', now(), now(), '$saltedpass', '".$db->escape($_POST['adminemail'])."', '', '10.00', 'http://pligg.com', now(), '0', '0', now(), '1');";
@@ -76,10 +76,15 @@ if (!$errors) {
 			
 		}
 	}
-
+	
 	
 	// Output success message
-	$output='<p><strong>' . $lang['InstallSuccess'] . '</strong></p>
+	$output = '<div class="hero-unit" style="padding:14px 25px;">
+		<h2>' . $lang['InstallSuccess'] . '</h2>
+		<p style="font-size:1.2em;">' . $lang['InstallSuccessMessage'] . '</p>
+	</div>';
+	
+	$output .='<p><strong></strong></p>
 	<br /><legend>' . $lang['WhatToDo'] . '</legend>
 	<div class="donext"><ol>
 		' . $lang['WhatToDoList'] . '

@@ -66,8 +66,8 @@
 	$lang['Error2-4'] = 'Cannot connect to the database <b>server</b> using the information provided.';
 
 // step 4
-	$lang['CreatingTables'] = '<p><strong>Creating database tables...</strong></p>';
-	$lang['TablesGood'] = '<p><strong>Tables were created successfully!</strong></p><hr />';
+	$lang['CreatingTables'] = 'Creating database tables';
+	$lang['TablesGood'] = '<strong>Tables were created successfully!</strong>';
 	$lang['Error3-1'] = '<p>There was a problem creating the tables.</p>';
 	$lang['Error3-2'] = '<p>Could not connect to database.</p>';
 	$lang['EnterAdmin'] = '<p><strong>Enter your admin account details below:</strong><br />Please write down this account information because it will be needed to log in and configure your site.</p>';
@@ -82,7 +82,8 @@
 	$lang['Error5-1'] = 'Please fill all fields for admin account.';
 	$lang['Error5-2'] = 'Password fields do not match. Please go back and re-enter the password fields.';
 	$lang['AddingAdmin'] = 'Adding the Admin user account...';
-	$lang['InstallSuccess'] = '<a href="../">Your Pligg Site</a> appears to have installed successfully!';
+	$lang['InstallSuccess'] = 'Installation Complete!';
+	$lang['InstallSuccessMessage'] = 'Congratulations, you have set up a Pligg CMS website! While your site is fully functional at this point, you will want to do a little cleaning up by following the directions below to secure your site.';
 	$lang['WhatToDo'] = 'What to do next:';
 	$lang['WhatToDoList'] = '		<li><p>chmod "/libs/dbconnect.php" back to 644, we will not need to change this file again.</p></li>
 		<li><p><strong>DELETE</strong> the "/install" directory from your server if you have successfully installed Pligg.</p></li>
