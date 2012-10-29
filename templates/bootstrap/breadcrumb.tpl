@@ -53,24 +53,126 @@
 					<a href="#" data-toggle="dropdown" class="dropdown-toggle">Sort <span class="caret"></span></a>
 					<ul class="dropdown-menu" id="menu1">
 						{if $pagename eq "published" || $pagename eq "index" || $pagename eq "upcoming"}
-							{if $setmeka eq "" || $setmeka eq "recent"}<li id="active"><a id="current" href="{$index_url_recent}"><span class="active">{#PLIGG_Visual_Recently_Pop#}</span></a>{else}<li><a href="{$index_url_recent}">{#PLIGG_Visual_Recently_Pop#}</a>{/if}</li>
-							{if $setmeka eq "today"}<li id="active" href="{$index_url_today}"><a href="{$index_url_today}" id="current"><span class="active">{#PLIGG_Visual_Top_Today#}</span></a>{else}<li><a href="{$index_url_today}">{#PLIGG_Visual_Top_Today#}</a>{/if}</li>
-							{if $setmeka eq "yesterday"}<li id="active"><a id="current" href="{$index_url_yesterday}"><span class="active">{#PLIGG_Visual_Yesterday#}</span></a>{else}<li><a href="{$index_url_yesterday}">{#PLIGG_Visual_Yesterday#}</a>{/if}</li>
+							{if $setmeka eq "" || $setmeka eq "recent"}
+								<li id="active">
+									<a id="current" href="{$index_url_recent}"><span class="active">{#PLIGG_Visual_Recently_Pop#}</span></a>
+								{else}
+									<li><a href="{$index_url_recent}">{#PLIGG_Visual_Recently_Pop#}</a>
+								{/if}
+							</li>
+							
+							
+							
+							{*if $user_logged_in*}
+								{if $setmeka eq "upvoted"}
+									<li id="active" href="{$index_url_upvoted}">
+									<a href="{$index_url_upvoted}" id="current"><span class="active">Most {#PLIGG_Visual_User_UpVoted#}</span></a>
+								{else}
+									<li><a href="{$index_url_upvoted}">Most {#PLIGG_Visual_User_UpVoted#}</a>
+								{/if}
+								</li>
+								{if $setmeka eq "dwnvoted"}
+									<li id="active" href="{$index_url_dwnvoted}">
+									<a href="{$index_url_dwnvoted}" id="current"><span class="active">Most {#PLIGG_Visual_User_DownVoted#}</span></a>
+								{else}
+									<li><a href="{$index_url_dwnvoted}">Most {#PLIGG_Visual_User_DownVoted#}</a>
+								{/if}
+								</li>
+								{if $setmeka eq "commented"}
+									<li id="active" href="{$index_url_commented}">
+									<a href="{$index_url_commented}" id="current"><span class="active">Most {#PLIGG_Visual_User_NewsCommented#}</span></a>
+								{else}
+									<li><a href="{$index_url_commented}">Most {#PLIGG_Visual_User_NewsCommented#}</a>
+								{/if}
+								</li>
+							{*/if*}
+							
+							
+							
+							
+							
+							{if $setmeka eq "today"}
+								<li id="active" href="{$index_url_today}">
+									<a href="{$index_url_today}" id="current"><span class="active">{#PLIGG_Visual_Top_Today#}</span></a>
+							{else}
+								<li><a href="{$index_url_today}">{#PLIGG_Visual_Top_Today#}</a>
+							{/if}
+								</li>
+								
+							{if $setmeka eq "yesterday"}
+								<li id="active">
+									<a id="current" href="{$index_url_yesterday}"><span class="active">{#PLIGG_Visual_Yesterday#}</span></a>
+							{else}
+								<li><a href="{$index_url_yesterday}">{#PLIGG_Visual_Yesterday#}</a>
+							{/if}
+								</li>
+								
 							{if $setmeka eq "week"}<li id="active"><a id="current" href="{$index_url_week}"><span class="active">{#PLIGG_Visual_This_Week#}</span></a>{else}<li><a href="{$index_url_week}">{#PLIGG_Visual_This_Week#}</a>{/if}</li>
+							
+							
 							{if $setmeka eq "month"}<li id="active"><a id="current" href="{$index_url_month}"><span class="active">{#PLIGG_Visual_This_Month#}</span></a>{else}<li><a href="{$index_url_month}">{#PLIGG_Visual_This_Month#}</a>{/if}</li>
+							
+							
 							{if $setmeka eq "year"}<li id="active"><a id="current" href="{$index_url_year}"><span class="active">{#PLIGG_Visual_This_Year#}</span></a>{else}<li><a href="{$index_url_year}">{#PLIGG_Visual_This_Year#}</a>{/if}</li>
+							
+							
 							{if $setmeka eq "alltime"}<li id="active"><a id="current" href="{$index_url_alltime}"><span class="active">{#PLIGG_Visual_This_All#}</span></a>{else}<li><a href="{$index_url_alltime}">{#PLIGG_Visual_This_All#}</a>{/if}</li>
+							
+							
 						{elseif $pagename eq "groups"}
-							{if $sortby eq "name"}<li id="active"><a id="current" href="{$group_url_members}"><span class="active">{#PLIGG_Visual_Group_Sort_Members#}</span></a>{else}<li><a href="{$group_url_members}">{#PLIGG_Visual_Group_Sort_Members#}</a>{/if}</li>
+						
+							{if $sortby eq "upvoted"}
+								<li id="active" href="{$index_url_upvoted}">
+								<a href="{$index_url_upvoted}" id="current"><span class="active">Most {#PLIGG_Visual_User_UpVoted#}</span></a>
+							{else}
+								<li><a href="{$index_url_upvoted}">Most {#PLIGG_Visual_User_UpVoted#}</a>
+							{/if}
+							</li>
+							{if $sortby eq "dwnvoted"}
+								<li id="active" href="{$index_url_dwnvoted}">
+								<a href="{$index_url_dwnvoted}" id="current"><span class="active">Most {#PLIGG_Visual_User_DownVoted#}</span></a>
+							{else}
+								<li><a href="{$index_url_dwnvoted}">Most {#PLIGG_Visual_User_DownVoted#}</a>
+							{/if}
+							</li>
+							{if $sortby eq "commented"}
+								<li id="active" href="{$index_url_commented}">
+								<a href="{$index_url_commented}" id="current"><span class="active">Most {#PLIGG_Visual_User_NewsCommented#}</span></a>
+							{else}
+								<li><a href="{$index_url_commented}">Most {#PLIGG_Visual_User_NewsCommented#}</a>
+							{/if}
+							</li>
+							
+						
+						
+						
+						
+						
+							{if $sortby eq "name"}
+								<li id="active"><a id="current" href="{$group_url_members}"><span class="active">{#PLIGG_Visual_Group_Sort_Members#}</span></a>{else}<li><a href="{$group_url_members}">{#PLIGG_Visual_Group_Sort_Members#}</a>{/if}</li>
+								
+								
 							{if $sortby eq "name"}<li id="active"><a id="current" href="{$group_url_name}"><span class="active">{#PLIGG_Visual_Group_Sort_Name#}</span></a>{else}<li><a href="{$group_url_name}">{#PLIGG_Visual_Group_Sort_Name#}</a>{/if}</li>
+							
+							
 							{if $sortby eq "newest"}<li id="active"><a id="current" href="{$group_url_newest}"><span class="active">{#PLIGG_Visual_Group_Sort_Newest#}</span></a>{else}<li><a href="{$group_url_newest}">{#PLIGG_Visual_Group_Sort_Newest#}</a>{/if}</li>
+							
+							
 							{if $sortby eq "oldest"}<li id="active"><a id="current" href="{$group_url_oldest}"><span class="active">{#PLIGG_Visual_Group_Sort_Oldest#}</span></a>{else}<li><a href="{$groupview_published}">{#PLIGG_Visual_Group_Published#}</a>{/if}</li>
+							
+							
+							
 						{elseif $pagename eq "live" || $pagename eq "live_published" || $pagename eq "live_unpublished" || $pagename eq "live_comments"}
 							<li {if $pagename eq "live"}id="active"{/if}><a href="{$URL_live}"><span {if $pagename eq "live"}class="active"{/if}>{#PLIGG_Visual_Breadcrumb_All#}</span></a></li>
+							
 							<li {if $pagename eq "live_published"}id="active"{/if}><a href="{$URL_published}"><span {if $pagename eq "live_published"}class="active"{/if}>{#PLIGG_Visual_Breadcrumb_Published_Tab#}</span></a></li>
+							
 							<li {if $pagename eq "live_unpublished"}id="active"{/if}><a href="{$URL_unpublished}"><span {if $pagename eq "live_unpublished"}class="active"{/if}>{#PLIGG_Visual_Breadcrumb_Unpublished_Tab#}</span></a></li>
+							
 							<li {if $pagename eq "live_comments"}id="active"{/if}><a href="{$URL_comments}"><span {if $pagename eq "live_comments"}class="active"{/if}>{#PLIGG_Visual_Breadcrumb_Comments#}</span></a></li>
+							
 						{elseif $pagename eq "cloud"}
+						
 						{if $pagename eq "cloud"}
 							{section name=i start=0 loop=$count_range_values step=1}
 								{if $templatelite.section.i.index eq $current_range}

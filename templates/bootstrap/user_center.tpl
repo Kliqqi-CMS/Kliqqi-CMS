@@ -184,8 +184,8 @@
 	<li {if $user_view eq 'shaken'}class="active"{/if}><a href="{$user_url_news_unpublished}" class="navbut{$nav_nu}">{#PLIGG_Visual_User_NewsUnPublished#}</a></li>
 	<li {if $user_view eq 'commented'}class="active"{/if}><a href="{$user_url_commented}" class="navbut{$nav_c}">{#PLIGG_Visual_User_NewsCommented#}</a></li>
 	
-	<li {if $user_view eq 'upvoted'}class="active"{/if}><a href="{$user_url_news_upvoted}" class="navbut{$nav_nv}">{#PLIGG_Visual_UpVoted#}</a></li>
-	<li {if $user_view eq 'dwnvoted'}class="active"{/if}><a href="{$user_url_news_dwnvoted}" class="navbut{$nav_nv}">{#PLIGG_Visual_DownVoted#}</a></li>
+	<li {if $user_view eq 'upvoted'}class="active"{/if}><a href="{$user_url_news_upvoted}" class="navbut{$nav_nv}">{#PLIGG_Visual_User_UpVoted#}</a></li>
+	<li {if $user_view eq 'dwnvoted'}class="active"{/if}><a href="{$user_url_news_dwnvoted}" class="navbut{$nav_nv}">{#PLIGG_Visual_User_DownVoted#}</a></li>
 	
 	<li {if $user_view eq 'saved'}class="active"{/if}><a href="{$user_url_saved}" class="navbut{$nav_s}">{#PLIGG_Visual_User_NewsSaved#}</a></li>
 	{checkActionsTpl location="tpl_pligg_profile_sort_end"}
