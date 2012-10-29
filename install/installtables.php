@@ -32,7 +32,7 @@ function pligg_createtables($conn) {
 	  KEY `category_parent` (`category_parent`),
 	  KEY `category_safe_name` (`category_safe_name`)
 	) ENGINE = MyISAM;";
-	echo 'Creating table: \'categories\'...<br />';
+//	echo 'Creating table: \'categories\'...<br />';
 	mysql_query( $sql, $conn );
 
 
@@ -57,7 +57,7 @@ function pligg_createtables($conn) {
 	  KEY `comment_date` (`comment_date`),
 	  KEY `comment_parent` (`comment_parent`,`comment_date`)
 	) ENGINE = MyISAM;";
-	echo 'Creating table: \'comments\'...<br />';
+//	echo 'Creating table: \'comments\'...<br />';
 	mysql_query( $sql, $conn );
 
 	$sql = 'DROP TABLE IF EXISTS `' . table_friends . '`;';
@@ -70,7 +70,7 @@ function pligg_createtables($conn) {
 	  PRIMARY KEY  (`friend_id`),
 	  UNIQUE KEY `friends_from_to` (`friend_from`,`friend_to`)
 	) ENGINE = MyISAM;";
-	echo 'Creating table: \'friends\'...<br />';
+//	echo 'Creating table: \'friends\'...<br />';
 	mysql_query( $sql, $conn );
 
 
@@ -127,7 +127,7 @@ function pligg_createtables($conn) {
 	  FULLTEXT KEY `link_tags` (`link_tags`),
 	  FULLTEXT KEY `link_search` (`link_title`,`link_content`,`link_tags`)
 	) ENGINE = MyISAM;";
-	echo 'Creating table: \'links\'...<br />';
+//	echo 'Creating table: \'links\'...<br />';
 	mysql_query( $sql, $conn );
 
 	$sql = 'DROP TABLE IF EXISTS `' . table_trackbacks . '`;';
@@ -150,7 +150,7 @@ function pligg_createtables($conn) {
 	  KEY `trackback_url` (`trackback_url`),
 	  KEY `trackback_date` (`trackback_date`)
 	) ENGINE = MyISAM;";
-	echo 'Creating table: \'trackbacks\'...<br />';
+//	echo 'Creating table: \'trackbacks\'...<br />';
 	mysql_query( $sql, $conn );
 
 
@@ -190,7 +190,7 @@ function pligg_createtables($conn) {
 	  UNIQUE KEY `user_login` (`user_login`),
 	  KEY `user_email` (`user_email`)
 	) ENGINE = MyISAM;";
-	echo 'Creating table: \'users\'...<br />';
+//	echo 'Creating table: \'users\'...<br />';
 	mysql_query( $sql, $conn );
 
 	$sql = 'DROP TABLE IF EXISTS `' . table_tags . '`;';
@@ -205,7 +205,7 @@ function pligg_createtables($conn) {
 	  KEY `tag_lang` (`tag_lang`,`tag_date`),
 	  KEY `tag_words` (`tag_words`,`tag_link_id`)
 	) ENGINE = MyISAM;";
-	echo 'Creating table: \'tags\'...<br />';
+//	echo 'Creating table: \'tags\'...<br />';
 	mysql_query( $sql, $conn );
 
 
@@ -226,7 +226,7 @@ function pligg_createtables($conn) {
 	  KEY `link_id` (`vote_link_id`),
 	  KEY `vote_type` (`vote_type`,`vote_link_id`,`vote_user_id`,`vote_ip`)
 	) ENGINE = MyISAM;";
-	echo 'Creating table: \'votes\'...<br />';
+//	echo 'Creating table: \'votes\'...<br />';
 	mysql_query( $sql, $conn );
 
 	$sql = 'DROP TABLE IF EXISTS `' . table_pageviews . '`;';
@@ -248,7 +248,7 @@ function pligg_createtables($conn) {
 	  `var_enclosein` varchar(5) default NULL,
 	  PRIMARY KEY  (`var_id`)
 	) ENGINE = MyISAM;";
-	echo 'Creating table: \'config\'....<BR/>';
+//	echo 'Creating table: \'config\'....<BR/>';
 	mysql_query( $sql, $conn );
 
 
@@ -266,7 +266,7 @@ function pligg_createtables($conn) {
 	  `date` timestamp NOT NULL,
 	  PRIMARY KEY  (`idMsg`)
 	) ENGINE = MyISAM;";
-	echo 'Creating table: \'messages\'....<BR/>';
+//	echo 'Creating table: \'messages\'....<BR/>';
 	mysql_query( $sql, $conn );
 
 
@@ -282,7 +282,7 @@ function pligg_createtables($conn) {
 	  `enabled` tinyint(1) NOT NULL,
 	  PRIMARY KEY  (`id`)
 	) ENGINE = MyISAM;";
-	echo 'Creating table: \'modules\'....<BR/>';
+//	echo 'Creating table: \'modules\'....<BR/>';
 	mysql_query( $sql, $conn );
 
 
@@ -297,7 +297,7 @@ function pligg_createtables($conn) {
 	  `formula` text NOT NULL,
 	  PRIMARY KEY  (`id`)
 	) ENGINE = MyISAM;";
-	echo 'Creating table: \'formulas\'....<BR/>';
+//	echo 'Creating table: \'formulas\'....<BR/>';
 	mysql_query( $sql, $conn );
 
 
@@ -312,7 +312,7 @@ function pligg_createtables($conn) {
 	  PRIMARY KEY  (`saved_id`),
 	  KEY `saved_user_id` (  `saved_user_id` )
 	) ENGINE = MyISAM;";
-	echo 'Creating table: \'Saved Links\'....<br />';
+//	echo 'Creating table: \'Saved Links\'....<br />';
 	mysql_query( $sql, $conn );
 
 	$sql = 'DROP TABLE IF EXISTS `' . table_old_urls . '`;';
@@ -325,7 +325,7 @@ function pligg_createtables($conn) {
 	  PRIMARY KEY  (`old_id`),
 	  KEY `old_title_url` (  `old_title_url` )
 	) ENGINE = MyISAM;";
-	echo 'Creating table: \'Old Links\'....<br />';
+//	echo 'Creating table: \'Old Links\'....<br />';
 	mysql_query( $sql, $conn );
 
 	$sql = 'DROP TABLE IF EXISTS `' . table_misc_data . '`;';
@@ -336,7 +336,7 @@ function pligg_createtables($conn) {
 		`data` TEXT NOT NULL ,
 		PRIMARY KEY ( `name` )
 		) ENGINE = MyISAM;";
-	echo 'Creating table: \'Misc Data\'....<br />';
+//	echo 'Creating table: \'Misc Data\'....<br />';
 	mysql_query( $sql, $conn );
 
 	////////////////////////////////////////////////////////////////////////////
@@ -367,7 +367,7 @@ function pligg_createtables($conn) {
 		KEY `group_name` (`group_name`(100)),
 		KEY `group_creator` (`group_creator`, `group_status`)
 		);";
-	echo 'Creating table: \'groups\'....<br />';
+//	echo 'Creating table: \'groups\'....<br />';
 	mysql_query( $sql, $conn );
 
 	//group member table
@@ -384,7 +384,7 @@ function pligg_createtables($conn) {
 		);";
 
 	mysql_query( $sql, $conn );
-	echo 'Creating table: \'group members\'....<br />';
+//	echo 'Creating table: \'group members\'....<br />';
 	//group shared table
 	$sql = 'DROP TABLE IF EXISTS `' . table_group_shared . '`;';
 	mysql_query( $sql, $conn );
@@ -395,11 +395,11 @@ function pligg_createtables($conn) {
 		`share_user_id` INT( 20 ) NOT NULL,
 		UNIQUE KEY `share_group_id` (`share_group_id`,`share_link_id`));";
 
-	echo 'Creating table: \'group shared\'....<br />';
+//	echo 'Creating table: \'group shared\'....<br />';
 	mysql_query( $sql, $conn );
 
 
-	echo 'Creating table: \'login_attempts\'....<br />';
+//	echo 'Creating table: \'login_attempts\'....<br />';
 	$sql = 'DROP TABLE IF EXISTS `' . table_login_attempts . '`;';
 	mysql_query( $sql, $conn );
 
@@ -415,7 +415,7 @@ function pligg_createtables($conn) {
 	mysql_query( $sql, $conn );
 			
 
-	echo 'Creating table: \'widgets\'....<br />';
+//	echo 'Creating table: \'widgets\'....<br />';
 	$sql = 'DROP TABLE IF EXISTS `' . table_widgets . '`;';
 	mysql_query( $sql, $conn );
 
@@ -468,7 +468,7 @@ function pligg_createtables($conn) {
 		PRIMARY KEY  (`name`)
 		) ENGINE = MyISAM;";
 
-	echo 'Creating table: \'Totals\'....<br />';
+//	echo 'Creating table: \'Totals\'....<br />';
 	mysql_query( $sql, $conn );
 
 	$sql = 'DROP TABLE IF EXISTS `' . table_tag_cache . '`;';
@@ -479,7 +479,7 @@ function pligg_createtables($conn) {
 		  `count` int(11) NOT NULL
 		) ENGINE =MyISAM";
 
-	echo 'Creating table: \'Tag cache\'....<br />';
+//	echo 'Creating table: \'Tag cache\'....<br />';
 	mysql_query( $sql, $conn );
 
 	$sql = "CREATE TABLE `" . table_redirects . "` (
@@ -498,7 +498,7 @@ function pligg_createtables($conn) {
 	) ENGINE=MyISAM;";
 	mysql_query( $sql, $conn );
 
-	echo '<li>Inserting default "All" and "News" categories</li>';
+//	echo '<li>Inserting default "All" and "News" categories</li>';
 	$sql = "INSERT INTO `" . table_categories . "` (`category__auto_id`, `category_lang`, `category_id`, `category_parent`, `category_name`, `category_safe_name`, `rgt`, `lft`, `category_enabled`, `category_order`, `category_desc`, `category_keywords`, `category_author_level`, `category_author_group`, `category_votes`) VALUES (0, '" . $dblang . "', 0, 0, 'all', 'all', 3, 0, 2, 0, '', '', 'normal', '', '');";
 	mysql_query( $sql, $conn );
 	$sql = "UPDATE `" . table_categories . "` SET `category__auto_id` = '0' WHERE `category_name` = 'all' LIMIT 1;";
@@ -507,19 +507,19 @@ function pligg_createtables($conn) {
 	mysql_query( $sql, $conn );
 
 	echo '<li>Adding default modules</li>';
-	$sql = "INSERT INTO `" . table_modules . "` (`id`, `name`, `version`, `latest_version`, `folder`, `enabled`) VALUES (2, 'Admin Modify Language', 0.2, '', 'admin_language', 1);";
+	$sql = "INSERT INTO `" . table_modules . "` (`id`, `name`, `version`, `latest_version`, `folder`, `enabled`) VALUES (NULL, 'Admin Modify Language', 0.2, '', 'admin_language', 1);";
 	mysql_query( $sql, $conn );
-	$sql = "INSERT INTO `" . table_modules . "` (`id`, `name`, `version`, `latest_version`, `folder`, `enabled`) VALUES (3, 'Captcha', 1.0, '', 'captcha', 1);";
+	$sql = "INSERT INTO `" . table_modules . "` (`id`, `name`, `version`, `latest_version`, `folder`, `enabled`) VALUES (NULL, 'Captcha', 1.0, '', 'captcha', 1);";
 	mysql_query( $sql, $conn );
-	$sql = "INSERT INTO `" . table_modules . "` (`id`, `name`, `version`, `latest_version`, `folder`, `enabled`) VALUES (5, 'Hello World', 0.3, '', 'hello_world', 1);";
+	$sql = "INSERT INTO `" . table_modules . "` (`id`, `name`, `version`, `latest_version`, `folder`, `enabled`) VALUES (NULL, 'Hello World', 0.3, '', 'hello_world', 1);";
 	mysql_query( $sql, $conn );
-	$sql = "INSERT INTO `" . table_modules . "` (`id`, `name`, `version`, `latest_version`, `folder`, `enabled`) VALUES (6, 'Simple Private Messaging', 0.7, '', 'simple_messaging', 1);";
+	$sql = "INSERT INTO `" . table_modules . "` (`id`, `name`, `version`, `latest_version`, `folder`, `enabled`) VALUES (NULL, 'Simple Private Messaging', 0.7, '', 'simple_messaging', 1);";
 	mysql_query( $sql, $conn );
-	$sql = "INSERT INTO `" . table_modules . "` (`id`, `name`, `version`, `latest_version`, `folder`, `enabled`) VALUES (7, 'Sidebar Top Today', 0.3, '', 'sidebar_stories_u', 1);";
+	$sql = "INSERT INTO `" . table_modules . "` (`id`, `name`, `version`, `latest_version`, `folder`, `enabled`) VALUES (NULL, 'Sidebar Top Today', 0.3, '', 'sidebar_stories_u', 1);";
 	mysql_query( $sql, $conn );
-	$sql = "INSERT INTO `" . table_modules . "` (`id`, `name`, `version`, `latest_version`, `folder`, `enabled`) VALUES (8, 'Sidebar Stories', 0.3, '', 'sidebar_stories', 1);";
+	$sql = "INSERT INTO `" . table_modules . "` (`id`, `name`, `version`, `latest_version`, `folder`, `enabled`) VALUES (NULL, 'Sidebar Stories', 0.3, '', 'sidebar_stories', 1);";
 	mysql_query( $sql, $conn );
-	$sql = "INSERT INTO `" . table_modules . "` (`id`, `name`, `version`, `latest_version`, `folder`, `enabled`) VALUES (9, 'Sidebar Comments', 0.3, '', 'sidebar_comments', 1);";
+	$sql = "INSERT INTO `" . table_modules . "` (`id`, `name`, `version`, `latest_version`, `folder`, `enabled`) VALUES (NULL, 'Sidebar Comments', 0.3, '', 'sidebar_comments', 1);";
 	mysql_query( $sql, $conn );
 	$sql = "INSERT INTO `" . table_modules . "` (`id`, `name`, `version`, `latest_version`, `folder`, `enabled`) VALUES (NULL, 'Karma module', 0.1, '', 'karma', 1);";
 	mysql_query( $sql, $conn );
@@ -617,11 +617,11 @@ function pligg_createtables($conn) {
 	$sql = "INSERT INTO `".table_widgets."` VALUES (6, 'New products', 0.1, 0, 'new_products', 1, 'left', 2, '')";
 	mysql_query( $sql, $conn );
 
-	echo '<li>Inserting default formulas</li>';
+//	echo '<li>Inserting default formulas</li>';
 	$sql = 'INSERT INTO `' . table_formulas . '` (`id`, `type`, `enabled`, `title`, `formula`) VALUES (1, \'report\', 1, \'Simple Story Reporting\', \'$reports > $votes * 3\');';
 	mysql_query( $sql, $conn );
 
-	echo "Adding default 'totals' data</li>";
+//	echo "Adding default 'totals' data</li>";
 	$sql = "insert into `" . table_totals . "` (`name`, `total`) values ('published', 0);";
 	mysql_query( $sql, $conn );
 	$sql = "insert into `" . table_totals . "` (`name`, `total`) values ('queued', 0);";	
@@ -633,7 +633,7 @@ function pligg_createtables($conn) {
 	$sql = "INSERT INTO `" . table_links . "`  (`link_id`, `link_author`, `link_status`, `link_randkey`, `link_votes`, `link_reports`, `link_comments`, `link_karma`, `link_modified`, `link_date`, `link_published_date`, `link_category`, `link_lang`, `link_url`, `link_url_title`, `link_title`, `link_title_url`, `link_content`, `link_summary`, `link_tags`, `link_field1`, `link_field2`, `link_field3`, `link_field4`, `link_field5`, `link_field6`, `link_field7`, `link_field8`, `link_field9`, `link_field10`, `link_field11`, `link_field12`, `link_field13`, `link_field14`, `link_field15`, `link_group_id`, `link_out`) VALUES (1, 1, 'page', 0, 0, 0, 0, '0.00', '2005-12-17 00:00:00', '2005-12-17 00:00:00', '0000-00-00 00:00:00', 0, 1, '', NULL, 'About', 'about', '<legend><strong>About Us</strong></legend>\r\n<p>Our site allows you to submit an article that will be voted on by other members. The most popular posts will be published to the front page, while the less popular articles are left in an 'Upcoming' page permanently. This site is dependant on user contributed content and votes to determine the direction of the site.</p>\r\n', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', 0, 0);";
 	mysql_query( $sql, $conn );
 
-	print "<li>Converting tables to UTF-8</li>";
+//	print "<li>Converting tables to UTF-8</li>";
 	$stmts = "ALTER TABLE  `pligg_categories` DEFAULT CHARACTER SET utf8 COLLATE utf8_unicode_ci;
 		ALTER TABLE  `pligg_comments` DEFAULT CHARACTER SET utf8 COLLATE utf8_unicode_ci;
 		ALTER TABLE  `pligg_config` DEFAULT CHARACTER SET utf8 COLLATE utf8_unicode_ci;
