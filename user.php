@@ -515,20 +515,25 @@ function do_updwnvoted ($status = null) {
 	
 	if($status == 'up'){
 		$vote_stats = " > 0";
+		$order = "DESC";
 	}else{
 		$vote_stats = " < 0";
+		$order = "ASC";
 	}
+	
 	$rows = $db->get_var("SELECT count(*) FROM " . table_links . ", " . table_votes . " WHERE vote_user_id=$user->id AND vote_link_id=link_id AND vote_value ".$vote_stats." AND (link_status='published' OR link_status='queued')");
 	
 
-	$links = $db->get_results($sql="SELECT DISTINCT * FROM " . table_links . ", " . table_votes . " WHERE vote_user_id=$user->id AND vote_link_id=link_id AND vote_value ".$vote_stats."  AND (link_status='published' OR link_status='queued') ORDER BY link_date DESC LIMIT $offset, $page_size");
-	
+	$links = $db->get_results($sql="SELECT DISTINCT * FROM " . table_links . ", " . table_votes . " WHERE vote_user_id=$user->id AND vote_link_id=link_id AND vote_value ".$vote_stats."  AND (link_status='published' OR link_status='queued') ORDER BY link_votes ".$order." LIMIT $offset, $page_size");
 	
 	if ($links) {
+	
 		foreach($links as $dblink) {
+		
 			$link->id=$dblink->link_id;
 			$cached_links[$dblink->link_id] = $dblink;
 			$link->read();
+			
 			$link->rating = $dblink->vote_value/2;
 			$output .= $link->print_summary('summary', true);
 		}
