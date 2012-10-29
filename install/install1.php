@@ -3,12 +3,19 @@
 $url = "http://pligg.com/pliggversion.php";
 $external_version = @file_get_contents($url);
 
-// Local latest version check
-$data = file_get_contents('../languages/lang_english.conf.default');
-$regex = '/<VERSION>(.+?)<\/VERSION>/';
-preg_match($regex,$data,$match);
-//var_dump($match);
-$local_version = $match[1];
+$language_default = '../languages/lang_english.conf.default';
+
+if (file_exists($language_default)) {
+    // Local latest version check
+	$data = file_get_contents($language_default);
+	$regex = '/<VERSION>(.+?)<\/VERSION>/';
+	preg_match($regex,$data,$match);
+	//var_dump($match);
+	$local_version = $match[1];
+} else {
+    // The default language file does not exist. Let's just say it's the same version
+	$local_version = $external_version;
+}
 
 ?>
 
