@@ -194,7 +194,7 @@ class Search {
 				$usrclause = "";
 			}
 			
-			 $this->sql = "SELECT DISTINCT * FROM " . table_links . ", " . table_votes . " WHERE ".$usrclause." vote_link_id=link_id AND vote_value > 0  AND (link_status='published' OR link_status='queued') ORDER BY link_date DESC LIMIT $this->offset, $limit";
+			 $this->sql = "SELECT DISTINCT * FROM " . table_links . ", " . table_votes . " WHERE ".$usrclause." vote_link_id=link_id AND vote_value > 0  AND (link_status='published' OR link_status='queued') ORDER BY link_votes DESC LIMIT $this->offset, $limit"; //link_date
 			
 		} else if($this->searchTerm == 'dwnvoted'){
 		
@@ -204,13 +204,13 @@ class Search {
 				$usrclause = "";
 			}
 			
-			 $this->sql = "SELECT DISTINCT * FROM " . table_links . ", " . table_votes . " WHERE ".$usrclause." vote_link_id=link_id AND vote_value < 0  AND (link_status='published' OR link_status='queued') ORDER BY link_date DESC LIMIT $this->offset, $limit";
+			 $this->sql = "SELECT DISTINCT * FROM " . table_links . ", " . table_votes . " WHERE ".$usrclause." vote_link_id=link_id AND vote_value < 0  AND (link_status='published' OR link_status='queued') ORDER BY link_votes ASC LIMIT $this->offset, $limit"; //link_date
 		 
 		} else if($this->searchTerm == "commented"){
 		
 			if($current_user->user_id){
-					$usrclause = "AND comment_user_id=$current_user->user_id ";
-				} else {
+				$usrclause = "AND comment_user_id=$current_user->user_id ";
+			} else {
 				$usrclause = "";
 			}
 			
