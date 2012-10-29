@@ -47,3 +47,6 @@ Disallow: /week/
 Disallow: /month/
 Disallow: /year/
 Disallow: /alltime/
+Disallow: /upvoted/
+Disallow: /dwnvoted/
+Disallow: /commented/

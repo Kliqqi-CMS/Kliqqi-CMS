@@ -319,10 +319,10 @@ $CSRF->create('user_settings', true, true);
 		foreach($results as $key => $val){
 		    if ($val['user_login'] != 'anonymous' || $val['user_lastip'] > 0)
 		    {
-			$results[$key]['Avatar'] = get_avatar('small', "", $val['user_login'], $val['user_email']);
-			$results[$key]['add_friend'] = getmyurl('user_add_remove', $val['user_login'], 'addfriend');
-			$results[$key]['remove_friend'] = getmyurl('user_add_remove', $val['user_login'], 'removefriend');
-			$results[$key]['status'] = $friend->get_friend_status($val['user_id']);
+				$results[$key]['Avatar'] = get_avatar('small', "", $val['user_login'], $val['user_email']);
+				$results[$key]['add_friend'] = getmyurl('user_add_remove', $val['user_login'], 'addfriend');
+				$results[$key]['remove_friend'] = getmyurl('user_add_remove', $val['user_login'], 'removefriend');
+				$results[$key]['status'] = $friend->get_friend_status($val['user_id']);
 		    }
 		    else
 			unset ($results[$key]);
@@ -345,10 +345,10 @@ $CSRF->create('user_settings', true, true);
 	check_actions('user_post_views', $vars);
    //for auto scrolling
    if(Auto_scroll==2 || Auto_scroll==3){
-      			$main_smarty->assign("scrollpageSize",$page_size);
-				$main_smarty->assign('curuserid',$current_user->user_id);
-				$main_smarty->assign('userid',$user->id);
-				$main_smarty->assign('viewtype', $view);
+		$main_smarty->assign("scrollpageSize",$page_size);
+		$main_smarty->assign('curuserid',$current_user->user_id);
+		$main_smarty->assign('userid',$user->id);
+		$main_smarty->assign('viewtype', $view);
 	}
 	
 // determine which user page to display
@@ -508,19 +508,21 @@ function do_voted () {
 	$main_smarty->assign('user_page', $output);
 }
 function do_updwnvoted ($status = null) {
-	global $db, $main_smarty, $rows, $user, $offset, $page_size,$cached_links;
+	global $db, $main_smarty, $rows, $user, $offset, $page_size, $cached_links;
 
 	$output = '';
 	$link = new Link;
 	
 	if($status == 'up'){
-		$vote_value = " > 0";
+		$vote_stats = " > 0";
 	}else{
-		$vote_value = " < 0";
+		$vote_stats = " < 0";
 	}
-	$rows = $db->get_var("SELECT count(*) FROM " . table_links . ", " . table_votes . " WHERE vote_user_id=$user->id AND vote_link_id=link_id AND vote_value ".$vote_value." AND (link_status='published' OR link_status='queued')");
+	$rows = $db->get_var("SELECT count(*) FROM " . table_links . ", " . table_votes . " WHERE vote_user_id=$user->id AND vote_link_id=link_id AND vote_value ".$vote_stats." AND (link_status='published' OR link_status='queued')");
 	
-	$links = $db->get_results($sql="SELECT DISTINCT * FROM " . table_links . ", " . table_votes . " WHERE vote_user_id=$user->id AND vote_link_id=link_id AND vote_value ".$vote_value."  AND (link_status='published' OR link_status='queued') ORDER BY link_date DESC LIMIT $offset, $page_size");
+
+	$links = $db->get_results($sql="SELECT DISTINCT * FROM " . table_links . ", " . table_votes . " WHERE vote_user_id=$user->id AND vote_link_id=link_id AND vote_value ".$vote_stats."  AND (link_status='published' OR link_status='queued') ORDER BY link_date DESC LIMIT $offset, $page_size");
+	
 	
 	if ($links) {
 		foreach($links as $dblink) {

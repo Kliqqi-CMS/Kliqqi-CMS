@@ -1,5 +1,4 @@
 <?php
-
 function str_ends_with($haystack, $needle) {
 	return ( substr ($haystack, -strlen ($needle) ) === $needle) || $needle === '';
 }
@@ -37,15 +36,17 @@ check_actions('index_top', $vars);
 
 // find the name of the current category
 if(isset($_REQUEST['category'])){
+	
 	$thecat = get_cached_category_data('category_safe_name', sanitize($_REQUEST['category'], 1));
+	
 	$main_smarty->assign('request_category_name', $thecat->category_name);
 	$catID = $thecat->category_id;
 	$thecat = $thecat->category_name;
 	if (!$thecat)
 	{
 		header("Location: $my_pligg_base/404error.php");
-//		$main_smarty->assign('tpl_center', '404error');
-//		$main_smarty->display($the_template . '/pligg.tpl');		
+		//$main_smarty->assign('tpl_center', '404error');
+		//$main_smarty->display($the_template . '/pligg.tpl');		
 		die();
 	}
 }
@@ -125,7 +126,13 @@ $main_smarty->assign('last_user', $last_user);
 // misc smarty
 
 if(isset($from_text)){$main_smarty->assign('from_text', $from_text);}
-if(isset($search->setmek)){$main_smarty->assign('setmeka', $search->setmek);}else{$main_smarty->assign('setmeka', '');}
+
+if(isset($search->setmek)){
+	$main_smarty->assign('setmeka', $search->setmek);
+}
+else{
+	$main_smarty->assign('setmeka', '');
+}
 
 $main_smarty->assign('URL_rss_page', getmyurl('rsspage', $category_data->category_safe_name, ''));
 
@@ -134,7 +141,7 @@ include('./libs/link_summary.php'); // this is the code that show the links / st
 
 //For Infinit scrolling and continue reading option 
 if(Auto_scroll==2 || Auto_scroll==3){
-   $main_smarty->assign("scrollpageSize",$page_size);
+   $main_smarty->assign("scrollpageSize", $page_size);
  
 }else
    $main_smarty->assign('link_pagination', do_pages($rows, $page_size, "published", true));
