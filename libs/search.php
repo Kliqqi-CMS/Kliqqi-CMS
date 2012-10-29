@@ -57,6 +57,8 @@ class Search {
 
 		// Sort filters for published and upcoming pages
 		if ($this->filterToStatus == 'published') {
+		
+			
 			if ($this->filterToTimeFrame == 'today') 
 				$from_where .= " AND link_published_date > DATE_SUB(NOW(),INTERVAL 1 DAY) "; 
 			elseif ($this->filterToTimeFrame == 'yesterday') 
@@ -67,7 +69,21 @@ class Search {
 				$from_where .= " AND link_published_date > DATE_SUB(NOW(),INTERVAL 1 MONTH) "; 
 			elseif ($this->filterToTimeFrame == 'year') 
 				$from_where .= " AND link_published_date > DATE_SUB(NOW(),INTERVAL 1 YEAR) "; 
+			else if($this->filterToTimeFrame == 'upvoted'){
+				
+				$this->searchTerm = "upvoted";
+			}
+			else if($this->filterToTimeFrame == 'dwnvoted'){
+
+				$this->searchTerm = "dwnvoted";
+			}
+			else if($this->filterToTimeFrame == 'commented'){
+				
+				$this->searchTerm = "commented";
+			}	
+				
 		} else {
+			
 			if ($this->filterToTimeFrame == 'today') 
 				$from_where .= " AND link_date > DATE_SUB(NOW(),INTERVAL 1 DAY) "; 
 			elseif ($this->filterToTimeFrame == 'yesterday') 
@@ -78,6 +94,18 @@ class Search {
 				$from_where .= " AND link_date > DATE_SUB(NOW(),INTERVAL 1 MONTH) "; 
 			elseif ($this->filterToTimeFrame == 'year') 
 				$from_where .= " AND link_date > DATE_SUB(NOW(),INTERVAL 1 YEAR) "; 
+			else if($this->filterToTimeFrame == 'upvoted'){
+				
+				$this->searchTerm = "upvoted";
+			}
+			else if($this->filterToTimeFrame == 'dwnvoted'){
+
+				$this->searchTerm = "dwnvoted";
+			}
+			else if($this->filterToTimeFrame == 'commented'){
+				
+				$this->searchTerm = "commented";
+			}
 		}
 		
 		/////sorojit: for user selected category display
@@ -157,7 +185,39 @@ class Search {
 		if($this->searchTerm == "" && $this->url == ""){
 			// like when on the index or upcoming pages.
 			$this->sql = "SELECT link_id $from_where $search_clause GROUP BY link_id $this->orderBy LIMIT $this->offset, $limit";
-		}else{
+		}
+		else if($this->searchTerm == 'upvoted'){
+		
+			if($current_user->user_id){
+				$usrclause = "vote_user_id=$current_user->user_id AND ";
+			} else {
+				$usrclause = "";
+			}
+			
+			 $this->sql = "SELECT DISTINCT * FROM " . table_links . ", " . table_votes . " WHERE ".$usrclause." vote_link_id=link_id AND vote_value > 0  AND (link_status='published' OR link_status='queued') ORDER BY link_date DESC LIMIT $this->offset, $limit";
+			
+		} else if($this->searchTerm == 'dwnvoted'){
+		
+			if($current_user->user_id){
+				$usrclause = "vote_user_id=$current_user->user_id AND ";
+			} else {
+				$usrclause = "";
+			}
+			
+			 $this->sql = "SELECT DISTINCT * FROM " . table_links . ", " . table_votes . " WHERE ".$usrclause." vote_link_id=link_id AND vote_value < 0  AND (link_status='published' OR link_status='queued') ORDER BY link_date DESC LIMIT $this->offset, $limit";
+		 
+		} else if($this->searchTerm == "commented"){
+		
+			if($current_user->user_id){
+					$usrclause = "AND comment_user_id=$current_user->user_id ";
+				} else {
+				$usrclause = "";
+			}
+			
+			 $this->sql = "SELECT DISTINCT * FROM " . table_links . ", " . table_comments . " WHERE comment_status='published' ".$usrclause." AND comment_link_id=link_id AND (link_status='published' OR link_status='queued')  ORDER BY link_date DESC LIMIT $this->offset, $limit";
+			 
+		}
+		else{
 			$this->sql = "SELECT link_id, link_date, link_published_date $from_where $search_clause";
 		}
 		
@@ -553,7 +613,7 @@ class Search {
 				$this->orderBy = $order_clauses['newest'];
 		}
 		
-		$timeFrames = array ('today', 'yesterday', 'week', 'month', 'year', 'alltime');
+		$timeFrames = array ('today', 'yesterday', 'week', 'month', 'year', 'alltime','upvoted', 'dwnvoted', 'commented');
 		if ( in_array ($setmek, $timeFrames) ) {
 			if ($setmek == 'alltime')
 				$this->filterToTimeFrame = '';
@@ -564,5 +624,4 @@ class Search {
 		}
 	}
 }
-
 ?>

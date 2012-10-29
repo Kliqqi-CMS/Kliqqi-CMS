@@ -197,7 +197,12 @@ else {
 	$main_smarty->assign('index_url_month', getmyurl('index_sort', 'month'));
 	$main_smarty->assign('index_url_year', getmyurl('index_sort', 'year'));
 	$main_smarty->assign('index_url_alltime', getmyurl('index_sort', 'alltime'));
-	}
+	
+	$main_smarty->assign('index_url_upvoted', getmyurl('index_sort', 'upvoted'));
+	$main_smarty->assign('index_url_dwnvoted', getmyurl('index_sort', 'dwnvoted'));
+	$main_smarty->assign('index_url_commented', getmyurl('index_sort', 'commented'));
+
+}
 //group sort smarty
 $main_smarty->assign('group_url_newest', getmyurl('group_sort', 'newest'));
 $main_smarty->assign('group_url_oldest', getmyurl('group_sort', 'oldest'));
@@ -216,8 +221,8 @@ if ($current_user->user_id > 0 && $current_user->authenticated)
 	
 	$main_smarty->assign('user_url_news_upvoted', getmyurl('user2', $login, 'upvoted'));
 	$main_smarty->assign('user_url_news_dwnvoted', getmyurl('user2', $login, 'dwnvoted'));
-	
 	$main_smarty->assign('user_url_commented', getmyurl('user2', $login, 'commented'));
+	
 	$main_smarty->assign('user_url_saved', getmyurl('user2', $login, 'saved'));
 	$main_smarty->assign('user_url_setting', getmyurl('profile'));
 	$main_smarty->assign('user_url_friends', getmyurl('user_friends', $login, 'following'));
