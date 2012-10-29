@@ -55,8 +55,10 @@ if (file_get_contents(__FILE__)){ $tally = $tally+1; }
 if (function_exists('gd_info')){ $tally = $tally+1; }
 if (file_exists('../settings.php')) { $tally = $tally+1; }
 if (file_exists('../libs/dbconnect.php')) { $tally = $tally+1; }
-if (file_exists('../bannedips.log')) { $tally = $tally+1; }
-if (file_exists('../local-antispam.log')) { $tally = $tally+1; }
+if (file_exists('../logs/bannedips.log')) { $tally = $tally+1; }
+if (is_writable('../logs/bannedips.log')) { $tally = $tally+1; }
+if (file_exists('../logs/local-antispam.log')) { $tally = $tally+1; }
+if (is_writable('../logs/local-antispam.log')) { $tally = $tally+1; }
 if (is_writable('../admin/backup/')) { $tally = $tally+1; }
 if (is_writable('../avatars/groups_uploaded/')) { $tally = $tally+1; }
 if (is_writable('../avatars/user_uploaded/')) { $tally = $tally+1; }
@@ -65,8 +67,6 @@ if (is_writable('../languages/')) { $tally = $tally+1; }
 foreach (glob("../languages/*.conf") as $filename) { $required = $required+1; if (is_writable($filename)) {$tally = $tally+1;} }
 if (is_writable('../languages/installer_lang.php')) { $tally = $tally+1; }
 if (is_writable('../languages/installer_lang_default.php')) { $tally = $tally+1; }
-if (is_writable('../bannedips.log')) { $tally = $tally+1; }
-if (is_writable('../local-antispam.log')) { $tally = $tally+1; }
 if (is_writable('../libs/dbconnect.php')) { $tally = $tally+1; }
 if (is_writable('../settings.php')) { $tally = $tally+1; }
 //echo $tally.' / '.$required;
@@ -124,8 +124,8 @@ if (file_exists($dbconnect)) {
 		echo '<tr><td><i class="icon icon-remove"></i></td><td>'.$dbconnectdefault.$rename.$dbconnect.'.</td></tr>';
 	}
 }
-$bannedips = '../bannedips.log';
-$bannedipsdefault = '../bannedips.log.default';
+$bannedips = '../logs/bannedips.log';
+$bannedipsdefault = '../logs/bannedips.log.default';
 if (file_exists($bannedips)) {
 	echo '<tr><td><i class="icon icon-ok"></i></td><td>'.$bannedips.'</td></tr>';
 } else {
@@ -133,8 +133,8 @@ if (file_exists($bannedips)) {
 		echo '<tr><td><i class="icon icon-remove"></i></td><td>'.$bannedipsdefault.$rename.$bannedips.'.</td></tr>';
 	}
 }
-$localantispam = '../local-antispam.log';
-$localantispamdefault = '../local-antispam.log.default';
+$localantispam = '../logs/local-antispam.log';
+$localantispamdefault = '../logs/local-antispam.log.default';
 if (file_exists($localantispam)) {
 	echo '<tr><td><i class="icon icon-ok"></i></td><td>'.$localantispam.'</td></tr>';
 } else {
@@ -188,13 +188,13 @@ $file='../languages/installer_lang_default.php';
 if (!is_writable($file)) { echo '<tr><td><i class="icon icon-remove"></i></td><td>'.$file.' is not writable! Please chmod this file to 777.</span></td></tr>'; }
 if (is_writable($file)) { echo '<tr><td><i class="icon icon-ok"></i></td><td>'.$file.'</span></td></tr>'; }
 
-$file='../bannedips.log';
+$file='../logs/bannedips.log';
 if (file_exists($file)) {
 	if (!is_writable($file)) { echo '<tr><td><i class="icon icon-remove"></i></td><td>'.$file.' is not writable! Please chmod this file to 666.</span></td></tr>'; }
 	if (is_writable($file)) { echo '<tr><td><i class="icon icon-ok"></i></td><td>'.$file.'</span></td></tr>'; }
 }
 
-$file='../local-antispam.log';
+$file='../logs/local-antispam.log';
 if (file_exists($file)) {
 	if (!is_writable($file)) { echo '<tr><td><i class="icon icon-remove"></i></td><td>'.$file.' is not writable! Please chmod this file to 666.</span></td></tr>'; }
 	if (is_writable($file)) { echo '<tr><td><i class="icon icon-ok"></i></td><td>'.$file.'</span></td></tr>'; }

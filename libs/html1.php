@@ -1151,7 +1151,7 @@ function ban_ip($ip,$ip2)
 {
 	global $static_ips;
 
-	$filename = mnmpath.'/bannedips.log';
+	$filename = mnmpath.'/logs/bannedips.log';
 	if (is_writable($filename)) {
 	    if (!$handle = fopen($filename, 'a')) 
 		return "Cannot open file ($filename)";
@@ -1177,7 +1177,7 @@ function ban_ip($ip,$ip2)
 function is_ip_banned($ip)
 {
 	global $static_ips;
-	$filename = mnmpath.'/bannedips.log';
+	$filename = mnmpath.'/logs/bannedips.log';
 	if (!is_array($static_ips))
 	    $static_ips = file($filename);
 	return in_array("$ip\n",$static_ips);
@@ -1186,7 +1186,7 @@ function is_ip_banned($ip)
 function is_ip_approved($ip)
 {
 	global $approved_ips;
-	$filename = mnmpath.'/approvedips.log';
+	$filename = mnmpath.'/logs/approvedips.log';
 	if (!is_array($approved_ips))
 	    $approved_ips = file($filename,FILE_IGNORE_NEW_LINES | FILE_SKIP_EMPTY_LINES);
 	return in_array($ip,$approved_ips);

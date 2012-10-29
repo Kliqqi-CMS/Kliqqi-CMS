@@ -45,8 +45,8 @@
 		var $use_disk_cache   = false;
 		var $cache_timeout    = 24; // hours
 		var $log_to_file      = false;	// create a file in your root pligg folder 
-		var $logfile 	      = 'query.log';
-		var $logpath          = 'query.log';																	// named query.log and chmod 755
+		var $logfile 	      = 'logs/query.log';
+		var $logpath          = 'logs/query.log';																	// named query.log and chmod 755
 
 		// == TJH == default now needed for echo of debug function
 		var $debug_echo_is_on = true;
