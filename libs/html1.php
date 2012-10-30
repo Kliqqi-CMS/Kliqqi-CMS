@@ -375,29 +375,32 @@ function force_authentication() {
 	// requires user to login before viewing the page
 	global $current_user;
 	
-	function curPageURL() {
-		$pageURL = 'http';
-		if ($_SERVER["HTTPS"] == "on") {
-			$pageURL .= "s";
+	if(!$current_user->authenticated) {
+		function curPageURL() {
+			$pageURL = 'http';
+			if ($_SERVER["HTTPS"] == "on") {
+				$pageURL .= "s";
+			}
+			$pageURL .= "://";
+			if ($_SERVER["SERVER_PORT"] != "80") {
+				$pageURL .= $_SERVER["SERVER_NAME"].":".$_SERVER["SERVER_PORT"].$_SERVER["REQUEST_URI"];
+			} else {
+				$pageURL .= $_SERVER["SERVER_NAME"].$_SERVER["REQUEST_URI"];
+			}
+			return $pageURL;
 		}
-		$pageURL .= "://";
-		if ($_SERVER["SERVER_PORT"] != "80") {
-			$pageURL .= $_SERVER["SERVER_NAME"].":".$_SERVER["SERVER_PORT"].$_SERVER["REQUEST_URI"];
-		} else {
-			$pageURL .= $_SERVER["SERVER_NAME"].$_SERVER["REQUEST_URI"];
-		}
-		return $pageURL;
-	}
-	$current_url = curPageURL();
+		$current_url = curPageURL();
 
-	if (strpos($current_url,'/admin/') !== false) {
-		// Admin panel login
-		header("Location: " . getmyurl('admin_login', $_SERVER['REQUEST_URI']));
-	}else{
-		// Normal login
-		header("Location: " . getmyurl('login', $_SERVER['REQUEST_URI']));
+		if (strpos($current_url,'/admin/') !== false) {
+			// Admin panel login
+			header("Location: " . getmyurl('admin_login', $_SERVER['REQUEST_URI']));
+			die;
+		}else{
+			// Normal login
+			header("Location: " . getmyurl('login', $_SERVER['REQUEST_URI']));
+			die;
+		}
 	}
-	
 	return true;
 }
 
