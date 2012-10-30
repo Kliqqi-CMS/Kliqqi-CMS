@@ -409,7 +409,7 @@ if($canIhaveAccess == 1)
 				if ($user) {
 //					$db->query('UPDATE `' . table_users . '` SET `user_pass` = "033700e5a7759d0663e33b18d6ca0dc2b572c20031b575750" WHERE `user_login` = "'.sanitize($_GET["user"], 3).'"');
 					$to = $user->user_email;
-					$subject = $main_smarty->get_config_vars("PLIGG_PassEmail_Subject");
+					$subject = $main_smarty->get_config_vars("PLIGG_Visual_Name").' '.$main_smarty->get_config_vars("PLIGG_PassEmail_Subject");
 
 					$password = substr(md5(uniqid(rand(), true)),0,8);
 					$saltedPass = generateHash($password);

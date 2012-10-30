@@ -57,24 +57,20 @@ if($user){
 					
 								
 						$to = $user->user_email;
-	
-						$subject = $main_smarty->get_config_vars("PLIGG_PassEmail_Subject");
-						$body = sprintf($main_smarty->get_config_vars("PLIGG_PassEmail_PassBody"),
-	
+						$subject = $main_smarty->get_config_vars("PLIGG_Visual_Name").' '.$main_smarty->get_config_vars("PLIGG_PassEmail_Subject");
+
+						$body = sprintf(
+							$main_smarty->get_config_vars("PLIGG_PassEmail_PassBody"),
 							$main_smarty->get_config_vars("PLIGG_Visual_Name"),
-	
 							$my_base_url . $my_pligg_base . '/login.php',
-	
 							$user->user_login,
-	
-							$password);
-							
+							$password
+							);
+						
 						$headers = 'From: ' . $main_smarty->get_config_vars("PLIGG_PassEmail_From") . "\r\n";
-	
 						$headers .= "Content-type: text/html; charset=utf-8\r\n";
-	
+						
 						if (mail($to, $subject, $body, $headers))
-	
 						{
 						  $saltedPass = generateHash($password);
 						  $db->query('UPDATE `' . table_users . "` SET `user_pass` = '$saltedPass' WHERE `user_login` = '".$user->user_login."'");

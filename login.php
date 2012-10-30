@@ -114,14 +114,13 @@ if( (isset($_POST["processlogin"]) && is_numeric($_POST["processlogin"])) || (is
 				$saltedlogin = generateHash($user->user_login);
 	
 				$to = $user->user_email;
-				$subject = $main_smarty->get_config_vars("PLIGG_PassEmail_Subject");
-	
+				$subject = $main_smarty->get_config_vars("PLIGG_Visual_Name").' '.$main_smarty->get_config_vars("PLIGG_PassEmail_Subject");
 			
-				 $times= time();		
+				$times= time();		
 						
-				 $body = sprintf($main_smarty->get_config_vars("PLIGG_PassEmail_Body"),$main_smarty->get_config_vars("PLIGG_Visual_Name")); 
+				$body = sprintf($main_smarty->get_config_vars("PLIGG_PassEmail_Body"),$main_smarty->get_config_vars("PLIGG_Visual_Name")); 
 				
-				 $body .='<a href="'.$my_base_url . $my_pligg_base . '/recover.php?id=' . base64_encode($username). '&n=' .$times.'">'.$my_base_url . $my_pligg_base . '/recover.php?id=' . base64_encode($username). '&n=' . time().'</a>';
+				$body .='<a href="'.$my_base_url . $my_pligg_base . '/recover.php?id=' . base64_encode($username). '&n=' .$times.'">'.$my_base_url . $my_pligg_base . '/recover.php?id=' . base64_encode($username). '&n=' . time().'</a>';
 	
 				$headers = 'From: ' . $main_smarty->get_config_vars("PLIGG_PassEmail_From") . "\r\n";
 				$headers .= "Content-type: text/html; charset=utf-8\r\n";

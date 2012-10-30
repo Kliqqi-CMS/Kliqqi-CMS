@@ -35,7 +35,7 @@ if ($current_user->authenticated)
 	$user= $db->get_row('SELECT * FROM ' . table_users . " where user_id={$current_user->user_id}");
 	if ($user->user_email) {
 		$to = $user->user_email;
-		$subject = $main_smarty->get_config_vars("PLIGG_PassEmail_Subject");
+		$subject = $main_smarty->get_config_vars("PLIGG_Visual_Name").' '.$main_smarty->get_config_vars("PLIGG_PassEmail_Subject");
 
 		$password = substr(md5(uniqid(rand(), true)),0,8);
 		$saltedPass = generateHash($password);
