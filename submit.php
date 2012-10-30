@@ -11,16 +11,18 @@ include(mnminclude.'tags.php');
 include(mnminclude.'user.php');
 include(mnminclude.'smartyvariables.php');
 
-if (!$_COOKIE['referrer'])
+if (!$_COOKIE['referrer']){
     check_referrer();
+}
 
 // html tags allowed during submit
-if (checklevel('admin'))
+if (checklevel('admin')) {
     $Story_Content_Tags_To_Allow = Story_Content_Tags_To_Allow_God;
-elseif (checklevel('moderator'))
+} elseif (checklevel('moderator')){
     $Story_Content_Tags_To_Allow = Story_Content_Tags_To_Allow_Admin;
-else
+} else {
     $Story_Content_Tags_To_Allow = Story_Content_Tags_To_Allow_Normal;
+}
 $main_smarty->assign('Story_Content_Tags_To_Allow', htmlspecialchars($Story_Content_Tags_To_Allow));
 
 // breadcrumbs and page titles
@@ -36,8 +38,9 @@ if($current_user->authenticated != TRUE)
 {
 	$vars = '';
 	check_actions('anonymous_story_user_id', $vars);
-	if ($vars['anonymous_story'] != true)
+	if ($vars['anonymous_story'] != true){
 		force_authentication();
+	}
 }
 /*
 if ($vars['anonymous_story'] == true)
@@ -47,6 +50,7 @@ if ($vars['anonymous_story'] == true)
 	//echo "val".$anonymous_user_id;
 }
 */
+
 // module system hook
 $vars = '';
 check_actions('submit_post_authentication', $vars);
