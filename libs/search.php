@@ -190,32 +190,38 @@ class Search {
 		
 			if($current_user->user_id){
 				$usrclause = "vote_user_id=$current_user->user_id AND ";
+				$group = "";
 			} else {
 				$usrclause = "";
+				$group = "GROUP BY link_id";
 			}
 			
-			 $this->sql = "SELECT DISTINCT * FROM " . table_links . ", " . table_votes . " WHERE ".$usrclause." vote_link_id=link_id AND vote_value > 0  AND (link_status='published' OR link_status='queued') ORDER BY link_votes DESC LIMIT $this->offset, $limit"; //link_date
+			 $this->sql = "SELECT DISTINCT * FROM " . table_links . ", " . table_votes . " WHERE ".$usrclause." vote_link_id=link_id AND vote_value > 0  AND (link_status='published' OR link_status='queued') ".$group." ORDER BY link_votes DESC LIMIT $this->offset, $limit"; //link_date
 			
 		} else if($this->searchTerm == 'downvoted'){
 		
 			if($current_user->user_id){
 				$usrclause = "vote_user_id=$current_user->user_id AND ";
+				$group = "";
 			} else {
 				$usrclause = "";
+				$group = "GROUP BY link_id";
 			}
 			
-			 $this->sql = "SELECT DISTINCT * FROM " . table_links . ", " . table_votes . " WHERE ".$usrclause." vote_link_id=link_id AND vote_value < 0  AND (link_status='published' OR link_status='queued') ORDER BY link_votes ASC LIMIT $this->offset, $limit"; //link_date
+			$this->sql = "SELECT DISTINCT * FROM " . table_links . ", " . table_votes . " WHERE ".$usrclause." vote_link_id=link_id AND vote_value < 0  AND (link_status='published' OR link_status='queued') ".$group." ORDER BY link_votes ASC LIMIT $this->offset, $limit"; //link_date
+			
 		 
 		} else if($this->searchTerm == "commented"){
 		
 			if($current_user->user_id){
 				$usrclause = "AND comment_user_id=$current_user->user_id ";
+				$group = "";
 			} else {
 				$usrclause = "";
+				$group = "GROUP BY link_id";
 			}
 			
-			 $this->sql = "SELECT DISTINCT * FROM " . table_links . ", " . table_comments . " WHERE comment_status='published' ".$usrclause." AND comment_link_id=link_id AND (link_status='published' OR link_status='queued')  ORDER BY link_date DESC LIMIT $this->offset, $limit";
-			 
+			 $this->sql = "SELECT DISTINCT * FROM " . table_links . ", " . table_comments . " WHERE comment_status='published' ".$usrclause." AND comment_link_id=link_id AND (link_status='published' OR link_status='queued') ".$group." ORDER BY link_date DESC LIMIT $this->offset, $limit";
 		}
 		else{
 			$this->sql = "SELECT link_id, link_date, link_published_date $from_where $search_clause";
