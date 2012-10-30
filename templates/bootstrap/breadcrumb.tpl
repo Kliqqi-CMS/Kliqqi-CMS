@@ -60,7 +60,7 @@
 								<li><a href="{$index_url_recent}">{#PLIGG_Visual_Recently_Pop#}</a></li>
 							{/if}
 							
-							{if $user_logged_in}
+							{*if $user_logged_in*}
 								{if $setmeka eq "upvoted"}
 									<li id="active" href="{$index_url_upvoted}"><a href="{$index_url_upvoted}" id="current"><span class="active">Most {#PLIGG_Visual_UpVoted#}</span></a></li>
 								{else}
@@ -78,7 +78,7 @@
 								{else}
 									<li><a href="{$index_url_commented}">Most {#PLIGG_Visual_User_NewsCommented#}</a></li>
 								{/if}
-							{/if}
+							{*/if*}
 							
 							{if $setmeka eq "today"}
 								<li id="active" href="{$index_url_today}"><a href="{$index_url_today}" id="current"><span class="active">{#PLIGG_Visual_Top_Today#}</span></a></li>
@@ -118,7 +118,7 @@
 							
 						{elseif $pagename eq "groups"}
 						
-							{if $user_logged_in}
+							{*if $user_logged_in*}
 								{if $sortby eq "upvoted"}
 									<li id="active" href="{$index_url_upvoted}">
 									<a href="{$index_url_upvoted}" id="current"><span class="active">Most {#PLIGG_Visual_UpVoted#}</span></a>
@@ -140,7 +140,7 @@
 									<li><a href="{$index_url_commented}">Most {#PLIGG_Visual_User_NewsCommented#}</a>
 								{/if}
 								</li>
-							{/if}
+							{*/if*}
 						
 						
 						
@@ -171,15 +171,15 @@
 							
 						{elseif $pagename eq "cloud"}
 						
-						{if $pagename eq "cloud"}
-							{section name=i start=0 loop=$count_range_values step=1}
-								{if $templatelite.section.i.index eq $current_range}
-									<li id="active"><a href="#"><span class="active">{$range_names[i]}</span></a></li>
-								{else}	
-									<li><a href="{$URL_tagcloud_range, $templatelite.section.i.index}"><span>{$range_names[i]}</span></a></li>
-								{/if}
-							{/section}
-						{/if}
+							{if $pagename eq "cloud"}
+								{section name=i start=0 loop=$count_range_values step=1}
+									{if $templatelite.section.i.index eq $current_range}
+										<li id="active"><a href="#"><span class="active">{$range_names[i]}</span></a></li>
+									{else}	
+										<li><a href="{$URL_tagcloud_range, $templatelite.section.i.index}"><span>{$range_names[i]}</span></a></li>
+									{/if}
+								{/section}
+							{/if}
 						{/if}
 					</ul>
 				</li>
