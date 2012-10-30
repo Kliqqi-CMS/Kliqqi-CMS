@@ -185,8 +185,7 @@ class Search {
 		if($this->searchTerm == "" && $this->url == ""){
 			// like when on the index or upcoming pages.
 			$this->sql = "SELECT link_id $from_where $search_clause GROUP BY link_id $this->orderBy LIMIT $this->offset, $limit";
-		}
-		else if($this->searchTerm == 'upvoted'){
+		} else if($this->searchTerm == 'upvoted'){
 		
 			if($current_user->user_id){
 				$usrclause = "vote_user_id=$current_user->user_id AND ";
@@ -221,7 +220,7 @@ class Search {
 				$group = "GROUP BY link_id";
 			}
 			
-			 $this->sql = "SELECT DISTINCT * FROM " . table_links . ", " . table_comments . " WHERE comment_status='published' ".$usrclause." AND comment_link_id=link_id AND (link_status='published' OR link_status='queued') ".$group." ORDER BY link_date DESC LIMIT $this->offset, $limit";
+			$this->sql = "SELECT DISTINCT * FROM " . table_links . ", " . table_comments . " WHERE comment_status='published' ".$usrclause." AND comment_link_id=link_id AND (link_status='published' OR link_status='queued') ".$group." ORDER BY link_comments DESC LIMIT $this->offset, $limit";
 		}
 		else{
 			$this->sql = "SELECT link_id, link_date, link_published_date $from_where $search_clause";
