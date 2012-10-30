@@ -301,11 +301,10 @@ margin-left: 42px;
 }
 .login_box {
    position: absolute;
-   top: 50%;
+   top: 20%;
    left: 50%;
    width: 300px;
    height: 200px;
-   margin-top: -100px; /* Half the height */
    margin-left: -150px; /* Half the width */
 }
 .login_username {
