@@ -102,6 +102,7 @@ if (!file_exists($file)) {
 }
 
 if (isset($errors)) {
+	// Name of the default Pligg template
 	$thetemp = "bootstrap";
 	$file = dirname(__FILE__) . '/templates/' . $thetemp . "/pligg.tpl";
 	if (!file_exists($file)) {
