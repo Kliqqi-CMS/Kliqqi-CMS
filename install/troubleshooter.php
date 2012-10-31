@@ -125,7 +125,7 @@ if (file_exists($dbconnect)) {
 	}
 }
 $bannedips = '../logs/bannedips.log';
-$bannedipsdefault = '../logs/bannedips.log.default';
+$bannedipsdefault = '../logs.default/bannedips.log';
 if (file_exists($bannedips)) {
 	echo '<tr><td><i class="icon icon-ok"></i></td><td>'.$bannedips.'</td></tr>';
 } else {
@@ -134,7 +134,7 @@ if (file_exists($bannedips)) {
 	}
 }
 $localantispam = '../logs/local-antispam.log';
-$localantispamdefault = '../logs/local-antispam.log.default';
+$localantispamdefault = '../logs.default/local-antispam.log';
 if (file_exists($localantispam)) {
 	echo '<tr><td><i class="icon icon-ok"></i></td><td>'.$localantispam.'</td></tr>';
 } else {
