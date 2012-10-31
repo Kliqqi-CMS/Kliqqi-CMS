@@ -227,6 +227,7 @@ class Link {
 	}
 
 	function read($usecache = TRUE) {
+		
 		global $db, $current_user, $cached_links;
 		$id = $this->id;
 		$this->rating = 0;
@@ -237,7 +238,10 @@ class Link {
 		
 		if (isset($cached_links[$id]) && $usecache == TRUE) {
 			$link = $cached_links[$id];
+			
+			
 		} else {
+			
 			$link = $db->get_row("SELECT " . table_links . ".* FROM " . table_links . " WHERE link_id = $id");
 			$cached_links[$id] = $link;
 		}
@@ -811,9 +815,9 @@ class Link {
 		require_once(mnminclude.'votes.php');
 
 		$vote = new Vote;
-		$vote->type='links';
-		$vote->user=$user;
-		$vote->link=$this->id;
+		$vote->type = 'links';
+		$vote->user = $user;
+		$vote->link = $this->id;
 		return $vote->count($value);
 	}
 
@@ -895,11 +899,10 @@ class Link {
 		$this->vote_from_this_ip=$ac_vote_from_IP;
 		$this->report_from_this_ip=$ac_report_from_IP;
 		}
-		
 	}
 
 	function remove_vote($user=0, $value=10) {
-	
+		//echo "remove"; //die;
 		$vote = new Vote;
 		$vote->type='links';
 		$vote->user=$user;
@@ -907,31 +910,33 @@ class Link {
 		$vote->value=$value;
 		$vote->remove();
 
-			$vote = new Vote;
-			$vote->type='links';
-			$vote->link=$this->id;
-			if(Voting_Method == 1){
-				$this->votes=$vote->count();
-				$this->reports = $this->count_all_votes("<0");
-			}
-			elseif(Voting_Method == 2){
-				$this->votes=$vote->rating();
-				$this->votecount=$vote->count();
-				$this->reports = $this->count_all_votes("<0");
-			}
-			elseif(Voting_Method == 3){
-				$this->votes=$vote->count();
-				$this->votecount=$vote->count();
-				$this->karma = $vote->karma();
-				$this->reports = $this->count_all_votes("<0");
-			}
-			$this->store_basic();
-			
-			$vars = array('link' => $this);
-			check_actions('link_remove_vote_post', $vars);
+		$vote = new Vote;
+		$vote->type='links';
+		$vote->link=$this->id;
+		
+		if(Voting_Method == 1){
+			$this->votes=$vote->count();
+			$this->reports = $this->count_all_votes("<0");
+		}
+		elseif(Voting_Method == 2){
+			$this->votes=$vote->rating();
+			$this->votecount=$vote->count();
+			$this->reports = $this->count_all_votes("<0");
+		}
+		elseif(Voting_Method == 3){
+			$this->votes=$vote->count();
+			$this->votecount=$vote->count();
+			$this->karma = $vote->karma();
+			$this->reports = $this->count_all_votes("<0");
+		}
+		$this->store_basic();
+		
+		$vars = array('link' => $this);
+		check_actions('link_remove_vote_post', $vars);
 	}
 	
 	function insert_vote($user=0, $value=10) {
+		
 		global $anon_karma;
 		require_once(mnminclude.'votes.php');
 		if($value>10){$value=10;}
