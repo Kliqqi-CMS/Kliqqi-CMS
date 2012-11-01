@@ -49,6 +49,10 @@ class Vote {
 		$count=$db->get_var("SELECT count(*) FROM " . table_votes . " WHERE $where");
 		return $count;
 	}
+
+		
+	
+	
 	
 	function user_list_all_votes($cacheit = TRUE) {
 		global $db, $cached_votes, $current_user;
@@ -164,7 +168,7 @@ class Vote {
 			// is NOT an array. if it is an array then we're just doing
 			// some caching work and not expecting any results
 			if(!is_array($this->link)){
-				return array($cached_votes[$this->link][$cache_user]);
+			return array($cached_votes[$this->link][$cache_user]);
 			}
 		}
 	}
@@ -177,9 +181,9 @@ class Vote {
 		return $sql;
 	}
 	
-	function count($value = "> 0") {
+	function count($value="> 0") {
 		global $db;
-		$where = "vote_type='$this->type' AND vote_link_id=$this->link AND vote_value = $value";
+		$where = "vote_type='$this->type' AND vote_link_id=$this->link AND vote_value $value";
 		if($this->user !== -1) {
 			$where .= " AND vote_user_id=$this->user";
 		}
@@ -191,9 +195,7 @@ class Vote {
 			$where .= " AND vote_ip='$this->ip'";
 		}
 		$sql = "SELECT count(*) FROM " . table_votes . " WHERE $where";
-		
 		$count=$db->get_var($sql);
-		
 		return $count;
 	}
 
@@ -296,6 +298,7 @@ class Vote {
 			$sql = "Delete from "	. table_votes . " where vote_id = " . $the_vote;
 			return $db->query($sql);
 		}	
+	
 	}
 }
 ?>

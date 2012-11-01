@@ -203,16 +203,33 @@ class Link {
 
 		$vars = array('link' => $this);
 		check_actions('link_store_basic_pre_sql', $vars);		
+		
 
 		if($this->id===0) {
-			$sql = "INSERT IGNORE INTO " . table_links . " (link_author, link_status, link_randkey, link_category, link_date, link_published_date, link_votes, link_karma, link_title, link_content ,link_group_id) VALUES ($link_author, '$link_status', $link_randkey, $link_category, FROM_UNIXTIME($link_date), FROM_UNIXTIME($link_published_date), $link_votes, $link_karma, '', '',$link_group_id)";
-			if($this->debug == true){echo '<hr>store_basic:Insert:' . $sql . '<hr>';}
+		
+			if(buries_to_spam == 0) {
+			
+				$sql = "INSERT IGNORE INTO " . table_links . " (link_author, link_randkey, link_category, link_date, link_published_date, link_votes, link_karma, link_title, link_content ,link_group_id) VALUES ($link_author, $link_randkey, $link_category, FROM_UNIXTIME($link_date), FROM_UNIXTIME($link_published_date), $link_votes, $link_karma, '', '',$link_group_id)";
+			} else {
+				$sql = "INSERT IGNORE INTO " . table_links . " (link_author, link_status, link_randkey, link_category, link_date, link_published_date, link_votes, link_karma, link_title, link_content ,link_group_id) VALUES ($link_author, '$link_status', $link_randkey, $link_category, FROM_UNIXTIME($link_date), FROM_UNIXTIME($link_published_date), $link_votes, $link_karma, '', '',$link_group_id)";
+			}
+				
+			if($this->debug == true){
+				echo '<hr>store_basic:Insert:' . $sql . '<hr>';
+			}
 			$db->query($sql);
 			$this->id = $db->insert_id;
 		} else {
 		// update
-			$sql = "UPDATE " . table_links . " set `link_reports`=$link_reports, `link_comments`=$link_comments, link_author=$link_author, link_status='$link_status', link_randkey=$link_randkey, link_category='$link_category', link_modified=NULL, link_date=FROM_UNIXTIME($link_date), link_published_date=FROM_UNIXTIME($link_published_date), link_votes=$link_votes, link_karma=$link_karma, link_group_id=$link_group_id WHERE link_id=$this->id";
-			if($this->debug == true){echo '<hr>store_basic:Update:' . $sql . '<hr>';}
+			if(buries_to_spam == 0) {
+				$sql = "UPDATE " . table_links . " set `link_reports`=$link_reports, `link_comments`=$link_comments, link_author=$link_author, link_randkey=$link_randkey, link_category='$link_category', link_modified=NULL, link_date=FROM_UNIXTIME($link_date), link_published_date=FROM_UNIXTIME($link_published_date), link_votes=$link_votes, link_karma=$link_karma, link_group_id=$link_group_id WHERE link_id=$this->id";
+			} else {
+				$sql = "UPDATE " . table_links . " set `link_reports`=$link_reports, `link_comments`=$link_comments, link_author=$link_author, link_status='$link_status', link_randkey=$link_randkey, link_category='$link_category', link_modified=NULL, link_date=FROM_UNIXTIME($link_date), link_published_date=FROM_UNIXTIME($link_published_date), link_votes=$link_votes, link_karma=$link_karma, link_group_id=$link_group_id WHERE link_id=$this->id";
+			}
+			
+			if($this->debug == true){
+				echo '<hr>store_basic:Update:' . $sql . '<hr>';
+			}
 			$db->query($sql);
 
 			$db->query("DELETE FROM ".table_additional_categories." WHERE ac_link_id={$this->id}");
@@ -227,7 +244,6 @@ class Link {
 	}
 
 	function read($usecache = TRUE) {
-		
 		global $db, $current_user, $cached_links;
 		$id = $this->id;
 		$this->rating = 0;
@@ -238,10 +254,7 @@ class Link {
 		
 		if (isset($cached_links[$id]) && $usecache == TRUE) {
 			$link = $cached_links[$id];
-			
-			
 		} else {
-			
 			$link = $db->get_row("SELECT " . table_links . ".* FROM " . table_links . " WHERE link_id = $id");
 			$cached_links[$id] = $link;
 		}
@@ -574,7 +587,7 @@ class Link {
 		$smarty->assign('UseAvatars', do_we_use_avatars());
 		$smarty->assign('Avatar', $avatars = get_avatar('all', "", "", "", $this->userid));
 		$smarty->assign('Avatar_ImgSrc', $avatars['large']);
-	        $smarty->assign('Avatar_ImgSrcs', $avatars['small']);
+		$smarty->assign('Avatar_ImgSrcs', $avatars['small']);
 
 		$canIhaveAccess = 0;
 		$canIhaveAccess = $canIhaveAccess + checklevel('admin');
@@ -642,7 +655,7 @@ class Link {
 		$smarty->assign('group_story_links_publish', getmyurl('group_story_links_publish', $this->id));
 		$smarty->assign('group_story_links_queued', getmyurl('group_story_links_queued', $this->id));
 		$smarty->assign('group_story_links_discard', getmyurl('group_story_links_discard', $this->id));
-                $smarty->assign('link_id',$this->id);   
+		$smarty->assign('link_id',$this->id);   
 		$smarty->assign('user_url_add_links', getmyurl('user_add_links', $this->id));
 		$smarty->assign('user_url_remove_links', getmyurl('user_remove_links', $this->id));
 		$smarty->assign('enable_tags', Enable_Tags);
@@ -651,15 +664,12 @@ class Link {
 	    $smarty->assign('link_shakebox_showbury', $this->reports);
 		
 		
-		
-	        
 		$this->get_current_user_votes($current_user->user_id);
 		if(votes_per_ip > 0){
 			$smarty->assign('vote_from_this_ip', $this->vote_from_this_ip);
 			$smarty->assign('report_from_this_ip', $this->report_from_this_ip);
-			$smarty->assign('votes_per_ip', votes_per_ip);
-			
 		}
+			
 		$smarty->assign('link_shakebox_currentuser_votes', $this->current_user_votes);
 		$smarty->assign('link_shakebox_currentuser_reports', $this->current_user_reports);
          
@@ -815,9 +825,9 @@ class Link {
 		require_once(mnminclude.'votes.php');
 
 		$vote = new Vote;
-		$vote->type = 'links';
-		$vote->user = $user;
-		$vote->link = $this->id;
+		$vote->type='links';
+		$vote->user=$user;
+		$vote->link=$this->id;
 		return $vote->count($value);
 	}
 
@@ -899,10 +909,11 @@ class Link {
 		$this->vote_from_this_ip=$ac_vote_from_IP;
 		$this->report_from_this_ip=$ac_report_from_IP;
 		}
+		
 	}
 
 	function remove_vote($user=0, $value=10) {
-		//echo "remove"; //die;
+	
 		$vote = new Vote;
 		$vote->type='links';
 		$vote->user=$user;
@@ -910,33 +921,31 @@ class Link {
 		$vote->value=$value;
 		$vote->remove();
 
-		$vote = new Vote;
-		$vote->type='links';
-		$vote->link=$this->id;
-		
-		if(Voting_Method == 1){
-			$this->votes=$vote->count();
-			$this->reports = $this->count_all_votes("<0");
-		}
-		elseif(Voting_Method == 2){
-			$this->votes=$vote->rating();
-			$this->votecount=$vote->count();
-			$this->reports = $this->count_all_votes("<0");
-		}
-		elseif(Voting_Method == 3){
-			$this->votes=$vote->count();
-			$this->votecount=$vote->count();
-			$this->karma = $vote->karma();
-			$this->reports = $this->count_all_votes("<0");
-		}
-		$this->store_basic();
-		
-		$vars = array('link' => $this);
-		check_actions('link_remove_vote_post', $vars);
+			$vote = new Vote;
+			$vote->type='links';
+			$vote->link=$this->id;
+			if(Voting_Method == 1){
+				$this->votes=$vote->count();
+				$this->reports = $this->count_all_votes("<0");
+			}
+			elseif(Voting_Method == 2){
+				$this->votes=$vote->rating();
+				$this->votecount=$vote->count();
+				$this->reports = $this->count_all_votes("<0");
+			}
+			elseif(Voting_Method == 3){
+				$this->votes=$vote->count();
+				$this->votecount=$vote->count();
+				$this->karma = $vote->karma();
+				$this->reports = $this->count_all_votes("<0");
+			}
+			$this->store_basic();
+			
+			$vars = array('link' => $this);
+			check_actions('link_remove_vote_post', $vars);
 	}
 	
 	function insert_vote($user=0, $value=10) {
-		
 		global $anon_karma;
 		require_once(mnminclude.'votes.php');
 		if($value>10){$value=10;}
