@@ -9,8 +9,6 @@ include(mnminclude.'link.php');
 include(mnminclude.'html1.php');
 include(mnminclude.'smartyvariables.php');
 
-
-
 class LinkTotal extends Link {
 
 	function remove_vote($user=0, $value=10) {
@@ -95,17 +93,14 @@ if(is_numeric($post_id) && $post_id > 0){
 		//Checking for ip vote
 	   if($current_user->user_id!=0){	  
 		if($link->votes($current_user->user_id, $value) > 0)
-		  //error($main_smarty->get_config_vars('PLIGG_Visual_Vote_AlreadyVoted').$link->votes($current_user->user_id, $value).'/'.$value);
-		  error($main_smarty->get_config_vars('PLIGG_Visual_Vote_AlreadyVoted').$link->votes($current_user->user_id, $value));
+		  error($main_smarty->get_config_vars('PLIGG_Visual_Vote_AlreadyVoted').$link->votes($current_user->user_id, $value).'/'.$value);
 	   }else{
 		
-		
 		if($value==10 && votes_per_ip > 0 && $link->votes_from_ip() >= votes_per_ip+1)
-		 //error($main_smarty->get_config_vars('PLIGG_Visual_Vote_AlreadyVoted').'/'.$value);
-		 error($main_smarty->get_config_vars('PLIGG_Visual_Vote_AlreadyVoted'));
+		 error($main_smarty->get_config_vars('PLIGG_Visual_Vote_AlreadyVoted').'/'.$value);
+		 
 		if($value==-10 && votes_per_ip > 0 && $link->reports_from_ip() >= votes_per_ip+1)
-		 //error($main_smarty->get_config_vars('PLIGG_Visual_Vote_AlreadyVoted').'/'.$value);
-		 error($main_smarty->get_config_vars('PLIGG_Visual_Vote_AlreadyVoted'));
+		 error($main_smarty->get_config_vars('PLIGG_Visual_Vote_AlreadyVoted').'/'.$value);
 	   }
 	   /* if($link->votes($current_user->user_id, 10) > 0 || $link->votes($current_user->user_id, -10) > 0 ||
 	        (votes_per_ip > 0 && $link->votes_from_ip() + $link->reports_from_ip() >= votes_per_ip)) {
@@ -123,7 +118,6 @@ if(is_numeric($post_id) && $post_id > 0){
 	}
 
 	if(Voting_Method == 2){
-	
 		$link_rating = $link->rating($link->id)/2;
 		$rating_width = $link_rating * 25;
 		$vote_count = $link->countvotes();
@@ -134,9 +128,6 @@ if(is_numeric($post_id) && $post_id > 0){
 		$count=$link->votes;
 		echo "$count ~--~".$post_id;
 	}
-
-
 	$link->evaluate_formulas();
-
 }
 ?>
