@@ -20,8 +20,7 @@
 				{if $link_group_id neq 0}<li><a target="story_status" href="javascript://" onclick="show_hide_user_links(document.getElementById('stories_status-{$link_shakebox_index}'));"><i class="icon-filter"></i> {#PLIGG_Visual_Group_Story_Status#}</a></li>{/if}
 				{if $isadmin}
 					<li><a href="{$my_pligg_base}/admin/admin_users.php?mode=killspam&user={$link_submitter}"><i class="icon-ban-circle"></i> {#PLIGG_Visual_View_User_Killspam#}</a></li>
-					
-						<li><a href="{$my_pligg_base}/delete.php?link_id={$link_id}&pnme={$pagename}"><i class="icon-trash"></i>{#PLIGG_Visual_AdminPanel_Discard#}</a></li>
+					<li><a href="{$my_pligg_base}/delete.php?link_id={$link_id}"><i class="icon-trash"></i> {#PLIGG_Visual_AdminPanel_Discard#}</a></li>
 				{/if}
 			</ul>
 			<iframe height="0" width="0" frameborder="0" name="story_status" class="invisible"></iframe>
@@ -68,62 +67,29 @@
 					<div class="votenumber">
 						{$link_shakebox_votes}
 					</div>
-					
-					
-					
 					<div id="xvote-{$link_shakebox_index}" class="votebutton">
 						{if $anonymous_vote eq "false" and $user_logged_in eq ""}
-							
-							<a data-toggle="modal" href="#LoginModal" class="btn btn-mini btn-success linkVote_{$link_id}" href="javascript:{$link_shakebox_javascript_unvote}" title="{$title_short}">
-								<i class="icon-white icon-thumbs-up"></i>
-							</a>
-								
-							<a data-toggle="modal" href="#LoginModal" class="btn btn-mini {if $link_shakebox_currentuser_reports eq 1}btn-danger{/if}">
-								<i class="{if $link_shakebox_currentuser_reports eq 1}icon-white {/if}icon-thumbs-down"></i>
-							</a>
+							<a data-toggle="modal" href="#LoginModal" class="btn btn-mini {if $link_shakebox_currentuser_votes eq 1}btn-success{/if}"><i class="{if $link_shakebox_currentuser_votes eq 1}icon-white {/if}icon-thumbs-up"></i></a>
+							<a data-toggle="modal" href="#LoginModal" class="btn btn-mini {if $link_shakebox_currentuser_reports eq 1}btn-danger{/if}"><i class="{if $link_shakebox_currentuser_reports eq 1}icon-white {/if}icon-thumbs-down"></i></a>
                         
                         {else}
-						
-							{if $votes_per_ip eq 1 and $link_shakebox_currentuser_votes eq 0}
-								<a class="btn btn-mini btn-success linkVote_{$link_id}" href="javascript:{$link_shakebox_javascript_unvote}" title="{$title_short}">
-									<i class="icon-white icon-thumbs-up"></i>
-								</a>
-							{elseif $votes_per_ip gt $vote_from_this_ip}
-								<a class="btn btn-mini linkVote_{$link_id}" href="javascript:{$link_shakebox_javascript_vote}" title="{$title_short}" >
-									<i class="icon-thumbs-up"></i>
-								</a>	
-							{else}
-								<a class="btn btn-mini linkVote_{$link_id}" data-toggle="modal" href="#LoginModal"  title="{$title_short}" >
-									<i class="icon-thumbs-up"></i>
-								</a>
+							{if $link_shakebox_currentuser_votes eq 0}
+								<!-- Vote For It -->
+								<a class="btn btn-mini linkVote_{$link_id}" {if $vote_from_this_ip neq 0 and $user_logged_in eq ""} data-toggle="modal" href="#LoginModal" {else} href="javascript:{$link_shakebox_javascript_vote}" {/if} title="{$title_short}" ><i class="icon-thumbs-up"></i></a>
+							{elseif $link_shakebox_currentuser_votes eq 1}
+								<!-- Already Voted -->
+								<a class="btn btn-mini btn-success linkVote_{$link_id}" href="javascript:{$link_shakebox_javascript_unvote}" title="{$title_short}"><i class="icon-white icon-thumbs-up"></i></a>
 							{/if}
-							
-							
-							
 							{if $link_shakebox_currentuser_reports eq 0}
 								<!-- Bury It -->
-								<a class="btn btn-mini linkVote_{$link_id}" {if $report_from_this_ip neq 0 and $user_logged_in eq ""} data-toggle="modal" href="#LoginModal" {else} href="javascript:{$link_shakebox_javascript_report}" {/if} title="{$title_short}" >
-									<i class="icon-thumbs-down"></i>
-								</a>
+								<a class="btn btn-mini linkVote_{$link_id}" {if $report_from_this_ip neq 0 and $user_logged_in eq ""} data-toggle="modal" href="#LoginModal" {else} href="javascript:{$link_shakebox_javascript_report}" {/if} title="{$title_short}" ><i class="icon-thumbs-down"></i></a>
 							{elseif $link_shakebox_currentuser_reports eq 1}
 								<!-- Already Buried -->
-								<a class="btn btn-mini btn-danger linkVote_{$link_id}"   href="javascript:{$link_shakebox_javascript_unbury}" title="{$title_short}" }>
-									<i class="icon-white icon-thumbs-down"></i>
-								</a>
+								<a class="btn btn-mini btn-danger linkVote_{$link_id}"   href="javascript:{$link_shakebox_javascript_unbury}" title="{$title_short}" }><i class="icon-white icon-thumbs-down"></i></a>
 							{/if}
 						{/if}
 						<!-- Votes: {$link_shakebox_currentuser_votes} Buries: {$link_shakebox_currentuser_reports} -->
-					</div>
-					
-					
-					
-					
-					
-					
-					
-					
-					
-					<!-- /.votebutton -->
+					</div><!-- /.votebutton -->
 				{checkActionsTpl location="tpl_pligg_story_votebox_end"}
 				</div><!-- /.vote -->
 			</div><!-- /.votebox -->
@@ -239,7 +205,7 @@
 					<i class="icon-star"></i> <span id="linksummarySaveLink">
 					<a id="add" linkid="{$link_id}" title="{$title_short}" class="favorite" >{#PLIGG_MiscWords_Save_Links_Save#}</a>
 				{else}
-					<i class="icon-star-empty"></i><span id="linksummaryRemoveLink">
+					<i class="icon-star-empty"></i> <span id="linksummaryRemoveLink">
 					<a id="remove" linkid="{$link_id}" title="{$title_short}" class="favorite" >{#PLIGG_MiscWords_Save_Links_Remove#}</a>
 				{/if}
 				</span>&nbsp;
