@@ -1,5 +1,4 @@
 <?php
-
 	include_once('internal/Smarty.class.php');
 	$main_smarty = new Smarty;
 	
