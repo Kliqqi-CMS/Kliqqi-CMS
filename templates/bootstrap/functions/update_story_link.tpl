@@ -12,6 +12,7 @@ $(function() {
 		var message="";
 		link_title=$(this).attr("title");
 		var parent = $(this);
+		
 		$.ajax({
 			type: "POST",
 			url:my_base_url+my_pligg_base+"/user_add_remove_links.php",
@@ -32,6 +33,8 @@ $(function() {
 						pnotify_history: false,
 						pnotify_notice_icon: 'icon-star'
 					});
+					
+					
 				}else if(return_value==2){
 					parent.attr('id','add');
 					message='Removed \"'+link_title+'\" from <a href="'+UserURLSave+'">Favorites</a>.';
@@ -47,6 +50,16 @@ $(function() {
 					tag.html(html).dialog({modal: true}).dialog('open');
 				}
 				parent.removeClass("loader");
+				
+				$.ajax({
+					type: "POST",
+					cache:false,
+					url: 'update_rightpanel.php',
+					success: function(html)	{
+						$("#saved_stories").html('');
+						$("#saved_stories").html(html);
+					}
+				});
 			} 
 		});
 		return false;
