@@ -54,7 +54,7 @@ $(function() {
 				$.ajax({
 					type: "POST",
 					cache:false,
-					url: 'update_rightpanel.php',
+					url: my_base_url+my_pligg_base+'/update_rightpanel.php',
 					success: function(html)	{
 						$("#saved_stories").html('');
 						$("#saved_stories").html(html);
