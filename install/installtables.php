@@ -760,6 +760,9 @@ function pligg_createtables($conn) {
 		CHANGE  `user_location`  `user_location` VARCHAR( 255 ) CHARACTER SET utf8 COLLATE utf8_unicode_ci DEFAULT NULL ,
 		CHANGE  `user_occupation`  `user_occupation` VARCHAR( 255 ) CHARACTER SET utf8 COLLATE utf8_unicode_ci DEFAULT NULL ,
 		CHANGE  `user_categories`  `user_categories` VARCHAR( 1024 ) CHARACTER SET utf8 COLLATE utf8_unicode_ci DEFAULT  '';";
+	
+	$stmts = explode("\n", $stmts);
+	
 	foreach($stmts as $stmt) {
 	  $stmt = str_replace("`pligg_", "`".table_prefix, $stmt);
   	  mysql_query($stmt);
