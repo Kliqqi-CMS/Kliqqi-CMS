@@ -2,8 +2,8 @@
 	<div class="headline">
 		<div class="sectiontitle">Saved Stories</div>
 	</div>
-	<div class="boxcontent">
-		<ul class="sidebar-stories">
+	<div class="boxcontent" >
+		<ul class="sidebar-stories" id="saved_stories">
 			{checkActionsTpl location="tpl_widget_saved_start"}	
 			{php}
 			include_once('internal/Smarty.class.php');
