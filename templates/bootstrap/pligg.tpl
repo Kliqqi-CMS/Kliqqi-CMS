@@ -145,6 +145,7 @@
         {include file=$the_template"/modal_login_form.tpl"}  
 	 {/if}
 	
+	<!-- tpl_pligg_body_end -->
 	{checkActionsTpl location="tpl_pligg_body_end"}
 	
 	<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.18/jquery-ui.min.js"></script>
@@ -159,7 +160,7 @@
 	<script type="text/javascript" src="{$my_pligg_base}/templates/{$the_template}/js/bootstrap-fileupload.js"></script>
 	<script type="text/javascript" src="{$my_pligg_base}/templates/{$the_template}/js/jquery/jquery.pnotify.js"></script>
 	<script type="text/javascript" src="{$my_pligg_base}/templates/{$the_template}/js/jquery/jquery.masonry.min.js"></script>
-	{include file=$the_template"/functions/update_story_link.tpl"}
+	
     {if $pagename eq "topusers"}
      <script type="text/javascript" src="{$my_pligg_base}/templates/{$the_template}/js/jquery.tablesorter.js"></script>
     {literal}

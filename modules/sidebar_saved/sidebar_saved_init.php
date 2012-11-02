@@ -5,9 +5,8 @@
 	if( do_we_load_module() ) {		
 		if(is_object($main_smarty)){
 			$main_smarty->plugins_dir[] = sidebar_saved_plugins_path;
-
+			module_add_action_tpl('tpl_pligg_body_end', sidebar_saved_tpl_path . 'update_story_link.tpl');
 			module_add_action_tpl('widget_sidebar', sidebar_saved_tpl_path . 'sidebar_saved_index.tpl',array('weight'=>1));
-
 		}
 	}
 ?>
