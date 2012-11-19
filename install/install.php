@@ -1,6 +1,7 @@
 <?php
 session_start();
 error_reporting(E_ALL^E_NOTICE);
+
 $page = 'install';
 
 if (isset($_REQUEST['step'])) { $step=addslashes(strip_tags($_REQUEST['step'])); }
@@ -13,26 +14,42 @@ if ($step == 0) {
 	include('install0.php');
 }
 
-$include='header.php'; if (file_exists($include)) { include_once($include); }
-$include='functions.php'; if (file_exists($include)) { require_once($include); }
+$include='header.php'; 
+if (file_exists($include)) { include_once($include); }
+$include='functions.php'; 
+if (file_exists($include)) { require_once($include); }
 
 echo '<div class="steps"><legend>' . $lang['Step'] . ' '.$step.'</legend></div>';
 echo '<div class="installercontent">';
 
 // intro
-if ($step == 1) { include('install1.php'); }
+
+if ($step == 1) { 
+	include('install1.php');
+	$_SESSION['checked_step'] = 0;
+}
 
 //error checking and enter database settings
-if ($step == 2) { include('install2.php'); }
+if ($step == 2) {
+	$_SESSION['checked_step'] = 0;
+	include('install2.php');
+}
 
 //check database settings, store to file
-if ($step == 3) { include('install3.php'); }
+if ($step == 3) {
+	
+	include('install3.php');
+}
 
 //update config settings file, 
-if ($step == 4) { include('install4.php'); }
+if ($step == 4) {
+	include('install4.php'); 
+}
 
 //update config settings file, 
-if ($step == 5) { include('install5.php'); }
+if ($step == 5) {
+	include('install5.php');
+}
 
 echo '</div>';
 

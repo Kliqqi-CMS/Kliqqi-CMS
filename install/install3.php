@@ -1,5 +1,7 @@
 <?php
-if (!$step) { header('Location: ./install.php'); die(); }
+if (!$step) {
+	 header('Location: ./install.php'); die(); 
+}
 
 $file=dirname(__FILE__) . '/../libs/dbconnect.php';
 
@@ -11,6 +13,9 @@ if(!isset($dbuser)){
 }
 
 if($conn = @mysql_connect($dbhost,$dbuser,$dbpass)) {
+	
+	@$_SESSION['checked_step'] = 3;
+	
 	$output.= "<p>" . $lang['ConnectionEstab'] . "</p>\n";
 	if(mysql_select_db($dbname, $conn)) {
 	$output.= "<p><strong>" . $lang['FoundDb'] . "</strong></p>\n";
@@ -29,13 +34,25 @@ if($conn = @mysql_connect($dbhost,$dbuser,$dbpass)) {
 				$output.= "<p>" . $lang['dbconnect'] . "</p>\n";
 				fclose($handle);
 			} 
-			else { $errors[] = $lang['Error2-1']; }
+			else {
+				$_SESSION['checked_step'] = 0;
+				$errors[] = $lang['Error2-1'];
+			}
 		} 
-		else { $errors[] = $lang['Error2-2']; }
+		else { 
+			$_SESSION['checked_step'] = 0;
+			$errors[] = $lang['Error2-2'];
+		}
 	}
-	else { $errors[] = $lang['Error2-3']; }
+	else {	
+		$_SESSION['checked_step'] = 0; 
+		$errors[] = $lang['Error2-3'];  
+	}
 }
-else { $errors[] = $lang['Error2-4']; }
+else { 
+	$_SESSION['checked_step'] = 0;
+	$errors[] = $lang['Error2-4']; 
+}
 
 if($check_errors !== false){
   if (!$errors) {

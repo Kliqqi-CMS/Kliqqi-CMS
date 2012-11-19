@@ -1,5 +1,11 @@
 <?php
-if (!$step) { header('Location: ./install.php'); die(); }
+if (!$step) { 
+	header('Location: ./install.php'); die(); 
+} else if(@$_SESSION['checked_step'] != 3){
+	
+	header('Location: ./install.php'); die(); 
+}
+
 echo '<div class="instructions">';
 $file='../config.php';
 if (!file_exists($file)) { $errors[]="$file " . $lang['NotFound'] ; }
@@ -106,17 +112,15 @@ if (isset($errors)) {
 
 if(function_exists("gd_info")) {}
 else {
-$config = new pliggconfig;
-$config->var_id = 60;
-$config->var_value = "false";
-$config->store();
-$config->var_id = 69;
-$config->var_value = "false";
-$config->store();
+	$config = new pliggconfig;
+	$config->var_id = 60;
+	$config->var_value = "false";
+	$config->store();
+	$config->var_id = 69;
+	$config->var_value = "false";
+	$config->store();
 }
-
 
 echo $output;
 echo '</div>';
-
 ?>
