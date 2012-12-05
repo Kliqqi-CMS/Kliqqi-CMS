@@ -18,7 +18,7 @@
 			{if count($link_data) gt 0}
 				{foreach value=link from=$link_data}
 					<tr>
-						<td>{$link.link_title|truncate:50}</td>
+						<td><strong>{$link.link_title|truncate:50}</strong></td>
 						<td><a href="{$my_pligg_base}/admin/admin_users.php?mode=view&user={$link.user_login}">{$link.user_login|truncate:20}</a></td>
 						<td><a href="{$link.link_url}" target="_blank">{$link.link_url|truncate:70}</a></td>
 						<td style="text-align:center;">
