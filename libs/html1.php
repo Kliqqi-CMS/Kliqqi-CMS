@@ -1068,32 +1068,40 @@ function close_tags($html)
    return $html;
 }
 
-//
+/
 // CSFR/XSFR protection
+// updated
 //
-function check_referrer()
+function check_referrer($post_url=false)
 {
-    global $my_base_url, $my_pligg_base, $xsfr_first_page;
+global $my_base_url, $my_pligg_base, $xsfr_first_page, $_GET, $_POST;
 
-    if (sizeof($_GET)>0 || sizeof($_POST)>0)
-    {
-        if ($_SERVER['HTTP_REFERER'])
-		{
-			$base = $my_pligg_base;
-			if (!$base) $base = '/';
-			$_SERVER['HTTP_REFERER'] = sanitize($_SERVER['HTTP_REFERER'],3);
-			if (strpos(preg_replace('/^.+:\/\/(www\.)?/','',$_SERVER['HTTP_REFERER']).'/',preg_replace('/^.+:\/\/(www\.)?/','',$my_base_url).$base)!==0) 
-			{
-				unset($_SESSION['xsfr']);
-					die("Wrong Referrer '{$_SERVER['HTTP_REFERER']}'");
-			}
-		}	
-		elseif ($xsfr_first_page)
-		{
-			unset($_SESSION['xsfr']);
-			die('Wrong security code');
-		}
-    }
+if (sizeof($_GET)>0 || sizeof($_POST)>0)
+{
+
+if ($_SERVER['HTTP_REFERER'])
+{
+$base = $my_pligg_base;
+
+if (!$base) $base = '/';
+$_SERVER['HTTP_REFERER'] = sanitize($_SERVER['HTTP_REFERER'],3);
+
+// update checks if HTTP_REFERER and posted url are the same!
+if(strpos($_SERVER['HTTP_REFERER'],$post_url)!==false) return true;
+
+
+if (strpos(preg_replace('/^.+:\/\/(www\.)?/','',$_SERVER['HTTP_REFERER']).'/',preg_replace('/^.+:\/\/(www\.)?/','',$my_base_url).$base)!==0)
+{
+unset($_SESSION['xsfr']);
+die("Wrong Referrer '{$_SERVER['HTTP_REFERER']}'");
+}
+}
+elseif ($xsfr_first_page)
+{
+unset($_SESSION['xsfr']);
+die('Wrong security code');
+}
+}
 }
 
 $english_language = array();

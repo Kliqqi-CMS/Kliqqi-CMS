@@ -12,7 +12,14 @@ include(mnminclude.'user.php');
 include(mnminclude.'smartyvariables.php');
 
 if (!$_COOKIE['referrer']){
-    check_referrer();
+if(empty($_POST['phase']) && (!empty($_GET['url']))) {
+if(!empty($_GET['url']))
+{
+$_POST['url'] = $_GET['url'];
+}
+}
+$url = htmlspecialchars(sanitize($_POST['url'], 3));
+check_referrer($url);
 }
 
 // html tags allowed during submit
