@@ -280,6 +280,7 @@ function pligg_createtables($conn) {
 	  `latest_version` float NOT NULL,
 	  `folder` varchar(50) NOT NULL,
 	  `enabled` tinyint(1) NOT NULL,
+	  `weight` INT NOT NULL,
 	  PRIMARY KEY  (`id`)
 	) ENGINE = MyISAM;";
 //	echo 'Creating table: \'modules\'....<BR/>';
