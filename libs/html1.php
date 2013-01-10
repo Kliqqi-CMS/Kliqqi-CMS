@@ -1068,7 +1068,7 @@ function close_tags($html)
    return $html;
 }
 
-/
+//
 // CSFR/XSFR protection
 // updated
 //
