@@ -441,14 +441,27 @@ function pligg_createtables($conn) {
 	echo '<li>Setting Pligg Version</li>';
 	$sql = "INSERT INTO `" . table_misc_data . "` ( `name` , `data` ) VALUES ('pligg_version', '2.0.0');";
 	mysql_query( $sql, $conn );
-	//Captcha Upgrade:
+	
+	echo '<li>Setting Captcha Method to SolveMedia</li>';
+	$sql = "UPDATE `" . table_misc_data . "` SET `data` = 'solvemedia' WHERE `pligg_misc_data`.`name` = 'captcha_method';";
+	mysql_query($sql,$conn);
+	$sql = "INSERT INTO `" . table_misc_data . "` ( `name` , `data` ) VALUES ('adcopy_lang', 'en');";
+	mysql_query($sql,$conn);
+	$sql = "INSERT INTO `" . table_misc_data . "` ( `name` , `data` ) VALUES ('adcopy_theme', 'white');";
+	mysql_query($sql,$conn);
+	$sql = "INSERT INTO `" . table_misc_data . "` ( `name` , `data` ) VALUES ('adcopy_pubkey', 'KLoj-jfX2UP0GEYOmYX.NOWL0ReUhErZ');";
+	mysql_query($sql,$conn);
+	$sql = "INSERT INTO `" . table_misc_data . "` ( `name` , `data` ) VALUES ('adcopy_privkey', 'Dm.c-mjmNP7Fhz-hKOpNz8l.NAMGp0wO');";
+	mysql_query($sql,$conn);
+	$sql = "INSERT INTO `" . table_misc_data . "` ( `name` , `data` ) VALUES ('adcopy_hashkey', 'nePptHN4rt.-UVLPFScpSuddqdtFdu2N');";
+	mysql_query($sql,$conn);
 	$sql = "INSERT INTO `" . table_misc_data . "` ( `name` , `data` ) VALUES ('captcha_method', 'solvemedia');";
 	mysql_query($sql,$conn);
 	$sql = "INSERT INTO `" . table_misc_data . "` ( `name` , `data` ) VALUES ('reCaptcha_pubkey', '6LfwKQQAAAAAAPFCNozXDIaf8GobTb7LCKQw54EA');";
 	mysql_query($sql,$conn);
 	$sql = "INSERT INTO `" . table_misc_data . "` ( `name` , `data` ) VALUES ('reCaptcha_prikey', '6LfwKQQAAAAAALQosKUrE4MepD0_kW7dgDZLR5P1');";
 	mysql_query($sql,$conn);
-	//
+
 	//register validation//
 	$randkey = '';
 	for ($i=0; $i<32; $i++)
