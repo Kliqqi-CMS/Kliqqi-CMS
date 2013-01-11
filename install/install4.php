@@ -64,6 +64,10 @@ if (!$errors) {
 	$config->create_file('../settings.php');
 
 	include_once( '../config.php' );
+	
+	// Remove the cookie setting a template value
+	setcookie("template", "", time()-60000,$my_pligg_base,$domain);
+
 	$output='<div class="instructions"><p>' . $lang['EnterAdmin'] . '</p>
 	<table>
 		<form id="form1" name="form1" action="install.php" method="post">
