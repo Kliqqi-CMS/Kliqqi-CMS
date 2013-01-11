@@ -554,7 +554,7 @@ if ($old_version < $new_version) {
 	// Captcha upgrade
 	$captcha_result=$db->get_results("select * from " . table_misc_data . " where name = 'captcha_method'");
 	if(count($captcha_result)==0){
-		$sql = "INSERT INTO `" . table_misc_data . "` ( `name` , `data` ) VALUES ('captcha_method', 'reCaptcha');";
+		$sql = "INSERT INTO `" . table_misc_data . "` ( `name` , `data` ) VALUES ('captcha_method', 'solvemedia');";
 		$db->query($sql);
 		$sql = "INSERT INTO `" . table_misc_data . "` ( `name` , `data` ) VALUES ('reCaptcha_pubkey', '6LfwKQQAAAAAAPFCNozXDIaf8GobTb7LCKQw54EA');";
 		$db->query($sql);
