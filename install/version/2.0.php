@@ -16,6 +16,11 @@ if ($old_version < $new_version) {
 	$db->query($sql);
 	echo '<li>Order modules via the Admin Panel</li>';
 	
+	// Change the template value to Bootstrap
+	$sql = "UPDATE `" . table_config . "` SET `var_value` = 'bootstrap' WHERE `var_name` = '$thetemp';";
+	$db->query($sql);
+	echo '<li>Changed template to Bootstrap</li>';	
+	
 	// Change default captcha to SolveMedia
 	$sql = "UPDATE `" . table_misc_data . "` SET `data` = 'solvemedia' WHERE `pligg_misc_data`.`name` = 'captcha_method';";
 	$db->query($sql);
