@@ -129,20 +129,19 @@
 				<ol>
 					<li>Backup your MySQL database</li>
 					<li>Backup your old Pligg CMS files.</li>
-					<li>Rename your template folder so that the data is not overwritted by upgrade files. If you use a template name that is not included with Pligg, skip this step.</li>
+					<li>Rename your template folder so that the data is not overwritten by upgrade files. If you use a template name that is not included with Pligg, skip this step.</li>
 					<li> Disable all of the modules from your admin panel. <br />
 					You will need to re-enable them after upgrade.</li>
 					<li>Delete all of the files from your server EXCEPT:
 					   <ol>
 						   <li>/avatars/ (entire directory)</li>
 						   <li>/libs/dbconnect.php</li>
-						   <li>/.htaccess</li>
 						   <li>/favicon.ico</li>
 						   <li>/settings.php</li>
 					   </ol>
 					</li>
 					<li>Upload all of the new files to your server. <br />
-					If you are able to I suggest uploading a zip file to the server and extracting it server-side. This will minimize the chances of files being corrupted during FTP transfer, which is a common issue.<br />
+					If you are able to, I suggest uploading a zip file to the server and extracting it server-side. This will minimize the chances of files being corrupted during FTP transfer, which is a common issue.<br />
 					<li>Confirm that the CHMOD permissions for the following files or directories are all set to 777.</li>
 						<ul>
 							<li>settings.php</li>
@@ -150,16 +149,15 @@
 							<li>/avatars/groups_uploaded/</li>
 							<li>/avatars/user_uploaded/</li>
 							<li>/cache/</li>
-							<li>/languages/</li>
-							<li>/languages/lang_english.conf (plus any other language files that you wish to use)</li>
+							<li>/languages/ (and all of the content within this directory)</li>
 						</ul>
 					</li>
 					<li>Run the upgrade from /install/upgrade.php<br />
 						If there are no error messages, delete the /install directory from your web server.</li>
-					<li>Log in as an "admin" level user.<br />
+					<li>Navigate to your homepage and log in as an "admin" level user.<br />
 						In some cases you may already be logged in from your previous version of Pligg.</li>
-					<li>Either update your template to work with the latest version or navigate to /admin/admin_config.php?page=Template and change the template name to "wistie"</li>
-					<li>Re-activate the disabled modules from step 4, navigate to /admin/admin_modules.php</li>
+					<li>Either update your template to work with the latest version or navigate to /admin/admin_config.php?page=Template and change the template name to "bootstrap"</li>
+					<li>Re-activate the disabled modules from step 4</li>
 				</ol>
 				<br />
 				
