@@ -206,7 +206,7 @@ function get_avatar($size = "large", $avatarsource, $user_name = "", $user_email
 		    return latest_avatar($imgsrc, mnmpath.'avatars/user_uploaded/'.$user_name . "_" . $imgsize . ".jpg");
 		}
 	    } else {
-		$dir = mnmpath.'avatars/user_uploaded';
+		$dir = mnmpath.'avatars/user_uploaded/';
 		if ($dh = opendir($dir)) {
         	    while (($file = readdir($dh)) !== false)
 			if (preg_match("/^$user_id\_(.+)\.jpg\$/", $file, $m))

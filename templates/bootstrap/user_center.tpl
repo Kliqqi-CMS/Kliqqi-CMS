@@ -41,7 +41,7 @@
 						<h3>Profile Avatar Upload</h3>
 					</div>
 					<div class="modal-body">
-						<form method="POST" enctype="multipart/form-data" name="image_upload_form" action="{$form_action}">
+						<form method="POST" enctype="multipart/form-data" name="image_upload_form" action="/profile.php">
 						<script type="text/javascript">
 							$('.fileupload').fileupload()
 						</script>
