@@ -38,7 +38,7 @@
 			$main_smarty->assign('user_username', $user->username);
 
 		{/php}
-                <img src="{$my_base_url}{$my_pligg_base}/avatars/user_uploaded/{$user_id}_15.jpg" width="16px" height="16px" onerror="this.src='{$my_pligg_base}/avatars/Avatar_32.png'; this.title='Loading...';"/> &nbsp;  {$user_logged_in}
+                <img src="{$Avatar_ImgSmall}" onerror="this.src='{$my_pligg_base}/avatars/Avatar_32.png'; this.title='Loading...';"/> &nbsp;  {$user_logged_in}
 						<span class="caret"></span>
 					</a>
 
