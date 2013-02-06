@@ -392,7 +392,7 @@ if(!defined('mnminclude')){header('Location: ../404error.php');die();}
 
 		function escape($str)
 		{
-			return mysql_escape_string($str);
+			return mysql_real_escape_string($str);
 		}
 
 		/**********************************************************************
