@@ -120,6 +120,7 @@ $CSRF->create('user_settings', true, true);
 	$main_smarty->assign('user_url_remove', getmyurl('user_add_remove', $login, 'removefriend'));
 	$main_smarty->assign('user_rss', getmyurl('rssuser', $login));
 	$main_smarty->assign('URL_Profile', getmyurl('profile'));
+	$main_smarty->assign('form_action', getmyurl('profile')); 
 	$main_smarty->assign('user_url_member_groups', getmyurl('user2', $login, 'member_groups	'));
 
 // tell smarty about our user
