@@ -4,9 +4,9 @@
 <!-- submit_step_2.tpl -->
 <div class="submit_page">
 	<legend>{#PLIGG_Visual_Submit2_Details#}</legend>
+	{checkActionsTpl location="tpl_pligg_submit_step2_start"}
 	<form class="form-horizontal" action="{$URL_submit}" method="post" name="thisform" id="thisform" enctype="multipart/form-data" onsubmit="return checkForm()">
 		<div class="span6" style="margin-left:0;">
-			{checkActionsTpl location="tpl_pligg_submit_step2_start"}
 			<div class="control-group">
 				<label for="input01" class="control-label">{#PLIGG_Visual_Submit2_Title#}</label>
 				<div class="controls">
