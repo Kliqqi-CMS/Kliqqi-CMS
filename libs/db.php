@@ -392,7 +392,12 @@ if(!defined('mnminclude')){header('Location: ../404error.php');die();}
 
 		function escape($str)
 		{
-			return mysql_real_escape_string($str);
+			if ( ! isset($this->dbh) || ! $this->dbh )
+			{
+				$this->connect($this->dbuser, $this->dbpassword, $this->dbhost);
+				$this->select($this->dbname);
+			}
+			return mysql_real_escape_string($str, $this->dbh);
 		}
 
 		/**********************************************************************
