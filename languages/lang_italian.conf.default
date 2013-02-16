@@ -1,6 +1,6 @@
 //<LANG>IT</LANG>
 //<TITLE>Italiana</TITLE>
-//<VERSION>1.2.2</VERSION>
+//<VERSION>2.0.0</VERSION>
 
 //<SECTION>GENERAL</SECTION><ADDED>1.00</ADDED>
 PLIGG_Visual_Name = "Mio Sito"
@@ -1036,34 +1036,69 @@ PLIGG_Visual_AdminPanel_Template_Cant_Open = "Impossibile aprire la directory! <
 PLIGG_Visual_AdminPanel_NoTemplate = "Nessun Tenplate esistente! Il Template deve corrispondere al nome della directory di un Template all'interno del vostro template directory."
 PLIGG_Visual_AdminPanel_Template_Version = "Questo Template potrebbe non essere compatibile con le ultime caratteristiche incluse con la versione di Pligg. Il Template  stato progettato per Pligg %s, mentre attualmente  installato %s. Sei sicuro che si desidera installare questo modello?"
 PLIGG_Visual_AdminPanel_All_Comments = "Tutti i Commenti"
-PLIGG_Visual_AdminPanel_Confirm_Killspam = "Are you sure that you want to killspam the following user(s):"
+PLIGG_Visual_AdminPanel_Confirm_Killspam = "Sei sicuro che si desidera KillSpam il seguente utente:"
 
 // Start 1.1.2 Language File
-PLIGG_Visual_Advanced_Search_Date = "Date:"
-PLIGG_Visual_Advanced_Search_Select = "Select"
-PLIGG_Visual_Advanced_Search_This_Month = "This Month"
-PLIGG_Visual_Advanced_Search_Close = "Close"
-PLIGG_Visual_Rank = "Rank"
+PLIGG_Visual_Advanced_Search_Date = "Data:"
+PLIGG_Visual_Advanced_Search_Select = "Selezionare"
+PLIGG_Visual_Advanced_Search_This_Month = "Questo Mese"
+PLIGG_Visual_Advanced_Search_Close = "Chiudere"
+PLIGG_Visual_Rank = "Posizione"
 
 // Start 1.1.3 Language File
-PLIGG_Visual_AdminPanel_Category_Karma = "Karma to publish"
+PLIGG_Visual_AdminPanel_Category_Karma = "Karma di pubblicare"
 
 // Start 1.1.4 Language File
-PLIGG_Visual_Meta_Keywords = "News,Stories,Articles,Vote,Publish,Social,Networking,Groups,Submit,Upcoming,Comments,Tags,Live"
-PLIGG_Visual_Story_Preview = "Story Preview"
-PLIGG_Visual_Submit2Errors_InvalidURL_Specify = "You must specify a URL"
+PLIGG_Visual_Meta_Keywords = "Notizie, racconti, articoli, Voto, pubblicare, sociali, Networking, Gruppi, Invia, Prossime, commenti, tag, dal vivo"
+PLIGG_Visual_Story_Preview = "Story Anteprima"
+PLIGG_Visual_Submit2Errors_InvalidURL_Specify = "È necessario specificare un URL"
 
 // Start 1.2.0 Language File
-PLIGG_Visual_User_Profile_Language = "Language"
+PLIGG_Visual_User_Profile_Language = "Lingua"
 PLIGG_Visual_404_Error = "404 Error"
-PLIGG_Visual_Search_Too_Short = "Sorry, but you need to enter 3 or more characters into the search field. Please try again."
-PLIGG_Visual_Group_Search_Groups = "Search Groups"
-PLIGG_Visual_Comment_Current_User_Username = "you"
-PLIGG_Visual_Comment_Manage_User = "Manage"
-PLIGG_Visual_Comment_Manage_Unregistered = "Unregistered"
-PLIGG_Visual_Email_Tell_A_Friend = "Here is a link to the story: "
+PLIGG_Visual_Search_Too_Short = "Mi dispiace, ma è necessario inserire 3 o più caratteri nel campo di ricerca. Si prega di riprovare.."
+PLIGG_Visual_Group_Search_Groups = "Cerca Gruppi"
+PLIGG_Visual_Comment_Current_User_Username = "voi"
+PLIGG_Visual_Comment_Manage_User = "Gestire"
+PLIGG_Visual_Comment_Manage_Unregistered = "Non registrato"
+PLIGG_Visual_Email_Tell_A_Friend = "Ecco un link alla storia: "
 
 // Start 1.2.1 Language File
-PLIGG_Visual_AdminPanel_Subcategory_Move = "Move sub-categories up a level"
-PLIGG_Visual_AdminPanel_Subcategory_Delete = "Delete sub-categories"
+PLIGG_Visual_AdminPanel_Subcategory_Move = "Spostare le sottocategorie di un livello"
+PLIGG_Visual_AdminPanel_Subcategory_Delete = "Elimina le sottocategorie"
 // End 1.2.2 Language File
+
+// Start 2.0.0 Language File
+PLIGG_Visual_Story_Who_Upvoted = "Chi ha votato il"
+PLIGG_Visual_Story_Who_Downvoted = "Chi ha votato il basso"
+PLIGG_Visual_Story_Who_Downvoted_Story = "Chi ha votato questa storia verso il basso"
+PLIGG_Maintenance_Mode = "Modalità di manutenzione"
+PLIGG_Maintenance_Admin_Warning="<strong>Attenzione!</strong> Modalità di manutenzione non è al momento attivo. Rimuovere il. Manutenzione file dalla directory Pligg per disattivarlo."
+PLIGG_Visual_New_Password = "Nuova password"
+PLIGG_Visual_New_Verify_Password = "Verifica Nuova password"
+PLIGG_Password_Invalid_URL="Il link che hai seguito non è valido o incompleto."
+PLIGG_Visual_Resend_Email = "Il tuo indirizzo email non viene convalidato ancora. Inserisci il tuo indirizzo e-mail qui per inviare di nuovo un messaggio di conferma:"
+PLIGG_Visual_Email_Sent = "Se l'indirizzo email esiste nella nostra banca dati vi verrà inviata una email di conferma al più presto."
+PLIGG_Submit3Errors_Short_Tags = "Tag linea è troppo breve"
+PLIGG_Visual_Profile_UsernameUpdated = "Il tuo nome utente è stato aggiornato"
+Pligg_Profile_No_Membership = "Questo utente non è membro di nessun gruppo."
+PLIGG_Visual_User_Profile_People = "Persone"
+PLIGG_Visual_User_Profile_Is_Following = "segue"
+PLIGG_User_Profile_Social = "Conti sociali"
+PLIGG_User_Profile_Facebook = "Facebook"
+PLIGG_User_Profile_Twitter = "Twitter"
+PLIGG_User_Profile_Linkedin = "Linkedin"
+PLIGG_User_Profile_Googleplus = "Google+"
+PLIGG_User_Profile_Pinterest = "Pinterest"
+PLIGG_User_Display_Settings = "Impostazioni di visualizzazione"
+PLIGG_Continue_Reading = "Continue Reading"
+PLIGG_No_More_Articles = "No More articoli trovati"
+PLIGG_Follow = "Seguire"
+PLIGG_Unfollow = "Non seguire"
+PLIGG_Visual_AdminPanel_Backup_None = "Nessun backup sono stati generati ancora! Cominciare facendo clic su uno dei pulsanti sopra."
+PLIGG_Admin_Template_Widget_Title = "Modello di Gestione Widget"
+PLIGG_Admin_Template_Widget_Description = "Trascinare e rilasciare gli elementi di seguito per gestire l'ordine di visualizzazione nella barra laterale modello."
+PLIGG_Visual_UpVoted = "Up votato"
+PLIGG_Visual_DownVoted = "Giù votato"
+
+// End 2.0.0 Language File
