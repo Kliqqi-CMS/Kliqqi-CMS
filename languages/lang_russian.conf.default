@@ -1,6 +1,6 @@
 //<LANG>RU</LANG>
 //<TITLE>Русский</TITLE>
-//<VERSION>1.2.2</VERSION>
+//<VERSION>2.0.0</VERSION>
 
 //<SECTION>GENERAL</SECTION><ADDED>1.00</ADDED>
 PLIGG_Visual_Name = "Сообщество Pligg"
@@ -955,114 +955,180 @@ PLIGG_Site_Language_Title = "Язык сайта"
 PLIGG_Site_Language_Desc = "Язык сайта"
 
 // Start 1.0.1 Language File
-PLIGG_Visual_This_All = "All"
-PLIGG_Visual_Tags_All_Tags = "All"
-PLIGG_Visual_AdminPanel_Category_URL = "Category URL"
-PLIGG_Visual_AdminPanel_Category_Select = "Please make a selection below to delete this category:"
+PLIGG_Visual_This_All = "все"
+PLIGG_Visual_Tags_All_Tags = "все"
+PLIGG_Visual_AdminPanel_Category_URL = "Категория URL"
+PLIGG_Visual_AdminPanel_Category_Select = "Пожалуйста, сделайте выбор ниже, чтобы удалить эту категорию:"
 
 // Start 1.0.2 Language File
-PLIGG_Visual_AdminPanel_Category_Votes = "Votes to publish"
-PLIGG_Visual_Comment_Delete = "Delete"
-PLIGG_Visual_Register_Thankyou = "Thank you for registering <strong>%s</strong>!<br />Please check your e-mail (inbox & spam/junk folder) for activation link.<br />"
-PLIGG_Visual_Register_Noemail = "Did not receive the activation email?"
-PLIGG_Visual_Register_ToDo = "<ul><li>At times it make take a while for the email to arrive.</li><li>Please check if the above displayed email address is correct. If it's wrong, register again.</li> <li>Check your junk/spam/bulk email box, the email might have been filtered as junk.</li><li>If you still have any problems with your activation, contact us at <span style='color:#c00;'>%s</span> and we'll be happy to assist you.</li>"
-PLIGG_Visual_KillSpam_Selected = "KillSpam Selected"
-PLIGG_Visual_Disable_Selected = "Disable Selected"
-PLIGG_Visual_Enable_Selected = "Enable Selected"
-PLIGG_Visual_User_Profile_Status = "Status"
-PLIGG_Visual_User_Profile_Enabled = "Enabled"
-PLIGG_Visual_User_Profile_Disabled = "Disabled"
-PLIGG_Page_Title = "Page"
-PLIGG_Visual_AdminPanel_Mark_Moderated = "Mark as Moderated"
-PLIGG_Visual_AdminPanel_Moderated = "Moderated"
-PLIGG_Visual_AdminPanel_Change_User_Status = "Change User Status"
-PLIGG_Visual_View_User_Enable = "Enable this user"
-PLIGG_Visual_AdminPanel_Delete_Comments = "Delete Discarded Comments from Database"
-PLIGG_Validation_Message = "Your account has been activated! <a href='%s'>Click here</a> to login."
-PLIGG_Validation_Already_Activated = "Your account has been already activated!"
-PLIGG_Validation_Invalid_Code = "Invalid activation code"
-PLIGG_Validation_No_Results = "Failed to activate as did not get the results"
-PLIGG_Validation_Mysql_Error = "Failed to update user table"
+PLIGG_Visual_AdminPanel_Category_Votes = "Голоса в publish"
+PLIGG_Visual_Comment_Delete = "удалять"
+PLIGG_Visual_Register_Thankyou = "Спасибо за регистрацию<strong>%s</strong>!<br />Пожалуйста, проверьте свой ​​адрес электронной почты (почтовый ящик спама и / папку нежелательной почты) для активации ссылки..<br />"
+PLIGG_Visual_Register_Noemail = "Не получили письмо с кодом активации?"
+PLIGG_Visual_Register_ToDo = "<ul><li>Время от времени это может занять некоторое время, электронную почту, чтобы прибыть.</li><li>Пожалуйста, проверьте, если выше отображается адрес электронной почты является правильным. Если это не так, снова зарегистрироваться.</li> <li>
+Проверьте ваш хлам / спама / упаковка электронную почту, электронную почту, возможно, были отфильтрованы как спам.</li><li>Если у вас возникли какие-либо проблемы с активацией, свяжитесь с нами по <span style='color:#c00;'>%s</span> и мы будем рады помочь вам.</li>"
+PLIGG_Visual_KillSpam_Selected = "KillSpam Выбранные"
+PLIGG_Visual_Disable_Selected = "Отключить выбранные"
+PLIGG_Visual_Enable_Selected = "Включить выбранные"
+PLIGG_Visual_User_Profile_Status = "статус"
+PLIGG_Visual_User_Profile_Enabled = "Доступно"
+PLIGG_Visual_User_Profile_Disabled = "инвалид"
+PLIGG_Page_Title = "страница"
+PLIGG_Visual_AdminPanel_Mark_Moderated = "Взять Модераторы"
+PLIGG_Visual_AdminPanel_Moderated = "Ведущий"
+PLIGG_Visual_AdminPanel_Change_User_Status = "Изменение статуса пользователя"
+PLIGG_Visual_View_User_Enable = "Включение этого пользователя"
+PLIGG_Visual_AdminPanel_Delete_Comments = "Удалить Выброшенные комментарии из базы данных"
+PLIGG_Validation_Message = "Ваша учетная запись была активирована! <a href='%s'>Нажмите здесь</a> для входа."
+PLIGG_Validation_Already_Activated = "Ваша учетная запись была уже активирована!"
+PLIGG_Validation_Invalid_Code = "Неверный код активации"
+PLIGG_Validation_No_Results = "Не удалось активировать, так как не получить результаты"
+PLIGG_Validation_Mysql_Error = "Не удалось обновить таблицу пользователей"
 
 // Start 1.0.4 Language File
-PLIGG_Visual_Register_Error_YourIpIsBanned = "Sorry, but your IP has been reported as a spam address"
+PLIGG_Visual_Register_Error_YourIpIsBanned = "Извините, но ваш IP сообщалось как спам адрес"
 PLIGG_Visual_KillSpam = "Killspam"
-PLIGG_Visual_AdminPanel_Confirmed = "Confirmed"
-PLIGG_Visual_AdminPanel_Confirmed_Email = "Confirmed Email Address"
-PLIGG_Visual_AdminPanel_Unconfirmed_Email = "Unconfirmed Email Address"
+PLIGG_Visual_AdminPanel_Confirmed = "подтвержденный"
+PLIGG_Visual_AdminPanel_Confirmed_Email = "Подтвержденный адрес электронной почты"
+PLIGG_Visual_AdminPanel_Unconfirmed_Email = "Неподтвержденные Адрес электронной почты"
 PLIGG_Visual_AdminPanel_Apply_Changes = "Apply Changes"
 PLIGG_Visual_AdminPanel_Spam = "Spam"
-PLIGG_Visual_Validate_Confirmation = "Are you sure you want to confirm this email address?"
-PLIGG_Config_Buries_Mark_Spam = "Buries to Mark as Spam"
-PLIGG_Config_Comment_Mark_Spam = "Buries to Mark Comment as Spam"
-PLIGG_Login_Incorrect_Attempts = "Your computer has incorrectly entered your account information more than %s times. You will need to wait %s seconds before logging in again. If you need to reset your password, use the Forgotten Password area above to request a new password."
-PLIGG_Login_Max_Attempts = "Too many login attempts. Please try again in %s seconds"
-PLIGG_Visual_Modules_Uninstalled = "Uninstalled Modules"
-PLIGG_Visual_Categories_Reset = "Reset User's Selected Categories to All"
+PLIGG_Visual_Validate_Confirmation = "Вы уверены, что хотите это подтвердить адрес электронной почты?"
+PLIGG_Config_Buries_Mark_Spam = "Хоронит пометить как спам"
+PLIGG_Config_Comment_Mark_Spam = "Хоронит Марку комментарий как спам"
+PLIGG_Login_Incorrect_Attempts = "Ваш компьютер неправильно ввел данные аккаунта больше, чем %s раз. Вам нужно будет подождать %s секунд до входа в систему. Если вам нужно сбросить пароль, используйте забытых паролей области выше, чтобы запросить новый пароль."
+PLIGG_Login_Max_Attempts = "Слишком много попыток входа. Пожалуйста, попробуйте еще раз дюйма %s секунды"
+PLIGG_Visual_Modules_Uninstalled = "Неустановленное модули"
+PLIGG_Visual_Categories_Reset = "Сброс отдельных категорий пользователей Все"
 
 // Start 1.1.0 Language File
-PLIGG_Visual_AdminPanel_Widget_Management = "Widget Management"
-PLIGG_Visual_AdminPanel_Widget_Return = "Return to Widget Management"
-PLIGG_Visual_AdminPanel_Widget_Readme = "Widget Readme"
-PLIGG_Visual_AdminPanel_Widget_Readme_Not_Found = "This widget does not contain a readme file."
-PLIGG_Visual_AdminPanel_Widgets_Nav = "Widgets"
-PLIGG_Visual_Widgets_Installed = "Installed Widgets"
-PLIGG_Visual_Widgets_Uninstalled = "Uninstalled Widgets"
-PLIGG_Visual_AdminPanel_Module_Readme = "Module Readme"
+PLIGG_Visual_AdminPanel_Widget_Management = "Виджет управления"
+PLIGG_Visual_AdminPanel_Widget_Return = "Вернуться в Widget управления"
+PLIGG_Visual_AdminPanel_Widget_Readme = "Виджет русском языке"
+PLIGG_Visual_AdminPanel_Widget_Readme_Not_Found = "Этот виджет не содержит файл Readme."
+PLIGG_Visual_AdminPanel_Widgets_Nav = "Виджеты"
+PLIGG_Visual_Widgets_Installed = "установленная Виджеты"
+PLIGG_Visual_Widgets_Uninstalled = "Неустановленное Виджеты"
+PLIGG_Visual_AdminPanel_Module_Readme = "Модуль русском языке"
 PLIGG_Visual_AdminPanel_Module_Readme_Not_Found = "This module does not contain a readme file."
-PLIGG_Visual_Search_NoResults = "No results found for"
-PLIGG_Visual_View_User_Groups_Belongs = "Groups User Belongs To"
-PLIGG_Visual_View_User_Groups_Created = "Groups Created"
-PLIGG_Visual_Page_Delete_Confirm = "Are you sure that you want to delete this page?"
-PLIGG_PassEmail_Name = "Administrator"
-PLIGG_Visual_AdminPanel_Module_Description = "Modules add new features to your Pligg CMS site without you having to modify any of the 'core' code. You can customize your site by adding new features, or alter existing features built into Pligg through Modules."
-PLIGG_Visual_AdminPanel_Widget_Description = "Widgets are boxes of information that appear on your Admin Panel dashboard. You can add, subtract, minimize, customize, and organize widgets; making the Admin Panel's homepage suit your needs. Click and drag on a Widget's title bar to organize the display order. Left click on the wrench icon in the title bar to bring up the settings area for select widgets."
-PLIGG_Visual_AdminPanel_Cleared_Cache = "Cleared Cache Directories"
-PLIGG_Visual_AdminPanel_Cleared_Cache_Message = "Your cache directories have successfully been cleared!<br /><br />Deleting the contents of the cache directories (/cache) is often required when making changes to your templates, or when adding and removing modules or widgets."
-PLIGG_Visual_AdminPanel_Return_Admin = "Click here to return to the Admin Panel Dashboard."
-PLIGG_Visual_AdminPanel_Optimized = "Database Optimization Complete"
-PLIGG_Visual_AdminPanel_Optimized_Message = "Your MySQL database has successfully been optimized!<br /><br />You should occassionally optimize your database to keep your MySQL data from fragmenting or corrupting. In some cases, running the optimization feature may result in improved database performance."
-PLIGG_Visual_AdminPanel_Discarded_Comments_Removed = "Discarded Comments Removed"
-PLIGG_Visual_AdminPanel_Discarded_Comments_Removed_Message = "Discarded comments have been removed from your MySQL database. The comments table has also been optimized."
-PLIGG_Visual_AdminPanel_Return_Comment_Management = "Click here to return to the Comment Management page"
-PLIGG_Visual_AdminPanel_Discarded_Stories_Removed = "Discarded Stories Removed"
-PLIGG_Visual_AdminPanel_Discarded_Stories_Removed_Message = "Discarded stories have been removed from your MySQL database. The stories table has also been optimized."
-PLIGG_Visual_AdminPanel_Return_Story_Management = "Click here to return to the News Management page."
-PLIGG_Visual_AdminPanel_Template_File_Opened = "File Opened"
-PLIGG_Visual_AdminPanel_Template_Currently_Open = "Currently open"
-PLIGG_Visual_AdminPanel_Template_Empty_Confirm = "Are you sure you want to save this as an empty file?"
-PLIGG_Visual_AdminPanel_Template_Error = "ERROR!"
-PLIGG_Visual_AdminPanel_Template_Cant_Open = "Could not open directory! <br />Check your CHMOD settings. The templates directory and files should be set to CHMOD 0777."
-PLIGG_Visual_AdminPanel_NoTemplate = "No such template exists! The template value should match the directory name of a template inside of your templates directory."
-PLIGG_Visual_AdminPanel_Template_Version = "This template may not be compatible with the latest features included with your version of Pligg. The template was designed for Pligg %s, while you currently have installed %s. Are you sure that you want to install this template?"
-PLIGG_Visual_AdminPanel_All_Comments = "All Comments"
+PLIGG_Visual_Search_NoResults = "Нет результатов для"
+PLIGG_Visual_View_User_Groups_Belongs = "Группы пользователь принадлежит к"
+PLIGG_Visual_View_User_Groups_Created = "групп, созданных"
+PLIGG_Visual_Page_Delete_Confirm = "Вы уверены, что хотите удалить эту страницу?"
+PLIGG_PassEmail_Name = "администратор"
+PLIGG_Visual_AdminPanel_Module_Description = "Модули добавлять новые функции на сайт Pligg CMS без необходимости изменять любой из «основных» код. Вы можете настроить ваш сайт, добавляя новые функции, или изменить существующие функции, встроенные в Pligg через модули."
+PLIGG_Visual_AdminPanel_Widget_Description = "Виджеты коробки информация, которая появляется на вашем Админ панели приборов. Вы можете складывать, вычитать, свести к минимуму, настройки и размещения виджетов, что делает домашнюю страницу Панель администратора в соответствии с вашими потребностями. Нажмите и перетащите в строке заголовка виджета, чтобы организовать порядок их отображения. Щелкните левой кнопкой мыши на значок гаечного ключа в строке заголовка, чтобы открыть настройки области для отдельных виджетов."
+PLIGG_Visual_AdminPanel_Cleared_Cache = "Очищенные Справочники Cache"
+PLIGG_Visual_AdminPanel_Cleared_Cache_Message = "Ваши каталоги кэша успешно очищен!<br /><br />Удаление содержимого кэша каталогов (/ кэш) часто требуется при внесении изменений в шаблонах, или при добавлении и удалении модулей и виджетов."
+PLIGG_Visual_AdminPanel_Return_Admin = "Нажмите здесь, чтобы вернуться в Панель управления администратора Panel."
+PLIGG_Visual_AdminPanel_Optimized = "Оптимизация базы данных выполните"
+PLIGG_Visual_AdminPanel_Optimized_Message = "Ваш MySQL базу данных была успешно оптимизирована!<br /><br />Вы должны Occassionally оптимизировать базу данных, чтобы сохранить ваши данные из MySQL фрагментации или повреждения. В некоторых случаях работает функция оптимизации может привести к повышению производительности базы данных."
+PLIGG_Visual_AdminPanel_Discarded_Comments_Removed = "Выброшенные Комментарии Удален"
+PLIGG_Visual_AdminPanel_Discarded_Comments_Removed_Message = "Выброшенные комментарии были удалены из базы данных MySQL.Комментарии таблице также была оптимизирована."
+PLIGG_Visual_AdminPanel_Return_Comment_Management = "Щелкните здесь, чтобы вернуться на страницу Управление комментарий"
+PLIGG_Visual_AdminPanel_Discarded_Stories_Removed = "Выброшенные Истории Удален"
+PLIGG_Visual_AdminPanel_Discarded_Stories_Removed_Message = "Выброшенные рассказы были удалены из базы данных MySQL.Истории таблица была также оптимизирована."
+PLIGG_Visual_AdminPanel_Return_Story_Management = "Нажмите здесь, чтобы вернуться на страницу управления News."
+PLIGG_Visual_AdminPanel_Template_File_Opened = "Открытие файла"
+PLIGG_Visual_AdminPanel_Template_Currently_Open = "В настоящее время открыто"
+PLIGG_Visual_AdminPanel_Template_Empty_Confirm = "Вы уверены, что хотите сохранить это как пустой файл?"
+PLIGG_Visual_AdminPanel_Template_Error = "ОШИБКА!"
+PLIGG_Visual_AdminPanel_Template_Cant_Open = "Не удалось открыть каталог! <br />Проверьте ваш CHMOD параметров.Шаблоны каталогов и файлов должны быть установлены на CHMOD 0777."
+PLIGG_Visual_AdminPanel_NoTemplate = "Нет такого шаблона не существует! Шаблон значение должно соответствовать имени каталога шаблонов внутри вашего каталога шаблонов."
+PLIGG_Visual_AdminPanel_Template_Version = "Этот шаблон не может быть совместим с последними функций, включенных в вашей версии Pligg.Шаблон был разработан для Pligg %s, в то время как вы в настоящее время установлены %s. Вы уверены, что вы хотите установить этот шаблон?"
+PLIGG_Visual_AdminPanel_All_Comments = "Все комментарии"
 
 // Start 1.1.2 Language File
-PLIGG_Visual_Advanced_Search_Date = "Date:"
-PLIGG_Visual_Advanced_Search_Select = "Select"
-PLIGG_Visual_Advanced_Search_This_Month = "This Month"
-PLIGG_Visual_Advanced_Search_Close = "Close"
-PLIGG_Visual_Rank = "Rank"
+PLIGG_Visual_Advanced_Search_Date = "дата:"
+PLIGG_Visual_Advanced_Search_Select = "выбирать"
+PLIGG_Visual_Advanced_Search_This_Month = "В этом месяце"
+PLIGG_Visual_Advanced_Search_Close = "близко"
+PLIGG_Visual_Rank = "Позиция"
 
 // Start 1.1.3 Language File
-PLIGG_Visual_AdminPanel_Category_Karma = "Karma to publish"
+PLIGG_Visual_AdminPanel_Category_Karma = "Карма, чтобы опубликовать"
 
 // Start 1.1.4 Language File
-PLIGG_Visual_Meta_Keywords = "News,Stories,Articles,Vote,Publish,Social,Networking,Groups,Submit,Upcoming,Comments,Tags,Live"
-PLIGG_Visual_Story_Preview = "Story Preview"
-PLIGG_Visual_Submit2Errors_InvalidURL_Specify = "You must specify a URL"
+PLIGG_Visual_Meta_Keywords = "Новости, рассказы, статьи, голосования, публикации, социальных, сетей, групп, представить, Новые, комментарии, теги, Live"
+PLIGG_Visual_Story_Preview = "История изображение"
+PLIGG_Visual_Submit2Errors_InvalidURL_Specify = "Вы должны указать URL"
 
 // Start 1.2.0 Language File
-PLIGG_Visual_User_Profile_Language = "Language"
-PLIGG_Visual_404_Error = "404 Error"
-PLIGG_Visual_Search_Too_Short = "Sorry, but you need to enter 3 or more characters into the search field. Please try again."
-PLIGG_Visual_Group_Search_Groups = "Search Groups"
-PLIGG_Visual_Comment_Current_User_Username = "you"
-PLIGG_Visual_Comment_Manage_User = "Manage"
-PLIGG_Visual_Comment_Manage_Unregistered = "Unregistered"
-PLIGG_Visual_Email_Tell_A_Friend = "Here is a link to the story: "
+PLIGG_Visual_User_Profile_Language = "язык"
+PLIGG_Visual_404_Error = "Ошибка 404"
+PLIGG_Visual_Search_Too_Short = "Извините, но вам нужно ввести 3 или более символов в поле поиска. Пожалуйста, попробуйте еще раз.
+PLIGG_Visual_Group_Search_Groups = "Поиск групп"
+PLIGG_Visual_Comment_Current_User_Username = "вы"
+PLIGG_Visual_Comment_Manage_User = "управлять"
+PLIGG_Visual_Comment_Manage_Unregistered = "незарегистрированный"
+PLIGG_Visual_Email_Tell_A_Friend = "Вот ссылка на историю: "
 
 // Start 1.2.1 Language File
-PLIGG_Visual_AdminPanel_Subcategory_Move = "Move sub-categories up a level"
-PLIGG_Visual_AdminPanel_Subcategory_Delete = "Delete sub-categories"
+PLIGG_Visual_AdminPanel_Subcategory_Move = "Переместить подкатегорий на один уровень вверх"
+PLIGG_Visual_AdminPanel_Subcategory_Delete = "Удалить подкатегорий"
 // End 1.2.2 Language File
+
+// Start 2.0.0 Language File
+
+PLIGG_Visual_Story_Who_Upvoted = "Кто голосовал за"
+
+PLIGG_Visual_Story_Who_Downvoted = "Кто голосовал вниз"
+
+PLIGG_Visual_Story_Who_Downvoted_Story = "Кто голосовал эта история вниз"
+
+PLIGG_Maintenance_Mode = "Режим обслуживания"
+
+PLIGG_Maintenance_Admin_Warning="<strong>Предупреждение!</strong> Режим обслуживания в настоящее время активно. Удалить. Обслуживанию файл из каталога Pligg чтобы отключить его."
+
+PLIGG_Visual_New_Password = "Новый пароль"
+
+PLIGG_Visual_New_Verify_Password = "Убедитесь, новый пароль"
+
+PLIGG_Password_Invalid_URL="Ссылку, которую затем был недействительным или неполным."
+
+PLIGG_Visual_Resend_Email = "Ваш адрес электронной почты не проверяется еще нет. Пожалуйста, введите Ваш адрес электронной почты здесь, чтобы повторно подтверждающее сообщение:"
+
+PLIGG_Visual_Email_Sent = "Если адрес электронной почты существует в нашей базе данных Вам будет отправлено подтверждение по электронной почте в ближайшее время."
+
+PLIGG_Submit3Errors_Short_Tags = "Теги линия слишком коротка"
+
+PLIGG_Visual_Profile_UsernameUpdated = "Ваше имя пользователя был обновлен"
+
+Pligg_Profile_No_Membership = "Этот пользователь не является членом какой-либо из групп."
+
+PLIGG_Visual_User_Profile_People = "люди"
+
+PLIGG_Visual_User_Profile_Is_Following = "следит"
+
+PLIGG_User_Profile_Social = "Социальные счета"
+
+PLIGG_User_Profile_Facebook = "Facebook"
+
+PLIGG_User_Profile_Twitter = "Twitter"
+
+PLIGG_User_Profile_Linkedin = "Linkedin"
+
+PLIGG_User_Profile_Googleplus = "Google+"
+
+PLIGG_User_Profile_Pinterest = "Pinterest"
+
+PLIGG_User_Display_Settings = "Параметры дисплея"
+
+PLIGG_Continue_Reading = "Продолжить чтение"
+
+PLIGG_No_More_Articles = "No More Статьи найдены"
+
+PLIGG_Follow = "следить"
+
+PLIGG_Unfollow = "Отписаться"
+
+PLIGG_Visual_AdminPanel_Backup_None = "Нет резервных копий были получены еще! Начните с нажатия на одну из кнопок выше."
+
+PLIGG_Admin_Template_Widget_Title = "Управление шаблонами Widget"
+
+PLIGG_Admin_Template_Widget_Description = "Перетащите и отпустите пунктов ниже, чтобы управлять порядком отображения в шаблоне боковой панели."
+
+PLIGG_Visual_UpVoted = "Проголосовали Up"
+
+PLIGG_Visual_DownVoted = "Voted Down"
+// End 2.0.0 Language File
