@@ -18,8 +18,7 @@
 		</ul>
 	</div>
 	{checkActionsTpl location="tpl_pligg_submit_step1_middle"}
-	<form action="submit.php" method="post" id="thisform">
-	{* This action url should work, but for some reason doesn't on test urlmethod 1 site: {$URL_submit} *}
+	<form action="{if $UrlMethod == "2"}{$URL_submit}{else}submit.php{/if}" method="post" id="thisform">
 		<div class="submit_form">
 			<h3>{#PLIGG_Visual_Submit1_NewsSource#}</h3>
 			<label for="url">{#PLIGG_Visual_Submit1_NewsURL#}:</label>
