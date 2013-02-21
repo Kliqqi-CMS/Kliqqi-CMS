@@ -15,44 +15,40 @@
 			{if $user_authenticated eq true}
 				<div class="btn-group pull-right">
 					<a class="btn dropdown-toggle" data-toggle="dropdown" href="#">
-		{php}
-		global $main_smarty, $current_user;
+						{php}
+						global $main_smarty, $current_user;
 
-		if ($current_user->user_id > 0 && $current_user->authenticated) {
-				$login=$current_user->user_login;
-		}
+						if ($current_user->user_id > 0 && $current_user->authenticated) {
+								$login=$current_user->user_login;
+						}
 
-		// Read the users information from the database
-		$user=new User();
-		$user->username = $login;
-		if(!$user->read()) {
-			echo "invalid user";
-			die;
-		}
+						// Read the users information from the database
+						$user=new User();
+						$user->username = $login;
+						if(!$user->read()) {
+							echo "invalid user";
+							die;
+						}
 
-		// Assign smarty variables to use in the template.
-			$main_smarty->assign('Avatar_ImgLarge', get_avatar('large', $user->avatar_source, $user->username, $user->email));
-			$main_smarty->assign('Avatar_ImgSmall', get_avatar('small', $user->avatar_source, $user->username, $user->email));
-			$main_smarty->assign('user_names', $user->names);
-			$main_smarty->assign('user_id', $user->id);
-			$main_smarty->assign('user_username', $user->username);
+						// Assign smarty variables to use in the template.
+							$main_smarty->assign('Avatar_ImgLarge', get_avatar('large', $user->avatar_source, $user->username, $user->email));
+							$main_smarty->assign('Avatar_ImgSmall', get_avatar('small', $user->avatar_source, $user->username, $user->email));
+							$main_smarty->assign('user_names', $user->names);
+							$main_smarty->assign('user_id', $user->id);
+							$main_smarty->assign('user_username', $user->username);
 
-		{/php}
-                <img src="{$Avatar_ImgSmall}" onerror="this.src='{$my_pligg_base}/avatars/Avatar_32.png'; this.title='Loading...';"/> &nbsp;  {$user_logged_in}
+						{/php}
+						<img src="{$Avatar_ImgSmall}" onerror="this.src='{$my_pligg_base}/avatars/Avatar_32.png'; this.title='Loading...';" style="height:16px;width:16px;" /> &nbsp;  {$user_logged_in}
 						<span class="caret"></span>
 					</a>
-
 					<ul class="dropdown-menu">
 						{checkActionsTpl location="tpl_pligg_profile_sort_start"}
 						<li><a href="{$URL_userNoVar}" class="navbut{$nav_pd}">{#PLIGG_Visual_Profile#}</a></li>
 						<li><a href="{$user_url_setting}" class="navbut{$nav_set}"><span>{#PLIGG_Visual_User_Setting#}</a></li>
 						<li><a href="{$user_url_news_sent}" class="navbut{$nav_ns}">{#PLIGG_Visual_User_NewsSent#}</a></li>
 						<li><a href="{$user_url_commented}" class="navbut{$nav_c}">{#PLIGG_Visual_User_NewsCommented#}</a></li>
-						
 						<li><a href="{$user_url_news_upvoted}" class="navbut{$nav_nv}">{#PLIGG_Visual_UpVoted#}</a></li>
 						<li><a href="{$user_url_news_downvoted}" class="navbut{$nav_nv}">{#PLIGG_Visual_DownVoted#}</a></li>
-						
-						
 						<li><a href="{$user_url_saved}" class="navbut{$nav_s}">{#PLIGG_Visual_User_NewsSaved#}</a></li>
 						{checkActionsTpl location="tpl_pligg_profile_sort_end"}
 						<li class="divider"></li>
