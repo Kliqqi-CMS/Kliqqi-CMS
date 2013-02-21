@@ -41,7 +41,7 @@
 						<h3>Profile Avatar Upload</h3>
 					</div>
 					<div class="modal-body">
-						<form method="POST" enctype="multipart/form-data" name="image_upload_form" action="/profile.php">
+						<form method="POST" enctype="multipart/form-data" name="image_upload_form" action="{$my_pligg_base}/profile.php">
 						<script type="text/javascript">
 							$('.fileupload').fileupload()
 						</script>
