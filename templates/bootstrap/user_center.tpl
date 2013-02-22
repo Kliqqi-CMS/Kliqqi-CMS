@@ -28,10 +28,10 @@
 	<div class="span9">
 		<h1 style="margin-bottom:0px;">
 			{if $UseAvatars neq "0"}
-				{if $user_login eq $user_logged_in}<a href="{$my_pligg_base}/profile.php?edit_avatar">{/if}
+				{if $user_login eq $user_logged_in}<a href="{$my_pligg_base}/profile.php?avatar=edit">{/if}
 					<div class="thumbnail avatar_thumb">
 						<img style="float:left;margin:0 15px 0 0;" src="{$Avatar.large}" style="margin-bottom:4px;" alt="Avatar" />
-						{if $user_login eq $user_logged_in}<a href="{$my_pligg_base}/profile.php?edit_avatar" class="btn btn-small edit-avatar">Edit Avatar</a>{/if}
+						{if $user_login eq $user_logged_in}<a href="{$my_pligg_base}/profile.php?avatar=edit" class="btn btn-small edit-avatar">Edit Avatar</a>{/if}
 					</div>
 				{if $user_login eq $user_logged_in}</a>{/if}
 			{/if}
