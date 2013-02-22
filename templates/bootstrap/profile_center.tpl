@@ -9,6 +9,22 @@
 			{if $UseAvatars neq "0"}
 				<a href="#profileavatar" data-toggle="modal">
 					<div class="thumbnail avatar_thumb">
+
+						{php}
+							// Edit Avatar on Page Load using ?edit_avatar at end of URL
+							$refer  = $_SERVER["REQUEST_URI"];
+							$avatarcheck = strstr($refer, '?');
+							if ($avatarcheck == "?edit_avatar"){
+								echo "
+									<script type='text/javascript'>
+										$(window).load(function(){
+											$('#profileavatar').modal('show');
+										});
+									</script>
+								";
+							}
+						{/php}
+				
 						<img style="float:left;margin:0 15px 0 0;" src="{$Avatar.large}" style="margin-bottom:4px;" alt="Avatar" />
 						<a href="#profileavatar" data-toggle="modal" class="btn btn-small edit-avatar">Edit Avatar</a>
 					</div>

@@ -28,47 +28,13 @@
 	<div class="span9">
 		<h1 style="margin-bottom:0px;">
 			{if $UseAvatars neq "0"}
-				{if $user_login eq $user_logged_in}<a href="#profileavatar" data-toggle="modal">{/if}
+				{if $user_login eq $user_logged_in}<a href="{$my_pligg_base}/profile.php?edit_avatar">{/if}
 					<div class="thumbnail avatar_thumb">
 						<img style="float:left;margin:0 15px 0 0;" src="{$Avatar.large}" style="margin-bottom:4px;" alt="Avatar" />
-						{if $user_login eq $user_logged_in}<a href="#profileavatar" data-toggle="modal" class="btn btn-small edit-avatar">Edit Avatar</a>{/if}
+						{if $user_login eq $user_logged_in}<a href="{$my_pligg_base}/profile.php?edit_avatar" class="btn btn-small edit-avatar">Edit Avatar</a>{/if}
 					</div>
 				{if $user_login eq $user_logged_in}</a>{/if}
-				{* Avatar upload modal *}
-				<div class="modal hide fade" id="profileavatar" style="display: none;">
-					<div class="modal-header">
-						<button data-dismiss="modal" class="close" type="button">&times;</button>
-						<h3>Profile Avatar Upload</h3>
-					</div>
-					<div class="modal-body">
-						<form method="POST" enctype="multipart/form-data" name="image_upload_form" action="{$my_pligg_base}/profile.php">
-						<script type="text/javascript">
-							$('.fileupload').fileupload()
-						</script>
-	
-						<div class="fileupload fileupload-new" data-provides="fileupload">
-							<div class="fileupload-new thumbnail">
-								<img src="{$Avatar.large}" title="{#PLIGG_Visual_Profile_CurrentAvatar#}" />
-							</div>
-							<div class="fileupload-preview fileupload-exists thumbnail" style="max-width:{$Avatar_Large}px;max-height:{$Avatar_Large}px;"></div>
-							<div>
-								<span class="btn btn-file">
-									<span class="fileupload-new"><i class="icon icon-picture"></i> Browse</span>
-									<span class="fileupload-exists"><i class="icon icon-picture"></i> Browse</span>
-									<input type="file" class="fileupload" name="image_file"/>
-								</span>
-								<a href="#" class="btn btn-danger fileupload-exists" data-dismiss="fileupload">Remove</a>
-							</div>
-						</div>
-						
-					</div>
-					<div class="modal-footer">
-						<input type="hidden" name="avatar" value="uploaded"/>
-						{$hidden_token_profile_change}
-						<input type="submit" name="action" class="btn btn-primary" value="{#PLIGG_Visual_Profile_AvatarUpload#}"/>
-						</form>
-					</div>
-				</div>
+				
 			{/if}
 			{$user_username|capitalize}
 		</h1>
