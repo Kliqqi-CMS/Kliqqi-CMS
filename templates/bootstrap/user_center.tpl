@@ -34,7 +34,6 @@
 						{if $user_login eq $user_logged_in}<a href="{$my_pligg_base}/profile.php?edit_avatar" class="btn btn-small edit-avatar">Edit Avatar</a>{/if}
 					</div>
 				{if $user_login eq $user_logged_in}</a>{/if}
-				
 			{/if}
 			{$user_username|capitalize}
 		</h1>

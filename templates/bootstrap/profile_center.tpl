@@ -11,10 +11,11 @@
 					<div class="thumbnail avatar_thumb">
 
 						{php}
-							// Edit Avatar on Page Load using ?edit_avatar at end of URL
+							// Edit Avatar on Page Load using ?avatar=edit at end of URL
+							// Needs to accomodate for URL Method 2: /user/profile/edit/avatar/
 							$refer  = $_SERVER["REQUEST_URI"];
 							$avatarcheck = strstr($refer, '?');
-							if ($avatarcheck == "?edit_avatar"){
+							if ($avatarcheck == "?avatar=edit"){
 								echo "
 									<script type='text/javascript'>
 										$(window).load(function(){
@@ -25,7 +26,7 @@
 							}
 						{/php}
 				
-						<img style="float:left;margin:0 15px 0 0;" src="{$Avatar.large}" style="margin-bottom:4px;" alt="Avatar" />
+						<img style="float:left;margin:0 15px 0 0;" src="{$Avatar.100}" style="margin-bottom:4px;" alt="Avatar" />
 						<a href="#profileavatar" data-toggle="modal" class="btn btn-small edit-avatar">Edit Avatar</a>
 					</div>
 				</a>
