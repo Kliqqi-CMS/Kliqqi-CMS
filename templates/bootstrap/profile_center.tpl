@@ -26,7 +26,7 @@
 							}
 						{/php}
 				
-						<img style="float:left;margin:0 15px 0 0;" src="{$Avatar.100}" style="margin-bottom:4px;" alt="Avatar" />
+						<img style="float:left;margin:0 15px 0 0;" src="{$Avatar.large}" style="margin-bottom:4px;" alt="Avatar" />
 						<a href="#profileavatar" data-toggle="modal" class="btn btn-small edit-avatar">Edit Avatar</a>
 					</div>
 				</a>
