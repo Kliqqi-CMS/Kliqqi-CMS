@@ -60,9 +60,9 @@ if ($_GET['mode']!='perm' || $_GET['perms']) {
 		showLogin();
 	}
   } catch (Exception $e) {
-	print_r($e);
-	exit;
-#	showLogin();
+#	print_r($e);
+#	exit;
+	showLogin();
   }
 }
 else {

@@ -13,6 +13,7 @@ include(mnminclude.'smartyvariables.php');
 
 require_once "twitter.php";  
 include_once('twitter_settings.php');
+include_once('twitter_main.php');
 
 if ($_GET['disconnect'])
 {

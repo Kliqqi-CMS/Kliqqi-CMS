@@ -241,7 +241,7 @@ function twitter_post($linkres,$when)
     	$options = array('status' => stripslashes($msg));
 	try {
     		$to = new TwitterOauth($settings['consumer_key'], $settings['consumer_secret'], $user->user_twitter_token, $user->user_twitter_secret);
-    		$tweetJson = json_decode($to->OAuthRequest('http://twitter.com/statuses/update.json', $options, 'POST'),true);
+   		$tweetJson = json_decode($to->OAuthRequest('http://api.twitter.com/1/statuses/update.json', $options, 'POST'),true);
 	} catch (exception $e) {
 #print_r($e);
 	}

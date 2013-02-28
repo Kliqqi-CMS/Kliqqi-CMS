@@ -35,7 +35,7 @@ if ($current_user->authenticated)
 	$user= $db->get_row('SELECT * FROM ' . table_users . " where user_id={$current_user->user_id}");
 	if ($user->user_email) {
 		$to = $user->user_email;
-		$subject = $main_smarty->get_config_vars("PLIGG_Visual_Name").' '.$main_smarty->get_config_vars("PLIGG_PassEmail_Subject");
+		$subject = $main_smarty->get_config_vars("PLIGG_PassEmail_Subject");
 
 		$password = substr(md5(uniqid(rand(), true)),0,8);
 		$saltedPass = generateHash($password);
@@ -60,8 +60,8 @@ if ($current_user->authenticated)
 	$fb_user->read();
 
 	$db->query($sql="UPDATE ".table_users." SET user_fb=$member_id, fb_access_token='".sanitize($token,3)."' WHERE user_id='{$fb_user->id}'");	
-	header("Location: ../../index.php");
     }
+    header("Location: ../../index.php");
     exit;
 }
 
