@@ -16,7 +16,7 @@ function isIPIn($ip,$net,$mask) {
 function isPrivateIP($ip) {
 	$privates = array ("127.0.0.0/24", "10.0.0.0/8", "172.16.0.0/12", "192.168.0.0/16");
 	foreach ( $privates as $k ) {
-			list($net,$mask)=split("/",$k);
+			list($net,$mask)=preg_split("/",$k);
 			if (isIPIn($ip,$net,$mask)) {
 					return true;
 			}
