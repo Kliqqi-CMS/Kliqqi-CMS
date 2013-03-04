@@ -103,8 +103,8 @@ filter:alpha(opacity=40);
     background-color: #EEEEEE;
     background-image: -moz-linear-gradient(center top , #F5F5F5 0%, #EEEEEE 100%);
     background-repeat: repeat-x;
-    border: 1px solid #E5E5E5;
-    border-radius: 4px 4px 4px 4px;
+    border: solid #E5E5E5;
+	border-width: 1px 0;
     height: 36px;
     width: 100%;
 }
