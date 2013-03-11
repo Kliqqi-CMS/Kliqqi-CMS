@@ -57,7 +57,6 @@ if(!$user->read()) {
 }
 	// uploading avatar
 	if(isset($_POST["avatar"]) && sanitize($_POST["avatar"], 3) == "uploaded" && Enable_User_Upload_Avatar == true){
-
 		if ($CSRF->check_valid(sanitize($_POST['token'], 3), 'profile_change')){
 
 			$user_image_path = "avatars/user_uploaded" . "/";
@@ -73,7 +72,7 @@ if(!$user->read()) {
 			if(!in_array($_FILES['image_file']['type'],$allowedFileTypes)){
 				$error['Type'] = 'Only these file types are allowed : jpeg, gif, png';
 			}
-		 
+
 			if(empty($error)){
 				$imagesize = getimagesize($mytmpfile);
 				$width = $imagesize[0];
@@ -83,7 +82,7 @@ if(!$user->read()) {
 		
 				$newimage = $user_image_path . $imagename ;
 
-				$result = @move_uploaded_file($_FILES['image_file']['tmp_name'], $newimage);
+				$result = move_uploaded_file($_FILES['image_file']['tmp_name'], $newimage);
 				if(empty($result))
 					$error["result"] = "There was an error moving the uploaded file.";
 			}			
@@ -105,6 +104,8 @@ if(!$user->read()) {
 			$img->pSave($user_image_path . $user->id . "_".Avatar_Small.".jpg");
 			$img = "";
 
+			$db->query($sql="UPDATE ".table_users." SET user_avatar_source='useruploaded' WHERE user_id='$user->id'");	
+			unset($cached_users[$user->id]);
 		} else {
 			echo 'An error occured while uploading your avatar.';
 		}
