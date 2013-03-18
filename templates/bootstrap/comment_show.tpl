@@ -12,9 +12,9 @@
 				<br />
 				{if $comment_user_vote_count eq 0 && $current_userid neq $comment_author}
 					<span id="ratebuttons-{$comment_id}">	  
-						<a data-toggle="modal" href="#LoginModal" href="javascript:{$link_shakebox_javascript_voten}" style='text-decoration:none;'>- </a> 
+						<a href="javascript:{$link_shakebox_javascript_voten}" style='text-decoration:none;'>- </a> 
 						<a id="cvote-{$comment_id}" style='text-decoration: none;'>{$comment_votes}</a> 
-						<a data-toggle="modal" href="#LoginModal" href="javascript:{$link_shakebox_javascript_votey}" style='text-decoration:none;' href="#LoginModal" data-toggle="modal"> +</a> 
+						<a href="javascript:{$link_shakebox_javascript_votey}" style='text-decoration:none;'> +</a> 
 					</span>
 				{/if}
 			{/if}
