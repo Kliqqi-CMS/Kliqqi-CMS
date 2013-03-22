@@ -475,6 +475,8 @@ if($action == 'install')
 		$requires = $module_info['requires'];
 		check_module_requirements($requires);
 		process_db_requirements($module_info);
+		if ($module_info['install'])
+			@eval($module_info['install']);
 	} else {
 		die('No install file exists.');
 	}
@@ -492,10 +494,13 @@ if($action == 'remove')
 	 $sql = "SELECT * FROM " . table_modules . " WHERE `name` = '" . $module . "';";
 	
 	$row = $db->get_row($sql);
-	if(($module_info = include_module_settings($row->folder)) && $module_info['uninstall'])
-	{
+	if ($module_info = include_module_settings($row->folder)) {
+	   if ($module_info['uninstall'])
 		@eval($module_info['uninstall'].'();');
+	   elseif ($module_info['uninstall2'])
+		@eval($module_info['uninstall2']);
 	}
+
 	$sql = "Delete from " . table_modules . " where `name` = '" . $module . "';";
 	//echo $sql;
 	$db->query($sql);

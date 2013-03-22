@@ -170,7 +170,7 @@ function include_module_settings($module)
 {
 	if(file_exists(mnmmodules . $module . '/' . $module . '_install.php'))
 	{
-		include_once(mnmmodules . $module . '/' . $module . '_install.php');		
+		include(mnmmodules . $module . '/' . $module . '_install.php');		
 		return $module_info;
 	} else {
 		return false;
