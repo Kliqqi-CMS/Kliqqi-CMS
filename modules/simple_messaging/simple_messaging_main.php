@@ -229,7 +229,7 @@ function simple_messaging_showpage(){
 		$msg_from_ID = $current_user->user_id;
 		
 		$message = new KMessaging(true);
-		$msg_result = $message->SendMessege($msg_subject,$msg_body,$msg_from_ID,$msg_to_ID,0);
+		$msg_result = $message->SendMessage($msg_subject,$msg_body,$msg_from_ID,$msg_to_ID,0);
 		if ($msg_result != 0){
 			$main_smarty->config_load(simple_messaging_lang_conf);
 			//print 'PLIGG_MESSAGING_Error_'.$msg_result;
