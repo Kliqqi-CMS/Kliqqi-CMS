@@ -4,6 +4,13 @@
 <a class="btn" ONCLICK="history.go(-1)">Back</a> <a class="btn btn-primary" href="admin_log.php?clear=1">Clear Log</a>
 <br /><br />
 {if $error_count != '0'}
-	<pre>{php} @readfile('../'.LOG_FILE); {/php}</pre>
+	<pre>{php}
+		if ($fh = fopen('../'.LOG_FILE, "r")) {
+			@readfile('../'.LOG_FILE); 
+			fclose($fh);
+		} else {
+			echo "Error:'../".LOG_FILE."' can not be read.";
+		}
+	{/php}</pre>
 {/if}
 <!--/error_log.tpl -->

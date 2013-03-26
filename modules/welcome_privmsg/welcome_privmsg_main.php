@@ -29,7 +29,7 @@ function welcome_privmsg_send(&$registration_details)
 		$msg_from_ID = welcome_privmsg_admin_id;
 		
 		$message = new KMessaging(true);
-		$msg_result = $message->SendMessege($msg_subject, $msg_body, $msg_from_ID, $msg_to_ID, 0);
+		$msg_result = $message->SendMessage($msg_subject, $msg_body, $msg_from_ID, $msg_to_ID, 0);
 		
 		if ($msg_result != 0) {
 			echo "Module Error #".$msg_result;

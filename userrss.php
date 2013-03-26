@@ -113,6 +113,10 @@ if($time > 0) {
 						LEFT JOIN " . table_users . " ON link_author=user_id 
 						WHERE saved_user_id=$user->id AND (link_status='published' OR link_status='queued') ";
 			break;		
+		default:
+			header("Location: $my_pligg_base/404error.php");
+			die();
+			break;
 	}
 	
 	$cat = isset($_GET['category']) && is_numeric($_GET['category']) ? $_GET['category'] : 0;
