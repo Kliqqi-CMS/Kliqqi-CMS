@@ -54,7 +54,7 @@ class Friend {
 	{
 		// returns an array of people who have added you as a friend
 		global $db, $current_user;
-		$friends = $db->get_results("SELECT " . table_users . ".user_login, " . table_users . ".user_avatar_source, " . table_users . ".user_email, " . table_users . ".user_id FROM " . table_friends . " INNER JOIN " . table_users . " ON " . table_friends . ".friend_from = " . table_users . ".user_id WHERE ((" . table_friends . ".friend_to)= " . $current_user->user_id . ")",ARRAY_A);
+		$friends = $db->get_results("SELECT " . table_users . ".user_login, " . table_users . ".user_avatar_source, " . table_users . ".user_email, " . table_users . ".user_id FROM " . table_friends . " INNER JOIN " . table_users . " ON " . table_friends . ".friend_from = " . table_users . ".user_id WHERE ((" . table_friends . ".friend_to)= " . $current_user->user_id . ") AND (" . table_users . ".user_id != " . $current_user->user_id . ")",ARRAY_A);
 		return $friends;
 	}
 
