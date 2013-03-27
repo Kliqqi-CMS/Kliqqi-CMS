@@ -143,10 +143,10 @@ if ($old_version < $new_version) {
 	// Update User Levels, removing the 'god' level
 	$sql = "UPDATE ".table_users." SET user_level='moderator' WHERE user_level='admin';";
 	$db->query($sql);
-	echo '<li>Changed Admin to Moderator</li>';
+	echo '<li>Changed Admin user level to Moderator</li>';
 	$sql = "UPDATE ".table_users." SET user_level='admin' WHERE user_level='god';";
 	$db->query($sql);
-	echo '<li>Changed God to Admin</li>';
+	echo '<li>Changed God user level to Admin</li>';
 	
 	// Remove the Spell Checker from Admin Config
 	$sql = "DELETE FROM " . table_config . " WHERE var_name='Spell_Checker'";
