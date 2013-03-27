@@ -25,46 +25,47 @@ define('sidebar_stats_pligg_lang_conf', lang_loc . "/languages/lang_" . pligg_la
 
 // don't touch anything past this line.
 
-$sql = "SELECT user_login FROM " . table_users . " WHERE user_enabled = '1' ORDER BY user_id DESC LIMIT 1";
-$last_user = $db->get_var($sql);
-$main_smarty->assign('sidebar_stats_last_user', $last_user); 
-
-$members = $db->get_var('SELECT count(*) from ' . table_users . ' WHERE user_enabled = "1";');
-$main_smarty->assign('sidebar_stats_members', $members);
-
-$votes = $db->get_var('SELECT count(*) from ' . table_votes . ' WHERE vote_type="links";');
-$main_smarty->assign('sidebar_stats_votes', $votes);
-
-$published = $db->get_var('SELECT count(*) from ' . table_links . ' WHERE link_status = "published";');
-$main_smarty->assign('sidebar_stats_published', $published);
-
-$upcoming = $db->get_var('SELECT count(*) from ' . table_links . ' WHERE link_status = "queued";');
-$main_smarty->assign('sidebar_stats_upcoming', $upcoming);
-
-$main_smarty->assign('sidebar_stats_stories', $upcoming + $published);
-
-$comments = $db->get_var('SELECT count(*) from ' . table_comments . ' WHERE comment_status = "published";');
-$main_smarty->assign('sidebar_stats_comments', $comments);
-
-$votes = $db->get_var('SELECT count(*) from ' . table_votes . ' WHERE vote_type="comments";');
-$main_smarty->assign('sidebar_stats_comment_votes', $votes);
-
-$groups = $db->get_var('SELECT count(*) from ' . table_groups . ' WHERE group_status = "Enable";');
-$main_smarty->assign('sidebar_stats_groups', $groups);
-
-$saved = $db->get_var('SELECT count(*) from ' . table_saved_links . ';');
-$main_smarty->assign('sidebar_stats_saved', $saved);
-
-$files = $db->get_var('SELECT count(*) from ' . table_prefix . 'files;');
-$main_smarty->assign('sidebar_stats_files', $files);
-
-$messages = $db->get_var('SELECT count(*) from ' . table_prefix . 'messages;');
-$main_smarty->assign('sidebar_stats_messages', $messages);
-
-$categories = $db->get_var('SELECT count(*) from ' . table_prefix . 'categories;');
-$main_smarty->assign('sidebar_stats_categories', $categories);
-
 if(is_object($main_smarty)){
+	$sql = "SELECT user_login FROM " . table_users . " WHERE user_enabled = '1' ORDER BY user_id DESC LIMIT 1";
+	$last_user = $db->get_var($sql);
+	$main_smarty->assign('sidebar_stats_last_user', $last_user); 
+
+	$members = $db->get_var('SELECT count(*) from ' . table_users . ' WHERE user_enabled = "1";');
+	$main_smarty->assign('sidebar_stats_members', $members);
+
+	$votes = $db->get_var('SELECT count(*) from ' . table_votes . ' WHERE vote_type="links";');
+	$main_smarty->assign('sidebar_stats_votes', $votes);
+
+	$published = $db->get_var('SELECT count(*) from ' . table_links . ' WHERE link_status = "published";');
+	$main_smarty->assign('sidebar_stats_published', $published);
+
+	$upcoming = $db->get_var('SELECT count(*) from ' . table_links . ' WHERE link_status = "queued";');
+	$main_smarty->assign('sidebar_stats_upcoming', $upcoming);
+
+	$main_smarty->assign('sidebar_stats_stories', $upcoming + $published);
+
+	$comments = $db->get_var('SELECT count(*) from ' . table_comments . ' WHERE comment_status = "published";');
+	$main_smarty->assign('sidebar_stats_comments', $comments);
+
+	$votes = $db->get_var('SELECT count(*) from ' . table_votes . ' WHERE vote_type="comments";');
+	$main_smarty->assign('sidebar_stats_comment_votes', $votes);
+
+	$groups = $db->get_var('SELECT count(*) from ' . table_groups . ' WHERE group_status = "Enable";');
+	$main_smarty->assign('sidebar_stats_groups', $groups);
+
+	$saved = $db->get_var('SELECT count(*) from ' . table_saved_links . ';');
+	$main_smarty->assign('sidebar_stats_saved', $saved);
+
+	$files = $db->get_var('SELECT count(*) from ' . table_prefix . 'files;');
+	$main_smarty->assign('sidebar_stats_files', $files);
+
+	$messages = $db->get_var('SELECT count(*) from ' . table_prefix . 'messages;');
+	$main_smarty->assign('sidebar_stats_messages', $messages);
+
+	$categories = $db->get_var('SELECT count(*) from ' . table_prefix . 'categories;');
+	$main_smarty->assign('sidebar_stats_categories', $categories);
+
+
 	$main_smarty->assign('sidebar_stats_path', sidebar_stats_path);
 	$main_smarty->assign('sidebar_stats_tpl_path', sidebar_stats_tpl_path);
 	$main_smarty->assign('sidebar_stats_pligg_lang_conf', sidebar_stats_pligg_lang_conf);
