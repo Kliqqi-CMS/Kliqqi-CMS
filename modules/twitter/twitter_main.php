@@ -27,16 +27,19 @@ function twitter_profile_show(){
 	if ($user->extra_field['twitter_follow_friends'])
 	{
 	    $settings = get_twitter_settings();
-	    $to = new TwitterOauth($settings['consumer_key'], $settings['consumer_secret'], $user->extra_field['user_twitter_token'], $user->extra_field['user_twitter_secret']);
-	    $friends = json_decode($to->OAuthRequest("http://api.twitter.com/1/friends/ids.json?user_id={$_SESSION['twitter_id']}", array(), 'GET'),true);
-	    if ($friends)
-	    {
-	    	$in = join(",",$friends);
-		if ($users = $db->get_results($sql = "SELECT a.* FROM ".table_prefix."users a
-					   LEFT JOIN ".table_prefix."friends b ON a.user_id=b.friend_to AND b.friend_from={$current_user->user_id}
-					   WHERE user_twitter_id IN ($in) AND ISNULL(b.friend_id)"))
-			foreach ($users as $user)
-			    $db->query("INSERT INTO ".table_prefix."friends SET friend_from={$current_user->user_id}, friend_to={$user->user_id}");
+	    try {
+		    $to = new TwitterOauth($settings['consumer_key'], $settings['consumer_secret'], $user->extra_field['user_twitter_token'], $user->extra_field['user_twitter_secret']);
+		    $friends = json_decode($to->OAuthRequest("http://api.twitter.com/1/friends/ids.json?user_id={$_SESSION['twitter_id']}", array(), 'GET'),true);
+		    if ($friends)
+		    {
+		    	$in = join(",",$friends);
+			if ($users = $db->get_results($sql = "SELECT a.* FROM ".table_prefix."users a
+						   LEFT JOIN ".table_prefix."friends b ON a.user_id=b.friend_to AND b.friend_from={$current_user->user_id}
+						   WHERE user_twitter_id IN ($in) AND ISNULL(b.friend_id)"))
+				foreach ($users as $user)
+				    $db->query("INSERT INTO ".table_prefix."friends SET friend_from={$current_user->user_id}, friend_to={$user->user_id}");
+		    }
+	    } catch (Exception $e) {
 	    }
 	}
 }
