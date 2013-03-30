@@ -239,7 +239,7 @@ function show_profile() {
 	}
 
 	// show the template
-	$main_smarty->assign('tpl_center', $the_template . '/profile_center');
+	$main_smarty->assign('tpl_center', $the_template . '/user_edit');
 	$main_smarty->display($the_template . '/pligg.tpl');	
 }
 

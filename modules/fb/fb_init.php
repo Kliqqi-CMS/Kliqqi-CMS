@@ -21,7 +21,7 @@ if(defined('mnminclude')){
 
 		module_add_action('profile_save', 'fb_profile_save', '');
 		module_add_action('profile_show', 'fb_profile_show', '');
-		module_add_action_tpl('tpl_profile_center_fields', fb_tpl_path . 'fb_center_fields.tpl');
+		module_add_action_tpl('tpl_user_edit_fields', fb_tpl_path . 'fb_center_fields.tpl');
 
 		module_add_action('after_comment_submit', 'fb_comment_submit', '' ) ;
 		include_once(mnmmodules . 'fb/fb_main.php');

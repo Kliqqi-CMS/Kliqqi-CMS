@@ -19,7 +19,7 @@ if(defined('mnminclude')){
 		module_add_action('profile_save', 'users_extra_fields_profile_save', '');
 		module_add_action('profile_show', 'users_extra_fields_profile_show', '');
 
-		module_add_action_tpl('tpl_profile_center_fields', users_extra_fields_tpl_path . 'profile_center_fields.tpl');
+		module_add_action_tpl('tpl_user_edit_fields', users_extra_fields_tpl_path . 'profile_center_fields.tpl');
 		module_add_action_tpl('tpl_admin_user_edit_center_fields', users_extra_fields_tpl_path . 'admin_user_edit_center_fields.tpl');
 		module_add_action_tpl('tpl_admin_user_show_center_fields', users_extra_fields_tpl_path . 'admin_user_show_center_fields.tpl');
 

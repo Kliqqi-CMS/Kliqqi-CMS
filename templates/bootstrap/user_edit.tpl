@@ -1,7 +1,7 @@
 {************************************
 ******* User Settings Template ******
 *************************************}
-<!-- profile_center.tpl -->
+<!-- user_edit.tpl -->
 {checkActionsTpl location="tpl_pligg_profile_start"}
 <div class="row-fluid" style="margin-bottom:10px;">
 	<div class="span9">
@@ -186,7 +186,7 @@
 {checkActionsTpl location="tpl_pligg_profile_info_start"}
 <form action="" method="post" id="thisform">
 	<div id="profile_container" style="position: relative;">
-		{checkActionsTpl location="tpl_profile_center_fields"}
+		{checkActionsTpl location="tpl_user_edit_fields"}
 		{checkActionsTpl location="tpl_pligg_profile_info_middle"}
 		<table class="masonry table table-bordered table-striped span4">
 			<thead class="table_title">
@@ -342,4 +342,4 @@
 	</div>
 </form>
 {checkActionsTpl location="tpl_pligg_profile_end"}
-<!--/profile_center.tpl -->
+<!--/user_edit.tpl -->

@@ -21,7 +21,7 @@ if(defined('mnminclude')){
 
 		module_add_action('profile_save', 'comment_subscription_profile_save', '');
 		module_add_action('profile_show', 'comment_subscription_profile_show', '');
-		module_add_action_tpl('tpl_profile_center_fields', comment_subscription_tpl_path . 'comment_subscription_center_fields.tpl');
+		module_add_action_tpl('tpl_user_edit_fields', comment_subscription_tpl_path . 'comment_subscription_center_fields.tpl');
 
 		include_once(mnmmodules . 'comment_subscription/comment_subscription_main.php');
 	}

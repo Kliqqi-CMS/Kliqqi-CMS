@@ -14,7 +14,7 @@ if(defined('mnminclude')){
 
 		module_add_action('profile_save', 'twitter_profile_save', '');
 		module_add_action('profile_show', 'twitter_profile_show', '');
-		module_add_action_tpl('tpl_profile_center_fields', twitter_tpl_path . 'twitter_center_fields.tpl');
+		module_add_action_tpl('tpl_user_edit_fields', twitter_tpl_path . 'twitter_center_fields.tpl');
 
 		include_once(mnmmodules . 'twitter/twitter_main.php');
 	}

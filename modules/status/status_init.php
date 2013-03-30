@@ -23,7 +23,7 @@ if(defined('mnminclude')){
 #		module_add_action('admin_users_edit', 'users_extra_fields_admin_users_edit', '');
 		module_add_action('profile_save', 'status_profile_save', '');
 		module_add_action('profile_show', 'status_profile_show', '');
-		module_add_action_tpl('tpl_profile_center_fields', status_tpl_path . 'status_center_fields.tpl');
+		module_add_action_tpl('tpl_user_edit_fields', status_tpl_path . 'status_center_fields.tpl');
 #		module_add_action_tpl('tpl_admin_user_edit_center_fields', users_extra_fields_tpl_path . 'admin_user_edit_center_fields.tpl');
 #		module_add_action_tpl('tpl_admin_user_show_center_fields', users_extra_fields_tpl_path . 'admin_user_show_center_fields.tpl');
 
