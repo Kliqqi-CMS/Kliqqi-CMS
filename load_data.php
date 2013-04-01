@@ -135,15 +135,10 @@ if($page_name=='group_story'){
 		break;
 		
 		case 'downvoted':
-				
 		$sql="SELECT DISTINCT * FROM " . table_links . ", " . table_votes . " WHERE vote_user_id=$userid AND vote_link_id=link_id AND vote_value < 0  AND (link_status='published' OR link_status='queued') ORDER BY link_votes ASC LIMIT $start_up, $page_size";
 		$load_page=1;
 		break;
-		
-		
-		
-		
-		
+
 		case 'saved':
 		$load_page=1;
 		 $fieldexists = checkforfield('saved_privacy', table_saved_links);
