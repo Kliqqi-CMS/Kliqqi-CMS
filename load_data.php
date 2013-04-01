@@ -114,7 +114,7 @@ if($page_name=='group_story'){
 		$load_page=1;
 		break;
 		
-		case 'shaken':
+		case 'upcoming':
 		$sql="SELECT * FROM " . table_links . " WHERE link_author=$userid AND link_status='queued' ORDER BY link_date DESC LIMIT $start_up,$page_size";
 		$load_page=1;
 		break;

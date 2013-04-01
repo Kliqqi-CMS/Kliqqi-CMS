@@ -37,7 +37,7 @@ Disallow: /upcoming/alltime/
 Disallow: /user/profile/
 Disallow: /user/history/
 Disallow: /user/published/
-Disallow: /user/shaken/
+Disallow: /user/upcoming/
 Disallow: /user/commented/
 Disallow: /user/voted/
 Disallow: /user/saved/

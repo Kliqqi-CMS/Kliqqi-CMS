@@ -216,13 +216,11 @@ if ($current_user->user_id > 0 && $current_user->authenticated)
 	$main_smarty->assign('user_url_personal_data', getmyurl('user2', $login, 'profile'));
 	$main_smarty->assign('user_url_news_sent', getmyurl('user2', $login, 'history'));
 	$main_smarty->assign('user_url_news_published', getmyurl('user2', $login, 'published'));
-	$main_smarty->assign('user_url_news_unpublished', getmyurl('user2', $login, 'shaken'));
+	$main_smarty->assign('user_url_news_unpublished', getmyurl('user2', $login, 'upcoming'));
 	$main_smarty->assign('user_url_news_voted', getmyurl('user2', $login, 'voted'));
-	
 	$main_smarty->assign('user_url_news_upvoted', getmyurl('user2', $login, 'upvoted'));
 	$main_smarty->assign('user_url_news_downvoted', getmyurl('user2', $login, 'downvoted'));
 	$main_smarty->assign('user_url_commented', getmyurl('user2', $login, 'commented'));
-	
 	$main_smarty->assign('user_url_saved', getmyurl('user2', $login, 'saved'));
 	$main_smarty->assign('user_url_setting', getmyurl('profile'));
 	$main_smarty->assign('user_url_friends', getmyurl('user_friends', $login, 'following'));
@@ -232,7 +230,6 @@ if ($current_user->user_id > 0 && $current_user->authenticated)
 	$main_smarty->assign('user_rss', getmyurl('rssuser', $login));
 	$main_smarty->assign('URL_Profile', getmyurl('profile'));
 	$main_smarty->assign('user_url_member_groups', getmyurl('user2', $login, 'member_groups	'));
-
 	$main_smarty->assign('isAdmin', checklevel('admin'));
 	$main_smarty->assign('isModerator', checklevel('moderator'));
 }
