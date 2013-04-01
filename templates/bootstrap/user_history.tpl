@@ -140,4 +140,4 @@
 {/if}
 {if isset($user_pagination)}{checkActionsTpl location="tpl_pligg_pagination_start"}{$user_pagination}{checkActionsTpl location="tpl_pligg_pagination_end"}{/if}
 {checkActionsTpl location="tpl_pligg_profile_end"}
-<!--/user_center.tpl -->
+<!--/user_history.tpl -->
