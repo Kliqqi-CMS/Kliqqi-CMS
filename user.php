@@ -78,17 +78,17 @@ $CSRF->create('user_settings', true, true);
 	}
 	
 	
-// check to see if the profile is of a friend
-  $friend = new Friend;
-  $main_smarty->assign('is_friend', $friend->get_friend_status($user->id));
+	// check to see if the profile is of a friend
+	$friend = new Friend;
+	$main_smarty->assign('is_friend', $friend->get_friend_status($user->id));
 
 
-// avatars
+	// avatars
 	$main_smarty->assign('UseAvatars', do_we_use_avatars());
 	$main_smarty->assign('Avatar', $avatars = get_avatar('all', '', $user->username, $user->email));
 	$main_smarty->assign('Avatar_ImgSrc', $avatars['large']);
 	
-// User Homepage URL
+	// User Homepage URL
 	if ($user->url != "") {
 		if(substr(strtoupper($user->url), 0, 8) == "HTTPS://"){
 			$main_smarty->assign('user_url', $user->url);
@@ -101,17 +101,14 @@ $CSRF->create('user_settings', true, true);
 		$main_smarty->assign('user_url', '');
 	}		
 
-// setup the links
+	// setup the links
 	$main_smarty->assign('user_url_personal_data', getmyurl('user2', $login, 'profile'));
 	$main_smarty->assign('user_url_news_sent', getmyurl('user2', $login, 'history'));
 	$main_smarty->assign('user_url_news_published', getmyurl('user2', $login, 'published'));
-	$main_smarty->assign('user_url_news_unpublished', getmyurl('user2', $login, 'shaken'));
+	$main_smarty->assign('user_url_news_unpublished', getmyurl('user2', $login, 'upcoming'));
 	$main_smarty->assign('user_url_news_voted', getmyurl('user2', $login, 'voted'));
-	
 	$main_smarty->assign('user_url_news_upvoted', getmyurl('user2', $login, 'upvoted'));
-	$main_smarty->assign('user_url_news_downvoted', getmyurl('user2', $login, 'downvoted'));
-	
-	
+	$main_smarty->assign('user_url_news_downvoted', getmyurl('user2', $login, 'downvoted'));	
 	$main_smarty->assign('user_url_commented', getmyurl('user2', $login, 'commented'));
 	$main_smarty->assign('user_url_saved', getmyurl('user2', $login, 'saved'));
 	$main_smarty->assign('user_url_friends', getmyurl('user_friends', $login, 'following'));
@@ -123,11 +120,10 @@ $CSRF->create('user_settings', true, true);
 	$main_smarty->assign('form_action', getmyurl('profile')); 
 	$main_smarty->assign('user_url_member_groups', getmyurl('user2', $login, 'member_groups	'));
 
-// tell smarty about our user
+	// tell smarty about our user
 	$main_smarty = $user->fill_smarty($main_smarty);
 
-
-// setup breadcrumbs for the various views
+	// setup breadcrumbs for the various views
 	$view = isset($_GET['view']) && sanitize($_GET['view'], 3) != '' ? sanitize($_GET['view'], 3) : 'profile';
 	if ($view=='setting' && $truelogin!=$login)
 		$view = 'profile';
@@ -141,6 +137,9 @@ $CSRF->create('user_settings', true, true);
 		do_following($user->id);
 		$main_smarty->assign('view_href', '');
 		$main_smarty->assign('nav_pd', 4);
+		// display the template
+		$main_smarty->assign('tpl_center', $the_template . '/user_profile');
+		$main_smarty->display($the_template . '/pligg.tpl');
 	} else {
 		$main_smarty->assign('nav_pd', 3);
 	}
@@ -244,7 +243,7 @@ $CSRF->create('user_settings', true, true);
 		$main_smarty->assign('nav_np', 3);
 		}
 
-	if ($view == 'shaken') {
+	if ($view == 'upcoming') {
 		$page_header .= $main_smarty->get_config_vars('PLIGG_Visual_User_NewsUnPublished');
 		$navwhere['text3'] = $main_smarty->get_config_vars('PLIGG_Visual_User_NewsUnPublished');
 		$post_title .= " | " . $main_smarty->get_config_vars('PLIGG_Visual_User_NewsUnPublished');
@@ -336,15 +335,19 @@ $CSRF->create('user_settings', true, true);
 	    $main_smarty->assign('page_header', $user->username);
 	    $navwhere['text3'] = $main_smarty->get_config_vars('PLIGG_Visual_Search_SearchResults') . ' ' . $keyword;
 	    $main_smarty->assign('posttitle', $main_smarty->get_config_vars('PLIGG_Visual_Breadcrumb_Profile') . " " . $login . " - " . $main_smarty->get_config_vars('PLIGG_Visual_Search_SearchResults') . ' ' . $keyword);
+	
+		// display the template
+		$main_smarty->assign('tpl_center', $the_template . '/user_search');
+		$main_smarty->display($the_template . '/pligg.tpl');
 	}
 
 	$main_smarty->assign('navbar_where', $navwhere);
 
 
-// a hook	
+	// a hook
 	$vars = '';
 	check_actions('user_post_views', $vars);
-   //for auto scrolling
+   // auto scrolling
    if(Auto_scroll==2 || Auto_scroll==3){
 		$main_smarty->assign("scrollpageSize",$page_size);
 		$main_smarty->assign('curuserid',$current_user->user_id);
@@ -352,96 +355,158 @@ $CSRF->create('user_settings', true, true);
 		$main_smarty->assign('viewtype', $view);
 	}
 	
-// determine which user page to display
+	// determine which user page to display
 	Global $db, $main_smarty, $view, $user, $rows, $page_size, $offset;
 	$the_page = 'profile';
 	switch ($view) {
+	
 		case 'history':
 			do_history();
 			if(Auto_scroll==2 || Auto_scroll==3){
       			$main_smarty->assign('total_row', $rows);
-			}else
-			$main_smarty->assign('user_pagination', do_pages($rows, $page_size, $the_page, true));
+			} else {
+				$main_smarty->assign('user_pagination', do_pages($rows, $page_size, $the_page, true));
+			}
+			// display the template
+			$main_smarty->assign('tpl_center', $the_template . '/user_history');
+			$main_smarty->display($the_template . '/pligg.tpl');
 			break;
+			
 		case 'published':
 			do_published();
 			if(Auto_scroll==2 || Auto_scroll==3){
       			$main_smarty->assign('total_row', $rows);
-			}else
-			$main_smarty->assign('user_pagination', do_pages($rows, $page_size, $the_page, true));
+			} else {
+				$main_smarty->assign('user_pagination', do_pages($rows, $page_size, $the_page, true));
+			}
+			// display the template
+			$main_smarty->assign('tpl_center', $the_template . '/user_history');
+			$main_smarty->display($the_template . '/pligg.tpl');
 			break;
-		case 'shaken':
-			do_shaken();
+			
+		case 'upcoming':
+			do_upcoming();
 			if(Auto_scroll==2 || Auto_scroll==3){
       			$main_smarty->assign('total_row', $rows);
-			}else
-			$main_smarty->assign('user_pagination', do_pages($rows, $page_size, $the_page, true));
-			break;	
+			} else {
+				$main_smaty->assign('user_pagination', do_pages($rows, $page_size, $the_page, true));
+			}
+			// display the template
+			$main_smarty->assign('tpl_center', $the_template . '/user_history');
+			$main_smarty->display($the_template . '/pligg.tpl');
+			break;
+			
 		case 'commented':
 			do_commented();
 			if(Auto_scroll==2 || Auto_scroll==3){
       			$main_smarty->assign('total_row', $rows);
-			}else
+			} else {
 				$main_smarty->assign('user_pagination', do_pages($rows, $page_size, $the_page, true));
+			}
+			// display the template
+			$main_smarty->assign('tpl_center', $the_template . '/user_history');
+			$main_smarty->display($the_template . '/pligg.tpl');
 			break;
+			
 		case 'voted':
 			do_voted();
 			if(Auto_scroll==2 || Auto_scroll==3){
       			$main_smarty->assign('total_row', $rows);
-			}else
+			} else {
 				$main_smarty->assign('user_pagination', do_pages($rows, $page_size, $the_page, true));
+			}
+			// display the template
+			$main_smarty->assign('tpl_center', $the_template . '/user_history');
+			$main_smarty->display($the_template . '/pligg.tpl');
 			break;	
+			
 		case 'upvoted':
 			do_updownvoted('up');
 			if(Auto_scroll==2 || Auto_scroll==3){
       			$main_smarty->assign('total_row', $rows);
-			}else
+			} else {
 				$main_smarty->assign('user_pagination', do_pages($rows, $page_size, $the_page, true));
+			}
+			// display the template
+			$main_smarty->assign('tpl_center', $the_template . '/user_history');
+			$main_smarty->display($the_template . '/pligg.tpl');
 			break;
+			
 		case 'downvoted':
 			do_updownvoted('dwn');
 			if(Auto_scroll==2 || Auto_scroll==3){
       			$main_smarty->assign('total_row', $rows);
-			}else
+			} else {
 				$main_smarty->assign('user_pagination', do_pages($rows, $page_size, $the_page, true));
-			break;	
-			
-			
+			}
+			// display the template
+			$main_smarty->assign('tpl_center', $the_template . '/user_history');
+			$main_smarty->display($the_template . '/pligg.tpl');
+			break;
 			
 		case 'saved':
 			do_stories();
 			if(Auto_scroll==2 || Auto_scroll==3){
       			$main_smarty->assign('total_row', $rows);
-			}else
+			} else {
 				$main_smarty->assign('user_pagination', do_pages($rows, $page_size, $the_page, true));
+			}
+			// display the template
+			$main_smarty->assign('tpl_center', $the_template . '/user_history');
+			$main_smarty->display($the_template . '/pligg.tpl');
 			break;  
+			
 		case 'removefriend':
 			do_removefriend();
+			// display the template
+			$main_smarty->assign('tpl_center', $the_template . '/user_follow');
+			$main_smarty->display($the_template . '/pligg.tpl');
 			break;
+			
 		case 'addfriend':
 			do_addfriend();
+			// display the template
+			$main_smarty->assign('tpl_center', $the_template . '/user_follow');
+			$main_smarty->display($the_template . '/pligg.tpl');
 			break;
+			
 		case 'following':
 			do_following($user->id);
+			// display the template
+			$main_smarty->assign('tpl_center', $the_template . '/user_follow');
+			$main_smarty->display($the_template . '/pligg.tpl');
 			break;
+			
 		case 'followers':
 			do_followers();
+			// display the template
+			$main_smarty->assign('tpl_center', $the_template . '/user_follow');
+			$main_smarty->display($the_template . '/pligg.tpl');
 			break;
+			
 		case 'sendmessage':
 			do_sendmessage();
+			// display the template
+			$main_smarty->assign('tpl_center', $the_template . '/user_follow');
+			$main_smarty->display($the_template . '/pligg.tpl');
 			break;
+			
 		case 'member_groups':
 			do_member_groups();
 			//$main_smarty->assign('user_pagination', do_pages($rows, $page_size, $the_page, true));
-			break;  	
+			// display the template
+			$main_smarty->assign('tpl_center', $the_template . '/user_history');
+			$main_smarty->display($the_template . '/pligg.tpl');
+			break;
+			
 	}
 	
 	do_following($user->id);
 	do_followers($user->id);
 
 // display the template
-	$main_smarty->assign('tpl_center', $the_template . '/user_center');
-	$main_smarty->display($the_template . '/pligg.tpl');
+//	$main_smarty->assign('tpl_center', $the_template . '/user_center');
+//	$main_smarty->display($the_template . '/pligg.tpl');
 
 
 function do_stories () {
@@ -579,7 +644,7 @@ function do_published () {
 	$main_smarty->assign('user_page', $output);
 }
 
-function do_shaken () {
+function do_upcoming () {
 	global $db, $main_smarty, $rows, $user, $offset, $page_size,$cached_links;
 
 	$output = '';

@@ -6,10 +6,9 @@
 <div class="row-fluid" style="margin-bottom:10px;">
 	<div class="span9">
 		<h1 style="margin-bottom:0px;">
-			{if $UseAvatars neq "0"}
+			{if $UseAvatars neq "0" && $pagename == "profile"}
 				<a href="#profileavatar" data-toggle="modal">
 					<div class="thumbnail avatar_thumb">
-
 						{php}
 							// Edit Avatar on Page Load using ?avatar=edit at end of URL
 							// Needs to accomodate for URL Method 2: /user/profile/edit/avatar/
@@ -25,7 +24,63 @@
 								";
 							}
 						{/php}
-				
+						<img style="float:left;margin:0 15px 0 0;" src="{$Avatar.large}" style="margin-bottom:4px;" alt="Avatar" />
+						<a href="#profileavatar" data-toggle="modal" class="btn btn-small edit-avatar">Edit Avatar</a>
+					</div>
+				</a>
+				{* Avatar upload modal *}
+				<div class="modal hide fade" id="profileavatar" style="display: none;">
+					<div class="modal-header">
+						<button data-dismiss="modal" class="close" type="button">&times;</button>
+						<h3>Profile Avatar Upload</h3>
+					</div>
+					<div class="modal-body">
+						<form method="POST" enctype="multipart/form-data" name="image_upload_form" action="{$form_action}">
+						<script type="text/javascript">
+							$('.fileupload').fileupload()
+						</script>
+	
+						<div class="fileupload fileupload-new" data-provides="fileupload">
+							<div class="fileupload-new thumbnail">
+								<img src="{$Avatar.large}" title="{#PLIGG_Visual_Profile_CurrentAvatar#}" />
+							</div>
+							<div class="fileupload-preview fileupload-exists thumbnail" style="max-width:{$Avatar_Large}px;max-height:{$Avatar_Large}px;"></div>
+							<div>
+								<span class="btn btn-file">
+									<span class="fileupload-new"><i class="icon icon-picture"></i> Browse</span>
+									<span class="fileupload-exists"><i class="icon icon-picture"></i> Browse</span>
+									<input type="file" class="fileupload" name="image_file"/>
+								</span>
+								<a href="#" class="btn btn-danger fileupload-exists" data-dismiss="fileupload">Remove</a>
+							</div>
+						</div>
+						
+					</div>
+					<div class="modal-footer">
+						<input type="hidden" name="avatar" value="uploaded"/>
+						{$hidden_token_profile_change}
+						<input type="submit" name="action" class="btn btn-primary" value="{#PLIGG_Visual_Profile_AvatarUpload#}"/>
+						</form>
+					</div>
+				</div>
+			{elseif $UseAvatars neq "0" && $pagename != "profile"}
+				<a href="#profileavatar" data-toggle="modal">
+					<div class="thumbnail avatar_thumb">
+						{php}
+							// Edit Avatar on Page Load using ?avatar=edit at end of URL
+							// Needs to accomodate for URL Method 2: /user/profile/edit/avatar/
+							$refer  = $_SERVER["REQUEST_URI"];
+							$avatarcheck = strstr($refer, '?');
+							if ($avatarcheck == "?avatar=edit"){
+								echo "
+									<script type='text/javascript'>
+										$(window).load(function(){
+											$('#profileavatar').modal('show');
+										});
+									</script>
+								";
+							}
+						{/php}
 						<img style="float:left;margin:0 15px 0 0;" src="{$Avatar.large}" style="margin-bottom:4px;" alt="Avatar" />
 						<a href="#profileavatar" data-toggle="modal" class="btn btn-small edit-avatar">Edit Avatar</a>
 					</div>
@@ -182,6 +237,7 @@
 	<li><a href="{$user_url_saved}">{#PLIGG_Visual_User_NewsSaved#}</a></li>
 	{checkActionsTpl location="tpl_pligg_profile_sort_end"}
 </ul>
+{***********************************************************************************}
 {if $savemsg neq ""}<div class="alert alert-warning fade in"><a data-dismiss="alert" class="close">&times;</a>{$savemsg}</div>{/if} 
 {checkActionsTpl location="tpl_pligg_profile_info_start"}
 <form action="" method="post" id="thisform">
