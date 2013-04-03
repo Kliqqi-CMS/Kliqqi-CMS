@@ -369,13 +369,13 @@ function save_profile() {
 		$vars = '';
 		check_actions('profile_save', $vars);
 	
-		$avatar_source = sanitize($_POST['avatarsource'], 3);
+/*		$avatar_source = sanitize($_POST['avatarsource'], 3);
 		if($avatar_source != "" && $avatar_source != "useruploaded"){
 			loghack('Updating profile, avatar source is not one of the list options.', 'username: ' . sanitize($_POST["username"], 3) . '|email: ' . sanitize($_POST["email"], 3));
 			$avatar_source == "";
 		}
 		$user->avatar_source=$avatar_source;
-	
+*/	
 	  if($user->level=="admin" || $user->level=="moderator"){
 		  if ($user->username!=sanitize($_POST['user_login'], 3))
 			{

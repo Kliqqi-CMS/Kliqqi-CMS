@@ -389,7 +389,7 @@ $CSRF->create('user_settings', true, true);
 			if(Auto_scroll==2 || Auto_scroll==3){
       			$main_smarty->assign('total_row', $rows);
 			} else {
-				$main_smaty->assign('user_pagination', do_pages($rows, $page_size, $the_page, true));
+				$main_smarty->assign('user_pagination', do_pages($rows, $page_size, $the_page, true));
 			}
 			// display the template
 			$main_smarty->assign('tpl_center', $the_template . '/user_history');
