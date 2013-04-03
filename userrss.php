@@ -93,6 +93,25 @@ if($time > 0) {
 						LEFT JOIN " . table_users . " ON link_author=user_id 
 						WHERE vote_user_id=$user->id AND (link_status='published' OR link_status='queued') ";
 			break;
+		case 'upvoted':
+			$title = $main_smarty->get_config_vars("PLIGG_Visual_UpVoted");
+			$order_field = 'link_date';
+			$link_date = "date";
+			$from_where = "FROM " . table_links . "
+						LEFT JOIN " . table_votes . " ON vote_link_id=link_id
+						LEFT JOIN " . table_users . " ON link_author=user_id 
+						WHERE vote_user_id=$user->id AND (link_status='published' OR link_status='queued')  AND vote_value>0";
+			break;
+		case 'downvoted':
+			$title = $main_smarty->get_config_vars("PLIGG_Visual_DownVoted");
+			$order_field = 'link_date';
+			$link_date = "date";
+			$from_where = "FROM " . table_links . "
+						LEFT JOIN " . table_votes . " ON vote_link_id=link_id
+						LEFT JOIN " . table_users . " ON link_author=user_id 
+						WHERE vote_user_id=$user->id AND (link_status='published' OR link_status='queued')  AND vote_value<0";
+			break;
+
 		case 'commented':
 			$title = $main_smarty->get_config_vars("PLIGG_Visual_RSS_Commented");
 			$user->username = $login;

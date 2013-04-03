@@ -155,9 +155,9 @@ $CSRF->create('user_settings', true, true);
 	}	
 	
 	if ($view == 'upvoted') {
-		$page_header .= $main_smarty->get_config_vars('PLIGG_Visual_User_UpVoted');
-		$navwhere['text3'] = $main_smarty->get_config_vars('PLIGG_Visual_User_UpVoted');
-		$post_title .= " | " . $main_smarty->get_config_vars('PLIGG_Visual_User_UpVoted');
+		$page_header .= $main_smarty->get_config_vars('PLIGG_Visual_UpVoted');
+		$navwhere['text3'] = $main_smarty->get_config_vars('PLIGG_Visual_UpVoted');
+		$post_title .= " | " . $main_smarty->get_config_vars('PLIGG_Visual_UpVoted');
 		$main_smarty->assign('view_href', 'upvoted');
 		$main_smarty->assign('nav_nv', 4);
 	 } else {
@@ -165,9 +165,9 @@ $CSRF->create('user_settings', true, true);
 	}
 
 	if ($view == 'downvoted') {
-			$page_header .= $main_smarty->get_config_vars('PLIGG_Visual_User_DownVoted');
-			$navwhere['text3'] = $main_smarty->get_config_vars('PLIGG_Visual_User_DownVoted');
-			$post_title .= " | " . $main_smarty->get_config_vars('PLIGG_Visual_User_DownVoted');
+			$page_header .= $main_smarty->get_config_vars('PLIGG_Visual_DownVoted');
+			$navwhere['text3'] = $main_smarty->get_config_vars('PLIGG_Visual_DownVoted');
+			$post_title .= " | " . $main_smarty->get_config_vars('PLIGG_Visual_DownVoted');
 			$main_smarty->assign('view_href', 'downvoted');
 			$main_smarty->assign('nav_nv', 4);
 		 } else {
@@ -478,7 +478,7 @@ $CSRF->create('user_settings', true, true);
 			break;
 			
 		case 'followers':
-			do_followers();
+			do_followers($user->id);
 			// display the template
 			$main_smarty->assign('tpl_center', $the_template . '/user_follow');
 			$main_smarty->display($the_template . '/pligg.tpl');
@@ -701,10 +701,10 @@ function do_following($user_id){
 	$main_smarty->assign('following', $friends);
 }
 
-function do_followers(){
+function do_followers($user_id){
 	global $db, $main_smarty, $user, $the_template;
 	$friend = new Friend;
-	$friends = $friend->get_friend_list_2();	
+	$friends = $friend->get_friend_list_2($user_id);
 
 	$main_smarty->assign('the_template',$the_template);
 	$main_smarty->assign('follower', $friends);
