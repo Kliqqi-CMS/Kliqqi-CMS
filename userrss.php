@@ -57,10 +57,11 @@ if($time > 0) {
 	$status = isset($_GET['status']) && sanitize($_GET['status'], 3) != '' ? sanitize($_GET['status'], 3) : 'submitted';
 	
 	switch ($status) {
+		
 		case 'published':
+			$title = $main_smarty->get_config_vars("PLIGG_Visual_Published_News");
 			$order_field = 'link_published_date';
 			$link_date = 'published_date';
-			$title = $main_smarty->get_config_vars("PLIGG_Visual_Published_News");
 			$from_where = "FROM " . table_links . " 
 						LEFT JOIN " . table_users . " ON link_author=user_id 
 						WHERE link_status='published' ";
