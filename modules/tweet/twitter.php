@@ -40,7 +40,7 @@ class TwitterOauth {
 /**
 * @access public
 */
-  public static $TW_API_ROOT = "http://twitter.com/oauth";
+  public static $TW_API_ROOT = "http://api.twitter.com/oauth";
 
 /**
 * @access public
