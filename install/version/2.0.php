@@ -28,7 +28,7 @@ if ($old_version < $new_version) {
 	$sql = "UPDATE ".table_config." SET var_defaultvalue='logs/spam.log' WHERE var_name='$SPAM_LOG_BOOK';";
 	$db->query($sql);
 	// Add friendly domain list
-	$db->query("INSERT INTO `" . table_config . "` VALUES (NULL, 'AntiSpam', '$FRIENDLY_DOMAINS', 'logs/domain-whitelist.log', 'logs/domain-whitelist.log', 'Text file', 'Local Domain Whitelist File', 'File containing a list of domains that cannot be banned.', 'normal', '\"')");	
+	$db->query("INSERT INTO `" . table_config . "` VALUES (NULL, 'AntiSpam', '\$FRIENDLY_DOMAINS', 'logs/domain-whitelist.log', 'logs/domain-whitelist.log', 'Text file', 'Local Domain Whitelist File', 'File containing a list of domains that cannot be banned.', 'normal', '\"')");	
 	echo '<li>Changed log file locations</li>';
 	
 	$sql = "ALTER TABLE `" . table_modules . "` ADD  `weight` INT NOT NULL";
