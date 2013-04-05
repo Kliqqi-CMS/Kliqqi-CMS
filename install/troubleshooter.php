@@ -57,8 +57,10 @@ if (file_exists('../settings.php')) { $tally = $tally+1; }
 if (file_exists('../libs/dbconnect.php')) { $tally = $tally+1; }
 if (file_exists('../logs/bannedips.log')) { $tally = $tally+1; }
 if (is_writable('../logs/bannedips.log')) { $tally = $tally+1; }
-if (file_exists('../logs/local-antispam.log')) { $tally = $tally+1; }
-if (is_writable('../logs/local-antispam.log')) { $tally = $tally+1; }
+if (file_exists('../logs/domain-blacklist.log')) { $tally = $tally+1; }
+if (is_writable('../logs/domain-blacklist.log')) { $tally = $tally+1; }
+if (file_exists('../logs/domain-whitelist.log')) { $tally = $tally+1; }
+if (is_writable('../logs/domain-whitelist.log')) { $tally = $tally+1; }
 if (is_writable('../admin/backup/')) { $tally = $tally+1; }
 if (is_writable('../avatars/groups_uploaded/')) { $tally = $tally+1; }
 if (is_writable('../avatars/user_uploaded/')) { $tally = $tally+1; }
@@ -133,13 +135,22 @@ if (file_exists($bannedips)) {
 		echo '<tr><td><i class="icon icon-remove"></i></td><td>'.$bannedipsdefault.$rename.$bannedips.'.</td></tr>';
 	}
 }
-$localantispam = '../logs/local-antispam.log';
-$localantispamdefault = '../logs.default/local-antispam.log';
+$localantispam = '../logs/domain-blacklist.log';
+$localantispamdefault = '../logs.default/domain-blacklist.log';
 if (file_exists($localantispam)) {
 	echo '<tr><td><i class="icon icon-ok"></i></td><td>'.$localantispam.'</td></tr>';
 } else {
 	if (file_exists($localantispamdefault)) {
 		echo '<tr><td><i class="icon icon-remove"></i></td><td>'.$localantispamdefault.$rename.$localantispam.'.</td></tr>';
+	}
+}
+$localwhitelist = '../logs/domain-whitelist.log';
+$localwhitelistdefault = '../logs.default/domain-whitelist.log';
+if (file_exists($localwhitelist)) {
+	echo '<tr><td><i class="icon icon-ok"></i></td><td>'.$localwhitelist.'</td></tr>';
+} else {
+	if (file_exists($localwhitelistdefault)) {
+		echo '<tr><td><i class="icon icon-remove"></i></td><td>'.$localwhitelistdefault.$rename.$localwhitelist.'.</td></tr>';
 	}
 }
 echo '</tbody></table>';
@@ -194,7 +205,13 @@ if (file_exists($file)) {
 	if (is_writable($file)) { echo '<tr><td><i class="icon icon-ok"></i></td><td>'.$file.'</span></td></tr>'; }
 }
 
-$file='../logs/local-antispam.log';
+$file='../logs/domain-blacklist.log';
+if (file_exists($file)) {
+	if (!is_writable($file)) { echo '<tr><td><i class="icon icon-remove"></i></td><td>'.$file.' is not writable! Please chmod this file to 666.</span></td></tr>'; }
+	if (is_writable($file)) { echo '<tr><td><i class="icon icon-ok"></i></td><td>'.$file.'</span></td></tr>'; }
+}
+
+$file='../logs/domain-whitelist.log';
 if (file_exists($file)) {
 	if (!is_writable($file)) { echo '<tr><td><i class="icon icon-remove"></i></td><td>'.$file.' is not writable! Please chmod this file to 666.</span></td></tr>'; }
 	if (is_writable($file)) { echo '<tr><td><i class="icon icon-ok"></i></td><td>'.$file.'</span></td></tr>'; }

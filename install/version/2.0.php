@@ -11,7 +11,26 @@ if ($old_version < $new_version) {
 
 	//echo $lang['UpgradingTables'] . '<br />';
 	echo '<li>Performing one-time Pligg 2.0 Upgrade</li><ul>';
-
+	
+	// Change log file locations to new /logs directory
+	$sql = "UPDATE ".table_config." SET var_value='logs/antispam.log' WHERE var_name='$MAIN_SPAM_RULESET';";
+	$db->query($sql);
+	$sql = "UPDATE ".table_config." SET var_defaultvalue='logs/antispam.log' WHERE var_name='$MAIN_SPAM_RULESET';";
+	$db->query($sql);
+	$sql = "UPDATE ".table_config." SET var_title='Domain Blacklist File' WHERE var_name='$USER_SPAM_RULESET';";
+	$db->query($sql);
+	$sql = "UPDATE ".table_config." SET var_value='logs/domain-blacklist.log' WHERE var_name='$USER_SPAM_RULESET';";
+	$db->query($sql);
+	$sql = "UPDATE ".table_config." SET var_defaultvalue='logs/domain-blacklist.log' WHERE var_name='$USER_SPAM_RULESET';";
+	$db->query($sql);
+	$sql = "UPDATE ".table_config." SET var_value='logs/spam.log' WHERE var_name='$SPAM_LOG_BOOK';";
+	$db->query($sql);
+	$sql = "UPDATE ".table_config." SET var_defaultvalue='logs/spam.log' WHERE var_name='$SPAM_LOG_BOOK';";
+	$db->query($sql);
+	// Add friendly domain list
+	$db->query("INSERT INTO `" . table_config . "` VALUES (NULL, 'AntiSpam', '$FRIENDLY_DOMAINS', 'logs/domain-whitelist.log', 'logs/domain-whitelist.log', 'Text file', 'Local Domain Whitelist File', 'File containing a list of domains that cannot be banned.', 'normal', '\"')");	
+	echo '<li>Changed log file locations</li>';
+	
 	$sql = "ALTER TABLE `" . table_modules . "` ADD  `weight` INT NOT NULL";
 	$db->query($sql);
 	echo '<li>Order modules via the Admin Panel</li>';
@@ -96,22 +115,7 @@ if ($old_version < $new_version) {
 	$sql = "UPDATE ".table_config." SET var_defaultvalue='100' WHERE var_name='group_avatar_size_height';";
 	$db->query($sql);
 	echo '<li>Changed group avatar height/width size setting to 100px</li>';
-	
-	// Change log file locations to new /logs directory
-	$sql = "UPDATE ".table_config." SET var_value='logs/antispam.log' WHERE var_name='$MAIN_SPAM_RULESET';";
-	$db->query($sql);
-	$sql = "UPDATE ".table_config." SET var_defaultvalue='logs/antispam.log' WHERE var_name='$MAIN_SPAM_RULESET';";
-	$db->query($sql);
-	$sql = "UPDATE ".table_config." SET var_value='logs/local-antispam.log' WHERE var_name='$USER_SPAM_RULESET';";
-	$db->query($sql);
-	$sql = "UPDATE ".table_config." SET var_defaultvalue='logs/local-antispam.log' WHERE var_name='$USER_SPAM_RULESET';";
-	$db->query($sql);
-	$sql = "UPDATE ".table_config." SET var_value='logs/spamlog.log' WHERE var_name='$SPAM_LOG_BOOK';";
-	$db->query($sql);
-	$sql = "UPDATE ".table_config." SET var_defaultvalue='logs/spamlog.log' WHERE var_name='$SPAM_LOG_BOOK';";
-	$db->query($sql);
-	echo '<li>Changed log file locations</li>';
-		
+
 	// Re-create user avatars
 	$user_image_path = mnmpath."avatars/user_uploaded" . "/";
 	require_once(mnminclude . "class.pThumb.php");

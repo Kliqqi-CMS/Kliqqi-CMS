@@ -414,23 +414,24 @@ function killspam($id)
 	    }
 
 	$results = $db->get_results($sql="SELECT link_id, link_url FROM `" . table_links . "` WHERE `link_author` = $id");
-	$filename = mnmpath.'logs/local-antispam.log';
+	global $USER_SPAM_RULESET, $FRIENDLY_DOMAINS;
+	$filename = mnmpath.$USER_SPAM_RULESET;
 	$lines = file($filename,FILE_IGNORE_NEW_LINES | FILE_SKIP_EMPTY_LINES);
-	$approved = file(mnmpath.'logs/notspam.log',FILE_IGNORE_NEW_LINES | FILE_SKIP_EMPTY_LINES);
+	$approved = file(mnmpath.$FRIENDLY_DOMAINS,FILE_IGNORE_NEW_LINES | FILE_SKIP_EMPTY_LINES);
 	if ($results)
 	    foreach ($results as $result)
 	    {
-		if (preg_match('/:\/\/(www\.)?([^\/]+)(\/|$)/',$result->link_url,$m))
-		{
-		    $domain = $m[2];
-		    if (!in_array($domain,$lines) && !in_array($domain,$approved))
-		    {
-			$lines[] = $domain;
-			$changed = 1;
-		    }
-		}
-	   	$vars = array('link_id' => $result->link_id);
-	   	check_actions('story_spam', $vars);
+			if (preg_match('/:\/\/(www\.)?([^\/]+)(\/|$)/',$result->link_url,$m))
+			{
+				$domain = strtoupper($m[2]) . "\n";
+				if (!in_array($domain,$lines) && !in_array($domain,$approved))
+				{
+					$lines[] = $domain;
+					$changed = 1;
+				}
+			}
+			$vars = array('link_id' => $result->link_id);
+			check_actions('story_spam', $vars);
 	    }
 	if ($changed)
 	{

@@ -52,6 +52,7 @@ $tags_max_pts = $pligg_vars['$tags_max_pts'];
 $tags_words_limit = $pligg_vars['$tags_words_limit'];
 $MAIN_SPAM_RULESET = $pligg_vars['$MAIN_SPAM_RULESET'];
 $USER_SPAM_RULESET = $pligg_vars['$USER_SPAM_RULESET'];
+$FRIENDLY_DOMAINS = $pligg_vars['$FRIENDLY_DOMAINS'];
 $SPAM_LOG_BOOK = $pligg_vars['$SPAM_LOG_BOOK'];
 $CommentOrder = $pligg_vars['$CommentOrder'];
 $anon_karma = $pligg_vars['$anon_karma'];
