@@ -137,7 +137,7 @@ if(isset($_POST['email'])){
 	    // Reload the page if no error
 		
 	    $_SESSION['savemsg'] = $save_message_text;
-	    header("Location: ".getmyurl('profile'));
+	    header("Location: ".getmyurl('user_edit'));
 	    exit;
 	}
 } else {
@@ -200,7 +200,7 @@ function show_profile() {
 	$main_smarty->assign('languages', $languages);
 		
 	// pagename	
-	define('pagename', 'profile'); 
+	define('pagename', 'user_edit'); 
 	$main_smarty->assign('pagename', pagename);
 	
 	$main_smarty->assign('form_action', $_SERVER["PHP_SELF"]);

@@ -63,6 +63,9 @@ class Friend {
 						INNER JOIN " . table_users . " ON " . table_friends . ".friend_from = " . table_users . ".user_id 
 						WHERE " . table_friends . ".friend_to=$user_id AND " . table_users . ".user_id != $user_id",
 					     ARRAY_A);
+		foreach ($friends as &$friend) 
+		    if ($db->get_var("SELECT friend_id FROM " . table_friends . " WHERE friend_from=$user_id AND friend_to=$friend[user_id]"))
+			$friend['is_friend'] = true;
 		return $friends;
 	}
 

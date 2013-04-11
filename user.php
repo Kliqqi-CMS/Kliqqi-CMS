@@ -113,8 +113,8 @@ $main_smarty->assign('user_url_commented', getmyurl('user2', $login, 'commented'
 $main_smarty->assign('user_url_saved', getmyurl('user2', $login, 'saved'));
 $main_smarty->assign('user_url_friends', getmyurl('user_friends', $login, 'following'));
 $main_smarty->assign('user_url_friends2', getmyurl('user_friends', $login, 'followers'));
-$main_smarty->assign('user_url_add', getmyurl('user_add_remove', $login, 'addfriend'));
-$main_smarty->assign('user_url_remove', getmyurl('user_add_remove', $login, 'removefriend'));
+$main_smarty->assign('user_url_add', getmyurl('user_friends', $login, 'addfriend'));
+$main_smarty->assign('user_url_remove', getmyurl('user_friends', $login, 'removefriend'));
 $main_smarty->assign('user_rss', getmyurl('rssuser', $login));
 $main_smarty->assign('URL_Profile', getmyurl('profile'));
 $main_smarty->assign('form_action', getmyurl('profile')); 
@@ -132,6 +132,11 @@ $username = $user->username;
 $post_title = $main_smarty->get_config_vars('PLIGG_Visual_Breadcrumb_Profile') . " " . $login;
 
 $main_smarty->assign('user_view', $view);
+$main_smarty->assign('page_header', $page_header);
+$main_smarty->assign('username', $username);
+$main_smarty->assign('posttitle', $post_title);
+
+#$navwhere['text3'] = $page_header = $post_title;
 
 if ($view == 'profile') {
 	do_following($user->id);

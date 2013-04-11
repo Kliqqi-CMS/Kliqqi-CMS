@@ -213,7 +213,7 @@ $main_smarty->assign('group_url_name', getmyurl('group_sort', 'name'));
 if ($current_user->user_id > 0 && $current_user->authenticated) 
 {
 	$login=$current_user->user_login;
-	$main_smarty->assign('user_url_personal_data', getmyurl('user2', $login, 'profile'));
+	$main_smarty->assign('user_url_personal_data', getmyurl('userblank', $login, 'profile'));
 	$main_smarty->assign('user_url_news_sent', getmyurl('user2', $login, 'history'));
 	$main_smarty->assign('user_url_news_published', getmyurl('user2', $login, 'published'));
 	$main_smarty->assign('user_url_news_unpublished', getmyurl('user2', $login, 'upcoming'));
@@ -225,8 +225,8 @@ if ($current_user->user_id > 0 && $current_user->authenticated)
 	$main_smarty->assign('user_url_setting', getmyurl('profile'));
 	$main_smarty->assign('user_url_friends', getmyurl('user_friends', $login, 'following'));
 	$main_smarty->assign('user_url_friends2', getmyurl('user_friends', $login, 'followers'));
-	$main_smarty->assign('user_url_add', getmyurl('user_add_remove', $login, 'addfriend'));
-	$main_smarty->assign('user_url_remove', getmyurl('user_add_remove', $login, 'removefriend'));
+	$main_smarty->assign('user_url_add', getmyurl('user', $login, 'addfriend'));
+	$main_smarty->assign('user_url_remove', getmyurl('user', $login, 'removefriend'));
 	$main_smarty->assign('user_rss', getmyurl('rssuser', $login));
 	$main_smarty->assign('URL_Profile', getmyurl('profile'));
 	$main_smarty->assign('user_url_member_groups', getmyurl('user2', $login, 'member_groups	'));

@@ -673,7 +673,7 @@ function getmyurl($x, $var1="", $var2="", $var3="") {
 		If ($x == "discardedcategory") {return my_pligg_base."/discarded.php?category=" . $var1;}
 		If ($x == "editlink") {return my_pligg_base."/editlink.php?id=" . $var1;}
 		If ($x == "edit") {return my_pligg_base."/edit.php?id=" . $var1 . "&amp;commentid=" . $var2;}
-		If ($x == "user") {return my_pligg_base."/user.php?login=" . $var1;}
+		If ($x == "user") {return my_pligg_base."/user.php?login=" . $var1. "&amp;view=" . $var2;}
 		If ($x == "user_inbox") {return my_pligg_base."/user.php?view=" . $var1;}
 		If ($x == "user_add_remove") {return my_pligg_base."/user.php?login=" . $var1. "&amp;view=" . $var2;}
 		If ($x == "user_add_links") {return my_pligg_base."/user_add_remove_links.php?action=add&amp;link=" . $var1;}
@@ -776,14 +776,14 @@ function getmyurl($x, $var1="", $var2="", $var3="") {
 //		If ($x == "discardedcategory") {return my_pligg_base."/discarded/category/" . $var1 . "/";}
 		If ($x == "editlink") {return my_pligg_base."/story/" . $var1 . "/edit/";}
 		If ($x == "edit") {return my_pligg_base."/story/" . $var1 . "/editcomment/" . $var2 . "/";}
-		If ($x == "user") {return my_pligg_base."/user/profile/" . $var1 . ($var1 ? '/' : '');}
-		If ($x == "user_friends") {return my_pligg_base."/user/" . $var2 . "/";}
+		If ($x == "user") {return my_pligg_base."/user/" . $var1 . ($var1 ? '/' : '');}
+		If ($x == "user_friends") {return my_pligg_base."/user/" . $var1. "/" . $var2 . "/";}
 		If ($x == "user_add_remove") {return my_pligg_base."/user/" . $var2. "/" . $var1 . "/";}
 		If ($x == "user_add_links") {return my_pligg_base."/user/add/link/" . $var1 . "/";}
 		If ($x == "user_remove_links") {return my_pligg_base."/user/remove/link/" . $var1 . "/";}
 		If ($x == "user_inbox") {return my_pligg_base."/inbox/";}
 		If ($x == "userblank") {return my_pligg_base."/user/";}
-		If ($x == "user2") {return my_pligg_base."/user/" . $var2 . "/" . $var1 . "/";}
+		If ($x == "user2") {return my_pligg_base."/user/" . $var1 . "/" . $var2 . "/";}
 		If ($x == "index") {return my_pligg_base . "/";}
 		If ($x == "index_sort") {return my_pligg_base."/".$var1.($var2 ? '/'.$var2 : '') . "/";}
 //		If ($x == "index_sort") {return my_pligg_base."/".$var1.($var2 ? '/category/'.$var2 : '') . "/";}
@@ -807,13 +807,13 @@ function getmyurl($x, $var1="", $var2="", $var3="") {
 		If ($x == "root") {return my_pligg_base."/";}
 		If ($x == "upcoming") {return my_pligg_base."/upcoming/";}
 		If ($x == "topusers") {return my_pligg_base."/topusers/";}
-		If ($x == "profile") {return my_pligg_base."/profile/";}
+		If ($x == "user_edit") {return my_pligg_base."/user/edit/";}
 		If ($x == "userNoVar") {return my_pligg_base."/user/";}
 		If ($x == "loginNoVar") {return my_pligg_base."/login/";}
 		If ($x == "rssTime") {return my_pligg_base."/rss.php?time=" . $var1;}
 		If ($x == "about") {return my_pligg_base."/about/".$var1 . "/";}
 		If ($x == "rss") {return my_pligg_base."/rss/";}
-		If ($x == "rssuser") {return my_pligg_base."/user/profile/$var1/rss/";}
+		If ($x == "rssuser") {return my_pligg_base."/user/$var1/rss/";}
 		If ($x == "rssqueued") {return my_pligg_base."/upcoming/rss/";}
 		If ($x == "rssall") {return my_pligg_base."/rss/" . $var1 . "/";}
 		If ($x == "rsscategory") {return my_pligg_base."/rss/category/" . $var1;}
@@ -891,7 +891,7 @@ function SetSmartyURLs($main_smarty) {
 	$main_smarty->assign('URL_userNoVar', getmyurl("userNoVar"));
 	$main_smarty->assign('URL_user_inbox', getmyurl("user_inbox", "inbox"));
 	$main_smarty->assign('URL_user_add_remove', getmyurl("user_add_remove"));
-	$main_smarty->assign('URL_profile', getmyurl("profile"));
+	$main_smarty->assign('URL_profile', getmyurl("user_edit"));
 	$main_smarty->assign('URL_story', getmyurl("story"));
 	$main_smarty->assign('URL_storytitle', getmyurl("storytitle"));
 	$main_smarty->assign('URL_topusers', getmyurl("topusers"));

@@ -34,7 +34,7 @@ Disallow: /upcoming/week/
 Disallow: /upcoming/month/
 Disallow: /upcoming/year/
 Disallow: /upcoming/alltime/
-Disallow: /user/profile/
+Disallow: /user/
 Disallow: /user/history/
 Disallow: /user/published/
 Disallow: /user/upcoming/

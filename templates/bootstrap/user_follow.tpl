@@ -156,7 +156,9 @@
 			<thead>
 				<th>{#PLIGG_Visual_User_Profile_Username#}</th>
 				{if check_for_enabled_module('simple_messaging',0.6) && $is_friend}<th>{#PLIGG_Visual_User_Profile_Message#}</th>{/if}
-				<th>{#PLIGG_Visual_User_Profile_Remove_Friend#}</th>
+				{if $user_authenticated eq true}
+					<th>{#PLIGG_Visual_User_Profile_Remove_Friend#}</th>
+				{/if}
 			</thead>
 			<tbody>
 				{foreach from=$following item=myfriend}
@@ -168,7 +170,9 @@
 					<tr>
 						<td><img src="{$friend_avatar}" align="absmiddle" /> <a href="{$profileURL}">{$myfriend.user_login}</a></td>
 						{if check_for_enabled_module('simple_messaging',0.6) && $is_friend}<td align="center"><a href="{$my_pligg_base}/module.php?module=simple_messaging&view=compose&return={$templatelite.server.REQUEST_URI|urlencode}&to={$myfriend.user_login}"><i class="icon icon-envelope"></i></a></td>{/if}
-						<td align="center"><a href="{$removeURL}" class="btn btn-danger">Unfollow</a></td>
+						{if $user_authenticated eq true}
+							<td align="center"><a href="{$removeURL}" class="btn btn-danger">Unfollow</a></td>
+						{/if}
 					</tr>
 				{/foreach}
 			<tbody>
@@ -189,7 +193,9 @@
 					{if check_for_enabled_module('simple_messaging',0.6) && $is_friend}
 						<th>{#PLIGG_Visual_User_Profile_Message#}</th>
 					{/if}
-					<th>Add/Remove</th>
+					{if $user_authenticated eq true}
+						<th>Add/Remove</th>
+					{/if}
 				</tr>
 			</thead>
 			<tbody>
@@ -198,19 +204,18 @@
 						$this->_vars['friend_avatar'] = get_avatar('small', $this->_vars['myfriend']['user_avatar_source'], $this->_vars['myfriend']['user_login'], $this->_vars['myfriend']['user_email']);
 						$this->_vars['profileURL'] = getmyurl('user2', $this->_vars['myfriend']['user_login'], 'profile');
 						$this->_vars['removeURL'] = getmyurl('user_add_remove', $this->_vars['myfriend']['user_login'], 'removefriend');
+						$this->_vars['addURL'] = getmyurl('user_add_remove', $this->_vars['myfriend']['user_login'], 'addfriend');
 					{/php}
 
 					<tr>
 						<td><img src="{$friend_avatar}" align="absmiddle" /> <a href="{$profileURL}">{$myfriend.user_login}</a></td>
 						{if check_for_enabled_module('simple_messaging',0.6) && $is_friend}<td><a href="{$my_pligg_base}/module.php?module=simple_messaging&view=compose&to={$myfriend.user_login}&return={$templatelite.server.REQUEST_URI|urlencode}"><span class="btn"><i class="icon icon-envelope"></i></span></a></td>{/if}
 						{if $user_authenticated eq true}
-							{*
-							{if $is_friend gt 0}
+							{if $myfriend.is_friend>0}
 								<td><a class="btn btn-danger" href="{$removeURL}">Unfollow</a></td>
+							{else}
+								<td><a class="btn btn-success" href="{$addURL}">{#PLIGG_Visual_User_Profile_Add_Friend#}</a></td>
 							{/if}
-							*}
-								<td><a class="btn btn-success" href="{$user_url_add}">{#PLIGG_Visual_User_Profile_Add_Friend#}</a></td>
-							
 						{/if}
 					</tr>
 				{/foreach}

@@ -14,7 +14,7 @@
 					<div class="thumbnail avatar_thumb">
 						{php}
 							// Edit Avatar on Page Load using ?avatar=edit at end of URL
-							// Needs to accomodate for URL Method 2: /user/profile/edit/avatar/
+							// Needs to accomodate for URL Method 2: /user/edit/avatar/
 							$refer  = $_SERVER["REQUEST_URI"];
 							$avatarcheck = strstr($refer, '?');
 							if ($avatarcheck == "?avatar=edit"){

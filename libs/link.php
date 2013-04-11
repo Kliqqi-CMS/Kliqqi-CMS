@@ -609,7 +609,7 @@ class Link {
 						else{$friend_text = 'remove from';	$friend_url = 'removefriend';}
 		
 					$smarty->assign('Friend_Text', $friend_text);				
-					$smarty->assign('user_add_remove', getmyurl('user_add_remove', $this->username(), $friend_url));
+					$smarty->assign('user_add_remove', getmyurl('user', $this->username(), $friend_url));
 				}
 		
 				$smarty->assign('Allow_Friends', Allow_Friends);
