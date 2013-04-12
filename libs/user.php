@@ -315,6 +315,16 @@ print_r($main_smarty);
 					
 		return $main_smarty;
 	}
+
+	function getFollowersCount() {
+	    global $db;
+	    return $db->get_var("SELECT COUNT(*) FROM ".table_friends." WHERE friend_to=$this->id AND friend_from!=$this->id");
+	}
+
+	function getFollowingCount() {
+	    global $db;
+	    return $db->get_var("SELECT COUNT(*) FROM ".table_friends." WHERE friend_from=$this->id AND friend_to!=$this->id");
+	}
 }
 
 function user_group_read($user_id,$order_by='')

@@ -81,6 +81,8 @@ if(ShowProfileLastViewers == true){
 // check to see if the profile is of a friend
 $friend = new Friend;
 $main_smarty->assign('is_friend', $friend->get_friend_status($user->id));
+$main_smarty->assign('user_followers', $user->getFollowersCount());
+$main_smarty->assign('user_following', $user->getFollowingCount());
 
 
 // avatars
@@ -279,12 +281,14 @@ if ($view == 'saved') {
 }	
 
 if ($view == 'following') {
-	$navwhere['text3'] = $main_smarty->get_config_vars('PLIGG_Visual_User_Profile_Viewing_Friends');
-	$post_title .= " | " . $main_smarty->get_config_vars('PLIGG_Visual_User_Profile_Viewing_Friends');
+	$page_header .= $main_smarty->get_config_vars('PLIGG_Visual_User_Profile_View_Friends');
+	$navwhere['text3'] = $main_smarty->get_config_vars('PLIGG_Visual_User_Profile_View_Friends');
+	$post_title .= " | " . $main_smarty->get_config_vars('PLIGG_Visual_User_Profile_View_Friends');
 	}
 
 if ($view == 'followers') {
-	$navwhere['text3'] = $main_smarty->get_config_vars('PLIGG_Visual_User_Profile_Viewing_Friends_2a');
+	$page_header .= $main_smarty->get_config_vars('PLIGG_Visual_User_Profile_Your_Friends');
+	$navwhere['text3'] = $main_smarty->get_config_vars('PLIGG_Visual_User_Profile_Your_Friends');
 	$post_title .= " | " . $main_smarty->get_config_vars('PLIGG_Visual_User_Profile_Viewing_Friends_2');
 	}
 
