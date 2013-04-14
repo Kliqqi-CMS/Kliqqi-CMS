@@ -4,14 +4,14 @@
 		global $main_smarty;
 
 		$register_step_1_extra = $main_smarty->get_template_vars('register_step_1_extra');
-		$register_step_1_extra .= $main_smarty->fetch(captcha_captchas_path . 'solvemedia/captcha.tpl');
+		$register_step_1_extra .= $main_smarty->fetch(captcha_captchas_path . '/solvemedia/captcha.tpl');
 		$main_smarty->assign('register_step_1_extra', $register_step_1_extra);
 
 	}
 
 	function captcha_check($registration_details){
 		global $main_smarty, $the_template;
-		require_once(captcha_captchas_path . 'solvemedia/lib/solvemedialib.php');
+		require_once(captcha_captchas_path . '/solvemedia/lib/solvemedialib.php');
 
 		$privatekey = get_misc_data('adcopy_privkey');
 		$hashkey = get_misc_data('adcopy_hashkey');
