@@ -1,5 +1,4 @@
 <?php
-
 include_once('internal/Smarty.class.php');
 $main_smarty = new Smarty;
 
@@ -33,10 +32,11 @@ $truelogin = isset($_COOKIE['mnm_user'] ) ? sanitize($_COOKIE['mnm_user'] , 3) :
 if($login === ''){
 	if ($current_user->user_id > 0) {
 		$login = $current_user->user_login;
+		header("Location: $my_base_url$my_pligg_base/user/$login/");
 	} else {
 		header('Location: '.$my_base_url.$my_pligg_base);
-		die;
 	}
+		die;
 }
 
 // read the users information from the database
@@ -104,7 +104,7 @@ if ($user->url != "") {
 }		
 
 // setup the links
-$main_smarty->assign('user_url_personal_data', getmyurl('user2', $login, 'profile'));
+$main_smarty->assign('user_url_personal_data', getmyurl('user', $login));
 $main_smarty->assign('user_url_news_sent', getmyurl('user2', $login, 'history'));
 $main_smarty->assign('user_url_news_published', getmyurl('user2', $login, 'published'));
 $main_smarty->assign('user_url_news_unpublished', getmyurl('user2', $login, 'upcoming'));
@@ -118,7 +118,7 @@ $main_smarty->assign('user_url_friends2', getmyurl('user_friends', $login, 'foll
 $main_smarty->assign('user_url_add', getmyurl('user_friends', $login, 'addfriend'));
 $main_smarty->assign('user_url_remove', getmyurl('user_friends', $login, 'removefriend'));
 $main_smarty->assign('user_rss', getmyurl('rssuser', $login));
-$main_smarty->assign('URL_Profile', getmyurl('profile'));
+$main_smarty->assign('URL_Profile', getmyurl('user2', $login, 'edit'));
 $main_smarty->assign('form_action', getmyurl('profile')); 
 $main_smarty->assign('user_url_member_groups', getmyurl('user2', $login, 'member_groups	'));
 

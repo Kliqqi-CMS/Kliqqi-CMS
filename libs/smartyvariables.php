@@ -213,7 +213,7 @@ $main_smarty->assign('group_url_name', getmyurl('group_sort', 'name'));
 if ($current_user->user_id > 0 && $current_user->authenticated) 
 {
 	$login=$current_user->user_login;
-	$main_smarty->assign('user_url_personal_data', getmyurl('userblank', $login, 'profile'));
+	$main_smarty->assign('user_url_personal_data', getmyurl('user', $login));
 	$main_smarty->assign('user_url_news_sent', getmyurl('user2', $login, 'history'));
 	$main_smarty->assign('user_url_news_published', getmyurl('user2', $login, 'published'));
 	$main_smarty->assign('user_url_news_unpublished', getmyurl('user2', $login, 'upcoming'));
@@ -228,7 +228,7 @@ if ($current_user->user_id > 0 && $current_user->authenticated)
 	$main_smarty->assign('user_url_add', getmyurl('user', $login, 'addfriend'));
 	$main_smarty->assign('user_url_remove', getmyurl('user', $login, 'removefriend'));
 	$main_smarty->assign('user_rss', getmyurl('rssuser', $login));
-	$main_smarty->assign('URL_Profile', getmyurl('profile'));
+	$main_smarty->assign('URL_Profile', getmyurl('user2', $login, 'edit'));
 	$main_smarty->assign('user_url_member_groups', getmyurl('user2', $login, 'member_groups	'));
 	$main_smarty->assign('isAdmin', checklevel('admin'));
 	$main_smarty->assign('isModerator', checklevel('moderator'));

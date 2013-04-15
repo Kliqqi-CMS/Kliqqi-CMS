@@ -27,7 +27,6 @@ $canIhaveAccess = $canIhaveAccess + checklevel('admin');
 $canIhaveAccess = $canIhaveAccess + checklevel('moderator');
 
 // If not logged in, redirect to the index page
-
 if ($_GET['login'] && $canIhaveAccess) 
 	$login=$_GET['login'];
 elseif ($current_user->user_id > 0 && $current_user->authenticated) 
@@ -137,7 +136,7 @@ if(isset($_POST['email'])){
 	    // Reload the page if no error
 		
 	    $_SESSION['savemsg'] = $save_message_text;
-	    header("Location: ".getmyurl('user_edit'));
+	    header("Location: ".getmyurl('user_edit', $login));
 	    exit;
 	}
 } else {

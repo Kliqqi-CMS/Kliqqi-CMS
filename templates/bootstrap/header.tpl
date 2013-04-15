@@ -44,7 +44,7 @@
 					<ul class="dropdown-menu">
 						{checkActionsTpl location="tpl_pligg_profile_sort_start"}
 						<li><a href="{$URL_userNoVar}" class="navbut{$nav_pd}">{#PLIGG_Visual_Profile#}</a></li>
-						<li><a href="{$user_url_setting}" class="navbut{$nav_set}"><span>{#PLIGG_Visual_User_Setting#}</a></li>
+						<li><a href="{$URL_Profile}" class="navbut{$nav_set}"><span>{#PLIGG_Visual_User_Setting#}</a></li>
 						<li><a href="{$user_url_news_sent}" class="navbut{$nav_ns}">{#PLIGG_Visual_User_NewsSent#}</a></li>
 						<li><a href="{$user_url_commented}" class="navbut{$nav_c}">{#PLIGG_Visual_User_NewsCommented#}</a></li>
 						<li><a href="{$user_url_news_upvoted}" class="navbut{$nav_nv}">{#PLIGG_Visual_UpVoted#}</a></li>
