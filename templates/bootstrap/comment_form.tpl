@@ -3,6 +3,7 @@
 *************************************}
 <!-- comment_form.tpl -->
 <a name="discuss"></a>
+{checkActionsTpl location="tpl_pligg_story_comments_form_start"}
 <form action="" method="post" id="thisform" name="mycomment_form">
 <div class="form-horizontal">
 	<fieldset>
@@ -28,7 +29,7 @@
 			<input type="submit" name="submit" value="{#PLIGG_Visual_Comment_Submit#}" class="btn btn-primary" />
 		</div>
 	</fieldset>
-</div>
+</div><!--/.form-horizontal -->
 </form>
-<!--/.form-horizontal -->
+{checkActionsTpl location="tpl_pligg_story_comments_form_end"}
 <!--/comment_form.tpl -->
