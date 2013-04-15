@@ -75,26 +75,26 @@ float: right;
 .status_friend_updates_title {
 margin: 10px 0pt;
 color:#4270BC;
-font-size: 14px;"
+font-size: 14px;
 }
 .status_friend_updates_title h4 {
 }
 .status_message_content_wrapper{
-padding: 5px;
-border: 1px solid #bbb;
+
 }
 .status_message_wrapper{
 margin: 0px 0px 15px 0;
 }
 .status_message_tools {
-margin: 0pt;
+margin: 7px 10px 0 0;
 float: right;
-font-size: 10px;
+font-size:0.8em;
 }
 .status_message_stats {
-border-bottom: 1px solid #bbb;
-margin: 0pt;
-padding: 0pt 0pt 4px;
+    background-color: #F7F7F9;
+    border: 1px solid #E1E1E8;
+	border-radius: 4px 4px 0px 0px;
+    padding: 6px 7px;
 }
 .status_message_stats a{
 text-decoration:none;
@@ -110,11 +110,17 @@ float: left;
 border:0;
 }
 .status_message_time {
+font-size:0.8em;
 float:left;
 }
 .status_message_content {
-margin: 0pt;
-padding: 4px;
+    background-color: #FFFFFF;
+    border-right: 1px solid #DDDDDD;
+	border-bottom: 1px solid #DDDDDD;
+	border-left: 1px solid #DDDDDD;
+    border-radius: 0px 0px 4px 4px;
+    padding: 12px 16px 12px;
+    position: relative;
 }
 .status_reply {
 margin: 10px;

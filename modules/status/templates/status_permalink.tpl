@@ -60,7 +60,7 @@
 				<div class="status_message_username">
 					{checkActionsTpl location="status_user_1"}
 					<a href="{php}print getmyurl('user2', $this->_vars['update']['user_login'], 'profile');{/php}">
-					<img alt="" class="status_message_avatar" src="{php}print get_avatar($settings['avatar'], "", "", "", $this->_vars['update']['user_id']);{/php}" />
+					<img alt="" class="status_message_avatar" src="{php}print get_avatar($settings['avatar'], "", "", "", $this->_vars['update']['user_id']);{/php}" style="width:22px;height:22px;" />
 					{checkActionsTpl location="status_user_2"}
 					{$update.user_login}
 					{checkActionsTpl location="status_user_3"}
