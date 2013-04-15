@@ -120,11 +120,23 @@ $(document).ready(function(){
 									$requirements_met = 'true';
 								}
 							{/php}
+							
+							{literal}
+							<script type="text/javascript">
+								$(document).ready(function () {
+									$("a").tooltip({
+										'selector': '',
+										'placement': 'left'
+									});
+								});
+							</script>
+							{/literal}
+			
 							<tr>
 								<td style="vertical-align:middle;">{$module_info[nr].dname} <br/> {$module_info[nr].desc} {$requirement_failed}</td>
 								<td style="vertical-align:middle;">{$module_info[nr].requires}</td>
 								<td style="text-align:center;vertical-align:middle;">{$module_info[nr].homepage_url}</td>
-								<td style="text-align:center;vertical-align:middle;"><a class="btn {php} if ($requirements_met == 'false'){ echo 'disabled'; }else{ echo 'btn-success'; } {/php} btn-mini" href="?action=install&module={$module_info[nr].value}">Install</a></td>
+								<td style="text-align:center;vertical-align:middle;"><a {php} if ($requirements_met == 'false'){ echo 'class="btn disabled btn-mini" rel="tooltip" title="Cannot install until requirements are met."'; }else{ echo 'class="btn btn-success btn-mini"'; } {/php} href="?action=install&module={$module_info[nr].value}">Install</a></td>
 								{php} if (isset($_GET['token'])) { {/php}
 									<td style="text-align:center;vertical-align:middle;">
 										{$module_info[nr].version}
