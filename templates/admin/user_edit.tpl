@@ -1,5 +1,6 @@
 <!-- user_edit.tpl -->
 {section name=nr loop=$userdata}
+
 	<script>
 		var message = "{#PLIGG_Visual_Register_Error_NoPassMatch#}";
 		{literal}
@@ -7,44 +8,47 @@
 		{
 			if (form.password.value != form.password2.value)
 			{
-			alert(message);
-			form.password.focus();
-			return false;
+				alert(message);
+				form.password.focus();
+				return false;
 			}
 			return true;
 		}
 		{/literal}
 	</script>
+	
 	<legend>{#PLIGG_Visual_Breadcrumb_Edit_User#}: {$userdata[nr].user_login}</legend>
 	<form id="form1" name="form1" method="post" action="" onsubmit="return check(this);">
     
     <input type="hidden" name="token" value="{$uri_token_admin_users_edit}" />
     
-     {if isset($username_error)}
-				<div class="alert">
-					<button class="close" data-dismiss="alert">&times;</button>
-					{ foreach value=error from=$username_error }
-						<p class="error">{$error}</p>
-					{ /foreach }
-				</div>
+		{if isset($username_error)}
+			<div class="alert">
+				<button class="close" data-dismiss="alert">&times;</button>
+				{foreach value=error from=$username_error }
+					<p class="error">{$error}</p>
+				{/foreach}
+			</div>
 		{/if}
         
         {if isset($email_error)}
-				<div class="alert">
-					<button class="close" data-dismiss="alert">&times;</button>
-					{ foreach value=error from=$email_error }
-						<p class="error">{$error}</p>
-					{ /foreach }
-				</div>
-			{/if}	
+			<div class="alert">
+				<button class="close" data-dismiss="alert">&times;</button>
+				{foreach value=error from=$email_error }
+					<p class="error">{$error}</p>
+				{/foreach}
+			</div>
+		{/if}
+		
         {if isset($password_error)}
-				<div class="alert">
-					<button class="close" data-dismiss="alert">&times;</button>
-					{ foreach value=error from=$password_error }
-						<p class="error">{$error}</p>
-					{ /foreach }
-				</div>
-			{/if}	    	
+			<div class="alert">
+				<button class="close" data-dismiss="alert">&times;</button>
+				{foreach value=error from=$password_error }
+					<p class="error">{$error}</p>
+				{/foreach }
+			</div>
+		{/if}
+		
 		<table class="table table-bordered table-striped">
 			<tr>
 				<td style="width:215px;">
@@ -75,8 +79,7 @@
 			</tr>
 			{checkActionsTpl location="tpl_admin_user_edit_center_fields"}
 			<tr>
-				<td>
-				</td>
+				<td></td>
 				<td>
 					<a class="btn" href="?mode=resetpass&user={$userdata[nr].user_login}{$uri_token_admin_users_edit}" onclick="return confirm('{#PLIGG_Visual_View_User_Reset_Pass_Confirm#}')">{#PLIGG_Visual_View_User_Reset_Pass#}</a>
 				</td>
@@ -94,6 +97,6 @@
 		</table>
 	</form>	
 {sectionelse}
-	{include file="{$my_base_url}{$my_pligg_base}/templates/admin/user_doesnt_exist_center.tpl"}
+	{include file="{$my_base_url}{$my_pligg_base}/templates/admin/user_does_not_exist.tpl"}
 {/section}
 <!--/user_edit.tpl -->
