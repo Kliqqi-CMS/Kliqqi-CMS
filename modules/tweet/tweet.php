@@ -47,7 +47,7 @@ exit;
 		exit;
 	}
 
-	$ms = new TwitterOauth($settings['consumer_key'], $settings['consumer_secret'], $_SESSION['request_token'], $_SESSION['request_secret']);
+	$ms = new TwitterOauth($settings['consumer_key'], $settings['consumer_secret'], $_SESSION['request_token'], $_SESSION['request_secret'], $_GET['oauth_verifier']);
 	$tok = $ms->getAccessToken();
 	if (!is_string($tok->key) || !is_string($tok->secret)) {
 #		error_log("Bad token from Twitter::getAccessToken(): ".var_export($tok, TRUE));
