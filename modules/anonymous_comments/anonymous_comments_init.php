@@ -16,7 +16,7 @@ if(defined('mnminclude')){
 		module_add_action('anonymous_user_id', 'get_anonymous_user_id', '');
 		module_add_action('show_comment_username', 'get_comment_username', '');
 		module_add_action('anonymous_comment', 'insert_anonymous_comment', '');
-		module_add_action_tpl('anonymous_comment_form', anonymous_comments_tpl_path . 'anonymous_comments.tpl');
+		module_add_action_tpl('anonymous_comment_form_start', anonymous_comments_tpl_path . 'anonymous_comments.tpl');
 		
 		include_once(mnmmodules . 'anonymous_comments/anonymous_comments_main.php');
 

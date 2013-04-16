@@ -32,28 +32,29 @@ function show_comments(id){
 {/literal}
 </script>
 <div id="tabbed" class="tab-content">
+
 	<div class="tab-pane fade active in" id="comments" >
+		{checkActionsTpl location="tpl_pligg_story_comments_start"}
 		<h3>{#PLIGG_Visual_Story_Comments#}</h3>
 		<a name="comments" href="#comments"></a>
-		{checkActionsTpl location="tpl_pligg_story_comments_start"}
-		
-			<ol class="comment-list">
-				{checkActionsTpl location="tpl_pligg_story_comments_individual_start"}
-					{$the_comments}
-				{checkActionsTpl location="tpl_pligg_story_comments_individual_end"}
-				{if $user_authenticated neq ""}
-					{include file=$the_template."/comment_form.tpl"}
-				{else}
-					{checkActionsTpl location="anonymous_comment_form"}
-					<div align="center" class="login_to_comment">
-						<br />
-						<h3><a href="{$login_url}">{#PLIGG_Visual_Story_LoginToComment#}</a> {#PLIGG_Visual_Story_Register#} <a href="{$register_url}">{#PLIGG_Visual_Story_RegisterHere#}</a>.</h3>
-					</div>
-				{/if}
-			</ol>	
-	
+		<ol class="comment-list">
+			{checkActionsTpl location="tpl_pligg_story_comments_individual_start"}
+				{$the_comments}
+			{checkActionsTpl location="tpl_pligg_story_comments_individual_end"}
+			{if $user_authenticated neq ""}
+				{include file=$the_template."/comment_form.tpl"}
+			{else}
+				{checkActionsTpl location="anonymous_comment_form_start"}
+				<div align="center" class="login_to_comment">
+					<br />
+					<h3><a href="{$login_url}">{#PLIGG_Visual_Story_LoginToComment#}</a> {#PLIGG_Visual_Story_Register#} <a href="{$register_url}">{#PLIGG_Visual_Story_RegisterHere#}</a>.</h3>
+				</div>
+				{checkActionsTpl location="anonymous_comment_form_end"}
+			{/if}
+		</ol>
 		{checkActionsTpl location="tpl_pligg_story_comments_end"}
 	</div>
+	
 	{if count($voter) neq 0}
 		<div class="tab-pane fade" id="who_voted">
 			<h3>{#PLIGG_Visual_Story_WhoVoted#}</h3>
