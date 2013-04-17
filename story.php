@@ -121,7 +121,6 @@ if(is_numeric($requestID)) {
 	$main_smarty->assign('link_id', $link->id);
 	$main_smarty->assign('user_id', $current_user->user_id);
 	$main_smarty->assign('randmd5', md5($current_user->user_id.$randkey));
-
 	
 	if(!$current_user->authenticated){
 		$vars = '';
@@ -168,22 +167,19 @@ if(is_numeric($requestID)) {
 	$parent_comment_id=sanitize($_GET['comment_id'], 3);
 	
 	if(isset($_GET['reply']) && !empty($parent_comment_id)){
-	$main_smarty->assign('the_comments', get_comments(true,0,$_GET['comment_id']));
-	$main_smarty->assign('parrent_comment_id',$parent_comment_id);
-	}elseif(!empty($parent_comment_id)){
-		
-	$main_smarty->assign('the_comments', get_comments(true,$parent_comment_id,0,1));
-	$main_smarty->assign('parrent_comment_id',$parent_comment_id);
+		$main_smarty->assign('the_comments', get_comments(true,0,$_GET['comment_id']));
+		$main_smarty->assign('parrent_comment_id',$parent_comment_id);
+	}elseif(!empty($parent_comment_id)){	
+		$main_smarty->assign('the_comments', get_comments(true,$parent_comment_id,0,1));
+		$main_smarty->assign('parrent_comment_id',$parent_comment_id);
 	}else{
-	$main_smarty->assign('the_comments', get_comments(true));
-	$main_smarty->assign('parrent_comment_id',0);
+		$main_smarty->assign('the_comments', get_comments(true));
+		$main_smarty->assign('parrent_comment_id',0);
 	}
-
+	
 	$main_smarty->assign('url', $link->url);
 	$main_smarty->assign('enc_url', urlencode($link->url));
-
 	
-
 	$main_smarty->assign('story_comment_count', $link->comments());
 	$main_smarty->assign('URL_rss_page', getmyurl('storyrss', isset($requestTitle) ? $requestTitle : urlencode($link->title_url), $link->category_safe_name($link->category)));
 
