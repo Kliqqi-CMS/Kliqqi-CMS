@@ -9,7 +9,7 @@
 <div class="row-fluid" style="margin-bottom:10px;">
 	<div class="span9">
 		<h1 style="margin-bottom:0px;">
-			{if $UseAvatars neq "0" && $pagename == "profile"}
+			{if $UseAvatars neq "0" && $pagename == "user_edit"}
 				<a href="#profileavatar" data-toggle="modal">
 					<div class="thumbnail avatar_thumb">
 						{php}
@@ -67,12 +67,16 @@
 					</div>
 				</div>
 			{elseif $UseAvatars neq "0" && $pagename == "user"}
-				{if $user_login eq $user_logged_in}<a href="{$my_pligg_base}/profile.php?avatar=edit">{/if}
-					<div class="thumbnail avatar_thumb">
-						<img style="float:left;margin:0 15px 0 0;" src="{$Avatar.large}" style="margin-bottom:4px;" alt="Avatar" />
-						{if $user_login eq $user_logged_in}<a href="{$my_pligg_base}/profile.php?avatar=edit" class="btn btn-small edit-avatar">Edit Avatar</a>{/if}
-					</div>
-				{if $user_login eq $user_logged_in}</a>{/if}
+				{if $user_login eq $user_logged_in || $isadmin}
+					<a href="{if $UrlMethod == "2"}{$my_base_url}{$my_pligg_base}/user/{$user_login}/edit/?avatar=edit{else}{$my_base_url}{$my_pligg_base}/profile.php?avatar=edit{/if}">
+				{/if}
+				<div class="thumbnail avatar_thumb">
+					<img style="float:left;margin:0 15px 0 0;" src="{$Avatar.large}" style="margin-bottom:4px;" alt="Avatar" />
+					{if $user_login eq $user_logged_in || $isadmin}
+						<a class="btn btn-small edit-avatar" href="{if $UrlMethod == "2"}{$my_base_url}{$my_pligg_base}/user/{$user_login}/edit/?avatar=edit{else}{$my_base_url}{$my_pligg_base}/profile.php?avatar=edit{/if}">Edit Avatar</a>
+					{/if}
+				</div>
+				{if $user_login eq $user_logged_in || $isadmin}</a>{/if}
 			{/if}
 			{$user_username|capitalize}
 		</h1>
