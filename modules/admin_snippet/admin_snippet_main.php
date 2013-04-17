@@ -43,17 +43,17 @@ function admin_snippet_showpage(){
 			if($_POST['submit']) {
 			    // Check some data
 			    if(!$_POST['snippet_name']) {
-				$main_smarty->assign('snippet_error', "Please specify Snippet Name");
+					$main_smarty->assign('snippet_error', "Please specify Snippet Name");
 			    } elseif(!$_POST['snippet_content']) {
-				$main_smarty->assign('snippet_error', "Please specify Snippet Content");
+					$main_smarty->assign('snippet_error', "Please specify Snippet Content");
 			    } else {
-				$snippet_name = $db->escape(sanitize($_POST['snippet_name'],4));
-				$snippet_location = $db->escape(sanitize($_POST['snippet_location'],4));
-				$snippet_content  = $db->escape($_POST['snippet_content']);
-				$db->query("INSERT INTO ".table_prefix."snippets (snippet_name,snippet_location,snippet_updated,snippet_order,snippet_content) 
+					$snippet_name = $db->escape(sanitize($_POST['snippet_name'],4));
+					$snippet_location = $db->escape(sanitize($_POST['snippet_location'],4));
+					$snippet_content  = $db->escape($_POST['snippet_content']);
+					$db->query("INSERT INTO ".table_prefix."snippets (snippet_name,snippet_location,snippet_updated,snippet_order,snippet_content) 
 						   VALUES ('$snippet_name','$snippet_location',NOW(),'1','$snippet_content')");
-				header("Location: ".my_pligg_base."/module.php?module=admin_snippet");
-				die();
+					header("Location: ".my_pligg_base."/module.php?module=admin_snippet");
+					die();
 			    }
 			}
 
@@ -63,20 +63,19 @@ function admin_snippet_showpage(){
 			if($_POST['submit']) {
 			    // Check some data
 			    if(!$_POST['snippet_name']) {
-				$main_smarty->assign('snippet_error', "Please specify Snippet Name");
+					$main_smarty->assign('snippet_error', "Please specify Snippet Name");
 			    } elseif(!$_POST['snippet_content']) {
-				$main_smarty->assign('snippet_error', "Please specify Snippet Content");
+					$main_smarty->assign('snippet_error', "Please specify Snippet Content");
 			    } elseif(!is_numeric($_POST['snippet_id'])) {
-				$main_smarty->assign('snippet_error', "Wrong ID");
+					$main_smarty->assign('snippet_error', "Wrong ID");
 			    } else {
-				$snippet_id = $_POST['snippet_id'];
-				$snippet_name = $db->escape(sanitize($_POST['snippet_name'],4));
-				$snippet_location = $db->escape(sanitize($_POST['snippet_location'],4));
-				$snippet_content  = $db->escape($_POST['snippet_content']);
-				$db->query("UPDATE ".table_prefix."snippets SET snippet_name='$snippet_name', snippet_location='$snippet_location', snippet_content='$snippet_content', snippet_updated=NOW() WHERE snippet_id='$snippet_id'");
-
-				header("Location: ".my_pligg_base."/module.php?module=admin_snippet");
-				die();
+					$snippet_id = $_POST['snippet_id'];
+					$snippet_name = $db->escape(sanitize($_POST['snippet_name'],4));
+					$snippet_location = $db->escape(sanitize($_POST['snippet_location'],4));
+					$snippet_content  = $db->escape($_POST['snippet_content']);
+					$db->query("UPDATE ".table_prefix."snippets SET snippet_name='$snippet_name', snippet_location='$snippet_location', snippet_content='$snippet_content', snippet_updated=NOW() WHERE snippet_id='$snippet_id'");
+					header("Location: ".my_pligg_base."/module.php?module=admin_snippet");
+					die();
 			    }
 			}
 	
@@ -99,11 +98,11 @@ function admin_snippet_showpage(){
 			{
 				header('Content-Description: File Transfer'); 
 				header('Pragma: no-cache');
-			    	header('Cache-Control: no-cache, must-revalidate');
-			    	header("Content-Disposition: attachment; filename=admin_snippet.xml"); 
-			    	header("Content-type: text/xml; charset=utf-8");
+				header('Cache-Control: no-cache, must-revalidate');
+				header("Content-Disposition: attachment; filename=admin_snippet.xml"); 
+				header("Content-type: text/xml; charset=utf-8");
 
-    				echo "<?xml version=\"1.0\"?>\r\n";
+    			echo "<?xml version=\"1.0\"?>\r\n";
 				echo "<data>\r\n";
 
 				$snippets = $db->get_results("SELECT * FROM ".table_prefix."snippets WHERE snippet_id IN(".join(",",array_keys($_POST["snippet_delete"])).")",ARRAY_A);
