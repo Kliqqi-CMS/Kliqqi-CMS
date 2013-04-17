@@ -29,9 +29,10 @@ $canIhaveAccess = $canIhaveAccess + checklevel('moderator');
 // If not logged in, redirect to the index page
 if ($_GET['login'] && $canIhaveAccess) 
 	$login=$_GET['login'];
-elseif ($current_user->user_id > 0 && $current_user->authenticated) 
-	$login=$current_user->user_login;
-else {
+elseif ($current_user->user_id > 0 && $current_user->authenticated) {
+	$login = $current_user->user_login;
+	header("Location: $my_base_url$my_pligg_base/user/$login/edit/");
+} else {
 	//header('Location: '.$my_base_url.$my_pligg_base);
 	//die;
 	$myname=$my_base_url.$my_pligg_base;
@@ -133,8 +134,8 @@ if(isset($_POST['email'])){
 		 $save_message_text.="<br/>".$main_smarty->get_config_vars("PLIGG_Visual_Profile_UsernameUpdated");
 		if($savemsg['pass']==1)
 		 $save_message_text.="<br/>".$main_smarty->get_config_vars("PLIGG_Visual_Profile_PassUpdated");
+
 	    // Reload the page if no error
-		
 	    $_SESSION['savemsg'] = $save_message_text;
 	    header("Location: ".getmyurl('user_edit', $login));
 	    exit;
@@ -250,10 +251,6 @@ function save_profile() {
 	if ($CSRF->check_valid(sanitize($_POST['token'], 3), 'profile_change')){
 	
 		if(!isset($_POST['save_profile']) || !$_POST['process'] || (!$canIhaveAccess && sanitize($_POST['user_id'], 3) != $current_user->user_id)) return;
-		
-		
-		
-		
 		
 		if ($user->email!=sanitize($_POST['email'], 3))
 		{

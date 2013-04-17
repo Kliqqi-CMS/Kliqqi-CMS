@@ -689,6 +689,7 @@ function getmyurl($x, $var1="", $var2="", $var3="") {
 		If ($x == "admin_login") {return my_pligg_base."/admin/admin_login.php?return=" . $var1;}
 		If ($x == "login") {return my_pligg_base."/login.php?return=" . $var1;}
 		If ($x == "logout") {return my_pligg_base."/login.php?op=logout&return=" . $var1;}
+		If ($x == "user_edit") {return my_pligg_base."/profile.php?login=$var1";}
 		If ($x == "register") {return my_pligg_base."/register.php";}
 		If ($x == "category") {return my_pligg_base."/index.php?category=" . $var1;}
 		If ($x == "submit") {return my_pligg_base."/submit.php";}
@@ -807,7 +808,7 @@ function getmyurl($x, $var1="", $var2="", $var3="") {
 		If ($x == "root") {return my_pligg_base."/";}
 		If ($x == "upcoming") {return my_pligg_base."/upcoming/";}
 		If ($x == "topusers") {return my_pligg_base."/topusers/";}
-		If ($x == "user_edit") {return my_pligg_base."/user/edit/";}
+		If ($x == "user_edit") {return my_pligg_base."/user/$var1/edit/";}
 		If ($x == "userNoVar") {return my_pligg_base."/user/";}
 		If ($x == "loginNoVar") {return my_pligg_base."/login/";}
 		If ($x == "rssTime") {return my_pligg_base."/rss.php?time=" . $var1;}

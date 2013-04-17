@@ -8,7 +8,7 @@ ErrorDocument 404 /404error.php
 Options +FollowSymlinks -MultiViews
 RewriteEngine on
 ## If Pligg is installed in a subfolder, change the below line to RewriteBase /name-of-subfolder
-RewriteBase /pl2
+RewriteBase /
 ## Force forward slash at the end of URL
 RewriteCond %{REQUEST_URI} !(\.[a-zA-Z0-9]{1,5}|/)$
 ## If installed in a subfolder, you will need to add that directory after {HTTP_HOST} on the next line.
@@ -112,7 +112,7 @@ RewriteRule ^user/([^/]+)/link/([0-9+]+)/?$ user_add_remove_links.php?action=$1&
 RewriteRule ^user/([^/]+)/profile/?$ user/$1/ [R=permanent]
 RewriteRule ^user/([^/]+)/rss/?$ userrss.php?user=$1 [L]
 RewriteRule ^user/([^/]+)/rss/([a-zA-Z0-9-]+)/?$ userrss.php?user=$1&status=$2 [L]
-RewriteRule ^user/([^/]+)/edit/?$ profile.php [L]
+RewriteRule ^user/([^/]+)/edit/?$ profile.php?login=$1 [L]
 RewriteRule ^user/([^/]+)/([^/]+)/?$ user.php?view=$2&login=$1 [L]
 RewriteRule ^user/?$ user.php [L]
 RewriteRule ^user/([^/]+)/?$ user.php?login=$1 [L]
