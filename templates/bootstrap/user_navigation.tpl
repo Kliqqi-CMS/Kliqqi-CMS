@@ -38,7 +38,7 @@
 						<h3>Profile Avatar Upload</h3>
 					</div>
 					<div class="modal-body">
-						<form method="POST" enctype="multipart/form-data" name="image_upload_form" action="{$form_action}">
+						<form method="POST" enctype="multipart/form-data" name="image_upload_form">
 						<script type="text/javascript">
 							$('.fileupload').fileupload()
 						</script>
@@ -183,17 +183,17 @@
 {checkActionsTpl location="tpl_user_center_just_below_header"}
 <ul class="nav nav-tabs" id="profiletabs">
 	{checkActionsTpl location="tpl_pligg_profile_sort_start"}
-	<li {if $user_view eq 'profile' || $user_view eq 'removefriend' || $user_view eq 'addfriend'}class="active"{/if}><a {if $user_view eq 'profile'}data-toggle="tab" href="#personal_info"{else}href="{$user_url_personal_data}"{/if} class="navbut{$nav_pd}">{#PLIGG_Visual_User_PersonalData#}</a></li>
+	<li {if $user_view eq 'profile' || $user_view eq 'removefriend' || $user_view eq 'addfriend'}class="active"{/if}><a {if $user_view eq 'profile'}data-toggle="tab" href="#personal_info"{else}href="{$user_url_personal_data2}"{/if} class="navbut{$nav_pd}">{#PLIGG_Visual_User_PersonalData#}</a></li>
 	{if $user_login eq $user_logged_in || $isadmin}
-		<li {if $pagename eq 'user_edit'}class="active"{/if}><a href="{$URL_Profile}" class="navbut{$nav_set}">{#PLIGG_Visual_User_Setting#}</a></li>
+		<li {if $pagename eq 'user_edit'}class="active"{/if}><a href="{$URL_Profile2}" class="navbut{$nav_set}">{#PLIGG_Visual_User_Setting#}</a></li>
 	{/if}
-	<li {if $user_view eq 'history'}class="active"{/if}><a href="{$user_url_news_sent}" class="navbut{$nav_ns}">{#PLIGG_Visual_User_NewsSent#}</a></li>
-	<li {if $user_view eq 'published'}class="active"{/if}><a href="{$user_url_news_published}" class="navbut{$nav_np}">{#PLIGG_Visual_User_NewsPublished#}</a></li>
-	<li {if $user_view eq 'upcoming'}class="active"{/if}><a href="{$user_url_news_unpublished}" class="navbut{$nav_nu}">{#PLIGG_Visual_User_NewsUnPublished#}</a></li>
-	<li {if $user_view eq 'commented'}class="active"{/if}><a href="{$user_url_commented}" class="navbut{$nav_c}">{#PLIGG_Visual_User_NewsCommented#}</a></li>
-	<li {if $user_view eq 'upvoted'}class="active"{/if}><a href="{$user_url_news_upvoted}" class="navbut{$nav_nv}">{#PLIGG_Visual_UpVoted#}</a></li>
-	<li {if $user_view eq 'downvoted'}class="active"{/if}><a href="{$user_url_news_downvoted}" class="navbut{$nav_nv}">{#PLIGG_Visual_DownVoted#}</a></li>
-	<li {if $user_view eq 'saved'}class="active"{/if}><a href="{$user_url_saved}" class="navbut{$nav_s}">{#PLIGG_Visual_User_NewsSaved#}</a></li>
+	<li {if $user_view eq 'history'}class="active"{/if}><a href="{$user_url_news_sent2}" class="navbut{$nav_ns}">{#PLIGG_Visual_User_NewsSent#}</a></li>
+	<li {if $user_view eq 'published'}class="active"{/if}><a href="{$user_url_news_published2}" class="navbut{$nav_np}">{#PLIGG_Visual_User_NewsPublished#}</a></li>
+	<li {if $user_view eq 'upcoming'}class="active"{/if}><a href="{$user_url_news_unpublished2}" class="navbut{$nav_nu}">{#PLIGG_Visual_User_NewsUnPublished#}</a></li>
+	<li {if $user_view eq 'commented'}class="active"{/if}><a href="{$user_url_commented2}" class="navbut{$nav_c}">{#PLIGG_Visual_User_NewsCommented#}</a></li>
+	<li {if $user_view eq 'upvoted'}class="active"{/if}><a href="{$user_url_news_upvoted2}" class="navbut{$nav_nv}">{#PLIGG_Visual_UpVoted#}</a></li>
+	<li {if $user_view eq 'downvoted'}class="active"{/if}><a href="{$user_url_news_downvoted2}" class="navbut{$nav_nv}">{#PLIGG_Visual_DownVoted#}</a></li>
+	<li {if $user_view eq 'saved'}class="active"{/if}><a href="{$user_url_saved2}" class="navbut{$nav_s}">{#PLIGG_Visual_User_NewsSaved#}</a></li>
 	{checkActionsTpl location="tpl_pligg_profile_sort_end"}
 </ul>
 

@@ -55,6 +55,26 @@ if(!$user->read()) {
 	echo "invalid user";
 	die;
 }
+
+// setup the links
+$main_smarty->assign('user_url_personal_data2', getmyurl('user', $login));
+$main_smarty->assign('user_url_news_sent2', getmyurl('user2', $login, 'history'));
+$main_smarty->assign('user_url_news_published2', getmyurl('user2', $login, 'published'));
+$main_smarty->assign('user_url_news_unpublished2', getmyurl('user2', $login, 'upcoming'));
+$main_smarty->assign('user_url_news_voted2', getmyurl('user2', $login, 'voted'));
+$main_smarty->assign('user_url_news_upvoted2', getmyurl('user2', $login, 'upvoted'));
+$main_smarty->assign('user_url_news_downvoted2', getmyurl('user2', $login, 'downvoted'));	
+$main_smarty->assign('user_url_commented2', getmyurl('user2', $login, 'commented'));
+$main_smarty->assign('user_url_saved2', getmyurl('user2', $login, 'saved'));
+$main_smarty->assign('user_url_friends', getmyurl('user_friends', $login, 'following'));
+$main_smarty->assign('user_url_friends2', getmyurl('user_friends', $login, 'followers'));
+$main_smarty->assign('user_url_add', getmyurl('user_friends', $login, 'addfriend'));
+$main_smarty->assign('user_url_remove', getmyurl('user_friends', $login, 'removefriend'));
+$main_smarty->assign('user_rss', getmyurl('rssuser', $login));
+$main_smarty->assign('URL_Profile2', getmyurl('user2', $login, 'edit'));
+$main_smarty->assign('form_action', getmyurl('profile')); 
+$main_smarty->assign('user_url_member_groups', getmyurl('user2', $login, 'member_groups	'));
+
 	// uploading avatar
 	if(isset($_POST["avatar"]) && sanitize($_POST["avatar"], 3) == "uploaded" && Enable_User_Upload_Avatar == true){
 		if ($CSRF->check_valid(sanitize($_POST['token'], 3), 'profile_change')){
