@@ -50,7 +50,7 @@ elseif (is_numeric($_GET['id']))
 	{
 		$main_smarty->assign('posttitle','Status Update #'.$_GET['id']);
 		$main_smarty->assign('update',get_object_vars ($update));
-		$main_smarty->assign('settings',get_status_settings());
+		$main_smarty->assign('settings',$settings=get_status_settings());
 		$main_smarty->assign('current_user', get_object_vars($current_user));
 		$main_smarty->assign('current_username', '@'.$current_user->user_login);
 		$main_smarty->assign('tpl_center', '../modules/status/templates/status_permalink');
