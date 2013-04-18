@@ -773,13 +773,14 @@ class Link {
 		if(utf8_strlen($this->content) > StorySummary_ContentTruncate){
 			
 			 if(Auto_scroll==true){
-			  $content=	close_tags(utf8_substr($this->content, 0, StorySummary_ContentTruncate));
-			  $content.="<div class=\"read_more_article\" storyid=\"".$this->id."\" > Read More</div>" ;
-			  $content.="<div class=\"read_more_story".$this->id." hide\" >";
-			  $content.=close_tags(utf8_substr($this->content, StorySummary_ContentTruncate,utf8_strlen($this->content) ));
-			  $content.="</div>";
-			 // echo $content;
-			  return $content;
+				global $main_smarty;
+				$content=	close_tags(utf8_substr($this->content, 0, StorySummary_ContentTruncate));
+				$content.="<div class=\"read_more_article\" storyid=\"".$this->id."\" > ".$main_smarty->get_config_vars('PLIGG_Visual_Read_More')."</div>" ;
+				$content.="<div class=\"read_more_story".$this->id." hide\" >";
+				$content.=close_tags(utf8_substr($this->content, StorySummary_ContentTruncate,utf8_strlen($this->content) ));
+				$content.="</div>";
+				// echo $content;
+				return $content;
 			 }else{
 			 
 			 return close_tags(utf8_substr($this->content, 0, StorySummary_ContentTruncate)) . "...";
