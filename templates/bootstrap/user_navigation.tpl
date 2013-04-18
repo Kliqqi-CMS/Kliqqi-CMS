@@ -14,7 +14,6 @@
 					<div class="thumbnail avatar_thumb">
 						{php}
 							// Edit Avatar on Page Load using ?avatar=edit at end of URL
-							// Needs to accomodate for URL Method 2: /user/edit/avatar/
 							$refer  = $_SERVER["REQUEST_URI"];
 							$avatarcheck = strstr($refer, '?');
 							if ($avatarcheck == "?avatar=edit"){
@@ -62,6 +61,7 @@
 					<div class="modal-footer">
 						<input type="hidden" name="avatar" value="uploaded"/>
 						{$hidden_token_profile_change}
+						<a class="btn" data-dismiss="modal">{#PLIGG_Visual_View_User_Edit_Cancel#}</a>
 						<input type="submit" name="action" class="btn btn-primary" value="{#PLIGG_Visual_Profile_AvatarUpload#}"/>
 						</form>
 					</div>
