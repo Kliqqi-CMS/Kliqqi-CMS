@@ -652,6 +652,8 @@ function getmyurl($x, $var1="", $var2="", $var3="") {
 	$var1 = sanitize($var1,1);
 	$var2 = sanitize($var2,1);
 	$var3 = sanitize($var3,1);
+
+	$ret = '';
 	
 	If ($x == "storyURL") {
 		// var 1 = category_safe_name
@@ -666,208 +668,208 @@ function getmyurl($x, $var1="", $var2="", $var3="") {
 	
 	
 	if ($URLMethod == 1) {
-	
-		If ($x == "index") {return my_pligg_base."/index.php";}
-		If ($x == "maincategory") {return my_pligg_base."/index.php?category=" . $var1;}
-		If ($x == "queuedcategory") {return my_pligg_base."/upcoming.php?category=" . $var1;}
-		If ($x == "discardedcategory") {return my_pligg_base."/discarded.php?category=" . $var1;}
-		If ($x == "editlink") {return my_pligg_base."/editlink.php?id=" . $var1;}
-		If ($x == "edit") {return my_pligg_base."/edit.php?id=" . $var1 . "&amp;commentid=" . $var2;}
-		If ($x == "user") {return my_pligg_base."/user.php?login=" . $var1. "&amp;view=" . $var2;}
-		If ($x == "user_inbox") {return my_pligg_base."/user.php?view=" . $var1;}
-		If ($x == "user_add_remove") {return my_pligg_base."/user.php?login=" . $var1. "&amp;view=" . $var2;}
-		If ($x == "user_add_links") {return my_pligg_base."/user_add_remove_links.php?action=add&amp;link=" . $var1;}
-		If ($x == "user_remove_links") {return my_pligg_base."/user_add_remove_links.php?action=remove&amp;link=" . $var1;}
-		If ($x == "user_friends") {return my_pligg_base."/user.php?login=" . $var1. "&amp;view=" . $var2;}
-		If ($x == "index_sort") {return my_pligg_base."/index.php?part=".$var1.($var2 ? "&amp;category=".$var2 : '');}
-		If ($x == "upcoming_sort") {return my_pligg_base."/upcoming.php?part=".$var1.($var2 ? "&amp;category=".$var2 : '');}
-		If ($x == "userblank") {return my_pligg_base."/user.php?login=";}
-		If ($x == "user2") {return my_pligg_base."/user.php?login=".$var1."&amp;view=".$var2;}
-		If ($x == "search") {return my_pligg_base."/search.php?search=" . $var1;}
-		If ($x == "advancedsearch") {return my_pligg_base."/advancedsearch.php";}
-		If ($x == "search_url") {return my_pligg_base."/search.php?search=" . $var1;}
-		If ($x == "admin_login") {return my_pligg_base."/admin/admin_login.php?return=" . $var1;}
-		If ($x == "login") {return my_pligg_base."/login.php?return=" . $var1;}
-		If ($x == "logout") {return my_pligg_base."/login.php?op=logout&return=" . $var1;}
-		If ($x == "user_edit") {return my_pligg_base."/profile.php?login=$var1";}
-		If ($x == "register") {return my_pligg_base."/register.php";}
-		If ($x == "category") {return my_pligg_base."/index.php?category=" . $var1;}
-		If ($x == "submit") {return my_pligg_base."/submit.php";}
-		If ($x == "story") {return my_pligg_base."/story.php?id=" . $var1;}
-		If ($x == "storytitle") {return my_pligg_base."/story.php?title=" . $var1;}
-		If ($x == "storycattitle") {return my_pligg_base."/story.php?title=" . $var2;}
-		If ($x == "out") {return my_pligg_base."/out.php?id=" . $var1;}
-		If ($x == "outtitle") {return my_pligg_base."/out.php?title=" . $var1;}
-		If ($x == "outurl") {return my_pligg_base."/out.php?url=" . rawurlencode($var1);}
-		If ($x == "root") {return my_pligg_base."/index.php";}
-		If ($x == "upcoming") {return my_pligg_base."/upcoming.php";}
-		If ($x == "discarded") {return my_pligg_base."/discarded.php";}
-		If ($x == "topusers") {return my_pligg_base."/topusers.php";}
-		If ($x == "profile") {return my_pligg_base."/profile.php";}
-		If ($x == "userNoVar") {return my_pligg_base."/user.php";}
-		If ($x == "loginNoVar") {return my_pligg_base."/login.php";}
-		If ($x == "rssTime") {return my_pligg_base."/rss.php?time=" . $var1;}
-		If ($x == "about") {return my_pligg_base."/faq-".$var1.".php";}
-		If ($x == "bugreport") {return my_pligg_base."/bugreport.php";}
-		If ($x == "rsspage") {return my_pligg_base."/rss.php?category=$var1&amp;status=$var2&amp;group=$var3";}
-		If ($x == "rss") {return my_pligg_base."/rss.php";}
-		If ($x == "rssqueued") {return my_pligg_base."/rss.php?status=queued";}
-		If ($x == "rssall") {return my_pligg_base."/rss.php?status=all";}
-		If ($x == "rsscategory") {return my_pligg_base."/rss.php?category=". $var1;}
-		If ($x == "rsscategoryqueued") {return my_pligg_base."/rss.php?status=queued&amp;category=". $var1;}
-		If ($x == "rsssearch") {return my_pligg_base."/rss.php?search=". $var1;}
-		If ($x == "rssuser") {return my_pligg_base."/userrss.php?user=". $var1. "&amp;status=" . $var2;}
-		If ($x == "storyrss") {return my_pligg_base."/storyrss.php?title=". $var1;}
-		If ($x == "trackback") {return my_pligg_base."/trackback.php?id=" . $var1;}
-		If ($x == "page") {return my_pligg_base."/page.php?page=" . $var1;}
-		If ($x == "upcoming_cat") {return my_pligg_base."/?category=";}
-		If ($x == "discarded_cat") {return my_pligg_base."/?category=";}
-        If ($x == "admin") {return my_pligg_base."/admin/index.php";}
-        If ($x == "admin_modify") {return my_pligg_base."/admin/linkadmin.php?id=" . $var1 . "&amp;action=main";}
-        If ($x == "admin_modify_do") {return my_pligg_base."/admin/linkadmin.php?id=" . $var1 . "&amp;action=do" . $var2;}
-        If ($x == "admin_modify_edo") {return my_pligg_base."/admin/linkadmin.php?id=" . $var1 . "&amp;action=edo" . $var2;}
-        If ($x == "admin_discard") {return my_pligg_base."/admin/linkadmin.php?id=" . $var1 . "&amp;action=discard";}
-        If ($x == "admin_queued") {return my_pligg_base."/admin/linkadmin.php?id=" . $var1 . "&amp;action=queued";}
-        If ($x == "admin_published") {return my_pligg_base."/admin/linkadmin.php?id=" . $var1 . "&amp;action=published";}
-		If ($x == "editcomment") {return my_pligg_base."/edit.php?id=" . $var2 . "&amp;commentid=" . $var1;}
-		If ($x == "tagcloud") {return my_pligg_base."/cloud.php";}
-		If ($x == "tagcloud_range") {return my_pligg_base."/cloud.php?range=" . $var1;}
-		If ($x == "live_comments") {return my_pligg_base."/live_comments.php";}
-		If ($x == "live_published") {return my_pligg_base."/live_published.php";}
-		If ($x == "live_unpublished") {return my_pligg_base."/live_unpublished.php";}
-		If ($x == "tag") {return my_pligg_base."/search.php?search=" . $var1 . "&amp;tag=true";}
-		If ($x == "tag2") {return my_pligg_base."/search.php?search=" . $var1 . "&amp;tag=true&amp;from=" . $var2;}
-		If ($x == "live") {return my_pligg_base."/live.php";}
-		If ($x == "template") {return my_pligg_base."/settemplate.php";}
-		If ($x == "settemplate") {return my_pligg_base."/settemplate.php?template=" .$var1;}
+		if ($x == "index") $ret = "/index.php";
+		elseif ($x == "maincategory") $ret = "/index.php?category=" . $var1;
+		elseif ($x == "queuedcategory") $ret = "/upcoming.php?category=" . $var1;
+		elseif ($x == "discardedcategory") $ret = "/discarded.php?category=" . $var1;
+		elseif ($x == "editlink") $ret = "/editlink.php?id=" . $var1;
+		elseif ($x == "edit") $ret = "/edit.php?id=" . $var1 . "&amp;commentid=" . $var2;
+		elseif ($x == "user") $ret = "/user.php?login=" . $var1. "&amp;view=" . $var2;
+		elseif ($x == "user_inbox") $ret = "/user.php?view=" . $var1;
+		elseif ($x == "user_add_remove") $ret = "/user.php?login=" . $var1. "&amp;view=" . $var2;
+		elseif ($x == "user_add_links") $ret = "/user_add_remove_links.php?action=add&amp;link=" . $var1;
+		elseif ($x == "user_remove_links") $ret = "/user_add_remove_links.php?action=remove&amp;link=" . $var1;
+		elseif ($x == "user_friends") $ret = "/user.php?login=" . $var1. "&amp;view=" . $var2;
+		elseif ($x == "index_sort") $ret = "/index.php?part=".$var1.($var2 ? "&amp;category=".$var2 : '');
+		elseif ($x == "upcoming_sort") $ret = "/upcoming.php?part=".$var1.($var2 ? "&amp;category=".$var2 : '');
+		elseif ($x == "userblank") $ret = "/user.php?login=";
+		elseif ($x == "user2") $ret = "/user.php?login=".$var1."&amp;view=".$var2;
+		elseif ($x == "search") $ret = "/search.php?search=" . $var1;
+		elseif ($x == "advancedsearch") $ret = "/advancedsearch.php";
+		elseif ($x == "search_url") $ret = "/search.php?search=" . $var1;
+		elseif ($x == "admin_login") $ret = "/admin/admin_login.php?return=" . $var1;
+		elseif ($x == "login") $ret = "/login.php?return=" . $var1;
+		elseif ($x == "logout") $ret = "/login.php?op=logout&return=" . $var1;
+		elseif ($x == "user_edit") $ret = "/profile.php?login=$var1";
+		elseif ($x == "register") $ret = "/register.php";
+		elseif ($x == "category") $ret = "/index.php?category=" . $var1;
+		elseif ($x == "submit") $ret = "/submit.php";
+		elseif ($x == "story") $ret = "/story.php?id=" . $var1;
+		elseif ($x == "storytitle") $ret = "/story.php?title=" . $var1;
+		elseif ($x == "storycattitle") $ret = "/story.php?title=" . $var2;
+		elseif ($x == "out") $ret = "/out.php?id=" . $var1;
+		elseif ($x == "outtitle") $ret = "/out.php?title=" . $var1;
+		elseif ($x == "outurl") $ret = "/out.php?url=" . rawurlencode($var1);
+		elseif ($x == "root") $ret = "/index.php";
+		elseif ($x == "upcoming") $ret = "/upcoming.php";
+		elseif ($x == "discarded") $ret = "/discarded.php";
+		elseif ($x == "topusers") $ret = "/topusers.php";
+		elseif ($x == "profile") $ret = "/profile.php";
+		elseif ($x == "userNoVar") $ret = "/user.php";
+		elseif ($x == "loginNoVar") $ret = "/login.php";
+		elseif ($x == "rssTime") $ret = "/rss.php?time=" . $var1;
+		elseif ($x == "about") $ret = "/faq-".$var1.".php";
+		elseif ($x == "bugreport") $ret = "/bugreport.php";
+		elseif ($x == "rsspage") $ret = "/rss.php?category=$var1&amp;status=$var2&amp;group=$var3";
+		elseif ($x == "rss") $ret = "/rss.php";
+		elseif ($x == "rssqueued") $ret = "/rss.php?status=queued";
+		elseif ($x == "rssall") $ret = "/rss.php?status=all";
+		elseif ($x == "rsscategory") $ret = "/rss.php?category=". $var1;
+		elseif ($x == "rsscategoryqueued") $ret = "/rss.php?status=queued&amp;category=". $var1;
+		elseif ($x == "rsssearch") $ret = "/rss.php?search=". $var1;
+		elseif ($x == "rssuser") $ret = "/userrss.php?user=". $var1. "&amp;status=" . $var2;
+		elseif ($x == "storyrss") $ret = "/storyrss.php?title=". $var1;
+		elseif ($x == "trackback") $ret = "/trackback.php?id=" . $var1;
+		elseif ($x == "page") $ret = "/page.php?page=" . $var1;
+		elseif ($x == "upcoming_cat") $ret = "/?category=";
+		elseif ($x == "discarded_cat") $ret = "/?category=";
+	        elseif ($x == "admin") $ret = "/admin/index.php";
+	        elseif ($x == "admin_modify") $ret = "/admin/linkadmin.php?id=" . $var1 . "&amp;action=main";
+	        elseif ($x == "admin_modify_do") $ret = "/admin/linkadmin.php?id=" . $var1 . "&amp;action=do" . $var2;
+	        elseif ($x == "admin_modify_edo") $ret = "/admin/linkadmin.php?id=" . $var1 . "&amp;action=edo" . $var2;
+	        elseif ($x == "admin_discard") $ret = "/admin/linkadmin.php?id=" . $var1 . "&amp;action=discard";
+	        elseif ($x == "admin_queued") $ret = "/admin/linkadmin.php?id=" . $var1 . "&amp;action=queued";
+	        elseif ($x == "admin_published") $ret = "/admin/linkadmin.php?id=" . $var1 . "&amp;action=published";
+		elseif ($x == "editcomment") $ret = "/edit.php?id=" . $var2 . "&amp;commentid=" . $var1;
+		elseif ($x == "tagcloud") $ret = "/cloud.php";
+		elseif ($x == "tagcloud_range") $ret = "/cloud.php?range=" . $var1;
+		elseif ($x == "live_comments") $ret = "/live_comments.php";
+		elseif ($x == "live_published") $ret = "/live_published.php";
+		elseif ($x == "live_unpublished") $ret = "/live_unpublished.php";
+		elseif ($x == "tag") $ret = "/search.php?search=" . $var1 . "&amp;tag=true";
+		elseif ($x == "tag2") $ret = "/search.php?search=" . $var1 . "&amp;tag=true&amp;from=" . $var2;
+		elseif ($x == "live") $ret = "/live.php";
+		elseif ($x == "template") $ret = "/settemplate.php";
+		elseif ($x == "settemplate") $ret = "/settemplate.php?template=" .$var1;
 		
 		//group links
-		If ($x == "groups") {return my_pligg_base."/groups.php";}
-		If ($x == "submit_groups") {return my_pligg_base."/submit_groups.php";}
-		If ($x == "group_story") {return my_pligg_base."/group_story.php?id=" . $var1;}
-		If ($x == "group_story_title") {return my_pligg_base."/group_story.php?title=" . $var1;}
-		If ($x == "group_story2") {return my_pligg_base."/group_story.php?title=".$var1."&amp;view=".$var2.($var3 ? "&amp;$var3=" : '');}
-		If ($x == "join_group") {return my_pligg_base."/join_group.php?id=" . $var1 . "&amp;privacy=".$var2."&amp;join=true";}
-		If ($x == "unjoin_group") {return my_pligg_base."/join_group.php?id=" . $var1 . "&amp;privacy=".$var2."&amp;join=false";}
-		If ($x == "join_group_withdraw") {return my_pligg_base."/join_group.php?group_id=" . $var1 . "&amp;user_id=".$var2."&amp;activate=withdraw";}
-		If ($x == "group_admin") {return my_pligg_base."/groupadmin.php?id=" . $var1 . "&amp;role=admin&amp;userid=" . $var3;}
-		If ($x == "group_normal") {return my_pligg_base."/groupadmin.php?id=" . $var1 . "&amp;role=normal&amp;userid=" . $var3;}
-		If ($x == "group_moderator") {return my_pligg_base."/groupadmin.php?id=" . $var1 . "&amp;role=moderator&amp;userid=" . $var3;}
-		If ($x == "group_flagged") {return my_pligg_base."/groupadmin.php?id=" . $var1 . "&amp;role=flagged&amp;userid=" . $var3;}
-		If ($x == "group_banned") {return my_pligg_base."/groupadmin.php?id=" . $var1 . "&amp;role=banned&amp;userid=" . $var3;}
-		If ($x == "group_avatar") {return my_pligg_base."/group_avatar.php?id=" . $var1;}
-		If ($x == "group_sort") {return my_pligg_base."/groups.php?sortby=".$var1.$var2;}
-		If ($x == "user_add_links_private") {return my_pligg_base."/user_add_remove_links.php?action=addprivate&amp;link=" . $var1;}
-		If ($x == "user_add_links_public") {return my_pligg_base."/user_add_remove_links.php?action=addpublic&amp;link=" . $var1;}
-		If ($x == "group_story_links_publish") {return my_pligg_base."/join_group.php?action=publish&amp;link=" . $var1;}
-		If ($x == "group_story_links_queued") {return my_pligg_base."/join_group.php?action=queued&amp;link=" . $var1;}
-		If ($x == "group_story_links_discard") {return my_pligg_base."/join_group.php?action=discard&amp;link=" . $var1;}
-		If ($x == "admin_categories_tasks") {return my_pligg_base."/admin_categories_tasks.php?action=" . $var1;}
-		If ($x == "editgroup") {return my_pligg_base."/editgroup.php?id=" . $var1;}
-		If ($x == "deletegroup") {return my_pligg_base."/deletegroup.php?id=" . $var1;}
+		elseif ($x == "groups") $ret = "/groups.php";
+		elseif ($x == "submit_groups") $ret = "/submit_groups.php";
+		elseif ($x == "group_story") $ret = "/group_story.php?id=" . $var1;
+		elseif ($x == "group_story_title") $ret = "/group_story.php?title=" . $var1;
+		elseif ($x == "group_story2") $ret = "/group_story.php?title=".$var1."&amp;view=".$var2.($var3 ? "&amp;$var3=" : '');
+		elseif ($x == "join_group") $ret = "/join_group.php?id=" . $var1 . "&amp;privacy=".$var2."&amp;join=true";
+		elseif ($x == "unjoin_group") $ret = "/join_group.php?id=" . $var1 . "&amp;privacy=".$var2."&amp;join=false";
+		elseif ($x == "join_group_withdraw") $ret = "/join_group.php?group_id=" . $var1 . "&amp;user_id=".$var2."&amp;activate=withdraw";
+		elseif ($x == "group_admin") $ret = "/groupadmin.php?id=" . $var1 . "&amp;role=admin&amp;userid=" . $var3;
+		elseif ($x == "group_normal") $ret = "/groupadmin.php?id=" . $var1 . "&amp;role=normal&amp;userid=" . $var3;
+		elseif ($x == "group_moderator") $ret = "/groupadmin.php?id=" . $var1 . "&amp;role=moderator&amp;userid=" . $var3;
+		elseif ($x == "group_flagged") $ret = "/groupadmin.php?id=" . $var1 . "&amp;role=flagged&amp;userid=" . $var3;
+		elseif ($x == "group_banned") $ret = "/groupadmin.php?id=" . $var1 . "&amp;role=banned&amp;userid=" . $var3;
+		elseif ($x == "group_avatar") $ret = "/group_avatar.php?id=" . $var1;
+		elseif ($x == "group_sort") $ret = "/groups.php?sortby=".$var1.$var2;
+		elseif ($x == "user_add_links_private") $ret = "/user_add_remove_links.php?action=addprivate&amp;link=" . $var1;
+		elseif ($x == "user_add_links_public") $ret = "/user_add_remove_links.php?action=addpublic&amp;link=" . $var1;
+		elseif ($x == "group_story_links_publish") $ret = "/join_group.php?action=publish&amp;link=" . $var1;
+		elseif ($x == "group_story_links_queued") $ret = "/join_group.php?action=queued&amp;link=" . $var1;
+		elseif ($x == "group_story_links_discard") $ret = "/join_group.php?action=discard&amp;link=" . $var1;
+		elseif ($x == "admin_categories_tasks") $ret = "/admin_categories_tasks.php?action=" . $var1;
+		elseif ($x == "editgroup") $ret = "/editgroup.php?id=" . $var1;
+		elseif ($x == "deletegroup") $ret = "/deletegroup.php?id=" . $var1;
 		
 	}
 	if ($URLMethod == 2) { 
-	
-		If ($x == "maincategory") {return my_pligg_base."/" . $var1;}
-		If ($x == "queuedcategory") {return my_pligg_base."/upcoming/" . $var1;}
-		If ($x == "discardedcategory") {return my_pligg_base."/discarded/" . $var1 . "/";}
-//		If ($x == "queuedcategory") {return my_pligg_base."/upcoming/category/" . $var1 . "/";}
-//		If ($x == "maincategory") {return my_pligg_base."/category/" . $var1 . "/";}
-//		If ($x == "discardedcategory") {return my_pligg_base."/discarded/category/" . $var1 . "/";}
-		If ($x == "editlink") {return my_pligg_base."/story/" . $var1 . "/edit/";}
-		If ($x == "edit") {return my_pligg_base."/story/" . $var1 . "/editcomment/" . $var2 . "/";}
-		If ($x == "user") {return my_pligg_base."/user/" . $var1 . ($var1 ? '/' : '');}
-		If ($x == "user_friends") {return my_pligg_base."/user/" . $var1. "/" . $var2 . "/";}
-		If ($x == "user_add_remove") {return my_pligg_base."/user/" . $var2. "/" . $var1 . "/";}
-		If ($x == "user_add_links") {return my_pligg_base."/user/add/link/" . $var1 . "/";}
-		If ($x == "user_remove_links") {return my_pligg_base."/user/remove/link/" . $var1 . "/";}
-		If ($x == "user_inbox") {return my_pligg_base."/inbox/";}
-		If ($x == "userblank") {return my_pligg_base."/user/";}
-		If ($x == "user2") {return my_pligg_base."/user/" . $var1 . "/" . $var2 . "/";}
-		If ($x == "index") {return my_pligg_base . "/";}
-		If ($x == "index_sort") {return my_pligg_base."/".$var1.($var2 ? '/'.$var2 : '') . "/";}
-//		If ($x == "index_sort") {return my_pligg_base."/".$var1.($var2 ? '/category/'.$var2 : '') . "/";}
-//		If ($x == "upcoming_sort") {return my_pligg_base."/upcoming/".$var1.($var2 ? '/category/'.$var2 : '') . "/";}
-		If ($x == "upcoming_sort") {return my_pligg_base."/upcoming/".$var1.($var2 ? '/'.$var2 : '') . "/";}
-		If ($x == "search") {return my_pligg_base."/search" . ($var1 ? '/'.$var1 : '') . "/";}
-		If ($x == "advancedsearch") {return my_pligg_base."/advanced-search/";}
-		If ($x == "search_url") {return my_pligg_base."/search/" . urlencode(str_replace('/','|',$var1)) . "/";}
-		If ($x == "admin_login") {return my_pligg_base."/admin/admin_login.php?return=" . urlencode($var1);}
-		If ($x == "login") {return my_pligg_base."/login.php?return=" . urlencode($var1);}
-		If ($x == "logout") {return my_pligg_base."/login.php?op=logout&return=".my_pligg_base;}
-		If ($x == "register") {return my_pligg_base."/register/";}
-		If ($x == "submit") {return my_pligg_base."/submit/";}
-		If ($x == "story") {return my_pligg_base."/story/" . $var1 . "/";}
-		If ($x == "storytitle") {return my_pligg_base."/story/" . $var1 . "/";}
-		If ($x == "storycattitle") {return my_pligg_base."/" . $var1 . "/" . $var2 ."/";}
-//		If ($x == "storycattitle") {return my_pligg_base."/category/" . $var1 . "/" . $var2 ."/";}
-		If ($x == "out") {return my_pligg_base."/out/" . $var1 . "/";}
-		If ($x == "outtitle") {return my_pligg_base."/out/" . $var1 . "/";}
-		If ($x == "outurl") {return my_pligg_base."/out/" . $var1 . "/";}
-		If ($x == "root") {return my_pligg_base."/";}
-		If ($x == "upcoming") {return my_pligg_base."/upcoming/";}
-		If ($x == "topusers") {return my_pligg_base."/topusers/";}
-		If ($x == "user_edit") {return my_pligg_base."/user/$var1/edit/";}
-		If ($x == "userNoVar") {return my_pligg_base."/user/";}
-		If ($x == "loginNoVar") {return my_pligg_base."/login/";}
-		If ($x == "rssTime") {return my_pligg_base."/rss.php?time=" . $var1;}
-		If ($x == "about") {return my_pligg_base."/about/".$var1 . "/";}
-		If ($x == "rss") {return my_pligg_base."/rss/";}
-		If ($x == "rssuser") {return my_pligg_base."/user/$var1/rss/";}
-		If ($x == "rssqueued") {return my_pligg_base."/upcoming/rss/";}
-		If ($x == "rssall") {return my_pligg_base."/rss/" . $var1 . "/";}
-		If ($x == "rsscategory") {return my_pligg_base."/rss/category/" . $var1;}
-		If ($x == "rsscategoryqueued") {return my_pligg_base."/rss/category/upcoming/" . $var1;}
-		If ($x == "rsssearch") {return my_pligg_base."/search/" . $var1 . "/rss/";}
-		If ($x == "rsspage") {return my_pligg_base . ($var2 ? "/$var2" : '') . ($var1 ? "/$var1" : '') . ($var3 ? "/group/$var3" : '') . "/rss/";}
-		If ($x == "rssgroup") {return my_pligg_base . "/group/$var1" . ($var2 ? "/$var2" : '') . "/rss/";}
+		if ($x == "maincategory") $ret = "/" . $var1;
+		elseif ($x == "queuedcategory") $ret = "/upcoming/" . $var1;
+		elseif ($x == "discardedcategory") $ret = "/discarded/" . $var1 . "/";
+//		elseif ($x == "queuedcategory") $ret = "/upcoming/category/" . $var1 . "/";
+//		elseif ($x == "maincategory") $ret = "/category/" . $var1 . "/";
+//		elseif ($x == "discardedcategory") $ret = "/discarded/category/" . $var1 . "/";
+		elseif ($x == "editlink") $ret = "/story/" . $var1 . "/edit/";
+		elseif ($x == "edit") $ret = "/story/" . $var1 . "/editcomment/" . $var2 . "/";
+		elseif ($x == "user") $ret = "/user/" . $var1 . ($var1 ? '/' : '');
+		elseif ($x == "user_friends") $ret = "/user/" . $var1. "/" . $var2 . "/";
+		elseif ($x == "user_add_remove") $ret = "/user/" . $var2. "/" . $var1 . "/";
+		elseif ($x == "user_add_links") $ret = "/user/add/link/" . $var1 . "/";
+		elseif ($x == "user_remove_links") $ret = "/user/remove/link/" . $var1 . "/";
+		elseif ($x == "user_inbox") $ret = "/inbox/";
+		elseif ($x == "userblank") $ret = "/user/";
+		elseif ($x == "user2") $ret = "/user/" . $var1 . "/" . $var2 . "/";
+		elseif ($x == "index") $ret = "/";
+		elseif ($x == "index_sort") $ret = "/".$var1.($var2 ? '/'.$var2 : '') . "/";
+//		elseif ($x == "index_sort") $ret = "/".$var1.($var2 ? '/category/'.$var2 : '') . "/";
+//		elseif ($x == "upcoming_sort") $ret = "/upcoming/".$var1.($var2 ? '/category/'.$var2 : '') . "/";
+		elseif ($x == "upcoming_sort") $ret = "/upcoming/".$var1.($var2 ? '/'.$var2 : '') . "/";
+		elseif ($x == "search") $ret = "/search" . ($var1 ? '/'.$var1 : '') . "/";
+		elseif ($x == "advancedsearch") $ret = "/advanced-search/";
+		elseif ($x == "search_url") $ret = "/search/" . urlencode(str_replace('/','|',$var1)) . "/";
+		elseif ($x == "admin_login") $ret = "/admin/admin_login.php?return=" . urlencode($var1);
+		elseif ($x == "login") $ret = "/login.php?return=" . urlencode($var1);
+		elseif ($x == "logout") $ret = "/login.php?op=logout&return=".my_pligg_base;
+		elseif ($x == "register") $ret = "/register/";
+		elseif ($x == "submit") $ret = "/submit/";
+		elseif ($x == "story") $ret = "/story/" . $var1 . "/";
+		elseif ($x == "storytitle") $ret = "/story/" . $var1 . "/";
+		elseif ($x == "storycattitle") $ret = "/" . $var1 . "/" . $var2 ."/";
+//		elseif ($x == "storycattitle") $ret = "/category/" . $var1 . "/" . $var2 ."/";
+		elseif ($x == "out") $ret = "/out/" . $var1 . "/";
+		elseif ($x == "outtitle") $ret = "/out/" . $var1 . "/";
+		elseif ($x == "outurl") $ret = "/out/" . $var1 . "/";
+		elseif ($x == "root") $ret = "/";
+		elseif ($x == "upcoming") $ret = "/upcoming/";
+		elseif ($x == "topusers") $ret = "/topusers/";
+		elseif ($x == "user_edit") $ret = "/user/$var1/edit/";
+		elseif ($x == "userNoVar") $ret = "/user/";
+		elseif ($x == "loginNoVar") $ret = "/login/";
+		elseif ($x == "rssTime") $ret = "/rss.php?time=" . $var1;
+		elseif ($x == "about") $ret = "/about/".$var1 . "/";
+		elseif ($x == "rss") $ret = "/rss/";
+		elseif ($x == "rssuser") $ret = "/user/$var1/rss/";
+		elseif ($x == "rssqueued") $ret = "/upcoming/rss/";
+		elseif ($x == "rssall") $ret = "/rss/" . $var1 . "/";
+		elseif ($x == "rsscategory") $ret = "/rss/category/" . $var1;
+		elseif ($x == "rsscategoryqueued") $ret = "/rss/category/upcoming/" . $var1;
+		elseif ($x == "rsssearch") $ret = "/search/" . $var1 . "/rss/";
+		elseif ($x == "rsspage") $ret = ($var2 ? "/$var2" : '') . ($var1 ? "/$var1" : '') . ($var3 ? "/group/$var3" : '') . "/rss/";
+		elseif ($x == "rssgroup") $ret = "/group/$var1" . ($var2 ? "/$var2" : '') . "/rss/";
 
-		If ($x == "storyrss") {return my_pligg_base."/$var2/$var1/rss/";}
-		If ($x == "page") {return my_pligg_base."/static/" . $var1 . "/";}
-		If ($x == "editcomment") {return my_pligg_base."/story/" . $var2 . "/editcomment/" . $var1 . "/";}
-		If ($x == "tagcloud") {return my_pligg_base."/tagcloud/";}
-		If ($x == "tagcloud_range") {return my_pligg_base."/tagcloud/range/" . $var1 . "/";}
-		If ($x == "live_comments") {return my_pligg_base."/live/comments/";}
-		If ($x == "live_published") {return my_pligg_base."/live/published/";}
-		If ($x == "live_unpublished") {return my_pligg_base."/live/upcoming/";}
-		If ($x == "tag") {return my_pligg_base."/tag/" . $var1 . "/";}
-		If ($x == "tag2") {return my_pligg_base."/tag/" . $var1 . "/" . $var2 . "/";}
-		If ($x == "live") {return my_pligg_base."/live/";}
-		If ($x == "template") {return my_pligg_base."/settemplate/";}
-		If ($x == "settemplate") {return my_pligg_base."/settemplate/" .$var1 . "/";}
-		If ($x == "admin") {return my_pligg_base."/admin/";}
-		If ($x == "admin_modify") {return my_pligg_base."/story/" . $var1 . "/modify/main/";}
-		If ($x == "admin_modify_do") {return my_pligg_base."/story/" . $var1 . "/modify/do" . $var2 . "/";}
-		If ($x == "admin_modify_edo") {return my_pligg_base."/story/" . $var1 . "/modify/edo" . $var2 . "/";}
-		If ($x == "admin_discard") {return my_pligg_base."/story/" . $var1 . "/modify/discard/";}
-		If ($x == "admin_queued") {return my_pligg_base."/story/" . $var1 . "/modify/queued/";}
-		If ($x == "admin_published") {return my_pligg_base."/story/" . $var1 . "/modify/published/";}
+		elseif ($x == "storyrss") $ret = "/$var2/$var1/rss/";
+		elseif ($x == "page") $ret = "/static/" . $var1 . "/";
+		elseif ($x == "editcomment") $ret = "/story/" . $var2 . "/editcomment/" . $var1 . "/";
+		elseif ($x == "tagcloud") $ret = "/tagcloud/";
+		elseif ($x == "tagcloud_range") $ret = "/tagcloud/range/" . $var1 . "/";
+		elseif ($x == "live_comments") $ret = "/live/comments/";
+		elseif ($x == "live_published") $ret = "/live/published/";
+		elseif ($x == "live_unpublished") $ret = "/live/upcoming/";
+		elseif ($x == "tag") $ret = "/tag/" . $var1 . "/";
+		elseif ($x == "tag2") $ret = "/tag/" . $var1 . "/" . $var2 . "/";
+		elseif ($x == "live") $ret = "/live/";
+		elseif ($x == "template") $ret = "/settemplate/";
+		elseif ($x == "settemplate") $ret = "/settemplate/" .$var1 . "/";
+		elseif ($x == "admin") $ret = "/admin/";
+		elseif ($x == "admin_modify") $ret = "/story/" . $var1 . "/modify/main/";
+		elseif ($x == "admin_modify_do") $ret = "/story/" . $var1 . "/modify/do" . $var2 . "/";
+		elseif ($x == "admin_modify_edo") $ret = "/story/" . $var1 . "/modify/edo" . $var2 . "/";
+		elseif ($x == "admin_discard") $ret = "/story/" . $var1 . "/modify/discard/";
+		elseif ($x == "admin_queued") $ret = "/story/" . $var1 . "/modify/queued/";
+		elseif ($x == "admin_published") $ret = "/story/" . $var1 . "/modify/published/";
 		
-		If ($x == "groups") {return my_pligg_base."/groups/";}
-		If ($x == "submit_groups") {return my_pligg_base."/groups/submit/";}
-		If ($x == "group_story") {return my_pligg_base."/groups/id/" . $var1 . "/";}
-		If ($x == "group_story_title") {return my_pligg_base."/groups/" . $var1 . "/";}
-		If ($x == "group_story2") {return my_pligg_base."/groups/" . $var1 . "/" . $var2 . ($var3 ? "/$var3/" : '');}
-		If ($x == "join_group") {return my_pligg_base."/groups/join/" . $var1 . "/privacy/".$var2 . "/";}
-		If ($x == "unjoin_group") {return my_pligg_base."/groups/unjoin/" . $var1 . "/privacy/".$var2 . "/";}
-		If ($x == "join_group_withdraw") {return my_pligg_base."/groups/withdraw/" . $var1 . "/user_id/".$var2 . "/";}
-		If ($x == "group_admin") {return my_pligg_base."/groups/member/admin/id/" . $var1 . "/role/admin/userid/" . $var3 . "/";}
-		If ($x == "group_normal") {return my_pligg_base."/groups/member/normal/id/" . $var1 . "/role/normal/userid/" . $var3 . "/";}
-		If ($x == "group_moderator") {return my_pligg_base."/groups/member/moderator/" . $var1 . "/role/moderator/userid/" . $var3 . "/";}
-		If ($x == "group_flagged") {return my_pligg_base."/groups/member/flagged/" . $var1 . "/role/flagged/userid/" . $var3 . "/";}
-		If ($x == "group_banned") {return my_pligg_base."/groups/member/banned/id/" . $var1 . "/role/banned/userid/" . $var3 . "/";}
-		If ($x == "group_avatar") {return my_pligg_base."/group_avatar/" . $var1 . "/";}
-		If ($x == "group_sort") {return my_pligg_base."/groups/". $var1 .($var2 ? "/$var2" : ''). "/";}
-		If ($x == "user_add_links_private") {return my_pligg_base."/user_add_remove_links/action/addprivate/link/" . $var1 . "/";}
-		If ($x == "user_add_links_public") {return my_pligg_base."/user_add_remove_links/action/addpublic/link/" . $var1 . "/";}
-		If ($x == "editgroup") {return my_pligg_base."/groups/edit/" . $var1 . "/";}
-		If ($x == "deletegroup") {return my_pligg_base."/groups/delete/" . $var1 . "/";}
-		If ($x == "group_story_links_publish") {return my_pligg_base."/join_group/action/published/link/" . $var1 . "/";}
-		If ($x == "group_story_links_queued") {return my_pligg_base."/join_group/action/queued/link/" . $var1 . "/";}
-		If ($x == "group_story_links_discard") {return my_pligg_base."/join_group/action/discard/link/" . $var1 . "/";}
-		If ($x == "admin_categories_tasks") {return my_pligg_base."/admin_categories_tasks/action/" . $var1 . "/";}
+		elseif ($x == "groups") $ret = "/groups/";
+		elseif ($x == "submit_groups") $ret = "/groups/submit/";
+		elseif ($x == "group_story") $ret = "/groups/id/" . $var1 . "/";
+		elseif ($x == "group_story_title") $ret = "/groups/" . $var1 . "/";
+		elseif ($x == "group_story2") $ret = "/groups/" . $var1 . "/" . $var2 . ($var3 ? "/$var3/" : '');
+		elseif ($x == "join_group") $ret = "/groups/join/" . $var1 . "/privacy/".$var2 . "/";
+		elseif ($x == "unjoin_group") $ret = "/groups/unjoin/" . $var1 . "/privacy/".$var2 . "/";
+		elseif ($x == "join_group_withdraw") $ret = "/groups/withdraw/" . $var1 . "/user_id/".$var2 . "/";
+		elseif ($x == "group_admin") $ret = "/groups/member/admin/id/" . $var1 . "/role/admin/userid/" . $var3 . "/";
+		elseif ($x == "group_normal") $ret = "/groups/member/normal/id/" . $var1 . "/role/normal/userid/" . $var3 . "/";
+		elseif ($x == "group_moderator") $ret = "/groups/member/moderator/" . $var1 . "/role/moderator/userid/" . $var3 . "/";
+		elseif ($x == "group_flagged") $ret = "/groups/member/flagged/" . $var1 . "/role/flagged/userid/" . $var3 . "/";
+		elseif ($x == "group_banned") $ret = "/groups/member/banned/id/" . $var1 . "/role/banned/userid/" . $var3 . "/";
+		elseif ($x == "group_avatar") $ret = "/group_avatar/" . $var1 . "/";
+		elseif ($x == "group_sort") $ret = "/groups/". $var1 .($var2 ? "/$var2" : ''). "/";
+		elseif ($x == "user_add_links_private") $ret = "/user_add_remove_links/action/addprivate/link/" . $var1 . "/";
+		elseif ($x == "user_add_links_public") $ret = "/user_add_remove_links/action/addpublic/link/" . $var1 . "/";
+		elseif ($x == "editgroup") $ret = "/groups/edit/" . $var1 . "/";
+		elseif ($x == "deletegroup") $ret = "/groups/delete/" . $var1 . "/";
+		elseif ($x == "group_story_links_publish") $ret = "/join_group/action/published/link/" . $var1 . "/";
+		elseif ($x == "group_story_links_queued") $ret = "/join_group/action/queued/link/" . $var1 . "/";
+		elseif ($x == "group_story_links_discard") $ret = "/join_group/action/discard/link/" . $var1 . "/";
+		elseif ($x == "admin_categories_tasks") $ret = "/admin_categories_tasks/action/" . $var1 . "/";
 	}
+
+	return my_pligg_base . preg_replace('/\/+/', '/', $ret);
 }
 
 function SetSmartyURLs($main_smarty) {
