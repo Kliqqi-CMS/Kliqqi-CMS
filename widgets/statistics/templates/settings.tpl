@@ -12,8 +12,8 @@
 		<input type="checkbox" name="links" value="1" {if $sw_links eq "1"}checked{/if}> {#PLIGG_Statistics_Widget_Links#}<br />
 		<input type="hidden" name="published" value="0">
 		<input type="checkbox" name="published" value="1" {if $sw_published eq "1"}checked{/if}> {#PLIGG_Statistics_Widget_Published#}<br />
-		<input type="hidden" name="upcoming" value="0">
-		<input type="checkbox" name="upcoming" value="1" {if $sw_upcoming eq "1"}checked{/if}> {#PLIGG_Statistics_Widget_Upcoming#}<br />
+		<input type="hidden" name="new" value="0">
+		<input type="checkbox" name="new" value="1" {if $sw_new eq "1"}checked{/if}> {#PLIGG_Statistics_Widget_New#}<br />
 		<input type="hidden" name="votes" value="0">
 		<input type="checkbox" name="votes" value="1" {if $sw_votes eq "1"}checked{/if}> {#PLIGG_Statistics_Widget_Votes#}<br />
 		<input type="hidden" name="comments" value="0">

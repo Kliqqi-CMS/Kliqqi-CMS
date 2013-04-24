@@ -12,7 +12,7 @@ About: http://pligg.com/blog/1596/pligg-cms-api/
 
 ############ Installation  ###############
 1. Config Pligg API by edit api.php
-$status = 2; // 1 = 'discard', 2 = 'queued', 3 = 'published'
+$status = 2; // 1 = 'discard', 2 = 'new', 3 = 'published'
 $autovote = 1; // 0 = no vote, 1 = auto vote
 $filter = 1; // 0 = not filter (fast), 1 = filter (slow)
 

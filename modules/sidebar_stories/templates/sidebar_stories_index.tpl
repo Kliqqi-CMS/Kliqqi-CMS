@@ -15,7 +15,7 @@ include_once(mnminclude.'sidebarstories.php');
 
 global $the_template, $main_smarty;
 
-	// for filterTo you can use "published", "queued" or "all"
+	// for filterTo you can use "published", "new" or "all"
 	// to change the way the links look, edit /tempates/<your template>/sidebar_stories.tpl
 
 	$ss = new SidebarStories();
@@ -24,11 +24,11 @@ global $the_template, $main_smarty;
 	$ss->TitleLengthLimit = 40;
 	
 	if(pagename == "index"){
-		$ss->filterToStatus = "queued";
+		$ss->filterToStatus = "new";
 		$ss->header = $main_smarty->get_config_vars("PLIGG_Visual_Pligg_Queued");
-		$ss->link = getmyurl("upcoming");
+		$ss->link = getmyurl("new");
 	}
-	elseif(pagename == "upcoming"){
+	elseif(pagename == "new"){
 		$ss->filterToStatus = "published";
 		$ss->header = $main_smarty->get_config_vars("PLIGG_Visual_Published_News");
 		$ss->link = my_base_url.my_pligg_base;

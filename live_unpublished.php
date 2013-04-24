@@ -42,7 +42,7 @@ $select = "SELECT * ";
 $from_where = " FROM " . table_links . " 
 		LEFT JOIN " . table_users . " ON link_author=user_id 
 		$from
-		WHERE link_status = 'queued' $where";
+		WHERE link_status = 'new' $where";
 $order_by = " ORDER BY link_id DESC";
 
 // pagename
@@ -69,7 +69,7 @@ if($stories) {
 		}
 		$live_item['link_username'] = $dblink->user_login;
 		$live_item['link_category'] = GetCatName($link->category);
-		$live_item['link_category_url'] = getmyurl("queuedcategory",$link->category_safe_name()); 
+		$live_item['link_category_url'] = getmyurl("newcategory",$link->category_safe_name()); 
 #		$live_item['link_category_url'] = $link->category_safe_name();
 		$live_item['link_url'] = $link->get_internal_url();
 		$live_items[] = $live_item;

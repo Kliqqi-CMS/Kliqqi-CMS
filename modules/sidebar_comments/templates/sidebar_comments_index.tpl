@@ -17,7 +17,7 @@ $body = '';
 $res = "SELECT * FROM ".table_comments."
   LEFT JOIN ".table_links." ON comment_link_id = link_id
   LEFT JOIN ".table_users." ON comment_user_id=user_id
-  WHERE (link_status='published' OR link_status='queued') AND comment_status='published'
+  WHERE (link_status='published' OR link_status='new') AND comment_status='published'
   ORDER BY comment_date DESC
   LIMIT ".comments_size_sidebar."";
 $list_comments = $db->get_results($res);

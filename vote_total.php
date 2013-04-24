@@ -113,7 +113,7 @@ if(is_numeric($post_id) && $post_id > 0){
 
 	if ($link->status == 'discard') {
 		$link->read();
-		$link->status = 'queued';
+		$link->status = 'new';
 		$link->store();
 	}
 

@@ -44,7 +44,7 @@
 	  `feed_category` int(11) NOT NULL default '1',
 	  `feed_url_dupe` int(11) NOT NULL default '0',
 	  `feed_title_dupe` int(11) NOT NULL default '0',
-	  `feed_status` varchar(255) NOT NULL default 'queued',
+	  `feed_status` varchar(255) NOT NULL default 'new',
 	  `feed_last_check` timestamp NOT NULL,
 	  `feed_random_vote_enable` TINYINT( 3 ) UNSIGNED NOT NULL DEFAULT '0',
 	  `feed_random_vote_min` TINYINT( 3 ) UNSIGNED NOT NULL DEFAULT '5',

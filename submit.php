@@ -517,9 +517,9 @@ function do_submit3() {
 	$linkres->read();
 
 	totals_adjust_count($linkres->status, -1);
-	totals_adjust_count('queued', 1);
+	totals_adjust_count('new', 1);
 
-	$linkres->status='queued';
+	$linkres->status='new';
 
 	$vars = array('linkres'=>&$linkres);
 	check_actions('do_submit3', $vars);
@@ -555,7 +555,7 @@ function do_submit3() {
 	if ($vars['redirect']) {
 	    header('Location: '.$vars['redirect']);
 	} elseif($linkres->link_group_id == 0){
-		header("Location: " . getmyurl('upcoming'));
+		header("Location: " . getmyurl('new'));
 	} else {
 		$redirect = getmyurl("group_story", $linkres->link_group_id);
 		header("Location: $redirect");

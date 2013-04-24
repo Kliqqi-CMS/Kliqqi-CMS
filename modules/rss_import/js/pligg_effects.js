@@ -1526,7 +1526,7 @@ Object.extend(Object.extend(Effect.ScopedQueue.prototype, Enumerable), {
           });
         break;
       case 'end':
-        // start effect after last queued effect has finished
+        // start effect after last new effect has finished
         timestamp = this.effects.pluck('finishOn').max() || timestamp;
         break;
     }

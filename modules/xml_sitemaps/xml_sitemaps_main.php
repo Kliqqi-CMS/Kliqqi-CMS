@@ -42,7 +42,7 @@ function create_sitemaps_index($max_rec)
 	if (sitemap_header("index",true)) return true;
 
 	// Stories
-        $sql = "select link_modified AS date from ".table_links." where link_status='published' OR link_status='queued' order by link_modified DESC";
+        $sql = "select link_modified AS date from ".table_links." where link_status='published' OR link_status='new' order by link_modified DESC";
 	sitemap_index_body($sql,'',$max_rec);
 
 	// Static Pages
@@ -117,7 +117,7 @@ function create_sitemap_links($index,$max_rec)
 
 	if (sitemap_header($index)) return true;
 
-	$sql = "SELECT link_id FROM ".table_links." WHERE link_status='queued' OR link_status='published' ORDER BY link_modified DESC LIMIT ".($index*$max_rec).",$max_rec";
+	$sql = "SELECT link_id FROM ".table_links." WHERE link_status='new' OR link_status='published' ORDER BY link_modified DESC LIMIT ".($index*$max_rec).",$max_rec";
 	$link = new Link;
 	$links = $db->get_col($sql);
 	if ($links) {
@@ -152,10 +152,10 @@ function create_sitemap_main()
 	if (sitemap_header("main")) return true;
 
 	sitemap_add_page('index',   "SELECT MAX(UNIX_TIMESTAMP(link_modified)) FROM ".table_links." WHERE link_status='published'");
-	sitemap_add_page('upcoming',"SELECT MAX(UNIX_TIMESTAMP(link_modified)) FROM ".table_links." WHERE link_status='queued'");
+	sitemap_add_page('new',"SELECT MAX(UNIX_TIMESTAMP(link_modified)) FROM ".table_links." WHERE link_status='new'");
 	sitemap_add_page('groups',  "SELECT MAX(UNIX_TIMESTAMP(group_date)) FROM ".table_groups." WHERE group_status='Enable'");
 	sitemap_add_page('tagcloud',"SELECT MAX(UNIX_TIMESTAMP(tag_date)) FROM ".table_tags);
-	sitemap_add_page('live',    "SELECT MAX(UNIX_TIMESTAMP(link_date)) FROM ".table_links." WHERE link_status='queued' OR link_status='published'");
+	sitemap_add_page('live',    "SELECT MAX(UNIX_TIMESTAMP(link_date)) FROM ".table_links." WHERE link_status='new' OR link_status='published'");
 	sitemap_add_page('topusers',"SELECT MAX(UNIX_TIMESTAMP(user_modification)) FROM " . table_users . " WHERE user_enabled");
 	
 	create_entry(mktime(0,0,0,1,1,date('Y')),getmyFullurl('submit'));
@@ -173,10 +173,10 @@ function create_sitemap_main()
 			create_entry($res[0],$path);
 			if ($res[0] > $maxtime) $maxtime = $res[0];
 		}
-		$sql = "SELECT UNIX_TIMESTAMP(link_date) FROM ".table_links." WHERE link_category=".$i->category_id." AND link_status='queued' ORDER BY link_date DESC LIMIT 1";	
+		$sql = "SELECT UNIX_TIMESTAMP(link_date) FROM ".table_links." WHERE link_category=".$i->category_id." AND link_status='new' ORDER BY link_date DESC LIMIT 1";	
 		$res = $db->get_col($sql);
                 if (isset($res[0])){
-			$path = getmyFullurl('queuedcategory',urlencode($i->category_safe_name));
+			$path = getmyFullurl('newcategory',urlencode($i->category_safe_name));
 			create_entry($res[0],$path);
                 }
 	}

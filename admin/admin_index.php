@@ -74,9 +74,9 @@ $main_smarty->assign('grouptotal', $grouptotal);
 $published = $db->get_var('SELECT count(*) from ' . table_links . ' where link_status = "published";');
 $main_smarty->assign('published', $published);
 
-$queued = $db->get_var('SELECT count(*) from ' . table_links . ' where link_status = "queued";');
-$main_smarty->assign('queued', $queued);
-$main_smarty->assign('total', $queued + $published);
+$new = $db->get_var('SELECT count(*) from ' . table_links . ' where link_status = "new";');
+$main_smarty->assign('new', $new);
+$main_smarty->assign('total', $new + $published);
 
 $votes = $db->get_var('SELECT count(*) from ' . table_votes . ' where vote_type="links";');
 $main_smarty->assign('votes', $votes);

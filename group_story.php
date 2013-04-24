@@ -48,7 +48,7 @@ if($requestID > 0)
     {
 		 $main_smarty->assign('group_shared_rows', group_shared($requestID,$catID,1));
 		 $main_smarty->assign('group_published_rows', group_stories($requestID,$catID,'published',1));
-		 $main_smarty->assign('group_upcoming_rows', group_stories($requestID,$catID,'upcoming',1));
+		 $main_smarty->assign('group_new_rows', group_stories($requestID,$catID,'new',1));
 		
         switch ($view) {
             case 'shared':
@@ -58,8 +58,8 @@ if($requestID > 0)
                 group_stories($requestID,$catID,'published');
                 break;
 			
-			 case 'upcoming':
-                group_stories($requestID,$catID,'upcoming');
+			 case 'new':
+                group_stories($requestID,$catID,'new');
                 break;
 					
             case 'members':
@@ -73,7 +73,7 @@ if($requestID > 0)
     else
     {
 	$main_smarty->assign('group_shared_display', $main_smarty->get_config_vars('PLIGG_Visual_Group_Is_Private'));
-	$main_smarty->assign('group_upcoming_display', $main_smarty->get_config_vars('PLIGG_Visual_Group_Is_Private'));
+	$main_smarty->assign('group_new_display', $main_smarty->get_config_vars('PLIGG_Visual_Group_Is_Private'));
 	$main_smarty->assign('group_published_display', $main_smarty->get_config_vars('PLIGG_Visual_Group_Is_Private'));
 	$main_smarty->assign('member_display', $main_smarty->get_config_vars('PLIGG_Visual_Group_Is_Private'));
     }
@@ -101,20 +101,20 @@ if(Auto_scroll==2 || Auto_scroll==3){
 	}
 	
 
-if ($view == 'upcoming')
-    $main_smarty->assign('URL_rss_page', getmyurl('rssgroup', $requestTitle, 'upcoming'));
+if ($view == 'new')
+    $main_smarty->assign('URL_rss_page', getmyurl('rssgroup', $requestTitle, 'new'));
 elseif ($view == 'published')
     $main_smarty->assign('URL_rss_page', getmyurl('rssgroup', $requestTitle));
 elseif ($view != 'members')
     $main_smarty->assign('URL_rss_page', getmyurl('rssgroup', $requestTitle, $view));
 
 $main_smarty->assign('groupview_published', getmyurl('group_story2', $requestTitle, 'published'));
-$main_smarty->assign('groupview_upcoming', getmyurl('group_story2', $requestTitle, 'upcoming'));
+$main_smarty->assign('groupview_new', getmyurl('group_story2', $requestTitle, 'new'));
 if ($view == 'shared')
     $main_smarty->assign('URL_maincategory', getmyurl('group_story2', $requestTitle, 'shared',"category"));
 else
     $main_smarty->assign('URL_maincategory', getmyurl('group_story2', $requestTitle, 'published',"category"));
-$main_smarty->assign('URL_queuedcategory', getmyurl('group_story2', $requestTitle, 'upcoming',"category"));
+$main_smarty->assign('URL_newcategory', getmyurl('group_story2', $requestTitle, 'new',"category"));
 $main_smarty->assign('groupview_sharing', getmyurl('group_story2', $requestTitle, 'shared'));
 $main_smarty->assign('groupview_members', getmyurl('group_story2', $requestTitle, 'members'));
 

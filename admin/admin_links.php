@@ -65,8 +65,8 @@ if($canIhaveAccess == 1) {
 	// if admin uses the filter
 	if(isset($_GET["filter"])) {
 		switch (sanitize($_GET["filter"], 3)) {
-		 	case 'upcoming':
-				$filter_sql = " link_status = 'queued' ";
+		 	case 'new':
+				$filter_sql = " link_status = 'new' ";
 				break;
 			case 'all':
 				$filter_sql = " link_status <> 'page' AND link_status <> 'discard' AND link_status <> 'spam' ";
@@ -90,7 +90,7 @@ if($canIhaveAccess == 1) {
 			 	$filter_sql = " link_status = 'page' ";
 			 	break;
 			case 'other':
-				$filter_sql = " link_status != 'queued' AND link_status != 'published' AND link_status != 'discard' AND link_status != 'spam' AND link_status != 'page'";
+				$filter_sql = " link_status != 'new' AND link_status != 'published' AND link_status != 'discard' AND link_status != 'spam' AND link_status != 'page'";
 				break;
 			default:
 				$filter_sql = " link_status = '".$db->escape($_GET["filter"])."'";
@@ -145,7 +145,7 @@ if($canIhaveAccess == 1) {
             		
 			foreach ($_POST["link"] as $key => $v) {
 			    
-				if($admin_acction=="published" || $admin_acction=="queued" || $admin_acction=="discard" || $admin_acction=="spam"){
+				if($admin_acction=="published" || $admin_acction=="new" || $admin_acction=="discard" || $admin_acction=="spam"){
 					$link_status=$db->get_var('select link_status from ' . table_links . '  WHERE link_id = "'.$key.'"');
 					if($link_status!=$admin_acction){
 								
@@ -154,8 +154,8 @@ if($canIhaveAccess == 1) {
 							$vars = array('link_id' => $key);
 							check_actions('link_published', $vars);
 						}
-						elseif ($admin_acction == "queued") {
-							$db->query('UPDATE `' . table_links . '` SET `link_status` = "queued", link_published_date=0 WHERE `link_id` = "'.$key.'"');
+						elseif ($admin_acction == "new") {
+							$db->query('UPDATE `' . table_links . '` SET `link_status` = "new", link_published_date=0 WHERE `link_id` = "'.$key.'"');
 						}
 						elseif ($admin_acction == "discard") {
 							$db->query('UPDATE `' . table_links . '` SET `link_status` = "discard" WHERE `link_id` = "'.$key.'"');

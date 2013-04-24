@@ -39,10 +39,10 @@ if(is_object($main_smarty)){
 	$published = $db->get_var('SELECT count(*) from ' . table_links . ' WHERE link_status = "published";');
 	$main_smarty->assign('sidebar_stats_published', $published);
 
-	$upcoming = $db->get_var('SELECT count(*) from ' . table_links . ' WHERE link_status = "queued";');
-	$main_smarty->assign('sidebar_stats_upcoming', $upcoming);
+	$new = $db->get_var('SELECT count(*) from ' . table_links . ' WHERE link_status = "new";');
+	$main_smarty->assign('sidebar_stats_new', $new);
 
-	$main_smarty->assign('sidebar_stats_stories', $upcoming + $published);
+	$main_smarty->assign('sidebar_stats_stories', $new + $published);
 
 	$comments = $db->get_var('SELECT count(*) from ' . table_comments . ' WHERE comment_status = "published";');
 	$main_smarty->assign('sidebar_stats_comments', $comments);

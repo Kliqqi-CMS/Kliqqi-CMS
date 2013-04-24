@@ -81,7 +81,7 @@ function validate_all_user_action(){
 				</a>
 				<ul class="dropdown-menu">
 					<li><a onclick="set_admin_action('published')" href="#">{#PLIGG_Visual_AdminPanel_Publish#}</a></li>
-					<li><a onclick="set_admin_action('queued')" href="#">{#PLIGG_Visual_AdminPanel_Upcoming#}</a></li>
+					<li><a onclick="set_admin_action('new')" href="#">{#PLIGG_Visual_AdminPanel_New#}</a></li>
 					<li><a onclick="set_admin_action('discard')" href="#">{#PLIGG_Visual_AdminPanel_Discard#}</a></li>
 					<li><a onclick="set_admin_action('spam')" href="#">{#PLIGG_Visual_AdminPanel_Spam#}</a></li>
 				</ul>
@@ -104,7 +104,7 @@ function validate_all_user_action(){
 			<select name="filter" style="margin-right:10px;"onchange="this.form.submit()">
 				<option value="all" {if $templatelite.get.filter == "all"} selected="selected" {/if}>{#PLIGG_Visual_AdminPanel_All#}</option>
 				<option value="published" {if $templatelite.get.filter == "published"} selected="selected" {/if}>{#PLIGG_Visual_AdminPanel_Published#}</option>
-				<option value="upcoming" {if $templatelite.get.filter == "upcoming"} selected="selected" {/if}>{#PLIGG_Visual_AdminPanel_Upcoming#}</option>
+				<option value="new" {if $templatelite.get.filter == "new"} selected="selected" {/if}>{#PLIGG_Visual_AdminPanel_New#}</option>
 				<option value="discard" {if $templatelite.get.filter == "discard"} selected="selected" {/if}>{#PLIGG_Visual_AdminPanel_Discarded#}</option>
 				<option value="spam" {if $templatelite.get.filter == "spam"} selected="selected" {/if}>{#PLIGG_Visual_AdminPanel_Spam#}</option>
 				<option value="all">   ---   </option>
@@ -153,8 +153,8 @@ function validate_all_user_action(){
 		</td>
 		<td style="text-align:center;vertical-align:middle;">{$template_stories[id].link_date}</td>
 		<td style="text-align:center;vertical-align:middle;">
-			{if $template_stories[id].link_status=='queued'} 
-				{#PLIGG_Visual_AdminPanel_Upcoming#}
+			{if $template_stories[id].link_status=='new'} 
+				{#PLIGG_Visual_AdminPanel_New#}
 			{elseif $template_stories[id].link_status=='published'}
 				{#PLIGG_Visual_AdminPanel_Published#}
 			{elseif $template_stories[id].link_status=='discard'}
@@ -195,13 +195,13 @@ function mark_all_discard() {
 		}
 	}
 }
-function mark_all_queued() {
+function mark_all_new() {
 	document.bulk_moderate.all1.checked=0;
 	document.bulk_moderate.all2.checked=1;
 	document.bulk_moderate.all3.checked=0;
 	document.bulk_moderate.all4.checked=0;
 	for (var i=0; i< document.bulk_moderate.length; i++) {
-		if (document.bulk_moderate[i].value == "queued") {
+		if (document.bulk_moderate[i].value == "new") {
 			document.bulk_moderate[i].checked = true;
 		}
 	}
@@ -223,7 +223,7 @@ function uncheck_all() {
 	document.bulk_moderate.all3.checked=0;
 	document.bulk_moderate.all4.checked=0;
 	for (var i=0; i< document.bulk_moderate.length; i++) {
-		if ((document.bulk_moderate[i].value == "queued")||(document.bulk_moderate[i].value == "discard")||(document.bulk_moderate[i].value == "spam")|| (document.bulk_moderate[i].value == "published")){
+		if ((document.bulk_moderate[i].value == "new")||(document.bulk_moderate[i].value == "discard")||(document.bulk_moderate[i].value == "spam")|| (document.bulk_moderate[i].value == "published")){
 			document.bulk_moderate[i].checked = false;
 		}
 	}

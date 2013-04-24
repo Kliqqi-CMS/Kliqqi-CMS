@@ -182,7 +182,7 @@ if($canIhaveAccess != 0){
 	
 	// Flush tag cache
 	$db->query("TRUNCATE TABLE ".table_tag_cache);
-	$db->query($sql="INSERT INTO ".table_tag_cache." select tag_words, count(DISTINCT link_id) as count FROM ".table_tags.", ".table_links." WHERE tag_lang='en' and link_id = tag_link_id and (link_status='published' OR link_status='queued') GROUP BY tag_words order by count desc");
+	$db->query($sql="INSERT INTO ".table_tag_cache." select tag_words, count(DISTINCT link_id) as count FROM ".table_tags.", ".table_links." WHERE tag_lang='en' and link_id = tag_link_id and (link_status='published' OR link_status='new') GROUP BY tag_words order by count desc");
 	
 	// Send the user back to where they came from
 	header('Location: ' . $_SERVER['HTTP_REFERER']);

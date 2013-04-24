@@ -192,7 +192,7 @@ function mark_all_discard() {
 		}
 	}
 }
-function mark_all_queued() {
+function mark_all_new() {
 	document.bulk_moderate.all1.checked=0;
 	document.bulk_moderate.all2.checked=1;
 	document.bulk_moderate.all3.checked=0;
@@ -220,7 +220,7 @@ function uncheck_all() {
 	document.bulk_moderate.all3.checked=0;
 	document.bulk_moderate.all4.checked=0;
 	for (var i=0; i< document.bulk_moderate.length; i++) {
-		if ((document.bulk_moderate[i].value == "queued")||(document.bulk_moderate[i].value == "discard")||(document.bulk_moderate[i].value == "spam")|| (document.bulk_moderate[i].value == "publish")){
+		if ((document.bulk_moderate[i].value == "new")||(document.bulk_moderate[i].value == "discard")||(document.bulk_moderate[i].value == "spam")|| (document.bulk_moderate[i].value == "publish")){
 			document.bulk_moderate[i].checked = false;
 		}
 	}

@@ -11,7 +11,7 @@
 	{else}
 		<title>{#PLIGG_Visual_Name#} - {#PLIGG_Visual_RSS_Description#}</title>
 	{/if}
-{elseif preg_match('/upcoming.php$/',$templatelite.server.SCRIPT_NAME)}
+{elseif preg_match('/new.php$/',$templatelite.server.SCRIPT_NAME)}
 	{if $get.category}
 		{if $get.page>1}
 			<title>{$navbar_where.text2} | {#PLIGG_Page_Title#} {$get.page} | {#PLIGG_Visual_Breadcrumb_Unpublished_Tab#} | {#PLIGG_Visual_Name#}</title>
@@ -51,8 +51,8 @@
 	<title>{$group_name} | {#PLIGG_Visual_Name#}</title>
 {elseif preg_match('/group_story.php$/',$templatelite.server.SCRIPT_NAME)}
 	{if $groupview!='published'}
-		{if $groupview eq "upcoming"}
-			{assign var='tview' value=#PLIGG_Visual_Group_Upcoming#}
+		{if $groupview eq "new"}
+			{assign var='tview' value=#PLIGG_Visual_Group_New#}
 		{elseif $groupview eq "shared"}
 			{assign var='tview' value=#PLIGG_Visual_Group_Shared#}
 		{elseif $groupview eq "members"}

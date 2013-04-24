@@ -403,7 +403,7 @@ function akismet_showpage(){
 							$akismet->submitSpam();
 						}
 						elseif ($value == "notspam") {
-							$link->status = 'queued';
+							$link->status = 'new';
 							$link->store();
 							
 							$akismet->submitHam();

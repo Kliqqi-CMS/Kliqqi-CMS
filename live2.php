@@ -66,7 +66,7 @@ function get_votes($time) {
 	global $db, $events, $last_timestamp;
 	$res = $db->get_results("SELECT *, unix_timestamp(vote_date) as timestamp 
 	                            FROM " . table_votes . ", " . table_links . " 
-	                            WHERE vote_date > FROM_UNIXTIME($time) AND link_id = vote_link_id AND vote_user_id != link_author AND (link_status='published' OR link_status='queued') AND vote_type = 'links' 
+	                            WHERE vote_date > FROM_UNIXTIME($time) AND link_id = vote_link_id AND vote_user_id != link_author AND (link_status='published' OR link_status='new') AND vote_type = 'links' 
 	                            ORDER BY vote_date DESC 
 	                            LIMIT 20");
 	if (!$res) return;
@@ -110,7 +110,7 @@ function get_new_stories($time) {
 					from " . table_links . "
 					LEFT JOIN " . table_users . "  ON user_id=link_author 
 					$from
-					where link_status='queued' and  link_date > from_unixtime($time) 
+					where link_status='new' and  link_date > from_unixtime($time) 
 					$where
 					order by link_date desc limit 20");
 	if (!$res) return;
@@ -158,7 +158,7 @@ function get_new_published($time) {
 // get latest comments
 function get_comments($time) {
 	global $db, $events, $last_timestamp;
-	$res = $db->get_results("select comment_id, unix_timestamp(comment_date) as timestamp, user_login, comment_user_id, link_author, link_id, link_title, link_url, link_status, link_date, link_published_date, link_votes from " . table_comments . ", " . table_links . ", " . table_users . " where comment_status='published' AND comment_date > from_unixtime($time) and link_id = comment_link_id and (link_status='published' OR link_status='queued') and user_id=comment_user_id order by comment_date desc limit 20");
+	$res = $db->get_results("select comment_id, unix_timestamp(comment_date) as timestamp, user_login, comment_user_id, link_author, link_id, link_title, link_url, link_status, link_date, link_published_date, link_votes from " . table_comments . ", " . table_links . ", " . table_users . " where comment_status='published' AND comment_date > from_unixtime($time) and link_id = comment_link_id and (link_status='published' OR link_status='new') and user_id=comment_user_id order by comment_date desc limit 20");
 	if (!$res) return;
 	foreach ($res as $event) {
 		$id=$event->comment_id;
@@ -180,8 +180,8 @@ function get_status($status) {
 		case 'published':
 			$status = _('Published');
 			break;
-		case 'queued':
-			$status = _('Upcoming');
+		case 'new':
+			$status = _('New');
 			break;
 		case 'discard':
 			$status = _('Discarded');

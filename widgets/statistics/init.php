@@ -17,8 +17,8 @@ $sw_links = get_misc_data('sw_links');
 if ($sw_links == '') $sw_links='1';
 $sw_published = get_misc_data('sw_published');
 if ($sw_published == '') $sw_published='1';
-$sw_upcoming = get_misc_data('sw_upcoming');
-if ($sw_upcoming == '') $sw_upcoming='1';
+$sw_new = get_misc_data('sw_new');
+if ($sw_new == '') $sw_new='1';
 $sw_votes = get_misc_data('sw_votes');
 if ($sw_votes == '') $sw_votes='1';
 $sw_comments = get_misc_data('sw_comments');
@@ -49,9 +49,9 @@ if ($_REQUEST['widget']=='statistics'){
     if(isset($_REQUEST['published']))
 		$sw_published = sanitize($_REQUEST['published'], 3);
     misc_data_update('sw_published', $sw_published);
-    if(isset($_REQUEST['upcoming']))
-		$sw_upcoming = sanitize($_REQUEST['upcoming'], 3);
-    misc_data_update('sw_upcoming', $sw_upcoming);
+    if(isset($_REQUEST['new']))
+		$sw_new = sanitize($_REQUEST['new'], 3);
+    misc_data_update('sw_new', $sw_new);
     if(isset($_REQUEST['votes']))
 		$sw_votes = sanitize($_REQUEST['votes'], 3);
     misc_data_update('sw_votes', $sw_votes);
@@ -112,7 +112,7 @@ if ($main_smarty){
 	$main_smarty->assign('sw_groups', $sw_groups);
 	$main_smarty->assign('sw_links', $sw_links);
 	$main_smarty->assign('sw_published', $sw_published);
-	$main_smarty->assign('sw_upcoming', $sw_upcoming);
+	$main_smarty->assign('sw_new', $sw_new);
 	$main_smarty->assign('sw_votes', $sw_votes);
 	$main_smarty->assign('sw_comments', $sw_comments);
 	$main_smarty->assign('sw_newuser', $sw_newuser);

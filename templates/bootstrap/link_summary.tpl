@@ -26,7 +26,7 @@
 			<iframe height="0" width="0" frameborder="0" name="story_status" class="invisible"></iframe>
 			<span id="stories_status-{$link_shakebox_index}" style="display:none;">
 				<a target="story_status" href="{$group_story_links_publish}" onclick="show_hide_user_links(document.getElementById('story_status_success-{$link_shakebox_index}'))">{#PLIGG_Visual_AdminPanel_Published#}</a>
-				<a target="story_status" href="{$group_story_links_queued}" onclick="show_hide_user_links(document.getElementById('story_status_success-{$link_shakebox_index}'))">{#PLIGG_Visual_AdminPanel_Upcoming#}</a>
+				<a target="story_status" href="{$group_story_links_new}" onclick="show_hide_user_links(document.getElementById('story_status_success-{$link_shakebox_index}'))">{#PLIGG_Visual_AdminPanel_New#}</a>
 				<a target="story_status" href="{$group_story_links_discard}" onclick="show_hide_user_links(document.getElementById('story_status_success-{$link_shakebox_index}'))">{#PLIGG_Visual_AdminPanel_Discard#}</a>
 			</span>
 			<span id="story_status_success-{$link_shakebox_index}" class="label label-success" style="display:none;">
@@ -60,7 +60,7 @@
 		  {if $story_status eq "published"}
 			<div class="votebox votebox-published">
 		  {else}
-			<div class="votebox votebox-upcoming">
+			<div class="votebox votebox-new">
 		  {/if}			
 				<div class="vote">
 					{checkActionsTpl location="tpl_pligg_story_votebox_start"}

@@ -25,7 +25,7 @@ if($time > 0) {
 		$from = time()-$time;
 		$sql .= "vote_date > FROM_UNIXTIME($from) AND ";
 	}
-	$sql .= "vote_link_id=link_id  AND (link_status='published' OR link_status='queued') GROUP BY vote_link_id  ORDER BY votes DESC LIMIT $rows";
+	$sql .= "vote_link_id=link_id  AND (link_status='published' OR link_status='new') GROUP BY vote_link_id  ORDER BY votes DESC LIMIT $rows";
 
 	$last_modified = time();
 	$title = $main_smarty->get_config_vars('PLIGG_Visual_RSS_Recent') . ' ' . txt_time_diff($from);
@@ -44,12 +44,12 @@ if($time > 0) {
 			$link_date = 'date';
 			$title = " | " . $main_smarty->get_config_vars("PLIGG_Visual_Published_News");
 			break;
-		case 'upcoming':
-		case 'queued':
+		case 'new':
+		case 'new':
 			$title = " | " . $main_smarty->get_config_vars("PLIGG_Visual_Pligg_Queued");
 			$order_field = 'link_date';
 			$link_date = "date";
-                        $status = 'queued';
+                        $status = 'new';
 			break;
 		case 'shared':
 			$order_field = 'link_date';
@@ -76,9 +76,9 @@ if($time > 0) {
 	}
 	$where = " WHERE (ISNULL(group_privacy) OR group_privacy!='private') ";
 	if($status == 'all') {
-		$where .= " AND (link_status='published' OR link_status='queued') ";
+		$where .= " AND (link_status='published' OR link_status='new') ";
 	} elseif($status == 'shared') {
-		$where .= " AND !ISNULL(share_link_id) AND (link_status='published' OR link_status='queued') ";
+		$where .= " AND !ISNULL(share_link_id) AND (link_status='published' OR link_status='new') ";
 	} else {
 		$where .= " AND link_status='$status' ";
 	}

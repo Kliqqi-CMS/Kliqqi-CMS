@@ -9,6 +9,17 @@ $new_version = '200';
 // Check if you need to run the one time upgrade to Pligg 2.0
 if ($old_version < $new_version) {
 
+	// Renamed "Upcoming" and "Queued" to "New" in 2.0. Needs to be reflected in database.
+	$sql = "ALTER TABLE ".table_links." CHANGE link_status link_status ENUM('discard','new','published','abuse','duplicate','page','spam','moderated');";
+	$db->query($sql);
+	$sql = "UPDATE ".table_links." SET link_status='new' WHERE link_status='queued';";
+	$db->query($sql);
+	$sql = "ALTER TABLE ".table_links." CHANGE link_group_status link_group_status ENUM('new','published','discard');";
+	$db->query($sql);
+	$sql = "UPDATE ".table_links." SET link_group_status='new' WHERE link_group_status='queued';";
+	$db->query($sql);
+	echo '<li>Changed story link_status and link_group_status from "queued" to "new".</li>';
+
 	//echo $lang['UpgradingTables'] . '<br />';
 	echo '<li>Performing one-time Pligg 2.0 Upgrade</li><ul>';
 	
@@ -195,7 +206,7 @@ if ($old_version < $new_version) {
 </ul>
 <hr />
 <p><a name=\"voting\"><strong>5. What is Voting?</strong></a></p>
-<p>The content of this site is mainly contributed and moderated by members, rather than moderators or site-sponsored authors like on most other websites. Members like you are given the ability to vote on submissions and comments, and those votes determine what content is published to the front page. Stories without enough votes are left in the \"Upcoming\" section, where they eventually become ineligible for becoming published. </p>
+<p>The content of this site is mainly contributed and moderated by members, rather than moderators or site-sponsored authors like on most other websites. Members like you are given the ability to vote on submissions and comments, and those votes determine what content is published to the front page. Stories without enough votes are left in the \"New\" section, where they eventually become ineligible for becoming published. </p>
 <p>Your voting habits are tracked and displayed on your user profile. This allows you to easily see what submissions or comments you have interracted with in the past.</p>
 <hr />
 <p><a name=\"whats_for_me\"><strong>6. What''s in it for me?</strong></a></p>
@@ -236,7 +247,7 @@ if ($old_version < $new_version) {
 <p>Karma is a mechanism used by this site that gives more weight to users who contribute frequently. The more articles, comments, and votes that you submit, the more Karma your account accrues. That Karma is then used in determining what stories make it to the front page. The higher the karma your account has, the more influence your votes will have over the direction of the website.
 <hr />
 <p><a name=\"groups\"><strong>13. What are Groups? </strong></a></p>
-<p>Groups are a way for members with a common interest to collaborate on a specific topic. For example, if you are a person who lives in France, you could create your own group for members in France. Each group is given their own published, upcoming, and shared pages where admins can moderate which content makes it to the group homepage.</p>
+<p>Groups are a way for members with a common interest to collaborate on a specific topic. For example, if you are a person who lives in France, you could create your own group for members in France. Each group is given their own published, new, and shared pages where admins can moderate which content makes it to the group homepage.</p>
 <p>Please be aware that some groups may require membership approval before you become a member.</p>
 <hr />
 <a href=\"#top\"><i class=\"icon icon-arrow-up\" style=\"opacity:1.0;\"></i> Top</a><br /><br />', '', '', 'Frequently Asked Questions,FAQ,Help', 'Frequently Asked Questions', '', '', '', '', '', '', '', '', '', '', '', '', '', 0, 0);";

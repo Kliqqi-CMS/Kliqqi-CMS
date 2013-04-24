@@ -44,8 +44,8 @@ class Search {
 	
 		$from_where = "FROM " . $this->searchTable . " WHERE ";
 
-		if ($this->filterToStatus == 'all') {$from_where .= " link_status IN ('published','queued') ";}
-		if ($this->filterToStatus == 'queued') {$from_where .= " link_status='queued' ";}
+		if ($this->filterToStatus == 'all') {$from_where .= " link_status IN ('published','new') ";}
+		if ($this->filterToStatus == 'new') {$from_where .= " link_status='new' ";}
 		if ($this->filterToStatus == 'discard') {$from_where .= " link_status='discard' ";}		
 		if ($this->filterToStatus == 'published') {$from_where .= " link_status='published' ";}		
 		if ($this->filterToStatus == 'popular') {$from_where .= " link_status='published' ";}
@@ -55,7 +55,7 @@ class Search {
 			$from_where .= " link_url LIKE '%$this->url%' ";
 		}
 
-		// Sort filters for published and upcoming pages
+		// Sort filters for published and new pages
 		if ($this->filterToStatus == 'published') {
 		
 			
@@ -183,7 +183,7 @@ class Search {
 			$limit = $this->pagesize;
 		
 		if($this->searchTerm == "" && $this->url == ""){
-			// like when on the index or upcoming pages.
+			// like when on the index or new pages.
 			$this->sql = "SELECT link_id $from_where $search_clause GROUP BY link_id $this->orderBy LIMIT $this->offset, $limit";
 		} else if($this->searchTerm == 'upvoted'){
 		
@@ -195,7 +195,7 @@ class Search {
 				$group = "GROUP BY link_id";
 			}
 			
-			 $this->sql = "SELECT DISTINCT * FROM " . table_links . ", " . table_votes . " WHERE ".$usrclause." vote_link_id=link_id AND vote_value > 0  AND (link_status='published' OR link_status='queued') ".$group." ORDER BY link_votes DESC LIMIT $this->offset, $limit"; //link_date
+			 $this->sql = "SELECT DISTINCT * FROM " . table_links . ", " . table_votes . " WHERE ".$usrclause." vote_link_id=link_id AND vote_value > 0  AND (link_status='published' OR link_status='new') ".$group." ORDER BY link_votes DESC LIMIT $this->offset, $limit"; //link_date
 			
 		} else if($this->searchTerm == 'downvoted'){
 		
@@ -207,7 +207,7 @@ class Search {
 				$group = "GROUP BY link_id";
 			}
 			
-			$this->sql = "SELECT DISTINCT * FROM " . table_links . ", " . table_votes . " WHERE ".$usrclause." vote_link_id=link_id AND vote_value < 0  AND (link_status='published' OR link_status='queued') ".$group." ORDER BY link_votes ASC LIMIT $this->offset, $limit"; //link_date
+			$this->sql = "SELECT DISTINCT * FROM " . table_links . ", " . table_votes . " WHERE ".$usrclause." vote_link_id=link_id AND vote_value < 0  AND (link_status='published' OR link_status='new') ".$group." ORDER BY link_votes ASC LIMIT $this->offset, $limit"; //link_date
 			
 		 
 		} else if($this->searchTerm == "commented"){
@@ -220,7 +220,7 @@ class Search {
 				$group = "GROUP BY link_id";
 			}
 			
-			$this->sql = "SELECT DISTINCT * FROM " . table_links . ", " . table_comments . " WHERE comment_status='published' ".$usrclause." AND comment_link_id=link_id AND (link_status='published' OR link_status='queued') ".$group." ORDER BY link_comments DESC LIMIT $this->offset, $limit";
+			$this->sql = "SELECT DISTINCT * FROM " . table_links . ", " . table_comments . " WHERE comment_status='published' ".$usrclause." AND comment_link_id=link_id AND (link_status='published' OR link_status='new') ".$group." ORDER BY link_comments DESC LIMIT $this->offset, $limit";
 		}
 		else{
 			$this->sql = "SELECT link_id, link_date, link_published_date $from_where $search_clause";
@@ -348,7 +348,7 @@ class Search {
 			    $search_clause = '1';
 			if (sizeof($search_AND_params)>0)
 				$search_clause .= ' AND ('.implode( ' AND ', $search_AND_params ).' ) ';
-			$this->sql = $query.' '.$from_where.' WHERE '.$search_clause." AND ".table_links.".link_status IN ('published','queued') ";
+			$this->sql = $query.' '.$from_where.' WHERE '.$search_clause." AND ".table_links.".link_status IN ('published','new') ";
 			
 			$this->searchTerm = $buffKeyword;
 			
@@ -610,7 +610,7 @@ class Search {
 						  'leastpopular' => $rating_column . ' ASC'
 						);
 		
-		if ($this->filterToStatus == "queued") {
+		if ($this->filterToStatus == "new") {
 			$ords = $this->ords;
 			if ( array_key_exists ($ords, $order_clauses) )
 				$this->orderBy = $order_clauses[$ords];

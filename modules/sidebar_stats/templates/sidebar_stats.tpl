@@ -24,8 +24,8 @@
 				<td>{$sidebar_stats_published}</td>
 			</tr>
 			<tr>
-				<td><strong>{#Sidebar_Stats_Upcoming#}</strong></td>
-				<td>{$sidebar_stats_upcoming}</td>
+				<td><strong>{#Sidebar_Stats_New#}</strong></td>
+				<td>{$sidebar_stats_new}</td>
 			</tr>
 			<tr>
 				<td><strong>{#Sidebar_Stats_Votes#}</strong></td>

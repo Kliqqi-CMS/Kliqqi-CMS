@@ -133,7 +133,7 @@ if( $_REQUEST['activate'] == 'withdraw')
 	die;
 }
 //to activate the group from mail link
-if(in_array($_REQUEST['action'],array('published','queued','discard')))
+if(in_array($_REQUEST['action'],array('published','new','discard')))
 {
 	$linkid = $_REQUEST['link'];
 	if (!is_numeric($linkid)) die();

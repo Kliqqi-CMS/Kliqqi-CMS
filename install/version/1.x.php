@@ -196,7 +196,7 @@ if ($old_version < $new_version) {
 	}
 	$fieldexists = checkforfield('link_group_status', table_links);
 	if (!$fieldexists) {
-		$sql = "ALTER TABLE  `pligg_links` ADD  `link_group_status` SET(  'queued',  'published',  'discard' ) DEFAULT 'queued' NOT NULL ;";
+		$sql = "ALTER TABLE  `pligg_links` ADD  `link_group_status` SET(  'new',  'published',  'discard' ) DEFAULT 'new' NOT NULL ;";
 		$db->query($sql);
 	}
 
@@ -350,7 +350,7 @@ if ($old_version < $new_version) {
 	/* modification for page cms*/
 	$fieldexists = checkforfield('link_status', table_links);
 	if ($fieldexists) {
-		$sql = (" ALTER TABLE `" . table_links . "` CHANGE `link_status` `link_status` ENUM( 'discard', 'queued', 'published', 'abuse', 'duplicated', 'page', 'spam' ) NOT NULL DEFAULT 'discard' ");
+		$sql = (" ALTER TABLE `" . table_links . "` CHANGE `link_status` `link_status` ENUM( 'discard', 'new', 'published', 'abuse', 'duplicate', 'page', 'spam' ) NOT NULL DEFAULT 'discard' ");
 		$db->query($sql);
 	}
 	$fields = $db->get_results("DESCRIBE ".table_users);
@@ -538,7 +538,7 @@ if ($old_version < $new_version) {
         	$db->query($sql);
 	
 		$db->query("insert into `" . table_totals . "` (`name`, `total`) values ('published', 0);");	
-		$db->query("insert into `" . table_totals . "` (`name`, `total`) values ('queued', 0);");	
+		$db->query("insert into `" . table_totals . "` (`name`, `total`) values ('new', 0);");	
 		$db->query("insert into `" . table_totals . "` (`name`, `total`) values ('discard', 0);");	
 	}
 	

@@ -64,11 +64,11 @@
 		<tr>
 			<td>
 				<strong>
-				{#PLIGG_Statistics_Widget_Front_Upcoming#}:
+				{#PLIGG_Statistics_Widget_Front_New#}:
 				</strong>
 			</td>
 			<td>
-				{$upcoming_submissions_count}
+				{$new_submissions_count}
 			</td>
 		</tr>
 	{/if}

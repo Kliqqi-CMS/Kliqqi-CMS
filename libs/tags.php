@@ -26,7 +26,7 @@ function tags_insert_string($link, $lang, $string, $date = 0) {
 			}
 		}
 		$db->query("TRUNCATE TABLE ".table_tag_cache);
-		$db->query($sql="INSERT INTO ".table_tag_cache." select tag_words, count(DISTINCT link_id) as count FROM ".table_tags.", ".table_links." WHERE tag_lang='en' and link_id = tag_link_id and (link_status='published' OR link_status='queued') GROUP BY tag_words order by count desc");
+		$db->query($sql="INSERT INTO ".table_tag_cache." select tag_words, count(DISTINCT link_id) as count FROM ".table_tags.", ".table_links." WHERE tag_lang='en' and link_id = tag_link_id and (link_status='published' OR link_status='new') GROUP BY tag_words order by count desc");
 
 		return true;
 	}
@@ -39,7 +39,7 @@ function tags_insert_string($link, $lang, $string, $date = 0) {
 class TagCloud {
     var $word_limit = NULL; // limit to cloud to this many words
     var $smarty_variable = '';
-    var $filterTo = 'all'; // published, queued or ALL (does not include discarded)
+    var $filterTo = 'all'; // published, new or ALL (does not include discarded)
     var $filterCategory = 0; // a specific category
     var $range_values = NULL; // only used on the tagcloud page where there is a list of time ranges to filter to.
     var $min_points = NULL; // the size of the smallest tag
@@ -72,8 +72,8 @@ class TagCloud {
 	    $cache_possible=1;
         }
 
-        if ($this->filterTo == 'all') {$from_where .= " (link_status='published' OR link_status='queued') "; $cache_possible++;}
-        if ($this->filterTo == 'queued') {$from_where .= " link_status='queued' ";}
+        if ($this->filterTo == 'all') {$from_where .= " (link_status='published' OR link_status='new') "; $cache_possible++;}
+        if ($this->filterTo == 'new') {$from_where .= " link_status='new' ";}
         if ($this->filterTo == 'published') {$from_where .= " link_status='published' ";}
 
         if(is_numeric($this->filterCategory) && $this->filterCategory > 0){

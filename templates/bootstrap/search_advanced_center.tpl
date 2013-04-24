@@ -103,7 +103,7 @@
 					<select name="status">
 						<option value="all" selected="selected">{#PLIGG_Visual_Search_Status_All#}</option>
 						<option value="published">{#PLIGG_Visual_Search_Status_Published#}</option>
-						<option value="queued">{#PLIGG_Visual_Search_Status_Upcoming#}</option>												
+						<option value="new">{#PLIGG_Visual_Search_Status_New#}</option>												
 					</select>
 				</div>
 			</div>

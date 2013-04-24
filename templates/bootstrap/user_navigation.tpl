@@ -189,7 +189,7 @@
 	{/if}
 	<li {if $user_view eq 'history'}class="active"{/if}><a href="{$user_url_news_sent2}" class="navbut{$nav_ns}">{#PLIGG_Visual_User_NewsSent#}</a></li>
 	<li {if $user_view eq 'published'}class="active"{/if}><a href="{$user_url_news_published2}" class="navbut{$nav_np}">{#PLIGG_Visual_User_NewsPublished#}</a></li>
-	<li {if $user_view eq 'upcoming'}class="active"{/if}><a href="{$user_url_news_unpublished2}" class="navbut{$nav_nu}">{#PLIGG_Visual_User_NewsUnPublished#}</a></li>
+	<li {if $user_view eq 'new'}class="active"{/if}><a href="{$user_url_news_unpublished2}" class="navbut{$nav_nu}">{#PLIGG_Visual_User_NewsUnPublished#}</a></li>
 	<li {if $user_view eq 'commented'}class="active"{/if}><a href="{$user_url_commented2}" class="navbut{$nav_c}">{#PLIGG_Visual_User_NewsCommented#}</a></li>
 	<li {if $user_view eq 'upvoted'}class="active"{/if}><a href="{$user_url_news_upvoted2}" class="navbut{$nav_nv}">{#PLIGG_Visual_UpVoted#}</a></li>
 	<li {if $user_view eq 'downvoted'}class="active"{/if}><a href="{$user_url_news_downvoted2}" class="navbut{$nav_nv}">{#PLIGG_Visual_DownVoted#}</a></li>

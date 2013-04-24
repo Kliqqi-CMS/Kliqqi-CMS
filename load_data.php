@@ -48,9 +48,9 @@ $search->offset = $start_up;
 // pagesize set in the admin panel
 $search->pagesize = $page_size;
 
-if($page_name=="upcoming"){  // For upcomming page
-	// since this is upcoming, we only want to view "queued" stories
-	$search->filterToStatus = "queued";
+if($page_name=="new"){  // For upcomming page
+	// since this is new, we only want to view "new" stories
+	$search->filterToStatus = "new";
 }else{ // For Index page
 	// since this is index, we only want to view "published" stories
 	$search->filterToStatus = "published";
@@ -71,13 +71,13 @@ if($page_name=='group_story'){
 
     
 	
-	if ($view == 'upcoming'){
-			$from_where .= " AND link_votes < $group_vote AND link_status='queued'";
+	if ($view == 'new'){
+			$from_where .= " AND link_votes < $group_vote AND link_status='new'";
 			$sql = "SELECT SQL_CALC_FOUND_ROWS * FROM " . table_links . " WHERE link_group_id = $groupid AND link_group_status!='discard' $from_where GROUP BY link_id ORDER BY link_published_date DESC, link_date DESC LIMIT $start_up, $page_size";
 	
 	 $load_page=1;		
 	}elseif($view== 'published'){                
-			$from_where .= " AND ((link_votes >= $group_vote AND link_status = 'queued') OR link_status = 'published')";
+			$from_where .= " AND ((link_votes >= $group_vote AND link_status = 'new') OR link_status = 'published')";
 	
 			$sql = "SELECT SQL_CALC_FOUND_ROWS * FROM " . table_links . " WHERE link_group_id = $groupid AND link_group_status!='discard' $from_where GROUP BY link_id ORDER BY link_published_date DESC, link_date DESC LIMIT $start_up, $page_size";
 			
@@ -105,7 +105,7 @@ if($page_name=='group_story'){
 	switch($view){
 		
 		case 'history':
-		$sql="SELECT * FROM " . table_links . " WHERE link_author=$userid AND (link_status='published' OR link_status='queued') ORDER BY link_date DESC LIMIT $start_up,$page_size";
+		$sql="SELECT * FROM " . table_links . " WHERE link_author=$userid AND (link_status='published' OR link_status='new') ORDER BY link_date DESC LIMIT $start_up,$page_size";
 		$load_page=1;
 		break;
 		
@@ -114,28 +114,28 @@ if($page_name=='group_story'){
 		$load_page=1;
 		break;
 		
-		case 'upcoming':
-		$sql="SELECT * FROM " . table_links . " WHERE link_author=$userid AND link_status='queued' ORDER BY link_date DESC LIMIT $start_up,$page_size";
+		case 'new':
+		$sql="SELECT * FROM " . table_links . " WHERE link_author=$userid AND link_status='new' ORDER BY link_date DESC LIMIT $start_up,$page_size";
 		$load_page=1;
 		break;
 		
 		case 'commented':
-		$sql="SELECT DISTINCT * FROM " . table_links . ", " . table_comments . " WHERE comment_status='published' AND comment_user_id=$userid AND comment_link_id=link_id AND (link_status='published' OR link_status='queued')  ORDER BY link_comments DESC LIMIT $start_up, $page_size";
+		$sql="SELECT DISTINCT * FROM " . table_links . ", " . table_comments . " WHERE comment_status='published' AND comment_user_id=$userid AND comment_link_id=link_id AND (link_status='published' OR link_status='new')  ORDER BY link_comments DESC LIMIT $start_up, $page_size";
 		$load_page=1;
 		break;
 		
 		case 'voted':
-		$sql="SELECT DISTINCT * FROM " . table_links . ", " . table_votes . " WHERE vote_user_id=$userid AND vote_link_id=link_id AND vote_value > 0  AND (link_status='published' OR link_status='queued') ORDER BY link_date DESC LIMIT $start_up, $page_size";
+		$sql="SELECT DISTINCT * FROM " . table_links . ", " . table_votes . " WHERE vote_user_id=$userid AND vote_link_id=link_id AND vote_value > 0  AND (link_status='published' OR link_status='new') ORDER BY link_date DESC LIMIT $start_up, $page_size";
 		$load_page=1;
 		break;
 		
 		case 'upvoted':
-		$sql="SELECT DISTINCT * FROM " . table_links . ", " . table_votes . " WHERE vote_user_id=$userid AND vote_link_id=link_id AND vote_value > 0  AND (link_status='published' OR link_status='queued') ORDER BY link_votes DESC LIMIT $start_up, $page_size";
+		$sql="SELECT DISTINCT * FROM " . table_links . ", " . table_votes . " WHERE vote_user_id=$userid AND vote_link_id=link_id AND vote_value > 0  AND (link_status='published' OR link_status='new') ORDER BY link_votes DESC LIMIT $start_up, $page_size";
 		$load_page=1;
 		break;
 		
 		case 'downvoted':
-		$sql="SELECT DISTINCT * FROM " . table_links . ", " . table_votes . " WHERE vote_user_id=$userid AND vote_link_id=link_id AND vote_value < 0  AND (link_status='published' OR link_status='queued') ORDER BY link_votes ASC LIMIT $start_up, $page_size";
+		$sql="SELECT DISTINCT * FROM " . table_links . ", " . table_votes . " WHERE vote_user_id=$userid AND vote_link_id=link_id AND vote_value < 0  AND (link_status='published' OR link_status='new') ORDER BY link_votes ASC LIMIT $start_up, $page_size";
 		$load_page=1;
 		break;
 
@@ -168,7 +168,7 @@ if($page_name=='group_story'){
 
 	$linksum_sql = $sql;
 	
-} else if($page_name=="index" || $page_name == "upcoming" || $page_name == "published"){
+} else if($page_name=="index" || $page_name == "new" || $page_name == "published"){
 	$linksum_sql = $search->sql;
 	$load_page = 1;
 }

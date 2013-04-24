@@ -348,7 +348,7 @@ function member_display($requestID)
 		//echo $member_display;
 		$main_smarty->assign('member_display', $member_display);
 }
-//get the upcoming story for groups
+//get the new story for groups
 function group_stories($requestID,$catId,$view,$flag=0)
 {
 	global $db,$main_smarty,$the_template,$page_size,$cached_links;
@@ -356,7 +356,7 @@ function group_stories($requestID,$catId,$view,$flag=0)
 
     
 	$link = new Link;
-	$group_upcoming_display = "";
+	$group_new_display = "";
 	$group_published_display = "";
 
 	if ($catId) 
@@ -385,10 +385,10 @@ function group_stories($requestID,$catId,$view,$flag=0)
 	$group_vote = group_check_to_publish($requestID);
 	
 	
-	if ($view == 'upcoming')
-		$from_where .= " AND link_votes<=$group_vote AND link_status='queued'";
+	if ($view == 'new')
+		$from_where .= " AND link_votes<=$group_vote AND link_status='new'";
 	else                
-		$from_where .= " AND ((link_votes >= $group_vote AND link_status = 'queued') OR link_status = 'published')";
+		$from_where .= " AND ((link_votes >= $group_vote AND link_status = 'new') OR link_status = 'published')";
 
 	$offset = (get_current_page()-1)*$page_size;
 	if($flag==1){

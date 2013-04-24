@@ -24,7 +24,7 @@
 			var data="";
 			var url = "";
 		
-			if(page_name=="index" || page_name=="upcoming" || page_name=="published"){
+			if(page_name=="index" || page_name=="new" || page_name=="published"){
 			 	data="&catID="+catID+"&part="+part+"&sorder="+searchorder;
 			 	url = my_pligg_url+"/load_data.php";
 			 }

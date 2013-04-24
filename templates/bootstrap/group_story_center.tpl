@@ -16,11 +16,11 @@
 				{/if}
 			</a>
 		</li>
-		<li {if $groupview eq "upcoming"}class="active"{/if}>
-			<a href="{$groupview_upcoming}">
-				<span>{#PLIGG_Visual_Group_Upcoming#}</span>
-				{if $group_upcoming_rows}
-					<span class="badge badge-gray">{$group_upcoming_rows}</span>
+		<li {if $groupview eq "new"}class="active"{/if}>
+			<a href="{$groupview_new}">
+				<span>{#PLIGG_Visual_Group_New#}</span>
+				{if $group_new_rows}
+					<span class="badge badge-gray">{$group_new_rows}</span>
 				{/if}
 			</a>
 		</li>
@@ -49,7 +49,7 @@
 			{$group_display}
 			<div style="clear:both;"></div>
 			{$group_story_pagination}
-		{elseif $groupview eq "upcoming"}
+		{elseif $groupview eq "new"}
 			{$group_display}
 			<div style="clear:both;"></div>
 			{$group_story_pagination}

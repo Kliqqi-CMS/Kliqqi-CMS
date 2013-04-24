@@ -4,7 +4,7 @@ if(defined('mnminclude')){
 
 	// tell pligg what pages this modules should be included in
 	// pages are <script name> minus .php
-	// index.php becomes 'index' and upcoming.php becomes 'upcoming'
+	// index.php becomes 'index' and new.php becomes 'new'
 	$do_not_include_in_pages = array();
 
 	$include_in_pages = array('module','admin_backup','admin_index','admin_widgets','admin_modules','admin_links','admin_comments','admin_users','admin_config','admin_categories','admin_page','admin_group','admin_editor');

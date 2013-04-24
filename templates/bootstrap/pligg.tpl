@@ -192,7 +192,7 @@
   	{/literal}
  
      
-	{if $pagename eq 'index' or $pagename eq 'published' or $pagename eq 'upcoming' or $pagename eq 'group_story' or $pagename eq 'user'}
+	{if $pagename eq 'index' or $pagename eq 'published' or $pagename eq 'new' or $pagename eq 'group_story' or $pagename eq 'user'}
     	{include file=$the_template"/functions/articles_pagination.tpl"}
 	{/if}
 	

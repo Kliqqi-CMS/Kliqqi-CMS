@@ -100,11 +100,11 @@ if($canIhaveAccess == 1){$main_smarty->assign('isadmin', 1);}
 $canIhaveAccess = $canIhaveAccess + checklevel('moderator');
 if($canIhaveAccess == 1){$main_smarty->assign('isadmin', 1);}
 
-// show count of upcoming stories
-$upcoming_submissions_count = $db->get_var('SELECT count(*) from ' . table_links . ' where link_status = "queued";');
-$main_smarty->assign('queued', $upcoming_submissions_count);
-// Renaming queued variable to upcoming_count
-$main_smarty->assign('upcoming_submissions_count', $upcoming_submissions_count);
+// show count of new stories
+$new_submissions_count = $db->get_var('SELECT count(*) from ' . table_links . ' where link_status = "new";');
+$main_smarty->assign('new', $new_submissions_count);
+// Renaming new variable to new_count
+$main_smarty->assign('new_submissions_count', $new_submissions_count);
 
 // Count variable for published stories
 $published_submissions_count = $db->get_var('SELECT count(*) from ' . table_links . ' where link_status = "published";');
@@ -113,7 +113,7 @@ $main_smarty->assign('published', $published_submissions_count);
 $main_smarty->assign('published_submissions_count', $published_submissions_count);
 
 // Count variable for moderated stories
-$moderated_submissions_count = $db->get_var('SELECT count(*) from ' . table_links . ' where link_status != "published" AND link_status != "queued" AND link_status != "spam" AND link_status != "discard" AND link_status != "page";');
+$moderated_submissions_count = $db->get_var('SELECT count(*) from ' . table_links . ' where link_status != "published" AND link_status != "new" AND link_status != "spam" AND link_status != "discard" AND link_status != "page";');
 $main_smarty->assign('moderated_submissions_count', $moderated_submissions_count);
 
 // Count variable for moderated comments
@@ -216,7 +216,7 @@ if ($current_user->user_id > 0 && $current_user->authenticated)
 	$main_smarty->assign('user_url_personal_data', getmyurl('user', $login));
 	$main_smarty->assign('user_url_news_sent', getmyurl('user2', $login, 'history'));
 	$main_smarty->assign('user_url_news_published', getmyurl('user2', $login, 'published'));
-	$main_smarty->assign('user_url_news_unpublished', getmyurl('user2', $login, 'upcoming'));
+	$main_smarty->assign('user_url_news_unpublished', getmyurl('user2', $login, 'new'));
 	$main_smarty->assign('user_url_news_voted', getmyurl('user2', $login, 'voted'));
 	$main_smarty->assign('user_url_news_upvoted', getmyurl('user2', $login, 'upvoted'));
 	$main_smarty->assign('user_url_news_downvoted', getmyurl('user2', $login, 'downvoted'));

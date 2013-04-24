@@ -61,7 +61,7 @@
 				<ul class="nav">
 					<li {if $pagename eq "published" || $pagename eq "index"}class="active current"{/if}><a href="{$my_base_url}{$my_pligg_base}">{#PLIGG_Visual_Home#}</a></li>
 					{checkActionsTpl location="tpl_pligg_navbar_start"}
-					<li {if $pagename eq "upcoming"}class="active current"{/if}><a href="{$URL_upcoming}">{#PLIGG_Visual_Pligg_Queued#}</a></li>
+					<li {if $pagename eq "new"}class="active current"{/if}><a href="{$URL_new}">{#PLIGG_Visual_Pligg_Queued#}</a></li>
 					{checkActionsTpl location="tpl_pligg_submit_link_start"}
                     <li {if $pagename eq "submit"}class="active current"{/if}><a href="{$URL_submit}">{#PLIGG_Visual_Submit_A_New_Story#}</a></li>
 					{checkActionsTpl location="tpl_pligg_submit_link_end"}

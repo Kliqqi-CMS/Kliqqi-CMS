@@ -12,15 +12,15 @@ if(!defined('mnminclude')){header('Location: ../404error.php');die();}
 		$the_results = $new_search;
 	} else {
 		
-		// used in the index and upcoming pages
+		// used in the index and new pages
 		$ls_debug = false;
 		if($ls_debug == true){echo '--' . sanitize($linksum_count,3) . '--<br />';}
 		if($linksum_count == "SELECT count(*) FROM " . table_links . " WHERE  link_status='published'  "){
 			if($ls_debug == true){echo 'p';}
 			$rows = $cached_totals['published'];
-		}	elseif ($linksum_count == "SELECT count(*) FROM " . table_links . " WHERE  link_status='queued'  ") {
+		}	elseif ($linksum_count == "SELECT count(*) FROM " . table_links . " WHERE  link_status='new'  ") {
 			if($ls_debug == true){echo 'u';}
-			$rows = $cached_totals['queued'];
+			$rows = $cached_totals['new'];
     } else {
     	if($ls_debug == true){echo 'r';}
 			$rows = $db->get_var($linksum_count);

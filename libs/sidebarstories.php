@@ -5,8 +5,8 @@ if(!defined('mnminclude')){header('Location: ../404error.php');die();}
 class SidebarStories {
   var $pagesize = 5; // The number of items to show
   var $orderBy = ""; // The sorting order
-  var $filterToStatus = "all"; // Filter to "all" or just "published" or "queued"
-  var $filterToTimeFrame = ""; // Filter to "all" or just "published" or "queued"
+  var $filterToStatus = "all"; // Filter to "all" or just "published" or "new"
+  var $filterToTimeFrame = ""; // Filter to "all" or just "published" or "new"
   var $header = ""; // The text to show at the top
   var $template = ""; // The template to use, including folder
   var $category = "";

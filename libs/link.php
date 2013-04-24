@@ -518,7 +518,7 @@ class Link {
 			{
 			    $url = $this->category_safe_name($cat);
 			    if ($this->status == "published") $url = getmyurl("maincategory", $url);
-			    if ($this->status == "queued") $url = getmyurl("queuedcategory", $url);
+			    if ($this->status == "new") $url = getmyurl("newcategory", $url);
 			    if ($this->status == "discard") $url = getmyurl("discardedcategory", $url);
 			    $cats[$url] = $this->category_name($cat);
 			}
@@ -555,7 +555,7 @@ class Link {
 		}
 		$smarty->assign('get_group_membered', $this->get_group_membered()); 
 		if($this->status == "published"){$smarty->assign('category_url', getmyurl("maincategory", $catvar));}
-		if($this->status == "queued"){$smarty->assign('category_url', getmyurl("queuedcategory", $catvar));}
+		if($this->status == "new"){$smarty->assign('category_url', getmyurl("newcategory", $catvar));}
 		if($this->status == "discard"){$smarty->assign('category_url', getmyurl("discardedcategory", $catvar));}
 
 		$smarty->assign('trackback_url', get_trackback($this->id));
@@ -653,7 +653,7 @@ class Link {
 		$smarty->assign('user_add_links_public', getmyurl('user_add_links_public', $this->id));
 		
 		$smarty->assign('group_story_links_publish', getmyurl('group_story_links_publish', $this->id));
-		$smarty->assign('group_story_links_queued', getmyurl('group_story_links_queued', $this->id));
+		$smarty->assign('group_story_links_new', getmyurl('group_story_links_new', $this->id));
 		$smarty->assign('group_story_links_discard', getmyurl('group_story_links_discard', $this->id));
 		$smarty->assign('link_id',$this->id);   
 		$smarty->assign('user_url_add_links', getmyurl('user_add_links', $this->id));
@@ -1007,7 +1007,7 @@ class Link {
 
 		if(Voting_Method == 1){
 			// check to see if we should change the status to publish
-			if($this->status == 'queued' && $this->votes>=$votes) {
+			if($this->status == 'new' && $this->votes>=$votes) {
 				$now = time();
 				$diff=$now-$this->date;
 				$days=intval($diff/86400);
@@ -1017,7 +1017,7 @@ class Link {
 			}
 		}
 		elseif(Voting_Method == 2){
-			if($this->status == 'queued' && $this->votes>=(rating_to_publish * 2) && $this->votecount>=$votes) {
+			if($this->status == 'new' && $this->votes>=(rating_to_publish * 2) && $this->votecount>=$votes) {
 				$now = time();
 				$diff=$now-$this->date;
 				$days=intval($diff/86400);
@@ -1030,7 +1030,7 @@ class Link {
 		    $karma = $this->category_karma();
 		    if (!is_numeric($karma))
 		    	$karma = karma_to_publish;
-			if($this->status == 'queued' && $this->karma>=$karma && $this->votecount>=$votes) {
+			if($this->status == 'new' && $this->karma>=$karma && $this->votecount>=$votes) {
 				$now = time();
 				$diff=$now-$this->date;
 				$days=intval($diff/86400);
@@ -1041,7 +1041,7 @@ class Link {
 			}
 		}
 
-		if(($this->status == 'queued' || $this->status == 'discard') && buries_to_spam>0 && $this->reports>=buries_to_spam) {
+		if(($this->status == 'new' || $this->status == 'discard') && buries_to_spam>0 && $this->reports>=buries_to_spam) {
 			$this->status='discard';
 			$this->store_basic();
 

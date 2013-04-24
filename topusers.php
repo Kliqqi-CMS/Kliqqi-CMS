@@ -47,7 +47,7 @@ $from_where_clauses = array(
 	// sort users alphabetically:
 	0 => " WHERE user_karma > 0 $whether_to_show_user",
 	// sort users by number of submitted links:
-	1 => "$link_author_from_where AND link_status IN ('published', 'queued') GROUP BY link_author",
+	1 => "$link_author_from_where AND link_status IN ('published', 'new') GROUP BY link_author",
 	// sort users by number of published links:
 	2 => "$link_author_from_where $whether_to_show_link GROUP BY link_author",
 	// sort users by number of comments:

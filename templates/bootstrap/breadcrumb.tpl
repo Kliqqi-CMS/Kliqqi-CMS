@@ -29,15 +29,15 @@
 		{if $user_view neq 'profile'}<li class="active">{$page_header} <a href="{$user_rss, $view_href}" target="_blank"><img src="{$my_pligg_base}/templates/{$the_template}/img/rss.gif" style="margin:-4px 0 0 3px;border:0;"></a></li>{/if}
 	{/if}
 	{if $pagename eq "published" && $get.category eq '' || $pagename eq "index"}<li class="active">{#PLIGG_Visual_Published_News#}{/if}
-	{if $pagename eq "upcoming" && $get.category eq ''}<li class="active">{#PLIGG_Visual_Pligg_Queued#}{/if}
+	{if $pagename eq "new" && $get.category eq ''}<li class="active">{#PLIGG_Visual_Pligg_Queued#}{/if}
 	{if $get.category}
 		{if $pagename eq "published" || $pagename eq "index"}<li><a href="{$my_base_url}{$my_pligg_base}">{#PLIGG_Visual_Published_News#}</a></li>{/if}
-		{if $pagename eq "upcoming"}<li><a href="{$URL_upcoming}">{#PLIGG_Visual_Pligg_Queued#}</a></li>{/if}
+		{if $pagename eq "new"}<li><a href="{$URL_new}">{#PLIGG_Visual_Pligg_Queued#}</a></li>{/if}
 	{/if}
 	{if $pagename eq "noresults"}<li class="active">{$posttitle}
 	{elseif isset($get.search)}<li class="active">{#PLIGG_Visual_Search_SearchResults#} &quot;{if $get.search}{$get.search}{else}{$get.date}{/if}&quot;{/if}
 	{if isset($get.q)}<li class="active">{#PLIGG_Visual_Search_SearchResults#} &quot;{$get.q}&quot;{/if} 
-	{if $pagename eq "index" || $pagename eq "published" || $pagename eq "upcoming" || isset($get.search) || isset($get.q)}
+	{if $pagename eq "index" || $pagename eq "published" || $pagename eq "new" || isset($get.search) || isset($get.q)}
 		{if isset($navbar_where.link2) && $navbar_where.link2 neq ""} <span class="divider">/</span> <a href="{$navbar_where.link2}">{$navbar_where.text2}</a>{elseif isset($navbar_where.text2) && $navbar_where.text2 neq ""} <span class="divider">/</span> {$navbar_where.text2}{/if}
 		{if isset($navbar_where.link3) && $navbar_where.link3 neq ""} <span class="divider">/</span> <a href="{$navbar_where.link3}">{$navbar_where.text3}</a>{elseif isset($navbar_where.text3) && $navbar_where.text3 neq ""} <span class="divider">/</span> {$navbar_where.text3}{/if}
 		{if isset($navbar_where.link4) && $navbar_where.link4 neq ""} <span class="divider">/</span> <a href="{$navbar_where.link4}">{$navbar_where.text4}</a>{elseif isset($navbar_where.text4) && $navbar_where.text4 neq ""} <span class="divider">/</span> {$navbar_where.text4}{/if}
@@ -45,14 +45,14 @@
 	{/if}
 	{if $posttitle neq "" && $pagename eq "page"}<li>{$posttitle}</li>{/if}
 	{checkActionsTpl location="tpl_pligg_breadcrumb_end"}
-	{if $pagename eq "published" || $pagename eq "index" || $pagename eq "upcoming" || $pagename eq "cloud" || $pagename eq "groups" || $pagename eq "live" || $pagename eq "live_published" || $pagename eq "live_unpublished" || $pagename eq "live_comments" }
+	{if $pagename eq "published" || $pagename eq "index" || $pagename eq "new" || $pagename eq "cloud" || $pagename eq "groups" || $pagename eq "live" || $pagename eq "live_published" || $pagename eq "live_unpublished" || $pagename eq "live_comments" }
 		{* Sort Dropdown *}
 		<div class="btn-group pull-right breadcrumb-right">
 			<ul class="nav nav-pills">
 				<li class="dropdown pull-right">
 					<a href="#" data-toggle="dropdown" class="dropdown-toggle">Sort <span class="caret"></span></a>
 					<ul class="dropdown-menu" id="menu1">
-						{if $pagename eq "published" || $pagename eq "index" || $pagename eq "upcoming"}
+						{if $pagename eq "published" || $pagename eq "index" || $pagename eq "new"}
 						
 							{if $setmeka eq "" || $setmeka eq "recent"}
 								<li id="active"><a id="current" href="{$index_url_recent}"><span class="active">{#PLIGG_Visual_Recently_Pop#}</span></a></li>

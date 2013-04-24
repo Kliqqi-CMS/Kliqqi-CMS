@@ -70,7 +70,7 @@ function related_stories($storyid, $related_tags, $category){
 
 		$rs2=new Link;
 		$rs2->id=$rs['tag_link_id'];
-		if ($rs2->read() && ($rs2->status=='queued' || $rs2->status=='published'))
+		if ($rs2->read() && ($rs2->status=='new' || $rs2->status=='published'))
 		{
 			$related_story[$id]=array_merge($related_story[$id],array(
 								'link_id' => $rs2->id, 
@@ -506,7 +506,7 @@ function do_pages($total, $page_size, $thepage, $fetch = false) {
 				$output .= '<li><a href="'.my_pligg_base.'/live/published/'.$query.'/page/'.$i.'">&#171; '.$main_smarty->get_config_vars("PLIGG_Visual_Page_Previous").'</a></li>';
 			}
 			elseif (pagename == "live_unpublished") {
-				$output .= '<li><a href="'.my_pligg_base.'/live/upcoming/'.$query.'/page/'.$i.'">&#171; '.$main_smarty->get_config_vars("PLIGG_Visual_Page_Previous").'</a></li>';
+				$output .= '<li><a href="'.my_pligg_base.'/live/new/'.$query.'/page/'.$i.'">&#171; '.$main_smarty->get_config_vars("PLIGG_Visual_Page_Previous").'</a></li>';
 			}
 			elseif (pagename == "live_comments") {
 				$output .= '<li><a href="'.my_pligg_base.'/live/comments/'.$query.'/page/'.$i.'">&#171; '.$main_smarty->get_config_vars("PLIGG_Visual_Page_Previous").'</a></li>';
@@ -531,7 +531,7 @@ function do_pages($total, $page_size, $thepage, $fetch = false) {
 				$output .= '<li><a href="'.my_pligg_base.'/live/published/'.$query.'/page/'.$i.'">'.$i.'</a></li>';
 			}
 			elseif (pagename == "live_unpublished") {
-				$output .= '<li><a href="'.my_pligg_base.'/live/upcoming/'.$query.'/page/'.$i.'">'.$i.'</a></li>';
+				$output .= '<li><a href="'.my_pligg_base.'/live/new/'.$query.'/page/'.$i.'">'.$i.'</a></li>';
 			}
 			elseif (pagename == "live_comments") {
 				$output .= '<li><a href="'.my_pligg_base.'/live/comments/'.$query.'/page/'.$i.'">'.$i.'</a></li>';
@@ -558,7 +558,7 @@ function do_pages($total, $page_size, $thepage, $fetch = false) {
 					$output .= '<li><a href="'.my_pligg_base.'/live/published/'.$query.'/page/'.$i.'">'.$i.'</a></li>';
 				}
 				elseif (pagename == "live_unpublished") {
-					$output .= '<li><a href="'.my_pligg_base.'/live/upcoming/'.$query.'/page/'.$i.'">'.$i.'</a></li>';
+					$output .= '<li><a href="'.my_pligg_base.'/live/new/'.$query.'/page/'.$i.'">'.$i.'</a></li>';
 				}
 				elseif (pagename == "live_comments") {
 					$output .= '<li><a href="'.my_pligg_base.'/live/comments/'.$query.'/page/'.$i.'">'.$i.'</a></li>';
@@ -585,7 +585,7 @@ function do_pages($total, $page_size, $thepage, $fetch = false) {
 				$output .= '<li><a href="'.my_pligg_base.'/live/published/'.$query.'/page/'.$i.'">'.$i.'</a></li>';
 			}
 			elseif (pagename == "live_unpublished") {
-				$output .= '<li><a href="'.my_pligg_base.'/live/upcoming/'.$query.'/page/'.$i.'">'.$i.'</a></li>';
+				$output .= '<li><a href="'.my_pligg_base.'/live/new/'.$query.'/page/'.$i.'">'.$i.'</a></li>';
 			}
 			elseif (pagename == "live_comments") {
 				$output .= '<li><a href="'.my_pligg_base.'/live/comments/'.$query.'/page/'.$i.'">'.$i.'</a></li>';
@@ -607,7 +607,7 @@ function do_pages($total, $page_size, $thepage, $fetch = false) {
 				$output .= '<li><a href="'.my_pligg_base.'/live/published/'.$query.'/page/'.$i.'"> '.$main_smarty->get_config_vars("PLIGG_Visual_Page_Next"). ' &#187;' . '</a></li>'; 
 			}
 			elseif (pagename == "live_unpublished") {
-				$output .= '<li><a href="'.my_pligg_base.'/live/upcoming/'.$query.'/page/'.$i.'"> '.$main_smarty->get_config_vars("PLIGG_Visual_Page_Next"). ' &#187;' . '</a></li>'; 
+				$output .= '<li><a href="'.my_pligg_base.'/live/new/'.$query.'/page/'.$i.'"> '.$main_smarty->get_config_vars("PLIGG_Visual_Page_Next"). ' &#187;' . '</a></li>'; 
 			}
 			elseif (pagename == "live_comments") {
 				$output .= '<li><a href="'.my_pligg_base.'/live/comments/'.$query.'/page/'.$i.'"> '.$main_smarty->get_config_vars("PLIGG_Visual_Page_Next"). ' &#187;' . '</a></li>'; 
@@ -670,7 +670,7 @@ function getmyurl($x, $var1="", $var2="", $var3="") {
 	if ($URLMethod == 1) {
 		if ($x == "index") $ret = "/index.php";
 		elseif ($x == "maincategory") $ret = "/index.php?category=" . $var1;
-		elseif ($x == "queuedcategory") $ret = "/upcoming.php?category=" . $var1;
+		elseif ($x == "newcategory") $ret = "/new.php?category=" . $var1;
 		elseif ($x == "discardedcategory") $ret = "/discarded.php?category=" . $var1;
 		elseif ($x == "editlink") $ret = "/editlink.php?id=" . $var1;
 		elseif ($x == "edit") $ret = "/edit.php?id=" . $var1 . "&amp;commentid=" . $var2;
@@ -681,7 +681,7 @@ function getmyurl($x, $var1="", $var2="", $var3="") {
 		elseif ($x == "user_remove_links") $ret = "/user_add_remove_links.php?action=remove&amp;link=" . $var1;
 		elseif ($x == "user_friends") $ret = "/user.php?login=" . $var1. "&amp;view=" . $var2;
 		elseif ($x == "index_sort") $ret = "/index.php?part=".$var1.($var2 ? "&amp;category=".$var2 : '');
-		elseif ($x == "upcoming_sort") $ret = "/upcoming.php?part=".$var1.($var2 ? "&amp;category=".$var2 : '');
+		elseif ($x == "new_sort") $ret = "/new.php?part=".$var1.($var2 ? "&amp;category=".$var2 : '');
 		elseif ($x == "userblank") $ret = "/user.php?login=";
 		elseif ($x == "user2") $ret = "/user.php?login=".$var1."&amp;view=".$var2;
 		elseif ($x == "search") $ret = "/search.php?search=" . $var1;
@@ -701,7 +701,7 @@ function getmyurl($x, $var1="", $var2="", $var3="") {
 		elseif ($x == "outtitle") $ret = "/out.php?title=" . $var1;
 		elseif ($x == "outurl") $ret = "/out.php?url=" . rawurlencode($var1);
 		elseif ($x == "root") $ret = "/index.php";
-		elseif ($x == "upcoming") $ret = "/upcoming.php";
+		elseif ($x == "new") $ret = "/new.php";
 		elseif ($x == "discarded") $ret = "/discarded.php";
 		elseif ($x == "topusers") $ret = "/topusers.php";
 		elseif ($x == "profile") $ret = "/profile.php";
@@ -712,23 +712,23 @@ function getmyurl($x, $var1="", $var2="", $var3="") {
 		elseif ($x == "bugreport") $ret = "/bugreport.php";
 		elseif ($x == "rsspage") $ret = "/rss.php?category=$var1&amp;status=$var2&amp;group=$var3";
 		elseif ($x == "rss") $ret = "/rss.php";
-		elseif ($x == "rssqueued") $ret = "/rss.php?status=queued";
+		elseif ($x == "rssnew") $ret = "/rss.php?status=new";
 		elseif ($x == "rssall") $ret = "/rss.php?status=all";
 		elseif ($x == "rsscategory") $ret = "/rss.php?category=". $var1;
-		elseif ($x == "rsscategoryqueued") $ret = "/rss.php?status=queued&amp;category=". $var1;
+		elseif ($x == "rsscategorynew") $ret = "/rss.php?status=new&amp;category=". $var1;
 		elseif ($x == "rsssearch") $ret = "/rss.php?search=". $var1;
 		elseif ($x == "rssuser") $ret = "/userrss.php?user=". $var1. "&amp;status=" . $var2;
 		elseif ($x == "storyrss") $ret = "/storyrss.php?title=". $var1;
 		elseif ($x == "trackback") $ret = "/trackback.php?id=" . $var1;
 		elseif ($x == "page") $ret = "/page.php?page=" . $var1;
-		elseif ($x == "upcoming_cat") $ret = "/?category=";
+		elseif ($x == "new_cat") $ret = "/?category=";
 		elseif ($x == "discarded_cat") $ret = "/?category=";
 	        elseif ($x == "admin") $ret = "/admin/index.php";
 	        elseif ($x == "admin_modify") $ret = "/admin/linkadmin.php?id=" . $var1 . "&amp;action=main";
 	        elseif ($x == "admin_modify_do") $ret = "/admin/linkadmin.php?id=" . $var1 . "&amp;action=do" . $var2;
 	        elseif ($x == "admin_modify_edo") $ret = "/admin/linkadmin.php?id=" . $var1 . "&amp;action=edo" . $var2;
 	        elseif ($x == "admin_discard") $ret = "/admin/linkadmin.php?id=" . $var1 . "&amp;action=discard";
-	        elseif ($x == "admin_queued") $ret = "/admin/linkadmin.php?id=" . $var1 . "&amp;action=queued";
+	        elseif ($x == "admin_new") $ret = "/admin/linkadmin.php?id=" . $var1 . "&amp;action=new";
 	        elseif ($x == "admin_published") $ret = "/admin/linkadmin.php?id=" . $var1 . "&amp;action=published";
 		elseif ($x == "editcomment") $ret = "/edit.php?id=" . $var2 . "&amp;commentid=" . $var1;
 		elseif ($x == "tagcloud") $ret = "/cloud.php";
@@ -761,7 +761,7 @@ function getmyurl($x, $var1="", $var2="", $var3="") {
 		elseif ($x == "user_add_links_private") $ret = "/user_add_remove_links.php?action=addprivate&amp;link=" . $var1;
 		elseif ($x == "user_add_links_public") $ret = "/user_add_remove_links.php?action=addpublic&amp;link=" . $var1;
 		elseif ($x == "group_story_links_publish") $ret = "/join_group.php?action=publish&amp;link=" . $var1;
-		elseif ($x == "group_story_links_queued") $ret = "/join_group.php?action=queued&amp;link=" . $var1;
+		elseif ($x == "group_story_links_new") $ret = "/join_group.php?action=new&amp;link=" . $var1;
 		elseif ($x == "group_story_links_discard") $ret = "/join_group.php?action=discard&amp;link=" . $var1;
 		elseif ($x == "admin_categories_tasks") $ret = "/admin_categories_tasks.php?action=" . $var1;
 		elseif ($x == "editgroup") $ret = "/editgroup.php?id=" . $var1;
@@ -770,9 +770,9 @@ function getmyurl($x, $var1="", $var2="", $var3="") {
 	}
 	if ($URLMethod == 2) { 
 		if ($x == "maincategory") $ret = "/" . $var1;
-		elseif ($x == "queuedcategory") $ret = "/upcoming/" . $var1;
+		elseif ($x == "newcategory") $ret = "/new/" . $var1;
 		elseif ($x == "discardedcategory") $ret = "/discarded/" . $var1 . "/";
-//		elseif ($x == "queuedcategory") $ret = "/upcoming/category/" . $var1 . "/";
+//		elseif ($x == "newcategory") $ret = "/new/category/" . $var1 . "/";
 //		elseif ($x == "maincategory") $ret = "/category/" . $var1 . "/";
 //		elseif ($x == "discardedcategory") $ret = "/discarded/category/" . $var1 . "/";
 		elseif ($x == "editlink") $ret = "/story/" . $var1 . "/edit/";
@@ -788,8 +788,8 @@ function getmyurl($x, $var1="", $var2="", $var3="") {
 		elseif ($x == "index") $ret = "/";
 		elseif ($x == "index_sort") $ret = "/".$var1.($var2 ? '/'.$var2 : '') . "/";
 //		elseif ($x == "index_sort") $ret = "/".$var1.($var2 ? '/category/'.$var2 : '') . "/";
-//		elseif ($x == "upcoming_sort") $ret = "/upcoming/".$var1.($var2 ? '/category/'.$var2 : '') . "/";
-		elseif ($x == "upcoming_sort") $ret = "/upcoming/".$var1.($var2 ? '/'.$var2 : '') . "/";
+//		elseif ($x == "new_sort") $ret = "/new/".$var1.($var2 ? '/category/'.$var2 : '') . "/";
+		elseif ($x == "new_sort") $ret = "/new/".$var1.($var2 ? '/'.$var2 : '') . "/";
 		elseif ($x == "search") $ret = "/search" . ($var1 ? '/'.$var1 : '') . "/";
 		elseif ($x == "advancedsearch") $ret = "/advanced-search/";
 		elseif ($x == "search_url") $ret = "/search/" . urlencode(str_replace('/','|',$var1)) . "/";
@@ -806,7 +806,7 @@ function getmyurl($x, $var1="", $var2="", $var3="") {
 		elseif ($x == "outtitle") $ret = "/out/" . $var1 . "/";
 		elseif ($x == "outurl") $ret = "/out/" . $var1 . "/";
 		elseif ($x == "root") $ret = "/";
-		elseif ($x == "upcoming") $ret = "/upcoming/";
+		elseif ($x == "new") $ret = "/new/";
 		elseif ($x == "topusers") $ret = "/topusers/";
 		elseif ($x == "user_edit") $ret = "/user/$var1/edit/";
 		elseif ($x == "userNoVar") $ret = "/user/";
@@ -815,10 +815,10 @@ function getmyurl($x, $var1="", $var2="", $var3="") {
 		elseif ($x == "about") $ret = "/about/".$var1 . "/";
 		elseif ($x == "rss") $ret = "/rss/";
 		elseif ($x == "rssuser") $ret = "/user/$var1/rss/";
-		elseif ($x == "rssqueued") $ret = "/upcoming/rss/";
+		elseif ($x == "rssnew") $ret = "/new/rss/";
 		elseif ($x == "rssall") $ret = "/rss/" . $var1 . "/";
 		elseif ($x == "rsscategory") $ret = "/rss/category/" . $var1;
-		elseif ($x == "rsscategoryqueued") $ret = "/rss/category/upcoming/" . $var1;
+		elseif ($x == "rsscategorynew") $ret = "/rss/category/new/" . $var1;
 		elseif ($x == "rsssearch") $ret = "/search/" . $var1 . "/rss/";
 		elseif ($x == "rsspage") $ret = ($var2 ? "/$var2" : '') . ($var1 ? "/$var1" : '') . ($var3 ? "/group/$var3" : '') . "/rss/";
 		elseif ($x == "rssgroup") $ret = "/group/$var1" . ($var2 ? "/$var2" : '') . "/rss/";
@@ -830,7 +830,7 @@ function getmyurl($x, $var1="", $var2="", $var3="") {
 		elseif ($x == "tagcloud_range") $ret = "/tagcloud/range/" . $var1 . "/";
 		elseif ($x == "live_comments") $ret = "/live/comments/";
 		elseif ($x == "live_published") $ret = "/live/published/";
-		elseif ($x == "live_unpublished") $ret = "/live/upcoming/";
+		elseif ($x == "live_unpublished") $ret = "/live/new/";
 		elseif ($x == "tag") $ret = "/tag/" . $var1 . "/";
 		elseif ($x == "tag2") $ret = "/tag/" . $var1 . "/" . $var2 . "/";
 		elseif ($x == "live") $ret = "/live/";
@@ -841,7 +841,7 @@ function getmyurl($x, $var1="", $var2="", $var3="") {
 		elseif ($x == "admin_modify_do") $ret = "/story/" . $var1 . "/modify/do" . $var2 . "/";
 		elseif ($x == "admin_modify_edo") $ret = "/story/" . $var1 . "/modify/edo" . $var2 . "/";
 		elseif ($x == "admin_discard") $ret = "/story/" . $var1 . "/modify/discard/";
-		elseif ($x == "admin_queued") $ret = "/story/" . $var1 . "/modify/queued/";
+		elseif ($x == "admin_new") $ret = "/story/" . $var1 . "/modify/new/";
 		elseif ($x == "admin_published") $ret = "/story/" . $var1 . "/modify/published/";
 		
 		elseif ($x == "groups") $ret = "/groups/";
@@ -864,7 +864,7 @@ function getmyurl($x, $var1="", $var2="", $var3="") {
 		elseif ($x == "editgroup") $ret = "/groups/edit/" . $var1 . "/";
 		elseif ($x == "deletegroup") $ret = "/groups/delete/" . $var1 . "/";
 		elseif ($x == "group_story_links_publish") $ret = "/join_group/action/published/link/" . $var1 . "/";
-		elseif ($x == "group_story_links_queued") $ret = "/join_group/action/queued/link/" . $var1 . "/";
+		elseif ($x == "group_story_links_new") $ret = "/join_group/action/new/link/" . $var1 . "/";
 		elseif ($x == "group_story_links_discard") $ret = "/join_group/action/discard/link/" . $var1 . "/";
 		elseif ($x == "admin_categories_tasks") $ret = "/admin_categories_tasks/action/" . $var1 . "/";
 	}
@@ -888,7 +888,7 @@ function SetSmartyURLs($main_smarty) {
 	$main_smarty->assign('URL_search', getmyurl("search"));
 	$main_smarty->assign('URL_advancedsearch', getmyurl("advancedsearch"));
 	$main_smarty->assign('URL_maincategory', getmyurl("maincategory"));
-	$main_smarty->assign('URL_queuedcategory', getmyurl("queuedcategory"));
+	$main_smarty->assign('URL_newcategory', getmyurl("newcategory"));
 	$main_smarty->assign('URL_category', getmyurl("category"));
 	$main_smarty->assign('URL_user', getmyurl("user"));
 	$main_smarty->assign('URL_userNoVar', getmyurl("userNoVar"));
@@ -898,11 +898,11 @@ function SetSmartyURLs($main_smarty) {
 	$main_smarty->assign('URL_story', getmyurl("story"));
 	$main_smarty->assign('URL_storytitle', getmyurl("storytitle"));
 	$main_smarty->assign('URL_topusers', getmyurl("topusers"));
-    	if(isset($_GET['category']) && sanitize($_GET['category'],1) != '' && strpos($_SERVER['PHP_SELF'], "upcoming.php") === false  && strpos($_SERVER['PHP_SELF'], "story.php") === false) {
+    	if(isset($_GET['category']) && sanitize($_GET['category'],1) != '' && strpos($_SERVER['PHP_SELF'], "new.php") === false  && strpos($_SERVER['PHP_SELF'], "story.php") === false) {
 
-            $main_smarty->assign('URL_upcoming', getmyurl("queuedcategory").sanitize(sanitize($_GET['category'],1),2));
+            $main_smarty->assign('URL_new', getmyurl("newcategory").sanitize(sanitize($_GET['category'],1),2));
 	} else {
-	    $main_smarty->assign('URL_upcoming', getmyurl("upcoming"));
+	    $main_smarty->assign('URL_new', getmyurl("new"));
 	}
     	if(isset($_GET['category']) && sanitize($_GET['category'],1) != '' && strpos($_SERVER['PHP_SELF'], "index.php") === false && strpos($_SERVER['PHP_SELF'], "story.php") === false) {
             $main_smarty->assign('URL_base', getmyurl("maincategory",sanitize(sanitize($_GET['category'],1),2)));
@@ -913,8 +913,8 @@ function SetSmartyURLs($main_smarty) {
 	$main_smarty->assign('URL_submit', getmyurl("submit"));
 	$main_smarty->assign('URL_rss', getmyurl("rss"));
 	$main_smarty->assign('URL_rsscategory', getmyurl("rsscategory"));
-	$main_smarty->assign('URL_rsscategoryqueued', getmyurl("rsscategoryqueued"));
-	$main_smarty->assign('URL_rssqueued', getmyurl("rssqueued", "queued"));
+	$main_smarty->assign('URL_rsscategorynew', getmyurl("rsscategorynew"));
+	$main_smarty->assign('URL_rssnew', getmyurl("rssnew", "new"));
 	$main_smarty->assign('URL_rssall', getmyurl("rssall", "all"));
 	$main_smarty->assign('URL_rsssearch', getmyurl("rsssearch"));
 	$main_smarty->assign('URL_admin', getmyurl("admin"));
@@ -966,7 +966,7 @@ function friend_MD5($userA, $userB) {
 function totals_regenerate(){
 	global $db, $cached_totals;
 	
-	$name = 'queued';
+	$name = 'new';
 	$count = $db->get_var("SELECT count(*) FROM " . table_links . " WHERE link_status='$name';");
 	$db->query("UPDATE `" . table_totals . "` set `total` = $count where `name` = '$name';");	
 	$cached_totals[$name] = $count;

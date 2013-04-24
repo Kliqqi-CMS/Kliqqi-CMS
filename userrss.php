@@ -10,7 +10,7 @@ include(mnminclude.'search.php');
 include(mnminclude.'user.php');
 include_once(mnminclude.'smartyvariables.php');
 
-	//status = 'published', 'queued' or 'all' 		// link/story status
+	//status = 'published', 'new' or 'all' 		// link/story status
 	//rows = x 		// number of links/stories to show
 	//user = x 		// the users name
 	//time = x 		// how far back in time (seconds) to go
@@ -43,7 +43,7 @@ if($time > 0) {
 		$from = time()-$time;
 		$sql .= "vote_date > FROM_UNIXTIME($from) AND ";
 	}
-	$sql .= "vote_link_id=link_id  AND (link_status='published' OR link_status='queued') GROUP BY vote_link_id  ORDER BY votes DESC LIMIT $rows";
+	$sql .= "vote_link_id=link_id  AND (link_status='published' OR link_status='new') GROUP BY vote_link_id  ORDER BY votes DESC LIMIT $rows";
 
 	$last_modified = time();
 	$title = $main_smarty->get_config_vars("PLIGG_Visual_RSS_Recent") . ' ' . txt_time_diff($from);
@@ -67,13 +67,13 @@ if($time > 0) {
 						WHERE link_status='published' ";
 			$from_where .= " AND link_author=$user->id ";
 			break;
-		case 'upcoming':
+		case 'new':
 			$title = $main_smarty->get_config_vars("PLIGG_Visual_Pligg_Queued");
 			$order_field = 'link_date';
 			$link_date = "date";
 			$from_where = "FROM " . table_links . " 
 						LEFT JOIN " . table_users . " ON link_author=user_id 
-						WHERE link_status='queued' ";
+						WHERE link_status='new' ";
 			$from_where .= " AND link_author=$user->id ";
 			break;
 		case 'submitted':
@@ -82,7 +82,7 @@ if($time > 0) {
 			$link_date = "date";
 			$from_where = "FROM " . table_links . " 
 						LEFT JOIN " . table_users . " ON link_author=user_id 
-						WHERE (link_status='published' OR link_status='queued') ";
+						WHERE (link_status='published' OR link_status='new') ";
 			$from_where .= " AND link_author=$user->id ";
 			break;
 		case 'voted':
@@ -92,7 +92,7 @@ if($time > 0) {
 			$from_where = "FROM " . table_links . "
 						LEFT JOIN " . table_votes . " ON vote_link_id=link_id
 						LEFT JOIN " . table_users . " ON link_author=user_id 
-						WHERE vote_user_id=$user->id AND (link_status='published' OR link_status='queued') ";
+						WHERE vote_user_id=$user->id AND (link_status='published' OR link_status='new') ";
 			break;
 		case 'upvoted':
 			$title = $main_smarty->get_config_vars("PLIGG_Visual_UpVoted");
@@ -101,7 +101,7 @@ if($time > 0) {
 			$from_where = "FROM " . table_links . "
 						LEFT JOIN " . table_votes . " ON vote_link_id=link_id
 						LEFT JOIN " . table_users . " ON link_author=user_id 
-						WHERE vote_user_id=$user->id AND (link_status='published' OR link_status='queued')  AND vote_value>0";
+						WHERE vote_user_id=$user->id AND (link_status='published' OR link_status='new')  AND vote_value>0";
 			break;
 		case 'downvoted':
 			$title = $main_smarty->get_config_vars("PLIGG_Visual_DownVoted");
@@ -110,7 +110,7 @@ if($time > 0) {
 			$from_where = "FROM " . table_links . "
 						LEFT JOIN " . table_votes . " ON vote_link_id=link_id
 						LEFT JOIN " . table_users . " ON link_author=user_id 
-						WHERE vote_user_id=$user->id AND (link_status='published' OR link_status='queued')  AND vote_value<0";
+						WHERE vote_user_id=$user->id AND (link_status='published' OR link_status='new')  AND vote_value<0";
 			break;
 
 		case 'commented':
@@ -121,7 +121,7 @@ if($time > 0) {
 			$from_where = "FROM " . table_links . "
 						LEFT JOIN " . table_comments . " ON comment_link_id=link_id 
 						LEFT JOIN " . table_users . " ON link_author=user_id 
-						WHERE comment_status='published' AND comment_user_id=$user->id AND (link_status='published' OR link_status='queued') ";
+						WHERE comment_status='published' AND comment_user_id=$user->id AND (link_status='published' OR link_status='new') ";
 			break;
 		case 'saved':
 			$title = $main_smarty->get_config_vars("PLIGG_Visual_RSS_Saved");
@@ -131,7 +131,7 @@ if($time > 0) {
 			$from_where = "FROM " . table_links . "
 						LEFT JOIN " . table_saved_links . " ON saved_link_id=link_id
 						LEFT JOIN " . table_users . " ON link_author=user_id 
-						WHERE saved_user_id=$user->id AND (link_status='published' OR link_status='queued') ";
+						WHERE saved_user_id=$user->id AND (link_status='published' OR link_status='new') ";
 			break;		
 		default:
 			header("Location: $my_pligg_base/404error.php");

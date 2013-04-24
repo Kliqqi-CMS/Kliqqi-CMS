@@ -24,9 +24,9 @@
 	// API Configuration
 	// Submit links status configuration
 	// 1 'discard'
-	// 2 'queued' 
+	// 2 'new' 
 	// 3 'published'
-	$status = 2; // queued or upcomming
+	$status = 2; // new or upcomming
 	$autovote = 1; // 0 = no vote, 1 = auto vote
 	$filter = 1; // 0 = not filter (fast), 1 = filter (slow)
 	// End API Configuration
@@ -228,7 +228,7 @@
 		if($status == 1)
 			$link_status = 'discard'; // do not show
 		else if ($status == 2)
-			$link_status = 'queued'; // upconmming
+			$link_status = 'new'; // upconmming
 		else if ($status == 3)
 			$link_status = 'published'; // show
 		else

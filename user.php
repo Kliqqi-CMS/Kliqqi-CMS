@@ -107,7 +107,7 @@ if ($user->url != "") {
 $main_smarty->assign('user_url_personal_data2', getmyurl('user', $login));
 $main_smarty->assign('user_url_news_sent2', getmyurl('user2', $login, 'history'));
 $main_smarty->assign('user_url_news_published2', getmyurl('user2', $login, 'published'));
-$main_smarty->assign('user_url_news_unpublished2', getmyurl('user2', $login, 'upcoming'));
+$main_smarty->assign('user_url_news_unpublished2', getmyurl('user2', $login, 'new'));
 $main_smarty->assign('user_url_news_voted2', getmyurl('user2', $login, 'voted'));
 $main_smarty->assign('user_url_news_upvoted2', getmyurl('user2', $login, 'upvoted'));
 $main_smarty->assign('user_url_news_downvoted2', getmyurl('user2', $login, 'downvoted'));	
@@ -250,11 +250,11 @@ if ($view == 'published') {
 	$main_smarty->assign('nav_np', 3);
 	}
 
-if ($view == 'upcoming') {
+if ($view == 'new') {
 	$page_header .= $main_smarty->get_config_vars('PLIGG_Visual_User_NewsUnPublished');
 	$navwhere['text3'] = $main_smarty->get_config_vars('PLIGG_Visual_User_NewsUnPublished');
 	$post_title .= " | " . $main_smarty->get_config_vars('PLIGG_Visual_User_NewsUnPublished');
-	$main_smarty->assign('view_href', 'upcoming');
+	$main_smarty->assign('view_href', 'new');
 	$main_smarty->assign('nav_nu', 4);
  } else {
 	$main_smarty->assign('nav_nu', 3);
@@ -394,8 +394,8 @@ switch ($view) {
 		$main_smarty->display($the_template . '/pligg.tpl');
 		break;
 		
-	case 'upcoming':
-		do_upcoming();
+	case 'new':
+		do_new();
 		if(Auto_scroll==2 || Auto_scroll==3){
 			$main_smarty->assign('total_row', $rows);
 		} else {
@@ -562,8 +562,8 @@ function do_voted () {
 
 	$output = '';
 	$link = new Link;
-	$rows = $db->get_var("SELECT count(*) FROM " . table_links . ", " . table_votes . " WHERE vote_user_id=$user->id AND vote_link_id=link_id AND vote_value > 0 AND (link_status='published' OR link_status='queued')");
-	$links = $db->get_results($sql="SELECT DISTINCT * FROM " . table_links . ", " . table_votes . " WHERE vote_user_id=$user->id AND vote_link_id=link_id AND vote_value > 0  AND (link_status='published' OR link_status='queued') ORDER BY link_date DESC LIMIT $offset, $page_size");
+	$rows = $db->get_var("SELECT count(*) FROM " . table_links . ", " . table_votes . " WHERE vote_user_id=$user->id AND vote_link_id=link_id AND vote_value > 0 AND (link_status='published' OR link_status='new')");
+	$links = $db->get_results($sql="SELECT DISTINCT * FROM " . table_links . ", " . table_votes . " WHERE vote_user_id=$user->id AND vote_link_id=link_id AND vote_value > 0  AND (link_status='published' OR link_status='new') ORDER BY link_date DESC LIMIT $offset, $page_size");
 	
 	if ($links) {
 		foreach($links as $dblink) {
@@ -590,8 +590,8 @@ function do_updownvoted ($status = null) {
 		$order = "ASC";
 	}
 	
-	$rows = $db->get_var("SELECT count(*) FROM " . table_links . ", " . table_votes . " WHERE vote_user_id=$user->id AND vote_link_id=link_id AND vote_value ".$vote_stats." AND (link_status='published' OR link_status='queued')");
-	$links = $db->get_results($sql="SELECT DISTINCT * FROM " . table_links . ", " . table_votes . " WHERE vote_user_id=$user->id AND vote_link_id=link_id AND vote_value ".$vote_stats."  AND (link_status='published' OR link_status='queued') ORDER BY link_votes ".$order." LIMIT $offset, $page_size");
+	$rows = $db->get_var("SELECT count(*) FROM " . table_links . ", " . table_votes . " WHERE vote_user_id=$user->id AND vote_link_id=link_id AND vote_value ".$vote_stats." AND (link_status='published' OR link_status='new')");
+	$links = $db->get_results($sql="SELECT DISTINCT * FROM " . table_links . ", " . table_votes . " WHERE vote_user_id=$user->id AND vote_link_id=link_id AND vote_value ".$vote_stats."  AND (link_status='published' OR link_status='new') ORDER BY link_votes ".$order." LIMIT $offset, $page_size");
 	
 	if ($links) {
 		foreach($links as $dblink) {
@@ -609,8 +609,8 @@ function do_history () {
 	global $db, $main_smarty, $rows, $user, $offset, $page_size,$cached_links;
 	$output = '';
 	$link = new Link;
-	$rows = $db->get_var("SELECT count(*) FROM " . table_links . " WHERE link_author=$user->id AND (link_status='published' OR link_status='queued')");
-	$links = $db->get_results("SELECT * FROM " . table_links . " WHERE link_author=$user->id AND (link_status='published' OR link_status='queued') ORDER BY link_date DESC LIMIT $offset,$page_size");
+	$rows = $db->get_var("SELECT count(*) FROM " . table_links . " WHERE link_author=$user->id AND (link_status='published' OR link_status='new')");
+	$links = $db->get_results("SELECT * FROM " . table_links . " WHERE link_author=$user->id AND (link_status='published' OR link_status='new') ORDER BY link_date DESC LIMIT $offset,$page_size");
 	if ($links) {
 		foreach($links as $dblink) {
 			$link->id=$dblink->link_id;
@@ -639,12 +639,12 @@ function do_published () {
 	$main_smarty->assign('user_page', $output);
 }
 
-function do_upcoming () {
+function do_new () {
 	global $db, $main_smarty, $rows, $user, $offset, $page_size,$cached_links;
 	$output = '';
 	$link = new Link;
-	$rows = $db->get_var("SELECT count(*) FROM " . table_links . " WHERE link_author=$user->id AND link_status='queued'");
-	$links = $db->get_results("SELECT * FROM " . table_links . " WHERE link_author=$user->id AND link_status='queued' ORDER BY link_date DESC LIMIT $offset,$page_size");
+	$rows = $db->get_var("SELECT count(*) FROM " . table_links . " WHERE link_author=$user->id AND link_status='new'");
+	$links = $db->get_results("SELECT * FROM " . table_links . " WHERE link_author=$user->id AND link_status='new' ORDER BY link_date DESC LIMIT $offset,$page_size");
 	if ($links) {
 		foreach($links as $dblink) {
 			$link->id=$dblink->link_id;
@@ -661,7 +661,7 @@ function do_commented () {
 	$output = '';
 	$link = new Link;
 	$rows = $db->get_var("SELECT count(*) FROM " . table_links . ", " . table_comments . " WHERE comment_status='published' AND comment_user_id=$user->id AND comment_link_id=link_id");
-	$links = $db->get_results("SELECT DISTINCT * FROM " . table_links . ", " . table_comments . " WHERE comment_status='published' AND comment_user_id=$user->id AND comment_link_id=link_id AND (link_status='published' OR link_status='queued')  ORDER BY link_date DESC LIMIT $offset,$page_size");
+	$links = $db->get_results("SELECT DISTINCT * FROM " . table_links . ", " . table_comments . " WHERE comment_status='published' AND comment_user_id=$user->id AND comment_link_id=link_id AND (link_status='published' OR link_status='new')  ORDER BY link_date DESC LIMIT $offset,$page_size");
 	if ($links) {
 		foreach($links as $dblink) {
 			$link->id=$dblink->link_id;

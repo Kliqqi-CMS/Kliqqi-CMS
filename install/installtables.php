@@ -80,7 +80,7 @@ function pligg_createtables($conn) {
 	$sql = "CREATE TABLE `" . table_links . "` (
 	  `link_id` int(20) NOT NULL auto_increment,
 	  `link_author` int(20) NOT NULL default '0',
-	  `link_status` enum('discard','queued','published','abuse','duplicated','page','spam') NOT NULL default 'discard',
+	  `link_status` enum('discard','new','published','abuse','duplicate','page','spam') NOT NULL default 'discard',
 	  `link_randkey` int(20) NOT NULL default '0',
 	  `link_votes` int(20) NOT NULL default '0',
 	  `link_reports` int(20) NOT NULL default '0',
@@ -114,7 +114,7 @@ function pligg_createtables($conn) {
 	  `link_field14` varchar(255) NOT NULL default '',
 	  `link_field15` varchar(255) NOT NULL default '',
 	  `link_group_id` int(20) NOT NULL default '0',
-	  `link_group_status` enum(  'queued',  'published',  'discard' ) DEFAULT 'queued' NOT NULL,
+	  `link_group_status` enum(  'new',  'published',  'discard' ) DEFAULT 'new' NOT NULL,
 	  `link_out` int(11) NOT NULL default '0',
 	  PRIMARY KEY  (`link_id`),
 	  KEY `link_author` (`link_author`),
@@ -638,13 +638,13 @@ function pligg_createtables($conn) {
 //	echo "Adding default 'totals' data</li>";
 	$sql = "insert into `" . table_totals . "` (`name`, `total`) values ('published', 0);";
 	mysql_query( $sql, $conn );
-	$sql = "insert into `" . table_totals . "` (`name`, `total`) values ('queued', 0);";	
+	$sql = "insert into `" . table_totals . "` (`name`, `total`) values ('new', 0);";	
 	mysql_query( $sql, $conn );
 	$sql = "insert into `" . table_totals . "` (`name`, `total`) values ('discard', 0);";	
 	mysql_query( $sql, $conn );
 
 	echo '<li>Creating About Page</li>';
-	$sql = "INSERT INTO `" . table_links . "`  (`link_id`, `link_author`, `link_status`, `link_randkey`, `link_votes`, `link_reports`, `link_comments`, `link_karma`, `link_modified`, `link_date`, `link_published_date`, `link_category`, `link_lang`, `link_url`, `link_url_title`, `link_title`, `link_title_url`, `link_content`, `link_summary`, `link_tags`, `link_field1`, `link_field2`, `link_field3`, `link_field4`, `link_field5`, `link_field6`, `link_field7`, `link_field8`, `link_field9`, `link_field10`, `link_field11`, `link_field12`, `link_field13`, `link_field14`, `link_field15`, `link_group_id`, `link_out`) VALUES (1, 1, 'page', 0, 0, 0, 0, '0.00', '2005-12-17 00:00:00', '2005-12-17 00:00:00', '0000-00-00 00:00:00', 0, 1, '', NULL, 'About', 'about', '<legend><strong>About Us</strong></legend>\r\n<p>Our site allows you to submit an article that will be voted on by other members. The most popular posts will be published to the front page, while the less popular articles are left in an 'Upcoming' page permanently. This site is dependant on user contributed content and votes to determine the direction of the site.</p>\r\n', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', 0, 0);";
+	$sql = "INSERT INTO `" . table_links . "`  (`link_id`, `link_author`, `link_status`, `link_randkey`, `link_votes`, `link_reports`, `link_comments`, `link_karma`, `link_modified`, `link_date`, `link_published_date`, `link_category`, `link_lang`, `link_url`, `link_url_title`, `link_title`, `link_title_url`, `link_content`, `link_summary`, `link_tags`, `link_field1`, `link_field2`, `link_field3`, `link_field4`, `link_field5`, `link_field6`, `link_field7`, `link_field8`, `link_field9`, `link_field10`, `link_field11`, `link_field12`, `link_field13`, `link_field14`, `link_field15`, `link_group_id`, `link_out`) VALUES (1, 1, 'page', 0, 0, 0, 0, '0.00', '2005-12-17 00:00:00', '2005-12-17 00:00:00', '0000-00-00 00:00:00', 0, 1, '', NULL, 'About', 'about', '<legend><strong>About Us</strong></legend>\r\n<p>Our site allows you to submit an article that will be voted on by other members. The most popular posts will be published to the front page, while the less popular articles are left in an 'New' page permanently. This site is dependant on user contributed content and votes to determine the direction of the site.</p>\r\n', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', 0, 0);";
 	mysql_query( $sql, $conn );
 
 //	print "<li>Converting tables to UTF-8</li>";
