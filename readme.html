@@ -59,7 +59,7 @@
 			</div>
 			
 			<div class="span9">
-			
+				
 				<legend><a href="#install" name="welcome">Welcome to Pligg!</a></legend>
 				<p>You are just a few steps away from starting your very first Pligg website! This page will guide you through installing Pligg for the first time, upgrading an existing Pligg website to the latest version, troubleshooting common issues, and backing up your Pligg site for safe keeping. </p>
 			
@@ -121,6 +121,18 @@
 				</ol>
 				<br />
 				
+				<legend><a href="#version" name="version">Version</a></legend>
+				<p><strong>Pligg CMS Version</strong></p>
+				<p>For easy access, the Pligg Admin Panel's "Statistics" widget displays your Pligg CMS Version. Pligg stores your version number in a MySQL database under the pligg_misc_data table. If you have access to a tool to view your MySQL database, like PhpMyAdmin, you will find that the data is stored under the name "pligg_version". </p>
+				<p>To upgrade to the latest version of Pligg CMS, make sure that you run the file /install/upgrade.php in your browser after uploading the latest version Pligg files to your server. If you forget to take this step your database  may not be up to date with the latest version and the version number displayed in the Admin Panel may be incorrect.</p>
+				<p><strong>SVN Revisions</strong></p>
+				<p>SVN and Beta updates do not always change the version number used by Pligg. This is why we use SVN revision numbers as an indicator for what build of Pligg is being used with Beta releases. To help users keep track of what revsion they are on and when it was last updated, we are including that information below. This information is updated automatically with each SVN commit made to Pligg CMS.</p>
+				<ul>
+					<li>$Rev$ </li>
+					<li>$Date$ </li>
+				</ul>
+				<p>For security reasons, you may not want to keep this information exposed on your public server. We suggest either renaming this file, or you can archive a copy on your local computer for reference.</p>
+				<br />
 
 				<legend><a href="#upgrade" name="upgrade">Upgrading</a></legend>
 				<div class="well">
@@ -210,6 +222,7 @@
 							<li><a href="#welcome">Welcome</a></li>
 							<li><a href="#install">Installation</a></li>
 							<li><a href="#backup">Backup</a></li>
+							<li><a href="#version">Version</a></li>
 							<li><a href="#upgrade">Upgrade</a></li>
 							<li><a href="#support">Support</a></li>
 							<li><a href="#credits">Credits</a></li>
