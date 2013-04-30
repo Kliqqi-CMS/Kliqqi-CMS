@@ -424,11 +424,9 @@ PLIGG_Visual_User_Profile_Remove_Friend = "Удалить"
 PLIGG_Visual_User_Profile_Remove_Friend_2 = "из друзей"
 PLIGG_Visual_User_Profile_Removing_Friend = "Удаление друга"
 PLIGG_Visual_User_Profile_Add_Friend= "Добавить"
-PLIGG_Visual_User_Profile_Add_Friend_2 = "в друзья"
 PLIGG_Visual_User_Profile_Adding_Friend= "Добавление друга"
 PLIGG_Visual_User_Profile_View_Friends = "Мои друзья"
 PLIGG_Visual_User_Profile_Viewing_Friends = "Ваши друзья"
-PLIGG_Visual_User_Profile_View_Friends_2 = "Посмотреть, кто добавил меня в друзья"
 PLIGG_Visual_User_Profile_Viewing_Friends_2 = "Люди, добавившие вас в друзья"
 PLIGG_Visual_User_Profile_Viewing_Friends_2a = "Люди, добавившие вас в друзья"
 PLIGG_Visual_User_Profile_No_Friends = "У вас нет еще друзей."
@@ -517,8 +515,6 @@ PLIGG_Visual_AdminPanel_Module_Remove = "Удалить"
 PLIGG_Visual_AdminPanel_Module_Return = "Вернуться к управлению модулями"
 PLIGG_Visual_AdminPanel_Shop = "Pligg Pro Shop"
 PLIGG_Visual_AdminPanel_Donate = "Donate to Pligg"
-PLIGG_Visual_AdminPanel_RSSImport = "RSS Импортер"
-PLIGG_Visual_AdminPanel_RSSImport_Feeds = "Импорт RSS-потоков"
 PLIGG_Visual_AdminPanel_Delete_Cache = "Удалить кэш шаблона"
 PLIGG_Visual_AdminPanel_News = "Статьи"
 PLIGG_Visual_AdminPanel_Links = "Управление статьями"
@@ -1066,69 +1062,39 @@ PLIGG_Visual_Email_Tell_A_Friend = "Вот ссылка на историю: "
 // Start 1.2.1 Language File
 PLIGG_Visual_AdminPanel_Subcategory_Move = "Переместить подкатегорий на один уровень вверх"
 PLIGG_Visual_AdminPanel_Subcategory_Delete = "Удалить подкатегорий"
-// End 1.2.2 Language File
 
 // Start 2.0.0 Language File
-
 PLIGG_Visual_Story_Who_Upvoted = "Кто голосовал за"
-
 PLIGG_Visual_Story_Who_Downvoted = "Кто голосовал вниз"
-
 PLIGG_Visual_Story_Who_Downvoted_Story = "Кто голосовал эта история вниз"
-
 PLIGG_Maintenance_Mode = "Режим обслуживания"
-
 PLIGG_Maintenance_Admin_Warning="<strong>Предупреждение!</strong> Режим обслуживания в настоящее время активно. Удалить. Обслуживанию файл из каталога Pligg чтобы отключить его."
-
 PLIGG_Visual_New_Password = "Новый пароль"
-
 PLIGG_Visual_New_Verify_Password = "Убедитесь, новый пароль"
-
 PLIGG_Password_Invalid_URL="Ссылку, которую затем был недействительным или неполным."
-
 PLIGG_Visual_Resend_Email = "Ваш адрес электронной почты не проверяется еще нет. Пожалуйста, введите Ваш адрес электронной почты здесь, чтобы повторно подтверждающее сообщение:"
-
 PLIGG_Visual_Email_Sent = "Если адрес электронной почты существует в нашей базе данных Вам будет отправлено подтверждение по электронной почте в ближайшее время."
-
 PLIGG_Submit3Errors_Short_Tags = "Теги линия слишком коротка"
-
 PLIGG_Visual_Profile_UsernameUpdated = "Ваше имя пользователя был обновлен"
-
 Pligg_Profile_No_Membership = "Этот пользователь не является членом какой-либо из групп."
-
 PLIGG_Visual_User_Profile_People = "люди"
-
 PLIGG_Visual_User_Profile_Is_Following = "следит"
-
 PLIGG_User_Profile_Social = "Социальные счета"
-
 PLIGG_User_Profile_Facebook = "Facebook"
-
 PLIGG_User_Profile_Twitter = "Twitter"
-
 PLIGG_User_Profile_Linkedin = "Linkedin"
-
 PLIGG_User_Profile_Googleplus = "Google+"
-
 PLIGG_User_Profile_Pinterest = "Pinterest"
-
 PLIGG_User_Display_Settings = "Параметры дисплея"
-
 PLIGG_Continue_Reading = "Продолжить чтение"
-
 PLIGG_No_More_Articles = "No More Статьи найдены"
-
 PLIGG_Follow = "следить"
-
 PLIGG_Unfollow = "Отписаться"
-
 PLIGG_Visual_AdminPanel_Backup_None = "Нет резервных копий были получены еще! Начните с нажатия на одну из кнопок выше."
-
 PLIGG_Admin_Template_Widget_Title = "Управление шаблонами Widget"
-
 PLIGG_Admin_Template_Widget_Description = "Перетащите и отпустите пунктов ниже, чтобы управлять порядком отображения в шаблоне боковой панели."
-
 PLIGG_Visual_UpVoted = "Проголосовали Up"
+PLIGG_Visual_DownVoted = "отклонен"
+PLIGG_User_Profile_No_Content = "Эта страница не имеет записей для показа в это время"
 
-PLIGG_Visual_DownVoted = "Voted Down"
 // End 2.0.0 Language File
