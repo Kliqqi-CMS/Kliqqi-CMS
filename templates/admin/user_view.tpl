@@ -2,20 +2,51 @@
 {section name=nr loop=$userdata}
 	<legend>View User</legend>
 	{checkActionsTpl location="tpl_pligg_admin_user_view_start"}
+	<br />
 	<table class="table table-bordered table-striped" cellpadding="0" cellspacing="0">
 		<th colspan="2">Viewing {$userdata[nr].user_login}</th>
-		<tr><td width="160px"><strong>{#PLIGG_Visual_View_User_Login#}: </strong></td><td><img src="{$userdata[nr].Avatar}" align="absmiddle"/> {$userdata[nr].user_login}</td></tr>
-		<tr><td width="160px"><strong>{#PLIGG_Visual_View_User_Level#}: </strong></td><td>{$userdata[nr].user_level}</td></tr>
-		<tr><td width="160px"><strong>{#PLIGG_Visual_View_User_Email#}: </strong></td><td>{$userdata[nr].user_email}</td></tr>
-		<tr><td width="160px"><strong>{#PLIGG_Visual_View_User_LL_Date#}: </strong></td><td>{$userdata[nr].user_lastlogin}</td></tr>
-		<tr><td width="160px"><strong>{#PLIGG_Visual_View_User_LL_Address#}: </strong></td><td> {$userdata[nr].user_lastip}</td></tr>
-		{if $userdata[nr].user_login neq "admin"}<tr><td><strong>{#PLIGG_Visual_View_User_IP_Address#}:</strong></td><td> {$userdata[nr].user_ip}</td></tr>{/if}
-		<tr><td width="160px"><strong>{#PLIGG_Visual_View_User_Groups_Belongs#}: </strong></td><td> {$userdata[nr].belongs}</td></tr>
-		<tr><td width="160px"><strong>{#PLIGG_Visual_View_User_Groups_Created#}: </strong></td><td> {$userdata[nr].created}</td></tr>
+		{checkActionsTpl location="tpl_pligg_admin_user_view_tr_start"}
+		<tr>
+			<td width="160px"><strong>{#PLIGG_Visual_View_User_Login#}: </strong></td>
+			<td><img src="{$userdata[nr].Avatar}" align="absmiddle"/> {$userdata[nr].user_login}</td>
+		</tr>
+		<tr>
+			<td width="160px"><strong>{#PLIGG_Visual_View_User_Level#}: </strong></td>
+			<td>{$userdata[nr].user_level}</td>
+		</tr>
+		<tr>
+			<td width="160px"><strong>{#PLIGG_Visual_View_User_Email#}: </strong></td>
+			<td>{$userdata[nr].user_email}</td>
+		</tr>
+		<tr>
+			<td width="160px"><strong>{#PLIGG_Visual_View_User_LL_Date#}: </strong></td>
+			<td>{$userdata[nr].user_lastlogin}</td>	
+		</tr>
+		<tr>
+			<td width="160px"><strong>{#PLIGG_Visual_View_User_LL_Address#}: </strong></td>
+			<td> {$userdata[nr].user_lastip}</td>
+		</tr>
+		{if $userdata[nr].user_login neq "admin"}
+			<tr>
+				<td><strong>{#PLIGG_Visual_View_User_IP_Address#}:</strong></td>
+				<td> {$userdata[nr].user_ip}</td>
+			</tr>
+		{/if}
+		<tr>
+			<td width="160px"><strong>{#PLIGG_Visual_View_User_Groups_Belongs#}: </strong></td><td> {$userdata[nr].belongs}</td>
+		</tr>
+		<tr>
+			<td width="160px"><strong>{#PLIGG_Visual_View_User_Groups_Created#}: </strong></td><td> {$userdata[nr].created}</td>
+		</tr>
 		{checkActionsTpl location="tpl_admin_user_show_center_fields"}
-		<tr><td><a href="admin_links.php?user={$userdata[nr].user_login}">{#PLIGG_Visual_View_User_Sub_Links#}</a></td> <td> {$linkcount} Total</td></tr>
-		<br />
-		<tr><td><a href="admin_comments.php?user={$userdata[nr].user_login}">{#PLIGG_Visual_View_User_Sub_Comments#}</a></td> <td> {$commentcount} Total</td></tr>
+		<tr>
+			<td><a href="admin_links.php?user={$userdata[nr].user_login}">{#PLIGG_Visual_View_User_Sub_Links#}</a></td> <td> {$linkcount} Total</td>
+		</tr>
+		<tr>
+			<td><a href="admin_comments.php?user={$userdata[nr].user_login}">{#PLIGG_Visual_View_User_Sub_Comments#}</a></td>
+			<td>{$commentcount} Total</td>
+		</tr>
+		{checkActionsTpl location="tpl_pligg_admin_user_view_tr_end"}
 	</table>	
 	{if $amIadmin}		
 		<hr/>

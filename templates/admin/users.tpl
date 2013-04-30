@@ -1,5 +1,12 @@
 <!-- users.tpl -->
 {literal}
+
+<script type="text/javascript">
+	$(function () {
+		$("[rel='tooltip']").tooltip();
+	});
+</script>
+
 <script type="text/javascript" language="javascript">
 function submit_list_form(){
 	
@@ -95,13 +102,13 @@ function validate_all_user_action(){
 					</a>
 					<ul class="dropdown-menu">
 						<li>
-							<a  onclick="set_admin_action('1')" href="#">
+							<a onclick="set_admin_action('1')" href="#">
 								<i class="icon-user"></i>
 								{#PLIGG_Visual_User_Profile_Enabled#}
 							</a>
 						</li>
 						<li>
-							<a  onclick="set_admin_action('2')" href="#">
+							<a onclick="set_admin_action('2')" href="#">
 								<i class="icon-trash"></i>
 								{#PLIGG_Visual_User_Profile_Disabled#}
 							</a>
@@ -132,7 +139,7 @@ function validate_all_user_action(){
 			</table></td>
 			<td  align="right"  width="20%">
 				<select name="filter" style="margin-right:10px;"onchange="this.form.submit()">
-					<option value="">-- User Level --</option>
+					<option value=""> -- User Level -- </option>
 					<option value="admin" {if $templatelite.get.filter == "admin"} selected="selected" {/if}>Admin</option>
 					<option value="moderator" {if $templatelite.get.filter == "moderator"} selected="selected" {/if}>Moderator</option>
 					<option value="normal" {if $templatelite.get.filter == "normal"} selected="selected" {/if}>Normal</option>
@@ -163,22 +170,26 @@ function validate_all_user_action(){
 		<thead>
 			<tr>
 				<th style="text-align:center;vertical-align:middle;"><input type='checkbox' id="selectall_user_ed" name="all1"></th>
+				{checkActionsTpl location="tpl_pligg_admin_users_th_start"}
 				<th style="width:40px;text-align:center;">ID</th>
 				<th>{#PLIGG_Visual_Login_Username#}</th>
 				<th style="text-align:center;">{#PLIGG_Visual_View_User_Level#}</th>
 				<th>{#PLIGG_Visual_View_User_Email#}</th>
 				<th style="width:140px">{#PLIGG_Visual_User_Profile_Joined#}</th>
 				<th style="text-align:center;">Status</th>
+				{checkActionsTpl location="tpl_pligg_admin_users_th_end"}
 			</tr>
 		</thead>
 		<tbody>
 			{section name=nr loop=$userlist}
+				
 				<tr class="{if $userlist[nr].user_enabled eq '0'}tr_moderated {/if}">
-				<td style="text-align:center;vertical-align:middle;">
-					{if $userlist[nr].user_level neq 'admin'}      
-						<input type="checkbox" name="enabled[{$userlist[nr].user_id}]" class="enabled_disable"  value="1" usernameval="{$userlist[nr].user_login}"/>
-					{/if} 
+					<td style="text-align:center;vertical-align:middle;">
+						{if $userlist[nr].user_level neq 'admin'}      
+							<input type="checkbox" name="enabled[{$userlist[nr].user_id}]" class="enabled_disable"  value="1" usernameval="{$userlist[nr].user_login}"/>
+						{/if} 
 					</td>
+					{checkActionsTpl location="tpl_pligg_admin_users_td_start"}
 					<td style="width:40px;text-align:center;vertical-align:middle;">{$userlist[nr].user_id}</td>
 					<td style="vertical-align:middle;"><img src="{$userlist[nr].Avatar}" style="height:18px;width:18px;" /> <a href = "?mode=view&user={$userlist[nr].user_id}">{$userlist[nr].user_login}</a></td>	
 					<td style="text-align:center;vertical-align:middle;">{$userlist[nr].user_level}</td>
@@ -186,7 +197,7 @@ function validate_all_user_action(){
 						{if $userlist[nr].user_lastlogin neq "0000-00-00 00:00:00"}
 							<i class="icon icon-ok" title="{#PLIGG_Visual_AdminPanel_Confirmed_Email#}" alt="{#PLIGG_Visual_AdminPanel_Confirmed_Email#}"></i>
 						{else}
-							<a data-toggle="modal" href="{$my_base_url}{$my_pligg_base}/admin/admin_user_validate.php?id={$userlist[nr].user_id}" title="{#PLIGG_Visual_AdminPanel_Confirmed_Email#}"><i class="icon icon-warning-sign" title="{#PLIGG_Visual_AdminPanel_Unconfirmed_Email#}"></i></a>
+							<a data-toggle="modal" href="{$my_base_url}{$my_pligg_base}/admin/admin_user_validate.php?id={$userlist[nr].user_id}" title="{#PLIGG_Visual_AdminPanel_Unconfirmed_Email#}"><i class="icon icon-warning-sign" rel="tooltip" data-placement="left" data-toggle="tooltip" data-original-title="{#PLIGG_Visual_AdminPanel_Unconfirmed_Email#}"></i></a>
 						{/if}
 						<a href="mailto:{$userlist[nr].user_email}" target="_blank">{$userlist[nr].user_email|truncate:25:"...":true}</a>
 					</td>
@@ -199,7 +210,8 @@ function validate_all_user_action(){
 						{else}
 							<i class="icon-trash" title="Disabled"></i>
 						{/if}
-					</td> 
+					</td>
+					{checkActionsTpl location="tpl_pligg_admin_users_td_end"}
 				</tr>
 			{/section}
 		</tbody>

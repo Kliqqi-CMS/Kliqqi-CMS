@@ -4,9 +4,11 @@
 <table class="table table-condensed table-bordered table-striped">
 	<thead>
 		<tr>
+			{checkActionsTpl location="tpl_pligg_admin_pages_th_start"}
 			<th>{#PLIGG_Visual_AdminPanel_Page_Submit_Title#}</th>
 			<th style="text-align:center;">{#PLIGG_Visual_AdminPanel_Page_Edit#}</th>
 			<th style="text-align:center;">{#PLIGG_Visual_AdminPanel_Page_Delete#}</th>
+			{checkActionsTpl location="tpl_pligg_admin_pages_th_end"}
 		</tr>
 	</thead>
 	<tbody>

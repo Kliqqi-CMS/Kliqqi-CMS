@@ -88,7 +88,7 @@ function validate_all_user_action(){
 	</div>
     </td>
 		<form action="{$my_base_url}{$my_pligg_base}/admin/admin_comments.php" method="get">
-			<td align="right"  width="25%">
+			<td align="right" width="25%">
 				<div class="input-append">
 					<input type="hidden" name="mode" value="search">
 					{if isset($templatelite.get.keyword) && $templatelite.get.keyword neq ""}
@@ -134,16 +134,19 @@ function validate_all_user_action(){
 		<thead>
 			<tr>
 				<th style="text-align:center;vertical-align:middle;"><input type='checkbox' id="selectall_user_ed" name="all1" ></th>
+				{checkActionsTpl location="tpl_pligg_admin_comments_th_start"}
 				<th style="width:125px;">{#PLIGG_Visual_View_Links_Author#}</th>
 				<th>{#PLIGG_MiscWords_Comment#}</th>
 				<th>{#PLIGG_Visual_User_NewsSent#}</th>
 				<th nowrap style="text-align:center;">{#PLIGG_Visual_View_Links_Status#}</th>
+				{checkActionsTpl location="tpl_pligg_admin_comments_th_end"}
 			</tr>
 		</thead>
 		{if isset($template_comments)}
 			{section name=id loop=$template_comments}
 			<tr {if $template_comments[id].comment_status=='moderated'}class="tr_moderated"{/if}>
-			<td style="text-align:center;"><input type="checkbox" name="comment[{$template_comments[id].comment_id}]" class="enabled_disable"  value="1" usernameval="{$template_comments[id].comment_author}"/></td>
+				<td style="text-align:center;"><input type="checkbox" name="comment[{$template_comments[id].comment_id}]" class="enabled_disable"  value="1" usernameval="{$template_comments[id].comment_author}"/></td>
+				{checkActionsTpl location="tpl_pligg_admin_comments_td_start"}
 				<td><a href="{$my_base_url}{$my_pligg_base}/admin/admin_users.php?mode=view&user={$template_comments[id].comment_author}" title="{$template_comments[id].comment_author}'s Profile" id="comment-{$template_comments[id].comment_id}-author">{$template_comments[id].comment_author}</a></td>
 				<td style="text-align:justify;">
 					<div style="margin:0 5px 0 0;padding:0;float:left;">
@@ -154,7 +157,7 @@ function validate_all_user_action(){
 				</td>
 				<td width="240px">{$template_comments[id].comment_date}</td>
 				<td style="text-align:center;vertical-align:middle;">{$template_comments[id].comment_status}</td>
-				
+				{checkActionsTpl location="tpl_pligg_admin_comments_td_end"}
 			</tr>
 			{/section}
 		{/if}		
