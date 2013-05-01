@@ -117,57 +117,66 @@
 							{/if}
 							
 						{elseif $pagename eq "groups"}
-						
-							{*if $user_logged_in*}
-								{if $sortby eq "upvoted"}
-									<li id="active" href="{$index_url_upvoted}">
-									<a href="{$index_url_upvoted}" id="current"><span class="active">Most {#PLIGG_Visual_UpVoted#}</span></a>
+							
+							<li {if $sortby eq "members"}id="active"{/if}>
+								{if $sortby eq "members"}
+									<a id="current" href="{$group_url_members}">
+										<span class="active">{#PLIGG_Visual_Group_Sort_Members#}</span>
+									</a>
 								{else}
-									<li><a href="{$index_url_upvoted}">Most {#PLIGG_Visual_UpVoted#}</a>
+									<a href="{$group_url_members}">{#PLIGG_Visual_Group_Sort_Members#}</a>
 								{/if}
-								</li>
-								{if $sortby eq "downvoted"}
-									<li id="active" href="{$index_url_downvoted}">
-									<a href="{$index_url_downvoted}" id="current"><span class="active">Most {#PLIGG_Visual_DownVoted#}</span></a>
+							</li>							
+							<li {if $sortby eq "name"}id="active"{/if}>
+								{if $sortby eq "name"}
+									<a id="current" href="{$group_url_name}">
+										<span class="active">{#PLIGG_Visual_Group_Sort_Name#}</span>
+									</a>
 								{else}
-									<li><a href="{$index_url_downvoted}">Most {#PLIGG_Visual_DownVoted#}</a>
+									<a href="{$group_url_name}">{#PLIGG_Visual_Group_Sort_Name#}</a>
 								{/if}
-								</li>
-								{if $sortby eq "commented"}
-									<li id="active" href="{$index_url_commented}">
-									<a href="{$index_url_commented}" id="current"><span class="active">Most {#PLIGG_Visual_User_NewsCommented#}</span></a>
+							</li>
+							<li {if $sortby eq "newest"}id="active"{/if}>
+								{if $sortby eq "newest"}
+									<a id="current" href="{$group_url_newest}">
+										<span class="active">{#PLIGG_Visual_Group_Sort_Newest#}</span>
+									</a>
 								{else}
-									<li><a href="{$index_url_commented}">Most {#PLIGG_Visual_User_NewsCommented#}</a>
+									<a href="{$group_url_newest}">{#PLIGG_Visual_Group_Sort_Newest#}</a>
 								{/if}
-								</li>
-							{*/if*}
-						
-						
-						
-						
-						
-							{if $sortby eq "name"}
-								<li id="active"><a id="current" href="{$group_url_members}"><span class="active">{#PLIGG_Visual_Group_Sort_Members#}</span></a>{else}<li><a href="{$group_url_members}">{#PLIGG_Visual_Group_Sort_Members#}</a>{/if}</li>
-								
-								
-							{if $sortby eq "name"}<li id="active"><a id="current" href="{$group_url_name}"><span class="active">{#PLIGG_Visual_Group_Sort_Name#}</span></a>{else}<li><a href="{$group_url_name}">{#PLIGG_Visual_Group_Sort_Name#}</a>{/if}</li>
-							
-							
-							{if $sortby eq "newest"}<li id="active"><a id="current" href="{$group_url_newest}"><span class="active">{#PLIGG_Visual_Group_Sort_Newest#}</span></a>{else}<li><a href="{$group_url_newest}">{#PLIGG_Visual_Group_Sort_Newest#}</a>{/if}</li>
-							
-							
-							{if $sortby eq "oldest"}<li id="active"><a id="current" href="{$group_url_oldest}"><span class="active">{#PLIGG_Visual_Group_Sort_Oldest#}</span></a>{else}<li><a href="{$groupview_published}">{#PLIGG_Visual_Group_Published#}</a>{/if}</li>
-							
-							
+							</li>
+							<li {if $sortby eq "oldest"}id="active"{/if}>
+								{if $sortby eq "oldest"}
+									<a id="current" href="{$group_url_oldest}">
+										<span class="active">{#PLIGG_Visual_Group_Sort_Oldest#}</span>
+									</a>
+								{else}
+									<a href="{$group_url_oldest}">{#PLIGG_Visual_Group_Sort_Oldest#}</a>
+								{/if}
+							</li>
 							
 						{elseif $pagename eq "live" || $pagename eq "live_published" || $pagename eq "live_unpublished" || $pagename eq "live_comments"}
-							<li {if $pagename eq "live"}id="active"{/if}><a href="{$URL_live}"><span {if $pagename eq "live"}class="active"{/if}>{#PLIGG_Visual_Breadcrumb_All#}</span></a></li>
-							
-							<li {if $pagename eq "live_published"}id="active"{/if}><a href="{$URL_published}"><span {if $pagename eq "live_published"}class="active"{/if}>{#PLIGG_Visual_Breadcrumb_Published_Tab#}</span></a></li>
-							
-							<li {if $pagename eq "live_unpublished"}id="active"{/if}><a href="{$URL_unpublished}"><span {if $pagename eq "live_unpublished"}class="active"{/if}>{#PLIGG_Visual_Breadcrumb_Unpublished_Tab#}</span></a></li>
-							
-							<li {if $pagename eq "live_comments"}id="active"{/if}><a href="{$URL_comments}"><span {if $pagename eq "live_comments"}class="active"{/if}>{#PLIGG_Visual_Breadcrumb_Comments#}</span></a></li>
+						
+							<li {if $pagename eq "live"}id="active"{/if}>
+								<a href="{$URL_live}">
+									<span {if $pagename eq "live"}class="active"{/if}>{#PLIGG_Visual_Breadcrumb_All#}</span>
+								</a>
+							</li>
+							<li {if $pagename eq "live_published"}id="active"{/if}>
+								<a href="{$URL_published}">
+									<span {if $pagename eq "live_published"}class="active"{/if}>{#PLIGG_Visual_Breadcrumb_Published_Tab#}</span>
+								</a>
+							</li>
+							<li {if $pagename eq "live_unpublished"}id="active"{/if}>
+								<a href="{$URL_unpublished}">
+									<span {if $pagename eq "live_unpublished"}class="active"{/if}>{#PLIGG_Visual_Breadcrumb_Unpublished_Tab#}</span>
+								</a>
+							</li>
+							<li {if $pagename eq "live_comments"}id="active"{/if}>
+								<a href="{$URL_comments}">
+									<span {if $pagename eq "live_comments"}class="active"{/if}>{#PLIGG_Visual_Breadcrumb_Comments#}</span>
+								</a>
+							</li>
 							
 						{elseif $pagename eq "cloud"}
 						
@@ -180,7 +189,9 @@
 									{/if}
 								{/section}
 							{/if}
+							
 						{/if}
+						
 					</ul>
 				</li>
 			</ul>
