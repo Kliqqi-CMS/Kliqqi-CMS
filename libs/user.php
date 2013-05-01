@@ -318,12 +318,18 @@ print_r($main_smarty);
 
 	function getFollowersCount() {
 	    global $db;
-	    return $db->get_var("SELECT COUNT(*) FROM ".table_friends." WHERE friend_to=$this->id AND friend_from!=$this->id");
+	    return $db->get_var($sql="SELECT COUNT(*) 
+					FROM ".table_friends." 
+					LEFT JOIN ".table_users." ON friend_from=user_id 
+					WHERE friend_to=$this->id AND friend_from!=$this->id AND user_enabled=1");
 	}
 
 	function getFollowingCount() {
 	    global $db;
-	    return $db->get_var("SELECT COUNT(*) FROM ".table_friends." WHERE friend_from=$this->id AND friend_to!=$this->id");
+	    return $db->get_var("SELECT COUNT(*) 
+					FROM ".table_friends." 
+					LEFT JOIN ".table_users." ON friend_to=user_id 
+					WHERE friend_from=$this->id AND friend_to!=$this->id AND user_enabled=1");
 	}
 }
 
