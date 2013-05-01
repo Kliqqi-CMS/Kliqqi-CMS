@@ -25,7 +25,7 @@
 		<li class="active">{#PLIGG_Visual_Profile_ModifyProfile#}</li>
 	{/if}
 	{if $pagename eq "user"}
-		<li>{if $user_view neq 'profile'}<a href="{$user_url_personal_data}">{/if}{$username}{if $user_view neq 'profile'}</a> <span class="divider">/</span></li> {/if}
+		<li>{if $user_view neq 'profile'}<a href="{$user_url_personal_data2}">{/if}{$username}{if $user_view neq 'profile'}</a> <span class="divider">/</span></li> {/if}
 		{if $user_view neq 'profile'}<li class="active">{$page_header} <a href="{$user_rss, $view_href}" target="_blank"><img src="{$my_pligg_base}/templates/{$the_template}/img/rss.gif" style="margin:-4px 0 0 3px;border:0;"></a></li>{/if}
 	{/if}
 	{if $pagename eq "published" && $get.category eq '' || $pagename eq "index"}<li class="active">{#PLIGG_Visual_Published_News#}{/if}

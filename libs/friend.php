@@ -48,7 +48,7 @@ class Friend {
 		$friends = $db->get_results("SELECT " . table_users . ".user_login, " . table_users . ".user_avatar_source, " . table_users . ".user_email, " . table_users . ".user_id 
 						FROM " . table_friends . " 
 						INNER JOIN " . table_users . " ON " . table_friends . ".friend_to = " . table_users . ".user_id 
-						WHERE " . table_friends . ".friend_from=$user_id AND " . table_users . ".user_id != $user_id",
+						WHERE " . table_friends . ".friend_from=$user_id AND " . table_users . ".user_id != $user_id AND user_enabled=1",
 					     ARRAY_A);
 		return $friends;
 
@@ -61,7 +61,7 @@ class Friend {
 		$friends = $db->get_results("SELECT " . table_users . ".user_login, " . table_users . ".user_avatar_source, " . table_users . ".user_email, " . table_users . ".user_id 
 						FROM " . table_friends . " 
 						INNER JOIN " . table_users . " ON " . table_friends . ".friend_from = " . table_users . ".user_id 
-						WHERE " . table_friends . ".friend_to=$user_id AND " . table_users . ".user_id != $user_id",
+						WHERE " . table_friends . ".friend_to=$user_id AND " . table_users . ".user_id != $user_id  AND user_enabled=1",
 					     ARRAY_A);
 		foreach ($friends as &$friend) 
 		    if ($db->get_var("SELECT friend_id FROM " . table_friends . " WHERE friend_from=$user_id AND friend_to=$friend[user_id]"))

@@ -57,7 +57,7 @@ if(!$user->read()) {
 }
 
 // setup the links
-$main_smarty->assign('user_url_personal_data2', getmyurl('user', $login));
+$main_smarty->assign('user_url_personal_data2', getmyurl('user2', $login));
 $main_smarty->assign('user_url_news_sent2', getmyurl('user2', $login, 'history'));
 $main_smarty->assign('user_url_news_published2', getmyurl('user2', $login, 'published'));
 $main_smarty->assign('user_url_news_unpublished2', getmyurl('user2', $login, 'new'));
