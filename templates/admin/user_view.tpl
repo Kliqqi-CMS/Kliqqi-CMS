@@ -7,8 +7,8 @@
 		<th colspan="2">Viewing {$userdata[nr].user_login}</th>
 		{checkActionsTpl location="tpl_pligg_admin_user_view_tr_start"}
 		<tr>
-			<td width="160px"><strong>{#PLIGG_Visual_View_User_Login#}: </strong></td>
-			<td><img src="{$userdata[nr].Avatar}" align="absmiddle"/> {$userdata[nr].user_login}</td>
+			<td width="160px"><strong>{#PLIGG_Visual_Profile_CurrentAvatar#} </strong></td>
+			<td><img src="{$userdata[nr].Avatar}" align="absmiddle"/></td>
 		</tr>
 		<tr>
 			<td width="160px"><strong>{#PLIGG_Visual_View_User_Level#}: </strong></td>
