@@ -76,7 +76,12 @@ if(ShowProfileLastViewers == true){
 } else {
 	$main_smarty->assign('ShowProfileLastViewers', false);		
 }
-	
+
+// User IP for Admin Use
+$user_ip = $user->extra_field['user_ip'];
+$main_smarty->assign('user_ip', $user_ip);
+$user_lastip = $user->extra_field['user_lastip'];
+$main_smarty->assign('user_lastip', $user_lastip);
 
 // check to see if the profile is of a friend
 $friend = new Friend;
@@ -172,14 +177,14 @@ if ($view == 'upvoted') {
 }
 
 if ($view == 'downvoted') {
-		$page_header .= $main_smarty->get_config_vars('PLIGG_Visual_DownVoted');
-		$navwhere['text3'] = $main_smarty->get_config_vars('PLIGG_Visual_DownVoted');
-		$post_title .= " | " . $main_smarty->get_config_vars('PLIGG_Visual_DownVoted');
-		$main_smarty->assign('view_href', 'downvoted');
-		$main_smarty->assign('nav_nv', 4);
-	 } else {
-		$main_smarty->assign('nav_nv', 3);
-	}
+	$page_header .= $main_smarty->get_config_vars('PLIGG_Visual_DownVoted');
+	$navwhere['text3'] = $main_smarty->get_config_vars('PLIGG_Visual_DownVoted');
+	$post_title .= " | " . $main_smarty->get_config_vars('PLIGG_Visual_DownVoted');
+	$main_smarty->assign('view_href', 'downvoted');
+	$main_smarty->assign('nav_nv', 4);
+ } else {
+	$main_smarty->assign('nav_nv', 3);
+}
 
 
 if ($view == 'history') {
@@ -190,7 +195,7 @@ if ($view == 'history') {
 	$main_smarty->assign('nav_ns', 4);
  } else {
 	$main_smarty->assign('nav_ns', 3);
-	}
+}
 
 if ($view == 'setting') 
 {
@@ -208,7 +213,6 @@ if ($view == 'setting')
 	foreach($results as $key => $val)
 	{
 		$category[] = $val['category_name'];
-		
 	}
 	$sor = $_GET['err'];
 	if($sor == 1)
@@ -232,11 +236,8 @@ if ($view == 'setting')
 		$main_smarty->assign('current_template', sanitize($_COOKIE['template'],3));
 		$main_smarty->assign('Allow_User_Change_Templates', Allow_User_Change_Templates);
 	}
-
 	$main_smarty->assign('nav_set', 4);
-} 
-else 
-{
+} else {
 	$main_smarty->assign('nav_set', 3);
 }
 	
@@ -248,7 +249,7 @@ if ($view == 'published') {
 	$main_smarty->assign('nav_np', 4);
  } else {
 	$main_smarty->assign('nav_np', 3);
-	}
+}
 
 if ($view == 'new') {
 	$page_header .= $main_smarty->get_config_vars('PLIGG_Visual_User_NewsUnPublished');
@@ -258,7 +259,7 @@ if ($view == 'new') {
 	$main_smarty->assign('nav_nu', 4);
  } else {
 	$main_smarty->assign('nav_nu', 3);
-	}
+}
 
 if ($view == 'commented') {
 	$page_header .= $main_smarty->get_config_vars('PLIGG_Visual_User_NewsCommented');
@@ -268,7 +269,7 @@ if ($view == 'commented') {
 	$main_smarty->assign('nav_c', 4);
  } else {
 	$main_smarty->assign('nav_c', 3);
-	}
+}
 
 if ($view == 'saved') {
 	$page_header .= $main_smarty->get_config_vars('PLIGG_Visual_User_NewsSaved');
@@ -284,34 +285,32 @@ if ($view == 'following') {
 	$page_header .= $main_smarty->get_config_vars('PLIGG_Visual_User_Profile_View_Friends');
 	$navwhere['text3'] = $main_smarty->get_config_vars('PLIGG_Visual_User_Profile_View_Friends');
 	$post_title .= " | " . $main_smarty->get_config_vars('PLIGG_Visual_User_Profile_View_Friends');
-	}
+}
 
 if ($view == 'followers') {
 	$page_header .= $main_smarty->get_config_vars('PLIGG_Visual_User_Profile_Your_Friends');
 	$navwhere['text3'] = $main_smarty->get_config_vars('PLIGG_Visual_User_Profile_Your_Friends');
 	$post_title .= " | " . $main_smarty->get_config_vars('PLIGG_Visual_User_Profile_Viewing_Friends_2');
-	}
+}
 
 if ($view == 'removefriend') {
 	$page_header .= $main_smarty->get_config_vars('PLIGG_Visual_User_Profile_Removing_Friend');
 	$navwhere['text3'] = $main_smarty->get_config_vars('PLIGG_Visual_User_Profile_Removing_Friend');
 	$post_title .= " | " . $main_smarty->get_config_vars('PLIGG_Visual_User_Profile_Removing_Friend');
-	}
+}
 
 if ($view == 'addfriend') {
 	$page_header .= $main_smarty->get_config_vars('PLIGG_Visual_User_Profile_Adding_Friend');
 	$navwhere['text3'] = $main_smarty->get_config_vars('PLIGG_Visual_User_Profile_Adding_Friend');
 	$post_title .= " | " . $main_smarty->get_config_vars('PLIGG_Visual_User_Profile_Adding_Friend');
-	}
-if ($view == 'member_groups') 
-{
+}
+
+if ($view == 'member_groups') {
 	$main_smarty->assign('view_href', '');
 	$main_smarty->assign('nav_mg', 4);
-}	
-else 
-{
+} else {
 	$main_smarty->assign('nav_mg', 3);
-}	
+}
 
 $main_smarty->assign('page_header', $page_header);
 $main_smarty->assign('username', $username);
@@ -322,22 +321,22 @@ if ($view == 'search') {
 
 	if ($keyword) 
 	{
-	$searchsql = "SELECT * FROM " . table_users . " where (user_login LIKE '%".$keyword."%' OR public_email LIKE '%".$keyword."%') AND user_level!='Spammer' ";
-	$results = $db->get_results($searchsql);
-	$results = object_2_array($results);
-	foreach($results as $key => $val){
-		if ($val['user_login'] != 'anonymous' || $val['user_lastip'] > 0)
-		{
-			$results[$key]['Avatar'] = get_avatar('small', "", $val['user_login'], $val['user_email']);
-			$results[$key]['add_friend'] = getmyurl('user_add_remove', $val['user_login'], 'addfriend');
-			$results[$key]['remove_friend'] = getmyurl('user_add_remove', $val['user_login'], 'removefriend');
-			$results[$key]['status'] = $friend->get_friend_status($val['user_id']);
+		$searchsql = "SELECT * FROM " . table_users . " where (user_login LIKE '%".$keyword."%' OR public_email LIKE '%".$keyword."%') AND user_level!='Spammer' ";
+		$results = $db->get_results($searchsql);
+		$results = object_2_array($results);
+		foreach($results as $key => $val){
+			if ($val['user_login'] != 'anonymous' || $val['user_lastip'] > 0)
+			{
+				$results[$key]['Avatar'] = get_avatar('small', "", $val['user_login'], $val['user_email']);
+				$results[$key]['add_friend'] = getmyurl('user_add_remove', $val['user_login'], 'addfriend');
+				$results[$key]['remove_friend'] = getmyurl('user_add_remove', $val['user_login'], 'removefriend');
+				$results[$key]['status'] = $friend->get_friend_status($val['user_id']);
+			}
+			else
+			unset ($results[$key]);
 		}
-		else
-		unset ($results[$key]);
-	}
 
-	$main_smarty->assign('userlist', $results);
+		$main_smarty->assign('userlist', $results);
 	}
 	$main_smarty->assign('search', $keyword);
 
