@@ -1,5 +1,117 @@
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <?php
+/**
+ * Pseudo-Array of lines from all language files (main file + installed modules)
+ */
+class LangFiles implements Iterator {
+    /**
+     * @var integer Current line number in current file
+     */
+    protected $position = 0;
+    /**
+     * @var integer Current file number
+     */
+    protected $fileno = 0;
+    /**
+     * @var array (Filename => Module name) array
+     */
+    protected $files;
+
+    /**
+     * Initialize file list
+     */ 
+    public function __construct() {
+	global $db;
+
+	// Main language file
+	$this->files = array(mnmpath.'/languages/lang_'.pligg_language.'.conf' => '');
+
+   	// Fill files array from installed modules
+	$modules = $db->get_results('SELECT * from ' . table_modules . ' order by weight asc;');
+	foreach ($modules as $module) {
+	    if (file_exists(mnmmodules.$module->folder.'/lang_'.pligg_language.'.conf'))
+		$this->files[mnmmodules.$module->folder.'/lang_'.pligg_language.'.conf'] = $module->name;
+	    elseif (file_exists(mnmmodules.$module->folder.'/lang.conf'))
+		$this->files[mnmmodules.$module->folder.'/lang.conf'] = $module->name;
+	}
+    }
+
+    /**
+     * Return module name by language file path
+     *
+     * @param string $file Full path to language file
+     * @return string Module name
+     */
+    function getName($file) {
+	return $this->files[$file];
+    }
+
+    /**
+     * Replace given line in given file
+     *
+     * @param string $id Pligg language constant
+     * @param string $value New value to save
+     * @param string $file Full path to language file
+     * @return string Error or empty on success
+     */
+    function set($id, $value, $filename) {
+	if (!isset($this->files[$filename]))
+	    return "Wrong file $filename";
+
+	$ret = "$id not found in $filename";
+	$lines = file($filename);
+	if ($handle = fopen($filename, 'w')) {
+	    foreach ($lines as $line) {	
+		if (preg_match("/^$id\s*=/", $line, $m)) {
+			$line = $id . ' = "' . $value . '"' . "\n";
+			$ret = '';
+		}
+
+		if (!fwrite($handle, $line)) 
+			$ret = "Could not write to '$filename' file";
+	    }
+	    fclose($handle);
+	} else 
+		$ret = "Could not open '$filename' file for writing";
+
+	return $ret;
+    }
+
+    /**
+     * Iterator methods
+     *
+     * @see Iterator
+     */ 
+    function rewind() {
+        $this->position = 0;
+	$this->fileno   = 0;
+	$keys = array_keys($this->files);
+	$this->lines = file($keys[0]);
+    }
+
+    function current() {
+        return $this->lines[$this->position];
+    }
+
+    function key() {
+	$keys = array_keys($this->files);
+        return $keys[$this->fileno].'#'.$this->position;
+    }
+
+    function next() {
+        ++$this->position;
+    }
+
+    function valid() {
+	$keys = array_keys($this->files);
+	if (!isset($this->lines[$this->position])) {
+	    $this->lines = @file($keys[++$this->fileno]);
+	    $this->position = 0;
+	}
+
+        return isset($keys[$this->fileno]);
+    }
+}
+
 function admin_language_showpage(){
 	global $main_smarty, $the_template;
 		
@@ -17,207 +129,65 @@ function admin_language_showpage(){
 	
 	if($canIhaveAccess == 1)
 	{	
-		if($_REQUEST['var_id'] != ""){
-			
-					$lines = file('./languages/lang_'.pligg_language.'.conf');
-	 	
-					$filename = './languages/lang_'.pligg_language.'.conf';
-					if($handle = fopen($filename, 'w')) {
-						foreach ($lines as $line_num => $line)
-						{
-		
-							if(substr($line, 0, 2) != "//")
-							{
-								if (strlen(trim($line)) > 2)
-								{
-									$x = strpos($line, "=");
-									if (trim(substr($line, 0, $x)) == str_replace('emptytext_', '', $_REQUEST["var_id"]))
-									{
-										$y = trim(substr($line, $x + 1, 10000));
-										$y = str_replace('"', '', $y);
-										$line = trim(substr($line, 0, $x)) . ' = "' . $_REQUEST["var_value"] . '"' . "\n";
-										$returnVal = $_REQUEST["var_value"];
-									}
-								}
-							}
-		
-							if(fwrite($handle, $line)) {
-							} else {
-								echo "<strong>Could not write to '$filename' file</strong>";
-							}
-						}
-						fclose($handle);
-						//header('Location: admin_modifylanguage.php');
-					} else {
-						echo "<strong>Could not open '$filename' file for writing</strong>";
-					}
-	
-			echo $returnVal;
-			die();
-		}
-	
-		$canContinue = 1;
-		$canContinue = isWriteable ( $canContinue, './languages/lang_'.pligg_language.'.conf', 0777, './languages/lang_'.pligg_language.'.conf' );
-	
-		if (!$canContinue)
-		{
-			echo 'File is not writeable. Please CHMOD /languages/lang_'.pligg_language.'.conf to 777 and refresh this page.<br /><br /><br />';
-			die;
-		}
-	
-		$lines = file('./languages/lang_'.pligg_language.'.conf');
-		$section = "x";
-		$lastsection = "";
-	
-		if(isset($_GET["mode"]))
-		{
-			if($_GET["mode"] == "edit")
-			{
-				$outputHtml[] = "<form>";
-				$outputHtml[] = "<table class='listing'>";
-				$outputHtml[] = "Editing <strong>" . sanitize($_GET["edit"],1) . "</strong><br /><br />";
-				foreach ($lines as $line_num => $line) {
-					if(substr($line, 0, 2) != "//")
-					{
-						if (strlen(trim($line)) > 2)
-						{
-							$x = strpos($line, "=");
-							if (trim(substr($line, 0, $x)) == $_GET["edit"])
-							{
-								$y = trim(substr($line, $x + 1, 10000));
-								$y = str_replace('"', "", $y);
-								$outputHtml[] = "Current Value: " . $y . "<br />";
-								$outputHtml[] = '<input type="hidden" name="edit" value="'.$_GET["edit"].'">';
-								$outputHtml[] = '<input type="hidden" name="mode" value="save">';
-								$outputHtml[] = '<input name="newvalue" value="'.$y.'"><br />';
-								$outputHtml[] = '<input type="submit" name="save" value="Save" class="btn btn-primary">';
-							}
-						}
-					}
-				}
+		// Lines from all language files
+		$files = new LangFiles();
+
+		// Update a line
+		if($_GET["mode"] == "save") {
+#echo "ankan";
+			if ($error = $files->set($_REQUEST['edit'], js_urldecode($_REQUEST['newvalue']), $_REQUEST['file']))
+				echo "<strong>$error</strong>";
+		// Display the list of all lines
+		} else {
+		    $lines = array();
+		    $oldmodule = '';
+		    // All lines from all files here
+		    foreach ($files as $lnum => $line) {
+			$l = array();
+
+			// Extract filename 
+			list($file, $pos) = explode('#', $lnum);
+			$l['file'] = $file;
+
+			// Add SECTION line for a new module
+			if ($files->getName($file) != $oldmodule) {
+			    $l['section'] = $oldmodule = $files->getName($file);
+			    $lines[] = $l;
+			    unset($l['section']);
 			}
-			if($_GET["mode"] == "save")
-			{
-//print_r($_GET);		
-//print "New: ".js_urldecode($_GET["newvalue"]);
-echo "ankan";
-				$_GET["newvalue"] = js_urldecode($_GET["newvalue"]);
-				$outputHtml[] = "Saving <strong>" . $_GET["edit"] . "</strong><br />";
-	
-				$filename = './languages/lang_'.pligg_language.'.conf';
-				if($handle = fopen($filename, 'w')) {
-					foreach ($lines as $line_num => $line)
-					{
-	
-						if(substr($line, 0, 2) != "//")
-						{
-							if (strlen(trim($line)) > 2)
-							{
-								$x = strpos($line, "=");
-								if (trim(substr($line, 0, $x)) == $_GET["edit"])
-								{
-									$y = trim(substr($line, $x + 1, 10000));
-									$y = str_replace('"', '', $y);
-									$line = trim(substr($line, 0, $x)) . ' = "' . addslashes($_GET["newvalue"]) . '"' . "\n";
-								}
-							}
-						}
-	
-						if(fwrite($handle, $line)) {
-	
-						} else {
-							$outputHtml[] = "<strong>Could not write to '$filename' file</strong>";
-						}
-					}
-					fclose($handle);
-					exit;
-//					header('Location: admin_modifylanguage.php');
-				} else {
-					$outputHtml[] = "<strong>Could not open '$filename' file for writing</strong>";
-				}
-	
+
+			// Commented lines (auxiliary info)
+			if(substr($line, 0, 2) == "//")	{
+			    if (preg_match('/<TITLE>(.+)<\/TITLE>/', $line, $m))
+				$l['title'] = $m[1];
+			    elseif (preg_match('/<SECTION>(.+)<\/SECTION>/', $line, $m))
+				$l['section'] = $m[1];
+// DB 05/01/13 Seems not used
+//			    elseif (preg_match('/<LANG>(.+)<\/LANG>/', $line, $m))
+//				$l['lang'] = $m[1];
+//                	    elseif (preg_match('/<VERSION>(.+)<\/VERSION>/', $line, $m))
+//				$l['version'] = $m[1];
+//			    elseif (preg_match('/<ADDED>(.+)<\/ADDED>/', $line, $m))
+//				$l['added'] = $m[1]*1;
+/////
+			    else
+				continue;
+			} elseif (strlen(trim($line)) > 2) {
+			    if (preg_match('/^([^=]+)\s*=\s*"?(.+)"?$/', trim($line), $m)) {
+                		$l['id'] = trim($m[1]);
+				$l['value'] = htmlspecialchars(str_replace('"', '', trim($m[2])));
+				if (function_exists("iconv") && detect_encoding($l['value'])!='utf-8')
+		    		    $l['value'] = iconv('','UTF-8//IGNORE', $l['value']);
+			    } else
+				$l['error'] = "Can't parse $line";
 			}
-		}
-		else 
-		{
-			$outputHtml = array();
-			
-			$outputHtml[] = '<table class="table table-bordered table-striped" style="font-size:1.0em;">';
-			
-			foreach ($lines as $line_num => $line) {
-				if(substr($line, 0, 2) == "//")
-				{
-					$x = strpos($line, "<LANG>");
-					if ($x === false){}else
-					{
-						$y = strpos($line, "</LANG>");
-						$lang = substr($line, $x + 6, $y);
-					}
-	
-					$x = strpos($line, "<TITLE>");
-					if ($x === false){}else
-					{
-						$y = strpos($line, "</TITLE>");
-						$outputHtml[] = "Reading from the <strong>" . substr($line, $x + 7, $y) . "</strong> language file.<br /><br />";
-					}
-	
-					$x = strpos($line, "<SECTION>");
-					if ($x > 0)
-					{
-						$y = strpos($line, '</SECTION>');
-						$section = substr($line, $x + 9, $y - $x);
-						if ($section != $lastsection)
-						{
-							$lastsection = $section;
-							$outputHtml[] = '</tbody>';
-							$outputHtml[] = '<thead><tr class="section_head"><th colspan="2">' . $section . '</th></tr></thead>';
-							$outputHtml[] = '<tbody>';
-						}
-					}
-					$x = strpos($line, "<VERSION>");
-					if ($x === false){}else
-					{
-						$y = strpos($line, "</VERSION>");
-						$version = substr($line, $x + 9, $y);
-					}
-					$x = strpos($line, "<ADDED>");
-					if ($x === false){}else
-					{
-						$y = strpos($line, "</ADDED>");
-						$added = substr($line, $x + 7, $y) * 1;
-					}
-	
-				}
-				else
-				{
-					if (strlen(trim($line)) > 2)
-					{
-						$x = strpos($line, "=");
-						$outputHtml[] = '';
-						// ID in the next line is used for the search filter
-						$outputHtml[] = '<tr id = "row_' . str_replace('"', '', trim(substr($line, $x + 1, 10000))) . '">';
-						$grey = "grey1";
-						$outputHtml[] = "<td style='width:240px;'><div style='width:240px;word-wrap:break-word;'>" . trim(substr($line, 0, $x));
-						$outputHtml[] = "</div></td><td>";
-						$ID = trim(substr($line, 0, $x));
-						$VALUE = htmlspecialchars(trim(substr(stripslashes($line), $x + 1, 10000)," \t\n\r\0\"\'"));
-//						$VALUE = htmlspecialchars(str_replace('"', '', trim(substr($line, $x + 1, 10000))));
-						if(function_exists("iconv") && detect_encoding($VALUE)!='utf-8')
-				    		    $VALUE = iconv('','UTF-8//IGNORE',$VALUE);
-					    $outputHtml[] = "<form style='margin:0;' onsubmit=\"return false\" name=\"myform\">";
-						$outputHtml[] = "<input type=\"text\" name=\"var_value\" class=\"span edit_input\" style=\"margin:0;\" id=\"editme$ID\" onclick=\"show_edit('$ID')\" value=\"$VALUE\">";
-						$outputHtml[] = "<span id=\"showme$ID\" style=\"display:none;\">";
-						//$outputHtml[] = "<input type=\"text\" name=\"var_value\" class=\"span edit_input\" style=\"margin:0;\" value=\"$VALUE\">";
-				 		$outputHtml[] = "<input type=\"submit\" style=\"margin-top:5px;\" class=\"btn btn-primary\" value=\"Save\" onclick=\"save_changes('$ID',this.form)\">";
-						$outputHtml[] = "<input type=\"reset\" style=\"margin-top:5px;\" class=\"btn\"value=\"Cancel\" onclick=\"hide_edit('$ID')\">";
-						$outputHtml[] = "</span></form>";
-						$outputHtml[] = "</td></tr>";
-					}
-				}
-			}
-		}
-		$outputHtml[] = "</tbody></table>";
-		$main_smarty->assign('outputHtml', $outputHtml);
+			// Skip empty lines
+			else
+			    continue;
+
+			$lines[] = $l;
+                    }
+		    $main_smarty->assign('lines', $lines);
 
 		// breadcrumbs
 			$navwhere['text1'] = $main_smarty->get_config_vars('PLIGG_Visual_Header_AdminPanel');
@@ -227,43 +197,21 @@ echo "ankan";
 			$main_smarty->assign('navbar_where', $navwhere);
 			$main_smarty->assign('posttitle', " | " . $main_smarty->get_config_vars('PLIGG_Visual_Header_AdminPanel'));
 		// breadcrumbs
-		//Method for identifying modules rather than pagename
-		define('modulename', 'admin_language'); 
-		$main_smarty->assign('modulename', modulename);
-		
-		define('pagename', 'admin_modifylanguage'); 
-		$main_smarty->assign('pagename', pagename);
-		
-	    $main_smarty->assign('editinplace_init', $editinplace_init);
-		
-		$main_smarty->assign('tpl_center', admin_language_tpl_path . 'admin_language_main');
-		$main_smarty->display($template_dir . '/admin/admin.tpl');
 
+			//Method for identifying modules rather than pagename
+			define('modulename', 'admin_language'); 
+			$main_smarty->assign('modulename', modulename);
+			
+			define('pagename', 'admin_modifylanguage'); 
+			$main_smarty->assign('pagename', pagename);
+			
+		    	$main_smarty->assign('editinplace_init', $editinplace_init);
+
+			$main_smarty->assign('tpl_center', admin_language_tpl_path . 'admin_language_main');
+			$main_smarty->display($template_dir . '/admin/admin.tpl');
+		}
 	}
 	else
-	{
 		header("Location: " . getmyurl('login', $_SERVER['REQUEST_URI']));
-	}
-		
-
 }	
-
-function isWriteable ( $canContinue, $file, $mode, $desc )
-{
-	@chmod( $file, $mode );
-	$good = is_writable( $file ) ? 1 : 0;
-	Message ( $desc.' is writable: ', $good );
-	return ( $canContinue && $good );
-}
-function Message( $message, $good )
-{
-	global $outputHtml;
-	if ( $good )
-		$yesno = '<strong><font color="green">Yes</font></strong>';
-	else
-	{
-		$yesno = '<strong><font color="red">No</font></strong>';
-		$outputHtml[] = $message .'</td><td>'. $yesno .'<br />';
-	}
-}
 ?>

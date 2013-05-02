@@ -24,9 +24,40 @@
 }
 </style>{/literal}
 
-{foreach from=$outputHtml item=html}
-	{$html}
+			
+<table class="table table-bordered table-striped" style="font-size:1.0em;">
+{foreach from=$lines item=line}
+	{if $line.title}
+		Reading from the <strong>{$line.title}</strong> language file.<br /><br />
+	{elseif $line.error}
+		<tr><td colspan=2><font color=red>{$line.error}</font></td></tr>
+	{elseif $line.section && $line.section!=$lastsection}
+		{assign var=lastsection value=$line.section}
+		</tbody>
+		<thead>	
+			<tr class="section_head">
+				<th colspan="2">{$lastsection}</th>
+			</tr>
+		</thead>
+		<tbody>
+	{else}
+		<tr id = "row_{$line.value}">
+		    <td style='width:240px;'>
+			<div style='width:240px;word-wrap:break-word;'>{$line.id}</div>
+		    </td>
+		    <td>
+                	<form style='margin:0;' onsubmit="return false" name="myform">
+			    <input type="text" name="var_value" class="span edit_input" style="margin:0;" id="editme{$line.id}" onclick="show_edit('{$line.id}')" value="{$line.value}">
+			    <span id="showme{$line.id}" style="display:none;">
+			        <input type="submit" style="margin-top:5px;" class="btn btn-primary" value="Save" onclick="save_changes('{$line.id}','{$line.file|replace:'\\':'\\\\'}',this.form)">
+			        <input type="reset" style="margin-top:5px;" class="btn"value="Cancel" onclick="hide_edit('{$line.id}')">
+			    </span>
+			</form>
+		    </td>
+		</tr>
+	{/if}
 {/foreach}
+</tbody></table>
 
 {literal}
 	<script type="text/javascript">

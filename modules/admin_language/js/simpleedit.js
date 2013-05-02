@@ -20,7 +20,7 @@ function hide_edit(id)
     showme.style.display='none';
     is_number_valid[id] = true;
 }
-function save_changes(id,form)
+function save_changes(id,file,form)
 {
     if (!is_number_valid[id]) return false;
 
@@ -32,7 +32,7 @@ function save_changes(id,form)
     editme.innerHTML=htmlentities(value);
     if(XMLHttpRequestObject)
     {
-    	XMLHttpRequestObject.open("GET", "?module=admin_language&mode=save&edit="+id+"&newvalue="+escape(value), true);
+    	XMLHttpRequestObject.open("GET", "?module=admin_language&mode=save&edit="+id+"&file="+escape(file)+"&newvalue="+escape(value), true);
     	XMLHttpRequestObject.send(null);
     }
     hide_edit(id);
