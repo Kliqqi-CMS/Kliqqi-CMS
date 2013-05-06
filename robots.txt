@@ -34,7 +34,6 @@ Disallow: /new/week/
 Disallow: /new/month/
 Disallow: /new/year/
 Disallow: /new/alltime/
-Disallow: /user/
 Disallow: /recent/
 Disallow: /yesterday/
 Disallow: /today/
