@@ -482,15 +482,12 @@ class Link {
 		$smarty->assign('story_comment_count', $this->comments());
 		$smarty->assign('story_status', $this->status);
 		$smarty->assign('story_karma', $this->karma);
+		
 		if($type == "summary"){
 			if($this->link_summary == ""){
 				$smarty->assign('story_content', $this->truncate_content());
 			} else {
-				if(Auto_scroll==true)
-				$smarty->assign('story_content', $this->truncate_content());
-				else
 				$smarty->assign('story_content', $this->link_summary);
-				
 			}
 		}
 		if($type == "full"){
@@ -503,7 +500,6 @@ class Link {
 			$smarty->assign('submitter_rank', $ranklist[$this->userkarma]);
 			$smarty->assign('user_extra_fields', $this->extra_field);
 		}
-
 		
 		$smarty->assign('link_submit_time', $this->date);
 		$smarty->assign('link_submit_timeago', txt_time_diff($this->date));

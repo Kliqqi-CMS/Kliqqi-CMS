@@ -69,23 +69,24 @@
 	<strong>{#PLIGG_Visual_Submit2_Description#}: </strong>
 	<span class="field-description">{#PLIGG_Visual_Submit2_DescInstruct#}</span>
 	<br />
-	<textarea name="bodytext" rows="10" id="bodytext" class="span9" WRAP="SOFT" onKeyPress="counter(this)" onKeyDown="counter(this)" {if $SubmitSummary_Allow_Edit eq 1}onkeyup="counter(this); if(!this.form.summarycheckbox || !this.form.summarytext) return; if(this.form.summarycheckbox.checked == false) {ldelim}this.form.summarytext.value = this.form.bodytext.value.substring(0, {$StorySummary_ContentTruncate});{rdelim}textCounter(this.form.summarytext,this.form.remLen, {$StorySummary_ContentTruncate});"{else}onkeyup="counter(this);"{/if}>{$submit_content}</textarea>
+	<textarea name="bodytext" rows="10" id="bodytext" class="span9" WRAP="SOFT">{$submit_content}</textarea>
 	{if $Story_Content_Tags_To_Allow neq "" && $enable_tags}
 		<span class="help-inline">
 			{#PLIGG_Visual_Submit2_HTMLTagsAllowed#}: {$Story_Content_Tags_To_Allow}
 		</span>
 	{/if}
 	<br />
-	<input class="span1" value='{$storylen}' name=text_num disabled> {#PLIGG_Visual_Total_Chars#} 
-	<br />
 	{if $SubmitSummary_Allow_Edit eq 1}
+		<br />
 		<strong>{#PLIGG_Visual_Submit2_Summary#}: </strong>
-		<span class="field-description">{#PLIGG_Visual_Submit2_SummaryInstruct#}{#PLIGG_Visual_Submit2_SummaryLimit#}{$StorySummary_ContentTruncate}{#PLIGG_Visual_Submit2_SummaryLimitCharacters#}</span>
+		<span class="field-description">
+			{#PLIGG_Visual_Submit2_SummaryInstruct#}
+			{#PLIGG_Visual_Submit2_SummaryLimit#}
+			{$StorySummary_ContentTruncate}
+			{#PLIGG_Visual_Submit2_SummaryLimitCharacters#}
+		</span>
 		<br />
-		<input type="checkbox" name="summarycheckbox" id="summarycheckbox" class="span6" onclick="SetState(this, this.form.summarytext)" checked> {#PLIGG_Visual_Submit2_SummaryCheckBox#}
-		<br />
-		<textarea name="summarytext" rows="5" id="summarytext" class="span9" WRAP="SOFT" onKeyDown="textCounter(this.form.summarytext,this.form.remLen, {$StorySummary_ContentTruncate});">{$submit_summary}</textarea>
-		<input readonly type=text name=remLen size="3" class="span1" value="{$StorySummary_ContentTruncate}"> {#PLIGG_Visual_Submit2_SummaryCharactersLeft#}
+		<textarea name="summarytext" rows="5" id="summarytext" class="span9" WRAP="SOFT">{$submit_summary}</textarea>
 		<br />
 	{/if}
 	<br />

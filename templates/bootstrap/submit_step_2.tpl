@@ -63,8 +63,8 @@
 			<div class="control-group">
 				<label for="input01" class="control-label">{#PLIGG_Visual_Submit2_Description#}</label>
 				<div class="controls">
-					<textarea name="bodytext" tabindex="15" rows="8" id="bodytext" class="bodytext span4" maxlength="{$maxStoryLength}" WRAP="SOFT" onkeypress="counter(this)" onkeydown="counter(this)" onkeyup="counter(this); if(!this.form.summarycheckbox || !this.form.summarytext) return; if(this.form.summarycheckbox.checked == false) {ldelim}this.form.summarytext.value = this.form.bodytext.value.substring(0, {$StorySummary_ContentTruncate});{rdelim}textCounter(this.form.summarytext,this.form.remLen, {$StorySummary_ContentTruncate});">{if $submit_url_description}{$submit_url_description}{/if}{$submit_content}</textarea><br />
-					{* <input size="2" value='{$storylen}' name="text_num disabled" class="span1" /> {#PLIGG_Visual_Total_Chars#} *}
+					<textarea name="bodytext" tabindex="15" rows="8" id="bodytext" class="bodytext span4" maxlength="{$maxStoryLength}" WRAP="SOFT">{if $submit_url_description}{$submit_url_description}{/if}{$submit_content}</textarea>
+					<br />
 					<p class="help-inline">{#PLIGG_Visual_Submit2_DescInstruct#}</p>
 				</div>
 			</div>
@@ -72,15 +72,19 @@
 				<div class="control-group">
 					<label for="input01" class="control-label">{#PLIGG_Visual_Submit2_Summary#}</label>
 					<div class="controls">
-						<input type="checkbox" tabindex="16" name="summarycheckbox" id="summarycheckbox" onclick="SetState(this, this.form.summarytext)"> {#PLIGG_Visual_Submit2_SummaryCheckBox#}
 						{* if $Story_Content_Tags_To_Allow eq ""}
-							<p><strong>{#PLIGG_Visual_Submit2_No_HTMLTagsAllowed#} </strong>{#PLIGG_Visual_Submit2_HTMLTagsAllowed#}</p>
+							<p class="help-inline"><strong>{#PLIGG_Visual_Submit2_No_HTMLTagsAllowed#} </strong>{#PLIGG_Visual_Submit2_HTMLTagsAllowed#}</p>
 						{else}
-							<p><strong>{#PLIGG_Visual_Submit2_HTMLTagsAllowed#}:</strong> {$Story_Content_Tags_To_Allow}</p>
+							<p class="help-inline"><strong>{#PLIGG_Visual_Submit2_HTMLTagsAllowed#}:</strong> {$Story_Content_Tags_To_Allow}</p>
 						{/if *}
-						<textarea disabled="true" name="summarytext" rows="5" maxlength="{$maxSummaryLength}" id="summarytext" class="span1" WRAP="SOFT" onkeydown="textCounter(this.form.summarytext,this.form.remLen, {$StorySummary_ContentTruncate});">{$submit_summary}</textarea><br />
-						<input readonly type="text" name="remLen" size="3" class="span1" value="400">{#PLIGG_Visual_Submit2_SummaryCharactersLeft#}
-						<p class="help-inline">{#PLIGG_Visual_Submit2_SummaryInstruct#}{#PLIGG_Visual_Submit2_SummaryLimit#}{$StorySummary_ContentTruncate}{#PLIGG_Visual_Submit2_SummaryLimitCharacters#}</p>
+						<textarea name="summarytext" rows="5" maxlength="{$maxSummaryLength}" id="summarytext" class="span4" WRAP="SOFT">{$submit_summary}</textarea>
+						<br />
+						<p class="help-inline">
+							{#PLIGG_Visual_Submit2_SummaryInstruct#}
+							{#PLIGG_Visual_Submit2_SummaryLimit#}
+							{$StorySummary_ContentTruncate}
+							{#PLIGG_Visual_Submit2_SummaryLimitCharacters#}
+						</p>
 					</div>
 				</div>
 			{/if}
