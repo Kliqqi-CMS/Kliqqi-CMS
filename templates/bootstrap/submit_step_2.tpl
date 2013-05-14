@@ -189,11 +189,9 @@
 					{checkActionsTpl location="tpl_link_summary_pre_story_content"}
 					{if $pagename eq "story"}{checkActionsTpl location="tpl_pligg_story_body_start_full"}{else}{checkActionsTpl location="tpl_pligg_story_body_start"}{/if}
 					{if $viewtype neq "short"}
-						<span class="news-body-text">
-							<span id="ls_contents-{$link_shakebox_index}">
-								<span class="bodytext">&nbsp;</span>
-								<div class="clearboth"></div> 
-							</span>
+						<span class="news-body-text" id="ls_contents-{$link_shakebox_index}">
+							<span class="bodytext">&nbsp;</span>
+							<div class="clearboth"></div> 
 						</span>
 						{checkActionsTpl location="tpl_pligg_story_body_end"}
 					{/if}
