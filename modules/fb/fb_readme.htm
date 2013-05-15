@@ -9,13 +9,13 @@ p {margin:2px 0 5px 0;padding:0;}
 <h2>Facebook Module</h2>
 <strong>Created by:</strong> DB & Yankidank<br />
 <strong>Created:</strong> December 1, 2009<br />
-<strong>Last Updated:</strong> February 12, 2013<br />
-<strong>Requires:</strong> Pligg 2.0.0 beta or above and a Facebook account.
+<strong>Last Updated:</strong> May 15, 2013<br />
+<strong>Requires:</strong> Pligg 2.0.0 beta or above and a Facebook account with API access.
 
 <h3>Description</h3>
 <p>The Facebook Module lets users login using their Facebook credentials and post stories to their Facebook Wall. Users now have a simple way to promote their stories on your website.</p>
 <p>Existing users can use the Facebook module to link their account to Facebook. New members need to fill in some new account registration details and are then able to login to Pligg using their Facebook credentials. Once they are logged in using Facebook Connect they can post stories to their Facebook wall by following directions during the story submission process.</p>
-<p>See the <a href="http://forums.pligg.com/modules-sale/16197-facebook-connect-module.html" target="_blank">Facebook module homepage</a> for more information</p>
+<p>See the <a href="http://pligg.com/shop/module/facebook-connect-module/" target="_blank">Facebook module homepage</a> for more information</p>
 
 <h3>Installation</h3>
 <p>Please follow the directions below carefully to prevent any problems when setting up this module.</p>
@@ -47,38 +47,41 @@ p {margin:2px 0 5px 0;padding:0;}
 </ol>
 
 <h4>Other Notes</h4>
-<p>If you want to change the Facebook registration page, edit the /modules/fb/templates/fb_step2.tpl file.</p>
+<p>If you want to change the Facebook registration page, edit the /modules/fb/templates/fb_step2.tpl file. We recommend copying customized module template files to your local template file directory to prevent writing over it when module updates become available. To do this, copy the file to /templates/YOUR-TEMPLATE/modules/fb/fb_step2.tpl. This will override the default module template file.</p>
 
 <h3>Revision History</h3>
-<p>
-v4.3 February 12, 2013 - Updated for Facebook API changes.<br />
-v4.2 July 5, 2012 - Added feature to submit story to Facebook wall through a story tools link. Changed javascript to work with Pligg 2.0.<br />
-v4.0 - Update required to match new Facebook API.<br />
-v3.8 May 18, 2011 - Fix related to when users disconnect their accounts. Allows them to generate a password via email.<br />
-v3.7 October 27, 2011 - Openend PHP file with long &lt;?php tag in fb.php.<br />
-v3.6 October 8, 2011 - Added missing disconnect language line so that the button displays correctly on the modify profile page.<br />
-v3.5 September 19, 2011 - Allow users to disconnect from Facebook account<br />
-v3.3 July 8, 2011 - Logging out of site no longer logs you out of Facebook.<br />
-v3.2 July 5, 2011 - Removed CAPTCHA and email validation options from admin panel, since we no longer make use of those options. Module now imports user email addresses from Facebook.<br />
-v3.0 June 21, 2011 - Complete rewrite and update to new Facebook API version. Changed the required information during user registration to make things a lot easier to create a new account.<br />
-v2.3 August 15, 2010 Yankidank - Changed language item for step 3 submission checkbox. Fixed module, because it stopped working a week ago for no apparent reason.<br />
-v2.0 April 27, 2010 DB -  Removed the "Post to my Facebook Wall" checkbox for users who are not logged in to a Facebook-associated account.<br />
-v1.9 April 26, 2010 DB and Yankidank -  Fixed a bug related to the language file location. Also added advanced directions to the readme file.<br />
-v1.8 April 15, 2010 DB -  Fixed a bug that was stopping the module from being able to publish to a Facebook wall on PHP4 servers.<br />
-v1.7 April 6, 2010 DB - Fixed a problem with module working in conjunction with the vBulletin login module.<br />
-v1.6 April 1, 2010 DB - Fixed a problem with other modules displaying a language file error message on the Facebook login page.<br />
-v1.5 2009/17/02 DB - Fixes and removed Facebook message from submit step 1 if you are not logged into a Facebook connected account.<br />
-v1.4<br />
+<ul>
+<li>v4.5 May 15, 2013 - Improved the design of the Facebook login button.</li>
+<li>v4.3 February 12, 2013 - Updated for Facebook API changes.</li>
+<li>v4.2 July 5, 2012 - Added feature to submit story to Facebook wall through a story tools link. Changed javascript to work with Pligg 2.0.</li>
+<li>v4.0 - Update required to match new Facebook API.</li>
+<li>v3.8 May 18, 2011 - Fix related to when users disconnect their accounts. Allows them to generate a password via email.</li>
+<li>v3.7 October 27, 2011 - Openend PHP file with long &lt;?php tag in fb.php.</li>
+<li>v3.6 October 8, 2011 - Added missing disconnect language line so that the button displays correctly on the modify profile page.</li>
+<li>v3.5 September 19, 2011 - Allow users to disconnect from Facebook account</li>
+<li>v3.3 July 8, 2011 - Logging out of site no longer logs you out of Facebook.</li>
+<li>v3.2 July 5, 2011 - Removed CAPTCHA and email validation options from admin panel, since we no longer make use of those options. Module now imports user email addresses from Facebook.</li>
+<li>v3.0 June 21, 2011 - Complete rewrite and update to new Facebook API version. Changed the required information during user registration to make things a lot easier to create a new account.</li>
+<li>v2.3 August 15, 2010 Yankidank - Changed language item for step 3 submission checkbox. Fixed module, because it stopped working a week ago for no apparent reason.</li>
+<li>v2.0 April 27, 2010 DB -  Removed the "Post to my Facebook Wall" checkbox for users who are not logged in to a Facebook-associated account.</li>
+<li>v1.9 April 26, 2010 DB and Yankidank -  Fixed a bug related to the language file location. Also added advanced directions to the readme file.</li>
+<li>v1.8 April 15, 2010 DB -  Fixed a bug that was stopping the module from being able to publish to a Facebook wall on PHP4 servers.</li>
+<li>v1.7 April 6, 2010 DB - Fixed a problem with module working in conjunction with the vBulletin login module.</li>
+<li>v1.6 April 1, 2010 DB - Fixed a problem with other modules displaying a language file error message on the Facebook login page.</li>
+<li>v1.5 2009/17/02 DB - Fixes and removed Facebook message from submit step 1 if you are not logged into a Facebook connected account.</li>
+<li>v1.4<br />
 <ul><li>Fixed CAPTCHA disable option</li>
 	<li>Fixed Email Validation disable option</li>
 	<li>Fix for Firefox not showing the login button on some browsers.</li>
 </ul>
-v1.3 - This version should only be used with Pligg 1.0.4 and above.<br />
-v1.2 - Fix for longer user Facebook IDs. If you are upgrading, please change the varchar value for the user_fb field (under pligg_users) to 255 characters.<br />
-v1.1 <br />
+</li>
+<li>v1.3 - This version should only be used with Pligg 1.0.4 and above.</li>
+<li>v1.2 - Fix for longer user Facebook IDs. If you are upgrading, please change the varchar value for the user_fb field (under pligg_users) to 255 characters.</li>
+<li>v1.1 <br />
 <ul><li>Added checkbox to the admin panel that lets you enable/disable CAPTCHA requirement for Facebook users</li>
 	<li>Added checkbox to the admin panel that lets you enable/disable email verification requirement for FB users</li>
 	<li>Changed save message style in admin panel</li>
 </ul>
-v0.10 2009/12/01 DB - First version<br />
-</p>
+</li>
+<li>v0.10 2009/12/01 DB - First version</li>
+</ul>
