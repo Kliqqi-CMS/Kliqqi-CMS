@@ -115,16 +115,21 @@ function actioncmp($a, $b)
 
 function check_actions_tpl($location,&$smarty)
 {
-    	global $module_actions_tpl, $main_smarty;
+    	global $module_actions_tpl, $main_smarty, $thetemp;
     
     	$smarty->assign("location",$location);
 	if($module_actions_tpl[$location]){
 		uasort($module_actions_tpl[$location], 'actioncmp');
 		//$weight=sort_cloumn($module_actions_tpl[$location]);
 		//array_multisort($weight, SORT_ASC,  $module_actions_tpl[$location]);
-		
-		
+
+		// Override module templates		
+		$path = 'templates/' . $thetemp . '/';
 		foreach ( $module_actions_tpl[$location] as $kk => $vv ) {
+		    $file = $path . str_replace(array('../','templates/'),'',$kk);
+		    if (file_exists($file))
+        	        $smarty->display($file);
+		    else
         	        $smarty->display($kk);
 		}
 	}
