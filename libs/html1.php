@@ -1123,7 +1123,7 @@ function translate($str)
 
 	$strings = parse_ini_file($path .  '/languages/lang_english.conf');
 	foreach ($strings as $key => $value)
-	    $english_language[strtoupper(str_replace('&quote;','"',$value))] = $main_smarty->get_config_vars($key);
+	    $english_language[strtoupper(str_replace('&quot;','"',$value))] = $main_smarty->get_config_vars($key);
     }
     if ($translation = $english_language[strtoupper(str_replace("\r\n","\\n",$str))])
     	return $translation;

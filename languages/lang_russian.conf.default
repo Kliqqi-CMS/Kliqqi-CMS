@@ -794,7 +794,7 @@ PLIGG_Votes_to_publish_Desc = "Число голосов, которое дол�
 PLIGG_Days_to_publish_Title = "Дней для публикации"
 PLIGG_Days_to_publish_Desc = "После этого количества дней статьи не будут опубликованы"
 PLIGG_Trackback_URL_Title = "Ссылка для трекбеков"
-PLIGG_Trackback_URL_Desc = "URL, используемый для <a href=&quote;http://en.wikipedia.org/wiki/Trackback&quote;>трекбеков</a>."
+PLIGG_Trackback_URL_Desc = "URL, используемый для <a href=&quot;http://en.wikipedia.org/wiki/Trackback&quot;>трекбеков</a>."
 PLIGG_Base_URL_Title = "Корневой URL"
 PLIGG_Base_URL_Desc = "<br>\n<strong>Примеры</strong>\n<br>\nhttp://demo.pligg.com<br>\nhttp://localhost<br>\nhttp://www.pligg.com"
 PLIGG_Pligg_Base_Folder_Title = "Корневой каталог с Pligg"
