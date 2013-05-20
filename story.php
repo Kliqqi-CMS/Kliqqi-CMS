@@ -204,7 +204,7 @@ function get_comments ($fetch = false, $parent = 0, $comment_id=0, $show_parent=
 	if(!isset($CommentOrder)){$CommentOrder = 1;}
 	If ($CommentOrder == 1){$CommentOrderBy = "comment_votes DESC, comment_date DESC";}
 	If ($CommentOrder == 2){$CommentOrderBy = "comment_date DESC";}
-	If ($CommentOrder == 3){$CommentOrderBy = "comment_votes DESC, comment_date ASC";}
+	If ($CommentOrder == 3){$CommentOrderBy = "comment_votes ASC, comment_date DESC";}
 	If ($CommentOrder == 4){$CommentOrderBy = "comment_date ASC";}
 
 	$output = '';
