@@ -201,7 +201,10 @@ function get_comments ($fetch = false, $parent = 0, $comment_id=0, $show_parent=
 	Global $db, $main_smarty, $current_user, $CommentOrder, $link, $cached_comments;
 	
 	//Set comment order to 1 if it's not set in the admin panel
-	if(!isset($CommentOrder)){$CommentOrder = 1;}
+	if (isset($_GET['comment_sort'])) setcookie('CommentOrder', $CommentOrder = $_GET['comment_sort'], time()+60*60*24*180); 
+	elseif (isset($_COOKIE['CommentOrder'])) $CommentOrder = $_COOKIE['CommentOrder'];
+
+	if (!isset($CommentOrder)) $CommentOrder = 1;
 	If ($CommentOrder == 1){$CommentOrderBy = "comment_votes DESC, comment_date DESC";}
 	If ($CommentOrder == 2){$CommentOrderBy = "comment_date DESC";}
 	If ($CommentOrder == 3){$CommentOrderBy = "comment_votes ASC, comment_date DESC";}
