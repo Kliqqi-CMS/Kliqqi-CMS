@@ -1,4 +1,7 @@
-<!-- sidebar_modules\categories.tpl -->
+{************************************
+****** Category Menu Template *******
+*************************************}
+<!-- categories.tpl -->
 <header id="categories">
 	<div class="subnav">
 		<div class="container">
@@ -26,4 +29,4 @@
 		</div>
 	</div>
 </header>
-<!-- \sidebar_modules\categories.tpl -->
+<!--/categories.tpl -->

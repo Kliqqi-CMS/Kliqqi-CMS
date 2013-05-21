@@ -85,7 +85,7 @@ $main_smarty->assign('the_template', The_Template);
 $main_smarty->assign('the_template_sidebar_modules', The_Template . "/sidebar_modules");
 $main_smarty->assign('tpl_head', $the_template . '/head');
 $main_smarty->assign('tpl_body', $the_template . '/body');
-$main_smarty->assign('tpl_right_sidebar', $the_template . '/sidebar');
+$main_smarty->assign('tpl_first_sidebar', $the_template . '/sidebar');
 $main_smarty->assign('tpl_second_sidebar', $the_template . '/sidebar2');
 $main_smarty->assign('tpl_header', $the_template . '/header');
 $main_smarty->assign('tpl_footer', $the_template . '/footer');
