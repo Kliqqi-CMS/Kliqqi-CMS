@@ -58,6 +58,6 @@ $main_smarty->assign('pagename', pagename);
 
 do_sidebar($main_smarty);
 
-$main_smarty->assign('tpl_center', $the_template . '/validation');
+$main_smarty->assign('tpl_center', $the_template . '/user_validation_center');
 $main_smarty->display($the_template . '/pligg.tpl');
 ?>

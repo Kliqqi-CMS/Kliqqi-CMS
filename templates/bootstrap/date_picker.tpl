@@ -2,7 +2,7 @@
 **** Date Picker Javascript Template ****
 	 http://www.nsftools.com/tips/NotesTips.htm#datepicker 
 *************************************}
-
+<!-- date_picker.tpl -->
 {literal}
 <script language=JavaScript>
 
@@ -568,3 +568,4 @@ function adjustiFrame(pickerDiv, iFrameDiv)
 
 </style>
 {/literal}
+<!--/date_picker.tpl -->

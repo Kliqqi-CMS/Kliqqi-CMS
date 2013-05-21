@@ -1,3 +1,6 @@
+{************************************
+******* Breadcrumbs Template ********
+*************************************}
 <!-- breadcrumb.tpl -->
 <ul class="breadcrumb">
 	<li><a href="{$my_base_url}{$my_pligg_base}">{#PLIGG_Visual_Home#}</a> <span class="divider">/</span></li>

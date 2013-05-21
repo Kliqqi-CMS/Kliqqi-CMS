@@ -41,7 +41,7 @@ if($_REQUEST['page']){
 	}
 	
 	if (!$page_results->link_id) {
-		header("Location: $my_pligg_base/404error.php");
+		header("Location: $my_pligg_base/error_404.php");
 		die();
 	}
 }

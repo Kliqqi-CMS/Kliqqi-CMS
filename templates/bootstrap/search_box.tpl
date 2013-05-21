@@ -1,5 +1,7 @@
-
-<!-- searchbox.tpl -->
+{************************************
+************ Search Box *************
+*************************************}
+<!-- search_box.tpl -->
 {checkActionsTpl location="tpl_pligg_search_start"}
 <script type="text/javascript">
 	{if !isset($searchboxtext)}
@@ -15,4 +17,4 @@
 </div>
 <div class="clear"></div>
 {checkActionsTpl location="tpl_pligg_search_end"}
-<!--/searchbox.tpl -->
+<!--/search_box.tpl -->

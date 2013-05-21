@@ -1,5 +1,5 @@
 {************************************
-******** Live Main Template *********
+*********** Live Main Page **********
 *************************************}
 <!-- live_center.tpl -->
 <legend>{#PLIGG_Visual_Live#}</legend>

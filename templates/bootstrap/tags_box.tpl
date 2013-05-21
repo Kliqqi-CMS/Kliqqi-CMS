@@ -1,3 +1,7 @@
+{************************************
+************** Tags Box *************
+*************************************}
+<!-- tags_box.tpl -->
 {if $Enable_Tags && $pagename neq "cloud"}
 	{checkActionsTpl location="tpl_widget_tags_start"}
 	{php}
@@ -26,3 +30,4 @@
 	</div>
 	{checkActionsTpl location="tpl_widget_tags_end"}
 {/if}
+<!--/tags_box.tpl -->

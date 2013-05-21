@@ -1,6 +1,6 @@
 <?php 
 if(!defined('mnminclude')){
-	header('Location: ../404error.php');
+	header('Location: ../error_404.php');
 	die();
 }
 

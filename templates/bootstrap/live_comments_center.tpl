@@ -1,5 +1,5 @@
 {************************************
-****** Live Comments Template *******
+********* Live Comments Page ********
 *************************************}
 <!-- live_comments_center.tpl -->
 <legend>{#PLIGG_Visual_Live#} {#PLIGG_Visual_Comments#}</legend>

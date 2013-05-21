@@ -1,5 +1,5 @@
 {************************************
-****** Live Published Template ******
+******** Live Published Page ********
 *************************************}
 <!-- live_published_center.tpl -->
 <legend>{#PLIGG_Visual_Live#} {#PLIGG_Visual_Breadcrumb_Published#}</legend>

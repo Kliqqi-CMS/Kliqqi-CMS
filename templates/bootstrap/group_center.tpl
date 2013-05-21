@@ -49,7 +49,7 @@
        {literal}
                 <script type="text/javascript">
    <!--
-   window.location="{/literal}{$my_base_url}{$my_pligg_base}/404error.php{literal}";
+   window.location="{/literal}{$my_base_url}{$my_pligg_base}/error_404.php{literal}";
    //-->
                 </script>
       {/literal}

@@ -1,4 +1,7 @@
 {php} header( "HTTP/1.1 503 Service Unavailable" ); {/php}
+{************************************
+***** Maintenance Mode Template *****
+*************************************}
 <!DOCTYPE html>
 <html dir="{#PLIGG_Visual_Language_Direction#}" xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
 	<head>

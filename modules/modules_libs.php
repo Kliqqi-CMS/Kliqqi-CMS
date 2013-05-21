@@ -1,5 +1,5 @@
 <?php
-if(!defined('mnminclude')){header('Location: ../../404error.php');die();}
+if(!defined('mnminclude')){header('Location: ../../error_404.php');die();}
 
 function module_add_action($location, $the_function, $variables, $weight = array ('weight' => 0) )
 {

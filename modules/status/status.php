@@ -59,7 +59,7 @@ elseif (is_numeric($_GET['id']))
 	}
 	else 
 	{
-		$main_smarty->assign('tpl_center', '404error');
+		$main_smarty->assign('tpl_center', 'error_404');
 		$main_smarty->display($the_template . '/pligg.tpl');		
 		die();
 	}

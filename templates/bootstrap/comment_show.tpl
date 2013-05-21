@@ -1,5 +1,5 @@
 {************************************
-**** Individual Comment Template ****
+******** Individual Comment *********
 *************************************}
 <!-- comment_show.tpl -->
 <li class="comment">

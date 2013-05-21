@@ -1,7 +1,7 @@
 {************************************
 ****** Top Users Page Template ******
 *************************************}
-<!--/topusers_center.tpl -->
+<!-- topusers_center.tpl -->
 <legend>{#PLIGG_Visual_Top_Users#}</legend>
 {checkActionsTpl location="tpl_pligg_topusers_start"}
 <table class="tablesorter table table-bordered table-striped" id="tablesorter-demo" >

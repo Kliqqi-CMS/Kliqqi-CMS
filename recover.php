@@ -115,7 +115,7 @@ $main_smarty->assign('n',$n);
 
 
 // show the template
-$main_smarty->assign('tpl_center', $the_template . '/recover_center');
+$main_smarty->assign('tpl_center', $the_template . '/recover_password_center');
 $main_smarty->display($the_template . '/pligg.tpl');
 
 ?>

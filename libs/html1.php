@@ -1,6 +1,6 @@
 <?php
 
-if(!defined('mnminclude')){header('Location: ../404error.php');die();}
+if(!defined('mnminclude')){header('Location: ../error_404.php');die();}
 
 function get_category_id($cat_name) {
 	// find category id when given category name
@@ -252,7 +252,7 @@ function do_sidebar($var_smarty, $navwhere = '') {
 	$_caching = $var_smarty->cache; 	// get the current cache settings
 	$var_smarty->cache = true; 			// cache has to be on otherwise is_cached will always be false
 	$var_smarty->cache_lifetime = -1;   // lifetime has to be set to something otherwise is_cached will always be false
-	// $thetpl = $var_smarty->get_template_vars('the_template_sidebar_modules') . '/categories.tpl';
+	// $thetpl = $var_smarty->get_template_vars('the_template') . '/categories.tpl';
 
 	// check to see if the category sidebar module is already cached
 	// if it is, use it
@@ -331,8 +331,7 @@ function do_sidebar($var_smarty, $navwhere = '') {
 					$array[$i]['parent_subcat_count'] = GetSubCatCount($row->category_parent);
 				}
 				$array[$i]['subcat_count'] = GetSubCatCount($row->category__auto_id);
-
-
+				
 				$lastspacer = count($right);
 				$i = $i + 1;
 				$right[] = $row->rgt;

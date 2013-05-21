@@ -1,5 +1,5 @@
 {************************************
-****** New Pages Template ******
+********* New Pages Template ********
 *************************************}
 <!-- new_center.tpl -->
 {$link_summary_output}

@@ -1,6 +1,6 @@
 {************************************
 ***** User Validation Template ******
 *************************************}
-<!-- validation.tpl -->
+<!-- user_validation_center.tpl -->
 {$message}{$img}{$error}
-<!--/validation.tpl -->
+<!--/user_validation_center.tpl -->

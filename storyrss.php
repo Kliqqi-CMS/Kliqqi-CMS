@@ -34,8 +34,8 @@ if(is_numeric($requestID)) {
 		include(mnminclude.'redirector.php');
 		$x = new redirector($_SERVER['REQUEST_URI']);
 
-		header("Location: $my_pligg_base/404error.php");
-//		$main_smarty->assign('tpl_center', '404error');
+		header("Location: $my_pligg_base/error_404.php");
+//		$main_smarty->assign('tpl_center', 'error_404');
 //		$main_smarty->display($the_template . '/pligg.tpl');		
 		die();
 	}
@@ -90,9 +90,9 @@ if(is_numeric($requestID)) {
 	include(mnminclude.'redirector.php');
 	$x = new redirector($_SERVER['REQUEST_URI']);
 	
-	header("Location: $my_pligg_base/404error.php");
-//	header("Location: 404error.php");
-//	$main_smarty->assign('tpl_center', '404error');
+	header("Location: $my_pligg_base/error_404.php");
+//	header("Location: error_404.php");
+//	$main_smarty->assign('tpl_center', 'error_404');
 //	$main_smarty->display($the_template . '/pligg.tpl');		
 	die();
 }

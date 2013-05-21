@@ -45,7 +45,7 @@ $user->username = $login;
 if(!$user->read() || $user->level=='Spammer' || ($user->username=='anonymous' && !$user->user_lastip) ||
    // Hide users without stories/comments from unregistered visitors
    !$user->all_stats() || $user->total_links+$user->total_comments+$current_user->user_id==0) {
-	header("Location: $my_pligg_base/404error.php");
+	header("Location: $my_pligg_base/error_404.php");
 	die;
 }
 

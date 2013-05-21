@@ -62,7 +62,7 @@ if($time > 0) {
 			$link_date = "date";
 			break;
 		default:
-			header("Location: $my_pligg_base/404error.php");
+			header("Location: $my_pligg_base/error_404.php");
 			die();
 			break;
 	}

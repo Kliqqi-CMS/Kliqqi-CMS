@@ -1,5 +1,5 @@
 {************************************
-***** Live Unpublished Template *****
+******* Live Unpublished Page *******
 *************************************}
 <!-- live_unpublished_center.tpl -->
 <legend>{#PLIGG_Visual_Live#} {#PLIGG_Visual_Breadcrumb_Unpublished#}</legend>

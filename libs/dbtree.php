@@ -1,6 +1,6 @@
 <?php
 
-if(!defined('mnminclude')){header('Location: ../404error.php');die();}
+if(!defined('mnminclude')){header('Location: ../error_404.php');die();}
 
 // taken from http://www.sitepoint.com/article/hierarchical-data-database and modified
 function rebuild_tree($parent, $left, $table, $key_name, $parent_name) {

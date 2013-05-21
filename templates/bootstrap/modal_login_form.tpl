@@ -1,5 +1,5 @@
 {************************************
-******* Login Popup Template ********
+********* Modal Login Form **********
 *************************************}
 <!-- modal_login_form.tpl -->
 <div id="LoginModal" class="modal hide fade LoginModal">

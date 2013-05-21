@@ -1,6 +1,6 @@
 <?php
 
-if(!defined('mnminclude')){header('Location: ../404error.php');die();}
+if(!defined('mnminclude')){header('Location: ../error_404.php');die();}
 
 if(!defined('table_prefix')){
 	define('table_prefix','');

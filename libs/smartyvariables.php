@@ -1,6 +1,6 @@
 <?php
 
-if(!defined('mnminclude')){header('Location: ../404error.php');die();}
+if(!defined('mnminclude')){header('Location: ../error_404.php');die();}
 
 include mnminclude.'extra_fields_smarty.php';
 
@@ -38,8 +38,6 @@ if(isset($_GET['category']) && sanitize($_GET['category'], 3) != ''){$main_smart
 if(isset($_GET['search']) && sanitize($_GET['search'], 3) != ''){$main_smarty->assign('request_search', sanitize($_GET['search'], 3));}
 if(isset($_POST['username']) && sanitize($_GET['username'], 3) != ''){$main_smarty->assign('login_username', sanitize($_POST['username'], 3));}
 
-
-
 $main_smarty->assign('votes_per_ip', votes_per_ip);
 $main_smarty->assign('dblang', $dblang);
 $main_smarty->assign('pligg_language', pligg_language);
@@ -56,12 +54,6 @@ $main_smarty->assign('urlmethod', urlmethod);
 $main_smarty->assign('UseAvatars', do_we_use_avatars());
 $main_smarty->assign('Allow_Friends', Allow_Friends);
 $main_smarty->assign('Pager_setting', Auto_scroll);
-
-
-
-
-
-
 
 if($current_user->user_login){
 	$main_smarty->assign('Current_User_Avatar', $avatars = get_avatar('all', "", "", "", $current_user->user_id));
@@ -82,7 +74,6 @@ if ($main_smarty->get_template_vars('tpl_center'))
     $main_smarty->display('blank.tpl');
 $the_template = The_Template;
 $main_smarty->assign('the_template', The_Template);
-$main_smarty->assign('the_template_sidebar_modules', The_Template . "/sidebar_modules");
 $main_smarty->assign('tpl_head', $the_template . '/head');
 $main_smarty->assign('tpl_body', $the_template . '/body');
 $main_smarty->assign('tpl_first_sidebar', $the_template . '/sidebar');

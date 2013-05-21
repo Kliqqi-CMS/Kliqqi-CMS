@@ -2,7 +2,10 @@
 <html class="no-js" dir="{#PLIGG_Visual_Language_Direction#}" xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
 <head>
 	{checkActionsTpl location="tpl_pligg_head_start"}
-	{include file=$the_template"/meta.tpl"}
+	
+	<!-- START META -->
+		{include file=$the_template"/meta.tpl"}
+	<!-- END META -->
 	
 	<link rel="stylesheet" type="text/css" href="{$my_pligg_base}/templates/{$the_template}/css/bootstrap.css" media="screen" />
 	<link rel="stylesheet" type="text/css" href="{$my_pligg_base}/templates/{$the_template}/css/jquery.pnotify.css" media="screen" />
@@ -16,7 +19,9 @@
 	{checkForCss}
 	{checkForJs}
 	
-	{include file=$the_template"/title.tpl"}
+	<!-- START TITLE -->
+		{include file=$the_template"/title.tpl"}
+	<!-- END TITLE -->
 	
 	{if $pagename eq "submit"}
 		{literal}
@@ -70,22 +75,30 @@
 	{if $maintenance_mode eq "true" && $user_level eq 'admin'}
 		<div class="alert alert-error" style="margin-bottom:0;"><button class="close" data-dismiss="alert">&times;</button>{#PLIGG_Maintenance_Admin_Warning#}</div>
 	{/if}
+	
 	{checkActionsTpl location="tpl_pligg_body_start"}
-	{include file=$tpl_header.".tpl"}
+	
+	<!-- START HEADER -->
+		{include file=$tpl_header.".tpl"}
+	<!-- END HEADER -->
+	
 	<!-- START CATEGORIES -->
-	{assign var=sidebar_module value="categories"}{include file=$the_template_sidebar_modules."/wrapper.tpl"}
+		{include file=$the_template."/categories.tpl"}
 	<!-- END CATEGORIES -->
+	
 	<div class="container">
 		<section id="maincontent">
 			<div class="row">
 				{checkActionsTpl location="tpl_pligg_banner_top"}
-				<!-- START LEFT COLUMN -->
-			  {if $pagename eq "submit" || $pagename eq "user" || $pagename eq "profile" || $pagename eq "user_edit"}
+			{if $pagename eq "submit" || $pagename eq "user" || $pagename eq "profile" || $pagename eq "user_edit"}
 				<div class="span12">
-			  {else}
+			{else}
 				<div class="span9">
-			  {/if}
-					{include file=$the_template"/breadcrumb.tpl"}
+			{/if}
+					<!-- START BREADCRUMB -->
+						{include file=$the_template"/breadcrumb.tpl"}
+					<!-- END BREADCRUMB -->
+					
 					{literal}
 						<script type="text/javascript" language="JavaScript">
 						function checkForm() {
@@ -96,23 +109,31 @@
 						}//
 						</script>
 					{/literal}
+					
 					{checkActionsTpl location="tpl_pligg_content_start"}
 					{checkActionsTpl location="tpl_pligg_above_center"}
-					{include file=$tpl_center.".tpl"}
+					
+					<!-- START CENTER CONTENT -->
+						{include file=$tpl_center.".tpl"}
+					<!-- END CENTER CONTENT -->
+					
 					{checkActionsTpl location="tpl_pligg_below_center"}
 					{checkActionsTpl location="tpl_pligg_content_end"}
 				</div><!--/span-->
-				<!-- END LEFT COLUMN -->
-		  
+	  
 				{checkActionsTpl location="tpl_pligg_columns_start"}	
 
-				 {if $pagename neq "submit" && $pagename neq "user" && $pagename neq "profile" && $pagename neq "user_edit"}
+				{if $pagename neq "submit" && $pagename neq "user" && $pagename neq "profile" && $pagename neq "user_edit"}
 					<!-- START RIGHT COLUMN -->
 					<div class="span3">
 						<div class="well sidebar-nav">
 							<div id="rightcol">
-								{include file=$tpl_right_sidebar.".tpl"}
-								{include file=$tpl_second_sidebar.".tpl"}
+								<!-- START FIRST SIDEBAR -->
+									{include file=$tpl_first_sidebar.".tpl"}
+								<!-- END FIRST SIDEBAR -->
+								<!-- START SECOND SIDEBAR -->
+									{include file=$tpl_second_sidebar.".tpl"}
+								<!-- END SECOND SIDEBAR -->
 							</div>
 						</div><!--/.well -->
 					</div><!--/span-->
@@ -124,28 +145,39 @@
 		{if $Auto_scroll != '2'}
 			<hr>
 			<footer class="footer">
-				{include file=$tpl_footer.".tpl"}
+				<!-- START FOOTER -->
+					{include file=$tpl_footer.".tpl"}
+				<!-- END FOOTER -->
 			</footer>
 		{/if}
 		
 	</div><!--/.container-->
 	
 	{if $Voting_Method == 2}
+		<!-- START STAR VOTING JAVASCRIPT -->
 		{include file=$the_template"/functions/vote_star.tpl"}
+		<!-- END STAR VOTING JAVASCRIPT -->
 	{else}
-		{include file=$the_template"/functions/vote_normal.tpl"}
+		<!-- START UP/DOWN VOTING JAVASCRIPT -->
+			{include file=$the_template"/functions/vote_normal.tpl"}
+		<!-- END UP/DOWN VOTING JAVASCRIPT -->
 	{/if}
 	{if $pagename eq "story"}
-		{include file=$the_template"/functions/vote_comments.tpl"}
+		<!-- START COMMENT VOTING JAVASCRIPT -->
+			{include file=$the_template"/functions/vote_comments.tpl"}
+		<!-- START COMMENT VOTING JAVASCRIPT -->
 	{/if}
 	
      {if $anonymous_vote eq "false" and $user_logged_in eq ""}
-		{include file=$the_template"/modal_login_form.tpl"}
-     {elseif $votes_per_ip>0 and $user_logged_in eq ""}  
-        {include file=$the_template"/modal_login_form.tpl"}  
+		<!-- START MODAL LOGIN FORM -->
+			{include file=$the_template"/modal_login_form.tpl"}
+		<!-- END MODAL LOGIN FORM -->
+     {elseif $votes_per_ip>0 and $user_logged_in eq ""}
+		<!-- START MODAL LOGIN FORM -->
+			{include file=$the_template"/modal_login_form.tpl"}
+		<!-- END MODAL LOGIN FORM -->
 	 {/if}
 	
-	<!-- tpl_pligg_body_end -->
 	{checkActionsTpl location="tpl_pligg_body_end"}
 	
 	<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.18/jquery-ui.min.js"></script>
@@ -193,19 +225,27 @@
  
      
 	{if $pagename eq 'index' or $pagename eq 'published' or $pagename eq 'new' or $pagename eq 'group_story' or $pagename eq 'user'}
-    	{include file=$the_template"/functions/articles_pagination.tpl"}
+		<!-- START ARTICLES PAGINATION JAVASCRIPT -->
+			{include file=$the_template"/functions/articles_pagination.tpl"}
+		<!-- END ARTICLES PAGINATION JAVASCRIPT -->
 	{/if}
 	
 	{if $pagename eq 'topusers'}
-		{include file=$the_template"/functions/topusers_pagination.tpl"}
+		<!-- START TOPUSERS PAGINATION JAVASCRIPT -->
+			{include file=$the_template"/functions/topusers_pagination.tpl"}
+		<!-- END TOPUSERS PAGINATION JAVASCRIPT -->
 	{/if}
 	
 	{if $pagename eq 'groups'}
-		{include file=$the_template"/functions/groups_pagination.tpl"}
+		<!-- START GROUPS PAGINATION JAVASCRIPT -->
+			{include file=$the_template"/functions/groups_pagination.tpl"}
+		<!-- END GROUPS PAGINATION JAVASCRIPT -->
 	{/if}
 	
 	{if $pagename eq 'search'}
-		{include file=$the_template"/functions/search_pagination.tpl"}
+		<!-- START SEARCH PAGINATION JAVASCRIPT -->
+			{include file=$the_template"/functions/search_pagination.tpl"}
+		<!-- END SEARCH PAGINATION JAVASCRIPT -->
 	{/if}
 	
 	{literal}

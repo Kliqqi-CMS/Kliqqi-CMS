@@ -36,7 +36,7 @@ if($requestID > 0 && enable_friendly_urls == true){
 				      (array_diff($thecat, $link->additional_cats, array($link->category)) || 
 				       sizeof($thecat)!=sizeof($link->additional_cats)+1)))
 	{
-		header("Location: $my_pligg_base/404error.php");
+		header("Location: $my_pligg_base/error_404.php");
 		die();
 	}
 
@@ -69,7 +69,7 @@ if(is_numeric($requestID)) {
 		include(mnminclude.'redirector.php');
 		$x = new redirector($_SERVER['REQUEST_URI']);
 
-		header("Location: $my_pligg_base/404error.php");
+		header("Location: $my_pligg_base/error_404.php");
 		die();
 	}
 
@@ -191,8 +191,8 @@ if(is_numeric($requestID)) {
 	include(mnminclude.'redirector.php');
 	$x = new redirector($_SERVER['REQUEST_URI']);
 	
-	header("Location: $my_pligg_base/404error.php");
-//	$main_smarty->assign('tpl_center', '404error');
+	header("Location: $my_pligg_base/error_404.php");
+//	$main_smarty->assign('tpl_center', 'error_404');
 //	$main_smarty->display($the_template . '/pligg.tpl');		
 	die();
 }

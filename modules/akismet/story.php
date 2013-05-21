@@ -23,7 +23,7 @@ if($requestID > 0 && enable_friendly_urls == true){
 	$link = new Link;
 	$link->id=$requestID;
 	if($link->read() == false){
-		$main_smarty->assign('tpl_center', '404error');
+		$main_smarty->assign('tpl_center', 'error_404');
 		$main_smarty->display($the_template . '/pligg.tpl');		
 		die();
 	}
@@ -52,7 +52,7 @@ if(is_numeric($requestID)) {
 		include(mnminclude.'redirector.php');
 		$x = new redirector($_SERVER['REQUEST_URI']);
 
-		$main_smarty->assign('tpl_center', '404error');
+		$main_smarty->assign('tpl_center', 'error_404');
 		$main_smarty->display($the_template . '/pligg.tpl');		
 		die();
 	}
@@ -139,7 +139,7 @@ if(is_numeric($requestID)) {
 	include(mnminclude.'redirector.php');
 	$x = new redirector($_SERVER['REQUEST_URI']);
 	
-	$main_smarty->assign('tpl_center', '404error');
+	$main_smarty->assign('tpl_center', 'error_404');
 	$main_smarty->display($the_template . '/pligg.tpl');		
 	die();
 }

@@ -1,6 +1,6 @@
 <?php
 
-if(!defined('mnminclude')){header('Location: ../404error.php');die();}
+if(!defined('mnminclude')){header('Location: ../error_404.php');die();}
 
 	include_once(dirname(__FILE__).'/ez_sql_core.php');
 	include_once(dirname(__FILE__).'/dbconnect.php');

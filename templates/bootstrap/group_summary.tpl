@@ -1,5 +1,5 @@
 {************************************
-******* Group Story Template ********
+******* Group Story Content ********
 *************************************}
 <!-- group_summary.tpl -->
 <div class="group_container">

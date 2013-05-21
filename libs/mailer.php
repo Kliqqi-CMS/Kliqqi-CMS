@@ -20,7 +20,7 @@ Returns true if success, false if failure.
 
 */
 
-if(!defined('mnminclude')){header('Location: ../404error.php');die();}
+if(!defined('mnminclude')){header('Location: ../error_404.php');die();}
 
 class PliggMailer{
 

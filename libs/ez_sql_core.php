@@ -12,7 +12,7 @@
 	*  ezSQL Constants
 	*/
 
-	if(!defined('mnminclude')){header('Location: ../404error.php');die();}
+	if(!defined('mnminclude')){header('Location: ../error_404.php');die();}
 
 	define('EZSQL_VERSION','2.03');
 	define('OBJECT','OBJECT',true);

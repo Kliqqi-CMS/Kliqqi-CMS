@@ -1,3 +1,7 @@
+{************************************
+************* Login Box *************
+*************************************}
+<!-- login_box.tpl -->
 {if $pagename neq "login" && $user_authenticated neq true}
 	<div class="headline">
 		<div class="sectiontitle"><a href="{$URL_login}">{#PLIGG_Visual_Login_Title#}</a></div>
@@ -15,3 +19,4 @@
 		{checkActionsTpl location="tpl_widget_login_end"}
 	</div>
 {/if}
+<!--/login_box.tpl -->

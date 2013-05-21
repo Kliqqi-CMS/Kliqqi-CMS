@@ -10,7 +10,7 @@ include(mnminclude.'tags.php');
 include(mnminclude.'smartyvariables.php');
 
 if(!Enable_Tags) {
-	header("Location: $my_pligg_base/404error.php");
+	header("Location: $my_pligg_base/error_404.php");
 	die();
 }
 

@@ -1,7 +1,7 @@
 {************************************
 ***** Recover Password Template *****
 *************************************}
-<!-- recover_center.tpl -->
+<!-- recover_password_center.tpl -->
 <div class="leftwrapper">
 	{if $errorMsg ne ""}
 		<div class="alert alert-block">
@@ -41,4 +41,4 @@
 		</form>
 	</div>
 </div>
-<!--/recover_center.tpl -->
+<!--/recover_password_center.tpl -->

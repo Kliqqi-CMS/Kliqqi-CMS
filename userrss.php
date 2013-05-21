@@ -18,15 +18,15 @@ include_once(mnminclude.'smartyvariables.php');
 if(isset($_GET['user']) && sanitize($_GET['user'], 3) != ''){
 	$login = sanitize($_GET['user'], 3);
 } else {
-	header("Location: $my_pligg_base/404error.php");
+	header("Location: $my_pligg_base/error_404.php");
 	die;
 }
 $user=new User();
 $user->username = $login;
 if(!$user->read()) {
 	//echo "error: user does not exist";
-	header("Location: $my_pligg_base/404error.php");
-//	header('Location: 404error.php');
+	header("Location: $my_pligg_base/error_404.php");
+//	header('Location: error_404.php');
 	die;
 }
 
@@ -134,7 +134,7 @@ if($time > 0) {
 						WHERE saved_user_id=$user->id AND (link_status='published' OR link_status='new') ";
 			break;		
 		default:
-			header("Location: $my_pligg_base/404error.php");
+			header("Location: $my_pligg_base/error_404.php");
 			die();
 			break;
 	}

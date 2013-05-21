@@ -1,8 +1,8 @@
 AddDefaultCharset UTF-8
 
 ## 404 Error Page
-## If Pligg is installed in a subfolder, change the below line to ErrorDocument 404 /name-of-subfolder/404error.php
-ErrorDocument 404 /404error.php
+## If Pligg is installed in a subfolder, change the below line to ErrorDocument 404 /name-of-subfolder/error_404.php
+ErrorDocument 404 /error_404.php
 
 ## Re-directing Begin
 Options +FollowSymlinks -MultiViews

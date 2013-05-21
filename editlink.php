@@ -272,7 +272,7 @@ if ($link) {
 			// show the template
 			//$main_smarty->assign('storylen', utf8_strlen(str_replace("<br />", "\n", $link_content)));
 			$main_smarty->assign('tpl_extra_fields', $the_template . '/submit_extra_fields');
-			$main_smarty->assign('tpl_center', $the_template . '/editlink_edit_center');
+			$main_smarty->assign('tpl_center', $the_template . '/submission_edit_center');
 			$main_smarty->display($the_template . '/pligg.tpl');
 		}
 	}
