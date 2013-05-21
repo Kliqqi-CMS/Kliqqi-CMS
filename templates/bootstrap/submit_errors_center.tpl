@@ -1,7 +1,7 @@
 {************************************
-****** Submit Errors Template *******
+*********** Submit Errors ***********
 *************************************}
-<!-- submit_errors.tpl -->
+<!-- submit_errors_center.tpl -->
 <fieldset>
 	{************************************
 	******* Submit Step 2 Errors ********
@@ -124,4 +124,4 @@
 	{/if}
 	{checkActionsTpl location="tpl_pligg_submit_error_3"}
 </fieldset>
-<!--/submit_errors.tpl -->
+<!--/submit_errors_center.tpl -->

@@ -158,6 +158,6 @@ $main_smarty->assign('error', $errors);
 $main_smarty->assign('pagename', pagename);
 
 // show the template
-$main_smarty->assign('tpl_center', $the_template . '/submit_groups');
+$main_smarty->assign('tpl_center', $the_template . '/submit_groups_center');
 $main_smarty->display($the_template . '/pligg.tpl');
 ?>

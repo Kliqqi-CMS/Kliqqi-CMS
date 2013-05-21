@@ -1,7 +1,7 @@
 {************************************
 ****** Submit Step 1 Template *******
 *************************************}
-<!-- submit_step_1.tpl -->
+<!-- submit_step_1_center.tpl -->
 <legend>{#PLIGG_Visual_Submit1_Header#}</legend>
 <div class="submit">
 	<h3>{#PLIGG_Visual_Submit1_Instruct#}:</h3>
@@ -42,4 +42,4 @@
 		</div>
 	</form>
 </div>
-<!-- submit_step_1.tpl -->
+<!-- submit_step_1_center.tpl -->

@@ -151,7 +151,7 @@ if ($view == 'profile') {
 	$main_smarty->assign('view_href', '');
 	$main_smarty->assign('nav_pd', 4);
 	// display the template
-	$main_smarty->assign('tpl_center', $the_template . '/user_profile');
+	$main_smarty->assign('tpl_center', $the_template . '/user_profile_center');
 	$main_smarty->display($the_template . '/pligg.tpl');
 } else {
 	$main_smarty->assign('nav_pd', 3);
@@ -346,7 +346,7 @@ if ($view == 'search') {
 	$main_smarty->assign('posttitle', $main_smarty->get_config_vars('PLIGG_Visual_Breadcrumb_Profile') . " " . $login . " - " . $main_smarty->get_config_vars('PLIGG_Visual_Search_SearchResults') . ' ' . $keyword);
 
 	// display the template
-	$main_smarty->assign('tpl_center', $the_template . '/user_search');
+	$main_smarty->assign('tpl_center', $the_template . '/user_search_center');
 	$main_smarty->display($the_template . '/pligg.tpl');
 }
 
@@ -378,7 +378,7 @@ switch ($view) {
 			$main_smarty->assign('user_pagination', do_pages($rows, $page_size, $the_page, true));
 		}
 		// display the template
-		$main_smarty->assign('tpl_center', $the_template . '/user_history');
+		$main_smarty->assign('tpl_center', $the_template . '/user_history_center');
 		$main_smarty->display($the_template . '/pligg.tpl');
 		break;
 		
@@ -390,7 +390,7 @@ switch ($view) {
 			$main_smarty->assign('user_pagination', do_pages($rows, $page_size, $the_page, true));
 		}
 		// display the template
-		$main_smarty->assign('tpl_center', $the_template . '/user_history');
+		$main_smarty->assign('tpl_center', $the_template . '/user_history_center');
 		$main_smarty->display($the_template . '/pligg.tpl');
 		break;
 		
@@ -402,7 +402,7 @@ switch ($view) {
 			$main_smarty->assign('user_pagination', do_pages($rows, $page_size, $the_page, true));
 		}
 		// display the template
-		$main_smarty->assign('tpl_center', $the_template . '/user_history');
+		$main_smarty->assign('tpl_center', $the_template . '/user_history_center');
 		$main_smarty->display($the_template . '/pligg.tpl');
 		break;
 		
@@ -414,7 +414,7 @@ switch ($view) {
 			$main_smarty->assign('user_pagination', do_pages($rows, $page_size, $the_page, true));
 		}
 		// display the template
-		$main_smarty->assign('tpl_center', $the_template . '/user_history');
+		$main_smarty->assign('tpl_center', $the_template . '/user_history_center');
 		$main_smarty->display($the_template . '/pligg.tpl');
 		break;
 		
@@ -426,7 +426,7 @@ switch ($view) {
 			$main_smarty->assign('user_pagination', do_pages($rows, $page_size, $the_page, true));
 		}
 		// display the template
-		$main_smarty->assign('tpl_center', $the_template . '/user_history');
+		$main_smarty->assign('tpl_center', $the_template . '/user_history_center');
 		$main_smarty->display($the_template . '/pligg.tpl');
 		break;	
 		
@@ -438,7 +438,7 @@ switch ($view) {
 			$main_smarty->assign('user_pagination', do_pages($rows, $page_size, $the_page, true));
 		}
 		// display the template
-		$main_smarty->assign('tpl_center', $the_template . '/user_history');
+		$main_smarty->assign('tpl_center', $the_template . '/user_history_center');
 		$main_smarty->display($the_template . '/pligg.tpl');
 		break;
 		
@@ -450,7 +450,7 @@ switch ($view) {
 			$main_smarty->assign('user_pagination', do_pages($rows, $page_size, $the_page, true));
 		}
 		// display the template
-		$main_smarty->assign('tpl_center', $the_template . '/user_history');
+		$main_smarty->assign('tpl_center', $the_template . '/user_history_center');
 		$main_smarty->display($the_template . '/pligg.tpl');
 		break;
 		
@@ -462,42 +462,42 @@ switch ($view) {
 			$main_smarty->assign('user_pagination', do_pages($rows, $page_size, $the_page, true));
 		}
 		// display the template
-		$main_smarty->assign('tpl_center', $the_template . '/user_history');
+		$main_smarty->assign('tpl_center', $the_template . '/user_history_center');
 		$main_smarty->display($the_template . '/pligg.tpl');
 		break;  
 		
 	case 'removefriend':
 		do_removefriend();
 		// display the template
-		$main_smarty->assign('tpl_center', $the_template . '/user_follow');
+		$main_smarty->assign('tpl_center', $the_template . '/user_follow_center');
 		$main_smarty->display($the_template . '/pligg.tpl');
 		break;
 		
 	case 'addfriend':
 		do_addfriend();
 		// display the template
-		$main_smarty->assign('tpl_center', $the_template . '/user_follow');
+		$main_smarty->assign('tpl_center', $the_template . '/user_follow_center');
 		$main_smarty->display($the_template . '/pligg.tpl');
 		break;
 		
 	case 'following':
 		do_following($user->id);
 		// display the template
-		$main_smarty->assign('tpl_center', $the_template . '/user_follow');
+		$main_smarty->assign('tpl_center', $the_template . '/user_follow_center');
 		$main_smarty->display($the_template . '/pligg.tpl');
 		break;
 		
 	case 'followers':
 		do_followers($user->id);
 		// display the template
-		$main_smarty->assign('tpl_center', $the_template . '/user_follow');
+		$main_smarty->assign('tpl_center', $the_template . '/user_follow_center');
 		$main_smarty->display($the_template . '/pligg.tpl');
 		break;
 		
 	case 'sendmessage':
 		do_sendmessage();
 		// display the template
-		$main_smarty->assign('tpl_center', $the_template . '/user_follow');
+		$main_smarty->assign('tpl_center', $the_template . '/user_follow_center');
 		$main_smarty->display($the_template . '/pligg.tpl');
 		break;
 		
@@ -505,7 +505,7 @@ switch ($view) {
 		do_member_groups();
 		//$main_smarty->assign('user_pagination', do_pages($rows, $page_size, $the_page, true));
 		// display the template
-		$main_smarty->assign('tpl_center', $the_template . '/user_history');
+		$main_smarty->assign('tpl_center', $the_template . '/user_history_center');
 		$main_smarty->display($the_template . '/pligg.tpl');
 		break;
 		

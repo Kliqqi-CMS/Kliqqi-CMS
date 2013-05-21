@@ -3,7 +3,7 @@
 *************************************}
 {include file=$the_template"/user_navigation.tpl"}
 
-<!-- user_edit.tpl -->
+<!-- user_settings_center.tpl -->
 {***********************************************************************************}
 {if $savemsg neq ""}<div class="alert alert-warning fade in"><a data-dismiss="alert" class="close">&times;</a>{$savemsg}</div>{/if} 
 {checkActionsTpl location="tpl_pligg_profile_info_start"}
@@ -165,4 +165,4 @@
 	</div>
 </form>
 {checkActionsTpl location="tpl_pligg_profile_end"}
-<!--/user_edit.tpl -->
+<!--/user_settings_center.tpl -->

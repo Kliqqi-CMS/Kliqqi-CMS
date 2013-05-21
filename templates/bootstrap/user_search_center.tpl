@@ -1,10 +1,10 @@
 {************************************
-******* User Follow Template ********
+******** User Search Results ********
  This template controls the user search results pages
 *************************************}
 {include file=$the_template"/user_navigation.tpl"}
 
-<!-- user_search.tpl -->
+<!-- user_search_center.tpl -->
 {***********************************************************************************}
 {if $user_view eq 'search'}
 	{if $userlist}
@@ -65,11 +65,18 @@
 		<h3>{#PLIGG_Visual_Search_NoResults#} '{$search}'</h3>
 	{/if}
 {/if}
+
 {***********************************************************************************}
+
 {if isset($user_page)}
 	{$user_page}
 {/if}
-{if isset($user_pagination)}{checkActionsTpl location="tpl_pligg_pagination_start"}{$user_pagination}{checkActionsTpl location="tpl_pligg_pagination_end"}{/if}
+
+{if isset($user_pagination)}
+	{checkActionsTpl location="tpl_pligg_pagination_start"}
+	{$user_pagination}
+	{checkActionsTpl location="tpl_pligg_pagination_end"}
+{/if}
 {checkActionsTpl location="tpl_pligg_profile_end"}
 
-<!--/user_search.tpl -->
+<!--/user_search_center.tpl -->

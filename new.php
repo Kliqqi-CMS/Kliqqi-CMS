@@ -24,7 +24,7 @@ if(isset($_REQUEST['category'])){
 	{
 		header("Location: $my_pligg_base/error_404.php");
 //		header("Location: error_404.php");
-//		$main_smarty->assign('tpl_center', 'error_404');
+//		$main_smarty->assign('tpl_center', 'error_404_center');
 //		$main_smarty->display($the_template . '/pligg.tpl');		
 		die();
 	}

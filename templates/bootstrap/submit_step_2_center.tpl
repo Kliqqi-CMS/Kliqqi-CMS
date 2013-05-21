@@ -1,7 +1,7 @@
 {************************************
 ****** Submit Step 2 Template *******
 *************************************}
-<!-- submit_step_2.tpl -->
+<!-- submit_step_2_center.tpl -->
 <div class="submit_page">
 	<legend>{#PLIGG_Visual_Submit2_Details#}</legend>
 	{checkActionsTpl location="tpl_pligg_submit_step2_start"}
@@ -225,8 +225,8 @@
 	</form>
 </div>
 {literal}
-<script type="text/javascript">
-	var dock0=new dockit("dockcontent", 0);
-</script>
+	<script type="text/javascript">
+		var dock0=new dockit("dockcontent", 0);
+	</script>
 {/literal}
-<!--/submit_step_2.tpl -->
+<!--/submit_step_2_center.tpl -->

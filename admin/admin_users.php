@@ -376,21 +376,9 @@ if($canIhaveAccess == 1)
 			check_actions('admin_users_edit', $vars);
 	
 			// show the template
-			$main_smarty->assign('tpl_center', '/admin/user_edit');
+			$main_smarty->assign('tpl_center', '/admin/user_settings_center');
 			$main_smarty->display($template_dir . '/admin/admin.tpl');
-		}		
-		
-		
-
-			
-		
-		
-		//
-		
-		
-		
-		
-		
+		}	
 		
 		if (sanitize($_GET["mode"], 3) == "resetpass"){ // reset user password
 

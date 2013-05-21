@@ -77,7 +77,7 @@ if(empty($_POST['phase']) && (!empty($_GET['url']) || is_numeric($_GET['id']))) 
 		define('pagename', 'submit'); 
 		$main_smarty->assign('pagename', pagename);
 		$main_smarty->assign('submit_error', 'badkey');
-		$main_smarty->assign('tpl_center', $the_template . '/submit_errors');
+		$main_smarty->assign('tpl_center', $the_template . '/submit_errors_center');
 		$main_smarty->display($the_template . '/pligg.tpl');
 		die();
 	    }
@@ -122,7 +122,7 @@ function do_submit0() {
 	define('pagename', 'submit'); 
 	$main_smarty->assign('pagename', pagename);
 	
-	$main_smarty->assign('tpl_center', $the_template . '/submit_step_1');
+	$main_smarty->assign('tpl_center', $the_template . '/submit_step_1_center');
 	$vars = '';
 	check_actions('do_submit0', $vars);
 	$main_smarty->display($the_template . '/pligg.tpl');
@@ -209,7 +209,7 @@ function do_submit1() {
 	
 	if(!$linkres->valid) {
 		$main_smarty->assign('submit_error', 'invalidurl');
-		$main_smarty->assign('tpl_center', $the_template . '/submit_errors');
+		$main_smarty->assign('tpl_center', $the_template . '/submit_errors_center');
 		$main_smarty->display($the_template . '/pligg.tpl');
 		return;
 	}
@@ -218,7 +218,7 @@ function do_submit1() {
 		if(!is_numeric($_GET['id']) && $linkres->duplicates($url) > 0) {
 			$main_smarty->assign('submit_search', getmyurl("search_url", htmlentities($url)));
 			$main_smarty->assign('submit_error', 'dupeurl');
-			$main_smarty->assign('tpl_center', $the_template . '/submit_errors');
+			$main_smarty->assign('tpl_center', $the_template . '/submit_errors_center');
 			
 			define('pagename', 'submit'); 
 		     	$main_smarty->assign('pagename', pagename);
@@ -314,7 +314,7 @@ function do_submit1() {
 	}
 	
 	$main_smarty->assign('tpl_extra_fields', $the_template . '/submit_extra_fields');
-	$main_smarty->assign('tpl_center', $the_template . '/submit_step_2');
+	$main_smarty->assign('tpl_center', $the_template . '/submit_step_2_center');
 	
 	define('pagename', 'submit'); 
 	$main_smarty->assign('pagename', pagename);
@@ -491,7 +491,7 @@ function do_submit2() {
 	}
 	
 	$main_smarty->assign('tpl_extra_fields', $the_template . '/submit_extra_fields');
-	$main_smarty->assign('tpl_center', $the_template . '/submit_step_3');
+	$main_smarty->assign('tpl_center', $the_template . '/submit_step_3_center');
 	
 
 	$vars = '';	
@@ -623,7 +623,7 @@ function link_errors($linkres)
 	
 	if($error == true){
 		$main_smarty->assign('link_id', $linkres->id);
-		$main_smarty->assign('tpl_center', $the_template . '/submit_errors');
+		$main_smarty->assign('tpl_center', $the_template . '/submit_errors_center');
 		$main_smarty->display($the_template . '/pligg.tpl');
 		die();
 	}
@@ -638,9 +638,9 @@ function link_catcha_errors($linkerror)
 
 	if($linkerror == 'captcha_error') { // if no category is selected
 		$main_smarty->assign('submit_error', 'register_captcha_error');
-		$main_smarty->assign('tpl_center', $the_template . '/submit_errors');
+		$main_smarty->assign('tpl_center', $the_template . '/submit_errors_center');
 		$main_smarty->display($the_template . '/pligg.tpl');
-#		$main_smarty->display($the_template . '/submit_errors.tpl');
+#		$main_smarty->display($the_template . '/submit_errors_center.tpl');
 		$error = true;
 	}
 	return $error;

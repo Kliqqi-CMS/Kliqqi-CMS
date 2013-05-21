@@ -1,7 +1,7 @@
 {************************************
 ********* Edit Submission **********
 *************************************}
-<!-- submission_edit_center.tpl -->
+<!-- edit_submission_center.tpl -->
 {literal}
 	<script type="text/javascript">
 	function SetState(obj_checkbox, obj_textarea) {
@@ -130,4 +130,4 @@
 	<br />
 	<input type="submit" value="{#PLIGG_Visual_Submit2_Continue#}" class="btn btn-primary" />
 </form>
-<!--/submission_edit_center.tpl -->
+<!--/edit_submission_center.tpl -->

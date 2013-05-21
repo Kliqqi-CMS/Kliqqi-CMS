@@ -1,7 +1,7 @@
 {************************************
-****** Submit Step 1 Template *******
+****** Submit Step 3 Template *******
 *************************************}
-<!-- submit_step_3.tpl -->
+<!-- submit_step_3_center.tpl -->
 <div class="submit_page">
 	<legend>{#PLIGG_Visual_Submit3_Header#}</legend>
 	<h2>{#PLIGG_Visual_Submit3_Details#}</h2><br />
@@ -75,4 +75,4 @@
 	</form>
 	{checkActionsTpl location="tpl_submit_step_3_end"}
 </div>
-<!--/submit_step_3.tpl -->
+<!--/submit_step_3_center.tpl -->

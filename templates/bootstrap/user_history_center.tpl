@@ -1,10 +1,10 @@
 {************************************
-******* User Follow Template ********
- This template controls the user friend/follower pages
+******* User History Template ********
+ This template controls the user history pages (upvote history, downvote history, submitted, commented on, etc.)
 *************************************}
 {include file=$the_template"/user_navigation.tpl"}
 
-<!-- user_profile.tpl -->
+<!-- user_history_center.tpl -->
 {***********************************************************************************}
 {if $user_view eq 'profile'}
 	<div id="profile_container" style="position: relative;">
@@ -93,9 +93,7 @@
 							<tr>
 								<th>{#PLIGG_Visual_Login_Username#}</th>
 								{checkActionsTpl location="tpl_pligg_profile_friend_th"}
-								{if $user_login eq $user_logged_in}
-									<th>{#PLIGG_Visual_User_Profile_Remove_Friend#}</th>
-								{/if}
+								{if $user_login eq $user_logged_in}<th>{#PLIGG_Visual_User_Profile_Remove_Friend#}</th>{/if}
 							</tr>
 						</thead>
 						<tbody>
@@ -151,6 +149,5 @@
 	{checkActionsTpl location="tpl_pligg_pagination_end"}
 {/if}
 
-
 {checkActionsTpl location="tpl_pligg_profile_end"}
-<!--/user_profile.tpl -->
+<!--/user_history_center.tpl -->

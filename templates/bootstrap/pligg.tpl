@@ -27,7 +27,7 @@
 		{literal}
 			<script type="text/javascript">
 		$(function()
-		{	
+		{
 			$(".title").keyup(function() 
 			{
 				var title=$(this).val();
