@@ -1,0 +1,12 @@
+.htaccess
+settings.php
+libs/dbconnect.php
+logs/
+languages/*.conf
+cache/*.php
+modules/upload/attachments/*.jpg
+modules/upload/attachments/*.png
+modules/upload/attachments/*.gif
+modules/upload/attachments/thumbs/*.jpg
+modules/upload/attachments/thumbs/*.png
+modules/upload/attachments/thumbs/*.gif
