@@ -1,12 +1,31 @@
+# Windows image file caches
+Thumbs.db
+ehthumbs.db
+
+# Folder config file
+Desktop.ini
+
+# Recycle Bin used on file shares
+$RECYCLE.BIN/
+
+# Mac crap
+.DS_Store
+
+# Ignore these files
 .htaccess
 settings.php
 libs/dbconnect.php
 logs/
+*.log
 languages/*.conf
-cache/*.php
 modules/upload/attachments/*.jpg
 modules/upload/attachments/*.png
 modules/upload/attachments/*.gif
 modules/upload/attachments/thumbs/*.jpg
 modules/upload/attachments/thumbs/*.png
 modules/upload/attachments/thumbs/*.gif
+cache/
+
+# Do not ignore these files
+!cache/.htaccess
+!cache/index.html
