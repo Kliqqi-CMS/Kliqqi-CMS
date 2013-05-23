@@ -109,7 +109,6 @@
 				</ol>
 				<br />
 		
-				
 				<legend><a href="#backup" name="backup">Backup</a></legend>
 				<ol>
 					<li>Log into your site as admin</li>
@@ -125,13 +124,7 @@
 				<p><strong>Pligg CMS Version</strong></p>
 				<p>For easy access, the Pligg Admin Panel's "Statistics" widget displays your Pligg CMS Version. Pligg stores your version number in a MySQL database under the pligg_misc_data table. If you have access to a tool to view your MySQL database, like PhpMyAdmin, you will find that the data is stored under the name "pligg_version". </p>
 				<p>To upgrade to the latest version of Pligg CMS, make sure that you run the file /install/upgrade.php in your browser after uploading the latest version Pligg files to your server. If you forget to take this step your database may not be up to date with the latest version, causing the version number displayed in the Admin Panel to be incorrect.</p>
-				<p><strong>SVN Revisions</strong></p>
-				<p>SVN and Beta updates do not always change the version number used by Pligg. This is why we use SVN revision numbers as an indicator for what build of Pligg is being used with Beta releases. To help users keep track of what revsion they are on and when it was last updated, we are including that information below. This information is updated automatically with each SVN commit made to Pligg CMS.</p>
-				<ul>
-					<li>$Revision$ </li>
-					<li>$Date$ </li>
-				</ul>
-				<p>For security reasons, you may not want to keep this information exposed on your public server. We suggest either renaming this file, or you can archive a copy on your local computer for reference.</p>
+
 				<br />
 
 				<legend><a href="#upgrade" name="upgrade">Upgrading</a></legend>
@@ -173,6 +166,7 @@
 					<li>Either update your template to work with the latest version or navigate to /admin/admin_config.php?page=Template and change the template name to "bootstrap"</li>
 					<li>Re-activate the disabled modules from step 4</li>
 				</ol>
+				
 				<br />
 				
 				<legend><a href="#support" name="support">Support</a></legend>
@@ -456,7 +450,7 @@
 		<div id="footer">
 			<span class="subtext"> 
 				<a href="http://pligg.com/" target="_blank">Pligg Content Management System</a> 
-				| Need Web Hosting? Check out our <a href="http://pligg.com/hosting/" target="_blank">Preferred Hosts</a> 
+				| Need Web Hosting? Check out our <a href="http://pligg.com/hosting/" target="_blank">Preferred Web Hosts</a> 
 			</span>
 		</div>
 	</footer>
