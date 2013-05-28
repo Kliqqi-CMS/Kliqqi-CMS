@@ -312,7 +312,7 @@ function save_profile() {
 				$savemsg = $main_smarty->get_config_vars("PLIGG_Visual_Register_Noemail").' '.sprintf($main_smarty->get_config_vars("PLIGG_Visual_Register_ToDo"),$main_smarty->get_config_vars('PLIGG_PassEmail_From'));
 			}
 			else
-				$user->email=sanitize($_POST['email'], 3);
+				$user->email=sanitize($_POST['email'], 2);
 		    }
 		}
 
@@ -339,19 +339,19 @@ function save_profile() {
 		/////
 		
 		// Santizie user input
-		$user->url=sanitize($_POST['url'], 3);
-		$user->public_email=sanitize($_POST['public_email'], 3);
-		$user->location=sanitize($_POST['location'], 3);
-		$user->occupation=sanitize($_POST['occupation'], 3);
-		$user->facebook=sanitize($_POST['facebook'], 3);
-		$user->twitter=sanitize($_POST['twitter'], 3);
-		$user->linkedin=sanitize($_POST['linkedin'], 3);
-		$user->googleplus=sanitize($_POST['googleplus'], 3);
-		$user->skype=sanitize($_POST['skype'], 3);
-		$user->pinterest=sanitize($_POST['pinterest'], 3);
-		$user->names=sanitize($_POST['names'], 3);
+		$user->url=sanitize($_POST['url'], 2);
+		$user->public_email=sanitize($_POST['public_email'], 2);
+		$user->location=sanitize($_POST['location'], 2);
+		$user->occupation=sanitize($_POST['occupation'], 2);
+		$user->facebook=sanitize($_POST['facebook'], 2);
+		$user->twitter=sanitize($_POST['twitter'], 2);
+		$user->linkedin=sanitize($_POST['linkedin'], 2);
+		$user->googleplus=sanitize($_POST['googleplus'], 2);
+		$user->skype=sanitize($_POST['skype'], 2);
+		$user->pinterest=sanitize($_POST['pinterest'], 2);
+		$user->names=sanitize($_POST['names'], 2);
 		if (user_language){
-			$user->language=sanitize($_POST['language'], 3);
+			$user->language=sanitize($_POST['language'], 2);
 		}
 		
 		// Convert user input social URLs to username values
@@ -385,7 +385,7 @@ function save_profile() {
 		$vars = '';
 		check_actions('profile_save', $vars);
 	
-/*		$avatar_source = sanitize($_POST['avatarsource'], 3);
+/*		$avatar_source = sanitize($_POST['avatarsource'], 2);
 		if($avatar_source != "" && $avatar_source != "useruploaded"){
 			loghack('Updating profile, avatar source is not one of the list options.', 'username: ' . sanitize($_POST["username"], 3) . '|email: ' . sanitize($_POST["email"], 3));
 			$avatar_source == "";
@@ -395,7 +395,7 @@ function save_profile() {
 	  if($user->level=="admin" || $user->level=="moderator"){
 		  if ($user->username!=sanitize($_POST['user_login'], 3))
 			{
-			 $user_login=sanitize($_POST['user_login'], 3);
+			 $user_login=sanitize($_POST['user_login'], 2);
 				
 			if (preg_match('/\pL/u', 'a')) {	// Check if PCRE was compiled with UTF-8 support
 			if (!preg_match('/^[_\-\d\p{L}\p{M}]+$/iu',$user_login)) { // if username contains invalid characters
@@ -424,7 +424,7 @@ function save_profile() {
 	    }
 	
 		if(!empty($_POST['newpassword']) || !empty($_POST['newpassword2'])) {
-			$oldpass = sanitize($_POST['oldpassword'], 3);
+			$oldpass = sanitize($_POST['oldpassword'], 2);
 			$userX=$db->get_row("SELECT user_id, user_pass, user_login FROM " . table_users . " WHERE user_login = '".$user->username."'");
 			$saltedpass=generateHash($oldpass, substr($userX->user_pass, 0, SALT_LENGTH));
 			if($userX->user_pass == $saltedpass){
