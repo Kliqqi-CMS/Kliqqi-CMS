@@ -23,15 +23,7 @@
 					<li><a href="{$my_pligg_base}/delete.php?link_id={$link_id}"><i class="icon-trash"></i> {#PLIGG_Visual_AdminPanel_Discard#}</a></li>
 				{/if}
 			</ul>
-			<iframe height="0" width="0" frameborder="0" name="story_status" class="invisible"></iframe>
-			<span id="stories_status-{$link_shakebox_index}" style="display:none;">
-				<a target="story_status" href="{$group_story_links_publish}" onclick="show_hide_user_links(document.getElementById('story_status_success-{$link_shakebox_index}'))">{#PLIGG_Visual_AdminPanel_Published#}</a>
-				<a target="story_status" href="{$group_story_links_new}" onclick="show_hide_user_links(document.getElementById('story_status_success-{$link_shakebox_index}'))">{#PLIGG_Visual_AdminPanel_New#}</a>
-				<a target="story_status" href="{$group_story_links_discard}" onclick="show_hide_user_links(document.getElementById('story_status_success-{$link_shakebox_index}'))">{#PLIGG_Visual_AdminPanel_Discard#}</a>
-			</span>
-			<span id="story_status_success-{$link_shakebox_index}" class="label label-success" style="display:none;">
-				{#PLIGG_MiscWords_Save_Links_Success#}
-			</span>
+			
 		</div>		
 	{/if}
 	{checkActionsTpl location="tpl_pligg_story_start"}
@@ -223,6 +215,15 @@
 				</span>
 			{/if}
 			{checkActionsTpl location="tpl_pligg_story_tools_end"}
+			<iframe height="0" width="0" frameborder="0" name="story_status" class="invisible"></iframe>
+			<span id="stories_status-{$link_shakebox_index}" style="display:none;">
+				<a target="story_status" href="{$group_story_links_publish}" onclick="show_hide_user_links(document.getElementById('story_status_success-{$link_shakebox_index}'))">{#PLIGG_Visual_AdminPanel_Published#}</a>
+				<a target="story_status" href="{$group_story_links_new}" onclick="show_hide_user_links(document.getElementById('story_status_success-{$link_shakebox_index}'))">{#PLIGG_Visual_AdminPanel_New#}</a>
+				<a target="story_status" href="{$group_story_links_discard}" onclick="show_hide_user_links(document.getElementById('story_status_success-{$link_shakebox_index}'))">{#PLIGG_Visual_AdminPanel_Discard#}</a>
+			</span>
+			<span id="story_status_success-{$link_shakebox_index}" class="label label-success" style="display:none;">
+				{#PLIGG_MiscWords_Save_Links_Success#}
+			</span>
 		</div>
 		<div style="clear:both;"></div>
 	</div><!-- /.storyfooter -->
