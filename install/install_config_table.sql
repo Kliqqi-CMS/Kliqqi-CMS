@@ -12,7 +12,7 @@ INSERT INTO `config` VALUES (12, 'Tags', '$tags_words_limit', '100', '100', 'num
 INSERT INTO `config` VALUES (13, 'AntiSpam', 'CHECK_SPAM', 'false', 'false', 'true / false', 'Enable Spam Checking', 'Checks submitted domains to see if they''re on a blacklist.', 'define', NULL);
 INSERT INTO `config` VALUES (14, 'AntiSpam', '$MAIN_SPAM_RULESET', 'logs/antispam.log', 'antispam.log', 'Text File', 'Main Spam Ruleset', 'What file should be used to check for spam domains?', 'normal', '"');
 INSERT INTO `config` VALUES (15, 'AntiSpam', '$USER_SPAM_RULESET', 'logs/domain-blacklist.log', 'logs/domain-blacklist.log', 'Text File', 'Local Spam Ruleset', 'What file should Pligg write to if you mark items as spam?', 'normal', '"');
-INSERT INTO `config` VALUES (16, 'AntiSpam', '$SPAM_LOG_BOOK', 'logs/spamlog.log', 'logs/spamlog.log', 'Text File', 'Spam Log', 'File to log spam blocks to.', 'normal', '"');
+INSERT INTO `config` VALUES (16, 'AntiSpam', '$SPAM_LOG_BOOK', 'logs/spam.log', 'logs/spam.log', 'Text File', 'Spam Log', 'File to log spam blocks to.', 'normal', '"');
 INSERT INTO `config` VALUES (17, 'Live', 'Enable_Live', 'true', 'true', 'true / false', 'Enable Live', 'Enable the live page.', 'define', NULL);
 INSERT INTO `config` VALUES (18, 'Live', 'items_to_show', '20', '20', 'number', 'Live Items to Show', 'Number of items to show on the live page.', 'define', NULL);
 INSERT INTO `config` VALUES (19, 'Live', 'how_often_refresh', '20', '20', 'number', 'How often to refresh', 'How many seconds between refreshes - not recommended to set it less than 5.', 'define', NULL);
