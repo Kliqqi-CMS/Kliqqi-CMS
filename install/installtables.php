@@ -160,7 +160,7 @@ function pligg_createtables($conn) {
 	$sql = "CREATE TABLE `" . table_users . "` (
 	  `user_id` int(20) NOT NULL auto_increment,
 	  `user_login` varchar(32) NOT NULL default '',
-	  `user_level` enum('normal','admin','admin','Spammer') NOT NULL default 'normal',
+	  `user_level` enum('normal','moderator','admin','Spammer') NOT NULL default 'normal',
 	  `user_modification` timestamp NOT NULL,
 	  `user_date` timestamp NOT NULL,
 	  `user_pass` varchar(64) NOT NULL default '',
