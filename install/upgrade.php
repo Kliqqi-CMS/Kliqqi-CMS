@@ -263,10 +263,10 @@ if (!$errors) {
 		
 		include_once('version/1.x.php');
 		include_once('version/2.0.0.php');
-		include_once('version/2.0.1.php');
+		// include_once('version/2.0.1.php');
 		
 		// Set the new version number
-		$sql = "UPDATE `" . table_misc_data . "` SET `data` = '2.0.1' WHERE `name` = 'pligg_version';";
+		$sql = "UPDATE `" . table_misc_data . "` SET `data` = '2.0.0' WHERE `name` = 'pligg_version';";
 		$db->query($sql);
 	}
 	
