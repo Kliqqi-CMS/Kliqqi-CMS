@@ -256,14 +256,17 @@ if (!$errors) {
 		$sql = "INSERT INTO `" . table_misc_data . "` ( `name` , `data` ) VALUES ('reCaptcha_prikey', '6LfwKQQAAAAAALQosKUrE4MepD0_kW7dgDZLR5P1');";
 		$db->query($sql);
 	} else {
-		// Get version specific updates
+		// Get version-specific updates
 		$sql = "SELECT data FROM " . table_misc_data . " WHERE name = 'pligg_version'";
 		$pligg_version = $db->get_var($sql);
 		$old_version = str_replace('.', '' , $pligg_version);
 		
 		include_once('version/1.x.php');
-		include_once('version/2.0.php');
-		$sql = "UPDATE `" . table_misc_data . "` SET `data` = '2.0.0' WHERE `name` = 'pligg_version';";
+		include_once('version/2.0.0.php');
+		include_once('version/2.0.1.php');
+		
+		// Set the new version number
+		$sql = "UPDATE `" . table_misc_data . "` SET `data` = '2.0.1' WHERE `name` = 'pligg_version';";
 		$db->query($sql);
 	}
 	
