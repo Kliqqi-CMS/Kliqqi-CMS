@@ -3,6 +3,9 @@
 	$module_info['desc'] = 'Adds features to turn profile pages into a service similar to Twitter.';
 	$module_info['version'] = '1.3';
 	$module_info['settings_url'] = '../module.php?module=status';
+	$module_info['homepage_url'] = 'http://pligg.com/customize/module/status-update-module/';
+//	$module_info['update_url'] = 'http://pligg.com/customize/module/status-update-module/version/';
+	
 	// Add new columns
 	$module_info['db_sql'][] = "ALTER TABLE ".table_users." ADD  `status_switch` TINYINT(1) DEFAULT '1'";
 	$module_info['db_sql'][] = "ALTER TABLE ".table_users." ADD  `status_friends` TINYINT(1) DEFAULT '1'";

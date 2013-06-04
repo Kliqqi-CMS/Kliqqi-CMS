@@ -2,11 +2,9 @@
 	$module_info['name'] = 'Spam Trigger';
 	$module_info['desc'] = 'This module will check all submitted comments and stories for common spam words';
 	$module_info['version'] = 0.10;
-	$module_info['update_url'] = 'http://forums.pligg.com/versioncheck.php?product=spam_trigger';
-//	$module_info['homepage_url'] = 'http://forums.pligg.com/pligg-modules/17484-upload-module-file-image-attachment.html';
 	$module_info['settings_url'] = '../module.php?module=spam_trigger';
-	// this is where you set the modules "name" and "version" that is required
-	// if more that one module is required then just make a copy of that line
+	$module_info['homepage_url'] = 'http://pligg.com/customize/module/spam-trigger/';
+//	$module_info['update_url'] = 'http://pligg.com/customize/module/spam-trigger/version/';
 
 	global $db;
 	$fields = $db->get_results("DESCRIBE ".table_links);
