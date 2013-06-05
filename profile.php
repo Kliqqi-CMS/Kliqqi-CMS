@@ -22,7 +22,7 @@ check_referrer();
 // sidebar
 $main_smarty = do_sidebar($main_smarty);
 
-$canIhaveAccess = 0;
+$canIhaveAccess = ($_GET['login'] == $current_user->user_login);
 $canIhaveAccess = $canIhaveAccess + checklevel('admin');
 $canIhaveAccess = $canIhaveAccess + checklevel('moderator');
 
