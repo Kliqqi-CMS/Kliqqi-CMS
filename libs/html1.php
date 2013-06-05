@@ -1075,34 +1075,35 @@ function close_tags($html)
 //
 function check_referrer($post_url=false)
 {
-global $my_base_url, $my_pligg_base, $xsfr_first_page, $_GET, $_POST;
+	global $my_base_url, $my_pligg_base, $xsfr_first_page, $_GET, $_POST;
 
-if (sizeof($_GET)>0 || sizeof($_POST)>0)
-{
+	if (sizeof($_GET)>0 || sizeof($_POST)>0)
+	{
 
-if ($_SERVER['HTTP_REFERER'])
-{
-$base = $my_pligg_base;
+		if ($_SERVER['HTTP_REFERER'])
+		{
+			$base = $my_pligg_base;
 
-if (!$base) $base = '/';
-$_SERVER['HTTP_REFERER'] = sanitize($_SERVER['HTTP_REFERER'],3);
+			if (!$base) $base = '/';
+			$_SERVER['HTTP_REFERER'] = sanitize($_SERVER['HTTP_REFERER'],3);
 
-// update checks if HTTP_REFERER and posted url are the same!
-if(strpos($_SERVER['HTTP_REFERER'],$post_url)!==false) return true;
+			// update checks if HTTP_REFERER and posted url are the same!
+			if(strpos($_SERVER['HTTP_REFERER'],$post_url)!==false) return true;
 
 
-if (strpos(preg_replace('/^.+:\/\/(www\.)?/','',$_SERVER['HTTP_REFERER']).'/',preg_replace('/^.+:\/\/(www\.)?/','',$my_base_url).$base)!==0)
-{
-unset($_SESSION['xsfr']);
-die("Wrong Referrer '{$_SERVER['HTTP_REFERER']}'");
-}
-}
-elseif ($xsfr_first_page)
-{
-unset($_SESSION['xsfr']);
-die('Wrong security code');
-}
-}
+			//if (strpos(preg_replace('/^.+:\/\/(www\.)?/','',$_SERVER['HTTP_REFERER']).'/',preg_replace('/^.+:\/\/(www\.)?/','',$my_base_url).$base)!==0)
+			if (strpos(preg_replace('/^.+:\/\/(www\.)?/','',$_SERVER['HTTP_REFERER']).'/',preg_replace('/^.+:\/\/(www\.)?/','',$my_base_url))!==0)
+			{
+				unset($_SESSION['xsfr']);
+				die("Wrong Referrer '{$_SERVER['HTTP_REFERER']}'");
+			}
+		}
+		elseif ($xsfr_first_page)
+		{
+			unset($_SESSION['xsfr']);
+			die('Wrong security code');
+		}
+	}
 }
 
 $english_language = array();
@@ -1113,16 +1114,16 @@ function translate($str)
     if ($language=='english') return $str;
     if (sizeof($english_language)==0)
     {
-	$path = dirname(__FILE__);
-	if (strrpos($path,'/'))
-	    $path = substr($path,0,strrpos($path,'/'));
-	elseif (strrpos($path,'\\'))
-	    $path = substr($path,0,strrpos($path,'\\'));
-    	if (!file_exists( $path . '/languages/lang_english.conf')) return $str;
+		$path = dirname(__FILE__);
+		if (strrpos($path,'/'))
+			$path = substr($path,0,strrpos($path,'/'));
+		elseif (strrpos($path,'\\'))
+			$path = substr($path,0,strrpos($path,'\\'));
+			if (!file_exists( $path . '/languages/lang_english.conf')) return $str;
 
-	$strings = parse_ini_file($path .  '/languages/lang_english.conf');
-	foreach ($strings as $key => $value)
-	    $english_language[strtoupper(str_replace('&quot;','"',$value))] = $main_smarty->get_config_vars($key);
+		$strings = parse_ini_file($path .  '/languages/lang_english.conf');
+		foreach ($strings as $key => $value)
+			$english_language[strtoupper(str_replace('&quot;','"',$value))] = $main_smarty->get_config_vars($key);
     }
     if ($translation = $english_language[strtoupper(str_replace("\r\n","\\n",$str))])
     	return $translation;
