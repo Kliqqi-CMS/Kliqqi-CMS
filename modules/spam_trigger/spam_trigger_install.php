@@ -3,8 +3,8 @@
 	$module_info['desc'] = 'This module will check all submitted comments and stories for common spam words';
 	$module_info['version'] = 0.10;
 	$module_info['settings_url'] = '../module.php?module=spam_trigger';
-	$module_info['homepage_url'] = 'http://pligg.com/customize/module/spam-trigger/';
-//	$module_info['update_url'] = 'http://pligg.com/customize/module/spam-trigger/version/';
+	$module_info['homepage_url'] = 'http://pligg.com/downloads/module/spam-trigger/';
+	$module_info['update_url'] = 'http://pligg.com/downloads/module/spam-trigger/version/';
 
 	global $db;
 	$fields = $db->get_results("DESCRIBE ".table_links);

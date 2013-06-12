@@ -3,8 +3,8 @@
 	$module_info['desc'] = 'This module allows users to subscribe to an article and receive a HTML formatted email whenever a new comment is submitted.';
 	$module_info['version'] = 1.1;
 	$module_info['settings_url'] = '../module.php?module=comment_subscription';
-	$module_info['homepage_url'] = 'http://pligg.com/customize/module/comment-subscription-module/';
-//	$module_info['update_url'] = 'http://pligg.com/customize/module/comment-subscription-module/version/';
+	$module_info['homepage_url'] = 'http://pligg.com/downloads/module/comment-subscription-module/';
+	$module_info['update_url'] = 'http://pligg.com/downloads/module/comment-subscription-module/version/';
 
 	// Add new columns
 	$module_info['db_sql'][] = "ALTER TABLE ".table_users." ADD  `comment_subscription` TINYINT(1) DEFAULT '1'";

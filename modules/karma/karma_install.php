@@ -2,8 +2,8 @@
 	$module_info['name'] = 'Karma module';
 	$module_info['desc'] = 'Configure the karma algorithms used to generate a karma scores';
 	$module_info['version'] = 0.2;
-	$module_info['homepage_url'] = 'http://pligg.com/customize/module/karma/';
-//	$module_info['update_url'] = 'http://pligg.com/customize/module/karma/version/';
+	$module_info['homepage_url'] = 'http://pligg.com/downloads/module/karma/';
+	$module_info['update_url'] = 'http://pligg.com/downloads/module/karma/version/';
 	$module_info['settings_url'] = '../module.php?module=karma';
 	// this is where you set the modules "name" and "version" that is required
 	// if more that one module is required then just make a copy of that line

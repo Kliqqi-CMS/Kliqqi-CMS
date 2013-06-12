@@ -3,8 +3,8 @@
 	$module_info['desc'] = 'Import RSS Feeds as Posts';
 	$module_info['version'] = 2.0;
 	$module_info['settings_url'] = '../module.php?module=rss_import';
-	$module_info['homepage_url'] = 'http://pligg.com/customize/module/rss-import/';
-//	$module_info['update_url'] = 'http://pligg.com/customize/module/rss-import/version/';
+	$module_info['homepage_url'] = 'http://pligg.com/downloads/module/rss-import/';
+	$module_info['update_url'] = 'http://pligg.com/downloads/module/rss-import/version/';
     $module_info['requires'][] = array('PHP', 5);
         
 	$module_info['db_add_table'][]=array(
