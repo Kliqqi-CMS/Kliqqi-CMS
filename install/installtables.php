@@ -521,23 +521,19 @@ function pligg_createtables($conn) {
 	mysql_query( $sql, $conn );
 
 	echo '<li>Adding default modules</li>';
-	$sql = "INSERT INTO `" . table_modules . "` (`id`, `name`, `version`, `latest_version`, `folder`, `enabled`) VALUES (NULL, 'Admin Modify Language', 0.2, '', 'admin_language', 1);";
+	$sql = "INSERT INTO `" . table_modules . "` (`id`, `name`, `version`, `latest_version`, `folder`, `enabled`) VALUES (NULL, 'Admin Modify Language', 2.0, '', 'admin_language', 1);";
 	mysql_query( $sql, $conn );
-	$sql = "INSERT INTO `" . table_modules . "` (`id`, `name`, `version`, `latest_version`, `folder`, `enabled`) VALUES (NULL, 'Captcha', 1.0, '', 'captcha', 1);";
+	$sql = "INSERT INTO `" . table_modules . "` (`id`, `name`, `version`, `latest_version`, `folder`, `enabled`) VALUES (NULL, 'Captcha', 2.0, '', 'captcha', 1);";
 	mysql_query( $sql, $conn );
-	$sql = "INSERT INTO `" . table_modules . "` (`id`, `name`, `version`, `latest_version`, `folder`, `enabled`) VALUES (NULL, 'Hello World', 0.3, '', 'hello_world', 1);";
+	$sql = "INSERT INTO `" . table_modules . "` (`id`, `name`, `version`, `latest_version`, `folder`, `enabled`) VALUES (NULL, 'Simple Private Messaging', 2.0, '', 'simple_messaging', 1);";
 	mysql_query( $sql, $conn );
-	$sql = "INSERT INTO `" . table_modules . "` (`id`, `name`, `version`, `latest_version`, `folder`, `enabled`) VALUES (NULL, 'Simple Private Messaging', 0.7, '', 'simple_messaging', 1);";
+	$sql = "INSERT INTO `" . table_modules . "` (`id`, `name`, `version`, `latest_version`, `folder`, `enabled`) VALUES (NULL, 'Sidebar Stories', 2.0, '', 'sidebar_stories', 1);";
 	mysql_query( $sql, $conn );
-	$sql = "INSERT INTO `" . table_modules . "` (`id`, `name`, `version`, `latest_version`, `folder`, `enabled`) VALUES (NULL, 'Sidebar Top Today', 0.3, '', 'sidebar_stories_u', 1);";
+	$sql = "INSERT INTO `" . table_modules . "` (`id`, `name`, `version`, `latest_version`, `folder`, `enabled`) VALUES (NULL, 'Sidebar Comments', 2.0, '', 'sidebar_comments', 1);";
 	mysql_query( $sql, $conn );
-	$sql = "INSERT INTO `" . table_modules . "` (`id`, `name`, `version`, `latest_version`, `folder`, `enabled`) VALUES (NULL, 'Sidebar Stories', 0.3, '', 'sidebar_stories', 1);";
+	$sql = "INSERT INTO `" . table_modules . "` (`id`, `name`, `version`, `latest_version`, `folder`, `enabled`) VALUES (NULL, 'Karma module', 0.2, '', 'karma', 1);";
 	mysql_query( $sql, $conn );
-	$sql = "INSERT INTO `" . table_modules . "` (`id`, `name`, `version`, `latest_version`, `folder`, `enabled`) VALUES (NULL, 'Sidebar Comments', 0.3, '', 'sidebar_comments', 1);";
-	mysql_query( $sql, $conn );
-	$sql = "INSERT INTO `" . table_modules . "` (`id`, `name`, `version`, `latest_version`, `folder`, `enabled`) VALUES (NULL, 'Karma module', 0.1, '', 'karma', 1);";
-	mysql_query( $sql, $conn );
-	$sql = "INSERT INTO `" . table_modules . "` (`id`, `name`, `version`, `latest_version`, `folder`, `enabled`) VALUES (NULL, 'Status', 1.2, '', 'status', 1);";
+	$sql = "INSERT INTO `" . table_modules . "` (`id`, `name`, `version`, `latest_version`, `folder`, `enabled`) VALUES (NULL, 'Status', 1.3, '', 'status', 1);";
 	mysql_query( $sql, $conn );
 
 	$sql =  "INSERT  into " . table_misc_data . " (name,data) VALUES ('karma_submit_story','+15')";
