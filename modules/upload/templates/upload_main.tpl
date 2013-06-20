@@ -117,6 +117,9 @@
 			<td><input type="checkbox" name="upload_allow_hide" id="upload_allow_hide" value="1" {if $settings.allow_hide}checked{/if}/></td>
 		</tr>
 		<tr>
+			<td><label><a href="#{#PLIGG_Upload_Allow_Comment_Attachments#}">{#PLIGG_Upload_Allow_Comment_Attachments#}</a>:</label></td>
+			<td><input type="checkbox" name="upload_allow_comment" id="upload_allow_comment" value="1" {if $settings.allow_comment}checked{/if}/></td>
+		<tr>
 			<td></td>
 			<td><input type="submit" name="submit" value="{#PLIGG_Upload_Submit#}" class="btn btn-primary"/></td>
 		</tr>
@@ -234,6 +237,17 @@
 					<option>{#PLIGG_Upload_Nowhere#}</option>
 				{foreach from=$upload_places item=place}
 					<option {if $settings.fileplace==$place}selected{/if}>{$place}</option>
+				{/foreach}
+				</select>
+			</td>
+		</tr>
+		<tr>
+			<td><label><a href="#{#PLIGG_Upload_Comment_Place#}">{#PLIGG_Upload_Comment_Place#}</a>:</label></td>
+			<td>
+				<select name="upload_commentplace" class="span11">
+					<option>{#PLIGG_Upload_Nowhere_Or_Custom#}</option>
+				{foreach from=$comment_places item=place}
+					<option {if $settings.commentplace==$place}selected{/if}>{$place}</option>
 				{/foreach}
 				</select>
 			</td>

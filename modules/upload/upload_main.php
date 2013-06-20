@@ -108,6 +108,8 @@ function upload_showpage(){
 			misc_data_update('upload_maxnumber', sanitize($_REQUEST['upload_maxnumber'], 3));
 			misc_data_update('upload_extensions', sanitize($_REQUEST['upload_extensions'], 3));
 			misc_data_update('upload_fileplace', sanitize($_REQUEST['upload_fileplace'], 3));
+			misc_data_update('upload_allow_comment', sanitize($_REQUEST['upload_allow_comment'], 3));
+			misc_data_update('upload_commentplace', sanitize($_REQUEST['upload_commentplace'], 3));
 
 			header("Location: ".my_pligg_base."/module.php?module=upload");
 			die();
@@ -147,7 +149,7 @@ function upload_edit_link()
 	if ($_POST['upload_delete'])
 	    foreach ($_POST['upload_delete'] as $id)
 	    {
-	    	if ($files = $db->get_results($sql = "SELECT * FROM ".table_prefix."files WHERE (file_id='$id' OR file_orig_id='$id') AND file_user_id='{$current_user->user_id}'"))
+	    	if ($files = $db->get_results($sql = "SELECT * FROM ".table_prefix."files WHERE (file_id='$id' OR file_orig_id='$id') AND file_user_id='{$current_user->user_id}' AND file_comment_id=0"))
 		    foreach ($files as $row)
 		    {
 		    	if ($row->file_size=='orig')
@@ -155,16 +157,23 @@ function upload_edit_link()
 		    	else
 			    @unlink("$thumb_dir/{$row->file_name}");
 		    }
-	    	$db->query("DELETE FROM ".table_prefix."files WHERE (file_id='$id' OR file_orig_id='$id') AND file_user_id='{$current_user->user_id}'"); 
+	    	$db->query("DELETE FROM ".table_prefix."files WHERE (file_id='$id' OR file_orig_id='$id') AND file_user_id='{$current_user->user_id}' AND file_comment_id=0"); 
  	    }
 	upload_save_files();
 }
 
-function upload_do_submit2()
+/**
+ * Set comment ID to last uploads
+ *
+ * @param array $vars (comment => newly created Comment ID)
+ */
+function upload_do_comment_submit($vars)
 {
-	global $db, $current_user;
-	upload_delete(array("link_id" => $_POST['id']));
-        upload_save_files();
+	global $db;
+
+	if ($vars['comment'])
+    	    foreach ($_SESSION['upload_files'] as $number => $file) 
+	    	$db->query($sql="UPDATE ".table_prefix."files SET file_comment_id=$vars[comment] WHERE file_comment_id=-1 AND (file_id=$file[id] OR file_orig_id=$file[id])");
 }
 
 function upload_save_files()
@@ -213,6 +222,7 @@ function upload_save_files()
 						    file_link_id={$linkres->id},
 						    file_real_size='{$_FILES["upload_files"]["size"][$key]}',	
 						    file_fields='".base64_encode(serialize($fields))."',
+						    file_comment_id='".$db->escape($_POST['comment'])."',
 						    file_name='".$db->escape("$name.$ext")."'");
 				$count++;
 				$last_id = $db->insert_id;
@@ -244,6 +254,7 @@ function upload_save_files()
 					    file_user_id={$current_user->user_id},
 					    file_link_id={$linkres->id},
 					    file_fields='".base64_encode(serialize($fields))."',
+					    file_comment_id='".$db->escape($_POST['comment'])."',
 					    file_name='".$db->escape($url)."'");
 			$count++;
 			$last_id = $db->insert_id;
@@ -337,6 +348,7 @@ function generate_thumbs($fname,$link_id,$settings,$orig_id,$only_size='')
 				    file_user_id={$current_user->user_id},
 				    file_link_id=$link_id,
 				    file_ispicture=1,
+				    file_comment_id='".$db->escape($_POST['comment'])."',
 				    file_real_size='".filesize("$thumb_dir/$name")."',
 				    file_name='".$db->escape($name)."'");
     }
@@ -372,7 +384,9 @@ function get_upload_settings()
 		'filesize' => get_misc_data('upload_filesize'), 
 		'maxnumber' => get_misc_data('upload_maxnumber'), 
 		'extensions' => get_misc_data('upload_extensions'), 
-		'fileplace' => get_misc_data('upload_fileplace')
+		'fileplace' => get_misc_data('upload_fileplace'),
+		'commentplace' => get_misc_data('upload_commentplace'),
+		'allow_comment' => get_misc_data('upload_allow_comment')
 		);
 }
 
@@ -388,8 +402,9 @@ function upload_get_file_count($link_id)
     return $row[0];
 }
 
+/*
 // 
-// 
+// not used?
 //
 function upload_get_file_size($link_id)
 {
@@ -399,6 +414,7 @@ function upload_get_file_size($link_id)
     $row = $db->get_row($sql,ARRAY_N);
     return 0+$row[0];
 }
+*/
 
 function upload_track($vars)
 {
@@ -416,7 +432,7 @@ function upload_track($vars)
 	$size = $m[3][$i];
 	if (!$size) $size='orig';
 
-	if ($file = $db->get_row($sql = "SELECT * FROM " . table_prefix . "files where file_link_id='$link_id' AND file_size='$size' AND file_number=$number"))
+	if ($file = $db->get_row($sql = "SELECT * FROM " . table_prefix . "files where file_link_id='$link_id' AND file_size='$size' AND file_number=$number AND file_comment_id=0"))
 	{
 	    if (strpos($file->file_name,'http')===0)
 		$image = "<img src='{$file->file_name}'/>";
@@ -430,7 +446,7 @@ function upload_track($vars)
 	$content = str_replace($m[0][$i],$image,$content);
     }
 
-    $images = $db->get_results($sql = "SELECT * FROM " . table_prefix . "files where file_link_id='$link_id'");
+    $images = $db->get_results($sql = "SELECT * FROM " . table_prefix . "files where file_link_id='$link_id' AND file_comment_id=0");
     if ($images)
 	foreach ($images as $file)
 	{
@@ -447,6 +463,55 @@ function upload_track($vars)
     	    	$vars['smarty']->_vars["image{$file->file_number}_{$file->file_size}"] = $image;
 	}
     $vars['smarty']->_vars['story_content'] = $content;
+}
+
+function upload_comment_track($vars)
+{
+    global $db, $smarty, $dblang, $the_template, $linkres, $current_user;
+
+    $upload_dir = get_misc_data('upload_directory');
+    $thumb_dir  = get_misc_data('upload_thdirectory');
+
+    $content = $vars['comment_text'];
+    $comment_id = $vars['comment_id'];
+    if (preg_match_all('/\{image(\d+)(\_(\d+x\d+))?\}/s', $content, $m))
+    for ($i=0; $i<sizeof($m[1]); $i++)
+    {
+	$number = $m[1][$i];
+	$size = $m[3][$i];
+	if (!$size) $size='orig';
+
+	if ($file = $db->get_row($sql = "SELECT * FROM " . table_prefix . "files where file_comment_id='$comment_id' AND file_size='$size' AND file_number=$number"))
+	{
+	    if (strpos($file->file_name,'http')===0)
+		$image = "<img src='{$file->file_name}'/>";
+	    elseif ($file->file_size=='orig')
+		$image = "<img src='".my_pligg_base."{$upload_dir}/{$file->file_name}'/>";
+	    else
+		$image = "<img src='".my_pligg_base."{$thumb_dir}/{$file->file_name}'/>";
+	}
+	else
+	    $image = '';	
+	$content = str_replace($m[0][$i],$image,$content);
+    }
+
+    $images = $db->get_results($sql = "SELECT * FROM " . table_prefix . "files where file_comment_id='$comment_id'");
+    if ($images)
+	foreach ($images as $file)
+	{
+	    if (strpos($file->file_name,'http')===0)
+		$image = "<img src='{$file->file_name}'/>";
+	    elseif ($file->file_size=='orig')
+		$image = "<img src='".my_pligg_base."{$upload_dir}/{$file->file_name}'/>";
+	    else
+		$image = "<img src='".my_pligg_base."{$thumb_dir}/{$file->file_name}'/>";
+
+	    if ($file->file_size=='orig')
+    	    	$vars['smarty']->_vars["image{$file->file_number}"] = $file->file_ispicture ? $image : '';
+	    else
+    	    	$vars['smarty']->_vars["image{$file->file_number}_{$file->file_size}"] = $image;
+	}
+    $vars['comment_text'] = $content;
 }
 
 function upload_delete($vars)
@@ -469,5 +534,72 @@ function upload_delete($vars)
 		}
 	    $db->query("DELETE FROM ".table_prefix."files WHERE file_link_id='{$vars['link_id']}'"); 
     }
+}
+
+/**
+ * Delete comment attachments
+ *
+ * @param array $vars (comment_id => Comment ID to delete)
+ */
+function upload_comment_delete($vars)
+{
+    global $db, $smarty, $dblang, $the_template, $linkres, $current_user;
+
+    $upload_dir = mnmpath . get_misc_data('upload_directory');
+    $thumb_dir  = mnmpath . get_misc_data('upload_thdirectory');
+
+    // Remove files 
+    if (is_numeric($vars['comment_id']))
+    {
+	    if ($files = $db->get_results($sql = "SELECT * FROM ".table_prefix."files WHERE file_comment_id='{$vars['comment_id']}'"))
+	    	foreach ($files as $row)
+		{
+	    	    if ($row->file_size=='orig')
+			    @unlink("$upload_dir/{$row->file_name}");
+		    else
+			    @unlink("$thumb_dir/{$row->file_name}");
+		}
+	    $db->query("DELETE FROM ".table_prefix."files WHERE file_comment_id='{$vars['comment_id']}'"); 
+    }
+}
+
+function upload_rss_item($vars) {
+	global $db;
+
+	$upload_link = get_misc_data('upload_link');
+	$upload_defsize = get_misc_data('upload_defsize');
+	$alternates = unserialize(base64_decode(get_misc_data('upload_alternates')));
+	$upload_directory = get_misc_data('upload_directory');
+	$upload_thdirectory = get_misc_data('upload_thdirectory');
+	$upload_thumb_format = get_misc_data('upload_thumb_format');
+
+     	$sql = "SELECT *, IF(LEFT(file_name,4)='http',file_name,CONCAT('$upload_directory/',file_name)) AS link_name 
+			FROM " . table_prefix . "files a
+			WHERE a.file_link_id='{$vars['item']->id}' AND a.file_size='orig' AND a.file_comment_id=0 
+			ORDER BY file_number";
+	$images = $db->get_results($sql,ARRAY_A);
+	if($images)
+	    	foreach ($images as $image)
+		    print "<media:content url=\"".my_base_url.my_pligg_base."{$upload_directory}/{$image['file_name']}\" medium=\"image\" />\n";
+}
+
+function upload_comment_rss_item($vars) {
+	global $db;
+
+	$upload_link = get_misc_data('upload_link');
+	$upload_defsize = get_misc_data('upload_defsize');
+	$alternates = unserialize(base64_decode(get_misc_data('upload_alternates')));
+	$upload_directory = get_misc_data('upload_directory');
+	$upload_thdirectory = get_misc_data('upload_thdirectory');
+	$upload_thumb_format = get_misc_data('upload_thumb_format');
+
+     	$sql = "SELECT *, IF(LEFT(file_name,4)='http',file_name,CONCAT('$upload_directory/',file_name)) AS link_name 
+			FROM " . table_prefix . "files a
+			WHERE a.file_comment_id='{$vars['item']->id}' AND a.file_size='orig' 
+			ORDER BY file_number";
+	$images = $db->get_results($sql,ARRAY_A);
+	if($images)
+	    	foreach ($images as $image)
+		    print "<media:content url=\"".my_base_url.my_pligg_base."{$upload_directory}/{$image['file_name']}\" medium=\"image\" />\n";
 }
 ?>

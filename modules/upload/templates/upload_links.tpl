@@ -9,7 +9,7 @@
 	$this->_vars['upload_format'] = get_misc_data('upload_format');
 	$this->_vars['upload_pre_format'] = get_misc_data('upload_pre_format');
 	$this->_vars['upload_post_format'] = get_misc_data('upload_post_format');
-        $sql = "SELECT * FROM " . table_prefix . "files where file_link_id='{$this->_vars['link_id']}' AND file_size='orig' ".(get_misc_data('upload_allow_hide') ? ' AND !file_hide_file' : '');
+        $sql = "SELECT * FROM " . table_prefix . "files where file_link_id='{$this->_vars['link_id']}' AND file_comment_id=0 AND file_size='orig' ".(get_misc_data('upload_allow_hide') ? ' AND !file_hide_file' : '');
 	$images = $db->get_results($sql,ARRAY_A);
 	if($images)
 	{

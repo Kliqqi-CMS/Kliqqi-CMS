@@ -78,6 +78,11 @@ if(is_numeric($requestID)) {
 			echo "	<author>" . $dbcomment->user_login . "</author>\n";
 			echo "	<votes>".$comment->votes."</votes>\n";
 			echo "	<guid isPermaLink='false'>".$comment->id."</guid>\n";
+
+			// module system hook
+			$vars = array('item' => $comment);
+			check_actions('comment_rss_item', $vars);
+
 			echo "</item>\n\n";
  		} 
 	}

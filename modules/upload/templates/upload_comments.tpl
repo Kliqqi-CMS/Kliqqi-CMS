@@ -1,9 +1,9 @@
-{* File upload fields for submit step 2 and edit link form *}
+{* File upload fields for comment form *}
 
 {config_load file=upload_lang_conf}
 
-<h2>{#PLIGG_Upload_Attach#}</h2>
-({$upload_extensions} {#PLIGG_Upload_Extensions_Allowed#})<br /><br />
+<label for="fileInput" class="control-label">{#PLIGG_Upload_Attach#}</label>
+<p class="help-block">({$upload_extensions} {#PLIGG_Upload_Extensions_Allowed#})</p>
 
 <script>
 var uploading = '<fieldset style="border:1px solid #eee;padding:10px;margin-bottom:10px;font-weight:bold;width:450px;"><h2>{#PLIGG_Upload_Uploading#}...</h2></fieldset>';
@@ -25,7 +25,9 @@ var choose_url = '{#PLIGG_Upload_Choose_URL#}';
 	global $db;
 	$upload_dir = mnmpath . get_misc_data('upload_directory');
 	$this->_vars['file'] = '';
-    	$images = $db->get_results($sql = "SELECT * from " . table_prefix . "files where file_link_id='{$this->_vars['submit_id']}' AND file_number='{$this->_vars['number']}' AND file_comment_id=0 ORDER BY file_orig_id",ARRAY_A);
+	if (!$this->_vars['get']['commentid'])
+	    $this->_vars['get']['commentid'] = -1;
+    	$images = $db->get_results($sql = "SELECT * from " . table_prefix . "files where file_link_id='{$this->_vars['link_id']}' AND file_number='{$this->_vars['number']}' AND file_comment_id='{$this->_vars['get']['commentid']}' ORDER BY file_orig_id",ARRAY_A);
     	if($images || $this->_vars['number']>1)
 	    print "style='display:none;'";
 
@@ -55,7 +57,7 @@ var choose_url = '{#PLIGG_Upload_Choose_URL#}';
 	$this->_vars['upload_thdirectory']= get_misc_data('upload_thdirectory');
 	$this->_vars['upload_allow_hide']= get_misc_data('upload_allow_hide');
 	$this->_vars['additional_fields'] = unserialize(base64_decode(get_misc_data('upload_fields')));
-	$fields = $db->get_col($sql = "SELECT file_fields from " . table_prefix . "files where file_link_id='{$this->_vars['submit_id']}' AND file_number='{$this->_vars['number']}' AND file_size='orig' AND file_comment_id=0",ARRAY_A);
+	$fields = $db->get_col($sql = "SELECT file_fields from " . table_prefix . "files where file_link_id='{$this->_vars['link_id']}' AND file_number='{$this->_vars['number']}' AND file_size='orig' AND file_comment_id='{$this->_vars['get']['commentid']}'",ARRAY_A);
     	$values = unserialize(base64_decode($fields[0]));
 
     {/php}
@@ -63,8 +65,10 @@ var choose_url = '{#PLIGG_Upload_Choose_URL#}';
 	<fieldset style="border:1px solid #eee;padding:10px;margin-bottom:10px;font-weight:bold;width:450px;">
     	<form method=post enctype="multipart/form-data" action='{$my_pligg_base}/modules/upload/upload.php'  target='upload_iframe_{$number}'>
 		
-		<input type='hidden' name='id' value='{$submit_id}'>
+	    <input type='hidden' name='id' value='{$link_id}'>
     	    <input type='hidden' name='number' value='{$number}'>
+    	    <input type='hidden' name='comment' value='{$get.commentid}'>
+
     	    {if strstr($upload_external,'file')}
     		{#PLIGG_Upload_Upload#}: <input style='margin-bottom:5px' size='10' type='file' name='upload_files[]' id='file_{$number}' !onchange='submitUploadForm(this.form)'>
     		{if strstr($upload_external,'url')}
@@ -82,6 +86,7 @@ var choose_url = '{#PLIGG_Upload_Choose_URL#}';
 		
     	</form>
     </div>
+    {assign var='submit_id' value=$link_id}
     <div id='thumb_{$number}'>{if $images || $file}{include file=$upload_tpl_path."upload_ajax.tpl"}{/if}</div>
     <iframe name="upload_iframe_{$number}" id="upload_iframe_{$number}" style='display:none;'></iframe> 
     </fieldset>
@@ -89,6 +94,6 @@ var choose_url = '{#PLIGG_Upload_Choose_URL#}';
 <script>
 var upload_fields = {$upload_fields};
 </script>
-<button class="btn" onclick='if (upload_fields < {$upload_maxnumber}) add_upload_field({$upload_maxnumber}); if (++upload_fields >= {$upload_maxnumber}) this.disabled=true;' {if $upload_fields>=$upload_maxnumber}disabled{/if}>{#PLIGG_Upload_Add_File#}</button>
+<button class="btn" onclick='if (upload_fields < {$upload_maxnumber}) add_upload_field({$upload_maxnumber}); if (++upload_fields >= {$upload_maxnumber}) this.disabled=true; return false;' {if $upload_fields>=$upload_maxnumber}disabled{/if}>{#PLIGG_Upload_Add_File#}</button>
 <br /><br />
 {config_load file=upload_pligg_lang_conf}

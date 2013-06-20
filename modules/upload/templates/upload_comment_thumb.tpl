@@ -16,20 +16,20 @@
 	     $sql = "SELECT a.*, b.file_fields AS `fields`, '' AS link_name 
 				FROM " . table_prefix . "files a 
 				LEFT JOIN " . table_prefix . "files b ON a.file_orig_id=b.file_id
-				WHERE a.file_link_id='{$this->_vars['link_id']}' AND a.file_size='$upload_defsize' AND a.file_comment_id=0 $hide_sql
+				WHERE a.file_size='$upload_defsize' AND a.file_comment_id='{$this->_vars['comment_id']}' $hide_sql
 				ORDER BY file_number";
 	elseif ($upload_link=='orig')
 	     $sql = "SELECT a.*, b.file_fields AS `fields`, IF(LEFT(b.file_name,4)='http',b.file_name,CONCAT('$upload_directory/',b.file_name)) AS link_name 
 				FROM " . table_prefix . "files a 
 				LEFT JOIN " . table_prefix . "files b ON a.file_orig_id=b.file_id 
-				WHERE a.file_link_id='{$this->_vars['link_id']}' AND a.file_size='$upload_defsize' AND a.file_comment_id=0 $hide_sql
+				WHERE a.file_size='$upload_defsize' AND a.file_comment_id='{$this->_vars['comment_id']}' $hide_sql
 				ORDER BY file_number";
 	else
 	     $sql = "SELECT a.*, c.file_fields AS `fields`, CONCAT('$upload_thdirectory/',b.file_name) AS link_name 
 				FROM " . table_prefix . "files a 
 				LEFT JOIN " . table_prefix . "files b ON a.file_orig_id=b.file_orig_id AND b.file_size='$upload_link' 
 				LEFT JOIN " . table_prefix . "files c ON a.file_orig_id=c.file_id 
-				WHERE a.file_link_id='{$this->_vars['link_id']}' AND a.file_size='$upload_defsize' AND a.file_comment_id=0 $hide_sql
+				WHERE a.file_size='$upload_defsize' AND a.file_comment_id='{$this->_vars['comment_id']}' $hide_sql
 				ORDER BY file_number";
 	$images = $db->get_results($sql,ARRAY_A);
 	if($images)

@@ -46,6 +46,11 @@ $upload_places = array(
 );
 
 
+$comment_places = array(
+"tpl_pligg_story_comments_single_start",
+"tpl_pligg_story_comments_single_end"
+);
+
 // don't touch anything past this line.
 if(isset($main_smarty) && is_object($main_smarty)){
 	$main_smarty->assign('upload_path', upload_path);
@@ -53,6 +58,7 @@ if(isset($main_smarty) && is_object($main_smarty)){
 	$main_smarty->assign('upload_lang_conf', upload_lang_conf);
 	$main_smarty->assign('upload_tpl_path', upload_tpl_path);
 	$main_smarty->assign('upload_places', $upload_places);
+	$main_smarty->assign('comment_places', $comment_places);
 	$main_smarty->assign('upload_maxnumber', get_misc_data('upload_maxnumber'));
 	$main_smarty->assign('upload_filesize', get_misc_data('upload_filesize'));
 	$main_smarty->assign('upload_extensions', get_misc_data('upload_extensions'));

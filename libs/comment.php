@@ -165,7 +165,7 @@ class Comment {
 		$smarty->assign('comment_counter', $comment_counter);
 
 		$text = save_text_to_html($this->content);
-		$vars = array('comment_text' => $text, 'smarty' => $smarty);
+		$vars = array('comment_text' => $text, 'comment_id' => $this->id, 'smarty' => $smarty);
 		check_actions('show_comment_content', $vars); 
 		$smarty->assign('comment_content', $vars['comment_text']); 
 
