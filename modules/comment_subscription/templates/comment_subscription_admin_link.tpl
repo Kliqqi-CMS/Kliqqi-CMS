@@ -1,1 +1,0 @@
-<li{if $modulename eq "comment_subscription"} class="active"{/if}><a href="{$my_pligg_base}/module.php?module=comment_subscription">Comment Subscription Module</a></li>
