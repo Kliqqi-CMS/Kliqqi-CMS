@@ -65,9 +65,9 @@
 				{/if}
 			</p>
 			{if $comment_votes gte 0} 
-				<p id="comment_content-{$comment_id}">{$comment_content}</p> 
+				<p class="comment-content" id="comment_content-{$comment_id}">{$comment_content}</p> 
 			{else}
-				<p id="comment_content-{$comment_id}" style="display:none">{$comment_content}</p>
+				<p class="comment-content" id="comment_content-{$comment_id}" style="display:none">{$comment_content}</p>
 			{/if}
 		</div>
 	</div>
