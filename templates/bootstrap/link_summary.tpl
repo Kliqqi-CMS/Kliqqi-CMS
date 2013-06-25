@@ -172,7 +172,7 @@
 				*}
 				<div class="clearboth"></div> 
 			</span>
-			{checkActionsTpl location="tpl_pligg_story_body_end"}
+			{if $pagename eq "story"}{checkActionsTpl location="tpl_pligg_story_body_end_full"}{else}{checkActionsTpl location="tpl_pligg_story_body_end"}{/if}
 		{/if}
 	</div><!-- /.storycontent -->
 	<div class="storyfooter">

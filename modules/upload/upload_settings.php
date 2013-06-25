@@ -33,6 +33,7 @@ $upload_places = array(
 "tpl_pligg_story_body_start",
 "tpl_pligg_story_body_start_full",
 "tpl_pligg_story_body_end",
+"tpl_pligg_story_body_end_full",
 "tpl_pligg_story_tools_start",
 "tpl_pligg_story_tools_end",
 "tpl_link_summary_end",
