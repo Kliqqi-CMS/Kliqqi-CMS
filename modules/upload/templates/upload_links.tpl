@@ -1,4 +1,4 @@
-   {checkActionsTpl location="tpl_pligg_module_upload_start"}
+{checkActionsTpl location="tpl_pligg_module_upload_start"}
 {config_load file=upload_lang_conf}
 
 {php}
@@ -54,7 +54,6 @@
 		<a href='{$my_pligg_base}{$upload_directory}/{$image.file_name}'>{$image.file_name}</a>
 	{/if}
     {/if}
-    <br>
 {/foreach}
 {$upload_post_format}
 {/if}
