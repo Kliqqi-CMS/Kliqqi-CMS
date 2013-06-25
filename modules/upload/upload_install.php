@@ -16,7 +16,6 @@
 	  `file_size` varchar(20) default NULL,
 	  `file_user_id` int(11) NOT NULL,
 	  `file_link_id` int(11) NOT NULL,
-	  `file_comment_id` int(11) NOT NULL,
 	  `file_orig_id` int(11) NOT NULL,
 	  `file_real_size` int(11) NOT NULL,
 	  `file_number` tinyint(4) NOT NULL,
@@ -29,6 +28,7 @@
 	$module_info['db_add_field'][]=array(table_prefix . 'files', 'file_fields', 'TEXT',  '', '', 0, '');
 	$module_info['db_add_field'][]=array(table_prefix . 'files', 'file_hide_thumb', 'TINYINT',  1, "UNSIGNED", 0, '0');
 	$module_info['db_add_field'][]=array(table_prefix . 'files', 'file_hide_file', 'TINYINT',  1, "UNSIGNED", 0, '0');
+	$module_info['db_add_field'][]=array(table_prefix . 'files', 'file_comment_id', 'INT',  11, "UNSIGNED", 0, '0');
 
 	if (get_misc_data('upload_thumb')=='')
 	{
