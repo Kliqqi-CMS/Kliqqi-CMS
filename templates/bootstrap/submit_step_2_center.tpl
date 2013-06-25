@@ -223,6 +223,7 @@
 		</div>
 		{* END STORY PREVIEW *}
 	</form>
+	{checkActionsTpl location="tpl_pligg_submit_step2_after_form"}
 </div>
 {literal}
 	<script type="text/javascript">

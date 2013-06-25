@@ -130,4 +130,5 @@
 	<br />
 	<input type="submit" value="{#PLIGG_Visual_Submit2_Continue#}" class="btn btn-primary" />
 </form>
+{checkActionsTpl location="tpl_pligg_submit_step2_after_form"}
 <!--/edit_submission_center.tpl -->

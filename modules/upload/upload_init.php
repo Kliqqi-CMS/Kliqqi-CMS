@@ -50,7 +50,7 @@ if(defined('mnminclude')){
 	if( do_we_load_module() ) {		
 		include_once(mnmmodules . 'upload/upload_main.php');
         
-        	module_add_action_tpl('tpl_pligg_submit_step2_start', upload_tpl_path . '/upload_files.tpl');
+        	module_add_action_tpl('tpl_pligg_submit_step2_after_form', upload_tpl_path . '/upload_files.tpl');
 
 	        $settings = get_upload_settings();
 		if ($settings['allow_comment']) {
@@ -66,7 +66,7 @@ if(defined('mnminclude')){
 		module_add_action('edit_link_hook', 'upload_edit_link','');        		        
 		include_once(mnmmodules . 'upload/upload_main.php');
         
-        	module_add_action_tpl('tpl_pligg_submit_step2_start', upload_tpl_path . '/upload_files.tpl');
+        	module_add_action_tpl('tpl_pligg_submit_step2_after_form', upload_tpl_path . '/upload_files.tpl');
 //        	module_add_action_tpl('submit_step_2_pre_extrafields', upload_tpl_path . '/edit_files.tpl');
 	}
 
