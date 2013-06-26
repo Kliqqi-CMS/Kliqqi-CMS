@@ -2,7 +2,6 @@
 ***** Published Pages Template ******
 *************************************}
 <!-- index_center.tpl -->
-{$link_summary_output}
 
 {if !$link_summary_output && $pagename == 'index' && count($templatelite.get) == 0}
 	{* Welcome message for new installations *}
@@ -12,6 +11,8 @@
 		<p><a href="submit.php" class="btn btn-primary">Submit Your First Entry</a></p>
 	</div>
 {/if}
+
+{$link_summary_output}
 
 {checkActionsTpl location="tpl_pligg_pagination_start"}
 {$link_pagination}
