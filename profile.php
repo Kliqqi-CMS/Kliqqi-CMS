@@ -31,7 +31,8 @@ if ($_GET['login'] && $canIhaveAccess)
 	$login=$_GET['login'];
 elseif ($current_user->user_id > 0 && $current_user->authenticated) {
 	$login = $current_user->user_login;
-	header("Location: $my_base_url$my_pligg_base/user/$login/edit/");
+	if ($_GET['avatar'] != 'edit')
+	    header("Location: $my_base_url$my_pligg_base/user/$login/edit/");
 } else {
 	//header('Location: '.$my_base_url.$my_pligg_base);
 	//die;
@@ -74,6 +75,9 @@ $main_smarty->assign('user_rss', getmyurl('rssuser', $login));
 $main_smarty->assign('URL_Profile2', getmyurl('user2', $login, 'edit'));
 $main_smarty->assign('form_action', getmyurl('profile')); 
 $main_smarty->assign('user_url_member_groups', getmyurl('user2', $login, 'member_groups	'));
+
+$main_smarty->assign('user_followers', $user->getFollowersCount());
+$main_smarty->assign('user_following', $user->getFollowingCount());
 
 	// uploading avatar
 	if(isset($_POST["avatar"]) && sanitize($_POST["avatar"], 3) == "uploaded" && Enable_User_Upload_Avatar == true){

@@ -32,7 +32,10 @@ $truelogin = isset($_COOKIE['mnm_user'] ) ? sanitize($_COOKIE['mnm_user'] , 3) :
 if($login === ''){
 	if ($current_user->user_id > 0) {
 		$login = $current_user->user_login;
-		header("Location: $my_base_url$my_pligg_base/user/$login/");
+		if (urlmethod == 2)
+		    header("Location: $my_base_url$my_pligg_base/user/$login/");
+		else
+		    header("Location: ?login=$login");
 	} else {
 		header('Location: '.$my_base_url.$my_pligg_base);
 	}
