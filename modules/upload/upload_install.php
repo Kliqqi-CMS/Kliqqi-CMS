@@ -28,7 +28,7 @@
 	$module_info['db_add_field'][]=array(table_prefix . 'files', 'file_fields', 'TEXT',  '', '', 0, '');
 	$module_info['db_add_field'][]=array(table_prefix . 'files', 'file_hide_thumb', 'TINYINT',  1, "UNSIGNED", 0, '0');
 	$module_info['db_add_field'][]=array(table_prefix . 'files', 'file_hide_file', 'TINYINT',  1, "UNSIGNED", 0, '0');
-	$module_info['db_add_field'][]=array(table_prefix . 'files', 'file_comment_id', 'INT',  11, "UNSIGNED", 0, '0');
+	$module_info['db_add_field'][]=array(table_prefix . 'files', 'file_comment_id', 'INT',  11, '', 0, '0');
 
 	if (get_misc_data('upload_thumb')=='')
 	{
