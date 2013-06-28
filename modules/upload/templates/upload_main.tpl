@@ -1,6 +1,6 @@
 {config_load file=upload_lang_conf}
 
-<fieldset><legend> {#PLIGG_Upload#}</legend>
+<legend> {#PLIGG_Upload#}</legend>
 {#PLIGG_Upload_Instructions#}
 <br />
 
@@ -131,8 +131,7 @@
 				<td><label><a href="#{#PLIGG_Upload_Thumbnail_Place#}">{#PLIGG_Upload_Thumbnail_Place#}</a>:</label></td>
 				<td>
 					<select name="upload_place">
-						<option>{#PLIGG_Upload_Nowhere#}</option>
-						<option>upload_story_thumb_custom</option>
+						<option {if $settings.place == 'upload_story_thumb_custom'}selected{/if}>upload_story_thumb_custom</option>
 						{foreach from=$upload_places item=place}
 							<option {if $settings.place==$place}selected{/if}>{$place}</option>
 						{/foreach}
@@ -143,8 +142,7 @@
 				<td><label><a href="#{#PLIGG_Upload_Comment_Place#}">{#PLIGG_Upload_Comment_Place#}</a>:</label></td>
 				<td>
 					<select name="upload_commentplace">
-						<option>{#PLIGG_Upload_Nowhere#}</option>
-						<option>upload_comment_thumb_custom</option>
+						<option {if $settings.commentplace == 'upload_comment_thumb_custom'}selected{/if}>upload_comment_thumb_custom</option>
 					{foreach from=$comment_places item=place}
 						<option {if $settings.commentplace==$place}selected{/if}>{$place}</option>
 					{/foreach}
@@ -182,8 +180,7 @@
 				<td><label><a href="#{#PLIGG_Upload_Files_Place#}">{#PLIGG_Upload_Files_Place#}</a>:</label></td>
 				<td>
 					<select name="upload_fileplace" class="span11">
-						<option>{#PLIGG_Upload_Nowhere#}</option>
-						<option>upload_story_list_custom</option>
+						<option {if $settings.fileplace == 'upload_story_list_custom'}selected{/if}>upload_story_list_custom</option>
 						{foreach from=$upload_places item=place}
 							<option {if $settings.fileplace==$place}selected{/if}>{$place}</option>
 						{/foreach}
@@ -194,8 +191,7 @@
 				<td><label><a href="#{#PLIGG_Upload_Comment_File_List#}">{#PLIGG_Upload_Comment_File_List#}</a>:</label></td>
 				<td>
 					<select name="upload_commentfilelist" class="span11">
-						<option>{#PLIGG_Upload_Nowhere#}</option>
-						<option>upload_comment_list_custom</option>
+						<option {if $settings.commentfilelist == 'upload_comment_list_custom'}selected{/if}>upload_comment_list_custom</option>
 						{foreach from=$comment_places item=place}
 							<option {if $settings.commentfilelist==$place}selected{/if}>{$place}</option>
 						{/foreach}
@@ -292,31 +288,33 @@
 
 <legend>{#PLIGG_Upload_Field_Definitions#}</legend>
 <p>{#PLIGG_Upload_Field_Definitions_Desc#}</p>
-<p><strong><a name="{#PLIGG_Upload_Generate_Thumbnails#}">{#PLIGG_Upload_Generate_Thumbnails#}</a></strong>: {#PLIGG_Upload_Generate_Thumbnails_Definition#}</p>
-<p><strong><a name="{#PLIGG_Upload_Thumbnail_Sizes#}">{#PLIGG_Upload_Thumbnail_Sizes#}</a></strong>: {#PLIGG_Upload_Thumbnail_Sizes_Definition#}</p>
-<p><strong><a name="{#PLIGG_Upload_Add_Size#}">{#PLIGG_Upload_Add_Size#}</a></strong>: {#PLIGG_Upload_Add_Size_Definition#}</p>
-<p><strong><a name="{#PLIGG_Upload_Quality#}">{#PLIGG_Upload_Quality#}</a></strong>: {#PLIGG_Upload_Quality_Definition#}</p>
-<p><strong><a name="{#PLIGG_Upload_Thumbnail_Place#}">{#PLIGG_Upload_Thumbnail_Place#}</a></strong>: {#PLIGG_Upload_Thumbnail_Place_Definition#}</p>
-<p><strong><a name="{#PLIGG_Upload_Thumbnail_Defsize#}">{#PLIGG_Upload_Thumbnail_Defsize#}</a></strong>: {#PLIGG_Upload_Thumbnail_Defsize_Definition#}</p>
-<p><strong><a name="{#PLIGG_Upload_Allow_External#}">{#PLIGG_Upload_Allow_External#}</a></strong>: {#PLIGG_Upload_Allow_External_Definition#}</p>
-<p><strong><a name="{#PLIGG_Upload_Thumbnail_Link#}">{#PLIGG_Upload_Thumbnail_Link#}</a></strong>: {#PLIGG_Upload_Thumbnail_Link_Definition#}</p>
-<p><strong><a name="{#PLIGG_Upload_Thumbnail_Fields#}">{#PLIGG_Upload_Thumbnail_Fields#}</a></strong>: {#PLIGG_Upload_Thumbnail_Fields_Definition#}</p>
-<p><strong><a name="{#PLIGG_Upload_Add_Field#}">{#PLIGG_Upload_Add_Field#}</a></strong>: {#PLIGG_Upload_Add_Field_Definition#}</p>
-<p><strong><a name="{#PLIGG_Upload_Pre_Format#}">{#PLIGG_Upload_Pre_Format#}</a></strong>: {#PLIGG_Upload_Pre_Format_Definition#}</p>
-<p><strong><a name="{#PLIGG_Upload_Format#}">{#PLIGG_Upload_Format#}</a></strong>: {#PLIGG_Upload_Format_Definition#}</p>
-<p><strong><a name="{#PLIGG_Upload_Post_Format#}">{#PLIGG_Upload_Post_Format#}</a></strong>: {#PLIGG_Upload_Post_Format_Definition#}</p>
-<p><strong><a name="{#PLIGG_Upload_Pre_Thumbnail_Format#}">{#PLIGG_Upload_Pre_Thumbnail_Format#}</a></strong>: {#PLIGG_Upload_Pre_Thumbnail_Format_Definition#}</p>
-<p><strong><a name="{#PLIGG_Upload_Thumbnail_Format#}">{#PLIGG_Upload_Thumbnail_Format#}</a></strong>: {#PLIGG_Upload_Thumbnail_Format_Definition#}</p>
-<p><strong><a name="{#PLIGG_Upload_Post_Thumbnail_Format#}">{#PLIGG_Upload_Post_Thumbnail_Format#}</a></strong>: {#PLIGG_Upload_Post_Thumbnail_Format_Definition#}</p>
-<p><strong><a name="{#PLIGG_Upload_Allow_Hiding#}">{#PLIGG_Upload_Allow_Hiding#}</a></strong>: {#PLIGG_Upload_Allow_Hiding_Definition#}</p>
+
 <p><strong><a name="{#PLIGG_Upload_Storage_Directory#}">{#PLIGG_Upload_Storage_Directory#}</a></strong>: {#PLIGG_Upload_Storage_Directory_Definition#}</p>
-<p><strong><a name="{#PLIGG_Upload_Thumbnail_Directory#}">{#PLIGG_Upload_Thumbnail_Directory#}</a></strong>: {#PLIGG_Upload_Thumbnail_Directory_Definition#}</p>
 <p><strong><a name="{#PLIGG_Upload_File_Size#}">{#PLIGG_Upload_File_Size#}</a></strong>: {#PLIGG_Upload_File_Size_Definition#}</p>
 <p><strong><a name="{#PLIGG_Upload_Max_Number#}">{#PLIGG_Upload_Max_Number#}</a></strong>: {#PLIGG_Upload_Max_Number_Definition#}</p>
 <p><strong><a name="{#PLIGG_Upload_File_Extensions#}">{#PLIGG_Upload_File_Extensions#}</a></strong>: {#PLIGG_Upload_File_Extensions_Definition#}</p>
+<p><strong><a name="{#PLIGG_Upload_Allow_External#}">{#PLIGG_Upload_Allow_External#}</a></strong>: {#PLIGG_Upload_Allow_External_Definition#}</p>
+<p><strong><a name="{#PLIGG_Upload_Allow_Hiding#}">{#PLIGG_Upload_Allow_Hiding#}</a></strong>: {#PLIGG_Upload_Allow_Hiding_Definition#}</p>
+<p><strong><a name="{#PLIGG_Upload_Allow_Comment_Attachments#}">{#PLIGG_Upload_Allow_Comment_Attachments#}</a></strong>: {#PLIGG_Upload_Allow_Comment_Definition#}</p>
+
+<p {if !$settings.thumb}style="display:none"{/if}><strong><a name="{#PLIGG_Upload_Generate_Thumbnails#}">{#PLIGG_Upload_Generate_Thumbnails#}</a></strong>: {#PLIGG_Upload_Generate_Thumbnails_Definition#}</p>
+<p {if !$settings.thumb}style="display:none"{/if}><strong><a name="{#PLIGG_Upload_Thumbnail_Directory#}">{#PLIGG_Upload_Thumbnail_Directory#}</a></strong>: {#PLIGG_Upload_Thumbnail_Directory_Definition#}</p>
+<p {if !$settings.thumb}style="display:none"{/if}><strong><a name="{#PLIGG_Upload_Quality#}">{#PLIGG_Upload_Quality#}</a></strong>: {#PLIGG_Upload_Quality_Definition#}</p>
+<p {if !$settings.thumb}style="display:none"{/if}><strong><a name="{#PLIGG_Upload_Thumbnail_Defsize#}">{#PLIGG_Upload_Thumbnail_Defsize#}</a></strong>: {#PLIGG_Upload_Thumbnail_Defsize_Definition#}</p>
+<p {if !$settings.thumb}style="display:none"{/if}><strong><a name="{#PLIGG_Upload_Add_Size#}">{#PLIGG_Upload_Add_Size#}</a></strong>: {#PLIGG_Upload_Add_Size_Definition#}</p>
+<p {if !$settings.thumb}style="display:none"{/if}><strong><a name="{#PLIGG_Upload_Thumbnail_Link#}">{#PLIGG_Upload_Thumbnail_Link#}</a></strong>: {#PLIGG_Upload_Thumbnail_Link_Definition#}</p>
+<p {if !$settings.thumb}style="display:none"{/if}><strong><a name="{#PLIGG_Upload_Pre_Thumbnail_Format#}">{#PLIGG_Upload_Pre_Thumbnail_Format#}</a></strong>: {#PLIGG_Upload_Pre_Thumbnail_Format_Definition#}</p>
+<p {if !$settings.thumb}style="display:none"{/if}><strong><a name="{#PLIGG_Upload_Thumbnail_Format#}">{#PLIGG_Upload_Thumbnail_Format#}</a></strong>: {#PLIGG_Upload_Thumbnail_Format_Definition#}</p>
+<p {if !$settings.thumb}style="display:none"{/if}><strong><a name="{#PLIGG_Upload_Post_Thumbnail_Format#}">{#PLIGG_Upload_Post_Thumbnail_Format#}</a></strong>: {#PLIGG_Upload_Post_Thumbnail_Format_Definition#}</p>
+<p {if !$settings.thumb}style="display:none"{/if}><strong><a name="{#PLIGG_Upload_Thumbnail_Place#}">{#PLIGG_Upload_Thumbnail_Place#}</a></strong>: {#PLIGG_Upload_Thumbnail_Place_Definition#}</p>
+<p {if !$settings.thumb}style="display:none"{/if}><strong><a name="{#PLIGG_Upload_Comment_Place#}">{#PLIGG_Upload_Comment_Place#}</a></strong>: {#PLIGG_Upload_Comment_Place_Definition#}</p>
+<p><strong><a name="{#PLIGG_Upload_Pre_Format#}">{#PLIGG_Upload_Pre_Format#}</a></strong>: {#PLIGG_Upload_Pre_Format_Definition#}</p>
+<p><strong><a name="{#PLIGG_Upload_Format#}">{#PLIGG_Upload_Format#}</a></strong>: {#PLIGG_Upload_Format_Definition#}</p>
+<p><strong><a name="{#PLIGG_Upload_Post_Format#}">{#PLIGG_Upload_Post_Format#}</a></strong>: {#PLIGG_Upload_Post_Format_Definition#}</p>
 <p><strong><a name="{#PLIGG_Upload_Files_Place#}">{#PLIGG_Upload_Files_Place#}</a></strong>: {#PLIGG_Upload_Files_Place_Definition#}</p>
-
-</fieldset>
-
+<p><strong><a name="{#PLIGG_Upload_Comment_File_List#}">{#PLIGG_Upload_Comment_File_List#}</a></strong>: {#PLIGG_Upload_Comment_File_List_Definition#}</p>
+<p {if !$settings.thumb}style="display:none"{/if}><strong><a name="{#PLIGG_Upload_Thumbnail_Sizes#}">{#PLIGG_Upload_Thumbnail_Sizes#}</a></strong>: {#PLIGG_Upload_Thumbnail_Sizes_Definition#}</p>
+<p {if !$settings.thumb}style="display:none"{/if}><strong><a name="{#PLIGG_Upload_Thumbnail_Fields#}">{#PLIGG_Upload_Thumbnail_Fields#}</a></strong>: {#PLIGG_Upload_Thumbnail_Fields_Definition#}</p>
+<p><strong><a name="{#PLIGG_Upload_Add_Field#}">{#PLIGG_Upload_Add_Field#}</a></strong>: {#PLIGG_Upload_Add_Field_Definition#}</p>
 
 {config_load file=upload_pligg_lang_conf}
