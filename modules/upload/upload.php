@@ -42,7 +42,7 @@ if ($_POST['id'])
 	{	
 	    if ($id > 0)
 	    {
-	    	$_SESSION['upload_files'][$_POST['number']] = array('id' => $id);
+	    	$_SESSION['upload_files'][$_POST['number']] = array('id' => $id, 'comment' => $_POST[comment]);
 	    	$db->query("UPDATE ".table_prefix."files SET file_number='{$_POST['number']}' WHERE file_id='$id' OR file_orig_id='$id'");
 	    	print "File uploaded successfully";
 	    }

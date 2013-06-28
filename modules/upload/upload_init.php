@@ -41,8 +41,8 @@ if(defined('mnminclude')){
 		if ($settings['allow_comment']) {
 		    module_add_action('show_comment_content', 'upload_comment_track', '');
 
-#		$place = get_misc_data('upload_commentplace');		
         	    module_add_action_tpl($settings['commentplace'], upload_tpl_path . '/upload_comment_thumb.tpl');
+        	    module_add_action_tpl($settings['commentfilelist'], upload_tpl_path . '/upload_links.tpl');
 		}
 	}
 

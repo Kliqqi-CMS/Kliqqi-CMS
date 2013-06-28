@@ -242,6 +242,17 @@
 			</td>
 		</tr>
 		<tr>
+			<td><label><a href="#{#PLIGG_Upload_Comment_File_List#}">{#PLIGG_Upload_Comment_File_List#}</a>:</label></td>
+			<td>
+				<select name="upload_commentfilelist" class="span11">
+					<option>{#PLIGG_Upload_Nowhere#}</option>
+				{foreach from=$comment_places item=place}
+					<option {if $settings.commentfilelist==$place}selected{/if}>{$place}</option>
+				{/foreach}
+				</select>
+			</td>
+		</tr>
+		<tr>
 			<td><label><a href="#{#PLIGG_Upload_Comment_Place#}">{#PLIGG_Upload_Comment_Place#}</a>:</label></td>
 			<td>
 				<select name="upload_commentplace" class="span11">

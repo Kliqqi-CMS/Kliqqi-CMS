@@ -110,6 +110,7 @@ function upload_showpage(){
 			misc_data_update('upload_fileplace', sanitize($_REQUEST['upload_fileplace'], 3));
 			misc_data_update('upload_allow_comment', sanitize($_REQUEST['upload_allow_comment'], 3));
 			misc_data_update('upload_commentplace', sanitize($_REQUEST['upload_commentplace'], 3));
+			misc_data_update('upload_cfilelist', sanitize($_REQUEST['upload_commentfilelist'], 3));
 
 			header("Location: ".my_pligg_base."/module.php?module=upload");
 			die();
@@ -173,7 +174,10 @@ function upload_do_comment_submit($vars)
 
 	if ($vars['comment'])
     	    foreach ($_SESSION['upload_files'] as $number => $file) 
-	    	$db->query($sql="UPDATE ".table_prefix."files SET file_comment_id=$vars[comment] WHERE file_comment_id=-1 AND (file_id=$file[id] OR file_orig_id=$file[id])");
+		if ($file['comment']) {
+	    	    $db->query("UPDATE ".table_prefix."files SET file_comment_id=$vars[comment] WHERE file_comment_id=-1 AND (file_id=$file[id] OR file_orig_id=$file[id])");
+    		    unset ($_SESSION['upload_files'][$number]);
+	    	}
 }
 
 function upload_save_files()
@@ -183,7 +187,7 @@ function upload_save_files()
 	$settings = get_upload_settings();
 	$upload_dir = mnmpath . $settings['directory'];
 	$last_id = $count = 0;
-	$extensions = split('[ ,.]+',$settings['extensions']);
+	$extensions = preg_split('/[ ,.]+/',$settings['extensions']);
 
 	// Save additional fields
 	$fields = array();
@@ -307,7 +311,7 @@ function generate_thumbs($fname,$link_id,$settings,$orig_id,$only_size='')
     foreach ($settings['sizes'] as $size)
     {
 	if (!strstr($size,'x') || ($only_size && $only_size!=$size)) continue;
-	list($maxw,$maxh) = split('[x]',$size);
+	list($maxw,$maxh) = explode('x',$size);
 	if ($maxw <= 0 || $maxh <= 0) continue;
 
 	// Thumbnail file name
@@ -386,6 +390,7 @@ function get_upload_settings()
 		'extensions' => get_misc_data('upload_extensions'), 
 		'fileplace' => get_misc_data('upload_fileplace'),
 		'commentplace' => get_misc_data('upload_commentplace'),
+		'commentfilelist' => get_misc_data('upload_cfilelist'),
 		'allow_comment' => get_misc_data('upload_allow_comment')
 		);
 }
