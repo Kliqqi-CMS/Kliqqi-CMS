@@ -25,7 +25,8 @@
 	}
 {/php}                                                          
 
-{if sizeof($images)}<h3>{#PLIGG_Upload_Attached#}</h3>
+{if sizeof($images)}
+	<h3>{#PLIGG_Upload_Attached#}</h3>
 	{$upload_pre_format}
 	{foreach from=$images item=image}
 	    {if $image.file_ext=='txt'}<!-- Text file -->

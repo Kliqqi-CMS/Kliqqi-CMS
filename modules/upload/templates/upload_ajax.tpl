@@ -4,7 +4,7 @@
 {config_load file='../lang.conf'*}
 {*#PLIGG_Upload_Success#*}
 
-<fieldset style="border:1px solid #eee;padding:10px;margin-bottom:10px;font-weight:bold;width:450px;">
+<fieldset style="border:1px solid #eee;padding:10px;margin-bottom:10px;">
 {$file}
 <table>
 {foreach from=$images item=image}
@@ -23,29 +23,30 @@
 		{/if}
 		</td>
 	</tr>
+	{*
 	<tr>
-		{*
 		<td>
-		{$image.file_size}
+			{$image.file_size}
 		</td>
-		*}
 		<td>
-		<span style="font-weight:normal;">{#PLIGG_Upload_Code_Instructions#}</span><br />
-		<input type="text" style="margin:4px 0;padding:3px 5px 3px 5px;" value="{literal}{image{/literal}{$number}{if $image.file_size!='orig'}_{$image.file_size}{/if}{literal}}{/literal}" />
-		<br />
+			<span style="font-weight:normal;">{#PLIGG_Upload_Code_Instructions#}</span><br />
+			<input type="text" style="margin:4px 0;padding:3px 5px 3px 5px;" value="{literal}{image{/literal}{$number}{if $image.file_size!='orig'}_{$image.file_size}{/if}{literal}}{/literal}" />
+			<br />
 		</td>
 	</tr>
+	*}
 {php}
     }
 {/php}
 {/foreach}
 </table>
 
-<input type='button' value='Delete' onclick='deleteImage({$submit_id},{$number});'><br>
+<input type='button' value='Delete' onclick='deleteImage({$submit_id},{$number});'>
 {if $upload_allow_hide}
+	<br />
     {if $ispicture}
-	<input type='checkbox' onclick='switchImage({$submit_id},{$number},"thumb");' {if $hide_thumb}checked{/if}> {#PLIGG_Upload_Off_Thumb#}<br>
+		<input type='checkbox' onclick='switchImage({$submit_id},{$number},"thumb");' {if $hide_thumb}checked{/if}> {#PLIGG_Upload_Off_Thumb#}<br>
     {/if}
-<input type='checkbox' onclick='switchImage({$submit_id},{$number},"file");'  {if $hide_file}checked{/if}> {#PLIGG_Upload_Off_File#}
+	<input type='checkbox' onclick='switchImage({$submit_id},{$number},"file");'  {if $hide_file}checked{/if}> {#PLIGG_Upload_Off_File#}
 {/if}
 </fieldset>

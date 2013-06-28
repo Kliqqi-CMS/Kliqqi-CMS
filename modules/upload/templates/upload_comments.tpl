@@ -3,11 +3,11 @@
 {config_load file=upload_lang_conf}
 
 <label for="fileInput" class="control-label">{#PLIGG_Upload_Attach#}</label>
-<p class="help-block">({$upload_extensions} {#PLIGG_Upload_Extensions_Allowed#})</p>
+<p class="help-block">{$upload_extensions} {#PLIGG_Upload_Extensions_Allowed#}</p>
 
 <script>
-var uploading = '<fieldset style="border:1px solid #eee;padding:10px;margin-bottom:10px;font-weight:bold;width:450px;"><h2>{#PLIGG_Upload_Uploading#}...</h2></fieldset>';
-var failed = '<fieldset style="border:1px solid #eee;padding:10px;margin-bottom:10px;font-weight:bold;width:450px;"><h2>{#PLIGG_Upload_Failed#}...</h2></fieldset>';
+var uploading = '<fieldset style="border:1px solid #eee;padding:10px;margin-bottom:10px;font-weight:bold;"><h2>{#PLIGG_Upload_Uploading#}...</h2></fieldset>';
+var failed = '<fieldset style="border:1px solid #eee;padding:10px;margin-bottom:10px;font-weight:bold;"><h2>{#PLIGG_Upload_Failed#}...</h2></fieldset>';
 var my_pligg_base = '{$my_pligg_base}';
 var mandatory = '{#PLIGG_Upload_Mandatory_Error#}';
 var choose_file = '{#PLIGG_Upload_Choose_File#}';
@@ -62,7 +62,7 @@ var choose_url = '{#PLIGG_Upload_Choose_URL#}';
 
     {/php}
 >
-	<fieldset style="border:1px solid #eee;padding:10px;margin-bottom:10px;font-weight:bold;width:450px;">
+	<fieldset style="border:1px solid #eee;padding:10px;margin-bottom:10px;font-weight:bold;">
     	<form method=post enctype="multipart/form-data" action='{$my_pligg_base}/modules/upload/upload.php'  target='upload_iframe_{$number}'>
 		
 	    <input type='hidden' name='id' value='{$link_id}'>
