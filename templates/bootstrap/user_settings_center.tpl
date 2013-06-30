@@ -27,7 +27,7 @@
 				<tr>
 					<td><label for="name" accesskey="1">{#PLIGG_Visual_Profile_Email#}:</label></td>
 					<td><input type="text" name="email" id="email" tabindex="3" value="{$user_email}">
-						<br /><em>{#PLIGG_Visual_Profile_OnlyAdmins#}</em></td>
+						<br /><div class="help-inline">{#PLIGG_Visual_Profile_OnlyAdmins#}</div></td>
 				</tr>
 				<tr>
 					<td><label for="name" accesskey="1">{#PLIGG_Visual_User_Profile_PublicEmail#}:</label></td>
