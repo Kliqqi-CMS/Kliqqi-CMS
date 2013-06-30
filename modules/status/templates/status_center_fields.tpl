@@ -43,10 +43,12 @@ function checkall()
 			<td style="width:20px;"><input type="checkbox" name="status_comment" id="status_comment" class="checkbox" value="1" {if $status_comment}checked="yes"{/if}/></td>
 			<td>{#PLIGG_Status_User_Comment#}</td>
 		</tr>
+		{if $enable_group eq "true"}
 		<tr>
 			<td style="width:20px;"><input type="checkbox" name="status_group" id="status_group" class="checkbox" value="1" {if $status_group}checked="yes"{/if}/></td>
 			<td>{#PLIGG_Status_User_Group#}</td>
 		</tr>
+		{/if}
 		{if $settings.email}
 			<tr>
 				<td style="width:20px;"><input type="checkbox" name="status_email" id="status_email" class="checkbox" value="1" {if $status_email}checked="yes"{/if}/></td>
