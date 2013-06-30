@@ -201,36 +201,37 @@ class Comment {
 		
 		// if the person logged in is the person viewing the comment, show 'you' instead of the name
 		$smarty->assign('user_userlogin', $this->username);
+		
 		// the url for the edit comment link
-			$smarty->assign('edit_comment_url', getmyurl('editcomment', $this->id, $link->id));
-			$smarty->assign('delete_comment_url', my_pligg_base.'/delete.php?comment_id='.$this->id);
+		$smarty->assign('edit_comment_url', getmyurl('editcomment', $this->id, $link->id));
+		$smarty->assign('delete_comment_url', my_pligg_base.'/delete.php?comment_id='.$this->id);
 
 		// avatars
-			$smarty->assign('UseAvatars', do_we_use_avatars());
-			$smarty->assign('Avatar', $avatars = get_avatar('all', '', $this->username, ''));
-			$smarty->assign('Avatar_ImgSrc', $avatars['large']);
-			$smarty->assign('Avatar_ImgSrc_Small', $avatars['small']);
+		$smarty->assign('UseAvatars', do_we_use_avatars());
+		$smarty->assign('Avatar', $avatars = get_avatar('all', '', $this->username, ''));
+		$smarty->assign('Avatar_ImgSrc', $avatars['large']);
+		$smarty->assign('Avatar_ImgSrc_Small', $avatars['small']);
 
 		// does the person logged in have admin or moderator status?
-			$canIhaveAccess = 0;
-			$canIhaveAccess = $canIhaveAccess + checklevel('admin');
-			$canIhaveAccess = $canIhaveAccess + checklevel('moderator');
-			if($canIhaveAccess == 1){$smarty->assign('isadmin', 1);}
+		$canIhaveAccess = 0;
+		$canIhaveAccess = $canIhaveAccess + checklevel('admin');
+		$canIhaveAccess = $canIhaveAccess + checklevel('moderator');
+		if($canIhaveAccess == 1){$smarty->assign('isadmin', 1);}
 		
 		// the link to upvote the comment
-			$jslinky = "cvote($current_user->user_id,$this->id,$this->id," . "'" . md5($current_user->user_id.$this->randkey) . "',10,'" . my_base_url . my_pligg_base . "/')";
-			$smarty->assign('link_shakebox_javascript_votey', $jslinky);
+		$jslinky = "cvote($current_user->user_id,$this->id,$this->id," . "'" . md5($current_user->user_id.$this->randkey) . "',10,'" . my_base_url . my_pligg_base . "/')";
+		$smarty->assign('link_shakebox_javascript_votey', $jslinky);
 
 		// the link to downvote the comment
-			$jslinkn = "cvote($current_user->user_id,$this->id,$this->id," . "'" . md5($current_user->user_id.$this->randkey) . "',-10,'" . my_base_url . my_pligg_base . "/')";
-			$smarty->assign('link_shakebox_javascript_voten', $jslinkn);
+		$jslinkn = "cvote($current_user->user_id,$this->id,$this->id," . "'" . md5($current_user->user_id.$this->randkey) . "',-10,'" . my_base_url . my_pligg_base . "/')";
+		$smarty->assign('link_shakebox_javascript_voten', $jslinkn);
 
 		// misc
-			$smarty->assign('Enable_Comment_Voting', Enable_Comment_Voting);
-			$smarty->assign('my_base_url', my_base_url);
-			$smarty->assign('my_pligg_base', my_pligg_base);
-			$smarty->assign('Default_Gravatar_Small', Default_Gravatar_Small);
-			
+		$smarty->assign('Enable_Comment_Voting', Enable_Comment_Voting);
+		$smarty->assign('my_base_url', my_base_url);
+		$smarty->assign('my_pligg_base', my_pligg_base);
+		$smarty->assign('Default_Gravatar_Small', Default_Gravatar_Small);
+		
 		return $smarty;
 	}
 
