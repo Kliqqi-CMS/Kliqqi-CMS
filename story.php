@@ -247,7 +247,7 @@ function get_comments ($fetch = false, $parent = 0, $comment_id=0, $show_parent=
 			$comment->read();
 			$output .= $comment->print_summary($link, true);
 
-			$output .= '<div class="child-comment">';
+			$output .= "<div class='child-comment'>\n";
 			if($comment_id==0)
 			$output .= get_comments(true, $dbcomment->comment_id);
 			$output .= "</div>\n";
