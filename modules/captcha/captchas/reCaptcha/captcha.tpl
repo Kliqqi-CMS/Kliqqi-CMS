@@ -11,7 +11,7 @@
 var RecaptchaOptions = {
    theme : 'custom',
    custom_theme_widget: 'recaptcha_widget',
-   tabindex : 29
+   tabindex : 10
 };
 </script>
 <style type="text/css">

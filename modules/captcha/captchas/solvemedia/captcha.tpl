@@ -7,7 +7,6 @@ var ACPuzzleOptions = {
 </script>
 {/literal}
 
-
 <div class="control-group{if isset($register_captcha_error)} error{/if}">
 	<label for="input01" class="control-label">CAPTCHA</label>
 	<div class="controls">
@@ -26,4 +25,3 @@ var ACPuzzleOptions = {
 		</div>
 	</div>
 </div>
-
