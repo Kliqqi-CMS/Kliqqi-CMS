@@ -17,7 +17,7 @@
 		{/literal}
 	</script>
 	
-	<legend>{#PLIGG_Visual_Breadcrumb_Edit_User#}: {$userdata[nr].user_login}</legend>
+	<legend>{#PLIGG_Visual_Breadcrumb_Edit_User#}: <a href="{$my_base_url}{$my_pligg_base}/user.php?login={$userdata[nr].user_login}">{$userdata[nr].user_login}</a></legend>
 	<form id="form1" name="form1" method="post" action="" onsubmit="return check(this);">
     
     <input type="hidden" name="token" value="{$uri_token_admin_users_edit}" />
@@ -52,7 +52,8 @@
 		<table class="table table-bordered table-striped">
 			<tr>
 				<td style="width:215px;">
-                <label>{#PLIGG_Visual_View_User_Login#}:</label></td>
+					<label>{#PLIGG_Visual_View_User_Login#}:</label>
+				</td>
 				<td><input name=login value="{$userdata[nr].user_login}" ></td>
 			</tr>
 			{if $userdata[nr].user_id neq 1}
@@ -79,7 +80,9 @@
 			</tr>
 			{checkActionsTpl location="tpl_admin_user_edit_center_fields"}
 			<tr>
-				<td></td>
+				<td>
+					<a class="btn" href="{$my_base_url}{$my_pligg_base}/profile.php?login={$userdata[nr].user_login}">{#PLIGG_Visual_Submit3_Modify#} {#PLIGG_Visual_Breadcrumb_Profile#} {#PLIGG_Visual_Profile#}</a>
+				</td>
 				<td>
 					<a class="btn" href="?mode=resetpass&user={$userdata[nr].user_login}{$uri_token_admin_users_edit}" onclick="return confirm('{#PLIGG_Visual_View_User_Reset_Pass_Confirm#}')">{#PLIGG_Visual_View_User_Reset_Pass#}</a>
 				</td>
@@ -87,7 +90,6 @@
 			<tr>
 				<td>
 					<a class="btn"  href="?mode=view&user={$userdata[nr].user_id}"><i class="icon-chevron-left"></i> {#PLIGG_Visual_View_User_Edit_Cancel#}</a>
-					<a class="btn" href="{$my_base_url}{$my_pligg_base}/profile.php?login={$userdata[nr].user_login}">{#PLIGG_Visual_Submit3_Modify#} {#PLIGG_Visual_Breadcrumb_Profile#} {#PLIGG_Visual_Profile#}</a>
 				</td>
 				<td>
 					{$hidden_token_admin_users_edit}
