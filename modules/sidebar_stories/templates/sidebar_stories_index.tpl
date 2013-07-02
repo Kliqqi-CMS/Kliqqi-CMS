@@ -16,7 +16,7 @@ include_once(mnminclude.'sidebarstories.php');
 global $the_template, $main_smarty;
 
 	// for filterTo you can use "published", "new" or "all"
-	// to change the way the links look, edit /tempates/<your template>/sidebar_stories.tpl
+	// to change the way the links look, make a copy of the /modules/sidebar_stories/templates/sidebar_stories.tpl to /templates/<your template>/modules/sidebar_stories/sidebar_stories.tpl
 
 	$ss = new SidebarStories();
 	$ss->orderBy = "link_date DESC"; // newest on top.
