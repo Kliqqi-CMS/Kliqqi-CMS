@@ -7,6 +7,7 @@ include(mnminclude.'html1.php');
 include(mnminclude.'link.php');
 include(mnminclude.'group.php');
 include(mnminclude.'user.php');
+include(mnminclude.'comment.php');
 include(mnminclude.'friend.php');
 include(mnminclude.'smartyvariables.php');
 include(mnminclude.'csrf.php');
@@ -660,9 +661,12 @@ function do_new () {
 }
 
 function do_commented () {
-	global $db, $main_smarty, $rows, $user, $offset, $page_size,$cached_links;
+	global $db, $main_smarty, $rows, $user, $offset, $page_size, $cached_links, $the_template;
 	$output = '';
+
 	$link = new Link;
+	$comment = new Comment;
+
 	$rows = $db->get_var("SELECT count(*) FROM " . table_links . ", " . table_comments . " WHERE comment_status='published' AND comment_user_id=$user->id AND comment_link_id=link_id");
 	$links = $db->get_results("SELECT DISTINCT * FROM " . table_links . ", " . table_comments . " WHERE comment_status='published' AND comment_user_id=$user->id AND comment_link_id=link_id AND (link_status='published' OR link_status='new')  ORDER BY link_date DESC LIMIT $offset,$page_size");
 	if ($links) {
@@ -670,7 +674,13 @@ function do_commented () {
 			$link->id=$dblink->link_id;
 			$cached_links[$dblink->link_id] = $dblink;
 			$link->read();
-			$output .= $link->print_summary('summary', true);
+			$link->fill_smarty($main_smarty);
+
+			$comment->id=$dblink->comment_id;
+			$comment->read();
+			$comment->fill_smarty($main_smarty);
+
+			$output .= $main_smarty->fetch($the_template . '/' . 'user_comment_center.tpl');
 		}
 	}     
 	$main_smarty->assign('user_page', $output);

@@ -599,31 +599,6 @@ clear:both;
 margin:30px 0 15px 0;
 }
 
-/**************** SUBMIT ******************/
-.submit_step_1_left {
-float:left;
-width:60%;
-min-width:240px;
-}
-.submit_right_sidebar {
-float:left;
-width:40%;
-min-width:240px;
-}
-
-#url {}
-#title {}
-#tags {}
-#summarytext {}
-#bodytext {}
-
-.help-block, .help-inline {
-font-size:0.8em;
-}
-
-.field-description {}
-
-/**************** PROFILE ******************/
 #personal_info {
 float:left;
 }
@@ -648,6 +623,41 @@ margin-bottom: 15px;
     position: relative;
     z-index: 2;
 }
+.user_comment_history {
+	margin:0 0 15px 0;
+}
+.user_comment_story_author_avatar, .user_comment_comment_author_avatar {
+	width:16px;
+	height:16px;
+}
+.user_comment_story_title {
+	font-weight:bold;
+}
+
+
+/**************** SUBMIT ******************/
+.submit_step_1_left {
+float:left;
+width:60%;
+min-width:240px;
+}
+.submit_right_sidebar {
+float:left;
+width:40%;
+min-width:240px;
+}
+
+#url {}
+#title {}
+#tags {}
+#summarytext {}
+#bodytext {}
+
+.help-block, .help-inline {
+font-size:0.8em;
+}
+
+.field-description {}
 
 /**************** FOOTER ******************/
 #footer {
