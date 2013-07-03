@@ -163,7 +163,7 @@
 			{include file=$the_template"/functions/vote_normal.tpl"}
 		<!-- END UP/DOWN VOTING JAVASCRIPT -->
 	{/if}
-	{if $pagename eq "story"}
+	{if $pagename eq "story" || $pagename eq "user"}
 		<!-- START COMMENT VOTING JAVASCRIPT -->
 			{include file=$the_template"/functions/vote_comments.tpl"}
 		<!-- START COMMENT VOTING JAVASCRIPT -->
