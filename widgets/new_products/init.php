@@ -4,7 +4,7 @@ $widget['widget_has_settings'] = 1;
 $widget['widget_shrink_icon'] = 0;
 $widget['widget_uninstall_icon'] = 0;
 $widget['name'] = 'New Products';
-$widget['desc'] = 'This widget displays the latest products available at the Pligg Pro Shop (http://pligg.com/pro/)';
+$widget['desc'] = 'This widget displays the latest downloads available from the Pligg Downloads website (http://pligg.com/downloads/)';
 $widget['version'] = 2.0;
 
 $product_count = get_misc_data('product_count');

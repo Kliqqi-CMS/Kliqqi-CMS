@@ -10,7 +10,7 @@ if($language != 'local'){
 }
 
 if($_GET['language'] == ''){
-	$url = 'http://www.pligg.com/languages/check/getLanguageList.php?version=200';
+	$url = 'http://pligg.com/languages/check/getLanguageList.php?version=200';
 	$r = new CD_HTTPRequest($url);
 	$data = $r->DownloadToString();
 	if(strpos($data, '<!--Pligg Language Select-->') > 0){
@@ -28,7 +28,7 @@ if($_GET['language'] == ''){
 
 	$language = addslashes(strip_tags($_GET['language']));
 	if($language != 'local'){
-	    $url = 'http://www.pligg.com/languages/check/getLanguageFile.php?type=installer&version=200&language=' . $language;
+	    $url = 'http://pligg.com/languages/check/getLanguageFile.php?type=installer&version=200&language=' . $language;
 	    $r = new CD_HTTPRequest($url);
 	    $data = $r->DownloadToString();
 
@@ -39,13 +39,13 @@ if($_GET['language'] == ''){
 		if (fwrite($fh, $data)) {
 			fclose($fh);
 		} else {
-			$url = 'http://www.pligg.com/languages/check/chmod_' . $language . '.php';
+			$url = 'http://pligg.com/languages/check/chmod_' . $language . '.php';
 			$r = new CD_HTTPRequest($url);
 			echo $r->DownloadToString();
 			die();
 		}
 		
-		$r = new CD_HTTPRequest('http://www.pligg.com/languages/check/lang_' . $language . '.conf');
+		$r = new CD_HTTPRequest('http://pligg.com/languages/check/lang_' . $language . '.conf');
 		$contents = $r->DownloadToString();
 		if ($contents)
 		{

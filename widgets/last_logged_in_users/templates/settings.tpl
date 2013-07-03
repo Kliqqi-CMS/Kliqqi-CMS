@@ -7,4 +7,4 @@
 	</p>
 </form>
 
-<p><img src="{$my_base_url}{$my_pligg_base}/widgets/last_logged_in_users/templates/heart.gif" style="vertical-align: middle;" /> By <a href="http://sirwan.me">sirwan.me</a> for <a href="http://forums.pligg.com/donate/">Pligg's Love</a></p>
+<p><img src="{$my_base_url}{$my_pligg_base}/widgets/last_logged_in_users/templates/heart.gif" style="vertical-align: middle;" /> By <a href="http://sirwan.me">sirwan.me</a></p>

@@ -18,7 +18,7 @@ if($language != 'local'){
 }
 
 if($language == '' && $_POST['submit'] == ''){
-	$url = 'http://www.pligg.com/languages/check/getLanguageList.php?type=upgrade&version=200';
+	$url = 'http://pligg.com/languages/check/getLanguageList.php?type=upgrade&version=200';
 
 	$r = new CD_HTTPRequest($url);
 	$data = $r->DownloadToString();
@@ -38,7 +38,7 @@ if($language == '' && $_POST['submit'] == ''){
 } else {
 
 	if($language != 'local'){
-	    $url = 'http://www.pligg.com/languages/check/getLanguageFile.php?type=installer&version=200&language=' . $language;
+	    $url = 'http://pligg.com/languages/check/getLanguageFile.php?type=installer&version=200&language=' . $language;
 	    $r = new CD_HTTPRequest($url);
 	    $data = $r->DownloadToString();
 
@@ -49,7 +49,7 @@ if($language == '' && $_POST['submit'] == ''){
 		if (fwrite($fh, $data)) {
 			fclose($fh);
 		} else {
-			$url = 'http://www.pligg.com/languages/check/chmod_' . $language . '.php';
+			$url = 'http://pligg.com/languages/check/chmod_' . $language . '.php';
 			$r = new CD_HTTPRequest($url);
 			echo $r->DownloadToString();
 			die();
@@ -111,7 +111,7 @@ if (!$errors) {
 
 	// Lets start with 1.0.0 and work our way up to the latest version available.
 	$oldLanguage100 = "// End 1.0.0 Language File";
-	$newLanguage101='http://www.pligg.com/languages/update/lang_' . $language . '_update_101.conf';
+	$newLanguage101='http://pligg.com/languages/update/lang_' . $language . '_update_101.conf';
 	//echo $newLanguage101;
 	$r = new CD_HTTPRequest($newLanguage101);
 	$content = $r->DownloadToString();
@@ -119,77 +119,77 @@ if (!$errors) {
 		$languageContent = str_replace($oldLanguage100 , $content , $languageContent);
 
 	$oldLanguage101 = "// End 1.0.1 Language File";
-	$newLanguage102='http://www.pligg.com/languages/update/lang_' . $language . '_update_102.conf';
+	$newLanguage102='http://pligg.com/languages/update/lang_' . $language . '_update_102.conf';
 	$r = new CD_HTTPRequest($newLanguage102);
 	$content = $r->DownloadToString();
 	if($content)
 		$languageContent = str_replace($oldLanguage101 , $content , $languageContent);
 		
 	$oldLanguage102 = "// End 1.0.2 Language File";
-	$newLanguage103='http://www.pligg.com/languages/update/lang_' . $language . '_update_103.conf';
+	$newLanguage103='http://pligg.com/languages/update/lang_' . $language . '_update_103.conf';
 	$r = new CD_HTTPRequest($newLanguage103);
 	$content = $r->DownloadToString();
 	if($content)
 		$languageContent = str_replace($oldLanguage102 , $content , $languageContent);
 		
 	$oldLanguage103 = "// End 1.0.3 Language File";
-	$newLanguage104='http://www.pligg.com/languages/update/lang_' . $language . '_update_104.conf';
+	$newLanguage104='http://pligg.com/languages/update/lang_' . $language . '_update_104.conf';
 	$r = new CD_HTTPRequest($newLanguage104);
 	$content = $r->DownloadToString();
 	if($content)
 		$languageContent = str_replace($oldLanguage103 , $content , $languageContent);
 		
 	$oldLanguage104 = "// End 1.0.4 Language File";
-	$newLanguage110='http://www.pligg.com/languages/update/lang_' . $language . '_update_110.conf';
+	$newLanguage110='http://pligg.com/languages/update/lang_' . $language . '_update_110.conf';
 	$r = new CD_HTTPRequest($newLanguage110);
 	$content = $r->DownloadToString();
 	if($content)
 		$languageContent = str_replace($oldLanguage104 , $content , $languageContent);
 		
 	$oldLanguage110 = "// End 1.1.0 Language File";
-	$newLanguage111='http://www.pligg.com/languages/update/lang_' . $language . '_update_111.conf';
+	$newLanguage111='http://pligg.com/languages/update/lang_' . $language . '_update_111.conf';
 	$r = new CD_HTTPRequest($newLanguage111);
 	$content = $r->DownloadToString();
 	if($content)
 		$languageContent = str_replace($oldLanguage110 , $content , $languageContent);
 		
 	$oldLanguage111 = "// End 1.1.1 Language File";
-	$newLanguage112='http://www.pligg.com/languages/update/lang_' . $language . '_update_112.conf';
+	$newLanguage112='http://pligg.com/languages/update/lang_' . $language . '_update_112.conf';
 	$r = new CD_HTTPRequest($newLanguage112);
 	$content = $r->DownloadToString();
 	if($content)
 		$languageContent = str_replace($oldLanguage111 , $content , $languageContent);
 	
 	$oldLanguage112 = "// End 1.1.2 Language File";
-	$newLanguage113='http://www.pligg.com/languages/update/lang_' . $language . '_update_113.conf';
+	$newLanguage113='http://pligg.com/languages/update/lang_' . $language . '_update_113.conf';
 	$r = new CD_HTTPRequest($newLanguage113);
 	$content = $r->DownloadToString();
 	if($content)
 		$languageContent = str_replace($oldLanguage112 , $content , $languageContent);
 
 	$oldLanguage113 = "// End 1.1.3 Language File";
-	$newLanguage114='http://www.pligg.com/languages/update/lang_' . $language . '_update_114.conf';
+	$newLanguage114='http://pligg.com/languages/update/lang_' . $language . '_update_114.conf';
 	$r = new CD_HTTPRequest($newLanguage114);
 	$content = $r->DownloadToString();
 	if($content)
 		$languageContent = str_replace($oldLanguage113 , $content , $languageContent);
 	
 	$oldLanguage114 = "// End 1.1.4 Language File";
-	$newLanguage115='http://www.pligg.com/languages/update/lang_' . $language . '_update_115.conf';
+	$newLanguage115='http://pligg.com/languages/update/lang_' . $language . '_update_115.conf';
 	$r = new CD_HTTPRequest($newLanguage115);
 	$content = $r->DownloadToString();
 	if($content)
 		$languageContent = str_replace($oldLanguage114 , $content , $languageContent);
 	
 	$oldLanguage115 = "// End 1.1.5 Language File";
-	$newLanguage120='http://www.pligg.com/languages/update/lang_' . $language . '_update_120.conf';
+	$newLanguage120='http://pligg.com/languages/update/lang_' . $language . '_update_120.conf';
 	$r = new CD_HTTPRequest($newLanguage120);
 	$content = $r->DownloadToString();
 	if($content)
 		$languageContent = str_replace($oldLanguage115 , $content , $languageContent);
 		
 	$oldLanguage120 = "// End 1.2.0 Language File";
-	$newLanguage121='http://www.pligg.com/languages/update/lang_' . $language . '_update_121.conf';
+	$newLanguage121='http://pligg.com/languages/update/lang_' . $language . '_update_121.conf';
 	$r = new CD_HTTPRequest($newLanguage121);
 	$content = $r->DownloadToString();
 	if($content)
@@ -200,7 +200,7 @@ if (!$errors) {
 	$languageContent = str_replace($oldLanguage121 , $newLanguage122 , $languageContent);
 	
 	$oldLanguage122 = "// End 1.2.2 Language File";
-	$newLanguage200='http://www.pligg.com/languages/update/lang_' . $language . '_update_200.conf';
+	$newLanguage200='http://pligg.com/languages/update/lang_' . $language . '_update_200.conf';
 	$r = new CD_HTTPRequest($newLanguage200);
 	$content = $r->DownloadToString();
 	if($content)

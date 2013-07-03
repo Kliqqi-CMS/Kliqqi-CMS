@@ -122,7 +122,7 @@ function tree_to_array($root, $table, $showRoot = TRUE) {
 	$result = get_cached_between($row->lft, $row->rgt);
 	$i = 0;
 	$lastspacer = 0;
-	// added @ thanks to `parterburn` - http://www.pligg.com/forum/showthread.php?t=4888
+	
 	foreach($result as $row){
 		if (count($right)>0) {
 			// check if we should remove a node from the stack

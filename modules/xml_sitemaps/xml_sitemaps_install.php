@@ -20,7 +20,6 @@
 	$module_info['name'] = 'Xml sitemaps';
 	$module_info['desc'] = "creates xml sitemaps to use with google, yahoo, ask and others. Don't forget to <a href=\"admin_config.php?page=XmlSitemaps\">configure</a> before you use it";
 	$module_info['version'] = 1.0;
-	$module_info['update_url'] = 'http://forums.pligg.com/versioncheck.php?product=xml_sitemaps';
 	$module_info['homepage_url'] = 'http://forums.pligg.com/free-modules/20019-xml-sitemaps-module.html';
 	$module_info['settings_url'] = 'admin_config.php?page=XmlSitemaps';	
 	

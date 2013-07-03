@@ -274,7 +274,7 @@
 		</div><!-- /row-fluid -->
 		<hr />
 		<footer>
-			<p>Powered by <a href="http://www.pligg.com/">Pligg CMS</a></p>
+			<p>Powered by <a href="http://pligg.com/">Pligg CMS</a></p>
 			{checkActionsTpl location="tpl_pligg_admin_footer_end"}
 		</footer>
 	</div><!-- /container-fluid -->

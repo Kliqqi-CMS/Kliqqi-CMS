@@ -304,7 +304,7 @@ function do_sidebar($var_smarty, $navwhere = '') {
 			$i = 0;
 			$lastspacer = 0;
 			$array = array();
-			// added @ thanks to `parterburn` - http://www.pligg.com/forum/showthread.php?t=4888
+			
 			foreach($result as $row)
 			{
 				if (count($right)>0) {

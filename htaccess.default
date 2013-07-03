@@ -17,8 +17,8 @@ RewriteRule (.*)([^/])$ http://%{HTTP_HOST}/$1$2/ [R=301,L]
 ## If installed in a subfolder you may need to add ## to the beginning of the next line
 RewriteCond %{THE_REQUEST} ^[A-Z]{3,9}\ /.*index\.php\ HTTP/
 
-## Comment out or remove these two lines if you have a sub-domain like  http://subdomain.pligg.com  or http://localhost
-## Keep if your site it like   http://www.pligg.com
+## Comment out or remove these two lines if you have a sub-domain like: http://subdomain.pligg.com or http://localhost
+## Keep if your site is like: http://www.pligg.com
 RewriteCond %{HTTP_HOST} !^www\.
 RewriteCond %{HTTP_HOST} !^localhost
 RewriteRule .* http://www.%{HTTP_HOST}%{REQUEST_URI} [R=301,L]

@@ -90,7 +90,7 @@ class Trackback {
         $http_request .= 'Host: '.$trackback_url['host']."\r\n";
         $http_request .= 'Content-Type: application/x-www-form-urlencoded; charset=UTF-8'."\r\n";
         $http_request .= 'Content-Length: '.strlen($query_string)."\r\n";
-        $http_request .= "User-Agent: PLG (http://www.pligg.com) ";
+        $http_request .= "User-Agent: PLG (http://pligg.com) ";
         $http_request .= "\r\n\r\n";
         $http_request .= $query_string;
         if ( '' == $trackback_url['port'] )
