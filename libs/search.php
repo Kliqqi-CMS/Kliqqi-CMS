@@ -184,7 +184,7 @@ class Search {
 		
 		if($this->searchTerm == "" && $this->url == ""){
 			// like when on the index or new pages.
-			$this->sql = "SELECT link_id $from_where $search_clause GROUP BY link_id $this->orderBy LIMIT $this->offset, $limit";
+			$this->sql = "SELECT link_id, link_votes, link_karma, link_comments $from_where $search_clause GROUP BY link_id $this->orderBy LIMIT $this->offset, $limit";
 		} else if($this->searchTerm == 'upvoted'){
 		
 			if($current_user->user_id){
@@ -223,7 +223,7 @@ class Search {
 			$this->sql = "SELECT DISTINCT * FROM " . table_links . ", " . table_comments . " WHERE comment_status='published' ".$usrclause." AND comment_link_id=link_id AND (link_status='published' OR link_status='new') ".$group." ORDER BY link_comments DESC LIMIT $this->offset, $limit";
 		}
 		else{
-			$this->sql = "SELECT link_id, link_date, link_published_date $from_where $search_clause";
+			$this->sql = "SELECT link_id, link_date, link_published_date, link_votes, link_karma, link_comments $from_where $search_clause {$this->orderBy}";
 		}
 		
 		###### START Advanced Search ######
@@ -348,11 +348,10 @@ class Search {
 			    $search_clause = '1';
 			if (sizeof($search_AND_params)>0)
 				$search_clause .= ' AND ('.implode( ' AND ', $search_AND_params ).' ) ';
-			$this->sql = $query.' '.$from_where.' WHERE '.$search_clause." AND ".table_links.".link_status IN ('published','new') ";
-			
+			$this->sql = $query.' '.$from_where.' WHERE '.$search_clause." AND ".table_links.".link_status IN ('published','new')";
 			$this->searchTerm = $buffKeyword;
-			
 		}
+
 		#echo $this->sql."<br><br>";
 		###### END Advanced Search ######
 		
@@ -376,6 +375,25 @@ class Search {
 
 		$foundlinks = array();
 		$original_isTag = $this->isTag;
+
+		// search comments
+		$where = $this->explode_search('comment_content', $this->searchTerm);
+		$this->sql = "SELECT link_id, link_votes, link_karma, link_comments 
+					FROM ".table_comments." 
+					LEFT JOIN ".table_links." ON link_id=comment_link_id 
+					WHERE $where AND comment_status='published' AND link_status IN ('published','new')";
+		$links = $db->get_results($this->sql);
+		if ($links) {
+			foreach($links as $link_id) {
+				if(array_search($link_id->link_id, $foundlinks) === false){
+					// if it's not already in our list, add it
+					$foundlinks[] = $link_id->link_id;
+
+					$newfoundlinks[$link_id->link_id] = (array)$link_id;
+				}
+			}
+		}
+
 		
 		// search tags
 		$this->isTag = true;
@@ -387,9 +405,7 @@ class Search {
 					// if it's not already in our list, add it
 					$foundlinks[] = $link_id->link_id;
 
-					$newfoundlinks[$link_id->link_id]['link_id'] = $link_id->link_id;
-					$newfoundlinks[$link_id->link_id]['link_date'] = $link_id->link_date;
-					$newfoundlinks[$link_id->link_id]['link_published_date'] = $link_id->link_published_date;
+					$newfoundlinks[$link_id->link_id] = (array)$link_id;
 				}
 			}
 		}
@@ -405,19 +421,38 @@ class Search {
 						// if it's not already in our list, add it
 						$foundlinks[] = $link_id->link_id;
 
-						$newfoundlinks[$link_id->link_id]['link_id'] = $link_id->link_id;
-						$newfoundlinks[$link_id->link_id]['link_date'] = $link_id->link_date;
-						$newfoundlinks[$link_id->link_id]['link_published_date'] = $link_id->link_published_date;
+						$newfoundlinks[$link_id->link_id] = (array)$link_id;
 					}
 				}
 			}
 		}
 		
 		if($newfoundlinks){
+			if (Voting_Method == 3)
+				$rating_column = 'link_karma';
+			else
+				$rating_column = 'link_votes';
+
+			$ords = $this->ords;
+			$order_clauses = array ( 'newest' => 'link_date DESC',
+						  'oldest' => 'link_date ASC',
+						  'commented' => 'link_comments DESC',
+						  'upvoted' => $rating_column . ' DESC',
+						  'downvoted' => $rating_column . ' ASC'
+							);
+			
+			if ( array_key_exists ($ords, $order_clauses) )
+				$orderBy = $order_clauses[$ords];
+			else
+				$orderBy = $order_clauses['newest'];
+			$orderBy1 = str_replace(array(' DESC',' ASC'), '', $orderBy);
 			foreach($newfoundlinks as $thelink){
-				$sortarray[$thelink['link_id']] = $thelink['link_date'];
+				$sortarray[$thelink['link_id']] = $thelink[$orderBy1];
 			}
-			arsort($sortarray);
+			if (strstr($orderBy, 'DESC'))
+			    arsort($sortarray);
+			else
+			    asort($sortarray);
 
 			$x = 0;
 			$aa = $this->offset;

@@ -48,14 +48,14 @@
 	{/if}
 	{if $posttitle neq "" && $pagename eq "page"}<li>{$posttitle}</li>{/if}
 	{checkActionsTpl location="tpl_pligg_breadcrumb_end"}
-	{if $pagename eq "published" || $pagename eq "index" || $pagename eq "new" || $pagename eq "cloud" || $pagename eq "groups" || $pagename eq "live" || $pagename eq "live_published" || $pagename eq "live_unpublished" || $pagename eq "live_comments" }
+	{if $pagename eq "published" || $pagename eq "index" || $pagename eq "new" || $pagename eq "cloud" || $pagename eq "groups" || $pagename eq "live" || $pagename eq "live_published" || $pagename eq "live_unpublished" || $pagename eq "live_comments" || $pagename eq "search"}
 		{* Sort Dropdown *}
 		<div class="btn-group pull-right breadcrumb-right">
 			<ul class="nav nav-pills">
 				<li class="dropdown pull-right">
 					<a href="#" data-toggle="dropdown" class="dropdown-toggle">Sort <span class="caret"></span></a>
 					<ul class="dropdown-menu" id="menu1">
-						{if $pagename eq "published" || $pagename eq "index" || $pagename eq "new"}
+						{if $pagename eq "published" || $pagename eq "index" || $pagename eq "new" || $pagename eq "search"}
 						
 							{if $setmeka eq "" || $setmeka eq "recent"}
 								<li id="active"><a id="current" href="{$index_url_recent}"><span class="active">{#PLIGG_Visual_Recently_Pop#}</span></a></li>
@@ -82,7 +82,9 @@
 									<li><a href="{$index_url_commented}">Most {#PLIGG_Visual_User_NewsCommented#}</a></li>
 								{/if}
 							{*/if*}
+						{/if}
 							
+						{if $pagename eq "published" || $pagename eq "index" || $pagename eq "new"}
 							{if $setmeka eq "today"}
 								<li id="active" href="{$index_url_today}"><a href="{$index_url_today}" id="current"><span class="active">{#PLIGG_Visual_Top_Today#}</span></a></li>
 							{else}

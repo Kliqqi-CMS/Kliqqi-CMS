@@ -69,6 +69,20 @@
 		$search->category = sanitize($_REQUEST['category'], 1);
 	} 
 
+$sort_uri = $URLMethod == 2 ? 'order/' : '&order=';
+$request_uri = preg_replace('/' . str_replace('/', '\/', $sort_uri) . '.*$/', '', $_SERVER['REQUEST_URI']) . $sort_uri;
+$main_smarty->assign('index_url_recent', $request_uri);
+/*
+$main_smarty->assign('index_url_today', $request_uri . 'today' . ($URLMethod == 2 ? '/' : ''));
+$main_smarty->assign('index_url_yesterday', $request_uri . 'yesterday'  . ($URLMethod == 2 ? '/' : ''));
+$main_smarty->assign('index_url_week', $request_uri . 'week'  . ($URLMethod == 2 ? '/' : ''));
+$main_smarty->assign('index_url_month', $request_uri . 'month'  . ($URLMethod == 2 ? '/' : ''));
+$main_smarty->assign('index_url_year', $request_uri . 'year'  . ($URLMethod == 2 ? '/' : ''));
+$main_smarty->assign('index_url_alltime', $request_uri . 'alltime'  . ($URLMethod == 2 ? '/' : ''));
+*/
+$main_smarty->assign('index_url_upvoted', $request_uri . 'upvoted'  . ($URLMethod == 2 ? '/' : ''));
+$main_smarty->assign('index_url_downvoted', $request_uri . 'downvoted'  . ($URLMethod == 2 ? '/' : ''));
+$main_smarty->assign('index_url_commented', $request_uri . 'commented'  . ($URLMethod == 2 ? '/' : ''));
 
 //Advanced Search
 if( isset( $_REQUEST['adv'] ) && $_REQUEST['adv'] == 1 ){
@@ -108,6 +122,7 @@ if(strlen($search->searchTerm) < 3 && strlen($search->url) < 3 && !$search->s_da
 }
 else
 {
+	if (isset($_GET['order'])) $search->ords = $db->escape($_GET['order']);
 	$new_search = $search->new_search();
 
 	$linksum_count = $search->countsql;

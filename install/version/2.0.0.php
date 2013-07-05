@@ -11,6 +11,12 @@ if ($old_version < $new_version) {
 
 	echo '<li>Performing one-time Pligg 2.0.0 Upgrade<ul>';
 	
+	// Add option to search comment content
+	$result = $db->get_results("select * from `" . table_config . "` where `var_name` = 'Search_Comments';");
+    if (count($result) == 0) {
+		$db->query("INSERT INTO `" . table_config . "` VALUES (NULL, 'Comments', 'Search_Comments', 'false', 'false', 'true / false', 'Search Comments', 'Use comment data when providing search results', 'normal', NULL)");
+    }
+	
     // Renamed "Upcoming" and "Queued" to "New" in 2.0.0 Needs to be reflected in database.
     $sql = "ALTER TABLE ".table_links." 
 			CHANGE link_status link_status ENUM('discard','new','published','abuse','duplicate','page','spam','moderated');";
