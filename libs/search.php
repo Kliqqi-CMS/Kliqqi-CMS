@@ -377,23 +377,24 @@ class Search {
 		$original_isTag = $this->isTag;
 
 		// search comments
-		$where = $this->explode_search('comment_content', $this->searchTerm);
-		$this->sql = "SELECT link_id, link_votes, link_karma, link_comments 
-					FROM ".table_comments." 
-					LEFT JOIN ".table_links." ON link_id=comment_link_id 
-					WHERE $where AND comment_status='published' AND link_status IN ('published','new')";
-		$links = $db->get_results($this->sql);
-		if ($links) {
-			foreach($links as $link_id) {
-				if(array_search($link_id->link_id, $foundlinks) === false){
-					// if it's not already in our list, add it
-					$foundlinks[] = $link_id->link_id;
+		if (Search_Comments) {
+			$where = $this->explode_search('comment_content', $this->searchTerm);
+			$this->sql = "SELECT link_id, link_votes, link_karma, link_comments 
+						FROM ".table_comments." 
+						LEFT JOIN ".table_links." ON link_id=comment_link_id 
+						WHERE $where AND comment_status='published' AND link_status IN ('published','new')";
+			$links = $db->get_results($this->sql);
+			if ($links) {
+				foreach($links as $link_id) {
+					if(array_search($link_id->link_id, $foundlinks) === false){
+						// if it's not already in our list, add it
+						$foundlinks[] = $link_id->link_id;
 
-					$newfoundlinks[$link_id->link_id] = (array)$link_id;
+						$newfoundlinks[$link_id->link_id] = (array)$link_id;
+					}
 				}
 			}
 		}
-
 		
 		// search tags
 		$this->isTag = true;
