@@ -198,6 +198,8 @@ class Comment {
 		
 		$this->user_vote_count = $this->votes($current_user->user_id);
 		$smarty->assign('comment_user_vote_count', $this->user_vote_count);
+		$smarty->assign('comment_shakebox_currentuser_votes', $this->votes($current_user->user_id, '>0'));
+		$smarty->assign('comment_shakebox_currentuser_reports', $this->votes($current_user->user_id, '<0'));
 		
 		// if the person logged in is the person viewing the comment, show 'you' instead of the name
 		$smarty->assign('user_userlogin', $this->username);
