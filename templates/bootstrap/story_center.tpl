@@ -13,24 +13,35 @@
 <script language="javascript">
 var story_link="{$story_url}";
 {literal}
-	
-		$(function () {
-			$('#storytabs a[href="#who_voted"]').tab('show');
-			$('#storytabs a[href="#who_downvoted"]').tab('show');
-			$('#storytabs a[href="#related"]').tab('show');
-			$('#storytabs a[href="#comments"]').tab('show');
-		});
-		
-function show_replay_comment_form(id){
-   	document.location.href=story_link+'/reply/'+id+'#comment-reply-'+id;
-}
 
-function show_comments(id){
+	$(function () {
+		$('#storytabs a[href="#who_voted"]').tab('show');
+		$('#storytabs a[href="#who_downvoted"]').tab('show');
+		$('#storytabs a[href="#related"]').tab('show');
+		$('#storytabs a[href="#comments"]').tab('show');
+	});
+
+	function show_comments(id){
 		document.location.href=story_link+'/'+id+'#comment-'+id;
-}
+	}
 	
 {/literal}
+
+{if $urlmethod==2}
+	{literal}
+		function show_replay_comment_form(id){
+		   document.location.href=story_link+'/reply/'+id+'#comment-reply-'+id;
+		}
+	{/literal}
+{else}
+	{literal}
+		function show_replay_comment_form(id){
+		   document.location.href=story_link+'&comment_id='+id+'&reply=1#comment-reply-'+id;
+		}
+	{/literal}
+{/if}
 </script>
+
 <div id="tabbed" class="tab-content">
 
 	<div class="tab-pane fade active in" id="comments" >
