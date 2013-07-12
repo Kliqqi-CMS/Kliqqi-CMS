@@ -277,12 +277,10 @@ if($status=="uninstalled")
 						$versionupdate = $m[1];
 						
 						$db->query($sql="UPDATE `". table_modules . "` SET `latest_version`='$versionupdate' WHERE `id`='".$module->id."'");
-					} else {
-						
-                    	//$versionupdate = $module->latest_version;
-						if($versionupdate=="Invalid Product ID" )
+					} elseif ($versionupdate=="Invalid Product ID" ) {
 						 $db->query("UPDATE `". table_modules . "` SET `latest_version`=0 WHERE `id`='".$module->id."'");
-					}
+					} else
+						$versionupdate = 'N/A';
 					
 				  }else{
 					  $db->query("UPDATE `". table_modules . "` SET `latest_version`=0 WHERE `id`='".$module->id."'"); 
