@@ -17,6 +17,12 @@ if ($old_version < $new_version) {
 		$db->query("INSERT INTO `" . table_config . "` VALUES (NULL, 'Comments', 'Search_Comments', 'false', 'false', 'true / false', 'Search Comments', 'Use comment data when providing search results', 'define', NULL)");
     }
 	
+	// Add new pagination methods
+	$result = $db->get_results("select * from `" . table_config . "` where `var_name` = 'Auto_scroll';");
+	if (count($result) == 0) {
+		$db->query("INSERT INTO `" . table_config . "` VALUES (NULL, 'Misc', 'Auto_scroll', '1', '1', '1-3', 'Pagination Mode', '<strong>1.</strong> Use normal pagination links <br /><strong>2.</strong> JavaScript that automatically adds more articles to the bottom of the page<br /><strong>3</strong> JavaScript button to manually load more articles', 'define', NULL)");
+	}
+	
     // Renamed "Upcoming" and "Queued" to "New" in 2.0.0 Needs to be reflected in database.
     $sql = "ALTER TABLE ".table_links." 
 			CHANGE link_status link_status ENUM('discard','new','published','abuse','duplicate','page','spam','moderated');";
