@@ -207,23 +207,23 @@ if ($old_version < $new_version) {
 		$newimage = $user_image_path . $imagename ;
 		if (file_exists($newimage))
 		{
+			$img=new pThumb();
+			$img->pSetSize(Avatar_Large, Avatar_Large);
+			$img->pSetQuality(100);
+			$img->pCreate($newimage);
+			$img->pSave($user_image_path . $user->user_id . "_".Avatar_Large.".jpg");
+			$img = "";
 
-		$img=new pThumb();
-		$img->pSetSize(Avatar_Large, Avatar_Large);
-		$img->pSetQuality(100);
-		$img->pCreate($newimage);
-		$img->pSave($user_image_path . $user->user_id . "_".Avatar_Large.".jpg");
-		$img = "";
-
-		// create small avatar
-		$img=new pThumb();
-		$img->pSetSize(Avatar_Small, Avatar_Small);
-		$img->pSetQuality(100);
-		$img->pCreate($newimage);
-		$img->pSave($user_image_path . $user->user_id . "_".Avatar_Small.".jpg");
-		$img = "";
+			// create small avatar
+			$img=new pThumb();
+			$img->pSetSize(Avatar_Small, Avatar_Small);
+			$img->pSetQuality(100);
+			$img->pCreate($newimage);
+			$img->pSave($user_image_path . $user->user_id . "_".Avatar_Small.".jpg");
+			$img = "";
 		}
 	}
+	echo '<li>Regenerated user avatars</li>';
 
 	// Update User Levels, removing the 'god' level
 	$sql = "UPDATE ".table_users." 
