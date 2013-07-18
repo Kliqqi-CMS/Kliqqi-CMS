@@ -32,6 +32,7 @@ RewriteRule ^(all)/([^/]+)/?$ story.php?title=$2 [L]
 RewriteRule ^(all)/?$ index.php [R=301,L]
 
 # /recent redirection
+RewriteRule ^upcoming/(.*)$ /new/$1 [R=301,NC,L]
 RewriteRule ^new/recent/?$ new [R=301,L]
 RewriteRule ^new/recent/category/([^/]+)/?$ new/category/$1 [R=301,L]
 RewriteRule ^new/recent/page/(\d+)/?$ new/page/$1 [R=301,L]
