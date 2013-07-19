@@ -14,7 +14,7 @@
 	<tbody>
 		<tr><td>{#Pligg_Captcha_Solve_Media#}: </td><td> {if $captcha_method eq "solvemedia"}<strong>In Use</strong>{else}<a href="module.php?module=captcha&captcha=solvemedia&action=enable">Enable</a>{/if} | <a href="module.php?module=captcha&captcha=solvemedia&action=configure">Configure</a></td></tr>
 		<tr><td>{#Pligg_Captcha_recaptcha#}: </td><td> {if $captcha_method eq "reCaptcha"}<strong>In Use</strong>{else}<a href="module.php?module=captcha&captcha=reCaptcha&action=enable">Enable</a>{/if} | <a href="module.php?module=captcha&captcha=reCaptcha&action=configure">Configure</a></td></tr>
-		<tr><td>{#Pligg_Captcha_whitehat#}: </td><td> {if $captcha_method eq "WhiteHat"}<strong>In Use</strong>{else}<a href="module.php?module=captcha&captcha=WhiteHat&action=enable">Enable</a>{/if} | <a href="module.php?module=captcha&captcha=WhiteHat&action=configure">Configure</a></td></tr>
+		<tr><td>{#Pligg_Captcha_whitehat#}: </td><td> {if $captcha_method eq "WhiteHat"}<strong>In Use</strong>{else}<a href="module.php?module=captcha&captcha=WhiteHat&action=enable">Enable</a>{/if}</td></tr>
 		<tr><td>{#Pligg_Captcha_math#}: </td><td> {if $captcha_method eq "math"}<strong>In Use</strong>{else}<a href="module.php?module=captcha&captcha=math&action=enable">Enable</a>{/if} | <a href="module.php?module=captcha&captcha=math&action=configure">Configure</a></td></tr>
 	</tbody>
 	<thead>
