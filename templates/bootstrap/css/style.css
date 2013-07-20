@@ -718,9 +718,9 @@ font-size:0.85em;
 /************** REGISTER ***************/
 #reg_usernamecheckitvalue {}
 #reg_emailcheckitvalue {}
-.register-wrapper {}
+.register-wrapper {margin-left:0px;}
 .register-left {margin:0 0 0 8px;}
-.register-right{margin:0 0 0 8px;}
+.register-right{margin:0 0 0 8px;min-width: 370px;}
 /* for modal window */
 .LoginModal{
 width:282px;
