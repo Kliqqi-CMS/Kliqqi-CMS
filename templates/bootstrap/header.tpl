@@ -94,7 +94,7 @@
 							<li {if $pagename eq "register"}class="active current"{/if}><a href="{$URL_register}"><span>{#PLIGG_Visual_Register#}</span></a></li>
 						{else}
 							<!-- Register Modal -->
-							<div id="myModal" class="modal hide fade">
+							<div id="registerModal" class="modal hide fade">
 								<div class="modal-header">
 									<button class="close" data-dismiss="modal">&times;</button>
 									<h3>{#PLIGG_Visual_Register#}</h3>
@@ -167,7 +167,7 @@
 								</div>
 								</form><!--/.form-horizontal -->
 							</div><!--/.modal -->
-							<li><a href="#myModal" data-toggle="modal">{#PLIGG_Visual_Register#}</a></li>
+							<li><a href="#registerModal" data-toggle="modal">{#PLIGG_Visual_Register#}</a></li>
 						{/if}
 						<li class="dropdown">
 							<a data-toggle="dropdown" class="dropdown-toggle" href="#">{#PLIGG_Visual_Login_Title#} <b class="caret"></b></a>
