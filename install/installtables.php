@@ -525,15 +525,13 @@ function pligg_createtables($conn) {
 	mysql_query( $sql, $conn );
 	$sql = "INSERT INTO `" . table_modules . "` (`id`, `name`, `version`, `latest_version`, `folder`, `enabled`) VALUES (NULL, 'Captcha', 2.0, '', 'captcha', 1);";
 	mysql_query( $sql, $conn );
-	$sql = "INSERT INTO `" . table_modules . "` (`id`, `name`, `version`, `latest_version`, `folder`, `enabled`) VALUES (NULL, 'Simple Private Messaging', 2.0, '', 'simple_messaging', 1);";
-	mysql_query( $sql, $conn );
+//	$sql = "INSERT INTO `" . table_modules . "` (`id`, `name`, `version`, `latest_version`, `folder`, `enabled`) VALUES (NULL, 'Simple Private Messaging', 2.0, '', 'simple_messaging', 1);";
+//	mysql_query( $sql, $conn );
 	$sql = "INSERT INTO `" . table_modules . "` (`id`, `name`, `version`, `latest_version`, `folder`, `enabled`) VALUES (NULL, 'Sidebar Stories', 2.0, '', 'sidebar_stories', 1);";
 	mysql_query( $sql, $conn );
 	$sql = "INSERT INTO `" . table_modules . "` (`id`, `name`, `version`, `latest_version`, `folder`, `enabled`) VALUES (NULL, 'Sidebar Comments', 2.0, '', 'sidebar_comments', 1);";
 	mysql_query( $sql, $conn );
 	$sql = "INSERT INTO `" . table_modules . "` (`id`, `name`, `version`, `latest_version`, `folder`, `enabled`) VALUES (NULL, 'Karma module', 0.2, '', 'karma', 1);";
-	mysql_query( $sql, $conn );
-	$sql = "INSERT INTO `" . table_modules . "` (`id`, `name`, `version`, `latest_version`, `folder`, `enabled`) VALUES (NULL, 'Status', 1.3, '', 'status', 1);";
 	mysql_query( $sql, $conn );
 
 	$sql =  "INSERT  into " . table_misc_data . " (name,data) VALUES ('karma_submit_story','+15')";
@@ -551,68 +549,6 @@ function pligg_createtables($conn) {
 	$sql =  "INSERT  into " . table_misc_data . " (name,data) VALUES ('karma_story_spam','-10000')";
 	mysql_query( $sql, $conn );
 	$sql =  "INSERT  into " . table_misc_data . " (name,data) VALUES ('karma_comment_delete','-50')";
-	mysql_query( $sql, $conn );
-
-	$sql = "ALTER TABLE ".table_users." ADD  `status_switch` TINYINT(1) DEFAULT '1'";
-	mysql_query( $sql, $conn );
-	$sql = "ALTER TABLE ".table_users." ADD  `status_friends` TINYINT(1) DEFAULT '1'";
-	mysql_query( $sql, $conn );
-	$sql = "ALTER TABLE ".table_users." ADD  `status_story` TINYINT(1) DEFAULT '1'";
-	mysql_query( $sql, $conn );
-	$sql = "ALTER TABLE ".table_users." ADD  `status_comment` TINYINT(1) DEFAULT '1'";
-	mysql_query( $sql, $conn );
-	$sql = "ALTER TABLE ".table_users." ADD  `status_email` TINYINT(1) DEFAULT '1'";
-	mysql_query( $sql, $conn );
-	$sql = "ALTER TABLE ".table_users." ADD  `status_group` TINYINT(1) DEFAULT '1'";
-	mysql_query( $sql, $conn );
-	$sql = "ALTER TABLE ".table_users." ADD  `status_all_friends` TINYINT(1) DEFAULT '1'";
-	mysql_query( $sql, $conn );
-	$sql = "ALTER TABLE ".table_users." ADD  `status_friend_list` TEXT";
-	mysql_query( $sql, $conn );
-	$sql = "ALTER TABLE ".table_users." ADD  `status_excludes` TEXT";
-	mysql_query( $sql, $conn );
-	$sql = "UPDATE ".table_users." SET status_switch=1, status_friends=1, status_story=1, status_comment=1, status_email=1, status_all_friends=1";
-	mysql_query( $sql, $conn );
-
-	$sql = "CREATE TABLE `".table_prefix . "updates` (
-		  `update_id` int(11) NOT NULL auto_increment,
-		  `update_time` int(11) default NULL,
-		  `update_type` char(1) NOT NULL,
-		  `update_link_id` int(11) NOT NULL,
-		  `update_user_id` int(11) NOT NULL,
-		  `update_group_id` int(11) NOT NULL,
-		  `update_likes` int(11) NOT NULL,
-		  `update_level` varchar(25),
-		  `update_text` text NOT NULL,
-		  PRIMARY KEY  (`update_id`),
-		  FULLTEXT KEY `update_text` (`update_text`)
-		) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci";
-	mysql_query( $sql, $conn );
-		
-	$sql = "CREATE TABLE `".table_prefix . "likes` (
-		  `like_update_id` int(11) NOT NULL,
-		  `like_user_id` int(11) NOT NULL,
-		  PRIMARY KEY  (`like_update_id`, `like_user_id`)
-		) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci";
-	mysql_query( $sql, $conn );
-		
-	$sql =  "INSERT  into " . table_misc_data . " (name,data) VALUES 
-	('status_switch', '0'),
-	('status_show_permalin', '1'),
-	('status_permalinks', '1'),
-	('status_inputonother', '1'),
-	('status_place', 'tpl_pligg_profile_info_end'),
-	('status_clock', '12'),
-	('status_results', '10'),
-	('status_max_chars', '1200'),
-	('status_avatar', 'small'),
-	('status_profile_level', 'admin,moderator,normal'),
-	('status_level', 'admin,moderator,normal'),
-	('status_user_email', '1'),
-	('status_user_comment', '1'),
-	('status_user_story', '1'),
-	('status_user_friends', '1'),
-	('status_user_switch', '1')";
 	mysql_query( $sql, $conn );
 
 	echo '<li>Adding default widgets</li>';
