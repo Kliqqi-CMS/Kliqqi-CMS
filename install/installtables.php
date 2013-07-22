@@ -616,16 +616,16 @@ function pligg_createtables($conn) {
 	mysql_query( $sql, $conn );
 
 	echo '<li>Adding default widgets</li>';
-	$sql = "INSERT INTO `".table_widgets."` VALUES (1, 'Admin Panel Tools', 0.1, 0, 'panel_tools', 1, 'left', 4, '')";
+	$sql = "INSERT INTO `".table_widgets."` VALUES (NULL, 'Admin Panel Tools', 0.1, 0, 'panel_tools', 1, 'left', 4, '')";
 	mysql_query( $sql, $conn );
-	$sql = "INSERT INTO `".table_widgets."` VALUES (3, 'Statistics', 0.1, 0, 'statistics', 1, 'left', 1, '')";
+	$sql = "INSERT INTO `".table_widgets."` VALUES (NULL, 'Statistics', 0.1, 0, 'statistics', 1, 'left', 1, '')";
 	mysql_query( $sql, $conn );
-	$sql = "INSERT INTO `".table_widgets."` VALUES (4, 'Pligg CMS', 0.1, 0, 'pligg_cms', 1, 'right', 5, '')";
+	$sql = "INSERT INTO `".table_widgets."` VALUES (NULL, 'Pligg CMS', 1.0, 0, 'pligg_cms', 1, 'right', 5, '')";
 	mysql_query( $sql, $conn );
-	$sql = "INSERT INTO `".table_widgets."` VALUES (5, 'Pligg News', 0.1, 0, 'pligg_news', 1, 'right', 6, '')";
+	$sql = "INSERT INTO `".table_widgets."` VALUES (NULL, 'Pligg News', 0.1, 0, 'pligg_news', 1, 'right', 6, '')";
 	mysql_query( $sql, $conn );
-	$sql = "INSERT INTO `".table_widgets."` VALUES (6, 'New products', 0.1, 0, 'new_products', 1, 'left', 2, '')";
-	mysql_query( $sql, $conn );
+//	$sql = "INSERT INTO `".table_widgets."` VALUES (NULL, 'New products', 0.1, 0, 'new_products', 1, 'left', 2, '')";
+//	mysql_query( $sql, $conn );
 
 //	echo '<li>Inserting default formulas</li>';
 	$sql = 'INSERT INTO `' . table_formulas . '` (`id`, `type`, `enabled`, `title`, `formula`) VALUES (1, \'report\', 1, \'Simple Story Reporting\', \'$reports > $votes * 3\');';
