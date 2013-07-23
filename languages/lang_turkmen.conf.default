@@ -1088,5 +1088,4 @@ PLIGG_Admin_Template_Widget_Description = "Drag and drop the items below to mana
 PLIGG_Visual_UpVoted = "Upvoted"
 PLIGG_Visual_DownVoted = "Downvoted"
 PLIGG_User_Profile_No_Content = "This page does not have any content to display at this time."
-
 // End 2.0.0 Language File

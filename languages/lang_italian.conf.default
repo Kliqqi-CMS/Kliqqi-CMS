@@ -1061,7 +1061,6 @@ PLIGG_Visual_Email_Tell_A_Friend = "Ecco un link alla storia: "
 // Start 1.2.1 Language File
 PLIGG_Visual_AdminPanel_Subcategory_Move = "Spostare le sottocategorie di un livello"
 PLIGG_Visual_AdminPanel_Subcategory_Delete = "Elimina le sottocategorie"
-// End 1.2.2 Language File
 
 // Start 2.0.0 Language File
 PLIGG_Visual_Story_Who_Upvoted = "Chi ha votato il"
@@ -1096,5 +1095,4 @@ PLIGG_Admin_Template_Widget_Description = "Trascinare e rilasciare gli elementi 
 PLIGG_Visual_UpVoted = "Up votato"
 PLIGG_Visual_DownVoted = "Giù votato"
 PLIGG_User_Profile_No_Content = "Questa pagina non ha alcun contenuto da visualizzare in questo momento."
-
 // End 2.0.0 Language File

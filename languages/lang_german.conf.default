@@ -1,6 +1,6 @@
 //<LANG>DE</LANG>
 //<TITLE>Deutsch</TITLE>
-//<VERSION>1.2.2</VERSION>
+//<VERSION>2.0.0</VERSION>
 
 //<SECTION>GENERAL</SECTION><ADDED>1.00</ADDED>
 PLIGG_Visual_Name = "Meine Website"
@@ -1060,7 +1060,6 @@ PLIGG_Visual_Email_Tell_A_Friend = "Hier ist ein Link zu der Geschichte: "
 // Start 1.2.1 Language File
 PLIGG_Visual_AdminPanel_Subcategory_Move = "Bewegen Unterkategorien eine Ebene"
 PLIGG_Visual_AdminPanel_Subcategory_Delete = "Löschen Unterkategorien"
-// End 1.2.2 Language File
 
 // Start 2.0.0 Language File
 PLIGG_Visual_Story_Who_Upvoted = "Wer Upvoted"
@@ -1095,5 +1094,4 @@ PLIGG_Admin_Template_Widget_Description = "Ziehen Sie die folgenden Punkte, um d
 PLIGG_Visual_UpVoted = "up gewählt"
 PLIGG_Visual_DownVoted = "überstimmt"
 PLIGG_User_Profile_No_Content = "Diese Seite hat keinen Inhalt angezeigt zu diesem Zeitpunkt."
-
 // End 2.0.0 Language File

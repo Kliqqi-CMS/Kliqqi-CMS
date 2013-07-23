@@ -1050,7 +1050,6 @@ PLIGG_Visual_Comment_Current_User_Username = "tu"
 PLIGG_Visual_Comment_Manage_User = "Gestión"
 PLIGG_Visual_Comment_Manage_Unregistered = "No registrado"
 PLIGG_Visual_Email_Tell_A_Friend = "Aquí hay un enlace al artículo: "
-// End 1.2.0 Language File
 
 // Start 1.2.1 Language File
 PLIGG_Visual_AdminPanel_Subcategory_Move = "Mover una subcategoría un nivel arriba"
@@ -1089,5 +1088,4 @@ PLIGG_Admin_Template_Widget_Description = "Arrastrar y soltar los elementos a co
 PLIGG_Visual_UpVoted = "Apoyada"
 PLIGG_Visual_DownVoted = "Despreciada"
 PLIGG_User_Profile_No_Content = "Esta página no tiene ningún contenido para mostrar en este momento."
-
 // End 2.0.0 Language File
