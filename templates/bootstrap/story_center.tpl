@@ -21,24 +21,26 @@ var story_link="{$story_url}";
 		$('#storytabs a[href="#comments"]').tab('show');
 	});
 
-	function show_comments(id){
-		document.location.href=story_link+'/'+id+'#comment-'+id;
-	}
-	
 {/literal}
 
 {if $urlmethod==2}
-	{literal}
-		function show_replay_comment_form(id){
-		   document.location.href=story_link+'/reply/'+id+'#comment-reply-'+id;
-		}
-	{/literal}
+    {literal}
+        function show_comments(id){
+			document.location.href=story_link+'/'+id+'#comment-'+id;
+        }
+        function show_replay_comment_form(id){
+           document.location.href=story_link+'/reply/'+id+'#comment-reply-'+id;
+        }
+    {/literal}
 {else}
-	{literal}
-		function show_replay_comment_form(id){
-		   document.location.href=story_link+'&comment_id='+id+'&reply=1#comment-reply-'+id;
-		}
-	{/literal}
+    {literal}
+        function show_comments(id){
+			document.location.href=story_link+'&comment_id='+id+'#comment-'+id;
+        }
+        function show_replay_comment_form(id){
+           document.location.href=story_link+'&comment_id='+id+'&reply=1#comment-reply-'+id;
+        }
+    {/literal}
 {/if}
 </script>
 
