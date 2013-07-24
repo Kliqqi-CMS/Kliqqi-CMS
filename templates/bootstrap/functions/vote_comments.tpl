@@ -13,14 +13,49 @@ function cvote (user, id, htmlid, md5, value)
 {
     var url = my_pligg_base + "/cvote.php";
     var mycontent = "id=" + id + "&user=" + user + "&md5=" + md5 + "&value=" + value;
-	 if (!anonymous_vote && user==0) {
+
+    if (!anonymous_vote && user==0) {
         window.location= my_base_url + my_pligg_base + "/login.php?return="+location.href;
     } else {
     	$.post(url, mycontent, function (data) {
 		if (data.match (new RegExp ("^ERROR:"))) {
 			var tag = $("<div></div>");
 			tag.html(data).dialog({modal: true}).dialog('open');
-			} else {
+		} else {
+			var anchor = $('#cxvote-'+htmlid+' > .'+(value>0 ? 'btn-danger' : 'btn-success'));
+			if (anchor.length)
+				anchor.removeClass(value>0 ? 'btn-danger' : 'btn-success')
+					.attr('href', anchor.attr('href').replace(/cunvote/,'cvote'))
+					.children('i').removeClass('icon-white');
+
+			var anchor = $('#cxvote-'+htmlid+' > .btn:'+(value>0 ? 'first' : 'last'));
+			anchor.addClass(value>0 ? 'btn-success' : 'btn-danger')
+				.attr('href', anchor.attr('href').replace(/cvote/,'cunvote'))
+				.children('i').addClass('icon-white');
+				
+			$('#cvote-'+htmlid).html(data.split('~')[0]);
+		}
+	}, "text");
+    }
+}
+
+function cunvote (user, id, htmlid, md5, value)
+{
+    var url = my_pligg_base + "/cvote.php";
+    var mycontent = "unvote=true&id=" + id + "&user=" + user + "&md5=" + md5 + "&value=" + value;
+    if (!anonymous_vote && user==0) {
+        window.location= my_base_url + my_pligg_base + "/login.php?return="+location.href;
+    } else {
+    	$.post(url, mycontent, function (data) {
+		if (data.match (new RegExp ("^ERROR:"))) {
+			var tag = $("<div></div>");
+			tag.html(data).dialog({modal: true}).dialog('open');
+		} else {
+			var anchor = $('#cxvote-'+htmlid+' > .'+(value<0 ? 'btn-danger' : 'btn-success'));
+			anchor.removeClass(value>0 ? 'btn-success' : 'btn-danger')
+				.attr('href', anchor.attr('href').replace(/cunvote/,'cvote'))
+				.children('i').removeClass('icon-white');
+
 			$('#cvote-'+htmlid).html(data.split('~')[0]);
 		}
 	}, "text");

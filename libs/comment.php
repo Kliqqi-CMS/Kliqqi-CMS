@@ -224,9 +224,15 @@ class Comment {
 		$jslinky = "cvote($current_user->user_id,$this->id,$this->id," . "'" . md5($current_user->user_id.$this->randkey) . "',10,'" . my_base_url . my_pligg_base . "/')";
 		$smarty->assign('link_shakebox_javascript_votey', $jslinky);
 
+		$jslinky = "cunvote($current_user->user_id,$this->id,$this->id," . "'" . md5($current_user->user_id.$this->randkey) . "',10,'" . my_base_url . my_pligg_base . "/')";
+		$smarty->assign('link_shakebox_javascript_unvotey', $jslinky);
+
 		// the link to downvote the comment
 		$jslinkn = "cvote($current_user->user_id,$this->id,$this->id," . "'" . md5($current_user->user_id.$this->randkey) . "',-10,'" . my_base_url . my_pligg_base . "/')";
 		$smarty->assign('link_shakebox_javascript_voten', $jslinkn);
+
+		$jslinkn = "cunvote($current_user->user_id,$this->id,$this->id," . "'" . md5($current_user->user_id.$this->randkey) . "',-10,'" . my_base_url . my_pligg_base . "/')";
+		$smarty->assign('link_shakebox_javascript_unvoten', $jslinkn);
 
 		// misc
 		$smarty->assign('Enable_Comment_Voting', Enable_Comment_Voting);
@@ -290,7 +296,7 @@ class Comment {
 		$vote = new Vote;
 		$vote->type='comments';
 		$vote->link=$this->id;
-		$this->votes=$vote->count();
+		$this->votes=$vote->count()-$vote->count('<0');
 	}
 	
 	function insert_vote($user=0, $value=10) {
@@ -308,7 +314,7 @@ class Comment {
 			$vote = new Vote;
 			$vote->type='comments';
 			$vote->link=$this->id;
-			$this->votes=$vote->count();
+			$this->votes=$vote->count()-$vote->count('<0');
 
 			if(comment_buries_spam>0 && $vote->count_all("<0")>=comment_buries_spam) {
 				$this->status='discard';

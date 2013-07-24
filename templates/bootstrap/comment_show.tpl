@@ -10,13 +10,12 @@
 			{if $UseAvatars neq "0"}<a href="{$user_view_url}"><img src="{$Avatar.small}" align="absmiddle" class="avatar" alt="{$user_username}" title="{$user_username}" /></a>{/if}      
 			{if $Enable_Comment_Voting eq 1}
 				<br />
+				<div><a id="cvote-{$comment_id}" class="comment_vote_count">{$comment_votes}</a></div>
 				{if $comment_user_vote_count eq 0 && $current_userid neq $comment_author}
-					<span id="ratebuttons-{$comment_id}">	  
-						<a href="javascript:{$link_shakebox_javascript_voten}" style='text-decoration:none;'>- </a> 
-						<a id="cvote-{$comment_id}" style='text-decoration: none;'>{$comment_votes}</a> 
-						<a href="javascript:{$link_shakebox_javascript_votey}" style='text-decoration:none;'> +</a> 
-					</span>
+					<a class="btn btn-mini {if $comment_shakebox_currentuser_votes eq 1}btn-success{/if}" href="javascript:{$link_shakebox_javascript_votey}"><i class="{if $comment_shakebox_currentuser_votes >= 1}icon-white {/if}icon-thumbs-up"></i></a>
+					<a class="btn btn-mini {if $comment_shakebox_currentuser_reports eq 1}btn-danger{/if}" href="javascript:{$link_shakebox_javascript_voten}"><i class="{if $comment_shakebox_currentuser_reports >= 1}icon-white {/if}icon-thumbs-down"></i></a>
 				{/if}
+				| 
 			{/if}
 		</div>
 		<div class="span_comment comment-right" id="wholecomment{$comment_id}">
