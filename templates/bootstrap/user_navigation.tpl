@@ -158,12 +158,8 @@
 			<div class="btn-group">
 				<a class="btn btn-small" href="{$user_url_friends}"><i class="icon-user"></i> {$user_following} {#PLIGG_Visual_User_Profile_View_Friends#}</a>
 				<a class="btn btn-small" href="{$user_url_friends2}"><i class="icon-user"></i> {$user_followers} {#PLIGG_Visual_User_Profile_Your_Friends#}</a>
-			</div> 
-			{if $user_login neq $user_logged_in}
-				{if check_for_enabled_module('simple_messaging',0.6) && $is_friend}
-					{if $friends}
-						<img src="{$my_pligg_base}/modules/simple_messaging/img/reply.png" border="0" align="absmiddle" /> <a href="{$my_pligg_base}/module.php?module=simple_messaging&view=compose&return={$templatelite.server.REQUEST_URI|urlencode}&to={$user_login}">{#PLIGG_Visual_User_Profile_Message#} {$user_login}</a>
-					{/if}
+                {if check_for_enabled_module('simple_messaging',2.0) && $is_friend}
+					<a class="btn btn-small" href="{$my_base_url}{$my_pligg_base}/module.php?module=simple_messaging&view=compose&to={$username}&return={$my_pligg_base}%2Fuser.php%3Flogin%3D{$user_logged_in}%26view%3Dfollowers"><i class="icon-envelope"></i> Send Message</a>
 				{/if}
 				{if $is_friend gt 0}
 					<a href="{$user_url_remove}" class="btn btn-small btn-danger">{#PLIGG_Unfollow#}{* {$user_login|capitalize} *}</a>
@@ -172,10 +168,10 @@
 					{/if}
 				{else}
 					{if $user_authenticated eq true} 
-						<a class="btn btn-success" href="{$user_url_add}">{#PLIGG_Visual_User_Profile_Add_Friend#} {$user_login}</a>
+						<a  class="btn btn-small btn-success" href="{$user_url_add}">{#PLIGG_Visual_User_Profile_Add_Friend#}{* {$user_login|capitalize} *}</a>
 					{/if}   
 				{/if}
-			{/if}
+			</div>
 		</div>
 	</div>
 	<div style="clear:both;"></div>

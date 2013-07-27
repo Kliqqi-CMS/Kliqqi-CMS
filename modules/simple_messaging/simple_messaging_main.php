@@ -1,6 +1,5 @@
-<?php   
+<?php  
 include_once(mnminclude.'../modules/simple_messaging/kmessaging/class.KMessaging.php');
-
 function get_new_messages(){
 
 	global $main_smarty, $the_template, $current_user;
@@ -358,7 +357,7 @@ function messaging_get_message_details($msgID){
 	if (!is_numeric($msgID)) die("Wrong ID");
 	
 	$message = new KMessaging(true);
-	$array = $message->GetMessege($msgID);
+	$array = $message->GetMessage($msgID);
 	
 	// check to make sure this is our message
 	if($array['receiver'] == $current_user->user_id){

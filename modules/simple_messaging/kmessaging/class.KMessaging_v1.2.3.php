@@ -151,7 +151,7 @@ var $DBHost = EZSQL_DB_HOST;
 			return 4;
 		if( strlen($senderLevel) == 0)
 			return 5;
-		$sql = "INSERT INTO ".$this->tblName." (title,body,sender,receiver,senderLevel,read) VALUES ('$title','$body',$sender,$receiver,$senderLevel,0)";
+		$sql = "INSERT INTO ".$this->tblName." (title,body,sender,receiver,senderLevel,readed) VALUES ('$title','$body',$sender,$receiver,$senderLevel,0)";
 		//echo $sql;
 		$result = mysql_query($sql);
 		if($result)
@@ -266,7 +266,7 @@ var $DBHost = EZSQL_DB_HOST;
 		$message['title'] = $row->title;
 		$message['body'] = nl2br($row->body);
 		$message['senderLevel'] = $row->senderLevel;
-		$message['read'] = $row->read & 1;
+		$message['readed'] = $row->readed & 1;
 		$message['date'] = $row->date;
 		return $message;
 	}
@@ -282,7 +282,7 @@ var $DBHost = EZSQL_DB_HOST;
 	{
 		if(strlen($msgId) == 0)
 			return 1;
-		$result = mysql_query("UPDATE ".$this->tblName." SET read=read|1 WHERE idMsg=$msgId");
+		$result = mysql_query("UPDATE ".$this->tblName." SET readed=readed|1 WHERE idMsg=$msgId");
 		if($result)
 			return 0;
 		else 
@@ -320,10 +320,10 @@ var $DBHost = EZSQL_DB_HOST;
 				$order = 'senderLevel DESC';
 				break;
 			case 2:
-				$order = 'read ASC';
+				$order = 'readed ASC';
 				break;
 			case 3:
-				$order = 'read DESC';
+				$order = 'readed DESC';
 				break;
 			case 4:
 				$order = '`date` ASC';
@@ -339,17 +339,17 @@ var $DBHost = EZSQL_DB_HOST;
 			case 0:
 				break;
 			case 1:
-				$where = ' AND read&1 = 0 ';			
+				$where = ' AND readed&1 = 0 ';			
 				break;
 			case 2:
-				$where = ' AND read&1 = 1 ';			
+				$where = ' AND readed&1 = 1 ';			
 				break;
 		}
 
 		if(strlen($receiver) > 0 && strlen($sender) > 0)
 			$where = ' AND ';
 		
-		$where = ((strlen($receiver) > 0)?'read&4=0 AND receiver=' . $receiver:'') . $where . ((strlen($sender) > 0)?'read&2=0 AND sender=' . $sender:'');
+		$where = ((strlen($receiver) > 0)?'readed&4=0 AND receiver=' . $receiver:'') . $where . ((strlen($sender) > 0)?'readed&2=0 AND sender=' . $sender:'');
 		
 		$sql = "SELECT * FROM ".$this->tblName." WHERE $where ORDER BY $order";
 		//echo $sql;
@@ -368,7 +368,7 @@ var $DBHost = EZSQL_DB_HOST;
 			$message[$i]['title'] = $row->title;
 			$message[$i]['body'] = $row->body;
 			$message[$i]['senderLevel'] = $row->senderLevel;
-			$message[$i]['read'] = $row->read&1;	
+			$message[$i]['readed'] = $row->readed&1;	
 			$message[$i]['date'] = $row->date;
 		}
 		if( !is_array($message) )
@@ -394,9 +394,9 @@ var $DBHost = EZSQL_DB_HOST;
 		if(strlen($msgId) == 0)
 			return 1;
 		if ($who==1)
-		    $result = mysql_query("UPDATE ".$this->tblName." SET read=read|2 WHERE idMsg=$msgId");
+		    $result = mysql_query("UPDATE ".$this->tblName." SET readed=readed|2 WHERE idMsg=$msgId");
 		elseif ($who==2)
-		    $result = mysql_query("UPDATE ".$this->tblName." SET read=read|4 WHERE idMsg=$msgId");
+		    $result = mysql_query("UPDATE ".$this->tblName." SET readed=readed|4 WHERE idMsg=$msgId");
 		elseif ($who==0)
 		    $result = mysql_query("DELETE FROM ".$this->tblName." WHERE idMsg=$msgId");
 		if($result)
