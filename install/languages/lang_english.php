@@ -1,4 +1,4 @@
-<?php
+﻿<?php
 // header
 	$lang['installer'] = 'Installer';
 	$lang['Welcome'] = 'Welcome';
@@ -85,12 +85,13 @@
 	$lang['InstallSuccess'] = 'Installation Complete!';
 	$lang['InstallSuccessMessage'] = 'Congratulations, you have set up a Pligg CMS website! While your site is fully functional at this point, you will want to do a little cleaning up by following the directions below to secure your site.';
 	$lang['WhatToDo'] = 'What to do next:';
-	$lang['WhatToDoList'] = '		<li><p>chmod "/libs/dbconnect.php" back to 644, we will not need to change this file again.</p></li>
-		<li><p><strong>DELETE</strong> the "/install" directory from your server if you have successfully installed Pligg.</p></li>
-		<li><p>Login to the <a href="../admin/admin_index.php">admin area</a> using the user information you entered from the previous step. Once you log in you should be presented with more information about how to use Pligg.</p></li>
-		<li><p><a href="../admin/admin_config.php">Configure your site</a> using the admin area.</p></li>
-		<li><p>Visit the <a href="http://pligg.com/">Pligg Support</a> website if you have any questions.</p></li>';
+	$lang['WhatToDoList'] = '		<li>chmod "/libs/dbconnect.php" back to 644, we will not need to change this file again.</li>
+		<li><strong>DELETE</strong> the "/install" directory from your server if you have successfully installed Pligg.</li>
+		<li>Login to the <a href="../admin/admin_index.php">admin area</a> using the user information you entered from the previous step. Once you log in you should be presented with more information about how to use Pligg.</li>
+		<li><a href="../admin/admin_config.php">Configure your site</a> using the admin area.</li>
+		<li>Visit the <a href="http://pligg.com/support/">Pligg Support</a> website if you have any questions.</li>';
 	$lang['ContinueToSite'] = 'Continue to Your New Website';
+	
 // Upgrade
 	$lang['UpgradeHome'] = '<p>By clicking on the button below, Pligg will upgrade your database to the latest version. It will also add new phrases by appending the latest additions to the bottom of your language file. You will still need to upload the new files and manually update your templates to be fully compatable with the latest version.</p> <p>We recommend that you back up your website and database to your local computer before proceeding because the upgrade process will make permanent changes to your MySQL database.';
 	$lang['UpgradeAreYouSure'] = 'Are you sure that you want to upgrade your database and language file?';

@@ -4,11 +4,11 @@
 	$lang['Welcome'] = 'Benvinguda';
 	$lang['Install'] = 'Instal · lar';
 	$lang['Upgrade'] = 'Millorar';
-	$lang['Troubleshooter'] = 'solucionador de problemes';
+	$lang['Troubleshooter'] = 'Solucionador de problemes';
 	$lang['Step'] = 'Pas';
 	$lang['Readme'] = 'Llegiu-me';
 	$lang['Admin'] = 'Administració';
-	$lang['Home'] = 'pàgina Principal';
+	$lang['Home'] = 'Pàgina d\'inici';
 	$lang['Install_instruct'] = 'Tingueu seva informació de MySQL pràctic. Veure Upgrade per actualitzar un lloc existent.';
 	$lang['Upgrade_instruct'] = 'Actualitzar farà modificacions a la base de dades MySQL. Assegureu-vos de fer còpies de seguretat abans de continuar.';
 	$lang['Troubleshooter_instruct'] = 'El solucionador de problemes detecta problemes comuns, com ara permisos de carpeta incorrectes';
