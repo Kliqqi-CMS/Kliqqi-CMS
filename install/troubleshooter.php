@@ -99,7 +99,7 @@ if (!glob("../languages/*.conf")) {
 	echo '</ul></td></tr>';
 }else{
     echo "<tr><td style='width:20px;' class='good'><i class='icon icon-ok'></i></td><td>You have renamed ";
-	echo '<a id="langfiles" data-content="<ul>';
+	echo '<a id="langfiles" data-trigger="hover" data-html="true" data-content="<ul>';
 	foreach (glob("../languages/*.conf") as $filename) {
 		echo "<li>$filename</li>";
 	}
@@ -161,7 +161,7 @@ if ((!$my_base_url) || ($my_base_url == '')) { echo '<tr><td><i class="icon icon
 */
 
 echo '<table class="table table-bordered table-striped">';
-echo '<thead><tr><th colspan="2">Checking <a id="chmod" data-content="CHMOD represents the read, write, and execute permissions given to files and directories. Pligg CMS requires that certain files and directories are given a CHMOD status of 0777, allowing Pligg to have access to make changes to files. Any lines that return as an error represent files that need to be updated to CHMOD 0777." rel="popover" href="http://en.wikipedia.org/wiki/Chmod" data-original-title="CHMOD">CHMOD Settings</a></th></tr></thead>';
+echo '<thead><tr><th colspan="2">Checking <a id="chmod" data-trigger="hover" data-html="true" data-content="<span style=\'font-weight:normal;\'>CHMOD represents the read, write, and execute permissions given to files and directories. Pligg CMS requires that certain files and directories are given a CHMOD status of 0777, allowing Pligg to have access to make changes to files. Any lines that return as an error represent files that need to be updated to CHMOD 0777.<span>" rel="popover" href="http://en.wikipedia.org/wiki/Chmod" data-original-title="CHMOD">CHMOD Settings</a></th></tr></thead>';
 echo '<tbody>';
 
 $file='../admin/backup/';
@@ -232,7 +232,7 @@ if ($phpversion < 5) {
 	echo '<i class="icon icon-ok"></i>';
 
 }
-echo '</td><td><a id="phpversion" data-content="Pligg has been tested on both PHP versions 4 and 5. We have designed the content management system based on PHP 5 technologies, so certain problems may occur when using older versions of PHP. We suggest that your server runs a mininum of PHP 5." rel="popover" href="http://us3.php.net/tut.php" data-original-title="PHP Version">PHP Version ('.$phpversion.')</a></td>';
+echo '</td><td><a id="phpversion" data-trigger="hover" data-content="Pligg has been tested on both PHP versions 4 and 5. We have designed the content management system based on PHP 5 technologies, so certain problems may occur when using older versions of PHP. We suggest that your server runs a mininum of PHP 5." rel="popover" href="http://us3.php.net/tut.php" data-original-title="PHP Version">PHP Version ('.$phpversion.')</a></td>';
 echo '</tr>';
 
 echo '<tr><td>';
@@ -241,23 +241,23 @@ if ($mysqlversion < 5) {
 } else if ($mysqlversion > 4) {
 	echo '<i class="icon icon-ok"></i>';
 }
-echo '</td><td><a id="mysqlversion" data-content="Pligg has been tested on both MySQL versions 4 and 5, during that process we have discovered that bugs will occassionally pop up is you are running MySQL 4. For this reason we suggest that you use a server with MySQL 5 or later to run a Pligg CMS website. MySQL 5 has been available for some time now and we hope that most major web hosts now support it. It offers features that are not built into MySQL 4, which we may have used when writing code for Pligg CMS." rel="popover" href="http://dev.mysql.com/doc/" data-original-title="MySQL Version">MySQL Version ('.$mysqlversion.')</a></td>';
+echo '</td><td><a id="mysqlversion" data-trigger="hover" data-content="Pligg has been tested on both MySQL versions 4 and 5, during that process we have discovered that bugs will occassionally pop up is you are running MySQL 4. For this reason we suggest that you use a server with MySQL 5 or later to run a Pligg CMS website. MySQL 5 has been available for some time now and we hope that most major web hosts now support it. It offers features that are not built into MySQL 4, which we may have used when writing code for Pligg CMS." rel="popover" href="http://dev.mysql.com/doc/" data-original-title="MySQL Version">MySQL Version ('.$mysqlversion.')</a></td>';
 echo '</tr>';
 
 echo '<tr><td style="width:20px;">', function_exists('curl_version') ? '<i class="icon icon-ok"></i></td>' : '<i class="icon icon-remove"></i></td>';
-	echo '<td><a id="curlwarning" data-content="cURL is a PHP library that allows Pligg to connect to external websites." rel="popover" href="http://php.net/manual/en/book.curl.php" data-original-title="cURL PHP Extension">cURL</a></td></tr>';
+	echo '<td><a id="curlwarning" data-trigger="hover" data-content="cURL is a PHP library that allows Pligg to connect to external websites." rel="popover" href="http://php.net/manual/en/book.curl.php" data-original-title="cURL PHP Extension">cURL</a></td></tr>';
 
 echo '<tr><td>', function_exists('fopen') ? '<i class="icon icon-ok"></i></td>' : '<i class="icon icon-remove"></i></td>';
-	echo '<td><a id="fopenwarning" data-content="The fopen function for PHP allows us to create, read, and manipulate local files." rel="popover" href="http://www.w3schools.com/php/func_filesystem_fopen.asp" data-original-title="fopen PHP Function">fopen</a></td></tr>';
+	echo '<td><a id="fopenwarning" data-trigger="hover" data-content="The fopen function for PHP allows us to create, read, and manipulate local files." rel="popover" href="http://www.w3schools.com/php/func_filesystem_fopen.asp" data-original-title="fopen PHP Function">fopen</a></td></tr>';
 
 echo '<tr><td>', function_exists('fwrite') ? '<i class="icon icon-ok"></i></td>' : '<i class="icon icon-remove"></i></td>';
-	echo '<td><a id="fwritewarning" data-content="The fwrite function is used in conjunction with the fopen function. It allows PHP to write to an opened file." rel="popover" href="http://www.w3schools.com/php/func_filesystem_fwrite.asp" data-original-title="fwrite PHP Function">fwrite</td></tr>';
+	echo '<td><a id="fwritewarning" data-trigger="hover" data-content="The fwrite function is used in conjunction with the fopen function. It allows PHP to write to an opened file." rel="popover" href="http://www.w3schools.com/php/func_filesystem_fwrite.asp" data-original-title="fwrite PHP Function">fwrite</td></tr>';
 	
 echo '<tr><td>', file_get_contents(__FILE__) ? '<i class="icon icon-ok"></i></td>' : '<i class="icon icon-remove"></i></td>';
-	echo '<td><a id="fgetwarning" data-content="The file_get_contents() function for PHP reads a file into a string." rel="popover" href="http://www.w3schools.com/php/func_filesystem_file_get_contents.asp" data-original-title="fgetwarning PHP Function">file_get_contents</a></td></tr>';
+	echo '<td><a id="fgetwarning" data-trigger="hover" data-content="The file_get_contents() function for PHP reads a file into a string." rel="popover" href="http://www.w3schools.com/php/func_filesystem_file_get_contents.asp" data-original-title="fgetwarning PHP Function">file_get_contents</a></td></tr>';
 	
 echo '<tr><td>', function_exists('gd_info') ? '<i class="icon icon-ok"></i></td>' : '<i class="icon icon-remove"></i></td>';
-	echo '<td><a id="gdwarning" data-content="The GD Graphics Library is a graphics software library for dynamically manipulating images. Any images handled by Pligg, like user avatar or group images, use GD to manipulate the file." rel="popover" href="http://php.net/manual/en/book.image.php" data-original-title="GD Graphics Library">GD Graphics Library</a></td></tr>';
+	echo '<td><a id="gdwarning" data-trigger="hover" data-content="The GD Graphics Library is a graphics software library for dynamically manipulating images. Any images handled by Pligg, like user avatar or group images, use GD to manipulate the file." rel="popover" href="http://php.net/manual/en/book.image.php" data-original-title="GD Graphics Library">GD Graphics Library</a></td></tr>';
 	
 echo '</tbody></table>';
 
