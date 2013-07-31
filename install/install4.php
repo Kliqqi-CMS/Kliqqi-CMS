@@ -80,6 +80,11 @@ if (!$errors) {
 
 	$sql = "Update " . table_config . " set `var_value` = '" . $my_pligg_base . "' where `var_name` = '" . '$my_pligg_base' . "';";
 	mysql_query( $sql, $conn );
+	
+	// Set the site language to what the user has been using during the installation
+	$language = addslashes(strip_tags($_REQUEST['language']));
+	$sql = "Update " . table_config . " set `var_value` = '" . $language . "' where `var_name` = '" . '$language' . "';";
+	mysql_query( $sql, $conn );
 
 	$config = new pliggconfig;
 	$config->create_file('../settings.php');
@@ -129,7 +134,8 @@ if (!$errors) {
 	</div>
 	';
 }
-	
+
+	mysql_query( $sql, $conn );
 if (isset($errors)) {
 	$output=DisplayErrors($errors);
 	$output.='<p>' . $lang['Errors'] . '</p>';

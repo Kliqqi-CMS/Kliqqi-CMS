@@ -40,6 +40,11 @@ $file='../cache';
 if (!file_exists($file)) { $errors[]="$file " . $lang['CacheNotFound'] ; }
 elseif (!is_writable($file)) { $errors[]="$file " . $lang['NotEditable'] ; }
 
+$language = addslashes(strip_tags($_REQUEST['language']));
+$file="../languages/lang_$language.conf";
+if (!file_exists($file)) { $errors[]="$file " . $lang['LangNotFound'] ; }
+elseif (!is_writable($file)) { $errors[]="$file " . $lang['NotEditable'] ; }
+
 if (!$errors) {
 
 $output='

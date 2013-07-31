@@ -52,6 +52,7 @@
 	$lang['PrefixExample'] = '(ie: "pligg_" fa que les taules per als usuaris pligg_users)';
 	$lang['CheckSettings'] = 'Comproveu la configuració';
 	$lang['Errors'] = 'Si us plau corregiu l\'error anterior(s), a continuació, actualitzeu la pàgina';
+	$lang['LangNotFound'] = 'no s\'ha trobat. Si us plau, elimini l\'extensió. Defecte de tots els fitxers d\'idioma i torneu a intentar.';
 
 // step 3
 	$lang['ConnectionEstab'] = 'Connexió de base de dades establerta...';

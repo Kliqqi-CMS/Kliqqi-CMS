@@ -51,6 +51,7 @@
 	$lang['PrefixExample'] = '(如: "pligg_" 那么用户表users将保存为pligg_users)';
 	$lang['CheckSettings'] = '检查设置';
 	$lang['Errors'] = '请修复上述错误,然后刷新本页,暂停安装!';
+	$lang['LangNotFound'] = '没有被发现。请删除所有语言文件的默认扩展名，然后再试一次。';
 
 // step 3
 	$lang['ConnectionEstab'] = '初始化数据库连接...';

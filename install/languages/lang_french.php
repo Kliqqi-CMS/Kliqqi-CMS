@@ -51,6 +51,7 @@
 	$lang['PrefixExample'] = '(ie: "pligg_" rend les tables pour les utilisateurs deviennent pligg_users)';
 	$lang['CheckSettings'] = 'Vérifiez les paramètres';
 	$lang['Errors'] = 'S\'il vous plaît corriger l\'erreur ci-dessus (s), then <a class="btn btn-mini" onClick="document.location.reload(true)">Actualiser la page</a>';
+	$lang['LangNotFound'] = 'n\'a pas été trouvé. S\'il vous plaît supprimer l\'extension. Par défaut de tous les fichiers de langues et réessayez.';
 
 // step 3
 	$lang['ConnectionEstab'] = 'Connexion de base de données établie...';

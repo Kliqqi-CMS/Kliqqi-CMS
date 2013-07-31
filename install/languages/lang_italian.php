@@ -52,6 +52,7 @@
 	$lang['PrefixExample'] = "(es: 'pligg_' le tabelle geli utentei inizieranno pligg_users)";
 	$lang['CheckSettings'] = "Controlla le impostazioni";
 	$lang['Errors'] = "Si prega di correggere gli errori sopra riportati, installazione interrotta!";
+	$lang['LangNotFound'] = 'non è stato trovato. Si prega di rimuovere l\'estensione. Predefinita da tutti i file di lingua e riprovare.';
 
 // step 3
 	$lang['ConnectionEstab'] = "Connessione Database stabilita...";
