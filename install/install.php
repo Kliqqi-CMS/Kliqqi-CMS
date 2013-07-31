@@ -37,7 +37,6 @@ if ($step == 2) {
 
 //check database settings, store to file
 if ($step == 3) {
-	
 	include('install3.php');
 }
 

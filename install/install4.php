@@ -2,8 +2,29 @@
 if (!$step) { 
 	header('Location: ./install.php'); die(); 
 } else if(@$_SESSION['checked_step'] != 3){
-	
 	header('Location: ./install.php'); die(); 
+}
+
+if ($_POST['language'])
+    $language = addslashes(strip_tags($_POST['language']));
+if($language == 'arabic'){
+	include_once('./languages/lang_arabic.php');
+}elseif($language == 'catalan'){
+	include_once('./languages/lang_catalan.php');
+}elseif($language == 'chinese_simplified'){
+	include_once('./languages/lang_chinese_simplified.php');
+}elseif($language == 'french'){
+	include_once('./languages/lang_french.php');
+}elseif($language == 'german'){
+	include_once('./languages/lang_german.php');
+}elseif($language == 'italian'){
+	include_once('./languages/lang_italian.php');
+}elseif($language == 'russian'){
+	include_once('./languages/lang_russian.php');
+}elseif($language == 'thai'){
+	include_once('./languages/lang_thai.php');
+} else {
+	include_once('./languages/lang_english.php');
 }
 
 echo '<div class="instructions">';

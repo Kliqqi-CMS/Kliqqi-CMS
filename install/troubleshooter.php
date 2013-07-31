@@ -43,7 +43,7 @@ $mysqlversion = preg_replace($pattern, $replacement, $mysqlversion);
 
 
 // Tally up how many items are fulfilled.
-$required = 23; // This should be the number of checks being performed
+$required = 21; // This should be the number of checks being performed
 $tally = 0;
 if (glob("../languages/*.conf")) { $tally = $tally+1;}
 if (phpversion() > 4) { $tally = $tally+1; }
@@ -67,8 +67,6 @@ if (is_writable('../avatars/user_uploaded/')) { $tally = $tally+1; }
 if (is_writable('../cache/')) { $tally = $tally+1; }
 if (is_writable('../languages/')) { $tally = $tally+1; }
 foreach (glob("../languages/*.conf") as $filename) { $required = $required+1; if (is_writable($filename)) {$tally = $tally+1;} }
-if (is_writable('../languages/installer_lang.php')) { $tally = $tally+1; }
-if (is_writable('../languages/installer_lang_default.php')) { $tally = $tally+1; }
 if (is_writable('../libs/dbconnect.php')) { $tally = $tally+1; }
 if (is_writable('../settings.php')) { $tally = $tally+1; }
 //echo $tally.' / '.$required;
@@ -190,14 +188,6 @@ foreach (glob("../languages/*.conf") as $filename) {
 	if (!is_writable($file)) { echo '<tr><td><i class="icon icon-remove"></i></td><td>'.$filename.' is not writable! Please chmod this file to 777.</span></td></tr>'; }
 	if (is_writable($file)) { echo '<tr><td><i class="icon icon-ok"></i></td><td>'.$filename.'</span></td></tr>'; }
 }
-
-$file='../languages/installer_lang.php';
-if (!is_writable($file)) { echo '<tr><td><i class="icon icon-remove"></i></td><td>'.$file.' is not writable! Please chmod this file to 777.</span></td></tr>'; }
-if (is_writable($file)) { echo '<tr><td><i class="icon icon-ok"></i></td><td>'.$file.'</span></td></tr>'; }
-
-$file='../languages/installer_lang_default.php';
-if (!is_writable($file)) { echo '<tr><td><i class="icon icon-remove"></i></td><td>'.$file.' is not writable! Please chmod this file to 777.</span></td></tr>'; }
-if (is_writable($file)) { echo '<tr><td><i class="icon icon-ok"></i></td><td>'.$file.'</span></td></tr>'; }
 
 $file='../logs/bannedips.log';
 if (file_exists($file)) {

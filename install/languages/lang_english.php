@@ -16,9 +16,8 @@
 // intro / step 1
 	$lang['WelcomeToInstaller'] = 'Welcome to the Pligg CMS Installer!';
 	$lang['Introduction'] = 'Introduction';
-	$lang['WelcomeToThe'] = 'Welcome to <a href="http://pligg.com" target="_blank">Pligg Content Management System</a>, the CMS that powers thousands of community websites. If this is your first time installing Pligg, please read all of the provided instructions carefully so that you don\'t miss any important directions. On behalf of the Pligg developers, I would like to wish you and your new website the best of luck.';
-	$lang['VersionCheckOld'] = 'We could be wrong, but it looks like you need to update to the latest version. The /langauges/lang_english.conf.default file is from an older Pligg version. You can <a href="http://pligg.com/download/">download the latest version of Pligg here</a>.';
-	$lang['Bugs'] = 'Please familiarize yourself with some of the documentation provided by the Pligg community at the <a href="http://pligg.com/support/">Pligg Support</a> website. We also suggest that you register an account so that you will have access to free support, modules, widgets, templates and other great resources. If you discover any bugs, or if you just want to suggest a new feature, please post your feedback on our very own <a href="http://pligg.com/demo/">Pligg Demo website</a>.';
+	$lang['WelcomeToThe'] = 'Welcome to <a href="http://pligg.com" target="_blank">Pligg</a>, the CMS that powers thousands of community websites. If this is your first time installing Pligg CMS, please read all of the provided instructions carefully so that you don\'t miss any important directions.';
+	$lang['Bugs'] = 'Please familiarize yourself with some of the documentation provided by the Pligg community at the <a href="http://pligg.com/support/">Pligg Support</a> website. We also suggest that you register an account so that you will have access to free support, modules, widgets, templates and other great resources.';
 	$lang['Installation'] = 'Installation (Please Read Carefully)';
 	$lang['OnceFamiliar'] = '<p>If this is your first time installing Pligg you should continue on this page after carefully following the directions below. If you need to <a href="./upgrade.php">upgrade your site</a> from a previous version, please run the upgrade script by clicking on the Upgrade link above. WARNING: running the installation process on an existing Pligg site database will overwrite all stories and settings, so please make sure that you want to perform an installation if you choose to continue below.
 	<ol>
@@ -63,7 +62,7 @@
 	$lang['Error2-1'] = 'Could not write to \'libs/dbconnect.php\' file.';
 	$lang['Error2-2'] = 'Could not open \'/libs/dbconnect.php\' file for writing.';
 	$lang['Error2-3'] = 'Connected to the database, but the database name is incorrect.';
-	$lang['Error2-4'] = 'Cannot connect to the database <b>server</b> using the information provided.';
+	$lang['Error2-4'] = 'Cannot connect to the database server using the information provided.';
 
 // step 4
 	$lang['CreatingTables'] = 'Creating database tables';
@@ -93,7 +92,7 @@
 	$lang['ContinueToSite'] = 'Continue to Your New Website';
 // Upgrade
 	$lang['UpgradeHome'] = '<p>By clicking on the button below, Pligg will upgrade your database to the latest version. It will also add new phrases by appending the latest additions to the bottom of your language file. You will still need to upload the new files and manually update your templates to be fully compatable with the latest version.</p> <p>We recommend that you back up your website and database to your local computer before proceeding because the upgrade process will make permanent changes to your MySQL database.';
-	$lang['UpgradeAreYouSure'] = 'Are you sure that you want to upgrade you database and language file?';
+	$lang['UpgradeAreYouSure'] = 'Are you sure that you want to upgrade your database and language file?';
 	$lang['UpgradeYes'] = 'Proceed with Upgrade';
 	$lang['UpgradeLanguage'] = 'Success, Pligg updated your language file. It now includes the latest language items.';
 	$lang['UpgradingTables'] = '<strong>Upgrading Database...</strong>';
