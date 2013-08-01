@@ -11,7 +11,7 @@ if ((!isset($step)) || ($step == "")) { $step = 0; }
 
 
 if ($step == 0) { 
-	include('install0.php');
+	include('install_language.php');
 }
 
 $include='header.php'; 

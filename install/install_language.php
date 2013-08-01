@@ -1,5 +1,4 @@
 <?php
-include('class_HTTPRequest.php');
 $language = addslashes(strip_tags($_REQUEST['language']));
 include ('header.php');
 
@@ -44,5 +43,3 @@ if($_GET['language'] == '' && $_GET['step'] == ''){
 
 ?>
 <meta http-equiv="refresh" content="0;url=install.php?step=1">
-
-
