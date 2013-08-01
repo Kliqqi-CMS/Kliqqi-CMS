@@ -653,7 +653,9 @@ margin-bottom: 15px;
 .user_comment_story_title {
 	font-weight:bold;
 }
-
+.site_languages {
+	text-transform: capitalize;
+}
 
 /**************** SUBMIT ******************/
 .submit_step_1_left {

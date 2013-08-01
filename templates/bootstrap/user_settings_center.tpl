@@ -98,9 +98,9 @@
 					{*if count($languages) gt 1*}
 						<tr>
 							<td><label for="name" accesskey="1">{#PLIGG_Visual_User_Profile_Language#}:</label></td>
-							<td><select name='language'>
+							<td><select name='language' class="site_languages" >
 									{foreach from=$languages value=lang}
-										<option {if $lang==$user_language}selected{/if}>{$lang|capitalize}</option>
+										<option {if $lang==$user_language}selected{/if}>{$lang}</option>
 									{/foreach}
 								</select>
 							</td>

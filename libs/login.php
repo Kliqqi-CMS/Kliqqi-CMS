@@ -27,7 +27,7 @@ class UserAuth {
 					$this->user_login  = $userInfo[0];
 					$this->md5_pass = $userInfo[2];
 					$this->authenticated = TRUE;
-					if (user_language)
+					if ($dbuser->user_language)
 						$language = $dbuser->user_language;
 				}
 			}

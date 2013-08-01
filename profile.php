@@ -53,7 +53,7 @@ $main_smarty->assign('posttitle', $main_smarty->get_config_vars('PLIGG_Visual_Pr
 $user=new User();
 $user->username = $login;
 if(!$user->read()) {
-	echo "invalid user";
+	header('Location: '.$my_base_url.$my_pligg_base);
 	die;
 }
 
@@ -188,7 +188,7 @@ function show_profile() {
 	$vars = '';
 	check_actions('profile_show', $vars);
 	
-	// assign profile information to smarty
+	// assign profile information to smarty	
 	$main_smarty->assign('user_id', $user->id);
 	$main_smarty->assign('user_email', $user->email);
 	$main_smarty->assign('user_login', $user->username);
@@ -199,7 +199,6 @@ function show_profile() {
 	$main_smarty->assign('user_publicemail', $user->public_email);
 	$main_smarty->assign('user_location', $user->location);
 	$main_smarty->assign('user_occupation', $user->occupation);
-	$main_smarty->assign('user_language', !empty($user->language) ? $user->language : 'english');
 	$main_smarty->assign('user_facebook', $user->facebook);
 	$main_smarty->assign('user_twitter', $user->twitter);
 	$main_smarty->assign('user_linkedin', $user->linkedin);
@@ -215,6 +214,9 @@ function show_profile() {
 	$main_smarty->assign('user_total_comments', $user->total_comments);
 	$main_smarty->assign('user_total_votes', $user->total_votes);
 	$main_smarty->assign('user_published_votes', $user->published_votes);
+	
+	// If the user language setting is NULL, present the site's default language file
+	$main_smarty->assign('user_language', !empty($user->language) ? $user->language : pligg_language);
 
 	$languages = array();
 	$files = glob("languages/*.conf");

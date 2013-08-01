@@ -175,6 +175,9 @@ ob_start();
 include_once mnminclude.'db.php';
 include mnminclude.'utils.php';
 
+// Defining the settings.php language setting as it's own variable
+$settings_language = $language;
+
 if(!isset($include_login) || $include_login !== false){
 	// if $include_login is set to false (like in jspath.php and xmlhttp.php), then we don't
 	// include login, because login will run a query right away to check user credentials
@@ -183,12 +186,17 @@ if(!isset($include_login) || $include_login !== false){
 }
 
 if (!file_exists(dirname(__FILE__) . '/languages/lang_'.$language.'.conf')) {
+	// If the user language file does not exist, attempt to use the site default
+	$language = $settings_language; // Back where we started. The settings.php file value.
+}
+if (!file_exists(dirname(__FILE__) . '/languages/lang_'.$language.'.conf')) {
+	// If all else fails, default to the english language file
 	$language = 'english';
 }
 define('pligg_language', $language);
 
 if (!file_exists(dirname(__FILE__) . '/languages/lang_'.$language.'.conf')) {
-	die('The language file /languages/lang_' . $language . '.conf does not exist. Either this file is missing or you did not rename lang.conf after an upgrade. Try renaming /languages/lang.conf to /languages/lang_' . $language . '.conf.');
+	die('The language file /languages/lang_' . $language . '.conf does not exist. Either this file is missing or the server does not have permission to read it. Make sure that you renamed the file /languages/lang_' . $language . '.conf.default to /languages/lang_' . $language . '.conf.');
 }
 
 include_once(mnmmodules . 'modules_init.php');
