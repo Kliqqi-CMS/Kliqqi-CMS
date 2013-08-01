@@ -252,10 +252,10 @@ if (!$errors) {
 			) ENGINE = MyISAM;";
 		$db->query($sql);
 		
-	
-			
-		$sql = "INSERT INTO `" . table_misc_data . "` ( `name` , `data` ) VALUES ('pligg_version', '2.0.0');";
+		// Add Pligg version
+		$sql = "INSERT INTO `" . table_misc_data . "` ( `name` , `data` ) VALUES ('pligg_version', '2.0.0rc2');";
 		$db->query($sql);
+		
 		//Captcha upgrade:
 		$sql = "INSERT INTO `" . table_misc_data . "` ( `name` , `data` ) VALUES ('captcha_method', 'solvemedia');";
 		$db->query($sql);
@@ -263,6 +263,7 @@ if (!$errors) {
 		$db->query($sql);
 		$sql = "INSERT INTO `" . table_misc_data . "` ( `name` , `data` ) VALUES ('reCaptcha_prikey', '6LfwKQQAAAAAALQosKUrE4MepD0_kW7dgDZLR5P1');";
 		$db->query($sql);
+		
 	} else {
 		// Get version-specific updates
 		$sql = "SELECT data FROM " . table_misc_data . " WHERE name = 'pligg_version'";
@@ -271,10 +272,11 @@ if (!$errors) {
 		
 		include_once('version/1.x.php');
 		include_once('version/2.0.0.php');
+		include_once('version/2.0.0rc2.php');
 		// include_once('version/2.0.1.php');
 		
-		// Set the new version number
-		$sql = "UPDATE `" . table_misc_data . "` SET `data` = '2.0.0' WHERE `name` = 'pligg_version';";
+		// Update version number
+		$sql = "UPDATE `" . table_misc_data . "` SET `data` = '2.0.0rc2' WHERE `name` = 'pligg_version';";
 		$db->query($sql);
 	}
 	
