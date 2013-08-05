@@ -13,7 +13,7 @@
 {/if}
 
 <fieldset>
-	<legend><img src="{$akismet_img_path}shield.png" align="absmiddle"/> {#PLIGG_Akismet_manage_key#}</legend>
+	<legend>{#PLIGG_Akismet_manage_key#}</legend>
 	<p>{#PLIGG_Akismet_api_description#}<p>
 
 	<form method="get" action="module.php">

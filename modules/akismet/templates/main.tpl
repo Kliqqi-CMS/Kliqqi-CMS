@@ -1,6 +1,6 @@
 {config_load file=akismet_lang_conf}
 <fieldset>
-	<legend><img src="{$akismet_img_path}shield.png" align="absmiddle"/> {#PLIGG_Akismet_BreadCrumb#}</legend>
+	<legend>{#PLIGG_Akismet_BreadCrumb#}</legend>
 
 	<h2>{#PLIGG_Akismet_settings_title#}</h2>
 
