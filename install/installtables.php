@@ -554,7 +554,7 @@ function pligg_createtables($conn) {
 	echo '<li>Adding default widgets</li>';
 	$sql = "INSERT INTO `".table_widgets."` VALUES (NULL, 'Admin Panel Tools', 0.1, 0, 'panel_tools', 1, 'left', 4, '')";
 	mysql_query( $sql, $conn );
-	$sql = "INSERT INTO `".table_widgets."` VALUES (NULL, 'Statistics', 0.1, 0, 'statistics', 1, 'left', 1, '')";
+	$sql = "INSERT INTO `".table_widgets."` VALUES (NULL, 'Statistics', 0.2, 0, 'statistics', 1, 'left', 1, '')";
 	mysql_query( $sql, $conn );
 	$sql = "INSERT INTO `".table_widgets."` VALUES (NULL, 'Pligg CMS', 1.0, 0, 'pligg_cms', 1, 'right', 5, '')";
 	mysql_query( $sql, $conn );
