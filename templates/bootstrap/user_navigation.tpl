@@ -166,7 +166,7 @@
 					{if $user_authenticated eq true}
 						{checkActionsTpl location="tpl_user_center"}
 					{/if}
-				{else}
+				{elseif $user_login neq $user_logged_in}
 					{if $user_authenticated eq true} 
 						<a  class="btn btn-small btn-success" href="{$user_url_add}">{#PLIGG_Visual_User_Profile_Add_Friend#}{* {$user_login|capitalize} *}</a>
 					{/if}   
