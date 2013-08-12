@@ -3,7 +3,7 @@
 *************************************}
 <!-- sidebar.tpl -->
 {if $pagename neq "submit"}
-	{checkActionsTpl location="tpl_pligg_sidebar2_start"}
+	{checkActionsTpl location="tpl_pligg_sidebar_start"}
 	<!-- START SEARCH BOX -->
 		{include file=$the_template."/search_box.tpl"}
 	<!-- END SEARCH BOX -->
@@ -11,6 +11,6 @@
 	<!-- START ABOUT BOX -->
 		{include file=$the_template."/about_box.tpl"}
 	<!-- END ABOUT BOX -->
-	{checkActionsTpl location="tpl_pligg_sidebar2_end"}
+	{checkActionsTpl location="tpl_pligg_sidebar_end"}
 {/if}
 <!--/sidebar.tpl -->
