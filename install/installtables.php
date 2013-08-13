@@ -378,7 +378,7 @@ function pligg_createtables($conn) {
 		`member_id` INT( 20 ) NOT NULL auto_increment,
 		`member_user_id` INT( 20 ) NOT NULL ,
 		`member_group_id` INT( 20 ) NOT NULL ,
-		`member_role` ENUM( 'admin', 'moderator', 'admin', 'flagged', 'banned' ) NOT NULL,
+		`member_role` ENUM( 'admin', 'normal', 'moderator', 'flagged', 'banned' ) NOT NULL,
 		`member_status` ENUM( 'active', 'inactive') NOT NULL,
 		PRIMARY KEY  (`member_id`),
 		KEY `user_group` (`member_group_id`, `member_user_id`)
@@ -439,7 +439,7 @@ function pligg_createtables($conn) {
 	///////////////////////////////////////////////////////////////////////////
 
 	echo '<li>Setting Pligg Version</li>';
-	$sql = "INSERT INTO `" . table_misc_data . "` ( `name` , `data` ) VALUES ('pligg_version', '2.0.0rc2');";
+	$sql = "INSERT INTO `" . table_misc_data . "` ( `name` , `data` ) VALUES ('pligg_version', '2.0.0rc3');";
 	mysql_query( $sql, $conn );
 	
 	echo '<li>Setting Captcha Method to SolveMedia</li>';
