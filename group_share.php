@@ -14,13 +14,16 @@ check_referrer();
 
 if (isset($_GET['link_id']) && isset($_GET['group_id']))
 {
+    $group_id = $_GET['group_id'];
+    $link_id = $_GET['link_id'];
+    if (!is_numeric($group_id)) die();
+    if (!is_numeric($link_id)) die();
+
+    $privacy = $db->get_var("SELECT group_privacy FROM " . table_groups . " WHERE group_id = '$group_id';");
+    if (($privacy!='private' || isMemberActive($group_id)=='active'))
+    {
 	global $db, $current_user;
-	//$isMember = isMember($story_id);
 	$current_userid = $current_user->user_id;
-	$group_id = $_GET['group_id'];
-	$link_id = $_GET['link_id'];
-	if (!is_numeric($group_id)) die();
-	if (!is_numeric($link_id)) die();
 
 	$sql = "INSERT IGNORE INTO ". table_group_shared ." ( `share_link_id` , `share_group_id`, `share_user_id` ) VALUES ('".$link_id."', '".$group_id."','".$current_userid."' ) ";
 	//echo $sql;
@@ -28,5 +31,9 @@ if (isset($_GET['link_id']) && isset($_GET['group_id']))
 	$redirect = '';
 	$redirect = getmyurl("group_story", $group_id);
 	header("Location: $redirect");
+    } else {
+	$redirect = getmyurl("groups");
+	header("Location: $redirect");
+    }
 }
 ?>
