@@ -1,4 +1,5 @@
 ﻿{config_load file=captcha_lang_conf}
+
 <legend>{#Pligg_Captcha_Settings#}</legend>
 {if isset($msg)}
 	<div class="alert fade in">
@@ -12,18 +13,89 @@
 		<tr><th colspan="2">{#Pligg_Captcha_Captchas#}</th><tr>
 	</thead>
 	<tbody>
-		<tr><td>{#Pligg_Captcha_Solve_Media#}: </td><td> {if $captcha_method eq "solvemedia"}<strong>In Use</strong>{else}<a href="module.php?module=captcha&captcha=solvemedia&action=enable">Enable</a>{/if} | <a href="module.php?module=captcha&captcha=solvemedia&action=configure">Configure</a></td></tr>
-		<tr><td>{#Pligg_Captcha_recaptcha#}: </td><td> {if $captcha_method eq "reCaptcha"}<strong>In Use</strong>{else}<a href="module.php?module=captcha&captcha=reCaptcha&action=enable">Enable</a>{/if} | <a href="module.php?module=captcha&captcha=reCaptcha&action=configure">Configure</a></td></tr>
-		<tr><td>{#Pligg_Captcha_whitehat#}: </td><td> {if $captcha_method eq "WhiteHat"}<strong>In Use</strong>{else}<a href="module.php?module=captcha&captcha=WhiteHat&action=enable">Enable</a>{/if}</td></tr>
-		<tr><td>{#Pligg_Captcha_math#}: </td><td> {if $captcha_method eq "math"}<strong>In Use</strong>{else}<a href="module.php?module=captcha&captcha=math&action=enable">Enable</a>{/if} | <a href="module.php?module=captcha&captcha=math&action=configure">Configure</a></td></tr>
+		<tr>
+			<td class="span4">{#Pligg_Captcha_Solve_Media#}: </td>
+			<td class="span2"> 
+				<div id="tab" class="btn-group" data-toggle="buttons-radio">
+					{if $captcha_method eq "solvemedia"}
+						<span class="btn btn-success disabled" disabled>{#PLIGG_Captcha_Active#}</span>
+					{else}
+						<a class="btn btn-primary" href="module.php?module=captcha&captcha=solvemedia&action=enable">{#PLIGG_Captcha_Enable#}</a>
+					{/if}
+					<a class="btn" href="module.php?module=captcha&captcha=solvemedia&action=configure">{#PLIGG_Captcha_Configure#}</a>
+				</div>
+			</td>
+		</tr>
+		<tr>
+			<td>{#Pligg_Captcha_recaptcha#}: </td>
+			<td>
+				<div id="tab" class="btn-group" data-toggle="buttons-radio">
+					{if $captcha_method eq "reCaptcha"}
+						<span class="btn btn-success disabled" disabled>{#PLIGG_Captcha_Active#}</span>
+					{else}
+						<a class="btn btn-primary" href="module.php?module=captcha&captcha=reCaptcha&action=enable">{#PLIGG_Captcha_Enable#}</a>
+					{/if}
+					<a class="btn" href="module.php?module=captcha&captcha=reCaptcha&action=configure">{#PLIGG_Captcha_Configure#}</a>
+				</div>
+			</td>
+		</tr>
+		<tr>
+			<td>{#Pligg_Captcha_whitehat#}: </td>
+			<td>
+				<div id="tab" class="btn-group" data-toggle="buttons-radio">
+					{if $captcha_method eq "WhiteHat"}
+						<span class="btn btn-success disabled" disabled>{#PLIGG_Captcha_Active#}</span>
+					{else}
+						<a class="btn btn-primary" href="module.php?module=captcha&captcha=WhiteHat&action=enable">{#PLIGG_Captcha_Enable#}</a>
+					{/if}
+				</div>
+			</td>
+		</tr>
+		<tr>
+			<td>{#Pligg_Captcha_math#}: </td>
+			<td>
+				<div id="tab" class="btn-group" data-toggle="buttons-radio">
+					{if $captcha_method eq "math"}
+						<span class="btn btn-success disabled" disabled>{#PLIGG_Captcha_Active#}</span>
+					{else}
+						<a class="btn btn-primary" href="module.php?module=captcha&captcha=math&action=enable">{#PLIGG_Captcha_Enable#}</a>
+					{/if}
+					<a class="btn" href="module.php?module=captcha&captcha=math&action=configure">{#PLIGG_Captcha_Configure#}</a>
+				</div>
+			</td>
+		</tr>
 	</tbody>
 	<thead>
 		<tr><th colspan="2">{#Pligg_Captcha_options#}</th><tr>
 	</thead>
 	<tbody>
-		<tr><td>{#Pligg_Captcha_register#}: </td><td>{if $captcha_reg_enabled eq true}<strong>Enabled</strong>{else}<a href="module.php?module=captcha&captcha=default&action=EnableReg&value=true">Enable</a>{/if} | {if $captcha_reg_enabled eq false}<strong>Disabled</strong>{else}<a href="module.php?module=captcha&captcha=default&action=EnableReg&value=false">Disable</a>{/if}</td></tr>
-		<tr><td>{#Pligg_Captcha_story#}:</td><td>{if $captcha_story_enabled eq true}<strong>Enabled</strong>{else}<a href="module.php?module=captcha&captcha=default&action=EnableStory&value=true">Enable</a>{/if} | {if $captcha_story_enabled eq false}<strong>Disabled</strong>{else}<a href="module.php?module=captcha&captcha=default&action=EnableStory&value=false">Disable</a>{/if}</td></tr>
-		<tr><td>{#Pligg_Captcha_comment#}:  </td><td>{if $captcha_comment_enabled eq true}<strong>Enabled</strong>{else}<a href="module.php?module=captcha&captcha=default&action=EnableComment&value=true">Enable</a>{/if} | {if $captcha_comment_enabled eq false}<strong>Disabled</strong>{else}<a href="module.php?module=captcha&captcha=default&action=EnableComment&value=false">Disable</a>{/if}</td></tr>
+		<tr>
+			<td>{#Pligg_Captcha_register#}:  </td>
+			<td>
+				<div id="tab" class="btn-group" data-toggle="buttons-radio">
+					<a href="module.php?module=captcha&captcha=default&action=EnableReg&value=true" class="btn {if $captcha_reg_enabled eq true}active{/if}">{#PLIGG_Captcha_Enable#}</a>
+					<a href="module.php?module=captcha&captcha=default&action=EnableReg&value=false" class="btn {if $captcha_reg_enabled eq false}active{/if}">{#PLIGG_Captcha_Disable#}</a>
+				</div>
+			</td>
+		</tr>
+		<tr>
+			<td>{#Pligg_Captcha_story#}:  </td>
+			<td>
+				<div id="tab" class="btn-group" data-toggle="buttons-radio">
+					<a href="module.php?module=captcha&captcha=default&action=EnableStory&value=true" class="btn {if $captcha_story_enabled eq true}active{/if}">{#PLIGG_Captcha_Enable#}</a>
+					<a href="module.php?module=captcha&captcha=default&action=EnableStory&value=false" class="btn {if $captcha_story_enabled eq false}active{/if}">{#PLIGG_Captcha_Disable#}</a>
+				</div>
+			</td>
+		</tr>
+		<tr>
+			<td>{#Pligg_Captcha_comment#}:  </td>
+			<td>
+				<div id="tab" class="btn-group" data-toggle="buttons-radio">
+					<a href="module.php?module=captcha&captcha=default&action=EnableComment&value=true" class="btn {if $captcha_comment_enabled eq true}active{/if}">{#PLIGG_Captcha_Enable#}</a>
+					<a href="module.php?module=captcha&captcha=default&action=EnableComment&value=false" class="btn {if $captcha_comment_enabled eq false}active{/if}">{#PLIGG_Captcha_Disable#}</a>
+				</div>
+			</td>
+		</tr>
 	</tbody>
 </table>
 {config_load file=captcha_pligg_lang_conf}
