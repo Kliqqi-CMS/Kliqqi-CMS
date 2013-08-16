@@ -1,6 +1,4 @@
 <!-- whitehat captcha.tpl -->
-{config_load file=captcha_lang_conf}
-
 <div class="control-group{if isset($register_captcha_error)} error{/if}">
 	<label for="input01" class="control-label">CAPTCHA</label>
 	<div class="controls">
@@ -22,6 +20,4 @@
 		</div>
 	</div>
 </div>
-
-{config_load file=captcha_pligg_lang_conf}
 <!--/ whitehat captcha.tpl -->
