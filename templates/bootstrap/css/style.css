@@ -157,7 +157,7 @@ filter:alpha(opacity=40);
     background-repeat: repeat-x;
     border: solid #E5E5E5;
 	border-width: 1px 0;
-    height: 36px;
+    height: auto;
     width: 100%;
 }
 .subnav .nav {
