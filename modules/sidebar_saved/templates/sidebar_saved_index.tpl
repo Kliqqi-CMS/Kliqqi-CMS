@@ -19,8 +19,7 @@
 			// -------------------------------------------------------------------------------------
 
 			global $the_template, $main_smarty, $db;
-
-			$res = "select link_id,link_title,saved_id,saved_user_id,saved_link_id from ".table_links.",".table_saved_links." WHERE saved_link_id = link_id ORDER BY saved_id DESC limit 5";
+			$res = "select link_id,link_title,saved_id,saved_user_id,saved_link_id from ".table_links.",".table_saved_links." WHERE saved_link_id = link_id AND link_author = ".$userid." ORDER BY saved_id DESC limit 5";
 			$list_savedlinks = $db->get_results($res);
 			if($list_savedlinks)
 			{
