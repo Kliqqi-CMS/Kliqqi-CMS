@@ -91,7 +91,7 @@
 		<section id="maincontent">
 			<div class="row">
 				{checkActionsTpl location="tpl_pligg_banner_top"}
-			{if $pagename eq "submit" || $pagename eq "user" || $pagename eq "profile" || $pagename eq "user_edit" || $pagename eq "register"}
+			{if $pagename eq "submit" || $pagename eq "user" || $pagename eq "profile" || $pagename eq "user_edit" || $pagename eq "register" || $pagename eq "login"}
 				<div class="span12">
 			{else}
 				<div class="span9">
@@ -124,7 +124,7 @@
 	  
 				{checkActionsTpl location="tpl_pligg_columns_start"}	
 				
-				{if $pagename neq "submit" && $pagename neq "user" && $pagename neq "profile" && $pagename neq "user_edit" && $pagename neq "register"}
+				{if $pagename neq "submit" && $pagename neq "user" && $pagename neq "profile" && $pagename neq "user_edit" && $pagename neq "register" && $pagename neq "login"}
 					<!-- START RIGHT COLUMN -->
 					<div class="span3">
 						<div class="well sidebar-nav">
