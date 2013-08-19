@@ -47,7 +47,6 @@ if( (isset($_POST["processlogin"]) && is_numeric($_POST["processlogin"])) || (is
 		if (!$errorMsg)
 		{
 			if($current_user->Authenticate($username, $password, $persistent) == false) {
-			{
 				$db->query("UPDATE ".table_login_attempts." SET login_username='$dbusername', login_count=login_count+1, login_time=NOW() WHERE login_id=".$login_id);
 				$user=$db->get_row("SELECT * FROM " . table_users . " WHERE user_login = '$username' or user_email= '$username'");
 				if (pligg_validate() && $user->user_lastlogin == "0000-00-00 00:00:00"){
@@ -62,29 +61,28 @@ if( (isset($_POST["processlogin"]) && is_numeric($_POST["processlogin"])) || (is
 				} else {
 					$errorMsg=$main_smarty->get_config_vars('PLIGG_Visual_Login_Error');
 				}
-			}
 			} else {
-			$sql = "DELETE FROM " . table_login_attempts . " WHERE login_ip='$lastip' ";
-			$db->query($sql);
+				$sql = "DELETE FROM " . table_login_attempts . " WHERE login_ip='$lastip' ";
+				$db->query($sql);
 
-			if(strlen(sanitize($_POST['return'], 3)) > 1) {
-				$return = sanitize($_POST['return'], 3);
-			} else {
-				$return =  my_pligg_base.'/admin/admin_index.php';
-			}
-			
-			define('logindetails', $username . ";" . $password . ";" . $return);
+				if(strlen(sanitize($_POST['return'], 3)) > 1) {
+					$return = sanitize($_POST['return'], 3);
+				} else {
+					$return =  my_pligg_base.'/admin/admin_index.php';
+				}
+				
+				define('logindetails', $username . ";" . $password . ";" . $return);
 
-			$vars = '';
-			check_actions('login_success_pre_redirect', $vars);
+				$vars = '';
+				check_actions('login_success_pre_redirect', $vars);
 
-			if(strpos($_SERVER['SERVER_SOFTWARE'], "IIS") && strpos(php_sapi_name(), "cgi") >= 0){
-				echo '<SCRIPT LANGUAGE="JavaScript">window.location="' . $return . '";</script>';
-				echo $main_smarty->get_config_vars('PLIGG_Visual_IIS_Logged_In') . '<a href = "'.$return.'">' . $main_smarty->get_config_vars('PLIGG_Visual_IIS_Continue') . '</a>';
-			} else {
-				header('Location: '.$return);
-			}
-			die;
+				if(strpos($_SERVER['SERVER_SOFTWARE'], "IIS") && strpos(php_sapi_name(), "cgi") >= 0){
+					echo '<SCRIPT LANGUAGE="JavaScript">window.location="' . $return . '";</script>';
+					echo $main_smarty->get_config_vars('PLIGG_Visual_IIS_Logged_In') . '<a href = "'.$return.'">' . $main_smarty->get_config_vars('PLIGG_Visual_IIS_Continue') . '</a>';
+				} else {
+					header('Location: '.$return);
+				}
+				die;
 			}
 		}
 	}
