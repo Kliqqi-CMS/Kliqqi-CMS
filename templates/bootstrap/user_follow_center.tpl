@@ -26,7 +26,7 @@
 			{checkActionsTpl location="tpl_pligg_profile_info_start"}
 			{checkActionsTpl location="tpl_pligg_profile_info_middle"}
 			<div id="stats" class="masonry span6" style="margin-left:10px">
-				<table class="table table-bordered table-striped"">
+				<table class="table table-bordered table-striped">
 					<thead class="table_title">
 						<tr>
 							<th colspan="2">{#PLIGG_Visual_User_Profile_User_Stats#}</th>
@@ -80,7 +80,7 @@
 			</div>
 			{if $enable_group eq "true"}
 				<div id="groups" class="masonry span6" style="margin-left:10px">
-					<table class="table table-bordered table-striped"">
+					<table class="table table-bordered table-striped">
 						<thead class="table_title">
 							<tr>
 								<th>Group Name</th>
@@ -102,7 +102,7 @@
 			{/if}
 			{if $Allow_Friends neq "0"}
 				<div id="following" class="masonry span6" style="margin-left:10px">
-					<table class="table table-bordered table-striped"">
+					<table class="table table-bordered table-striped">
 						<thead class="table_title">
 							<tr>
 								<th>{#PLIGG_Visual_Login_Username#}</th>
