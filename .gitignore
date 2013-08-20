@@ -1,3 +1,9 @@
+# This file defines files that Git should ignore
+
+#
+# COMMON ELEMENTS 
+#
+
 # Windows image file caches
 Thumbs.db
 ehthumbs.db
@@ -11,20 +17,38 @@ $RECYCLE.BIN/
 # Mac crap
 .DS_Store
 
-# Ignore these files
+#
+# PLIGG ELEMENTS
+#
+
+# Uploaded Avatars
+avatars/groups_uploaded/*.jpg
+avatars/groups_uploaded/*.png
+avatars/groups_uploaded/*.gif
+avatars/user_uploaded/*.jpg
+avatars/user_uploaded/*.png
+avatars/user_uploaded/*.gif
+
+# Renamed .default Pligg files
 .htaccess
-settings.php
+cache/
+languages/*.conf
 libs/dbconnect.php
 logs/
-*.log
-languages/*.conf
+settings.php
+
+
+# Upload module attachments
 modules/upload/attachments/*.jpg
 modules/upload/attachments/*.png
 modules/upload/attachments/*.gif
 modules/upload/attachments/thumbs/*.jpg
 modules/upload/attachments/thumbs/*.png
 modules/upload/attachments/thumbs/*.gif
-cache/
+
+
+# All .log files
+*.log
 
 # Do not ignore these files
 !cache/.htaccess
