@@ -9,7 +9,7 @@
 </div>
 <div style="">
 	<div style="float:left;display:inline;margin:0 4px 0 0;">
-		<input type="text" id="filterfor" class="span input-xlarge">
+		<input type="text" id="filterfor" class="input-xlarge">
 	</div>
 	<div style="float:left;display:inline;">
 		<input type="button" name="filter" value="{#PLIGG_Admin_Language_Filter_Button#}" onclick="filtertotext();" class="btn btn-primary">
@@ -47,7 +47,7 @@
 		    </td>
 		    <td>
                 	<form style='margin:0;' onsubmit="return false" name="myform">
-			    <input type="text" name="var_value" class="span edit_input" style="margin:0;" id="editme{$line.id}" onclick="show_edit('{$line.id}')" value="{$line.value}">
+			    <input type="text" name="var_value" class="edit_input" style="margin:0;" id="editme{$line.id}" onclick="show_edit('{$line.id}')" value="{$line.value}">
 			    <span id="showme{$line.id}" style="display:none;">
 			        <input type="submit" style="margin-top:5px;" class="btn btn-primary" value="Save" onclick="save_changes('{$line.id}','{$line.file|replace:'\\':'\\\\'}',this.form)">
 			        <input type="reset" style="margin-top:5px;" class="btn"value="Cancel" onclick="hide_edit('{$line.id}')">
