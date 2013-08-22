@@ -5,23 +5,16 @@
 	<meta name="Robots" content="none" />
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 	
-	<link rel="stylesheet" type="text/css" href="./templates/admin/css/bootstrap.css" media="screen" />
-	<link rel="stylesheet" type="text/css" href="./templates/admin/css/bootstrap-responsive.css">
+	<link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.no-icons.min.css" rel="stylesheet">
+	<link href="//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.min.css" rel="stylesheet">
 	<link rel="stylesheet" type="text/css" href="./templates/admin/css/style.css" media="screen" />
 	<style type="text/css">
 	body {
-		padding-top: 60px;
-		position: relative;
-		background-color: #fff;
+		padding-top: 75px;
+		background-color: #ffffff;
 		background-image: url(./templates/admin/img/grid-18px-masked.png);
 		background-repeat: repeat-x;
-		background-position: 0 40px;
-	}
-	.navbar-fixed-top, .navbar-fixed-bottom {
-		position:absolute;
-	}
-	.navbar .nav > li > a {
-		padding-top:11px;
+		background-position: 0 46px;
 	}
 	</style>
 	
@@ -29,36 +22,35 @@
 
 </head>
 <body>
+<header role="banner" class="navbar navbar-inverse navbar-fixed-top">
+	<div class="container">
+		<div class="navbar-header">
+			<button data-target=".bs-navbar-collapse" data-toggle="collapse" type="button" class="navbar-toggle">
+				<span class="sr-only">Toggle navigation</span>
+				<span class="icon-bar"></span>
+				<span class="icon-bar"></span>
+				<span class="icon-bar"></span>
+			</button>
+			<a class="navbar-brand" href="http://pligg.com/"><img src="./templates/admin/img/pligg.png" height="20px;" alt="Pligg CMS" title="Pligg CMS"/></a>
+		</div>
+		<nav role="navigation" class="collapse navbar-collapse bs-navbar-collapse">
+			<ul class="nav navbar-nav">
+				<li><a href="./index.php" title="Home">Home</a></li>
+				<li class="active"><a href="#" title="Readme">Readme</a></li>
+				<li><a href="./install/install.php" title="Install">Install</a></li>
+				<li><a href="./install/upgrade.php" title="Upgrade">Upgrade</a></li>
+				<li><a href="./install/troubleshooter.php" title="Troubleshooter">Troubleshooter</a></li>
+				<li><a href="./admin/" title="Admin">Admin</a></li>
+			</ul>
+		</nav>
+	</div>
+</header>
+
 <div class="container">
 	<section id="maincontent">
 		<div class="row">
-			<div class="span12">
-
-				<div class="navbar navbar-fixed-top">
-					<div class="navbar-inner">
-						<div class="container">
-							<a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
-								<span class="icon-bar"></span>
-								<span class="icon-bar"></span>
-								<span class="icon-bar"></span>
-							</a>
-							<a class="brand" href="http://pligg.com/"><img src="./templates/admin/img/pligg_color.png" height="20px;" alt="Pligg CMS" title="Pligg CMS"/></a>
-							<div class="nav-collapse">
-								<ul class="nav">
-									<li><a href="./index.php" title="Home">Home</a></li>
-									<li class="active current"><a href="#" title="Readme">Readme</a></li>
-									<li><a href="./install/install.php" title="Install">Install</a></li>
-									<li><a href="./install/upgrade.php" title="Upgrade">Upgrade</a></li>
-									<li><a href="./install/troubleshooter.php" title="Troubleshooter">Troubleshooter</a></li>
-									<li><a href="./admin/" title="Admin">Admin</a></li>
-								</ul><!--/.nav -->
-							</div><!--/.nav-collapse -->
-						</div><!--/.container -->
-					</div><!--/.navbar-inner -->
-				</div><!--/.navbar -->
-			</div>
 			
-			<div class="span9">
+			<div class="col-md-9">
 				
 				<legend><a href="#install" name="welcome">Welcome to Pligg!</a></legend>
 				<p>You are just a few steps away from starting your very first Pligg website! This page will guide you through installing Pligg for the first time, upgrading an existing Pligg website to the latest version, troubleshooting common issues, and backing up your Pligg site for safe keeping. </p>
@@ -197,7 +189,7 @@
 				
 			</div>
 			
-			<div class="span3">
+			<div class="col-md-3">
 				<div id="slider" style="position:absolute;padding-top:80px;">
 					<div class="well sidebar-nav">
 						<style type="text/css">
@@ -463,7 +455,7 @@
 <script type="text/javascript" src="../templates/admin/js/jquery/jquery.dropdown.js"></script>
 <![endif]-->
 
-<script type="text/javascript" src="../templates/admin/js/bootstrap.js"></script>
+<script src="//netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
 
 </body>
 </html>

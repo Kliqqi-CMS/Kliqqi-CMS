@@ -14,7 +14,7 @@
 				<tr>
 					<td style="text-align:right;min-width:300px;width:300px;"><label><a href="#{#PLIGG_Status_Switch#}">{#PLIGG_Status_Switch#}</a>:</label></td>
 					<td>
-						<select name="status_switch">
+						<select name="status_switch" class="form-control" style="width:100px;">
 							<option value='1' {if $settings.switch>0}selected{/if}>On</option>
 							<option value='0' {if $settings.switch==0}selected{/if}>Off</option>
 							<option value='-1' {if $settings.switch<0}selected{/if}>Suspend</option>
@@ -43,11 +43,11 @@
 				</tr>
 				<tr>
 					<td style="text-align:right;min-width:300px;width:300px;"><label><a href="#{#PLIGG_Status_Results#}">{#PLIGG_Status_Results#}</a>:</label></td>
-					<td><input type="text" name="status_results" id="status_results" size="3" value="{$settings.results}" style="width: 50px;"/></td>
+					<td><input type="text" class="form-control" style="width: 100px;" name="status_results" id="status_results" size="3" value="{$settings.results}" /></td>
 				</tr>
 				<tr>
 					<td style="text-align:right;min-width:300px;width:300px;"><label><a href="#{#PLIGG_Status_Max_Char#}">{#PLIGG_Status_Max_Char#}</a>:</label></td>
-					<td><input type="text" name="status_max_chars" id="status_max_chars" size="3" value="{$settings.max_chars}" style="width: 50px;"/></td>
+					<td><input type="text" class="form-control" style="width: 100px;" name="status_max_chars" id="status_max_chars" size="3" value="{$settings.max_chars}" /></td>
 				</tr>
 				<tr>
 					<td style="text-align:right;min-width:300px;width:300px;"><label><a href="#{#PLIGG_Status_Avatar_Size#}">{#PLIGG_Status_Avatar_Size#}</a>:</label></td>
@@ -59,9 +59,9 @@
 				<tr>
 					<td style="text-align:right;min-width:300px;width:300px;"><label><a href="#{#PLIGG_Status_Clock_Format#}">{#PLIGG_Status_Clock_Format#}</a>:</label></td>
 					<td>
-						<select name="status_clock">
-						<option value='24' {if $settings.clock=='24'}selected{/if}>24 hour</option>
-						<option value='12' {if $settings.clock=='12'}selected{/if}>12 hour</option>
+						<select name="status_clock" class="form-control" style="width: 100px;">
+							<option value='24' {if $settings.clock=='24'}selected{/if}>24 hour</option>
+							<option value='12' {if $settings.clock=='12'}selected{/if}>12 hour</option>
 						</select>
 					</td>
 				</tr>
@@ -80,7 +80,7 @@
 			<tbody>
 				<tr>
 					<td style="text-align:right;min-width:300px;width:300px;"><label><a href="#{#PLIGG_Status_Place#}">{#PLIGG_Status_Place#}</a>:</label></td><td>
-						<select name="status_place">
+						<select name="status_place" class="form-control">
 							<option>{#PLIGG_Status_Nowhere#}</option>
 						{foreach from=$status_places item=place}
 							<option {if $settings.place==$place}selected{/if}>{$place}</option>
@@ -94,47 +94,47 @@
 				</tr>
 				<tr>
 					<td style="text-align:right;min-width:300px;width:300px;"><label><a href="#{#PLIGG_Status_Post_Format#}">{#PLIGG_Status_Post_Format#}</a>:</label></td>
-					<td><input type="text" name="status_post_format" id="status_post_format" size="66" value="{$settings.post_format}" style="width: 420px;"/></td>
+					<td><input type="text" class="form-control" name="status_post_format" id="status_post_format" size="66" value="{$settings.post_format}" style="width: 420px;"/></td>
 				</tr>
 				<tr>
 					<td style="text-align:right;min-width:300px;width:300px;"><label><a href="#{#PLIGG_Status_Pre_Comment#}">{#PLIGG_Status_Pre_Comment#}</a>:</label></td>
-					<td><input type="text" name="status_pre_comment" id="status_pre_comment" size="66" value="{$settings.pre_comment}" style="width: 420px;"/></td>
+					<td><input type="text" class="form-control" name="status_pre_comment" id="status_pre_comment" size="66" value="{$settings.pre_comment}" style="width: 420px;"/></td>
 				</tr>
 				<tr>
 					<td style="text-align:right;min-width:300px;width:300px;"><label><a href="#{#PLIGG_Status_Post_Comment#}">{#PLIGG_Status_Post_Comment#}</a>:</label></td>
-					<td><input type="text" name="status_post_comment" id="status_post_comment" size="66" value="{$settings.post_comment}" style="width: 420px;"/></td>
+					<td><input type="text" class="form-control" name="status_post_comment" id="status_post_comment" size="66" value="{$settings.post_comment}" style="width: 420px;"/></td>
 				</tr>
 				<tr>
 					<td style="text-align:right;min-width:300px;width:300px;"><label><a href="#{#PLIGG_Status_Pre_Story#}">{#PLIGG_Status_Pre_Story#}</a>:</label></td>
-					<td><input type="text" name="status_pre_story" id="status_pre_story" size="66" value="{$settings.pre_story}" style="width: 420px;"/></td>
+					<td><input type="text" class="form-control" name="status_pre_story" id="status_pre_story" size="66" value="{$settings.pre_story}" style="width: 420px;"/></td>
 				</tr>
 				<tr>
 					<td style="text-align:right;min-width:300px;width:300px;"><label><a href="#{#PLIGG_Status_Post_Story#}">{#PLIGG_Status_Post_Story#}</a>:</label></td>
-					<td><input type="text" name="status_post_story" id="status_post_story" size="66" value="{$settings.post_story}" style="width: 420px;"/></td>
+					<td><input type="text" class="form-control" name="status_post_story" id="status_post_story" size="66" value="{$settings.post_story}" style="width: 420px;"/></td>
 				</tr>
 				<tr>
 					<td style="text-align:right;min-width:300px;width:300px;"><label><a href="#{#PLIGG_Status_Pre_Username#}">{#PLIGG_Status_Pre_Username#}</a>:</label></td>
-					<td><input type="text" name="status_pre_username" id="status_pre_username" size="66" value="{$settings.pre_username}" style="width: 420px;"/></td>
+					<td><input type="text" class="form-control" name="status_pre_username" id="status_pre_username" size="66" value="{$settings.pre_username}" style="width: 420px;"/></td>
 				</tr>
 				<tr>
 					<td style="text-align:right;min-width:300px;width:300px;"><label><a href="#{#PLIGG_Status_Post_Username#}">{#PLIGG_Status_Post_Username#}</a>:</label></td>
-					<td><input type="text" name="status_post_username" id="status_post_username" size="66" value="{$settings.post_username}" style="width: 420px;"/></td>
+					<td><input type="text" class="form-control" name="status_post_username" id="status_post_username" size="66" value="{$settings.post_username}" style="width: 420px;"/></td>
 				</tr>
 				<tr>
 					<td style="text-align:right;min-width:300px;width:300px;"><label><a href="#{#PLIGG_Status_Pre_Search#}">{#PLIGG_Status_Pre_Search#}</a>:</label></td>
-					<td><input type="text" name="status_pre_search" id="status_pre_search" size="66" value="{$settings.pre_search}" style="width: 420px;"/></td>
+					<td><input type="text" class="form-control" name="status_pre_search" id="status_pre_search" size="66" value="{$settings.pre_search}" style="width: 420px;"/></td>
 				</tr>
 				<tr>
 					<td style="text-align:right;min-width:300px;width:300px;"><label><a href="#{#PLIGG_Status_Post_Search#}">{#PLIGG_Status_Post_Search#}</a>:</label></td>
-					<td><input type="text" name="status_post_search" id="status_post_search" size="66" value="{$settings.post_search}" style="width: 420px;"/></td>
+					<td><input type="text" class="form-control" name="status_post_search" id="status_post_search" size="66" value="{$settings.post_search}" style="width: 420px;"/></td>
 				</tr>
 				<tr>
 					<td style="text-align:right;min-width:300px;width:300px;"><label><a href="#{#PLIGG_Status_Pre_Submit#}">{#PLIGG_Status_Pre_Submit#}</a>:</label></td>
-					<td><input type="text" name="status_pre_submit" id="status_pre_submit" size="66" value="{$settings.pre_submit}" style="width: 420px;"/></td>
+					<td><input type="text" class="form-control" name="status_pre_submit" id="status_pre_submit" size="66" value="{$settings.pre_submit}" style="width: 420px;"/></td>
 				</tr>
 				<tr>
 					<td style="text-align:right;min-width:300px;width:300px;"><label><a href="#{#PLIGG_Status_Post_Submit#}">{#PLIGG_Status_Post_Submit#}</a>:</label></td>
-					<td><input type="text" name="status_post_submit" id="status_post_submit" size="66" value="{$settings.post_submit}" style="width: 420px;"/></td>
+					<td><input type="text" class="form-control" name="status_post_submit" id="status_post_submit" size="66" value="{$settings.post_submit}" style="width: 420px;"/></td>
 				</tr>
 				<tr>
 					<td></td>
@@ -167,11 +167,11 @@
 				</tr>
 				<tr>
 					<td style="text-align:right;min-width:300px;width:300px;"><label><a href="#{#PLIGG_Status_Groups#}">{#PLIGG_Status_Groups#}</a>:<br /><span class="help-block">{#PLIGG_Status_Groups_Note#}</span></label></td>
-					<td><input type="text" name="status_groups" id="status_groups" size="66" value="{$settings.groups}" style="width: 420px;"/></td>
+					<td><input type="text" class="form-control" name="status_groups" id="status_groups" size="66" value="{$settings.groups}" style="width: 420px;"/></td>
 				</tr>
 				<tr>
 					<td style="text-align:right;min-width:300px;width:300px;"><label><a href="#{#PLIGG_Status_Users#}">{#PLIGG_Status_Users#}</a>:<br /><span class="help-block">{#PLIGG_Status_Users_Note#}</span></label></td>
-					<td><input type="text" name="status_users" id="status_users" size="66" value="{$settings.users}" style="width: 420px;"/></td>
+					<td><input type="text" class="form-control" name="status_users" id="status_users" size="66" value="{$settings.users}" style="width: 420px;"/></td>
 				</tr>
 				<tr>
 					<td></td>

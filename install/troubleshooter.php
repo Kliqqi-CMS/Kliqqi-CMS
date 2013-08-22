@@ -43,7 +43,7 @@ $mysqlversion = preg_replace($pattern, $replacement, $mysqlversion);
 
 
 // Tally up how many items are fulfilled.
-$required = 21; // This should be the number of checks being performed
+$required = 23; // This should be the number of checks being performed
 $tally = 0;
 if (glob("../languages/*.conf")) { $tally = $tally+1;}
 if (phpversion() > 4) { $tally = $tally+1; }
@@ -69,17 +69,26 @@ if (is_writable('../languages/')) { $tally = $tally+1; }
 foreach (glob("../languages/*.conf") as $filename) { $required = $required+1; if (is_writable($filename)) {$tally = $tally+1;} }
 if (is_writable('../libs/dbconnect.php')) { $tally = $tally+1; }
 if (is_writable('../settings.php')) { $tally = $tally+1; }
-//echo $tally.' / '.$required;
 $percent = percent($tally,$required);
 
 if ($tally < $required ){
 	echo '<div class="alert alert-warning">
-		<p><strong>Warning:</strong> Your server has only met <strong>'.$tally.'</strong> of  the <strong>'.$required.'</strong> requirements to run Pligg CMS. While not all of the items on this page are required to run Pligg, we suggest that you try to comply with the suggestions made on this page. Please see the list below to discover what issues need to be addressed.</p>';
-		echo '<div style="margin-bottom: 9px;" class="progress progress-danger"><div style="width: '.$percent.'%" class="bar"></div></div>';
+		<p><strong>Warning:</strong> Your server has only met <strong>'.$tally.'</strong> of  the <strong>'.$required.'</strong> requirements to run Pligg CMS. While not all of the items on this page are required to run Pligg, we suggest that you try to comply with the suggestions made on this page. Please see the list below to discover what issues need to be addressed.</p><br />';
+		
+		echo '<div class="progress" style="margin-bottom: 9px;">
+				<div class="progress-bar progress-bar-danger" role="progressbar" aria-valuenow="'.$percent.'" aria-valuemin="0" aria-valuemax="100" style="width: '.$percent.'%;">
+					<span class="sr-only">'.$percent.'% Complete</span>
+				</div>
+			</div>';
 } else {
 	echo '<div class="alert alert-success">
-		<p>Your server met all of the requirements needed to run Pligg CMS. See the information below for a detailed report.</p>';
-		echo '<div style="margin-bottom: 9px;" class="progress progress-success"><div style="width: 100%" class="bar"></div></div>';
+		<p>Your server met all of the requirements needed to run Pligg CMS. See the information below for a detailed report.</p><br />';
+	
+		echo '<div class="progress" style="margin-bottom: 9px;">
+				<div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="'.$percent.'" aria-valuemin="0" aria-valuemax="100" style="width: '.$percent.'%;">
+					<span class="sr-only">'.$percent.'% Complete</span>
+				</div>
+			</div>';
 }
 ?>
 </div>
@@ -261,7 +270,7 @@ echo '<tr><td>', function_exists('gd_info') ? '<i class="icon icon-ok"></i></td>
 	
 echo '</tbody></table>';
 
-echo '<div class="hero-unit" style="padding:25px 10px;"><p style="text-align:center">Please continue to the <a href="./install.php">Installation Page</a>, the <a href="./upgrade.php">Upgrade Page</a>, or the <a href="../readme.html">Pligg Readme</a>.</p></div>';
+echo '<div class="jumbotron" style="padding:25px 10px;"><p style="text-align:center">Please continue to the <a href="./install.php">Installation Page</a>, the <a href="./upgrade.php">Upgrade Page</a>, or the <a href="../readme.html">Pligg Readme</a>.</p></div>';
 
 ?>
 

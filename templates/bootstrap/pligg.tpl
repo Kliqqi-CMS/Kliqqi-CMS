@@ -7,8 +7,9 @@
 		{include file=$the_template"/meta.tpl"}
 	<!-- END META -->
 	
-	<link rel="stylesheet" type="text/css" href="{$my_pligg_base}/templates/{$the_template}/css/bootstrap.css" media="screen" />
-	<link rel="stylesheet" type="text/css" href="{$my_pligg_base}/templates/{$the_template}/css/bootstrap-responsive.css" media="screen" />
+	<link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.no-icons.min.css" rel="stylesheet">
+	<link href="//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.min.css" rel="stylesheet">
+	
 	<link rel="stylesheet" type="text/css" href="{$my_pligg_base}/templates/{$the_template}/css/jquery.pnotify.css" media="screen" />
 	<link rel="stylesheet" type="text/css" href="{$my_pligg_base}/templates/{$the_template}/css/style.css" media="screen" />
 	<script type="text/javascript" src="{$my_pligg_base}/templates/{$the_template}/js/modernizr.js"></script>
@@ -74,7 +75,7 @@
 </head>
 <body dir="{#PLIGG_Visual_Language_Direction#}" {$body_args} {checkActionsTpl location="tpl_pligg_body_onload"}>
 	{if $maintenance_mode eq "true" && $user_level eq 'admin'}
-		<div class="alert alert-error" style="margin-bottom:0;"><button class="close" data-dismiss="alert">&times;</button>{#PLIGG_Maintenance_Admin_Warning#}</div>
+		<div class="alert alert-danger" style="margin-bottom:0;"><button class="close" data-dismiss="alert">&times;</button>{#PLIGG_Maintenance_Admin_Warning#}</div>
 	{/if}
 	
 	{checkActionsTpl location="tpl_pligg_body_start"}
@@ -92,9 +93,9 @@
 			<div class="row">
 				{checkActionsTpl location="tpl_pligg_banner_top"}
 			{if $pagename eq "submit" || $pagename eq "user" || $pagename eq "profile" || $pagename eq "user_edit" || $pagename eq "register" || $pagename eq "login"}
-				<div class="span12">
+				<div class="col-md-12">
 			{else}
-				<div class="span9">
+				<div class="col-md-9">
 			{/if}
 					<!-- START BREADCRUMB -->
 						{include file=$the_template"/breadcrumb.tpl"}
@@ -126,9 +127,9 @@
 				
 				{if $pagename neq "submit" && $pagename neq "user" && $pagename neq "profile" && $pagename neq "user_edit" && $pagename neq "register" && $pagename neq "login"}
 					<!-- START RIGHT COLUMN -->
-					<div class="span3">
-						<div class="well sidebar-nav">
-							<div id="rightcol">
+					<div class="col-md-3">
+						<div class="panel panel-default">
+							<div id="rightcol" class="panel-body">
 								<!-- START FIRST SIDEBAR -->
 									{include file=$tpl_first_sidebar.".tpl"}
 								<!-- END FIRST SIDEBAR -->
@@ -136,7 +137,7 @@
 									{include file=$tpl_second_sidebar.".tpl"}
 								<!-- END SECOND SIDEBAR -->
 							</div>
-						</div><!--/.well -->
+						</div><!--/.panel -->
 					</div><!--/span-->
 					<!-- END RIGHT COLUMN -->
 				{/if}
@@ -193,24 +194,33 @@
 	<![endif]-->
 	
 	<script type="text/javascript" src="{$my_pligg_base}/templates/{$the_template}/js/registration_verify.js"></script>
-	<script type="text/javascript" src="{$my_pligg_base}/templates/{$the_template}/js/bootstrap.js"></script>
+	<script src="//netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
 	<script type="text/javascript" src="{$my_pligg_base}/templates/{$the_template}/js/bootstrap-fileupload.js"></script>
 	<script type="text/javascript" src="{$my_pligg_base}/templates/{$the_template}/js/jquery/jquery.pnotify.js"></script>
 	<script type="text/javascript" src="{$my_pligg_base}/templates/{$the_template}/js/jquery/jquery.masonry.min.js"></script>
 	
     {if $pagename eq "topusers"}
-     <script type="text/javascript" src="{$my_pligg_base}/templates/{$the_template}/js/jquery.tablesorter.js"></script>
-    {literal}
-    <script type="text/javascript">
-        $(function() {	
-			
-            $("#tablesorter-demo").tablesorter({sortList:[[0,0]], widgets: ['zebra']});
-            $("#options").tablesorter({sortList: [[0,0]], headers: { 3:{sorter: false}, 1:{sorter: false}}});
-        });	
-    </script>
-    {/literal}
+		<script type="text/javascript" src="{$my_pligg_base}/templates/{$the_template}/js/jquery.tablesorter.js"></script>
+		{literal}
+			<script type="text/javascript">
+				$(function() {	
+					$("#tablesorter-demo").tablesorter({sortList:[[0,0]], widgets: ['zebra']});
+					$("#options").tablesorter({sortList: [[0,0]], headers: { 3:{sorter: false}, 1:{sorter: false}}});
+				});	
+			</script>
+		{/literal}
     {/if}
     
+	{literal}
+	<script type="text/javascript">
+	$(function() {
+		$('#registerModal').modal({
+			backdrop: true;
+		});
+	});
+	</script>
+	{/literal}
+	
    	{literal}
     <script type="text/javascript">
 	$(document).ready(function()
@@ -260,17 +270,16 @@
 	{/literal}
 
 	{if $pagename eq "profile"}
+		{* Masonry JavaScript *}
 		{literal}
-		<script>
-		  $(function(){
-			var $container = $('#profile_container');
-			$container.imagesLoaded( function(){
-			  $container.masonry({
-				itemSelector : '.table'
-			  });
+			<script>		  
+			var container = document.querySelector('#profile_container');
+			var msnry = new Masonry( container, {
+			  // options
+			  columnWidth: 200,
+			  itemSelector: '.masonry_wrapper'
 			});
-		  });
-		</script>
+			</script>
 		{/literal}
 	{/if}
 </body>

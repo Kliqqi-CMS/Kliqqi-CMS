@@ -94,6 +94,6 @@ var choose_url = '{#PLIGG_Upload_Choose_URL#}';
 <script>
 var upload_fields = {$upload_fields};
 </script>
-<button class="btn" onclick='if (upload_fields < {$upload_maxnumber}) add_upload_field({$upload_maxnumber}); if (++upload_fields >= {$upload_maxnumber}) this.disabled=true; return false;' {if $upload_fields>=$upload_maxnumber}disabled{/if}>{#PLIGG_Upload_Add_File#}</button>
+<button class="btn btn-default" onclick='if (upload_fields < {$upload_maxnumber}) add_upload_field({$upload_maxnumber}); if (++upload_fields >= {$upload_maxnumber}) this.disabled=true; return false;' {if $upload_fields>=$upload_maxnumber}disabled{/if}>{#PLIGG_Upload_Add_File#}</button>
 <br />
 {config_load file=upload_pligg_lang_conf}

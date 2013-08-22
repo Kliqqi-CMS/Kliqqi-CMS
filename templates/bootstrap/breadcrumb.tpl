@@ -3,17 +3,17 @@
 *************************************}
 <!-- breadcrumb.tpl -->
 <ul class="breadcrumb">
-	<li><a href="{$my_base_url}{$my_pligg_base}">{#PLIGG_Visual_Home#}</a> <span class="divider">/</span></li>
+	<li><a href="{$my_base_url}{$my_pligg_base}">{#PLIGG_Visual_Home#}</a></li>
 	{if $pagename eq "404"}<li class="active">{#PLIGG_Visual_404_Error#}</li>{/if}
 	{if $pagename eq "submit"}<li class="active">{#PLIGG_Visual_Submit#}</li>{/if}
-	{if $pagename eq "submit_groups"}<li><a href="{$URL_groups}">{#PLIGG_Visual_Groups#}</a> <span class="divider">/</span></li><li class="active">{#PLIGG_Visual_Submit_A_New_Group#}</li>{/if}
+	{if $pagename eq "submit_groups"}<li><a href="{$URL_groups}">{#PLIGG_Visual_Groups#}</a></li><li class="active">{#PLIGG_Visual_Submit_A_New_Group#}</li>{/if}
 	{if $pagename eq "groups"}<li class="active">{#PLIGG_Visual_Groups#}</li>{/if}
-	{if $pagename eq "editgroup"}<li><a href="{$URL_groups}">{#PLIGG_Visual_Groups#}</a> <span class="divider">/</span></li><li><a href="{$group_story_url}">{$group_name}</a> <span class="divider">/</span></li><li class="active">{#PLIGG_Visual_Group_Edit#}</li>{/if}
-	{if $pagename eq "group_story" }<li><a href="{$URL_groups}">{#PLIGG_Visual_Groups#}</a> <span class="divider">/</span></li><li class="active">{$group_name}</li>{/if}
+	{if $pagename eq "editgroup"}<li><a href="{$URL_groups}">{#PLIGG_Visual_Groups#}</a></li><li><a href="{$group_story_url}">{$group_name}</a></li><li class="active">{#PLIGG_Visual_Group_Edit#}</li>{/if}
+	{if $pagename eq "group_story" }<li><a href="{$URL_groups}">{#PLIGG_Visual_Groups#}</a></li><li class="active">{$group_name}</li>{/if}
 	{if $pagename eq "login"}<li class="active">{#PLIGG_Visual_Login#}</li>{/if}
 	{if $pagename eq "recover"}<li class="active">{#PLIGG_Visual_Breadcrumb_Recover_Password#}</li>{/if}
 	{if $pagename eq "register"}<li class="active">{#PLIGG_Visual_Register#}</li>{/if}
-	{if $pagename eq "editlink"}<li><a href="{$my_base_url}{$my_pligg_base}/story.php?id={$submit_id}">{$submit_title}</a> <span class="divider">/</span></li><li class="active">{#PLIGG_Visual_LS_Admin_Edit#}</li>{/if}
+	{if $pagename eq "editlink"}<li><a href="{$my_base_url}{$my_pligg_base}/story.php?id={$submit_id}">{$submit_title}</a></li><li class="active">{#PLIGG_Visual_LS_Admin_Edit#}</li>{/if}
 	{if $pagename eq "rssfeeds"}<li class="active">{#PLIGG_Visual_RSS_Feeds#}</li>{/if}
 	{if $pagename eq "topusers"}<li class="active">{#PLIGG_Visual_TopUsers_Statistics#}</li>{/if}
 	{if $pagename eq "cloud"}<li class="active">{#PLIGG_Visual_Tags_Tags#}</li>{/if}
@@ -24,7 +24,7 @@
 		{if $pagename eq "live_comments"}<li class="active">{#PLIGG_Visual_Breadcrumb_Comments#}</li>{/if}
 	{if $pagename eq "advancedsearch"}<li class="active">{#PLIGG_Visual_Search_Advanced#}</li>{/if}
 	{if $pagename eq "profile"}
-		<li><a href="{$URL_userNoVar}">{$user_login}</a> <span class="divider">/</span></li> 
+		<li><a href="{$URL_userNoVar}">{$user_login}</a></li> 
 		<li class="active">{#PLIGG_Visual_Profile_ModifyProfile#}</li>
 	{/if}
 	{if $pagename eq "user"}
@@ -184,17 +184,13 @@
 							</li>
 							
 						{elseif $pagename eq "cloud"}
-						
-							{if $pagename eq "cloud"}
-								{section name=i start=0 loop=$count_range_values step=1}
-									{if $templatelite.section.i.index eq $current_range}
-										<li id="active"><a href="#"><span class="active">{$range_names[i]}</span></a></li>
-									{else}	
-										<li><a href="{$URL_tagcloud_range, $templatelite.section.i.index}"><span>{$range_names[i]}</span></a></li>
-									{/if}
-								{/section}
-							{/if}
-							
+							{section name=i start=0 loop=$count_range_values step=1}
+								{if $templatelite.section.i.index eq $current_range}
+									<li id="active"><a href="#"><span class="active">{$range_names[i]}</span></a></li>
+								{else}	
+									<li><a href="{$URL_tagcloud_range, $templatelite.section.i.index}"><span>{$range_names[i]}</span></a></li>
+								{/if}
+							{/section}
 						{/if}
 						
 					</ul>

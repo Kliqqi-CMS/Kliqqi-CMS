@@ -68,7 +68,7 @@
 		<br style="clear: both;" />
 		<hr />
 		<center>
-			<input type="button" onclick="gPageIsOkToExit = true; document.location.href='{$my_base_url}{$my_pligg_base}/submit.php?id='+this.form.id.value+'&trackback='+this.form.trackback.value;" value="{#PLIGG_Visual_Submit3_Modify#}" class="btn">&nbsp;&nbsp;
+			<input type="button" onclick="gPageIsOkToExit = true; document.location.href='{$my_base_url}{$my_pligg_base}/submit.php?id='+this.form.id.value+'&trackback='+this.form.trackback.value;" value="{#PLIGG_Visual_Submit3_Modify#}" class="btn btn-default">&nbsp;&nbsp;
 			<input type="button" onclick="submitEdgeStory();" value="{#PLIGG_Visual_Submit3_SubmitStory#}" class="btn btn-primary" />
 		</center>
 	{checkActionsTpl location="tpl_pligg_submit_step3_end"} 

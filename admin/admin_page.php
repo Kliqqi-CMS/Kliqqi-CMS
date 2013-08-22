@@ -69,14 +69,14 @@ $page_id=$db->get_results($sql);
 if($page_id){
 	foreach($page_id as $page_results){
 	$page_title .= '<tr>
-						<td>
+						<td class="page_td_title">
 							<a href="'.getmyurl("page", $page_results->link_title_url).'" title="'.$page_results->link_title.'" target="_blank">'.$page_results->link_title.'</a>
 						</td>
-						<td style="text-align:center;">
-							<a href="'.$my_base_url.$my_pligg_base.'/admin/edit_page.php?link_id='.$page_results->link_id.'"><i class="icon icon-edit" alt="'. $main_smarty->get_config_vars("PLIGG_Visual_AdminPanel_Page_Edit") .'" title="'. $main_smarty->get_config_vars("PLIGG_Visual_AdminPanel_Page_Edit") .'"></i></a>
+						<td class="page_td_edit">
+							<a class="btn btn-default" href="'.$my_base_url.$my_pligg_base.'/admin/edit_page.php?link_id='.$page_results->link_id.'"><i class="icon icon-edit" title="'. $main_smarty->get_config_vars("PLIGG_Visual_AdminPanel_Page_Edit") .'"></i></a>
 						</td>
-						<td style="text-align:center;">
-							<a onclick="return confirm(\''.$main_smarty->get_config_vars('PLIGG_Visual_Page_Delete_Confirm').'\');" href="'.$my_base_url.$my_pligg_base.'/admin/admin_page.php?link_id='.$page_results->link_id.'&mode=delete"><i class="icon icon-trash" alt="'. $main_smarty->get_config_vars("PLIGG_Visual_AdminPanel_Page_Delete") .'" title="'. $main_smarty->get_config_vars("PLIGG_Visual_AdminPanel_Page_Delete") .'"></i></a>
+						<td class="page_td_delete">
+							<a class="btn btn-danger" onclick="return confirm(\''.$main_smarty->get_config_vars('PLIGG_Visual_Page_Delete_Confirm').'\');" href="'.$my_base_url.$my_pligg_base.'/admin/admin_page.php?link_id='.$page_results->link_id.'&mode=delete"><i class="icon icon-trash" title="'. $main_smarty->get_config_vars("PLIGG_Visual_AdminPanel_Page_Delete") .'"></i></a>
 						</td>
 					</tr>';
 	}

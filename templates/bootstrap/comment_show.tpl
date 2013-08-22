@@ -12,8 +12,8 @@
 				<br />
 				<div><a id="cvote-{$comment_id}" class="comment_vote_count">{$comment_votes}</a></div>
 				{if $comment_user_vote_count eq 0 && $current_userid neq $comment_author}
-					<a class="btn btn-mini {if $comment_shakebox_currentuser_votes eq 1}btn-success{/if}" href="javascript:{$link_shakebox_javascript_votey}"><i class="{if $comment_shakebox_currentuser_votes >= 1}icon-white {/if}icon-thumbs-up"></i></a>
-					<a class="btn btn-mini {if $comment_shakebox_currentuser_reports eq 1}btn-danger{/if}" href="javascript:{$link_shakebox_javascript_voten}"><i class="{if $comment_shakebox_currentuser_reports >= 1}icon-white {/if}icon-thumbs-down"></i></a>
+					<a class="btn btn-xs {if $comment_shakebox_currentuser_votes eq 1}btn-success{else}btn-default{/if}" href="javascript:{$link_shakebox_javascript_votey}"><i class="{if $comment_shakebox_currentuser_votes >= 1}icon-white {/if}icon-thumbs-up"></i></a>
+					<a class="btn btn-xs {if $comment_shakebox_currentuser_reports eq 1}btn-danger{else}btn-default{/if}" href="javascript:{$link_shakebox_javascript_voten}"><i class="{if $comment_shakebox_currentuser_reports >= 1}icon-white {/if}icon-thumbs-down"></i></a>
 				{/if}
 				| 
 			{/if}
@@ -22,7 +22,7 @@
 
 			{if $user_logged_in == $user_userlogin || $isadmin eq 1}
 				<div class="btn-group pull-right admin-links">
-					<a class="btn dropdown-toggle" data-toggle="dropdown" href="#">
+					<a class="btn btn-default dropdown-toggle" data-toggle="dropdown" href="#">
 					  <i class="icon-cog"></i>
 					  <span class="caret"></span>
 					</a>

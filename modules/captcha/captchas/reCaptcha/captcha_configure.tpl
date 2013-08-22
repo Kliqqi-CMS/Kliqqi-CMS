@@ -19,11 +19,22 @@
 	<input type="hidden" name="module" value="captcha">
 	<input type="hidden" name="captcha" value="reCaptcha">
 	<input type="hidden" name="action" value="configure">
-	Public Key: 
-	<input type="text" name="pubkey" class="span5" value="{$captcha_pubkey}"><br />
-	Private Key: 
-	<input type="text" name="prikey" class="span5" value="{$captcha_prikey}"><br />
+	
+    <div class="control-group">
+		<label class="control-label">Public Key:</label>
+		<div class="controls">
+			<input type="text" name="pubkey" class="form-control input-sm" value="{$captcha_pubkey}">
+		</div>
+    </div>
+    <div class="control-group">
+		<label class="control-label">Private Key:</label>
+		<div class="controls">
+			<input type="text" name="prikey" class="form-control input-sm" value="{$captcha_prikey}">
+		</div>
+    </div>
+	<br />
 	<input type="submit" class="btn btn-primary" value="Submit Keys">
 </form>
+
 <hr />
-<a href="{$URL_captcha}" class="btn">Return to the Captcha Settings Page</a>
+<a href="{$URL_captcha}" class="btn btn-default">Return to the Captcha Settings Page</a>

@@ -4,7 +4,7 @@
 <!-- group_center.tpl -->
 {if $enable_group eq "true"}
 	{if $pagename eq "groups"}
-		<div class="hero-unit group_explain">
+		<div class="well group_explain">
 			<div class="group_explain_inner">
 				<h2>Groups</h2>
 				<div class="group_explain_description">
@@ -21,12 +21,15 @@
 					<div class="input-append">
 						<form action="{$my_pligg_base}/groups.php" method="get"	{if $urlmethod eq 2}onsubmit="document.location.href = '{$my_base_url}{$my_pligg_base}/groups/search/' + encodeURIComponent(this.keyword.value); return false;"{/if}>
 							<input type="hidden" name="view" value="search">
-								{if $get.keyword neq ""}
-									{assign var=searchboxtext value=$get.keyword}
-								{else}
-									{assign var=searchboxtext value=#PLIGG_Visual_Search_SearchDefaultText#}			
-								{/if}
-							<input type="text" name="keyword" value="{$searchboxtext}" onfocus="if(this.value == '{$searchboxtext}') {ldelim}this.value = '';{rdelim}" onblur="if (this.value == '') {ldelim}this.value = '{$searchboxtext}';{rdelim}" class="input-medium"><button class="btn" type="submit">{#PLIGG_Visual_Group_Search_Groups#}</button>
+							{if $get.keyword neq ""}
+								{assign var=searchboxtext value=$get.keyword}		
+							{/if}
+							<div class="col-lg-8">
+								<input type="text" class="form-control" name="keyword" value="{$searchboxtext}" placeholder="{#PLIGG_Visual_Search_SearchDefaultText#}" onfocus="if(this.value == '{$searchboxtext}') {ldelim}this.value = '';{rdelim}" onblur="if (this.value == '') {ldelim}this.value = '{$searchboxtext}';{rdelim}">
+							</div>
+							<div class="col-lg-4">
+								<button class="btn btn-primary" type="submit">{#PLIGG_Visual_Group_Search_Groups#}</button>
+							</div>
 						</form>
 					</div>
 				</div>

@@ -7,6 +7,6 @@
 	<strong>{$message}</strong>
 </div>
 	
-<a class="btn" href="#" onclick="history.go(-2);">{#PLIGG_MESSAGING_Back#}</a>
+<a class="btn btn-default" href="#" onclick="history.go(-2);">{#PLIGG_MESSAGING_Back#}</a>
 
 {config_load file=simple_messaging_pligg_lang_conf}

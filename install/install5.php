@@ -102,7 +102,7 @@ if (!$errors) {
 	
 	
 	// Output success message
-	$output = '<div class="hero-unit" style="padding:14px 25px;">
+	$output = '<div class="jumbotron" style="padding:14px 25px;">
 		<h2>' . $lang['InstallSuccess'] . '</h2>
 		<p style="font-size:1.2em;">' . $lang['InstallSuccessMessage'] . '</p>
 	</div>';

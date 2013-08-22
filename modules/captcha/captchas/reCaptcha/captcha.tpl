@@ -30,7 +30,7 @@ var RecaptchaOptions = {
 		<div id="recaptcha_widget" style="display:none">
 			<div id="recaptcha_image"></div>
 			<div class="recaptcha_only_if_incorrect_sol" style="color:red">Incorrect CAPTCHA please try again</div>
-			<input class="span3" style="margin-top:5px;" type="text" id="recaptcha_response_field" name="recaptcha_response_field" />
+			<input class="col-md-3" style="margin-top:5px;" type="text" id="recaptcha_response_field" name="recaptcha_response_field" />
 			<p class="help-inline">
 				<a href="javascript:Recaptcha.reload()">Get another CAPTCHA</a> &nbsp;&nbsp; | &nbsp;&nbsp;
 				<a href="javascript:Recaptcha.showhelp()">Help</a>

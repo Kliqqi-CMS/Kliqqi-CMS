@@ -38,7 +38,7 @@
 	</table>
 
 	{if $msg_array neq ""}
-		<p align="right"><input type="submit" name="submit" value="{#PLIGG_MESSAGING_Delete_Selected#}" class="btn" /></p>
+		<p align="right"><input type="submit" name="submit" value="{#PLIGG_MESSAGING_Delete_Selected#}" class="btn btn-default" /></p>
 	{/if}
 
 </form>

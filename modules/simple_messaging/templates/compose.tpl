@@ -13,7 +13,7 @@
 	<label><textarea id="msg_body" name="msg_body" tabindex="2" rows="10" style="width:98%;" requied="yes" /></textarea></label>
 	<br />
 
-	<a class="btn" href="{$URL_simple_messaging_inbox}">{#PLIGG_MESSAGING_Close#}</a>
+	<a class="btn btn-default" href="{$URL_simple_messaging_inbox}">{#PLIGG_MESSAGING_Close#}</a>
 
 	<input class="btn btn-primary" type="submit" value="{#PLIGG_MESSAGING_Send#}" tabindex="3">
 	<input type="hidden" name="msg_to" id="msg_to" value="{$msgToName}">

@@ -29,8 +29,8 @@
 				<td><a href="{$my_base_url}{$my_pligg_base}/admin/admin_users.php?mode=view&user={$group.user_login}">{$group.user_login}</a></td>
 				<td>{$group.group_privacy}</td>
 				<td>{$group.group_date}</td>
-				<td style="text-align:center;"><a href='../editgroup.php?id={$group.group_id}' rel="width:800,height:700"><i class="icon icon-edit" alt="{#PLIGG_Visual_AdminPanel_Group_Edit#}" title="{#PLIGG_Visual_AdminPanel_Group_Edit#}"></i></a></td>
-				<td style="text-align:center;"><a onclick='return confirm("{#PLIGG_Visual_Group_Delete_Confirm#}");' href='?mode=delete&group_id={$group.group_id}'><i class="icon icon-trash" alt="{#PLIGG_Visual_AdminPanel_Group_Delete#}" title="{#PLIGG_Visual_AdminPanel_Group_Delete#}"></i></a></td>
+				<td style="text-align:center;"><a class="btn btn-default" href='../editgroup.php?id={$group.group_id}' rel="width:800,height:700"><i class="icon icon-edit" alt="{#PLIGG_Visual_AdminPanel_Group_Edit#}" title="{#PLIGG_Visual_AdminPanel_Group_Edit#}"></i></a></td>
+				<td style="text-align:center;"><a class="btn btn-danger" onclick='return confirm("{#PLIGG_Visual_Group_Delete_Confirm#}");' href='?mode=delete&group_id={$group.group_id}'><i class="icon icon-trash" alt="{#PLIGG_Visual_AdminPanel_Group_Delete#}" title="{#PLIGG_Visual_AdminPanel_Group_Delete#}"></i></a></td>
 				{checkActionsTpl location="tpl_pligg_admin_groups_td_end?"}
 			</tr>
 		{/foreach}

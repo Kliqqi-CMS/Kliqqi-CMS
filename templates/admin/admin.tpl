@@ -3,8 +3,8 @@
 <head>
 	{checkActionsTpl location="tpl_pligg_admin_head_start"}
 
-	<link rel="stylesheet" type="text/css" href="{$my_base_url}{$my_pligg_base}/templates/admin/css/bootstrap.css" media="screen">
-	<link rel="stylesheet" type="text/css" href="{$my_base_url}{$my_pligg_base}/templates/admin/css/bootstrap-responsive.css" media="screen">
+	<link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.no-icons.min.css" rel="stylesheet">
+	<link href="//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.min.css" rel="stylesheet">
 	<link rel="stylesheet" type="text/css" href="{$my_base_url}{$my_pligg_base}/templates/{$the_template}/css/jquery.pnotify.css" media="screen" />
 	<link rel="stylesheet" type="text/css" href="{$my_base_url}{$my_pligg_base}/templates/admin/css/style.css" media="screen">
 	{checkForCss}
@@ -23,7 +23,7 @@
 	<script type="text/javascript" src="{$my_base_url}{$my_pligg_base}/templates/admin/js/jquery/jquery.coda-slider-2.0.js"></script> 
 	<script type="text/javascript" src="{$my_base_url}{$my_pligg_base}/templates/admin/js/jquery/jquery.pnotify.js"></script>
 	<script type="text/javascript" src="{$my_base_url}{$my_pligg_base}/templates/admin/js/jquery/jquery.masonry.min.js"></script>
-	<script type="text/javascript" src="{$my_base_url}{$my_pligg_base}/templates/admin/js/bootstrap.js"></script>
+	<script src="//netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
     <script type="text/javascript" src="{$my_base_url}{$my_pligg_base}/templates/admin/js/jquery/jquery_cookie.js"></script>
     <script type="text/javascript" src="{$my_base_url}{$my_pligg_base}/templates/admin/js/leftmenu.js"></script>
 	 
@@ -97,33 +97,45 @@
 </head>
 <body dir="{#PLIGG_Visual_Language_Direction#}">
 {if $pagename neq "admin_login"}
+
+	{literal}
+	<style type="text/css">
+	body {
+		padding-top: 65px;
+		background-color: #ffffff;
+		background-repeat: repeat-x;
+		background-position: 0 46px;
+	}
+	</style>
+	{/literal}
+	
 	{checkActionsTpl location="tpl_pligg_admin_body_start"}
 	
-	<div class="navbar navbar-inverse navbar-static-top">
-		<div class="navbar-inner">
-			<div class="container-fluid">
-				<!-- .btn-navbar is used as the toggle for collapsed navbar content -->
-				<a data-target=".nav-collapse" data-toggle="collapse" class="btn btn-navbar">
+	<header role="banner" class="navbar navbar-inverse navbar-fixed-top">
+		<div class="container">
+			<div class="navbar-header">
+				<button data-target=".bs-navbar-collapse" data-toggle="collapse" type="button" class="navbar-toggle">
+					<span class="sr-only">Toggle navigation</span>
 					<span class="icon-bar"></span>
 					<span class="icon-bar"></span>
 					<span class="icon-bar"></span>
-				</a>
-				<a class="brand" href="http://pligg.com/"><img src="{$my_base_url}{$my_pligg_base}/templates/admin/img/pligg.png" /></a>
-				<!-- Everything you want hidden at 940px or less, place within here -->
-				<div class="nav-collapse">
-					<ul class="nav">
-						<li><a href="{$my_base_url}{$my_pligg_base}/admin/admin_index.php">{#PLIGG_Visual_AdminPanel#} Panel</a></li>
-						<li><a href="{$my_base_url}{$my_pligg_base}/">{#PLIGG_Visual_Home#}</a></li>
-						{checkActionsTpl location="tpl_header_admin_links"}
-						<li><a href="{$URL_logout}">{#PLIGG_Visual_Logout#}</a></li>
-					</ul>
-				</div><!--/.nav-collapse -->
+				</button>
+				<a class="navbar-brand" href="http://pligg.com/"><img src="{$my_base_url}{$my_pligg_base}/templates/admin/img/pligg.png" /></a>
 			</div>
+			<nav role="navigation" class="collapse navbar-collapse bs-navbar-collapse">
+				<ul class="nav navbar-nav">
+					<li><a href="{$my_base_url}{$my_pligg_base}/admin/admin_index.php">{#PLIGG_Visual_AdminPanel#} Panel</a></li>
+					<li><a href="{$my_base_url}{$my_pligg_base}/">{#PLIGG_Visual_Home#}</a></li>
+					{checkActionsTpl location="tpl_header_admin_links"}
+					<li><a href="{$URL_logout}">{#PLIGG_Visual_Logout#}</a></li>
+				</ul><!--/.nav -->
+			</nav>
 		</div>
-	</div>
-	<div class="container-fluid">
-		<div class="row-fluid">
-			<div class="span3">
+	</header>
+	
+	<div class="container">
+		<div class="row">
+			<div class="col-md-3">
 				<div class="well sidebar-nav">
 					<ul class="nav nav-list">
 						<div id="AdminAccordion" class="accordion">
@@ -229,8 +241,8 @@
 					</ul>
 				</div>
 			</div>
-			<div class="span9">
-				<div class="row-fluid">
+			<div class="col-md-9">
+				<div class="row">
 					{*
 					<ul class="breadcrumb">
 						<li><a href="{$my_base_url}{$my_pligg_base}/">{#PLIGG_Visual_Home#}</a> <span class="divider">/</span></li> <li><a href="{$my_base_url}{$my_pligg_base}/admin/admin_index.php">{#PLIGG_Visual_AdminPanel#}</a>  <span class="divider">/</span></li>
@@ -269,15 +281,15 @@
 						{checkActionsTpl location="tpl_pligg_admin_legend_after"}
 					</div>
 					{checkActionsTpl location="tpl_pligg_admin_body_end"}
-				</div><!-- /row-fluid -->
-			</div><!-- /span9 -->
-		</div><!-- /row-fluid -->
+				</div><!-- /row -->
+			</div><!-- /col-md-9 -->
+		</div><!-- /row -->
 		<hr />
 		<footer>
 			<p>Powered by <a href="http://pligg.com/">Pligg CMS</a></p>
 			{checkActionsTpl location="tpl_pligg_admin_footer_end"}
 		</footer>
-	</div><!-- /container-fluid -->
+	</div><!-- /container -->
 	{* JavaScript to prevent the carousel function from automatically changing content *}
 	{literal}
 		<script type='text/javascript'>//<![CDATA[ 

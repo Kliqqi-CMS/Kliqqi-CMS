@@ -2,7 +2,7 @@
 	<input type="hidden" name="widget" value="pligg_products">
 	<p>
 		{#PLIGG_Products_Widget_Select_Show#}		
-		<select class="input-small" name="products" value="pligg_products">
+		<select class="input-sm" name="products" value="pligg_products">
 			<option value="1" {if $product_count eq "1"}selected="selected"{/if}>1</option>
 			<option value="2" {if $product_count eq "2"}selected="selected"{/if}>2</option>
 			<option value="3" {if $product_count eq "3"}selected="selected"{/if}>3</option>

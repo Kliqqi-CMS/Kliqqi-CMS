@@ -1,6 +1,6 @@
 <!-- home.tpl -->
 {if $amIadmin eq 1}
-	<div class="column" style="margin-left:0;" id="left_column">
+	<div class="column" id="left_column">
 		{foreach from=$widgets item=widget}	
 			{if $widget.column=='left'}
 				<div class="portlet ui-widget ui-widget-content ui-helper-clearfix ui-corner-all" id="{$widget.id}">
@@ -47,7 +47,7 @@
 			{/if}
 		{/foreach}
 	</div><!-- END LEFT COLUMN -->
-	<div class="column" style="margin-left:0;"><!-- START RIGHT COLUMN -->
+	<div class="column" id="right_column"><!-- START RIGHT COLUMN -->
 		{foreach from=$widgets item=widget}	
 			{if $widget.column=='right'}
 				<div class="portlet ui-widget ui-widget-content ui-helper-clearfix ui-corner-all" id="{$widget.id}">

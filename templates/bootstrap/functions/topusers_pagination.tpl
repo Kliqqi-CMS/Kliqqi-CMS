@@ -51,7 +51,7 @@
 		   } else if(Pager_setting==3){
 			   
 				if(parseInt(total_row_for_topusers)>count)  
-					$('#tablesorter-demo').after("<div class='btn contine_read_story'>{/literal}{#PLIGG_Continue_Reading#}{literal}</div>");
+					$('#tablesorter-demo').after("<div class='btn btn-default contine_read_story'>{/literal}{#PLIGG_Continue_Reading#}{literal}</div>");
 				
 				$(".contine_read_story").live("click", function(){
 					if(parseInt(total_row_for_topusers) > count){
@@ -59,7 +59,7 @@
 					}else{	
 						$(this).hide();
 						
-						$('#tablesorter-demo').after("<div class='btn no_stories_left'>{/literal}{#PLIGG_No_More_Articles#}{literal}</div>");
+						$('#tablesorter-demo').after("<div class='btn btn-default no_stories_left'>{/literal}{#PLIGG_No_More_Articles#}{literal}</div>");
 					}
 				});
 		   }

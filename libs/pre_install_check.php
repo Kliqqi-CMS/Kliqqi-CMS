@@ -52,7 +52,7 @@ if($do_check == true){
 					<div class="container">
 						<section id="maincontent">
 							<div class="row">
-								<div class="span12">
+								<div class="col-md-12">
 									<legend>Error Loading Site!</legend>
 									<p>Have you installed your website yet? Please fix the errors below and proceed to the <a href="./readme.html">Pligg Readme</a> or the <a href="./install/">Pligg Installation</a> which will attempt to rename the .default files for you.</p>
 									';

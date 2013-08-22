@@ -1,6 +1,6 @@
 <?php
 	$module_info['name'] = 'Human Check';
-	$module_info['desc'] = 'A behind the scenes anti-spam method for the story submission page. No configuration necessary.';
+	$module_info['desc'] = 'A behind the scenes "honeypot" anti-spam tool. No configuration necessary.';
 	$module_info['version'] = 1.0;
 	$module_info['install'] = $module_info['uninstall2'] = 'recursive_remove_directory("../cache",TRUE);';
 	$module_info['homepage_url'] = 'http://pligg.com/downloads/module/human-check/';

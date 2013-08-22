@@ -302,7 +302,7 @@ function do_submit1() {
 							ORDER BY group_name ASC");
 		if ($group_membered)
 		{
-			$output .= "<select name='link_group_id' tabindex='3'>";
+			$output .= "<select name='link_group_id' tabindex='3' class='form-control submit_group_select'>";
 			$output .= "<option value = ''>".$main_smarty->get_config_vars('PLIGG_Visual_Group_Select_Group')."</option>";
 			foreach($group_membered as $results)
 			{

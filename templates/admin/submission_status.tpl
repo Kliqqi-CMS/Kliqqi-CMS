@@ -4,7 +4,7 @@
 	<h2>Are you sure that you want to change the story status to {if $action eq "new"}New{else}{$action|capitalize}{/if}?</h2>
 	<p>
 		<a class="btn btn-primary" href="{$admin_modify_do_url}">Yes</a>
-		<a class="btn" href="{$admin_modify_url}">No</a>
+		<a class="btn btn-default" href="{$admin_modify_url}">No</a>
 	</p>
 </div>
 <hr />

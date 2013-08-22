@@ -6,12 +6,12 @@
 
 {***********************************************************************************}
 {checkActionsTpl location="tpl_pligg_profile_start"}
-<div class="row-fluid" style="margin-bottom:10px;">
-	<div class="span9">
+<div class="row" style="margin-bottom:10px;">
+	<div class="col-md-9">
 		<h1 style="margin-bottom:0px;">
 			{if $UseAvatars neq "0" && $pagename == "user_edit"}
 				<a href="#profileavatar" data-toggle="modal">
-					<div class="thumbnail avatar_thumb">
+					<div class="img-thumbnail avatar_thumb">
 						{php}
 							// Edit Avatar on Page Load using ?avatar=edit at end of URL
 							$refer  = $_SERVER["REQUEST_URI"];
@@ -27,7 +27,7 @@
 							}
 						{/php}
 						<img style="float:left;margin:0 15px 0 0;" src="{$Avatar.large}" style="margin-bottom:4px;" alt="Avatar" />
-						<a href="#profileavatar" data-toggle="modal" class="btn btn-small edit-avatar">Edit Avatar</a>
+						<a href="#profileavatar" data-toggle="modal" class="btn btn-default btn-sm edit-avatar">Edit Avatar</a>
 					</div>
 				</a>
 				{* Avatar upload modal *}
@@ -43,12 +43,12 @@
 						</script>
 	
 						<div class="fileupload fileupload-new" data-provides="fileupload">
-							<div class="fileupload-new thumbnail">
+							<div class="fileupload-new img-thumbnail">
 								<img src="{$Avatar.large}" title="{#PLIGG_Visual_Profile_CurrentAvatar#}" />
 							</div>
-							<div class="fileupload-preview fileupload-exists thumbnail" style="max-width:{$Avatar_Large}px;max-height:{$Avatar_Large}px;"></div>
+							<div class="fileupload-preview fileupload-exists img-thumbnail" style="max-width:{$Avatar_Large}px;max-height:{$Avatar_Large}px;"></div>
 							<div>
-								<span class="btn btn-file">
+								<span class="btn btn-default btn-file">
 									<span class="fileupload-new"><i class="icon icon-picture"></i> Browse</span>
 									<span class="fileupload-exists"><i class="icon icon-picture"></i> Browse</span>
 									<input type="file" class="fileupload" name="image_file"/>
@@ -61,7 +61,7 @@
 					<div class="modal-footer">
 						<input type="hidden" name="avatar" value="uploaded"/>
 						{$hidden_token_profile_change}
-						<a class="btn" data-dismiss="modal">{#PLIGG_Visual_View_User_Edit_Cancel#}</a>
+						<a class="btn btn-default" data-dismiss="modal">{#PLIGG_Visual_View_User_Edit_Cancel#}</a>
 						<input type="submit" name="action" class="btn btn-primary" value="{#PLIGG_Visual_Profile_AvatarUpload#}"/>
 						</form>
 					</div>
@@ -70,10 +70,10 @@
 				{if $user_login eq $user_logged_in || $isadmin}
 					<a href="{if $UrlMethod == "2"}{$my_base_url}{$my_pligg_base}/user/{$user_login}/edit/?avatar=edit{else}{$my_base_url}{$my_pligg_base}/profile.php?avatar=edit{/if}">
 				{/if}
-				<div class="thumbnail avatar_thumb">
+				<div class="img-thumbnail avatar_thumb">
 					<img style="float:left;margin:0 15px 0 0;" src="{$Avatar.large}" style="margin-bottom:4px;" alt="Avatar" />
 					{if $user_login eq $user_logged_in || $isadmin}
-						<a class="btn btn-small edit-avatar" href="{if $UrlMethod == "2"}{$my_base_url}{$my_pligg_base}/user/{$user_login}/edit/?avatar=edit{else}{$my_base_url}{$my_pligg_base}/profile.php?avatar=edit{/if}">Edit Avatar</a>
+						<a class="btn btn-default btn-sm edit-avatar" href="{if $UrlMethod == "2"}{$my_base_url}{$my_pligg_base}/user/{$user_login}/edit/?avatar=edit{else}{$my_base_url}{$my_pligg_base}/profile.php?avatar=edit{/if}">Edit Avatar</a>
 					{/if}
 				</div>
 				{if $user_login eq $user_logged_in || $isadmin}</a>{/if}
@@ -147,28 +147,33 @@
 			{checkActionsTpl location="tpl_user_profile_details_end"}
 		</div>
 	</div>
-	<div id="user_search" class="span3">
+	<div id="user_search" class="col-md-3">
 		<div style="float:right;text-align:right;">
 			<form action="{$my_pligg_base}/user.php" method="get" {php} global $URLMethod, $my_base_url, $my_pligg_base; if ($URLMethod==2) print "onsubmit='document.location.href=\"{$my_base_url}{$my_pligg_base}/user/search/\"+encodeURIComponent(this.keyword.value); return false;'";{/php}>
-				<div class="input-append">
-					<input type="hidden" name="view" value="search">
-					<input type="text" name="keyword" class="input-medium" placeholder="{#PLIGG_Visual_User_Search_Users#}"><button type="submit" class="btn">{#PLIGG_Visual_Search_Go#}</button>
+				<div class="row">
+					<div class="col-md-10">
+						<input type="hidden" name="view" value="search">
+						<input type="text" name="keyword" class="form-control" placeholder="{#PLIGG_Visual_User_Search_Users#}">
+					</div>
+					<div class="col-md-2">
+						<button type="submit" class="btn btn-primary">{#PLIGG_Visual_Search_Go#}</button>
+					</div>
 				</div>
 			</form>	
 			<div class="btn-group">
-				<a class="btn btn-small" href="{$user_url_friends}"><i class="icon-user"></i> {$user_following} {#PLIGG_Visual_User_Profile_View_Friends#}</a>
-				<a class="btn btn-small" href="{$user_url_friends2}"><i class="icon-user"></i> {$user_followers} {#PLIGG_Visual_User_Profile_Your_Friends#}</a>
+				<a class="btn btn-default btn-sm" href="{$user_url_friends}"><i class="icon-user"></i> {$user_following} {#PLIGG_Visual_User_Profile_View_Friends#}</a>
+				<a class="btn btn-default btn-sm" href="{$user_url_friends2}"><i class="icon-user"></i> {$user_followers} {#PLIGG_Visual_User_Profile_Your_Friends#}</a>
                 {if check_for_enabled_module('simple_messaging',2.0) && $is_friend}
-					<a class="btn btn-small" href="{$my_base_url}{$my_pligg_base}/module.php?module=simple_messaging&view=compose&to={$username}&return={$my_pligg_base}%2Fuser.php%3Flogin%3D{$user_logged_in}%26view%3Dfollowers"><i class="icon-envelope"></i> Send Message</a>
+					<a class="btn btn-default btn-sm" href="{$my_base_url}{$my_pligg_base}/module.php?module=simple_messaging&view=compose&to={$username}&return={$my_pligg_base}%2Fuser.php%3Flogin%3D{$user_logged_in}%26view%3Dfollowers"><i class="icon-envelope"></i> Send Message</a>
 				{/if}
 				{if $is_friend gt 0}
-					<a href="{$user_url_remove}" class="btn btn-small btn-danger">{#PLIGG_Unfollow#}{* {$user_login|capitalize} *}</a>
+					<a href="{$user_url_remove}" class="btn btn-sm btn-danger">{#PLIGG_Unfollow#}{* {$user_login|capitalize} *}</a>
 					{if $user_authenticated eq true}
 						{checkActionsTpl location="tpl_user_center"}
 					{/if}
 				{elseif $user_login neq $user_logged_in}
 					{if $user_authenticated eq true} 
-						<a  class="btn btn-small btn-success" href="{$user_url_add}">{#PLIGG_Visual_User_Profile_Add_Friend#}{* {$user_login|capitalize} *}</a>
+						<a  class="btn btn-sm btn-success" href="{$user_url_add}">{#PLIGG_Visual_User_Profile_Add_Friend#}{* {$user_login|capitalize} *}</a>
 					{/if}   
 				{/if}
 			</div>

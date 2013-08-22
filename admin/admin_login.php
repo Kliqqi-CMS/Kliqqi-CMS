@@ -53,8 +53,8 @@ if( (isset($_POST["processlogin"]) && is_numeric($_POST["processlogin"])) || (is
 					$errorMsg=$main_smarty->get_config_vars('PLIGG_Visual_Resend_Email') .
 						"<form method='post'>
 							<div class='input-append notvalidated'>
-								<input type='text' class='span2' name='email'> 
-								<input type='submit' class='btn' value='Send'>
+								<input type='text' class='form-control col-md-2' name='email'> 
+								<input type='submit' class='btn btn-default' value='Send'>
 								<input type='hidden' name='processlogin' value='5'/>
 							</div>
 						</form>";

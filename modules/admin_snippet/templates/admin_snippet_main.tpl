@@ -27,7 +27,7 @@
 				<td><a href="?module=admin_snippet&mode=edit&id={$template_snippets[id].snippet_id}">{$template_snippets[id].snippet_name}</a></td>
 				<td>{$template_snippets[id].snippet_location}</td>
 				<td>{$template_snippets[id].snippet_updated}</td>
-				<td><center><input type="text" name="snippet_order[{$template_snippets[id].snippet_id}]" id="order-{$template_snippets[id].snippet_id}" value="{$template_snippets[id].snippet_order}" class="input-mini"></center></td>
+				<td><center><input type="text" name="snippet_order[{$template_snippets[id].snippet_id}]" id="order-{$template_snippets[id].snippet_id}" value="{$template_snippets[id].snippet_order}" class="form-control"></center></td>
 				<td><center><input type="checkbox" name="snippet_delete[{$template_snippets[id].snippet_id}]" id="delete-{$template_snippets[id].snippet_id}" value="1"></center></td>
 			</tr>	
 		{/section}
@@ -38,8 +38,8 @@
 
 	<div style="text-align:right">
 		<input type="submit" value="{#PLIGG_Admin_Snippet_Add_New#}" onclick="document.location='?module=admin_snippet&mode=new'; return false;" class="btn btn-success" /> 
-		<input type="submit" name="update" value="{#PLIGG_Admin_Snippet_Update#}" class="btn" />
-		<input type="submit" name="export" value="{#PLIGG_Admin_Snippet_Export_Selected#}" class="btn" />
+		<input type="submit" name="update" value="{#PLIGG_Admin_Snippet_Update#}" class="btn btn-default" />
+		<input type="submit" name="export" value="{#PLIGG_Admin_Snippet_Export_Selected#}" class="btn btn-default" />
 		<input type="submit" name="delete" value="{#PLIGG_Admin_Snippet_Delete_Selected#}" class="btn btn-danger" />
 	</div>
 	

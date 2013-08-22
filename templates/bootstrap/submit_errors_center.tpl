@@ -7,7 +7,7 @@
 	******* Submit Step 2 Errors ********
 	*************************************}
 	{if $submit_error eq 'invalidurl'}
-		<div class="alert">
+		<div class="alert alert-danger">
 			<p>{#PLIGG_Visual_Submit2Errors_InvalidURL#}{if $submit_url eq "http://"}. {#PLIGG_Visual_Submit2Errors_InvalidURL_Specify#}{else}: {$submit_url}{/if}</p>
 			<br/>
 			<form id="thisform">
@@ -16,7 +16,7 @@
 		</div>
 	{/if}
 	{if $submit_error eq 'dupeurl'}
-		<div class="alert">
+		<div class="alert alert-danger">
 			<p>{#PLIGG_Visual_Submit2Errors_DupeArticleURL#}: {$submit_url}</p>
 			<p>{#PLIGG_Visual_Submit2Errors_DupeArticleURL_Instruct#}</p>
 			<p><a href="{$submit_search}"><strong>{#PLIGG_Visual_Submit2Errors_DupeArticleURL_Instruct2#}</strong></a></p>
@@ -31,7 +31,7 @@
 	******* Submit Step 3 Errors ********
 	*************************************}
 	{if $submit_error eq 'badkey'}
-		<div class="alert">
+		<div class="alert alert-danger">
 			<p>{#PLIGG_Visual_Submit3Errors_BadKey#}</p>
 			<br/>
 			<form id="thisform">
@@ -40,7 +40,7 @@
 		</div>
 	{/if}
 	{if $submit_error eq 'hashistory'}
-		<div class="alert">
+		<div class="alert alert-danger">
 			<p>{#PLIGG_Visual_Submit3Errors_HasHistory#}: {$submit_error_history}</p>
 			<br/>
 			<form id="thisform">
@@ -49,7 +49,7 @@
 		</div>
 	{/if}
 	{if $submit_error eq 'urlintitle'}
-		<div class="alert">
+		<div class="alert alert-danger">
 			<p>{#PLIGG_Visual_Submit3Errors_URLInTitle#}</p>
 			<br/>
 			<form id="thisform">
@@ -58,7 +58,7 @@
 		</div>
 	{/if}
 	{if $submit_error eq 'incomplete'}
-		<div class="alert">
+		<div class="alert alert-danger">
 			<p>{#PLIGG_Visual_Submit3Errors_Incomplete#}</p>
 			<br/>
 			<form id="thisform">
@@ -67,7 +67,7 @@
 		</div>
 	{/if}
 	{if $submit_error eq 'long_title'}
-		<div class="alert">
+		<div class="alert alert-danger">
 			<p>{#PLIGG_Visual_Submit3Errors_Long_Title#}</p>
 			<br/>
 			<form id="thisform">
@@ -76,7 +76,7 @@
 		</div>
 	{/if}
 	{if $submit_error eq 'long_content'}
-		<div class="alert">
+		<div class="alert alert-danger">
 			<p>{#PLIGG_Visual_Submit3Errors_Long_Content#}</p>
 			<br/>
 			<form id="thisform">
@@ -85,7 +85,7 @@
 		</div>
 	{/if}
 	{if $submit_error eq 'long_tags'}
-		<div class="alert">
+		<div class="alert alert-danger">
 			<p>{#PLIGG_Visual_Submit3Errors_Long_Tags#}</p>
 			<br/>
 			<form id="thisform">
@@ -95,7 +95,7 @@
 	{/if}
     
     {if $submit_error eq 'short_tags'}
-		<div class="alert">
+		<div class="alert alert-danger">
 			<p>{#PLIGG_Submit3Errors_Short_Tags#}</p>
 			<br/>
 			<form id="thisform">
@@ -105,7 +105,7 @@
 	{/if}
     
 	{if $submit_error eq 'long_summary'}
-		<div class="alert">
+		<div class="alert alert-danger">
 			<p>{#PLIGG_Visual_Submit3Errors_Long_Summary#}</p>
 			<br/>
 			<form id="thisform">
@@ -114,7 +114,7 @@
 		</div>
 	{/if}
 	{if $submit_error eq 'nocategory'}
-		<div class="alert">
+		<div class="alert alert-danger">
 		<p>{#PLIGG_Visual_Submit3Errors_NoCategory#}</p>
 			<br/>
 			<form id="thisform">

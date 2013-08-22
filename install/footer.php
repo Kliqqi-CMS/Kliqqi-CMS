@@ -21,7 +21,7 @@
 <script type="text/javascript" src="../templates/admin/js/jquery/jquery.dropdown.js"></script>
 <![endif]-->
 
-<script type="text/javascript" src="../templates/admin/js/bootstrap.js"></script>
+<script src="//netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
 
 </body>
 </html>

@@ -4,9 +4,9 @@
 <!-- group_summary.tpl -->
 <div class="group_container">
 	<div style="float:left;width:100px;margin:0 0 10px 0;">
-		<a href="{$group_story_url}"><img src="{$imgsrc}" alt="{$group_name} Avatar" class="thumbnail" /></a>
+		<a href="{$group_story_url}"><img src="{$imgsrc}" alt="{$group_name} Avatar" class="img-thumbnail" /></a>
 	</div>
-	<div style="float:left;margin:0 0 10px 10px;" class="span7">
+	<div style="float:left;margin:0 0 10px 10px;" class="col-md-7">
 		<span class="group_title">
 			{if $pagename eq 'group_story'}
 				{$group_name}
@@ -35,28 +35,28 @@
 					{if $is_group_member eq 0}
 						{if $join_group_url neq '' || $join_group_privacy_url neq ''}
 							{if $group_privacy eq 'public'}
-								<a class="btn" href="{$join_group_url}" ><i class="icon-ok"></i> {#PLIGG_Visual_Group_Join#}</a>
+								<a class="btn btn-default" href="{$join_group_url}" ><i class="icon-ok"></i> {#PLIGG_Visual_Group_Join#}</a>
 							{else}
-								<a class="btn" href="{$join_group_privacy_url}" ><i class="icon-ok"></i> {#PLIGG_Visual_Group_Join#}</a>
+								<a class="btn btn-default" href="{$join_group_privacy_url}" ><i class="icon-ok"></i> {#PLIGG_Visual_Group_Join#}</a>
 							{/if}
 						{/if}
 					{else}
 						{if $is_member_active eq 'active'}
-							<a class="btn" href="{$unjoin_group_url}" ><i class="icon-remove"></i> {#PLIGG_Visual_Group_Unjoin#}</a>
+							<a class="btn btn-default" href="{$unjoin_group_url}" ><i class="icon-remove"></i> {#PLIGG_Visual_Group_Unjoin#}</a>
 						{/if}
 						{if $is_member_active eq 'inactive'}
-							<a class="btn" href="{$join_group_withdraw}" ><i class="icon-remove"></i> {#PLIGG_Visual_Group_Withdraw_Request#}</a>
+							<a class="btn btn-default" href="{$join_group_withdraw}" ><i class="icon-remove"></i> {#PLIGG_Visual_Group_Withdraw_Request#}</a>
 						{/if}	
 					{/if}
 				{/if}
 			{/if}
 			{if $is_group_admin eq '1'}
-				<a class="btn" href="{$group_edit_url}"><span class="icon-edit"></span> {#PLIGG_Visual_Group_Text_edit#}</a>
-				<a class="btn" href="#groupavatar" data-toggle="modal"><span class="icon-picture"></span> {#PLIGG_Visual_Group_Avatar_Upload#}</a>
+				<a class="btn btn-default" href="{$group_edit_url}"><span class="icon-edit"></span> {#PLIGG_Visual_Group_Text_edit#}</a>
+				<a class="btn btn-default" href="#groupavatar" data-toggle="modal"><span class="icon-picture"></span> {#PLIGG_Visual_Group_Avatar_Upload#}</a>
 				<a class="btn btn-danger" onclick="return confirm('{#PLIGG_Visual_Group_Delete_Confirm#}')" href={$group_delete_url}><span class="icon-white icon-trash"></span> {#PLIGG_Visual_Group_Text_Delete#}</a>
 				{if $Avatar_uploaded neq ''}
 					<br />
-					<div class="alert">
+					<div class="alert alert-warning">
 						<button class="close" data-dismiss="alert">&times;</button>
 						{$Avatar_uploaded}
 					</div>
@@ -74,7 +74,7 @@
 							<input type="file" name="image_file">
 						</div>
 						<div class="modal-footer">
-							<a data-dismiss="modal" class="btn" href="#">Close</a>
+							<a data-dismiss="modal" class="btn btn-default" href="#">Close</a>
 							<input type="hidden" name="idname" value="{$group_id}"/>
 							<input type="hidden" name="avatar" value="uploaded"/>
 							<input type="hidden" name="avatarsource" value="useruploaded">

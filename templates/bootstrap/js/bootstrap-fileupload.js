@@ -26,7 +26,7 @@
 
   var Fileupload = function (element, options) {
     this.$element = $(element)
-    this.type = this.$element.data('uploadtype') || (this.$element.find('.thumbnail').length > 0 ? "image" : "file")
+    this.type = this.$element.data('uploadtype') || (this.$element.find('.img-thumbnail').length > 0 ? "image" : "file")
       
     this.$input = this.$element.find(':file')
     if (this.$input.length === 0) return

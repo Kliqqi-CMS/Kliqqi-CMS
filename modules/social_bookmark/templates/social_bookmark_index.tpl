@@ -29,7 +29,7 @@
 		}
 	</script>
 	{/literal}
-	<form name="storyurl" style="margin-bottom:5px"><input type="text" name="thisurl" class="span4" style="margin-bottom:0;" onClick="select_all();" value="{$my_base_url}{$story_url}"></form>
+	<form name="storyurl" style="margin-bottom:5px"><input type="text" name="thisurl" class="col-md-4" style="margin-bottom:0;" onClick="select_all();" value="{$my_base_url}{$story_url}"></form>
 </div>
 </span>
 

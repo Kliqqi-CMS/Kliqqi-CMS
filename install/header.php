@@ -21,6 +21,7 @@ if($language == 'arabic'){
 }elseif($language == 'thai'){
 	include_once('./languages/lang_thai.php');
 } else {
+	$language = 'english';
 	include_once('./languages/lang_english.php');
 }
 
@@ -32,26 +33,16 @@ if($language == 'arabic'){
 	<meta name="Robots" content="none" />
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 	
-	<link rel="stylesheet" type="text/css" href="../templates/admin/css/bootstrap.css" media="screen" />
-	<link rel="stylesheet" type="text/css" href="../templates/admin/css/bootstrap-responsive.css">
+	<link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.no-icons.min.css" rel="stylesheet">
+	<link href="//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.min.css" rel="stylesheet">
 	<link rel="stylesheet" type="text/css" href="../templates/admin/css/style.css" media="screen" />
 	<style type="text/css">
 	body {
-		padding-top: 60px;
-		position: relative;
-		background-color: #fff;
+		padding-top: 75px;
+		background-color: #ffffff;
 		background-image: url(../templates/admin/img/grid-18px-masked.png);
 		background-repeat: repeat-x;
-		background-position: 0 40px;
-	}
-	.navbar-fixed-top, .navbar-fixed-bottom {
-		position:absolute;
-	}
-	.navbar .nav > li > a {
-		padding-top:11px;
-	}
-	.popover {
-		width:500px;
+		background-position: 0 46px;
 	}
 	</style>
 	
@@ -66,7 +57,7 @@ include("menu.php");
 <div class="container">
 	<section id="maincontent">
 		<div class="row">
-			<div class="span12">
+			<div class="col-md-12">
 				<script>
 				function Set_Cookie( name, value, expires, path, domain, secure )
 				{

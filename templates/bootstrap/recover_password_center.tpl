@@ -4,17 +4,17 @@
 <!-- recover_password_center.tpl -->
 <div class="leftwrapper">
 	{if $errorMsg ne ""}
-		<div class="alert alert-block">
+		<div class="alert alert-block alert-danger">
 			<a class="close" data-dismiss="alert" href="#">&times;</a>
 			{$errorMsg}
 		</div>
 	{/if}
-	<div class="span4 left">
+	<div class="col-md-4 left">
 		<form action="recover.php" id="thisform2" method="post">
 			<div class="control-group">	
 				{if isset($form_password_error)}
 					{ foreach value=error from=$form_password_error }
-						<div class="alert">
+						<div class="alert alert-danger">
 							<button class="close" data-dismiss="alert">&times;</button>
 							{$error}
 						</div>

@@ -47,9 +47,9 @@
 		if ($backup_permissions !== '0777'){
 			echo "<div class='alert'>The /admin/backup/ directory does not have the correct CHMOD permissions to write backup files.<br />Please change the CHMOD status from ".$backup_permissions." to 0777.</div>";
 		} else {
-			echo '<a class="btn" style="margin-bottom:6px;" href="?dobackup=files">';{/php}{#PLIGG_Visual_View_Backup_Files#}{php} echo'</a>';
-			echo '&nbsp; <a class="btn" style="margin-bottom:6px;" href="?dobackup=avatars">';{/php}{#PLIGG_Visual_View_Backup_Avatars#}{php}echo'</a>';
-			echo '&nbsp; <a class="btn" style="margin-bottom:6px;" href="?dobackup=database">';{/php}{#PLIGG_Visual_View_Backup_Database#}{php}echo'</a>';
+			echo '<a class="btn btn-default" style="margin-bottom:6px;" href="?dobackup=files">';{/php}{#PLIGG_Visual_View_Backup_Files#}{php} echo'</a>';
+			echo '&nbsp; <a class="btn btn-default" style="margin-bottom:6px;" href="?dobackup=avatars">';{/php}{#PLIGG_Visual_View_Backup_Avatars#}{php}echo'</a>';
+			echo '&nbsp; <a class="btn btn-default" style="margin-bottom:6px;" href="?dobackup=database">';{/php}{#PLIGG_Visual_View_Backup_Database#}{php}echo'</a>';
 
 			// http://www.phpbbstyles.com/viewtopic.php?t=2278
 			$files = array();

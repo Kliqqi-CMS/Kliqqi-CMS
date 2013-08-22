@@ -1,3 +1,6 @@
+
+/************** WIDGETS **************/
+
 .column {
 width: 445px;
 float: left;
@@ -5,6 +8,10 @@ float: left;
 
 .portlet { 
 margin: 0 1em 1em 0; 
+}
+
+.portlet a {
+color:#428BCA;
 }
 
 .portlet-header .ui-icon {
@@ -27,18 +34,14 @@ font-size:12px;
 font-weight:normal;
 margin-top:4px;
 }
-
-.panel-wrapper a,.panel-wrapper a:visited {
-color:#094f89;
-}
-.panel-wrapper a:hover {
-color:#619acb;
+.panel-wrapper ul {
+	list-style-type:none;
+	padding:0;
+	margin:0 !important;
 }
 
 .panel-wrapper ul li {
-margin:0;
-padding:0;
-line-height:15px;
+	line-height:16px;
 }
 
 .ui-sortable-placeholder {

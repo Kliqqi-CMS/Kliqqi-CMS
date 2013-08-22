@@ -50,7 +50,7 @@
 	$lang['TablePrefix'] = 'Table Prefix';
 	$lang['PrefixExample'] = '(ie: "pligg_" makes the tables for users become pligg_users)';
 	$lang['CheckSettings'] = 'Check Settings';
-	$lang['Errors'] = 'Please fix the above error(s), then <a class="btn btn-mini" onClick="document.location.reload(true)">Refresh the Page</a>';
+	$lang['Errors'] = 'Please fix the above error(s), then <a class="btn btn-default btn-xs" onClick="document.location.reload(true)">Refresh the Page</a>';
 	$lang['LangNotFound'] = 'was not found. Please remove the .default extension from all language files and try again.';
 
 // step 3

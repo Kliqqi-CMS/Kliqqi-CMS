@@ -9,18 +9,18 @@
 </div>
 <div style="">
 	<div style="float:left;display:inline;margin:0 4px 0 0;">
-		<input type="text" id="filterfor" class="input-xlarge">
+		<input type="text" id="filterfor" class="form-control">
 	</div>
 	<div style="float:left;display:inline;">
 		<input type="button" name="filter" value="{#PLIGG_Admin_Language_Filter_Button#}" onclick="filtertotext();" class="btn btn-primary">
-		<input type="button" name="clearfilter" value="{#PLIGG_Admin_Language_Filter_Clear#}" onclick="showall();" class="btn">
+		<input type="button" name="clearfilter" value="{#PLIGG_Admin_Language_Filter_Clear#}" onclick="showall();" class="btn btn-default">
 	</div>
 	<div style="clear:both;"></div>
 </div>
 
 {literal}<style type="text/css">
 .edit_input {
-  margin:0;padding:0;
+  margin:0;padding:0 5px;
 }
 </style>{/literal}
 
@@ -46,11 +46,11 @@
 			<div style='width:240px;word-wrap:break-word;'>{$line.id}</div>
 		    </td>
 		    <td>
-                	<form style='margin:0;' onsubmit="return false" name="myform">
-			    <input type="text" name="var_value" class="edit_input" style="margin:0;" id="editme{$line.id}" onclick="show_edit('{$line.id}')" value="{$line.value}">
+            <form style='margin:0;' onsubmit="return false" name="myform">
+			    <input type="text" name="var_value" class="form-control edit_input" style="margin:0;" id="editme{$line.id}" onclick="show_edit('{$line.id}')" value="{$line.value}">
 			    <span id="showme{$line.id}" style="display:none;">
 			        <input type="submit" style="margin-top:5px;" class="btn btn-primary" value="Save" onclick="save_changes('{$line.id}','{$line.file|replace:'\\':'\\\\'}',this.form)">
-			        <input type="reset" style="margin-top:5px;" class="btn"value="Cancel" onclick="hide_edit('{$line.id}')">
+			        <input type="reset" style="margin-top:5px;" class="btn btn-default" value="Cancel" onclick="hide_edit('{$line.id}')">
 			    </span>
 			</form>
 		    </td>

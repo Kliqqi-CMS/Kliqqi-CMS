@@ -253,7 +253,7 @@ if (!$errors) {
 		$db->query($sql);
 		
 		// Add Pligg version
-		$sql = "INSERT INTO `" . table_misc_data . "` ( `name` , `data` ) VALUES ('pligg_version', '2.0.0rc2');";
+		$sql = "INSERT INTO `" . table_misc_data . "` ( `name` , `data` ) VALUES ('pligg_version', '2.0.0rc3');";
 		$db->query($sql);
 		
 		//Captcha upgrade:
@@ -273,11 +273,9 @@ if (!$errors) {
 		include_once('version/1.x.php');
 		include_once('version/2.0.0.php');
 		include_once('version/2.0.0rc2.php');
+		include_once('version/2.0.0rc3.php');
 		// include_once('version/2.0.1.php');
-		
-		// Update version number
-		$sql = "UPDATE `" . table_misc_data . "` SET `data` = '2.0.0rc2' WHERE `name` = 'pligg_version';";
-		$db->query($sql);
+	
 	}
 	
 	echo '<li>Regenerating the totals table</li>';

@@ -1,6 +1,6 @@
 @charset "UTF-8";
 /* CSS Document */
-body {font-size:0.8em;}
+
 a:hover {
 text-decoration:none;
 }
@@ -14,62 +14,21 @@ float: left;
 float: right;
 }
 
-/* START Bootstrap Addons */
-.btn.btn-file {
-  overflow: hidden;
-  position: relative;
-  vertical-align: middle;
-}
-.btn.btn-file > input[type="file"] {
-  width: 100%;
-  position: absolute;
-  left: 0;
-  top: 0;
-  opacity: 0;
-  cursor: pointer;
-}
-.fileupload {
-  margin-bottom: 9px;
-}
-.fileupload .uneditable-input {
-  display: inline-block;
-  margin-bottom: 0px;
-  vertical-align: middle;
-}
-.fileupload .thumbnail {
-  overflow: hidden;
-  display: inline-block;
-  margin-bottom: 5px;
-  vertical-align: middle;
-  text-align: center;
-}
-.fileupload .thumbnail > img {
-  display: inline-block;
-  vertical-align: middle;
-  max-height: 100%;
-}
-.fileupload .btn {
-  vertical-align: middle;
-}
-.fileupload-exists .fileupload-new,
-.fileupload-new .fileupload-exists {
-  display: none;
-}
-.fileupload-inline .fileupload-controls {
-  display: inline;
-}
-.fileupload-new .input-append .btn-file {
-  -webkit-border-radius: 0 3px 3px 0;
-  -moz-border-radius: 0 3px 3px 0;
-  border-radius: 0 3px 3px 0;
-}
-
-/* END Bootstrap Addons  */
-
 .alert-danger, .alert-error{
 background-color: #FFC6C6;
 border-color: #F4A2AD;
 color: #C80700;
+}
+
+.btn-primary {
+	background-color: #2D6CE0;
+    border-color: #185ACC;
+    color: #FFFFFF;
+}
+.btn-primary:hover,.btn-primary:active {
+	background-color: #185ACC;
+    border-color: #2D6CE0;
+    color: #FFFFFF;
 }
 
 #nav {
@@ -99,6 +58,10 @@ background:#EDEDED;
 }
 #maincontent {
 margin-top:20px
+}
+
+.blank_index {
+	padding:5px 20px 20px 20px;
 }
 
 hr.soften {
@@ -146,7 +109,57 @@ filter:alpha(opacity=40);
   border-radius: 5px;
 }
 
+.jumbotron {
+font-size:1.0em;
+}
+
+.dropdown-menu > li > a:hover, .dropdown-menu > li > a:focus {
+    background-color: #2D6CE0;
+}
+
+/********************* NAVIGATION MENU ********************/
+.custom_header {
+    background-color: #2D6CE0;
+    border-color: #185ACC;
+    box-shadow: 0 1px 0 rgba(255, 255, 255, 0.1);
+    text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.15);
+}
+.custom_header .navbar-collapse {
+    border-color: #185ACC;
+}
+.custom_header .navbar-brand {
+    color: #FFFFFF;
+}
+.custom_header .navbar-nav > li > a {
+    color: #D4DFF5;
+}
+.custom_header .navbar-nav > li > a:hover {
+    color: #FFFFFF;
+}
+.custom_header .navbar-nav > .active > a, .custom_header .navbar-nav > .active > a:hover {
+    background-color: #185ACC;
+    color: #FFFFFF;
+}
+.custom_header .navbar-toggle {
+    border-color: #2D6CE0;
+}
+.custom_header .navbar-toggle:hover {
+    background-color: #185ACC;
+    border-color: #185ACC;
+}
+.custom_nav_search {
+	margin: 8px 10px 0 10px !important;
+}
+.custom_nav_search_button {
+	margin:0 !important;
+}
+
+.nav .dropdown-menu {
+	min-width: 215px;
+}
+
 /********************* CATEGORY MENU ********************/
+
 .subhead {
     margin-bottom: 9px;
     padding-bottom: 0;
@@ -159,6 +172,7 @@ filter:alpha(opacity=40);
 	border-width: 1px 0;
     height: auto;
     width: 100%;
+	margin-top:50px;
 }
 .subnav .nav {
     margin-bottom: 0;
@@ -268,15 +282,25 @@ filter:alpha(opacity=40);
 #categories .subnav .dropdown-menu  a:hover .caret {
 	border-left: 4px solid #000;
 }
+
 /****************** BREADCRUMB ******************/
 
 .dropdown-menu li {
 display:block;
 }
 .breadcrumb-right {
-font-size:1.0em;
 margin-top:-7px;
 margin-right:-14px;
+}
+.breadcrumb-right .nav > li > a {
+padding:7px 14px;
+}
+
+/****************** PAGINATION ******************/
+
+.pagination > .active > a, .pagination > .active > span, .pagination > .active > a:hover, .pagination > .active > span:hover, .pagination > .active > a:focus, .pagination > .active > span:focus {
+    background-color: #2D6CE0;
+    border-color: #2D6CE0;
 }
 
 /********************* STORY ********************/
@@ -511,7 +535,12 @@ width:90%;
 }
 
 /********************* SIDEBAR ********************/
-
+.search-form  {
+margin:0 0 10px 0;
+}
+.search-form .col-lg-8,.search-form .col-lg-4 {
+padding:0;
+}
 .headline {
 font-size:1em;
 margin:0 0 10px 0;
@@ -523,9 +552,6 @@ border-bottom:1px solid #ddd;
 }
 .boxcontent {
 margin-bottom:15px;
-}
-#searchsite{
-width:66%;
 }
 #aboutcontent {
 margin-bottom:20px;
@@ -567,6 +593,12 @@ padding:0 0 0 5px;
 }
 
 /**************** USER PROFILE ******************/
+#profiletabs {
+margin-bottom:20px;
+}
+.profile_settings_save {
+margin:5px 15px 10px 15px;
+}
 .avatar_thumb {
 width: 100px;
 float: left;
@@ -681,6 +713,14 @@ font-size:0.8em;
 
 .field-description {}
 
+/**************** EDIT SUBMISSION ******************/
+
+.notify_option_list {
+	margin:0;
+	padding: 0 0 2px 9px;
+	list-style-type:none;
+}
+
 /**************** FOOTER ******************/
 #footer {
 margin-bottom:20px;
@@ -688,8 +728,9 @@ margin-bottom:20px;
 
 /*************** GROUPS ******************/
 .group_explain {
-padding: 25px;
+padding-top:0;
 }
+
 .create_group {
 float:left;
 width:48%;
@@ -719,12 +760,16 @@ font-size:0.85em;
 
 }
 
+/************** LOGIN PAGE ***************/
+.login-left, .login-middle, .login-right {
+	padding:10px 30px;
+}
+
 /************** REGISTER ***************/
+.reg_submit { margin-top:10px; }
 #reg_usernamecheckitvalue {}
 #reg_emailcheckitvalue {}
-.register-wrapper {margin-left:0px;}
-.register-left {margin:0 0 0 8px;}
-.register-right{margin:0 0 0 8px;min-width: 370px;}
+
 /* for modal window */
 .LoginModal{
 width:282px;
@@ -771,14 +816,14 @@ table.tablesorter thead tr .headerSortDown {
   margin-bottom: 0px;
   vertical-align: middle;
 }
-.fileupload .thumbnail {
+.fileupload .img-thumbnail {
   overflow: hidden;
   display: inline-block;
   margin-bottom: 5px;
   vertical-align: middle;
   text-align: center;
 }
-.fileupload .thumbnail > img {
+.fileupload .img-thumbnail > img {
   display: inline-block;
   vertical-align: middle;
   max-height: 100%;

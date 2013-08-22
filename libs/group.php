@@ -316,9 +316,9 @@ function member_display($requestID)
 			    if ($memberid->member_status=='active') {
 					if($member_user_id == $current_user->user_id) {
 						$main_smarty->assign('is_group_admin', 'true');
-						$member_display .= '<td>'.$member_role.'</td><td><a class="btn" href="#groupadminlinks-'.$index.'" data-toggle="modal"><i class="icon-edit" title="'.$change_role.'"></i> Edit</a></td><td>&nbsp;</td>';
+						$member_display .= '<td>'.$member_role.'</td><td><a class="btn btn-default" href="#groupadminlinks-'.$index.'" data-toggle="modal"><i class="icon-edit" title="'.$change_role.'"></i> Edit</a></td><td>&nbsp;</td>';
 					} else {
-						$member_display .= '<td>'.$member_role.'</td><td><a class="btn" href="#groupadminlinks-'.$index.'" data-toggle="modal"><i class="icon-edit" title="'.$change_role.'"></i> Edit</a></td><td><a class="btn btn-danger" href="'.my_base_url . my_pligg_base . '/join_group.php?activate=false&group_id='.$requestID.'&user_id='.$member_user_id.'">Deactivate</a></td>';
+						$member_display .= '<td>'.$member_role.'</td><td><a class="btn btn-default" href="#groupadminlinks-'.$index.'" data-toggle="modal"><i class="icon-edit" title="'.$change_role.'"></i> Edit</a></td><td><a class="btn btn-danger" href="'.my_base_url . my_pligg_base . '/join_group.php?activate=false&group_id='.$requestID.'&user_id='.$member_user_id.'">Deactivate</a></td>';
 					}
 					$member_display .= '<div class="modal hide fade" id="groupadminlinks-'.$index.'" style="display: none;">
 						<div class="modal-header">
@@ -326,9 +326,9 @@ function member_display($requestID)
 							<h3>Group User Management</h3>
 						</div>
 						<div class="modal-body">
-							<a class="btn" href="'.$member_adminchange_url.'">'.$role_admin.'</a> 
-							<a class="btn" href="'.$member_normalchange_url.'">'.$role_normal.'</a> 
-							<a class="btn" href="'.$member_moderatorchange_url.'">'.$role_moderator.'</a> 
+							<a class="btn btn-default" href="'.$member_adminchange_url.'">'.$role_admin.'</a> 
+							<a class="btn btn-default" href="'.$member_normalchange_url.'">'.$role_normal.'</a> 
+							<a class="btn btn-default" href="'.$member_moderatorchange_url.'">'.$role_moderator.'</a> 
 							<hr />
 							<a class="btn btn-warning" href="'.$member_flaggedchange_url.'">'.$role_flagged.'</a> 
 							<a class="btn btn-danger" href="'.$member_bannedchange_url.'">'.$role_banned.'</a>

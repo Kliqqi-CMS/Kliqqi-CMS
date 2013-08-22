@@ -167,7 +167,7 @@ function checkPassword(val){
 				</div>
 		</div>
 		<div class="modal-footer">
-			<a href="#" class="btn" data-dismiss="modal" >Close</a>
+			<a href="#" class="btn btn-default" data-dismiss="modal" >Close</a>
 			<input type="submit" class="btn btn-primary" value="Create User"/>
 		</div>
 	</form>

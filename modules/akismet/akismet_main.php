@@ -337,7 +337,7 @@ function akismet_showpage(){
 					$spam_output .="</tr>";
 				}
 				$spam_output .="</tbody></table>";
-				$spam_output .='<p align="right" style="margin-top:10px;"><input type="submit" name="submit" value="Apply Changes" class="btn" /></p>';
+				$spam_output .='<p align="right" style="margin-top:10px;"><input type="submit" name="submit" value="Apply Changes" class="btn btn-default" /></p>';
 				$spam_output .="</form>";
 					
 				$main_smarty->assign('spam_output', $spam_output);

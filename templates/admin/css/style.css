@@ -1,7 +1,19 @@
-/* Pligg Admin Panel CSS */
+/************** PLIGG ADMIN PANEL *****************/
+
+/************** GENERAL *****************/
+
 body {
 padding-top:0;
 padding-bottom:0;
+}
+
+.install_warning {
+	padding-top:0;
+}
+
+#main_content ul{
+	padding:0;
+	margin:2px 0 8px 15px;
 }
 
 .alert-danger, .alert-error {
@@ -87,7 +99,15 @@ input[type="color"],
 margin-bottom:0;
 }
 
-/* HEADER */
+.unstyled {
+	margin:0 !important;
+	padding:0 !important;
+	list-style-type:none !important;
+}
+
+/************** HEADER *****************/
+.logo {position:absolute;float:left;margin:27px 0 8px 0;}
+
 .navbar {
 margin-bottom:20px;
 }
@@ -99,10 +119,10 @@ box-sizing:content-box;
 -moz-box-sizing:content-box;
 }
 
-/* SIDEBAR */
+/************** SIDEBAR *****************/
 
 .sidebar-nav {
-    padding: 9px 0;
+    padding: 0 9px;
 }
 
 .accordion {
@@ -163,8 +183,8 @@ background:#939393;
 }
 .badge{
 border-radius: 6px 6px 6px 6px;
-min-width: 16px;
-padding: 1px 3px 2px;
+min-width: 18px;
+padding: 2px 4px 2px;
 text-align: center;
 }
 .badge-gray {
@@ -182,7 +202,6 @@ text-decoration:underline;
 	background:#ffffff;
 	width: 100%;
 	display:none;
-	
 }
 
 .accordion-inner > li > a {
@@ -206,6 +225,7 @@ text-decoration:underline;
 .accordion-inner {
   margin-left: 0;
   list-style: none;
+  padding: 5px 14px;
 }
 .accordion-inner > li > a {
   display: block;
@@ -218,94 +238,125 @@ text-decoration:underline;
   float: right;
 }
 
-/* HEADER */
-.logo {position:absolute;float:left;margin:27px 0 8px 0;}
-
-/* Category Manager */
-#basic-accordian{
-padding:5px;
-width:775px;
-z-index:2;
+/************** CATEGORY MANAGER *****************/
+#basic-accordian {
+	padding:5px;
+	width:775px;
+	z-index:2;
 }
 
-.accordion_headings{
-padding:5px;
-background:#629acb;
-color:#FFFFFF;
-border:1px solid #FFF;
-cursor:pointer;
-font-weight:bold;
+.accordion_headings {
+	padding:5px;
+	background:#629acb;
+	color:#FFFFFF;
+	border:1px solid #FFF;
+	cursor:pointer;
+	font-weight:bold;
 }
 
-.accordion_headings:hover{
-background:#0a508a;
+.accordion_headings:hover {
+	background:#0a508a;
 }
 
-.accordion_child{
-padding:15px;
-background:#EEE;
+.accordion_child {
+	padding:15px;
+	background:#EEE;
 }
 
-.header_highlight{
-background:#0a508a;
+.header_highlight {
+	background:#0a508a;
 }
 .deletecategory {
-background:#FDFFCF;
-float:left;
-width:600px;
-border:1px solid #E1E3AB;
-padding:8px;
-margin:25px 0 10px 0px;
+	background:#FDFFCF;
+	float:left;
+	width:600px;
+	border:1px solid #E1E3AB;
+	padding:8px;
+	margin:25px 0 10px 0px;
+}
+
+.add_new_category_tab {
+
+}
+
+.category_position {
+	cursor:pointer;
+}
+.category_list ol{
+	margin: 0 0 0 -22px;
+	list-style-type:circle;
+}
+.category_list ol ol{
+	list-style-type:disc;
 }
 
 /* Admin Config */
 .admin_config {
-float:left;
-width:200px;
-margin:0 0 15px 0;
-padding:0;
+	float:left;
+	width:200px;
+	margin:0 0 15px 0;
+	padding:0;
 }
 .admin_config table tr td {
-border-top:1px solid #DFDFDF;
-border-right:1px solid #bbb;
-border-bottom:1px solid #bbb;
-border-left:1px solid #DFDFDF;
-background:#f9f9f9;
-padding:5px 6px;
+	border-top:1px solid #DFDFDF;
+	border-right:1px solid #bbb;
+	border-bottom:1px solid #bbb;
+	border-left:1px solid #DFDFDF;
+	background:#f9f9f9;
+	padding:5px 6px;
 }
 .admin_config_content {
-margin:0 0 0 0;
-padding:0;
+	margin:0 0 0 0;
+	padding:0;
+}
+.admin_config_input {
+	min-width:200px;
 }
 
-/* STORY MANAGEMENT */
+/************** MANAGE SUBMISSIONS *****************/
 /* .table-striped tbody tr:nth-child(2n+1) td, .table-striped tbody tr:nth-child(2n+1) th {background:none;} */
 .tr_moderated {
-background:#fffdbd;
+	background:#fffdbd;
+}
+
+
+/************** MANAGE PAGES *****************/
+.page_td_title, .page_th_title {
+	width:80%;
+	min-width:200px;
+}
+.page_td_edit, .page_th_edit {
+	width:10%;
+	min-width:90px;
+	text-align:center;
+}
+.page_td_delete, .page_th_delete {
+	width:10%;
+	min-width:100px;
+	text-align:center;
 }
 
 /* LOGIN PAGE */
 .login_box > .login_content {
-background-color: #fff;
-padding: 20px;
-margin: 0 -20px; 
--webkit-border-radius: 10px 10px 10px 10px;
-   -moz-border-radius: 10px 10px 10px 10px;
-		border-radius: 10px 10px 10px 10px;
--webkit-box-shadow: 0 1px 2px rgba(0,0,0,.15);
-   -moz-box-shadow: 0 1px 2px rgba(0,0,0,.15);
-		box-shadow: 0 1px 2px rgba(0,0,0,.15);
+	background-color: #fff;
+	padding: 25px;
+	-webkit-border-radius: 10px 10px 10px 10px;
+	   -moz-border-radius: 10px 10px 10px 10px;
+			border-radius: 10px 10px 10px 10px;
+	-webkit-box-shadow: 0 1px 2px rgba(0,0,0,.15);
+	   -moz-box-shadow: 0 1px 2px rgba(0,0,0,.15);
+			box-shadow: 0 1px 2px rgba(0,0,0,.15);
 }
 .login_form {
-margin-left: 42px;
+
+}
+.login_content {
+	width:300px;
+    display: table;
+    margin: 0 auto;
 }
 .login_box {
-   position: absolute;
-   top: 20%;
-   left: 50%;
-   width: 300px;
-   height: 200px;
-   margin-left: -150px; /* Half the width */
+	margin-top:80px;
 }
 .login_username {
 margin:5px 0 10px 0;

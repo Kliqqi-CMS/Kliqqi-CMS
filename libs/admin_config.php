@@ -96,7 +96,7 @@ class pliggconfig {
 			echo translate("It looks like this should be set to")." <strong>".$path."</strong><br>";
 		}
 		
-		echo '<input class="span emptytext" id="editme' .$this->var_id. '" onclick="show_edit('.$this->var_id.')" value="'.htmlentities($this->var_value,ENT_QUOTES,'UTF-8').'">';
+		echo '<input class="form-control admin_config_input emptytext" id="editme' .$this->var_id. '" onclick="show_edit('.$this->var_id.')" value="'.htmlentities($this->var_value,ENT_QUOTES,'UTF-8').'">';
 		echo '<span class="emptytext" id="showme' .$this->var_id. '" style="display:none;">';
 		if (preg_match('/^\s*(.+),\s*(.+) or (.+)\s*$/',$this->var_optiontext,$m))
 		{
@@ -123,7 +123,7 @@ class pliggconfig {
 		}
 		else
 		{
-		    echo "<input type=\"text\" class='span edit_input' name=\"var_value\" value=\"".htmlentities($this->var_value,ENT_QUOTES,'UTF-8')."\" ";
+		    echo "<input type=\"text\" class='form-control admin_config_input edit_input' name=\"var_value\" value=\"".htmlentities($this->var_value,ENT_QUOTES,'UTF-8')."\" ";
 		    if (strpos($this->var_optiontext,'number')===0) {
 				$min = preg_match('/at least (\d+)/',$this->var_optiontext,$m) ? $m[1] : 0;
 				echo "size='5' onblur='check_number({$this->var_id},this,$min)'";
@@ -131,7 +131,7 @@ class pliggconfig {
 		    echo '>';
 		}
 		echo "<input style='margin:4px 4px 0 0;' type=\"submit\" class=\"btn btn-primary\" value=\"Save\" onclick=\"save_changes({$this->var_id},this.form)\">";
-		echo "<input style='margin-top:3px;' type=\"reset\" class=\"btn\" value=\"Cancel\" onclick=\"hide_edit({$this->var_id})\"></span></td>";
+		echo "<input style='margin-top:3px;' type=\"reset\" class=\"btn btn-default\" value=\"Cancel\" onclick=\"hide_edit({$this->var_id})\"></span></td>";
 		echo "<td>{$this->var_defaultvalue}</td>";
 		echo "<td>{$this->var_optiontext}</td>";
 		echo '<input type = "hidden" name = "var_id" value = "'.$this->var_id.'">';

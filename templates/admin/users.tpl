@@ -84,7 +84,7 @@ function validate_all_user_action(){
 {/literal}
 <legend>{#PLIGG_Visual_AdminPanel_User_Manage#}</legend>
 {if $moderated_users_count neq "0"}
-	<div class="alert">
+	<div class="alert alert-warning">
 		There {if $moderated_users_count eq "1"}is{else}are{/if} <strong>{$moderated_users_count} {if $moderated_users_count eq "1"}user{else}users{/if}</strong> awaiting moderation.<br />
 		<a href="admin_users.php?filter=disabled">Click here to review the {if $moderated_users_count eq "1"}acccount{else}accounts{/if}.</a>
 	</div>
@@ -95,7 +95,7 @@ function validate_all_user_action(){
 		<tr>
 			<td  width="30%">
 				<div class="btn-group pull">
-					<a class="btn dropdown-toggle" href="#" data-toggle="dropdown">
+					<a class="btn btn-default dropdown-toggle" href="#" data-toggle="dropdown">
 						<i id="selected_action"></i>
 						{#PLIGG_Visual_AdminPanel_Apply_Changes#}
 						<span class="caret"></span>
@@ -132,13 +132,13 @@ function validate_all_user_action(){
 							{else}
 								{assign var=searchboxtext value=#PLIGG_Visual_Search_SearchDefaultText#}			
 							{/if}
-							<input type="text" size="30" class="span7" name="keyword" value="{$searchboxtext}" onfocus="if(this.value == '{$searchboxtext}') {ldelim}this.value = '';{rdelim}" onblur="if (this.value == '') {ldelim}this.value = '{$searchboxtext}';{rdelim}"><button type="submit" class="btn">{#PLIGG_Visual_Search_Go#}</button>
+							<input type="text" class="form-control col-md-7" name="keyword" value="{$searchboxtext}" onfocus="if(this.value == '{$searchboxtext}') {ldelim}this.value = '';{rdelim}" onblur="if (this.value == '') {ldelim}this.value = '{$searchboxtext}';{rdelim}"><button type="submit" class="btn btn-default">{#PLIGG_Visual_Search_Go#}</button>
 						</div>
 					</td>
 				</tr>
 			</table></td>
 			<td  align="right"  width="20%">
-				<select name="filter" style="margin-right:10px;"onchange="this.form.submit()">
+				<select name="filter" class="form-control" id="user_filter" onchange="this.form.submit()">
 					<option value=""> -- User Level -- </option>
 					<option value="admin" {if $templatelite.get.filter == "admin"} selected="selected" {/if}>Admin</option>
 					<option value="moderator" {if $templatelite.get.filter == "moderator"} selected="selected" {/if}>Moderator</option>
@@ -147,7 +147,7 @@ function validate_all_user_action(){
 				</select>
 			</td>
 			<td align="right" width="20%">
-				<select name="pagesize" onchange="this.form.submit()">
+				<select name="pagesize" class="form-control" id="user_sort" onchange="this.form.submit()">
 					<option value="15" {if isset($pagesize) && $pagesize == 15}selected{/if}>Show 15</option>
 					<option value="30" {if isset($pagesize) && $pagesize == 30}selected{/if}>Show 30</option>
 					<option value="50" {if isset($pagesize) && $pagesize == 50}selected{/if}>Show 50</option>

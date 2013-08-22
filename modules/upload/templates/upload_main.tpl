@@ -13,34 +13,37 @@
 		<tbody>
 			<tr>
 				<td style="min-width:130px;width:200px;"><label><a href="#{#PLIGG_Upload_Storage_Directory#}">{#PLIGG_Upload_Storage_Directory#}</a>:</label></td>
-				<td><input type="text" name="upload_directory" id="upload_directory" value="{$settings.directory}" class="span11"/></td>
+				<td><input type="text" name="upload_directory" id="upload_directory" value="{$settings.directory}" class="form-control"/></td>
 			</tr>
 			<tr>
 				<td><label><a href="#{#PLIGG_Upload_File_Size#}">{#PLIGG_Upload_File_Size#}</a>:</label></td>
 				<td>
 					<div class="input-append">
-						<input type="text" name="upload_filesize" id="upload_filesize" value="{$settings.filesize}" class="input-small"/><span class="add-on">KB</span>
+					</div>
+					<div class="input-group" style="width:100px;">
+						<input type="text" name="upload_filesize" id="upload_filesize" class="form-control" value="{$settings.filesize}"/>
+						<span class="input-group-addon">KB</span>
 					</div>
 				</td>
 			</tr>
 			<tr>
 				<td><label><a href="#{#PLIGG_Upload_Max_Number#}">{#PLIGG_Upload_Max_Number#}</a>:</label></td>
-				<td><input type="text" name="upload_maxnumber" id="upload_maxnumber" value="{$settings.maxnumber}" class="input-small"/></td>
+				<td><input type="text" name="upload_maxnumber" id="upload_maxnumber" value="{$settings.maxnumber}" class="form-control" style="width:100px;" /></td>
 			</tr>
 			<tr>
 				<td><label><a href="#{#PLIGG_Upload_File_Extensions#}">{#PLIGG_Upload_File_Extensions#}</a>:</label></td>
 				<td>
-					<input type="text" name="upload_extensions" id="upload_extensions" value="{$settings.extensions}" class="span11"/>
+					<input type="text" name="upload_extensions" id="upload_extensions" value="{$settings.extensions}" class="form-control"/>
 					<p class="help-block">{#PLIGG_Upload_File_Extensions_Note#}</p>
 				</td>
 			</tr>
 			<tr>
 				<td><label><a href="#{#PLIGG_Upload_Allow_External#}">{#PLIGG_Upload_Allow_External#}</a>:</label></td>
 				<td>
-					<select name="upload_external">
-					<option value='file,url' {if $settings.external=='file,url'}selected{/if}>{#PLIGG_Upload_Both#}</option>
-					<option value='file' {if $settings.external=='file'}selected{/if}>{#PLIGG_Upload_File_Only#}</option>
-					<option value='url' {if $settings.external=='url'}selected{/if}>{#PLIGG_Upload_URL_Only#}</option>
+					<select name="upload_external" class="form-control">
+						<option value='file,url' {if $settings.external=='file,url'}selected{/if}>{#PLIGG_Upload_Both#}</option>
+						<option value='file' {if $settings.external=='file'}selected{/if}>{#PLIGG_Upload_File_Only#}</option>
+						<option value='url' {if $settings.external=='url'}selected{/if}>{#PLIGG_Upload_URL_Only#}</option>
 					</select>
 				</td>
 			</tr>
@@ -69,7 +72,7 @@
 					<label><a href="#{#PLIGG_Upload_Generate_Thumbnails#}">{#PLIGG_Upload_Generate_Thumbnails#}</a>:</label>
 				</td>
 				<td>
-					<select name="upload_thumb">
+					<select name="upload_thumb" class="form-control" style="width:100px;">
 						<option value='1' {if $settings.thumb}selected{/if}>On</option>
 						<option value='0' {if !$settings.thumb}selected{/if}>Off</option>
 					</select>
@@ -77,14 +80,14 @@
 			</tr>
 			<tr {if !$settings.thumb}style="display:none;"{/if}>
 				<td><label><a href="#{#PLIGG_Upload_Thumbnail_Directory#}">{#PLIGG_Upload_Thumbnail_Directory#}</a>:</label></td>
-				<td><input type="text" name="upload_thdirectory" id="upload_thdirectory" value="{$settings.thdirectory}" class="span11"/></td>
+				<td><input type="text" name="upload_thdirectory" id="upload_thdirectory" value="{$settings.thdirectory}" class="form-control"/></td>
 			</tr>
 			<tr {if !$settings.thumb}style="display:none;"{/if}>
 				<td>
 					<label><a href="#{#PLIGG_Upload_Quality#}">{#PLIGG_Upload_Quality#} (1-100)</a>:</label>
 				</td>
 				<td>
-					<input type='text' name='upload_quality' value="{$settings.quality}">
+					<input type='text' name='upload_quality' class="form-control" style="width:100px;" value="{$settings.quality}">
 				</td>
 			</tr>
 			<tr {if !$settings.thumb}style="display:none;"{/if}>
@@ -92,7 +95,7 @@
 					<label><a href="#{#PLIGG_Upload_Thumbnail_Defsize#}">{#PLIGG_Upload_Thumbnail_Defsize#}</a>:</label>
 				</td>
 				<td>
-					<select name="upload_defsize">
+					<select name="upload_defsize" class="form-control">
 						<option value='orig' {if $settings.defsize=='orig'}selected{/if}>{#PLIGG_Upload_Original_Image#}</option>
 						{foreach from=$settings.sizes item=size}
 							<option {if $settings.defsize==$size}selected{/if}>{$size}</option>
@@ -103,34 +106,34 @@
 			<tr {if !$settings.thumb}style="display:none;"{/if}>
 				<td><label><a href="#{#PLIGG_Upload_Thumbnail_Link#}">{#PLIGG_Upload_Thumbnail_Link#}</a>:</label></td>
 				<td>
-					<select name="upload_link">
-					<option value='story' {if $settings.link=='story'}selected{/if}>{#PLIGG_Upload_Story_Page#}</option>
-					<option value='orig' {if $settings.link=='orig'}selected{/if}>{#PLIGG_Upload_Original_Image#}</option>
-					{foreach from=$settings.sizes item=size}
-						<option value='{$size}' {if $settings.link==$size}selected{/if}>{#PLIGG_Upload_Another_Thumbnail#} ({$size})</option>
-					{/foreach}
+					<select name="upload_link" class="form-control">
+						<option value='story' {if $settings.link=='story'}selected{/if}>{#PLIGG_Upload_Story_Page#}</option>
+						<option value='orig' {if $settings.link=='orig'}selected{/if}>{#PLIGG_Upload_Original_Image#}</option>
+						{foreach from=$settings.sizes item=size}
+							<option value='{$size}' {if $settings.link==$size}selected{/if}>{#PLIGG_Upload_Another_Thumbnail#} ({$size})</option>
+						{/foreach}
 					</select>
 				</td>
 			</tr>
 			<tr {if !$settings.thumb}style="display:none;"{/if}>
 				<td><label><a href="#{#PLIGG_Upload_Pre_Thumbnail_Format#}">{#PLIGG_Upload_Pre_Thumbnail_Format#}</a>:</label></td>
-				<td><input type="text" name="upload_thumb_pre_format" id="upload_thumb_pre_format" value="{$settings.thumb_pre_format}" class="span11"/></td>
+				<td><input type="text" name="upload_thumb_pre_format" id="upload_thumb_pre_format" value="{$settings.thumb_pre_format}" class="form-control"/></td>
 			</tr>
 			<tr {if !$settings.thumb}style="display:none;"{/if}>
 				<td><label><a href="#{#PLIGG_Upload_Thumbnail_Format#}">{#PLIGG_Upload_Thumbnail_Format#}</a>:</label></td>
 				<td>
-					<input type="text" name="upload_thumb_format" id="upload_thumb_format" value="{$settings.thumb_format}" class="span11"/>
+					<input type="text" name="upload_thumb_format" id="upload_thumb_format" value="{$settings.thumb_format}" class="form-control"/>
 					<p class="help-block">{#PLIGG_Upload_Can_Use#}: {literal}{target}, {path}, {fieldX}{/literal}</p>
 				</td>
 			</tr>
 			<tr {if !$settings.thumb}style="display:none;"{/if}>
 				<td><label><a href="#{#PLIGG_Upload_Post_Thumbnail_Format#}">{#PLIGG_Upload_Post_Thumbnail_Format#}</a>:</label></td>
-				<td><input type="text" name="upload_thumb_post_format" id="upload_thumb_post_format" value="{$settings.thumb_post_format}" class="span11"/></td>
+				<td><input type="text" name="upload_thumb_post_format" id="upload_thumb_post_format" value="{$settings.thumb_post_format}" class="form-control"/></td>
 			</tr>
 			<tr {if !$settings.thumb}style="display:none;"{/if}>
 				<td><label><a href="#{#PLIGG_Upload_Thumbnail_Place#}">{#PLIGG_Upload_Thumbnail_Place#}</a>:</label></td>
 				<td>
-					<select name="upload_place">
+					<select name="upload_place" class="form-control">
 						<option {if $settings.place == 'upload_story_thumb_custom'}selected{/if}>upload_story_thumb_custom</option>
 						{foreach from=$upload_places item=place}
 							<option {if $settings.place==$place}selected{/if}>{$place}</option>
@@ -141,7 +144,7 @@
 			<tr {if !$settings.thumb || !$settings.allow_comment}style="display:none;"{/if}>
 				<td><label><a href="#{#PLIGG_Upload_Comment_Place#}">{#PLIGG_Upload_Comment_Place#}</a>:</label></td>
 				<td>
-					<select name="upload_commentplace">
+					<select name="upload_commentplace" class="form-control">
 						<option {if $settings.commentplace == 'upload_comment_thumb_custom'}selected{/if}>upload_comment_thumb_custom</option>
 					{foreach from=$comment_places item=place}
 						<option {if $settings.commentplace==$place}selected{/if}>{$place}</option>
@@ -163,23 +166,23 @@
 		<tbody>
 			<tr>
 				<td><label><a href="#{#PLIGG_Upload_Pre_Format#}">{#PLIGG_Upload_Pre_Format#}</a>:</label></td>
-				<td><input type="text" name="upload_pre_format" id="upload_pre_format" value="{$settings.pre_format}" class="span11"/></td>
+				<td><input type="text" name="upload_pre_format" id="upload_pre_format" value="{$settings.pre_format}" class="form-control"/></td>
 			</tr>
 			<tr>
 				<td><label><a href="#{#PLIGG_Upload_Format#}">{#PLIGG_Upload_Format#}</a>:</label></td>
 				<td>
-					<input type="text" name="upload_format" id="upload_format" value="{$settings.format}" class="span11"/>
+					<input type="text" name="upload_format" id="upload_format" value="{$settings.format}" class="form-control"/>
 					<p class="help-block">{#PLIGG_Upload_Can_Use#}: {literal}{path}, {fieldX}{/literal}</p>
 				</td>
 			</tr>
 			<tr>
 				<td><label><a href="#{#PLIGG_Upload_Post_Format#}">{#PLIGG_Upload_Post_Format#}</a>:</label></td>
-				<td><input type="text" name="upload_post_format" id="upload_post_format" value="{$settings.post_format}" class="span11"/></td>
+				<td><input type="text" name="upload_post_format" id="upload_post_format" value="{$settings.post_format}" class="form-control"/></td>
 			</tr>
 			<tr>
 				<td><label><a href="#{#PLIGG_Upload_Files_Place#}">{#PLIGG_Upload_Files_Place#}</a>:</label></td>
 				<td>
-					<select name="upload_fileplace" class="span11">
+					<select name="upload_fileplace" class="form-control">
 						<option {if $settings.fileplace == 'upload_story_list_custom'}selected{/if}>upload_story_list_custom</option>
 						{foreach from=$upload_places item=place}
 							<option {if $settings.fileplace==$place}selected{/if}>{$place}</option>
@@ -190,7 +193,7 @@
 			<tr {if !$settings.allow_comment}style="display:none"{/if}>
 				<td><label><a href="#{#PLIGG_Upload_Comment_File_List#}">{#PLIGG_Upload_Comment_File_List#}</a>:</label></td>
 				<td>
-					<select name="upload_commentfilelist" class="span11">
+					<select name="upload_commentfilelist" class="form-control">
 						<option {if $settings.commentfilelist == 'upload_comment_list_custom'}selected{/if}>upload_comment_list_custom</option>
 						{foreach from=$comment_places item=place}
 							<option {if $settings.commentfilelist==$place}selected{/if}>{$place}</option>
@@ -205,7 +208,7 @@
 		</tbody>
 	</table>
 	
-	<div style="width:35%;min-width:230px;float:left;margin-right:25px;{if !$settings.thumb}display:none;{/if}">
+	<div class="col-lg-4" style="{if !$settings.thumb}display:none;{/if}">
 		<legend><a href="#{#PLIGG_Upload_Thumbnail_Sizes#}">{#PLIGG_Upload_Thumbnail_Sizes#}</a></legend>
 		<table class="table table-bordered table-striped">
 			<thead>
@@ -230,8 +233,21 @@
 				{/foreach}
 				<tr>
 					<td colspan="3">
-						{#PLIGG_Upload_Width#} <input type='text' name='upload_width' class="input-small"> 
-						&nbsp; {#PLIGG_Upload_Height#} <input type='text' name='upload_height' class="input-small"> 
+						<div style="float:left;width:50%;display:inline;padding-left:5px;">
+							{#PLIGG_Upload_Width#}: 
+							<div class="input-group" style="width:100px;">
+								<input type='text' name='upload_width' class="form-control">
+								<span class="input-group-addon">px</span>
+							</div>
+						</div>
+						<div style="float:left;width:50%;display:inline;padding-left:5px;">
+							{#PLIGG_Upload_Height#}: 					
+							<div class="input-group" style="width:100px;">
+								<input type='text' name='upload_height' class="form-control"> 
+								<span class="input-group-addon">px</span>
+							</div>
+						</div>
+						<div style="clear:both;"></div>
 					</td>
 				</tr>
 				<tr>
@@ -240,7 +256,7 @@
 			</tbody>
 		</table>
 	</div>
-	<div style="width:{if !$settings.thumb}100%{else}60%{/if};min-width:500px;float:left;">
+	<div class="col-lg-8" style="{if !$settings.thumb}width:100%{/if};min-width:500px;">
 		<legend><a href="#{#PLIGG_Upload_Thumbnail_Fields#}">{#PLIGG_Upload_Thumbnail_Fields#}</a></legend>
 		<table class="table table-bordered table-striped">
 			<thead>
@@ -267,7 +283,7 @@
 						<label><a href="#{#PLIGG_Upload_Add_Field#}">{#PLIGG_Upload_Add_Field#}</a>:</label>
 					</td>
 					<td colspan="3">
-						<input type='text' name='upload_new_field' class="span11">
+						<input type='text' name='upload_new_field' class="form-control">
 						<p class="help-block">{#PLIGG_Upload_Add_Field_Note#}</p>
 					</td>
 				</tr>

@@ -79,7 +79,7 @@
 							if ($versionupdate > 0){
 								if(isset($widget_info['homepage_url'])){
 									$homepage_url = $widget_info['homepage_url'];
-									echo " <a class='btn ' href='" . $homepage_url . "' target='_blank'>Upgrade $versionupdate</a>";
+									echo " <a class='btn btn-default' href='" . $homepage_url . "' target='_blank'>Upgrade $versionupdate</a>";
 								}
 							}
 						*/
@@ -105,12 +105,12 @@
 						*/
 						if(isset($widget_info['homepage_url']) && $widget_info['homepage_url'] != ''){
 							$homepage_url = $widget_info['homepage_url'];
-							echo '<td style="text-align:center;vertical-align:middle;"><a class="btn " href="' . $homepage_url . '">Homepage</a></td>';
+							echo '<td style="text-align:center;vertical-align:middle;"><a class="btn btn-default" href="' . $homepage_url . '">Homepage</a></td>';
 						} else {
 							echo '<td></td>';
 						}
 						echo '<td style="text-align:center;vertical-align:middle;">';
-						echo '<a class="btn btn-danger btn-mini" href="?action=remove&widget=' . $widget->name . '">'.$main_smarty->get_config_vars('PLIGG_Visual_AdminPanel_Module_Remove').'</a>';
+						echo '<a class="btn btn-danger btn-xs" href="?action=remove&widget=' . $widget->name . '">'.$main_smarty->get_config_vars('PLIGG_Visual_AdminPanel_Module_Remove').'</a>';
 						echo '</td></tr>';
 					}
 				}
@@ -182,7 +182,7 @@
 								}
 							}
 						}
-						echo '</td><td style="text-align:center;vertical-align:middle;"><a class="btn btn-success btn-mini" href="?action=install&widget=' . $value . '">Install</a></td></tr>';
+						echo '</td><td style="text-align:center;vertical-align:middle;"><a class="btn btn-success btn-xs" href="?action=install&widget=' . $value . '">Install</a></td></tr>';
 					}
 				}
 			} else {

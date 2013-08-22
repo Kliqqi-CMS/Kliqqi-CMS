@@ -3,6 +3,7 @@
 /* Override some defaults */
 html, body {
 background-color: #eee;
+text-align:center;
 }
 </style>
 {/literal}
@@ -19,14 +20,14 @@ background-color: #eee;
 			<form action="{$my_pligg_base}/admin/admin_login.php" method="post">
 				<fieldset>
 					<div class="clearfix login_username">
-						<input type="text" name="username" {if $post_username}value="{$post_username}"{else}placeholder="{#PLIGG_Visual_Register_Username#}{/if}">
+						<input type="text" class="form-control" name="username" {if $post_username}value="{$post_username}"{else}placeholder="{#PLIGG_Visual_Register_Username#}{/if}">
 					</div>
 					<div class="clearfix login_password">
-						<input type="password" name="password" placeholder="{#PLIGG_Visual_Register_Password#}">
+						<input type="password" class="form-control" name="password" placeholder="{#PLIGG_Visual_Register_Password#}">
 					</div>
 					<input type="hidden" name="processlogin" value="1"/>
 					<input type="hidden" name="return" value="{$get.return}"/>
-					<button class="btn btn-primary" type="submit">{#PLIGG_Visual_Login_LoginButton#}</button>
+					<button class="btn btn-primary admin_login_submit" type="submit">{#PLIGG_Visual_Login_LoginButton#}</button>
 				</fieldset>
 			</form>
 		</div>

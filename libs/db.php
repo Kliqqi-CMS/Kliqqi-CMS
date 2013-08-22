@@ -48,7 +48,7 @@ if(!defined('mnminclude')){header('Location: ../error_404.php');die();}
 				<div class="container">
 					<section id="maincontent">
 						<div class="row">
-							<div class="span12">
+							<div class="col-md-12">
 								<legend>Error establishing a database connection!</legend>
 								<ol>
 									<li>Have you run the <a href = "./install/install.php">Pligg Installer</a> yet?</li>
@@ -99,7 +99,7 @@ if(!defined('mnminclude')){header('Location: ../error_404.php');die();}
 				<div class="container">
 					<section id="maincontent">
 						<div class="row">
-							<div class="span12">
+							<div class="col-md-12">
 								<legend>Error establishing mySQL database connection!</legend>
 								<ol>
 									<li>Does the file /libs/dbconnect.php exist?</li>
@@ -150,7 +150,7 @@ if(!defined('mnminclude')){header('Location: ../error_404.php');die();}
 				<div class="container">
 					<section id="maincontent">
 						<div class="row">
-							<div class="span12">
+							<div class="col-md-12">
 								<legend>Error establishing mySQL database connection!</legend>
 								<p>Require a $dbname to select a database.</p>
 							</div>
@@ -195,7 +195,7 @@ if(!defined('mnminclude')){header('Location: ../error_404.php');die();}
 				<div class="container">
 					<section id="maincontent">
 						<div class="row">
-							<div class="span12">
+							<div class="col-md-12">
 								<legend>Error establishing mySQL database connection!</legend>
 								<p>MySQL database connection is not active.</p>
 							</div>
@@ -240,7 +240,7 @@ if(!defined('mnminclude')){header('Location: ../error_404.php');die();}
 				<div class="container">
 					<section id="maincontent">
 						<div class="row">
-							<div class="span12">
+							<div class="col-md-12">
 								<legend>Error establishing mySQL database connection!</legend>
 								<p>Unexpected error while trying to select database.</p>
 							</div>

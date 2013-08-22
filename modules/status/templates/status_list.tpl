@@ -129,9 +129,9 @@
 			<div class="status_submit_form">
 				<form method='post' action='{$my_pligg_base}/modules/status/status.php'>
 				{checkActionsTpl location="status_submit_2"}
-					<textarea rows="1" class="span7 status_submit_input" name="status">{php}if ($_SESSION['status_text']) print $_SESSION['status_text']; elseif ($user->id != $current_user->user_id) print '@'.$user->username.' ';{/php}</textarea> 
+					<textarea rows="1" class="col-md-7 status_submit_input" name="status">{php}if ($_SESSION['status_text']) print $_SESSION['status_text']; elseif ($user->id != $current_user->user_id) print '@'.$user->username.' ';{/php}</textarea> 
 				{checkActionsTpl location="status_submit_3"}
-				<input class="span2 btn btn-primary status_submit_submission" value="{#PLIGG_Status_Submit#}" type="submit">
+				<input class="col-md-2 btn btn-primary status_submit_submission" value="{#PLIGG_Status_Submit#}" type="submit">
 				</form>
 			</div>
 			<div class="status_clear"> </div>
@@ -240,8 +240,8 @@
 						<div class="status_reply_form">
 							<form method='post' action='{$my_pligg_base}/modules/status/status.php'>
 								<input value="{$update.update_id}" type="hidden" name="id">
-								<textarea rows="1" class="span6 status_reply_textarea" name="status">@{$update.user_login} {if $settings.permalinks}#{$update.update_id} {/if}</textarea>
-								<input value="{#PLIGG_Status_Submit_Reply#}" class="span2 btn status_reply_submit" type="submit">
+								<textarea rows="1" class="col-md-6 status_reply_textarea" name="status">@{$update.user_login} {if $settings.permalinks}#{$update.update_id} {/if}</textarea>
+								<input value="{#PLIGG_Status_Submit_Reply#}" class="col-md-2 btn status_reply_submit" type="submit">
 							</form>
 						</div>
 					</div>

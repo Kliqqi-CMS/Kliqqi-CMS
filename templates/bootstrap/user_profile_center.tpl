@@ -8,10 +8,10 @@
 {***********************************************************************************}
 {if $user_view eq 'profile'}
 	<div id="profile_container" style="position: relative;">
-		<div class="row-fluid">
+		<div class="row">
 			{checkActionsTpl location="tpl_pligg_profile_info_start"}
 			{checkActionsTpl location="tpl_pligg_profile_info_middle"}
-			<div id="stats" class="masonry span6" style="margin-left:10px">
+			<div id="stats" class="col-md-6">
 				<table class="table table-bordered table-striped">
 					<thead class="table_title">
 						<tr>
@@ -65,7 +65,7 @@
 				</table>
 			</div>
 			{if $enable_group eq "true"}
-				<div id="groups" class="masonry span6" style="margin-left:10px">
+				<div id="groups" class="col-md-6">
 					<table class="table table-bordered table-striped">
 						<thead class="table_title">
 							<tr>
@@ -87,7 +87,7 @@
 				</div>
 			{/if}
 			{if $Allow_Friends neq "0"}
-				<div id="following" class="masonry span6" style="margin-left:10px">
+				<div id="following" class="col-md-6">
 					<table class="table table-bordered table-striped">
 						<thead class="table_title">
 							<tr>
@@ -141,7 +141,7 @@
 {if isset($user_page)}
 	{$user_page}
 	{if $user_page eq ''}
-		<div class="hero-unit" style="padding:15px 25px;"><p style="padding:0;margin:0;font-size:1.1em;">{#PLIGG_User_Profile_No_Content#}</p></div>
+		<div class="jumbotron" style="padding:15px 25px;"><p style="padding:0;margin:0;font-size:1.1em;">{#PLIGG_User_Profile_No_Content#}</p></div>
 	{/if}
 {/if}
 

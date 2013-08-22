@@ -7,15 +7,15 @@
 		<form action="" method="post" {if $filedata}onsubmit="if (this.updatedfile.value!='' || confirm('{#PLIGG_Visual_AdminPanel_Template_Empty_Confirm#}')) this.isempty.value=1; else return false;"{/if}>	
 			<input type="hidden" name="the_file2" value="{$the_file}" />
 			<p><strong>{#PLIGG_Visual_AdminPanel_Template_Currently_Open#}: {$the_file}</strong></p>
-			<textarea rows="30" class="span12" id="editor" name="updatedfile">{$filedata}</textarea>
+			<textarea rows="30" class="col-md-12" id="editor" name="updatedfile">{$filedata}</textarea>
 			<br/>
-			<input type="button" value="Cancel" onClick="javascript:location.href='{$my_base_url}{$my_pligg_base}/admin/admin_editor.php'" class="btn" />
-			<input type="reset" value="Reset" class="btn">
+			<input type="button" value="Cancel" onClick="javascript:location.href='{$my_base_url}{$my_pligg_base}/admin/admin_editor.php'" class="btn btn-default" />
+			<input type="reset" value="Reset" class="btn btn-default">
 			<input type="hidden" name="isempty" value="{if $filedata}0{else}1{/if}">
-			<input type="submit" class="btn btn-primary" name="save" value="Save Changes" class="btn"/>
+			<input type="submit" class="btn btn-primary" name="save" value="Save Changes" class="btn btn-default"/>
 		</form>
     {else}
-		<div class="alert alert-block">
+		<div class="alert alert-block alert-danger">
 			<h4 class="alert-heading">{#PLIGG_Visual_AdminPanel_Template_Error#}</h4>
 			{#PLIGG_Visual_AdminPanel_Template_Cant_Open#}
 		</div>
@@ -38,7 +38,7 @@
 			<input type="submit" class="btn btn-primary" name="open" value="Open" id="open_template" />	
 		</form>
     {else}
-		<div class="alert alert-block fade in">
+		<div class="alert alert-block alert-danger fade in">
 			<h4 class="alert-heading">{#PLIGG_Visual_AdminPanel_Template_Error#}</h4>
 			{#PLIGG_Visual_AdminPanel_Template_Cant_Open#}
 		</div>

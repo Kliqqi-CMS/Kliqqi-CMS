@@ -26,7 +26,7 @@
 			<br />
 			{$register_step_1_extra}
 		{/if}
-		<input type="submit" name="submit" value="{#PLIGG_Anonymous_Comment_Submit#}" class="btn" />
+		<input type="submit" name="submit" value="{#PLIGG_Anonymous_Comment_Submit#}" class="btn btn-default" />
 		<input type="hidden" name="process" value="newcomment" />
 		<input type="hidden" name="randkey" value="{$randkey}" />
 		<input type="hidden" name="link_id" value="{$link_id}" />

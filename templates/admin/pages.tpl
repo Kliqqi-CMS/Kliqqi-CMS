@@ -5,9 +5,9 @@
 	<thead>
 		<tr>
 			{checkActionsTpl location="tpl_pligg_admin_pages_th_start"}
-			<th>{#PLIGG_Visual_AdminPanel_Page_Submit_Title#}</th>
-			<th style="text-align:center;">{#PLIGG_Visual_AdminPanel_Page_Edit#}</th>
-			<th style="text-align:center;">{#PLIGG_Visual_AdminPanel_Page_Delete#}</th>
+			<th class="page_th_title">{#PLIGG_Visual_AdminPanel_Page_Submit_Title#}</th>
+			<th class="page_th_edit">{#PLIGG_Visual_AdminPanel_Page_Edit#}</th>
+			<th class="page_th_delete">{#PLIGG_Visual_AdminPanel_Page_Delete#}</th>
 			{checkActionsTpl location="tpl_pligg_admin_pages_th_end"}
 		</tr>
 	</thead>

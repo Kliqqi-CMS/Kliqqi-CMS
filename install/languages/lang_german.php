@@ -50,7 +50,7 @@
 	$lang['TablePrefix'] = 'Table Prefix';
 	$lang['PrefixExample'] = '(ie: "pligg_" makes the tables for users become pligg_users)';
 	$lang['CheckSettings'] = 'Einstellungen überprüfen';
-	$lang['Errors'] = 'Bitte korrigieren Sie die obige Fehlermeldung (en), then <a class="btn btn-mini" onClick="document.location.reload(true)">Aktualisieren Sie die Seite</a>';
+	$lang['Errors'] = 'Bitte korrigieren Sie die obige Fehlermeldung (en), then <a class="btn btn-default btn-xs" onClick="document.location.reload(true)">Aktualisieren Sie die Seite</a>';
 	$lang['LangNotFound'] = 'wurde nicht gefunden. Bitte entfernen Sie die. Standardmäßig Erweiterung aus allen Sprachdateien und versuchen Sie es erneut.';
 
 // step 3

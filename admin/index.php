@@ -11,8 +11,8 @@ if (file_exists($install)) {
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<meta name="Robots" content="none" />
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-	<link rel="stylesheet" type="text/css" href="../templates/admin/css/bootstrap.css" media="screen" />
-	<link rel="stylesheet" type="text/css" href="../templates/admin/css/bootstrap-responsive.css">
+	<link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.no-icons.min.css" rel="stylesheet">
+	<link href="//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.min.css" rel="stylesheet">
 	<link rel="stylesheet" type="text/css" href="../templates/admin/css/style.css" media="screen" />
 	<style type="text/css">
 	body {
@@ -36,8 +36,8 @@ if (file_exists($install)) {
 		<div class="container">
 			<section id="maincontent">
 				<div class="row">
-					<div class="span12">
-						<div class="well form-search">
+					<div class="col-md-12">
+						<div class="well install_warning">
 							<h2>Warning!</h2>
 							<p>The file ../install/install.php still exists on your server! 
 								<br />For security reasons, you need to <strong>remove the /install/ directory</strong> from your server immediately after you have completed an installation or upgrade of your website.

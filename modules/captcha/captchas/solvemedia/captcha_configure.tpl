@@ -53,7 +53,7 @@
 					Theme:
 				</td>
 				<td>
-					<select name="theme">
+					<select name="theme" class="form-control">
 						<option value="white" <?php echo get_misc_data('adcopy_theme') == 'white' ? 'selected="selected"' : '' ?> >White</option> 
 						<option value="black" <?php echo get_misc_data('adcopy_theme') == 'black' ? 'selected="selected"' : '' ?> >Black</option> 
 						<option value="red" <?php echo get_misc_data('adcopy_theme') == 'red' ? 'selected="selected"' : '' ?> >Red</option> 
@@ -66,7 +66,8 @@
 					Language:
 				</td>
 				<td>
-					<select name="lang"> 	<option value="en" <?php echo get_misc_data('adcopy_lang') == 'en' ? 'selected="selected"' : '' ?> >English</option> 
+					<select name="lang" class="form-control">
+						<option value="en" <?php echo get_misc_data('adcopy_lang') == 'en' ? 'selected="selected"' : '' ?> >English</option> 
 						<option value="de" <?php echo get_misc_data('adcopy_lang') == 'de' ? 'selected="selected"' : '' ?> >German</option> 
 						<option value="fr" <?php echo get_misc_data('adcopy_lang') == 'fr' ? 'selected="selected"' : '' ?> >French</option> 
 						<option value="es" <?php echo get_misc_data('adcopy_lang') == 'es' ? 'selected="selected"' : '' ?> >Spanish</option> 
@@ -82,5 +83,5 @@
 	</table>
 </form>
 <br />
-<a class="btn" href="{$URL_captcha}"><i class="icon icon-arrow-left"></i> Return to the Captcha Settings Page</a>
+<a class="btn btn-default" href="{$URL_captcha}"><i class="icon icon-arrow-left"></i> Return to the Captcha Settings Page</a>
 {config_load file=captcha_pligg_lang_conf}

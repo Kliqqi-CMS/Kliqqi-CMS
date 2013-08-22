@@ -2,13 +2,29 @@
 ******** User Search Results ********
  This template controls the user search results pages
 *************************************}
-{include file=$the_template"/user_navigation.tpl"}
 
 <!-- user_search_center.tpl -->
+
+<div class="row">
+	<div class="col-lg-12">
+		<div class="input-group">
+			<form action="{$my_pligg_base}/user.php" method="get" {php} global $URLMethod, $my_base_url, $my_pligg_base; if ($URLMethod==2) print "onsubmit='document.location.href=\"{$my_base_url}{$my_pligg_base}/user/search/\"+encodeURIComponent(this.keyword.value); return false;'";{/php}>
+				<span class="input-group-btn">
+					<input type="hidden" name="view" value="search">
+					<input type="text" name="keyword" class="form-control" placeholder="{#PLIGG_Visual_User_Search_Users#}">
+					<button class="btn btn-default" type="button">Search Accounts</button>
+				</span>
+			</form>	
+		</div><!-- /input-group -->
+	</div><!-- /.col-lg-6 -->
+</div><!-- /.row -->
+
+<hr />
+
 {***********************************************************************************}
 {if $user_view eq 'search'}
 	{if $userlist}
-		<legend>{#PLIGG_Visual_Search_SearchResults#} &quot;{$search}&quot;</legend>
+		<h4>{#PLIGG_Visual_Search_SearchResults#} &quot;{$search}&quot;</h4>
 		<table class="table table-bordered table-striped">
 			<thead class="table_title">
 				<tr>

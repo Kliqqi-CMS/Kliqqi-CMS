@@ -29,7 +29,7 @@
 
 	<hr />
 	<div align="center">
-		<a class="btn" href="{$URL_simple_messaging_inbox}"><img src="{$simple_messaging_path}images/cross.png" align="absmiddle" /> {#PLIGG_MESSAGING_Close#}</a>
+		<a class="btn btn-default" href="{$URL_simple_messaging_inbox}"><img src="{$simple_messaging_path}images/cross.png" align="absmiddle" /> {#PLIGG_MESSAGING_Close#}</a>
 	</div>
 </p>
 {config_load file=simple_messaging_pligg_lang_conf}

@@ -7,14 +7,14 @@
 <!-- user_follow_center.tpl -->
 {***********************************************************************************}
 {if $user_view eq 'removefriend'}
-	<div class="alert">
+	<div class="alert alert-danger">
 		<button class="close" data-dismiss="alert">&times;</button>
 		{#PLIGG_Visual_User_Profile_Friend_Removed#}
 	</div>
 {/if}
 {***********************************************************************************}
 {if $user_view eq 'addfriend'}
-	<div class="alert">
+	<div class="alert alert-danger">
 		<button class="close" data-dismiss="alert">&times;</button>
 		{#PLIGG_Visual_User_Profile_Friend_Added#}
 	</div>
@@ -22,10 +22,10 @@
 {***********************************************************************************}
 {if $user_view eq 'removefriend' || $user_view eq 'addfriend'}
 	<div id="profile_container" style="position: relative;">
-		<div class="row-fluid">
+		<div class="row">
 			{checkActionsTpl location="tpl_pligg_profile_info_start"}
 			{checkActionsTpl location="tpl_pligg_profile_info_middle"}
-			<div id="stats" class="masonry span6" style="margin-left:10px">
+			<div id="stats" class="col-md-6">
 				<table class="table table-bordered table-striped">
 					<thead class="table_title">
 						<tr>
@@ -79,7 +79,7 @@
 				</table>
 			</div>
 			{if $enable_group eq "true"}
-				<div id="groups" class="masonry span6" style="margin-left:10px">
+				<div id="groups" class="col-md-6">
 					<table class="table table-bordered table-striped">
 						<thead class="table_title">
 							<tr>
@@ -101,7 +101,7 @@
 				</div>
 			{/if}
 			{if $Allow_Friends neq "0"}
-				<div id="following" class="masonry span6" style="margin-left:10px">
+				<div id="following" class="col-md-6">
 					<table class="table table-bordered table-striped">
 						<thead class="table_title">
 							<tr>
@@ -167,7 +167,7 @@
 					{/php}
 					<tr>
 						<td><img src="{$friend_avatar}" align="absmiddle" /> <a href="{$profileURL}">{$myfriend.user_login}</a></td>
-						{if check_for_enabled_module('simple_messaging',2.0) && $is_friend}<td align="center"><a href="{$my_pligg_base}/module.php?module=simple_messaging&view=compose&return={$templatelite.server.REQUEST_URI|urlencode}&to={$myfriend.user_login}"><span class="btn"><i class="icon icon-envelope"></i></span></a></td>{/if}
+						{if check_for_enabled_module('simple_messaging',2.0) && $is_friend}<td align="center"><a href="{$my_pligg_base}/module.php?module=simple_messaging&view=compose&return={$templatelite.server.REQUEST_URI|urlencode}&to={$myfriend.user_login}"><span class="btn btn-default"><i class="icon icon-envelope"></i></span></a></td>{/if}
 						{if $user_authenticated eq true}
 							<td align="center"><a href="{$user_url_remove}" class="btn btn-danger">Unfollow</a></td>
 						{/if}
@@ -206,7 +206,7 @@
 
 					<tr>
 						<td><img src="{$friend_avatar}" align="absmiddle" /> <a href="{$profileURL}">{$myfriend.user_login}</a></td>
-						{if check_for_enabled_module('simple_messaging',2.0) && $is_friend}<td><a href="{$my_pligg_base}/module.php?module=simple_messaging&view=compose&to={$myfriend.user_login}&return={$templatelite.server.REQUEST_URI|urlencode}"><span class="btn"><i class="icon icon-envelope"></i></span></a></td>{/if}
+						{if check_for_enabled_module('simple_messaging',2.0) && $is_friend}<td><a href="{$my_pligg_base}/module.php?module=simple_messaging&view=compose&to={$myfriend.user_login}&return={$templatelite.server.REQUEST_URI|urlencode}"><span class="btn btn-default"><i class="icon icon-envelope"></i></span></a></td>{/if}
 						{if $user_authenticated eq true}
 							{if $myfriend.is_friend>0}
 								<td><a class="btn btn-danger" href="{$user_url_remove}">Unfollow</a></td>

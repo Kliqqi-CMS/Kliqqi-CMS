@@ -24,6 +24,7 @@ if($language == 'arabic'){
 }elseif($language == 'thai'){
 	include_once('./languages/lang_thai.php');
 } else {
+	$language = 'english';
 	include_once('./languages/lang_english.php');
 }
 
@@ -99,27 +100,27 @@ if (!$errors) {
 		<form id="form1" name="form1" action="install.php" method="post">
 			<tr>
 				<td><label>' . $lang['AdminLogin'] . '</label></td>
-				<td><input name="adminlogin" type="text" value="" placeholder="Admin" /></td>
+				<td><input name="adminlogin" type="text" class="form-control" value="" placeholder="Admin" /></td>
 			</tr>
 			
 			<tr>
 				<td><label>' . $lang['AdminPassword'] . '</label></td>
-				<td><input name="adminpassword" type="password" value="" /></td>
+				<td><input name="adminpassword" type="password" class="form-control" value="" /></td>
 			</tr>
 			
 			<tr>
 				<td><label>' . $lang['ConfirmPassword'] . '</label></td>
-				<td><input name="adminpassword2" type="password" value="" /></td>
+				<td><input name="adminpassword2" type="password" class="form-control" value="" /></td>
 			</tr>
 			
 			<tr>
 				<td><label>' . $lang['AdminEmail'] . '</label></td>
-				<td><input name="adminemail" type="text" value="" placeholder="admin@domain.com" /></td>
+				<td><input name="adminemail" type="text" class="form-control" value="" placeholder="admin@domain.com" /></td>
 			</tr>
 			
 			<tr>
 				<td><label>' . $lang['SiteTitleLabel'] . '</label></td>
-				<td><input name="sitetitle" type="text" value="" placeholder="My Site" /></td>
+				<td><input name="sitetitle" type="text" class="form-control" value="" placeholder="My Site" /></td>
 			</tr>
 			
 			<tr>

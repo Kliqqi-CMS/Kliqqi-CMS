@@ -30,7 +30,7 @@ $CSRF->create('user_settings', true, true);
 // if not logged in, redirect to the index page
 $login = isset($_GET['login']) ? sanitize($_GET['login'], 3) : '';
 $truelogin = isset($_COOKIE['mnm_user'] ) ? sanitize($_COOKIE['mnm_user'] , 3) : '';
-if($login === ''){
+if($login === '' && !$_GET['keyword']){
 	if ($current_user->user_id > 0) {
 		$login = $current_user->user_login;
 		if (urlmethod == 2)
@@ -43,14 +43,16 @@ if($login === ''){
 		die;
 }
 
-// read the users information from the database
-$user=new User();
-$user->username = $login;
-if(!$user->read() || $user->level=='Spammer' || ($user->username=='anonymous' && !$user->user_lastip) ||
+if ($login) {
+	// read the users information from the database
+	$user=new User();
+	$user->username = $login;
+	if(!$user->read() || $user->level=='Spammer' || ($user->username=='anonymous' && !$user->user_lastip) ||
    // Hide users without stories/comments from unregistered visitors
    !$user->all_stats() || $user->total_links+$user->total_comments+$current_user->user_id==0) {
 	header("Location: $my_pligg_base/error_404.php");
 	die;
+	}
 }
 
 require_once(mnminclude.'check_behind_proxy.php'); 	 
@@ -89,18 +91,62 @@ $user_lastip = $user->extra_field['user_lastip'];
 $main_smarty->assign('user_lastip', $user_lastip);
 
 // check to see if the profile is of a friend
-$friend = new Friend;
-$main_smarty->assign('is_friend', $friend->get_friend_status($user->id));
-$main_smarty->assign('user_followers', $user->getFollowersCount());
-$main_smarty->assign('user_following', $user->getFollowingCount());
+if ($user->id) {
+	$friend = new Friend;
+	$main_smarty->assign('is_friend', $friend->get_friend_status($user->id));
+	$main_smarty->assign('user_followers', $user->getFollowersCount());
+	$main_smarty->assign('user_following', $user->getFollowingCount());
+}
 
+// setup breadcrumbs for the various views
+$view = isset($_GET['view']) && sanitize($_GET['view'], 3) != '' ? sanitize($_GET['view'], 3) : 'profile';
+if ($view=='setting' && $truelogin!=$login)
+	$view = 'profile';
+
+$main_smarty->assign('user_view', $view);
+$main_smarty->assign('page_header', $page_header);
+
+// User Homepage URL
+if ($view == 'search') {
+	$friend = new Friend;
+	if(isset($_REQUEST['keyword'])){$keyword = $db->escape(sanitize(trim($_REQUEST['keyword']), 3));}
+
+	if ($keyword) 
+	{
+		$searchsql = "SELECT * FROM " . table_users . " where (user_login LIKE '%".$keyword."%' OR public_email LIKE '%".$keyword."%') AND user_level!='Spammer' ";
+		$results = $db->get_results($searchsql);
+		$results = object_2_array($results);
+		foreach($results as $key => $val){
+			if ($val['user_login'] != 'anonymous' || $val['user_lastip'] > 0)
+			{
+				$results[$key]['Avatar'] = get_avatar('small', "", $val['user_login'], $val['user_email']);
+				$results[$key]['add_friend'] = getmyurl('user_add_remove', $val['user_login'], 'addfriend');
+				$results[$key]['remove_friend'] = getmyurl('user_add_remove', $val['user_login'], 'removefriend');
+				$results[$key]['status'] = $friend->get_friend_status($val['user_id']);
+			}
+			else
+			unset ($results[$key]);
+		}
+
+		$main_smarty->assign('userlist', $results);
+	}
+	$main_smarty->assign('search', $keyword);
+
+	$main_smarty->assign('page_header', $user->username);
+	$navwhere['text3'] = $main_smarty->get_config_vars('PLIGG_Visual_Search_SearchResults') . ' ' . $keyword;
+	$main_smarty->assign('posttitle', $main_smarty->get_config_vars('PLIGG_Visual_Breadcrumb_Profile') . " " . $login . " - " . $main_smarty->get_config_vars('PLIGG_Visual_Search_SearchResults') . ' ' . $keyword);
+
+	// display the template
+	$main_smarty->assign('tpl_center', $the_template . '/user_search_center');
+	$main_smarty->display($the_template . '/pligg.tpl');
+	die;
+} else {
 
 // avatars
 $main_smarty->assign('UseAvatars', do_we_use_avatars());
 $main_smarty->assign('Avatar', $avatars = get_avatar('all', '', $user->username, $user->email));
 $main_smarty->assign('Avatar_ImgSrc', $avatars['large']);
 
-// User Homepage URL
 if ($user->url != "") {
 	if(substr(strtoupper($user->url), 0, 8) == "HTTPS://"){
 		$main_smarty->assign('user_url', $user->url);
@@ -135,16 +181,9 @@ $main_smarty->assign('user_url_member_groups', getmyurl('user2', $login, 'member
 // tell smarty about our user
 $main_smarty = $user->fill_smarty($main_smarty);
 
-// setup breadcrumbs for the various views
-$view = isset($_GET['view']) && sanitize($_GET['view'], 3) != '' ? sanitize($_GET['view'], 3) : 'profile';
-if ($view=='setting' && $truelogin!=$login)
-	$view = 'profile';
-
 $username = $user->username;
 $post_title = $main_smarty->get_config_vars('PLIGG_Visual_Breadcrumb_Profile') . " " . $login;
 
-$main_smarty->assign('user_view', $view);
-$main_smarty->assign('page_header', $page_header);
 $main_smarty->assign('username', $username);
 $main_smarty->assign('posttitle', $post_title);
 
@@ -316,43 +355,11 @@ if ($view == 'member_groups') {
 } else {
 	$main_smarty->assign('nav_mg', 3);
 }
-
+}
 $main_smarty->assign('page_header', $page_header);
 $main_smarty->assign('username', $username);
 $main_smarty->assign('posttitle', $post_title);
 
-if ($view == 'search') {
-	if(isset($_REQUEST['keyword'])){$keyword = $db->escape(sanitize(trim($_REQUEST['keyword']), 3));}
-
-	if ($keyword) 
-	{
-		$searchsql = "SELECT * FROM " . table_users . " where (user_login LIKE '%".$keyword."%' OR public_email LIKE '%".$keyword."%') AND user_level!='Spammer' ";
-		$results = $db->get_results($searchsql);
-		$results = object_2_array($results);
-		foreach($results as $key => $val){
-			if ($val['user_login'] != 'anonymous' || $val['user_lastip'] > 0)
-			{
-				$results[$key]['Avatar'] = get_avatar('small', "", $val['user_login'], $val['user_email']);
-				$results[$key]['add_friend'] = getmyurl('user_add_remove', $val['user_login'], 'addfriend');
-				$results[$key]['remove_friend'] = getmyurl('user_add_remove', $val['user_login'], 'removefriend');
-				$results[$key]['status'] = $friend->get_friend_status($val['user_id']);
-			}
-			else
-			unset ($results[$key]);
-		}
-
-		$main_smarty->assign('userlist', $results);
-	}
-	$main_smarty->assign('search', $keyword);
-
-	$main_smarty->assign('page_header', $user->username);
-	$navwhere['text3'] = $main_smarty->get_config_vars('PLIGG_Visual_Search_SearchResults') . ' ' . $keyword;
-	$main_smarty->assign('posttitle', $main_smarty->get_config_vars('PLIGG_Visual_Breadcrumb_Profile') . " " . $login . " - " . $main_smarty->get_config_vars('PLIGG_Visual_Search_SearchResults') . ' ' . $keyword);
-
-	// display the template
-	$main_smarty->assign('tpl_center', $the_template . '/user_search_center');
-	$main_smarty->display($the_template . '/pligg.tpl');
-}
 
 // Breadcrumb and Title Text
 $main_smarty->assign('navbar_where', $navwhere);

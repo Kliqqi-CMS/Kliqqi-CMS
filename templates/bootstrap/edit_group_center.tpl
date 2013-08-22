@@ -4,7 +4,7 @@
 <!-- edit_group_center.tpl -->
 {if $is_group_admin eq '1'}
 	{if $errors}
-		<div class="alert">
+		<div class="alert alert-warning">
 			<button class="close" data-dismiss="alert">&times;</button>
 			{$errors}
 		</div>
@@ -21,7 +21,7 @@
 			<div class="control-group">
 				<label class="control-label">{#PLIGG_Visual_Profile_UploadAvatar2#}</label>
 				<div class="controls">
-					<img src="{$imgsrc}" alt="Group Avatar" class="thumbnail" />
+					<img src="{$imgsrc}" alt="Group Avatar" class="img-thumbnail" />
 					{$hidden_token_edit_group}
 					<input type="file" name="image_file" size="20">
 					<input type="hidden" name="idname" value="{$group_id}"/>
@@ -37,19 +37,19 @@
 			<div class="control-group">
 				<label class="control-label">{#PLIGG_Visual_Submit_Group_Title#}:</label>
 				<div class="controls">
-					<input type="text" name="group_title" id="group_title" class="span7" value="{$group_name}" />
+					<input type="text" name="group_title" id="group_title" class="form-control col-md-7" value="{$group_name}" />
 				</div>
 			</div>
 			<div class="control-group">
 				<label class="control-label">{#PLIGG_Visual_Submit_Group_Description#}:</label>
 				<div class="controls">
-					<textarea type="text" name="group_description" rows="4" class="span7" id="group_description">{$group_description}</textarea>
+					<textarea type="text" name="group_description" rows="4" class="form-control col-md-7" id="group_description">{$group_description}</textarea>
 				</div>
 			</div>
 			<div class="control-group">
 				<label class="control-label">{#PLIGG_Visual_Submit_Group_Privacy#}:</label>
 				<div class="controls">
-					<select name="group_privacy" onchange="document.getElementById('group_email').style.display=this.selectedIndex==0 ? 'none' : 'block';">
+					<select name="group_privacy" class="form-control" onchange="document.getElementById('group_email').style.display=this.selectedIndex==0 ? 'none' : 'block';">
 						<option {if $group_privacy eq 'public'}SELECTED{/if} value = "public">{#PLIGG_Visual_Submit_Group_Public#}</option>
 						<option {if $group_privacy eq 'private'}SELECTED{/if} value = "private">{#PLIGG_Visual_Submit_Group_Private#}</option>
 						<option {if $group_privacy eq 'restricted'}SELECTED{/if} value = "restricted">{#PLIGG_Visual_Submit_Group_Restricted#}</option>
@@ -63,13 +63,13 @@
 			<div class="control-group">
 				<label class="control-label">{#PLIGG_Visual_Submit_Group_vote_to_publish#}:</label>
 				<div class="controls">
-					<input type="text" id="group_vote_to_publish" class="input-mini" name="group_vote_to_publish" value="{$group_vote_to_publish}"><br />
+					<input type="text" id="group_vote_to_publish" class="form-control input-mini" name="group_vote_to_publish" value="{$group_vote_to_publish}"><br />
 					<p class="help-inline">{#PLIGG_Visual_Group_Submit_NoOfVoteInstruction#}</p>
 				</div>
 			</div>
 			<div class="form-actions">
 				<input type="submit" value="{#PLIGG_Visual_Group_Edit#}" class="btn btn-primary" name="action" />
-				<input type="button" onclick="history.go(-1)" value="{#PLIGG_Visual_View_User_Edit_Cancel#}" class="btn" />
+				<input type="button" onclick="history.go(-1)" value="{#PLIGG_Visual_View_User_Edit_Cancel#}" class="btn btn-default" />
 			</div>
 		</form><!--/.form-horizontal -->
 	</fieldset>

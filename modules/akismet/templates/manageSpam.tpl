@@ -42,7 +42,7 @@
 </form>
 
 <hr />
-<a href="{$URL_akismet}" class="btn">Return to the Akismet Management page</a>
+<a href="{$URL_akismet}" class="btn btn-default">Return to the Akismet Management page</a>
 
 {literal}
 <SCRIPT>

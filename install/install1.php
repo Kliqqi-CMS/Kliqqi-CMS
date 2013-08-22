@@ -1,5 +1,5 @@
 <div class="instructions">
-	<div class="hero-unit" style="padding:16px 25px;">
+	<div class="jumbotron" style="padding:16px 25px;">
 		<h2><?php echo $lang['WelcomeToInstaller']; ?></h2>
 		<p style="font-size:1.0em;">
 			<?php echo $lang['WelcomeToThe']; ?>

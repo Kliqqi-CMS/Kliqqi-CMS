@@ -6,7 +6,7 @@
 <div class="stories" id="xnews-{$link_shakebox_index}" {* if $link_shakebox_currentuser_reports gt 0} style="opacity:0.5;filter:alpha(opacity = 50)"{/if *}>
 	{if $isadmin || $user_logged_in eq $link_submitter}
 		<div class="btn-group pull-right admin-links">
-			<a class="btn dropdown-toggle" data-toggle="dropdown" href="#">
+			<a class="btn btn-default dropdown-toggle" data-toggle="dropdown" href="#">
 			  <i class="icon-cog"></i>
 			  <span class="caret"></span>
 			</a>
@@ -61,23 +61,23 @@
 					</div>
 					<div id="xvote-{$link_shakebox_index}" class="votebutton">
 						{if $anonymous_vote eq "false" and $user_logged_in eq ""}
-							<a data-toggle="modal" href="#LoginModal" class="btn btn-mini {if $link_shakebox_currentuser_votes eq 1}btn-success{/if}"><i class="{if $link_shakebox_currentuser_votes eq 1}icon-white {/if}icon-thumbs-up"></i></a>
-							<a data-toggle="modal" href="#LoginModal" class="btn btn-mini {if $link_shakebox_currentuser_reports eq 1}btn-danger{/if}"><i class="{if $link_shakebox_currentuser_reports eq 1}icon-white {/if}icon-thumbs-down"></i></a>
+							<a data-toggle="modal" href="#LoginModal" class="btn btn-xs {if $link_shakebox_currentuser_votes eq 1}btn-success{else}btn-default{/if}"><i class="{if $link_shakebox_currentuser_votes eq 1}icon-white {/if}icon-thumbs-up"></i></a>
+							<a data-toggle="modal" href="#LoginModal" class="btn btn-xs {if $link_shakebox_currentuser_reports eq 1}btn-danger{else}btn-default{/if}"><i class="{if $link_shakebox_currentuser_reports eq 1}icon-white {/if}icon-thumbs-down"></i></a>
                         
                         {else}
 							{if $link_shakebox_currentuser_votes eq 0}
 								<!-- Vote For It -->
-								<a class="btn btn-mini linkVote_{$link_id}" {if $vote_from_this_ip neq 0 and $user_logged_in eq ""} data-toggle="modal" href="#LoginModal" {else} href="javascript:{$link_shakebox_javascript_vote}" {/if} title="{$title_short}" ><i class="icon-thumbs-up"></i></a>
+								<a class="btn btn-default btn-xs linkVote_{$link_id}" {if $vote_from_this_ip neq 0 and $user_logged_in eq ""} data-toggle="modal" href="#LoginModal" {else} href="javascript:{$link_shakebox_javascript_vote}" {/if} title="{$title_short}" ><i class="icon-thumbs-up"></i></a>
 							{elseif $link_shakebox_currentuser_votes eq 1}
 								<!-- Already Voted -->
-								<a class="btn btn-mini btn-success linkVote_{$link_id}" href="javascript:{$link_shakebox_javascript_unvote}" title="{$title_short}"><i class="icon-white icon-thumbs-up"></i></a>
+								<a class="btn btn-xs btn-success linkVote_{$link_id}" href="javascript:{$link_shakebox_javascript_unvote}" title="{$title_short}"><i class="icon-white icon-thumbs-up"></i></a>
 							{/if}
 							{if $link_shakebox_currentuser_reports eq 0}
 								<!-- Bury It -->
-								<a class="btn btn-mini linkVote_{$link_id}" {if $report_from_this_ip neq 0 and $user_logged_in eq ""} data-toggle="modal" href="#LoginModal" {else} href="javascript:{$link_shakebox_javascript_report}" {/if} title="{$title_short}" ><i class="icon-thumbs-down"></i></a>
+								<a class="btn btn-default btn-xs linkVote_{$link_id}" {if $report_from_this_ip neq 0 and $user_logged_in eq ""} data-toggle="modal" href="#LoginModal" {else} href="javascript:{$link_shakebox_javascript_report}" {/if} title="{$title_short}" ><i class="icon-thumbs-down"></i></a>
 							{elseif $link_shakebox_currentuser_reports eq 1}
 								<!-- Already Buried -->
-								<a class="btn btn-mini btn-danger linkVote_{$link_id}"   href="javascript:{$link_shakebox_javascript_unbury}" title="{$title_short}" }><i class="icon-white icon-thumbs-down"></i></a>
+								<a class="btn btn-xs btn-danger linkVote_{$link_id}"   href="javascript:{$link_shakebox_javascript_unbury}" title="{$title_short}" }><i class="icon-white icon-thumbs-down"></i></a>
 							{/if}
 						{/if}
 						<!-- Votes: {$link_shakebox_currentuser_votes} Buries: {$link_shakebox_currentuser_reports} -->
@@ -168,7 +168,7 @@
 				{if $Enable_Extra_Field_15 eq 1}{if $link_field15 neq ""}<br/><b>{$Field_15_Title}:</b> {$link_field15}{/if}{/if}
 				*}
 				{* 
-				  {if $pagename neq "story" && $pagename neq "submit"} <div class="floatright"><a class="btn" href="{$story_url}">{#PLIGG_Visual_Read_More#}</a></div>{/if}
+				  {if $pagename neq "story" && $pagename neq "submit"} <div class="floatright"><a class="btn btn-default" href="{$story_url}">{#PLIGG_Visual_Read_More#}</a></div>{/if}
 				*}
 				<div class="clearboth"></div> 
 			</span>

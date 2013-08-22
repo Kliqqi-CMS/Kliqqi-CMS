@@ -160,7 +160,7 @@ if($status=="uninstalled")
 							{
 								$req_data.= '<span class="label label-success" style="padding:3px 5px;"><i class="icon-white icon-ok"></i> ';
 							} else {
-								$req_data.= '<span class="label label-important" style="padding:3px 5px;"><i class="icon-white icon-remove"></i> ';
+								$req_data.= '<span class="label label-danger" style="padding:3px 5px;"><i class="icon-white icon-remove"></i> ';
 							}
 							if ($requirement[3])
 							{
@@ -188,7 +188,7 @@ if($status=="uninstalled")
 				if(isset($module_info['homepage_url']))
 				{
 					$homepage_url = $module_info['homepage_url'];
-					$module_info_data[$i]['homepage_url']= " <a class='btn btn-mini' href='" . $homepage_url . "' target='_blank'>Homepage</a>";
+					$module_info_data[$i]['homepage_url']= " <a class='btn btn-default btn-xs' href='" . $homepage_url . "' target='_blank'>Homepage</a>";
 				} else {
 					$module_info_data[$i]['homepage_url']="&nbsp;";	
 				}
@@ -308,7 +308,7 @@ if($status=="uninstalled")
 							{
 								$require_data.= '<span class="label label-success" style="padding:3px 5px;"><i class="icon-white icon-ok"></i> ';
 							} else {
-								$require_data.= '<span class="label label-important" style="padding:3px 5px;"><i class="icon-white icon-remove"></i> ';
+								$require_data.= '<span class="label label-danger" style="padding:3px 5px;"><i class="icon-white icon-remove"></i> ';
 							}
 							if ($requirement[3])
 							{
@@ -339,7 +339,7 @@ if($status=="uninstalled")
 				if(isset($module_info['homepage_url']))
 				{
 					$homepage_url = $module_info['homepage_url'];
-					$module_info_data[$i]['homepage_url']= '<a class="btn btn-mini" href="' . $homepage_url . '">Homepage</a>';
+					$module_info_data[$i]['homepage_url']= '<a class="btn btn-default btn-xs" href="' . $homepage_url . '">Homepage</a>';
 				} else {
 					$module_info_data[$i]['homepage_url']="&nbsp;" ;
 				}
@@ -348,23 +348,23 @@ if($status=="uninstalled")
 				{
 					// Update available and is greater than installed version
 					if ($module_info_data[$i]['homepage_url'] == "&nbsp;"){
-						$module_info_data[$i]['version']= "<a class='btn disabled btn-mini' href='" . $homepage_url . "' title='No Upgrade URL Provided'>Download Update</a></td>";
+						$module_info_data[$i]['version']= "<a class='btn btn-default disabled btn-xs' href='" . $homepage_url . "' title='No Upgrade URL Provided'>Download Update</a></td>";
 					} else {
-						$module_info_data[$i]['version']= "<a class='btn btn-success btn-mini' href='" . $homepage_url . "' title='Upgrade to $versionupdate'>Download Update</a></td>";
+						$module_info_data[$i]['version']= "<a class='btn btn-success btn-xs' href='" . $homepage_url . "' title='Upgrade to $versionupdate'>Download Update</a></td>";
 					}
 				} else {
 					// Version numbers may be funny. Needs further testing.
 					if ($module_info_data[$i]['homepage_url'] == "&nbsp;"){
-						$module_info_data[$i]['version']= "<a class='btn disabled btn-mini' href='" . $homepage_url . "' title='No Upgrade URL Provided'>Download Update</a></td>";
+						$module_info_data[$i]['version']= "<a class='btn btn-default disabled btn-xs' href='" . $homepage_url . "' title='No Upgrade URL Provided'>Download Update</a></td>";
 					} else {
-						$module_info_data[$i]['version']= "<a class='btn btn-success btn-mini' href='" . $homepage_url . "' title='Upgrade to $versionupdate'>Download Update</a></td>";
+						$module_info_data[$i]['version']= "<a class='btn btn-success btn-xs' href='" . $homepage_url . "' title='Upgrade to $versionupdate'>Download Update</a></td>";
 					}		
 				}
 
 				if(isset($module_info['settings_url']))
 				{
 					$settings_url = $module_info['settings_url'];
-					$module_info_data[$i]['settings_url']= '<a class="btn btn-mini" href="' . $settings_url . '">Settings</a>';
+					$module_info_data[$i]['settings_url']= '<a class="btn btn-default btn-xs" href="' . $settings_url . '">Settings</a>';
 				} else {
 					$module_info_data[$i]['settings_url']="&nbsp;" ;
 				}

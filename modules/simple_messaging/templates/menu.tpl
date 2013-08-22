@@ -99,7 +99,7 @@ background: #fff;
 		<form action="{$my_pligg_base}/user.php" method="get">
 		<input type="hidden" name="view" value="search">
 		<input type="text" name="keyword">
-		<input type="submit" value="{#PLIGG_MESSAGING_Search_Users#}" class="btn">
+		<input type="submit" value="{#PLIGG_MESSAGING_Search_Users#}" class="btn btn-default">
 		</form>
 	</div>
 {/if}

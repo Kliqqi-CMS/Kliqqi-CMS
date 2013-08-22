@@ -22,6 +22,7 @@ if($language == 'arabic'){
 }elseif($language == 'thai'){
 	include_once('./languages/lang_thai.php');
 } else {
+	$language = 'english';
 	include_once('./languages/lang_english.php');
 }
 
@@ -93,7 +94,7 @@ if($check_errors !== false){
   else {
     $output=DisplayErrors($errors);
     $output.='<div class="instructions"><form id="thisform">
-    <a class="btn btn-primary" href="install.php?step=2">' . $lang['GoBack'] . '</a>
+    <a class="btn btn-primary" href="install.php?step=2&language='.$language.'">' . $lang['GoBack'] . '</a>
     </form></div>';
   }
   echo $output;

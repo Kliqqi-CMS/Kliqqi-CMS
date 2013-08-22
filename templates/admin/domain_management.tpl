@@ -2,13 +2,13 @@
 {***************************************************************}
 
 {if $errorText neq ""}
-	<div class="alert alert-block">
+	<div class="alert alert-danger">
 		{$errorText}
 	</div>
 {/if}
 
-<div class="row-fluid">
-	<div class="span6">	
+<div class="row">
+	<div class="col-md-6">	
 		
 		{* Javascript used to enable submit buttons, preventing blank input. *}
 		{literal}
@@ -73,7 +73,7 @@
 		
 	</div>
 
-	<div class="span6">
+	<div class="col-md-6">
 		<legend>Domain Blacklist {if $blacklist_file|@count != '0'}({$blacklist_file|@count} total){/if}</legend>	
 		<p>Place low value domains on this list to prevent users from submitting stories from these domains.</p>
 		<p>Add a domain to the blacklist, using the form below.</p>
@@ -93,6 +93,6 @@
 		
 	</div>
 	
-</div> <!-- /row-fluid -->
+</div> <!-- /row -->
 
 <!--/domain_blacklist.tpl -->

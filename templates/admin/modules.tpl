@@ -20,7 +20,7 @@ $(document).ready(function(){
 
 <legend>{$module_management_name}</legend>
 {if $action eq "readme"}
-	<a class="btn" href="admin_modules.php"><i class="icon-arrow-left"></i>{$module_readme_return}</a><hr />
+	<a class="btn btn-default" href="admin_modules.php"><i class="icon-arrow-left"></i>{$module_readme_return}</a><hr />
 	{if $found eq "yes"}
 		{$readme_content}
 	{else}
@@ -36,7 +36,7 @@ $(document).ready(function(){
 		<div class="tab-content" >
 			{if $status eq "installed"}
 				{if $no_module_update_require gt '0'}
-					<div class="alert">
+					<div class="alert alert-warning">
 						There are updates available for {$no_module_update_require} modules. <a href="admin_modules.php?token=1">Click here</a> to review them.
 					</div>
 				{/if}
@@ -78,7 +78,7 @@ $(document).ready(function(){
 									<td style="text-align:center;vertical-align:middle;">{$module_info[nr1].settings_url}</td>
 								{php} } {/php}
 								<td style="text-align:center;vertical-align:middle;">
-									<a class="btn btn-danger btn-mini" href="?action=remove&module={$module_info[nr1].name}">{$btn_module_remove}</a>
+									<a class="btn btn-danger btn-xs" href="?action=remove&module={$module_info[nr1].name}">{$btn_module_remove}</a>
 								</td>
 								{php} if (isset($_GET['token'])) { {/php}
 									<td style="text-align:center;vertical-align:middle;">
@@ -92,7 +92,7 @@ $(document).ready(function(){
 				</form>
 			{else if $status eq "uninstalled"}	
 				{if $no_module_update_require neq '0'}
-					<div class="alert">
+					<div class="alert alert-warning">
 						There are updates available for {$no_module_update_require} modules. <a href="admin_modules.php?status=uninstalled&updkey={$updatekey}&token=1">Click here</a> to review them.
 					</div>
 				{/if}
@@ -113,7 +113,7 @@ $(document).ready(function(){
 							{php}
 								// Check to see if all requirements are met for install
 								$requires = $this->_vars['module_info'][$this->_sections['nr']['index']]['requires'];
-								$needle = 'label-important';
+								$needle = 'label-danger';
 								if (strpos($requires,$needle) !== false) {
 									$requirements_met = 'false';
 								} else {
@@ -136,7 +136,7 @@ $(document).ready(function(){
 								<td style="vertical-align:middle;">{$module_info[nr].dname} <br/> {$module_info[nr].desc} {$requirement_failed}</td>
 								<td style="vertical-align:middle;">{$module_info[nr].requires}</td>
 								<td style="text-align:center;vertical-align:middle;">{$module_info[nr].homepage_url}</td>
-								<td style="text-align:center;vertical-align:middle;"><a {php} if ($requirements_met == 'false'){ echo 'class="btn disabled btn-mini" rel="tooltip" title="Cannot install until requirements are met."'; }else{ echo 'class="btn btn-success btn-mini"'; } {/php} href="?action=install&module={$module_info[nr].value}">Install</a></td>
+								<td style="text-align:center;vertical-align:middle;"><a {php} if ($requirements_met == 'false'){ echo 'class="btn btn-default disabled btn-xs" rel="tooltip" title="Cannot install until requirements are met."'; }else{ echo 'class="btn btn-success btn-xs"'; } {/php} href="?action=install&module={$module_info[nr].value}">Install</a></td>
 								{php} if (isset($_GET['token'])) { {/php}
 									<td style="text-align:center;vertical-align:middle;">
 										{$module_info[nr].version}

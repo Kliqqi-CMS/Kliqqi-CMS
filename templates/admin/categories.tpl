@@ -19,8 +19,9 @@ function showdel(id)
 				<li class="{if $templatelite.section.thecat.index==1}active{/if}"><a data-toggle="tab" href="#cat-{$cat_array[thecat].auto_id}">{$cat_array[thecat].name}</a></li>
 			{/if}
 		{/section}
-		<li class=""><a data-toggle="tab" href="#AddNew">{#PLIGG_Visual_AdminPanel_Category_Add#}</a></li>
+		<li class="add_new_category_tab"><a data-toggle="tab" href="#AddNew">{#PLIGG_Visual_AdminPanel_Category_Add#}</a></li>
 	</ul>
+	<br />
 	<div class="tab-content">
 		{section name=thecat loop=$cat_array start=1}
 			{if $cat_array[thecat].auto_id neq 0}
@@ -33,11 +34,11 @@ function showdel(id)
 							<tbody>
 								<tr>
 									<td>{#PLIGG_Visual_AdminPanel_Category_Name#}</td>
-									<td><input size="55" name="name" value="{$cat_array[thecat].name}" type="text"></td>
+									<td><input name="name" class="form-control" value="{$cat_array[thecat].name}" type="text"></td>
 								</tr>
 								<tr>
 									<td>{#PLIGG_Visual_AdminPanel_Category_URL#}</td>
-									<td><input size="55" name="safename" value="{$cat_array[thecat].safename}" type="text"></td>
+									<td><input name="safename" class="form-control" value="{$cat_array[thecat].safename}" type="text"></td>
 								</tr>
 								<tr>
 									<td>{#PLIGG_Visual_AdminPanel_Category_ID#}</td>
@@ -45,16 +46,16 @@ function showdel(id)
 								</tr>
 								<tr>
 									<td>{#PLIGG_Visual_AdminPanel_Category_Meta_Desc#}</td>
-									<td><input size="55" name="description" value="{$cat_array[thecat].description}" type="text"></td>
+									<td><input name="description" class="form-control" value="{$cat_array[thecat].description}" type="text"></td>
 								</tr>
 								<tr>
 									<td>{#PLIGG_Visual_AdminPanel_Category_Meta_Keywords#}</td>
-									<td><input size="55" name="keywords" value="{$cat_array[thecat].keywords}" type="text"></td>
+									<td><input name="keywords" class="form-control" value="{$cat_array[thecat].keywords}" type="text"></td>
 								</tr>
 								<tr>
 									<td>{#PLIGG_Visual_AdminPanel_Category_Author_Level#}</td>
 									<td>
-										<select name="level" style="padding:3px;width:100px">
+										<select name="level" class="form-control">
 											<option value="normal" {if $cat_array[thecat].authorlevel=='normal'}selected{/if}>Normal</option>
 											<option value="moderator" {if $cat_array[thecat].authorlevel=='moderator'}selected{/if}>Moderator</option>
 											<option value="admin" {if $cat_array[thecat].authorlevel=='admin'}selected{/if}>Admin</option>
@@ -63,20 +64,20 @@ function showdel(id)
 								</tr>
 								<tr>
 									<td>{#PLIGG_Visual_AdminPanel_Category_Author_Group#}</td>
-									<td><input size="55" name="group" value="{$cat_array[thecat].authorgroup}" type="text"></td>
+									<td><input name="group" class="form-control" value="{$cat_array[thecat].authorgroup}" type="text"></td>
 								</tr>
 								<tr>
 									<td>{#PLIGG_Visual_AdminPanel_Category_Votes#}</td>
-									<td><input name="votes" value="{$cat_array[thecat].votes}" type="text"></td>
+									<td><input name="votes" class="form-control" value="{$cat_array[thecat].votes}" type="text"></td>
 								</tr>
 								<tr>
 									<td>{#PLIGG_Visual_AdminPanel_Category_Karma#}</td>
-									<td><input name="karma" value="{$cat_array[thecat].karma}" type="text"></td>
+									<td><input name="karma" class="form-control" value="{$cat_array[thecat].karma}" type="text"></td>
 								</tr>
 								<tr>
 									<td>{#PLIGG_Visual_AdminPanel_Category_Parent#}</td>
 									<td>
-									<select name="parent">
+									<select name="parent" class="form-control">
 									  <option value="0"> --- </option>
 									  {foreach from=$cat_array item=cat}
 										  {if $cat.auto_id!=0 && $cat.auto_id!=$cat_array[thecat].auto_id && $cat_array[thecat].auto_id!=$cat.parent}
@@ -106,7 +107,7 @@ function showdel(id)
 							<input type="radio" name="sub1" value="move" checked> {#PLIGG_Visual_AdminPanel_Subcategory_Move#}<br />
 							<input type="radio" name="sub1" value="delete"> {#PLIGG_Visual_AdminPanel_Subcategory_Delete#}<br /><br />
 							<input onclick="if (confirm('{#PLIGG_Visual_View_User_Reset_Pass_Confirm#}')) document.location.href='admin_categories.php?action=remove&id={$cat_array[thecat].auto_id}&sub='+(this.form.sub[0].checked ? 'move' : 'delete')+'&move='+this.form.move.options[this.form.move.selectedIndex].value+'&sub1='+(this.form.sub1[0].checked ? 'move' : 'delete')+'&token='+this.form.token.value;" value="{#PLIGG_Visual_AdminPanel_Category_Delete#}" disabled name='delete1' type="button" class="btn btn-danger">
-							<input onclick="document.getElementById('del{$cat_array[thecat].auto_id}').style.display='none';" value="{#PLIGG_Visual_AdminPanel_Category_Cancel#}" type="button" class="btn">
+							<input onclick="document.getElementById('del{$cat_array[thecat].auto_id}').style.display='none';" value="{#PLIGG_Visual_AdminPanel_Category_Cancel#}" type="button" class="btn btn-default">
 						</div>
 					</form>
 				</div>
@@ -120,24 +121,24 @@ function showdel(id)
 					<tbody>
 						<tr>
 							<td>{#PLIGG_Visual_AdminPanel_Category_Name#}</td>
-							<td><input size="55" name="name" placeholder="New Category" type="text"></td>
+							<td><input name="name" class="form-control" placeholder="New Category" type="text"></td>
 						</tr>
 						<tr>
 							<td>{#PLIGG_Visual_AdminPanel_Category_URL#}</td>
-							<td><input size="55" name="safename" value="" type="text"></td>
+							<td><input name="safename" class="form-control" value="" type="text"></td>
 						</tr>
 						<tr>
 							<td>{#PLIGG_Visual_AdminPanel_Category_Meta_Desc#}</td>
-							<td><input size="55" name="description" value="" type="text"></td>
+							<td><input name="description" class="form-control" value="" type="text"></td>
 						</tr>
 						<tr>
 							<td>{#PLIGG_Visual_AdminPanel_Category_Meta_Keywords#}</td>
-							<td><input size="55" name="keywords" value="" type="text"></td>
+							<td><input name="keywords" class="form-control" value="" type="text"></td>
 						</tr>
 						<tr>
 							<td>{#PLIGG_Visual_AdminPanel_Category_Author_Level#}</td>
 							<td>
-							<select name="level">
+							<select name="level" class="form-control">
 								<option value="normal">Normal</option>
 								<option value="moderator">Moderator</option>
 								<option value="admin">Admin</option>
@@ -146,20 +147,20 @@ function showdel(id)
 						</tr>
 						<tr>
 							<td>{#PLIGG_Visual_AdminPanel_Category_Author_Group#}</td>
-							<td><input size="55" name="group" value="" type="text"></td>
+							<td><input name="group" class="form-control" value="" type="text"></td>
 						</tr>
 						<tr>
 							<td>{#PLIGG_Visual_AdminPanel_Category_Votes#}</td>
-							<td><input name="votes" value="" type="text"></td>
+							<td><input name="votes" class="form-control" value="" type="text"></td>
 						</tr>
 						<tr>
 							<td>{#PLIGG_Visual_AdminPanel_Category_Karma#}</td>
-							<td><input name="karma" value="" type="text"></td>
+							<td><input name="karma" class="form-control" value="" type="text"></td>
 						</tr>
 						<tr>
 							<td>{#PLIGG_Visual_AdminPanel_Category_Parent#}</td>
 							<td>
-								<select name="parent">
+								<select name="parent" class="form-control">
 									<option value="0"> --- </option>
 									{foreach from=$cat_array item=cat}
 										{if $cat.auto_id!=0}
@@ -183,20 +184,18 @@ function showdel(id)
 	<hr />
 	<legend>{#PLIGG_Visual_AdminPanel_Category_Order#}</legend>
 	<p>{#PLIGG_Visual_AdminPanel_Category_Order_Description#}</p>
-	<ul>
-		{section name=thecat loop=$cat_array}
-			{if $cat_array[thecat].auto_id neq 0}
-				{if $cat_array[thecat].spacercount < $submit_lastspacer}
-					{$cat_array[thecat].spacerdiff|repeat_count:'</ul>'}
-				{/if}
-				{if $cat_array[thecat].spacercount > $submit_lastspacer}<ul></li>{/if}
-				<li id='cat{$cat_array[thecat].auto_id}'>{$cat_array[thecat].name}
-					<input value="Up" type="image" style="height:9px;width:11px;" src="{$my_base_url}{$my_pligg_base}/templates/admin/img/cat_up.gif" id='up{$cat_array[thecat].auto_id}' onclick="moveup({$cat_array[thecat].auto_id})" {if $cat_array[thecat].first}style='display:none;'{/if}>
-					<input value="Down" type="image" style="height:9px;width:11px;" src="{$my_base_url}{$my_pligg_base}/templates/admin/img/cat_down.gif" id='down{$cat_array[thecat].auto_id}' onclick="movedown({$cat_array[thecat].auto_id})" {if $cat_array[thecat].last}style='display:none;'{/if}>
-				{assign var=submit_lastspacer value=$cat_array[thecat].spacercount}
+	{section name=thecat loop=$cat_array}
+		{if $cat_array[thecat].auto_id neq 0}
+			{if $cat_array[thecat].spacercount < $submit_lastspacer}
+				{$cat_array[thecat].spacerdiff|repeat_count:'</ol>'}
 			{/if}
-		{/section}
-	</ul>
+			{if $cat_array[thecat].spacercount > $submit_lastspacer}<ol class="category_list"></li>{/if}
+			<li id='cat{$cat_array[thecat].auto_id}'>{$cat_array[thecat].name}
+				<a class="category_position" id='up{$cat_array[thecat].auto_id}' onclick="moveup({$cat_array[thecat].auto_id})" {if $cat_array[thecat].first}style='display:none;'{/if}><span class="icon-angle-up"></span></a>
+				<a class="category_position" id='down{$cat_array[thecat].auto_id}' onclick="movedown({$cat_array[thecat].auto_id})" {if $cat_array[thecat].last}style='display:none;'{/if}><span class="icon-angle-down"></span></a>
+			{assign var=submit_lastspacer value=$cat_array[thecat].spacercount}
+		{/if}
+	{/section}
 </div>
 <hr />
 <p>Pligg allows users to select what categories they see from their profile settings page. If you add a new category after users have de-selected a category, they won't be able to see that new category. To make it so that all users category settings are reset to see all cateogires, click on the button below.</p> 
