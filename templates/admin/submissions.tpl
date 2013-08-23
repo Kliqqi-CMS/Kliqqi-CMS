@@ -149,9 +149,7 @@ function validate_all_user_action(){
 			{checkActionsTpl location="tpl_pligg_admin_submissions_td_start"}
 			<td><a href="{$my_base_url}{$my_pligg_base}/admin/admin_users.php?mode=view&user={$template_stories[id].link_author}" title="{$template_stories[id].link_author}'s Articles" id="link-{$template_stories[id].link_id}-author">{$template_stories[id].link_author}</a></td>
 			<td>
-				<div style="margin:0 6px 0 0;padding:0;float:left;">
-					<a href='{$my_pligg_base}/editlink.php?id={$template_stories[id].link_id}'><i class="icon icon-edit" title="{#PLIGG_Visual_AdminPanel_Page_Edit#}" alt="{#PLIGG_Visual_AdminPanel_Page_Edit#}"></i></a>
-				</div>
+				<a href='{$my_pligg_base}/editlink.php?id={$template_stories[id].link_id}'><i class="icon icon-edit" title="{#PLIGG_Visual_AdminPanel_Page_Edit#}" alt="{#PLIGG_Visual_AdminPanel_Page_Edit#}"></i></a>
 				<a href="{$my_base_url}{$my_pligg_base}/story.php?title={$template_stories[id].link_title_url}" title="{$template_stories[id].link_title|truncate:50:"...":true}" >{$template_stories[id].link_title}</a>
 			</td>
 			<td style="text-align:center;vertical-align:middle;">{$template_stories[id].link_date}</td>
