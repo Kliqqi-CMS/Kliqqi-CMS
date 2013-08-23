@@ -3,6 +3,7 @@
 <legend>{#PLIGG_Admin_Language#}</legend>
 <p>{#PLIGG_Admin_Language_Instructions_1#}</p>
 <p>{#PLIGG_Admin_Language_Instructions_2#}</p>
+<p>{#PLIGG_Admin_Language_Instructions_3#}</p>
 
 <div style="">
 	<strong>{#PLIGG_Admin_Language_Filter_Text#}</strong>:
