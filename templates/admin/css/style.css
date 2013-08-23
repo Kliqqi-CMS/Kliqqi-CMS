@@ -7,6 +7,13 @@ padding-top:0;
 padding-bottom:0;
 }
 
+.btn-primary {
+  background-color: #2D6CE0;
+}
+.btn-primary:hover, .btn-primary:active {
+  background-color: #185ACC;
+}
+
 .install_warning {
 	padding-top:0;
 }
@@ -135,34 +142,25 @@ box-sizing:content-box;
 .accordion-group {
 overflow:hidden;
 }
-.accordion-heading .accordion-toggle {
-	padding:5px 15px;
-}
 
 .accordion-heading {
     position: relative;
-	height:35px;
-	
-	/* Background Fallback */
-	  background-color: #696969;
-	  /* Safari 4-5, Chrome 1-9 */
-	  background: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#434343), to(#696969));
-	  /* Safari 5.1, Chrome 10+ */
-	  background: -webkit-linear-gradient(center top, #696969, #434343);
-	  /* Firefox 3.6+ */
-	  background: -moz-linear-gradient(top, #696969, #434343);
-	  /* IE 10 */
-	  background: -ms-linear-gradient(top, #696969, #434343);
-	  /* Opera 11.10+ */
-	  background: -o-linear-gradient(top, #696969, #434343);
+	background-color:#222222;
+	color:#ffffff;
+	font-weight:bold;
+	padding:1px 0px 1px 3px;
+
+}
+.accordion-heading:hover {
+	background-color:#080808;
+	color:#ffffff;
 }
 .nav-list > li > a, .nav-list .nav-header {
-text-shadow:0 1px 0 #505050;
+
 }
 .nav .nav-header {
-color:#ffffff;
 cursor:pointer;
-padding: 5px 15px;
+padding: 4px 8px;
 margin-left:0px;
 }
 
@@ -216,7 +214,7 @@ text-decoration:underline;
 .accordion-inner > .active > a:hover {
   color: #ffffff;
   text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.2);
-  background-color: #0088cc;
+  background-color: #2D6CE0;
 }
 .accordion-inner [class^="icon-"] {
   margin-right: 2px;
