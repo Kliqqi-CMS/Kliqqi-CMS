@@ -97,21 +97,10 @@
 </head>
 <body dir="{#PLIGG_Visual_Language_Direction#}">
 {if $pagename neq "admin_login"}
-
-	{literal}
-	<style type="text/css">
-	body {
-		padding-top: 65px;
-		background-color: #ffffff;
-		background-repeat: repeat-x;
-		background-position: 0 46px;
-	}
-	</style>
-	{/literal}
 	
 	{checkActionsTpl location="tpl_pligg_admin_body_start"}
 	
-	<header role="banner" class="navbar navbar-inverse navbar-fixed-top">
+	<header role="banner" class="navbar navbar-inverse">
 		<div class="container">
 			<div class="navbar-header">
 				<button data-target=".bs-navbar-collapse" data-toggle="collapse" type="button" class="navbar-toggle">
