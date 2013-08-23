@@ -157,7 +157,12 @@ font-size:1.0em;
 .nav .dropdown-menu {
 	min-width: 215px;
 }
-
+.login_dropdown_wrapper {
+	padding:15px;
+}
+.login_dropdown_remember {
+margin: 7px 4px;
+}
 /********************* CATEGORY MENU ********************/
 
 .subhead {

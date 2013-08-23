@@ -146,25 +146,28 @@
 						<ul class="dropdown-menu">
 							<li>
 								<form id="signin" action="{$URL_login}" method="post">
-									<div style="margin:5px 15px 0 15px;">
+									<div class="login_dropdown_wrapper">
 										{checkActionsTpl location="tpl_pligg_login_link"}
+										
 										<label for="username">{#PLIGG_Visual_Login_Username#}/{#PLIGG_Visual_Register_Email#}</label>
-										<input id="username" name="username" class="form-control" value="{if isset($login_username)}{$login_username}{/if}" title="username" tabindex="1" type="text">
-									</div>
-									<div style="margin:5px 15px 0 15px;">
+										<input id="username" name="username" class="form-control" value="{if isset($login_username)}{$login_username}{/if}" title="username" tabindex="2" type="text">
+
 										<label for="password">{#PLIGG_Visual_Login_Password#}</label>
-										<input id="password" name="password" class="form-control" value="" title="password" tabindex="2" type="password">
-									</div>
-									<div style="margin:0px 0 0 15px;">
-										<input id="remember" style="float:left;margin-right:5px;" name="persistent" value="1" tabindex="3" type="checkbox">
-										<label for="remember" style="float:left;font-size:10px;">{#PLIGG_Visual_Login_Remember#}</label>
+										<input id="password" name="password" class="form-control" value="" title="password" tabindex="3" type="password">
+										
+										<div class="help-block login_dropdown_remember">
+											<input id="remember" style="float:left;margin-right:5px;" name="persistent" value="1" tabindex="4" type="checkbox">
+											<label for="remember" style="float:left;font-size:10px;">{#PLIGG_Visual_Login_Remember#}</label>
+										</div>
 										<div style="clear:both;"></div>
-									</div>
-									<div style="margin:0;text-align:center;margin:0 auto;width:100%;">
+										
+										<hr class="soften" style="margin:9px 0 6px;" />
+										
 										<input type="hidden" name="processlogin" value="1"/>
 										<input type="hidden" name="return" value="{$get.return}"/>
-										<input id="signin_submit" class="btn btn-primary" style="margin:0;width:90%;" value="{#PLIGG_Visual_Login_LoginButton#}" tabindex="4" type="submit">
-										<a id="forgot_password_link" class="btn btn-default" style="margin:8px 0 0 12px;width:74%;" href="{$URL_login}">{#PLIGG_Visual_Login_ForgottenPassword#}?</a>
+										<input style="width:100%;" class="btn btn-primary" id="signin_submit" value="{#PLIGG_Visual_Login_LoginButton#}" tabindex="5" type="submit">
+										
+										<a style="width:100%;" class="btn btn-default" id="forgot_password_link" href="{$URL_login}" tabindex="6">{#PLIGG_Visual_Login_ForgottenPassword#}?</a>
 									</div>
 								</form>
 							</li>
