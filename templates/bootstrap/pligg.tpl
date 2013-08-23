@@ -270,14 +270,6 @@
 								{/if}
 								 
 							</div>
-							<hr class="soften" />
-							<h4>{#PLIGG_Visual_Register_Description_Title#}</h4>
-							<p>
-								{#PLIGG_Visual_Register_Description_Paragraph#}
-								<ul>
-									{#PLIGG_Visual_Register_Description_Points#}
-								</ul>
-							</p>
 							{checkActionsTpl location="tpl_pligg_register_end"}
 						</div>
 						<div class="modal-footer">
@@ -290,23 +282,6 @@
 		</div><!-- /.modal -->
 	{/if}
 	
-   	{literal}
-    <script type="text/javascript">
-	$(document).ready(function()
-	{
-		 $(".read_more_article").live("click", function(){
-			 
-			 article_id = $(this).attr("storyid");
-             class_name="read_more_story"+article_id;
-			 $(".read_more_story"+article_id).removeClass('hide');
-			 $(".read_more_story"+article_id).addClass('show_full_content');			 
-             $(".read_more_story"+article_id).fadeIn(1000);
-			 $(this).hide();
-		 });
-	});
-	</script>
-  	{/literal}
-     
 	{if $pagename eq 'index' or $pagename eq 'published' or $pagename eq 'new' or $pagename eq 'group_story' or $pagename eq 'user'}
 		<!-- START ARTICLES PAGINATION JAVASCRIPT -->
 			{include file=$the_template"/functions/articles_pagination.tpl"}
