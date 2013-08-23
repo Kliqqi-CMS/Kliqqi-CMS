@@ -310,7 +310,7 @@ padding:7px 14px;
 
 /********************* STORY ********************/
 .stories {
-margin:0 0 40px 77px;
+margin: 0 0 40px;
 clear:both;
 }
 .stories .admin-links a.btn, .span_comment .admin-links a.btn  {
@@ -362,14 +362,17 @@ clear:both;
 	border-bottom-color: #b3b3b3;
 }
 .title h2 {
-	line-height:26px;
 	font-size:24px;
+	margin-bottom: 7px;
 } 
 .subtext {
 	display: block;
 	font-size: 10px;
 	line-height:10px;
 	color: #aaa;
+}
+.news-body-text {
+	padding:0 10px;
 }
 .storyfooter {
 margin:6px 0 25px 0;
@@ -425,12 +428,12 @@ content: "...";
 
 /**************** VOTE ******************/
 .votebox{
+margin: 1px 14px 0px 10px;
 float:left;
 background:#fff;
 -webkit-border-radius: 4px;
  -moz-border-radius: 4px;
 	  border-radius: 4px;
-margin:4px 0 0 -77px;
 box-shadow: 0 1px 2px rgba(0,0,0,.5);
 min-width: 62px;
 }

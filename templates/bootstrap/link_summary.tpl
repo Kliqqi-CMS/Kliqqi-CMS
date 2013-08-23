@@ -140,7 +140,7 @@
 		{checkActionsTpl location="tpl_link_summary_pre_story_content"}
 		{if $pagename eq "story"}{checkActionsTpl location="tpl_pligg_story_body_start_full"}{else}{checkActionsTpl location="tpl_pligg_story_body_start"}{/if}
 		{if $viewtype neq "short"}
-			<span class="news-body-text" id="ls_contents-{$link_shakebox_index}">
+			<div class="news-body-text" id="ls_contents-{$link_shakebox_index}">
 				{if $show_content neq 'FALSE'}
 					{if $pagename eq "story"}
 						{* The nl2br modifier will convert line breaks to <br> tags. http://www.smarty.net/docsv2/en/language.modifier.nl2br.tpl*}
@@ -171,7 +171,7 @@
 				  {if $pagename neq "story" && $pagename neq "submit"} <div class="floatright"><a class="btn btn-default" href="{$story_url}">{#PLIGG_Visual_Read_More#}</a></div>{/if}
 				*}
 				<div class="clearboth"></div> 
-			</span>
+			</div>
 			{if $pagename eq "story"}{checkActionsTpl location="tpl_pligg_story_body_end_full"}{else}{checkActionsTpl location="tpl_pligg_story_body_end"}{/if}
 		{/if}
 	</div><!-- /.storycontent -->
