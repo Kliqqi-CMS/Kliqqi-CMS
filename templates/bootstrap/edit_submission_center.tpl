@@ -70,7 +70,7 @@
 	<strong>{#PLIGG_Visual_Submit2_Description#}: </strong>
 	<span class="field-description">{#PLIGG_Visual_Submit2_DescInstruct#}</span>
 	<br />
-	<textarea name="bodytext" rows="10" id="bodytext" class="form-control col-md-9" WRAP="SOFT">{$submit_content}</textarea>
+	<textarea name="bodytext" rows="10" id="bodytext" class="form-control" WRAP="SOFT">{$submit_content}</textarea>
 	{if $Story_Content_Tags_To_Allow neq "" && $enable_tags}
 		<span class="help-inline">
 			{#PLIGG_Visual_Submit2_HTMLTagsAllowed#}: {$Story_Content_Tags_To_Allow}
@@ -87,7 +87,7 @@
 			{#PLIGG_Visual_Submit2_SummaryLimitCharacters#}
 		</span>
 		<br />
-		<textarea name="summarytext" rows="5" id="summarytext" class="col-md-9" WRAP="SOFT">{$submit_summary}</textarea>
+		<textarea name="summarytext" rows="5" id="summarytext" class="form-control" WRAP="SOFT">{$submit_summary}</textarea>
 		<br />
 	{/if}
 	<br />
