@@ -100,7 +100,7 @@ class pliggconfig {
 		echo '<span class="emptytext" id="showme' .$this->var_id. '" style="display:none;">';
 		if (preg_match('/^\s*(.+),\s*(.+) or (.+)\s*$/',$this->var_optiontext,$m))
 		{
-		    echo "<select name=\"var_value\">";
+		    echo "<select name=\"var_value\" class=\"form-control\">";
 		    for($ii=1; $ii<=3; $ii++)
 			echo "<option value='{$m[$ii]}' ".($m[$ii]==$this->var_value ? "selected" : "").">{$m[$ii]}</option>";
 		    echo "</select><br />";
@@ -110,13 +110,13 @@ class pliggconfig {
 		{
 		    if (preg_match('/^(\d+)\s*=\s*(.+)$/',$m[1],$m1) && 
 			preg_match('/^(\d+)\s*=\s*(.+)$/',$m[2],$m2))
-		    	echo "<select name=\"var_value\"><option value='{$m1[1]}' ".($m1[1]==$this->var_value ? "selected" : "").">{$m1[2]}</option><option value='{$m2[1]}' ".($m2[1]==$this->var_value ? "selected" : "").">{$m2[2]}</option></select><br />";
+		    	echo "<select name=\"var_value\" class=\"form-control\"><option value='{$m1[1]}' ".($m1[1]==$this->var_value ? "selected" : "").">{$m1[2]}</option><option value='{$m2[1]}' ".($m2[1]==$this->var_value ? "selected" : "").">{$m2[2]}</option></select><br />";
 		    else
-		    	echo "<select name=\"var_value\"><option value='{$m[1]}' ".($m[1]==$this->var_value ? "selected" : "").">{$m[1]}</option><option value='{$m[2]}' ".($m[2]==$this->var_value ? "selected" : "").">{$m[2]}</option></select><br />";
+		    	echo "<select name=\"var_value\" class=\"form-control\"><option value='{$m[1]}' ".($m[1]==$this->var_value ? "selected" : "").">{$m[1]}</option><option value='{$m[2]}' ".($m[2]==$this->var_value ? "selected" : "").">{$m[2]}</option></select><br />";
 		}
 		elseif (preg_match('/^\s*(\d+)\s*-\s*(\d+)\s*$/',$this->var_optiontext,$m))
 		{
-		    echo "<select name=\"var_value\">";
+		    echo "<select name=\"var_value\" class=\"form-control\">";
 		    for ($ii=$m[1]; $ii<=$m[2]; $ii++)
 			echo "<option value='$ii' ".($ii==$this->var_value ? "selected" : "").">$ii</option>";
 		    echo "</select><br />";
