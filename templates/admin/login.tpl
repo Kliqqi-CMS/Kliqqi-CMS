@@ -27,7 +27,7 @@ text-align:center;
 					</div>
 					<input type="hidden" name="processlogin" value="1"/>
 					<input type="hidden" name="return" value="{$get.return}"/>
-					<button class="btn btn-primary admin_login_submit" type="submit">{#PLIGG_Visual_Login_LoginButton#}</button>
+					<button class="btn btn-primary col-lg-12 admin_login_submit" type="submit">{#PLIGG_Visual_Login_LoginButton#}</button>
 				</fieldset>
 			</form>
 		</div>
