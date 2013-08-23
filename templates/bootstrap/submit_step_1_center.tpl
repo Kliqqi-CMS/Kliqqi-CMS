@@ -18,29 +18,31 @@
 		</ul>
 	</div>
 	{checkActionsTpl location="tpl_pligg_submit_step1_middle"}
-	<form action="{if $UrlMethod == "2"}{$URL_submit}{else}submit.php{/if}" method="post" id="thisform">
-		<div class="submit_form">
-			<h3>{#PLIGG_Visual_Submit1_NewsSource#}</h3>
-			<label for="url">{#PLIGG_Visual_Submit1_NewsURL#}:</label>
-			<input autofocus="autofocus" type="text" name="url" class="form-control col-md-6" id="url" placeholder="http://" />
-			{checkActionsTpl location="tpl_pligg_submit_step1_end"}
-			<input type="hidden" name="phase" value="1">
-			<input type="hidden" name="randkey" value="{$submit_rand}">
-			<input type="hidden" name="id" value="c_1">
-			<br /><br /><br />
-			<input type="submit" value="{#PLIGG_Visual_Submit1_Continue#}" class="btn btn-primary" />
-			<br />
-			<hr />
-		</div>	
-		<div class="bookmarklet">
-			<h3>{#PLIGG_Visual_User_Profile_Bookmarklet_Title#}</h3>
-			<p>{#PLIGG_Visual_User_Profile_Bookmarklet_Title_1#} {#PLIGG_Visual_Name#}.{#PLIGG_Visual_User_Profile_Bookmarklet_Title_2#}<br />
-			<br /><strong>{#PLIGG_Visual_User_Profile_IE#}:</strong> {#PLIGG_Visual_User_Profile_IE_1#}
-			<br /><strong>{#PLIGG_Visual_User_Profile_Firefox#}:</strong> {#PLIGG_Visual_User_Profile_Firefox_1#}
-			<br /><strong>{#PLIGG_Visual_User_Profile_Opera#}:</strong> {#PLIGG_Visual_User_Profile_Opera_1#}
-			<br /><br /><strong>{#PLIGG_Visual_User_Profile_The_Bookmarklet#}: { include file=$the_template"/bookmarklet.tpl" }</strong>
-			</p>
+	<form action="{if $UrlMethod == "2"}{$URL_submit}{else}submit.php{/if}" method="post" class="form-inline" id="thisform">
+		<h3>{#PLIGG_Visual_Submit1_NewsSource#}</h3>
+		<label for="url">{#PLIGG_Visual_Submit1_NewsURL#}:</label>
+		<div class="row">
+			<div class="col-lg-5 form-group">
+				<input autofocus="autofocus" type="text" name="url" class="form-control col-lg-12" id="url" placeholder="http://" />
+			</div>
+			<div class="col-lg-2 form-group">
+				<input type="hidden" name="phase" value="1">
+				<input type="hidden" name="randkey" value="{$submit_rand}">
+				<input type="hidden" name="id" value="c_1">
+				<input type="submit" value="{#PLIGG_Visual_Submit1_Continue#}" class="col-md-12 btn btn-primary" />
+			</div>
 		</div>
+		{checkActionsTpl location="tpl_pligg_submit_step1_end"}
 	</form>
+	<hr />
+	<div class="bookmarklet">
+		<h3>{#PLIGG_Visual_User_Profile_Bookmarklet_Title#}</h3>
+		<p>{#PLIGG_Visual_User_Profile_Bookmarklet_Title_1#} {#PLIGG_Visual_Name#}.{#PLIGG_Visual_User_Profile_Bookmarklet_Title_2#}<br />
+		<br /><strong>{#PLIGG_Visual_User_Profile_IE#}:</strong> {#PLIGG_Visual_User_Profile_IE_1#}
+		<br /><strong>{#PLIGG_Visual_User_Profile_Firefox#}:</strong> {#PLIGG_Visual_User_Profile_Firefox_1#}
+		<br /><strong>{#PLIGG_Visual_User_Profile_Opera#}:</strong> {#PLIGG_Visual_User_Profile_Opera_1#}
+		<br /><br /><strong>{#PLIGG_Visual_User_Profile_The_Bookmarklet#}: { include file=$the_template"/bookmarklet.tpl" }</strong>
+		</p>
+	</div>
 </div>
 <!-- submit_step_1_center.tpl -->
