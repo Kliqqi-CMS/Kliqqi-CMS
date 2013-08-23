@@ -210,16 +210,85 @@
 			</script>
 		{/literal}
     {/if}
-    
-	{literal}
-	<script type="text/javascript">
-	$(function() {
-		$('#registerModal').modal({
-			backdrop: true;
-		});
-	});
-	</script>
-	{/literal}
+	
+	{if $pagename neq 'register'}
+		<!-- Modal -->
+		<div class="modal fade" id="registerModal" tabindex="-1" role="dialog">
+			<div class="modal-dialog">
+				<div class="modal-content">
+					<div class="modal-header">
+						<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+						<h4 class="modal-title">{#PLIGG_Visual_Register#}</h4>
+					</div>
+					<form action="{$URL_register}" method="post" id="thisform">
+						<div class="modal-body">
+							<div class="control-group">
+								{checkActionsTpl location="tpl_pligg_register_start"}
+								
+								<label class="control-label" for="input01">{#PLIGG_Visual_Register_Username#}</label>
+								<div class="controls">
+									<input type="text" class="form-control reg_username" name="reg_username">
+									<br/><span class="reg_usernamecheckitvalue"></span><br/>
+								</div>
+								<label class="control-label" for="input01">{#PLIGG_Visual_Register_Email#}</label>
+								<div class="controls">
+									{if isset($form_email_error)}
+										{ foreach value=error from=$form_email_error }
+											<div class="alert alert-block alert-danger fade in"><button data-dismiss="alert" class="close">&times;</button>{$error}</div>
+										{ /foreach }
+									{/if}
+									<input type="text" class="form-control reg_email" id="reg_email" placeholder="" name="reg_email">
+									<br/><span class="reg_emailcheckitvalue"></span><br/>
+								</div>
+								<label class="control-label" for="input01">{#PLIGG_Visual_Register_Password#}</label>
+								<div class="controls">
+									{if isset($form_password_error)}
+										{ foreach value=error from=$form_password_error }
+											<div class="alert alert-block alert-danger fade in"><button data-dismiss="alert" class="close">&times;</button>{$error}</div>
+										{ /foreach }
+									{/if}
+									<input type="password" class="form-control" id="reg_password" name="reg_password" placeholder="{if isset($reg_password)}{$reg_password}{/if}">
+									<p class="help-block">{#PLIGG_Visual_Register_FiveChar#}</p>
+								</div>
+								<label class="control-label" for="input01">{#PLIGG_Visual_Register_Verify_Password#}</label>
+								<div class="controls">
+									<input type="password" class="form-control" id="reg_verify" name="reg_password2" placeholder="{if isset($reg_password2)}{$reg_password2}{/if}">
+								</div>
+								
+								{if isset($register_step_1_extra)}
+									{if $captcha_method eq "solvemedia"}
+										<br />
+										{$register_step_1_extra}
+									{elseif $captcha_method eq "reCaptcha"}
+										{$register_step_1_extra}
+									{elseif $captcha_method eq "WhiteHat"}
+										<label class="control-label" for="input01">CAPTCHA</label>
+										<div class="controls">{$register_step_1_extra}</div>
+									{elseif $captcha_method eq "math"}
+										<div class="controls">{$register_step_1_extra}</div> 
+									{/if}
+								{/if}
+								 
+							</div>
+							<hr class="soften" />
+							<h4>{#PLIGG_Visual_Register_Description_Title#}</h4>
+							<p>
+								{#PLIGG_Visual_Register_Description_Paragraph#}
+								<ul>
+									{#PLIGG_Visual_Register_Description_Points#}
+								</ul>
+							</p>
+							{checkActionsTpl location="tpl_pligg_register_end"}
+						</div>
+						<div class="modal-footer">
+							<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+							<button type="submit" class="btn btn-primary">Save changes</button>
+						</div>
+					</form>
+				</div><!-- /.modal-content -->
+			</div><!-- /.modal-dialog -->
+		</div><!-- /.modal -->
+	{/if}
 	
    	{literal}
     <script type="text/javascript">
@@ -237,7 +306,6 @@
 	});
 	</script>
   	{/literal}
- 
      
 	{if $pagename eq 'index' or $pagename eq 'published' or $pagename eq 'new' or $pagename eq 'group_story' or $pagename eq 'user'}
 		<!-- START ARTICLES PAGINATION JAVASCRIPT -->
@@ -272,7 +340,7 @@
 	{if $pagename eq "profile"}
 		{* Masonry JavaScript *}
 		{literal}
-			<script>		  
+			<script>
 			var container = document.querySelector('#profile_container');
 			var msnry = new Masonry( container, {
 			  // options
