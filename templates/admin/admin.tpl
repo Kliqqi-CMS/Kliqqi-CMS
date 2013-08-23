@@ -124,7 +124,7 @@
 			</div>
 			<nav role="navigation" class="collapse navbar-collapse bs-navbar-collapse">
 				<ul class="nav navbar-nav">
-					<li><a href="{$my_base_url}{$my_pligg_base}/admin/admin_index.php">{#PLIGG_Visual_AdminPanel#} Panel</a></li>
+					<li{if $pagename eq "admin_index"} class="active"{/if}><a href="{$my_base_url}{$my_pligg_base}/admin/admin_index.php">{#PLIGG_Visual_AdminPanel#} Panel</a></li>
 					<li><a href="{$my_base_url}{$my_pligg_base}/">{#PLIGG_Visual_Home#}</a></li>
 					{checkActionsTpl location="tpl_header_admin_links"}
 					<li><a href="{$URL_logout}">{#PLIGG_Visual_Logout#}</a></li>
