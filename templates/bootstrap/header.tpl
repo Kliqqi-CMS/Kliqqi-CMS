@@ -15,14 +15,14 @@
 		</div>
 		<nav role="navigation" class="collapse navbar-collapse bs-navbar-collapse">
 			<ul class="nav navbar-nav">
-				<li {if $pagename eq "published" || $pagename eq "index"}class="active current"{/if}><a href="{$my_base_url}{$my_pligg_base}">{#PLIGG_Visual_Home#}</a></li>
+				<li {if $pagename eq "published" || $pagename eq "index"}class="active"{/if}><a href="{$my_base_url}{$my_pligg_base}">{#PLIGG_Visual_Home#}</a></li>
 				{checkActionsTpl location="tpl_pligg_navbar_start"}
-				<li {if $pagename eq "new"}class="active current"{/if}><a href="{$URL_new}">{#PLIGG_Visual_Pligg_Queued#}</a></li>
+				<li {if $pagename eq "new"}class="active"{/if}><a href="{$URL_new}">{#PLIGG_Visual_Pligg_Queued#}</a></li>
 				{checkActionsTpl location="tpl_pligg_submit_link_start"}
-				<li {if $pagename eq "submit"}class="active current"{/if}><a href="{$URL_submit}">{#PLIGG_Visual_Submit_A_New_Story#}</a></li>
+				<li {if $pagename eq "submit"}class="active"{/if}><a href="{$URL_submit}">{#PLIGG_Visual_Submit_A_New_Story#}</a></li>
 				{checkActionsTpl location="tpl_pligg_submit_link_end"}
 				{if $enable_group eq "true"}	
-					<li {if $pagename eq "groups" || $pagename eq "submit_groups" || $pagename eq "group_story"}class="active current"{/if}><a href="{$URL_groups}"><span>{#PLIGG_Visual_Groups#}</span></a></li>
+					<li {if $pagename eq "groups" || $pagename eq "submit_groups" || $pagename eq "group_story"}class="active"{/if}><a href="{$URL_groups}"><span>{#PLIGG_Visual_Groups#}</span></a></li>
 				{/if}
 				{if $Auto_scroll == '2'}
 					<li class="dropdown">
@@ -46,44 +46,11 @@
 				{/if}
 				{checkActionsTpl location="tpl_pligg_navbar_end"}
 				{if $user_authenticated neq true}
-					{if $pagename eq "register"}
-						<li {if $pagename eq "register"}class="active current"{/if}><a href="{$URL_register}"><span>{#PLIGG_Visual_Register#}</span></a></li>
-					{else}
+					<li {if $pagename eq "register"}class="active"{/if}><a href="{$URL_register}"><span>{#PLIGG_Visual_Register#}</span></a></li>
+					{*
 						<li><a data-toggle="modal" href="#registerModal">{#PLIGG_Visual_Register#}</a></li>
-					{/if}
-					<li class="dropdown">
-						<a data-toggle="dropdown" class="dropdown-toggle" href="#">{#PLIGG_Visual_Login_Title#} <b class="caret"></b></a>
-						<ul class="dropdown-menu">
-							<li>
-								<form id="signin" action="{$URL_login}" method="post">
-									<div class="login_dropdown_wrapper">
-										{checkActionsTpl location="tpl_pligg_login_link"}
-										
-										<label for="username">{#PLIGG_Visual_Login_Username#}/{#PLIGG_Visual_Register_Email#}</label>
-										<input id="username" name="username" class="form-control" value="{if isset($login_username)}{$login_username}{/if}" title="username" tabindex="2" type="text">
-
-										<label for="password">{#PLIGG_Visual_Login_Password#}</label>
-										<input id="password" name="password" class="form-control" value="" title="password" tabindex="3" type="password">
-										
-										<div class="help-block login_dropdown_remember">
-											<input id="remember" style="float:left;margin-right:5px;" name="persistent" value="1" tabindex="4" type="checkbox">
-											<label for="remember" style="float:left;font-size:10px;">{#PLIGG_Visual_Login_Remember#}</label>
-										</div>
-										<div style="clear:both;"></div>
-										
-										<hr class="soften" style="margin:9px 0 6px;" />
-										
-										<input type="hidden" name="processlogin" value="1"/>
-										<input type="hidden" name="return" value="{$get.return}"/>
-										<input style="width:100%;" class="btn btn-primary" id="signin_submit" value="{#PLIGG_Visual_Login_LoginButton#}" tabindex="5" type="submit">
-										
-										<a style="width:100%;" class="btn btn-default" id="forgot_password_link" href="{$URL_login}" tabindex="6">{#PLIGG_Visual_Login_ForgottenPassword#}?</a>
-									</div>
-								</form>
-							</li>
-						</ul><!--/.dropdown-menu -->
-					</li><!--/.dropdown -->
-					<!--/$user_authenticated -->
+					*}
+					<li {if $pagename eq "login"}class="active"{/if}><a data-toggle="modal" href="#loginModal">{#PLIGG_Visual_Login_Title#}</a>
 				{/if}
 				{if isset($isadmin) && $isadmin eq 1}
 					<li><a href="{$URL_admin}"><span>{#PLIGG_Visual_Header_AdminPanel#}</span></a></li>

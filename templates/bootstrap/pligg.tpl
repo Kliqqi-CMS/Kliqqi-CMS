@@ -212,7 +212,7 @@
     {/if}
 	
 	{if $pagename neq 'register'}
-		<!-- Modal -->
+		<!-- Register Modal -->
 		<div class="modal fade" id="registerModal" tabindex="-1" role="dialog">
 			<div class="modal-dialog">
 				<div class="modal-content">
@@ -282,6 +282,54 @@
 		</div><!-- /.modal -->
 	{/if}
 	
+	{if $user_authenticated neq true}
+		<!-- Login Modal -->
+		<div class="modal fade" id="loginModal" tabindex="-1" role="dialog">
+			<div class="modal-dialog">
+				<div class="modal-content">
+					<div class="modal-header">
+						<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+						<h4 class="modal-title">{#PLIGG_Visual_Login_Title#}</h4>
+					</div>
+					<div class="modal-body">
+						<div class="control-group">
+							<form id="signin" action="{$URL_login}" method="post">
+								{checkActionsTpl location="tpl_pligg_login_link"}
+								<div style="login_modal_username">
+									<label for="username">{#PLIGG_Visual_Login_Username#}/{#PLIGG_Visual_Register_Email#}</label>
+									<input id="username" name="username" class="form-control" value="{if isset($login_username)}{$login_username}{/if}" title="username" tabindex="1" type="text">
+								</div>
+								<div class="login_modal_password">
+									<label for="password">{#PLIGG_Visual_Login_Password#}</label>
+									<input id="password" name="password" class="form-control" value="" title="password" tabindex="2" type="password">
+								</div>
+								<div class="login_modal_remember">
+									<div class="login_modal_remember_checkbox">
+										<input id="remember" style="float:left;margin-right:5px;" name="persistent" value="1" tabindex="3" type="checkbox">
+									</div>
+									<div class="login_modal_remember_label">
+										<label for="remember" style="">{#PLIGG_Visual_Login_Remember#}</label>
+									</div>
+									<div style="clear:both;"></div>
+								</div>
+								<div class="login_modal_login">
+									<input type="hidden" name="processlogin" value="1"/>
+									<input type="hidden" name="return" value="{$get.return}"/>
+									<input class="btn btn-primary col-lg-12" id="signin_submit" value="{#PLIGG_Visual_Login_LoginButton#}" tabindex="4" type="submit">
+								</div>
+								<hr class="soften" id="login_modal_spacer" />
+								<div class="login_modal_forgot">
+									<a class="btn btn-default col-lg-12" id="forgot_password_link" href="{$URL_login}">{#PLIGG_Visual_Login_ForgottenPassword#}?</a>
+								</div>
+							</form>
+						</div>
+
+					</div>
+				</div><!-- /.modal-content -->
+			</div><!-- /.modal-dialog -->
+		</div><!-- /.modal -->
+	{/if}
+
 	{if $pagename eq 'index' or $pagename eq 'published' or $pagename eq 'new' or $pagename eq 'group_story' or $pagename eq 'user'}
 		<!-- START ARTICLES PAGINATION JAVASCRIPT -->
 			{include file=$the_template"/functions/articles_pagination.tpl"}
