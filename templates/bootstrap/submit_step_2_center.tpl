@@ -146,9 +146,9 @@
 								<div class="votenumber">1</div>
 								<div id="xvote-{$link_shakebox_index}" class="votebutton">
 									<!-- Already Voted -->
-									<a class="btn btn-xs btn-success"><i class="icon-white icon-thumbs-up"></i></a>
+									<a class="btn btn-success"><i class="icon-white icon-thumbs-up"></i></a>
 									<!-- Bury It -->
-									<a class="btn btn-default btn-xs linkVote_{$link_id}"><i class="icon-thumbs-down"></i></a>
+									<a class="btn btn-default linkVote_{$link_id}"><i class="icon-thumbs-down"></i></a>
 								</div><!-- /.votebutton -->
 								{checkActionsTpl location="tpl_pligg_story_votebox_end"}
 							</div><!-- /.vote -->
