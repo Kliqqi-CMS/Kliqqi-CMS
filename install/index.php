@@ -9,7 +9,7 @@ if (file_exists($settings)) {
 	if (file_exists($settingsdefault)) {
 	    rename("../settings.php.default", "../settings.php");
 	} else {
-		echo "/settings.php.default does not exist, the server was unable to automatically rename it to settings.php.<br />Alternatively your server might not support automatic renaming of this file.";
+		echo "/settings.php.default does not exist, the server was unable to automatically rename it to settings.php";
 	}
 }
 
@@ -21,7 +21,31 @@ if (file_exists($dbconnect)) {
 	if (file_exists($dbconnectdefault)) {
 	    rename("../libs/dbconnect.php.default", "../libs/dbconnect.php");
 	} else {
-		echo "/libs/dbconnect.php.default does not exist, the server was unable to automatically rename it to dbconnect.php.<br />Alternatively your server might not support automatic renaming of this file.";
+		echo "/libs/dbconnect.php.default does not exist, the server was unable to automatically rename it to dbconnect.php";
+	}
+}
+
+$englishlang = '../languages/lang_english.conf';
+$englishlangdefault = '../languages/lang_english.conf.default';
+if (file_exists($englishlang)) {
+	echo "The language file /languages/lang_english.conf exists, skipping<br />";
+} else {
+	if (file_exists($englishlangdefault)) {
+	    rename("../languages/lang_english.conf.default", "../languages/lang_english.conf");
+	} else {
+		echo "The language file /languages/lang_english.conf.default does not exist, the server was unable to automatically rename it to /languages/lang_english.conf";
+	}
+}
+
+$logsdir = '../logs';
+$logsdirdefault = '../logs.default';
+if (file_exists($logsdir)) {
+	echo "Directory /logs exists, skipping<br />";
+} else {
+	if (file_exists($logsdirdefault)) {
+	    rename("../logs.default", "../logs");
+	} else {
+		echo "/logs.default does not exist, the server was unable to automatically rename it to /logs";
 	}
 }
 
