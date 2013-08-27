@@ -1,0 +1,7 @@
+# Ignore everything in this directory
+*
+
+# Do not ignore these files
+!.gitignore
+!.htaccess
+!index.html
