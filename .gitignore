@@ -31,7 +31,6 @@ avatars/user_uploaded/*.gif
 
 # Renamed .default Pligg files
 .htaccess
-cache/*
 languages/*.conf
 libs/dbconnect.php
 logs/
