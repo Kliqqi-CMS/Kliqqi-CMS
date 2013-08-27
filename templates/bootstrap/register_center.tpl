@@ -17,7 +17,7 @@
 							</div>
 						{ /foreach }
 					{/if}
-					<input autofocus="autofocus" type="text" name="reg_username" class="form-control reg_username" id="reg_username" value="{if isset($reg_username)}{$reg_username}{/if}" size="25" tabindex="10" maxlength="32"/>
+					<input autofocus="autofocus" type="text" class="form-control reg_username" id="reg_username" name="reg_username" value="{if isset($reg_username)}{$reg_username}{/if}" size="25" tabindex="10" maxlength="32"/>
 					<br/><span class="reg_usernamecheckitvalue"></span>
 				</div>
 			</div>
@@ -32,7 +32,7 @@
 							</div>
 						{ /foreach }
 					{/if}
-					<input type="text" class="form-control reg_email" id="reg_email" name="form-control reg_email" value="{if isset($reg_email)}{$reg_email}{/if}" tabindex="12" maxlength="128"/>
+					<input type="text" class="form-control reg_email" id="reg_email" name="reg_email" value="{if isset($reg_email)}{$reg_email}{/if}" tabindex="12" maxlength="128"/>
 					<br/><span class="reg_emailcheckitvalue"></span>
 					{* <p class="help-inline">{#PLIGG_Visual_Register_Lowercase#}</p> *}
 				</div>
