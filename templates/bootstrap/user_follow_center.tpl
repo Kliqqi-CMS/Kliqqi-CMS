@@ -112,10 +112,11 @@
 						</thead>
 						<tbody>
 							{if $following}
-								{foreach from=$following item=myfriend}
+								{foreach from=$following item=myfriend}                               o
 									{php}
 										$this->_vars['friend_avatar'] = get_avatar('small', $this->_vars['myfriend']['user_avatar_source'], $this->_vars['myfriend']['user_login'], $this->_vars['myfriend']['user_email']);
 										$this->_vars['profileURL'] = getmyurl('user2', $this->_vars['myfriend']['user_login'], 'profile');
+									        $this->_vars['user_url_remove'] = getmyurl('user_friends', $this->_vars['myfriend']['user_login'], 'removefriend');
 									{/php}
 									<tr>
 										<td>
@@ -164,6 +165,7 @@
 					{php}
 						$this->_vars['friend_avatar'] = get_avatar('small', $this->_vars['myfriend']['user_avatar_source'], $this->_vars['myfriend']['user_login'], $this->_vars['myfriend']['user_email']);
 						$this->_vars['profileURL'] = getmyurl('user2', $this->_vars['myfriend']['user_login'], 'profile');
+					        $this->_vars['user_url_remove'] = getmyurl('user_friends', $this->_vars['myfriend']['user_login'], 'removefriend');
 					{/php}
 					<tr>
 						<td><img src="{$friend_avatar}" align="absmiddle" /> <a href="{$profileURL}">{$myfriend.user_login}</a></td>
@@ -201,7 +203,8 @@
 					{php}
 						$this->_vars['friend_avatar'] = get_avatar('small', $this->_vars['myfriend']['user_avatar_source'], $this->_vars['myfriend']['user_login'], $this->_vars['myfriend']['user_email']);
 						$this->_vars['profileURL'] = getmyurl('user2', $this->_vars['myfriend']['user_login'], 'profile');
-						$this->_vars['addURL'] = getmyurl('user_add_remove', $this->_vars['myfriend']['user_login'], 'addfriend');
+						$this->_vars['addURL'] = getmyurl('user_friends', $this->_vars['myfriend']['user_login'], 'addfriend');
+					        $this->_vars['user_url_remove'] = getmyurl('user_friends', $this->_vars['myfriend']['user_login'], 'removefriend');
 					{/php}
 
 					<tr>
@@ -211,7 +214,7 @@
 							{if $myfriend.is_friend>0}
 								<td><a class="btn btn-danger" href="{$user_url_remove}">Unfollow</a></td>
 							{else}
-								<td><a class="btn btn-success" href="{$user_url_add}">{#PLIGG_Visual_User_Profile_Add_Friend#}</a></td>
+								<td><a class="btn btn-success" href="{$addURL}">{#PLIGG_Visual_User_Profile_Add_Friend#}</a></td>
 							{/if}
 						{/if}
 					</tr>
