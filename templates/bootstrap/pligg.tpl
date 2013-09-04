@@ -184,6 +184,7 @@
 		<!-- END MODAL LOGIN FORM -->
 	{/if}
 	
+	{include file=$the_template"/functions/bookmark.tpl"}
 	{checkActionsTpl location="tpl_pligg_body_end"}
 	
 	<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.18/jquery-ui.min.js"></script>
