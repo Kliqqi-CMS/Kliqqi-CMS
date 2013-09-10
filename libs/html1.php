@@ -677,7 +677,7 @@ function getmyurl($x, $var1="", $var2="", $var3="") {
 		elseif ($x == "discardedcategory") $ret = "/discarded.php?category=" . $var1;
 		elseif ($x == "editlink") $ret = "/editlink.php?id=" . $var1;
 		elseif ($x == "edit") $ret = "/edit.php?id=" . $var1 . "&amp;commentid=" . $var2;
-		elseif ($x == "user") $ret = "/user.php?view=" . $var2 . "&amp;login=" . $var1;
+		elseif ($x == "user") $ret = "/user.php?login=" . $var1 . ($var2 ? '&amp;view='.$var2 : '');
 		elseif ($x == "user_inbox") $ret = "/user.php?view=" . $var1;
 		elseif ($x == "user_add_remove") $ret = "/user.php?login=" . $var1. "&amp;view=" . $var2;
 		elseif ($x == "user_add_links") $ret = "/user_add_remove_links.php?action=add&amp;link=" . $var1;
@@ -686,7 +686,7 @@ function getmyurl($x, $var1="", $var2="", $var3="") {
 		elseif ($x == "index_sort") $ret = "/index.php?part=".$var1.($var2 ? "&amp;category=".$var2 : '');
 		elseif ($x == "new_sort") $ret = "/new.php?part=".$var1.($var2 ? "&amp;category=".$var2 : '');
 		elseif ($x == "userblank") $ret = "/user.php?login=";
-		elseif ($x == "user2") $ret = "/user.php?login=".$var1."&amp;view=".$var2;
+		elseif ($x == "user2") $ret = "/user.php?login=".$var1.($var2 ? "&amp;view=".$var2 : '');
 		elseif ($x == "search") $ret = "/search.php?search=" . $var1;
 		elseif ($x == "advancedsearch") $ret = "/advancedsearch.php";
 		elseif ($x == "search_url") $ret = "/search.php?search=" . $var1;
