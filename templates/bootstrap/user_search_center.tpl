@@ -6,7 +6,7 @@
 <!-- user_search_center.tpl -->
 
 <div class="row">
-	<div class="col-lg-12">
+	<div class="col-md-12">
 		<div class="input-group">
 			<form action="{$my_pligg_base}/user.php" method="get" {php} global $URLMethod, $my_base_url, $my_pligg_base; if ($URLMethod==2) print "onsubmit='document.location.href=\"{$my_base_url}{$my_pligg_base}/user/search/\"+encodeURIComponent(this.keyword.value); return false;'";{/php}>
 				<span class="input-group-btn">
@@ -16,7 +16,7 @@
 				</span>
 			</form>	
 		</div><!-- /input-group -->
-	</div><!-- /.col-lg-6 -->
+	</div><!-- /.col-md-6 -->
 </div><!-- /.row -->
 
 <hr />

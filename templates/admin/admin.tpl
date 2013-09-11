@@ -129,7 +129,7 @@
 					<ul class="nav nav-list">
 						<div id="AdminAccordion" class="accordion">
 							<div class="accordion-group">
-								<div class="btn btn-default col-lg-12 accordion-heading">
+								<div class="btn btn-default col-md-12 accordion-heading">
 									<span class="accordion-heading-title">
 										<li class="nav-header"><img src="{$my_base_url}{$my_pligg_base}/templates/admin/img/manage.png" width="16px" height="16px" /> {#PLIGG_Visual_AdminPanel_Manage_Nav#}</li>
 									</span>
@@ -155,7 +155,7 @@
 								</div>
 							</div>
 							<div class="accordion-group">
-								<div class="btn btn-default col-lg-12 accordion-heading">
+								<div class="btn btn-default col-md-12 accordion-heading">
 									<span class="accordion-heading-title">
 										<li class="nav-header"><img src="{$my_base_url}{$my_pligg_base}/templates/admin/img/configure.png" width="16px" height="16px" /> Settings</li>
 									</span>
@@ -181,7 +181,7 @@
 								</div>
 							</div>
 							<div class="accordion-group">
-								<div class="btn btn-default col-lg-12 accordion-heading">
+								<div class="btn btn-default col-md-12 accordion-heading">
 									<span class="accordion-heading-title">
 										<li class="nav-header"><img src="{$my_base_url}{$my_pligg_base}/templates/admin/img/template.png" width="16px" height="16px" /> Template</li>
 									</span>
@@ -195,7 +195,7 @@
 								</div>
 							</div>
 							<div class="accordion-group">
-								<div class="btn btn-default col-lg-12 accordion-heading">
+								<div class="btn btn-default col-md-12 accordion-heading">
 									<span class="accordion-heading-title">
 										<li class="nav-header"><img src="{$my_base_url}{$my_pligg_base}/templates/admin/img/module.png" width="16px" height="16px" /> Modules</li>
 									</span>
@@ -214,7 +214,7 @@
 								</div>
 							</div>
 							<div class="accordion-group">
-								<div class="btn btn-default col-lg-12 accordion-heading">
+								<div class="btn btn-default col-md-12 accordion-heading">
 									<span class="accordion-heading-title">
 										<li class="nav-header"><img src="{$my_base_url}{$my_pligg_base}/templates/admin/img/widgets.png" width="16px" height="16px" /> Widgets</li>
 									</span>

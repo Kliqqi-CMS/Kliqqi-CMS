@@ -22,10 +22,10 @@
 		<h3>{#PLIGG_Visual_Submit1_NewsSource#}</h3>
 		<label for="url">{#PLIGG_Visual_Submit1_NewsURL#}:</label>
 		<div class="row">
-			<div class="col-lg-5 form-group">
-				<input autofocus="autofocus" type="text" name="url" class="form-control col-lg-12" id="url" placeholder="http://" />
+			<div class="col-md-5 form-group">
+				<input autofocus="autofocus" type="text" name="url" class="form-control col-md-12" id="url" placeholder="http://" />
 			</div>
-			<div class="col-lg-2 form-group">
+			<div class="col-md-2 form-group">
 				<input type="hidden" name="phase" value="1">
 				<input type="hidden" name="randkey" value="{$submit_rand}">
 				<input type="hidden" name="id" value="c_1">

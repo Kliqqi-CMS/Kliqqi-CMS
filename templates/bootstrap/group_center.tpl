@@ -24,10 +24,10 @@
 							{if $get.keyword neq ""}
 								{assign var=searchboxtext value=$get.keyword}		
 							{/if}
-							<div class="col-lg-8">
+							<div class="col-md-8">
 								<input type="text" class="form-control" name="keyword" value="{$searchboxtext}" placeholder="{#PLIGG_Visual_Search_SearchDefaultText#}" onfocus="if(this.value == '{$searchboxtext}') {ldelim}this.value = '';{rdelim}" onblur="if (this.value == '') {ldelim}this.value = '{$searchboxtext}';{rdelim}">
 							</div>
-							<div class="col-lg-4">
+							<div class="col-md-4">
 								<button class="btn btn-primary" type="submit">{#PLIGG_Visual_Group_Search_Groups#}</button>
 							</div>
 						</form>

@@ -316,11 +316,11 @@
 								<div class="login_modal_login">
 									<input type="hidden" name="processlogin" value="1"/>
 									<input type="hidden" name="return" value="{$get.return}"/>
-									<input class="btn btn-primary col-lg-12" id="signin_submit" value="{#PLIGG_Visual_Login_LoginButton#}" tabindex="4" type="submit">
+									<input class="btn btn-primary col-md-12" id="signin_submit" value="{#PLIGG_Visual_Login_LoginButton#}" tabindex="4" type="submit">
 								</div>
 								<hr class="soften" id="login_modal_spacer" />
 								<div class="login_modal_forgot">
-									<a class="btn btn-default col-lg-12" id="forgot_password_link" href="{$URL_login}">{#PLIGG_Visual_Login_ForgottenPassword#}?</a>
+									<a class="btn btn-default col-md-12" id="forgot_password_link" href="{$URL_login}">{#PLIGG_Visual_Login_ForgottenPassword#}?</a>
 								</div>
 							</form>
 						</div>

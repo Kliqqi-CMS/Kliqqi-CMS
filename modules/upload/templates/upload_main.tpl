@@ -208,7 +208,7 @@
 		</tbody>
 	</table>
 	
-	<div class="col-lg-4" style="{if !$settings.thumb}display:none;{/if}">
+	<div class="col-md-4" style="{if !$settings.thumb}display:none;{/if}">
 		<legend><a href="#{#PLIGG_Upload_Thumbnail_Sizes#}">{#PLIGG_Upload_Thumbnail_Sizes#}</a></legend>
 		<table class="table table-bordered table-striped">
 			<thead>
@@ -256,7 +256,7 @@
 			</tbody>
 		</table>
 	</div>
-	<div class="col-lg-8" style="{if !$settings.thumb}width:100%{/if};min-width:500px;">
+	<div class="col-md-8" style="{if !$settings.thumb}width:100%{/if};min-width:500px;">
 		<legend><a href="#{#PLIGG_Upload_Thumbnail_Fields#}">{#PLIGG_Upload_Thumbnail_Fields#}</a></legend>
 		<table class="table table-bordered table-striped">
 			<thead>

@@ -30,7 +30,7 @@
 
 <div class="advanced_search_wrapper">
 	<form method="get" class="form-horizontal" action="{$URL_search}" {php}	global $URLMethod; if ($URLMethod==2) print "onsubmit='SEO2submit(this); return false;'";{/php}>
-		<div class="col-lg-6">
+		<div class="col-md-6">
 			<div class="control-group">
 				<label for="search" class="control-label">{#PLIGG_Visual_Search_Keywords#}</label>
 				<div class="controls">
@@ -84,11 +84,11 @@
 			</div>
 		</div>
 		
-		<div class="col-lg-6">
+		<div class="col-md-6">
 		
 			<div class="form-group">
 				<label for="scomments" class="control-label">{#PLIGG_Visual_Search_Comments#}</label>
-				<div class="col-lg-10">
+				<div class="col-md-10">
 					<div class="btn-group" data-toggle="buttons">
 						<label class="btn btn-default">
 							<input type="radio" name="scomments" value="1" /> {#PLIGG_Visual_Search_Advanced_Yes#}
@@ -102,7 +102,7 @@
 			
 			<div class="form-group">
 				<label for="stags" class="control-label">{#PLIGG_Visual_Search_Tags#}</label>
-				<div class="col-lg-10">
+				<div class="col-md-10">
 					<div class="btn-group" data-toggle="buttons">
 						<label class="btn btn-default">
 							<input type="radio" name="stags" value="1" /> {#PLIGG_Visual_Search_Advanced_Yes#}
@@ -116,7 +116,7 @@
 			
 			<div class="form-group">
 				<label for="suser" class="control-label">{#PLIGG_Visual_Search_User#}</label>
-				<div class="col-lg-10">
+				<div class="col-md-10">
 					<div class="btn-group" data-toggle="buttons">
 						<label class="btn btn-default">
 							<input type="radio" name="suser" value="1" /> {#PLIGG_Visual_Search_Advanced_Yes#}
@@ -133,11 +133,11 @@
 					{include file=$the_template."/date_picker.tpl"}
 					<label for="date" class="control-label">{#PLIGG_Visual_Advanced_Search_Date#}</label>
 					<div class="row">
-						<div class="col-lg-5">
+						<div class="col-md-5">
 							<input name="date" type="text" class="form-control">
 						</div>
-						<div class="col-lg-7">
-							<input type="button" value="{#PLIGG_Visual_Advanced_Search_Select#}" class="btn btn-default col-lg-4" onclick="displayDatePicker('date', false, 'ymd', '-');">
+						<div class="col-md-7">
+							<input type="button" value="{#PLIGG_Visual_Advanced_Search_Select#}" class="btn btn-default col-md-4" onclick="displayDatePicker('date', false, 'ymd', '-');">
 						</div>
 					</div>
 				</div>
