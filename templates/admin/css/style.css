@@ -317,7 +317,27 @@ text-decoration:underline;
 	background:#fffdbd;
 }
 
-
+.management-tools {
+	margin-bottom:10px;
+}
+.search-bar {
+	text-align: center; 
+}
+.search-bar .search-query,
+.search-bar .btn-primary {
+	display: inline-block; 
+}
+.search-query {
+	padding:0 8px;
+	float:left;
+	width:60%;
+}
+.search-button {
+	margin:0 0 0 5px;
+	float:left;
+	width:25%;
+	min-width:45px;
+}
 /************** MANAGE PAGES *****************/
 .page_td_title, .page_th_title {
 	width:80%;

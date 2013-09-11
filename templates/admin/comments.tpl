@@ -72,60 +72,59 @@ function validate_all_user_action(){
 	</div>
 {/if}
 
-<table>
-	<tr>
-    <td width="30%">
-    <div class="btn-group pull">
-		<a class="btn btn-default dropdown-toggle" href="#" data-toggle="dropdown">
-			<i id="selected_action"></i> {#PLIGG_Visual_AdminPanel_Apply_Changes#} <span class="caret"></span>
-		</a>
-		<ul class="dropdown-menu">
-			<li><a onclick="set_admin_action('published')" href="#">{#PLIGG_Visual_AdminPanel_Publish#}</a></li>
-			<li><a onclick="set_admin_action('moderated')" href="#">{#PLIGG_Visual_AdminPanel_Moderated#}</a></li>
-			<li><a onclick="set_admin_action('discard')" href="#">{#PLIGG_Visual_AdminPanel_Discard#}</a></li>
-			<li><a onclick="set_admin_action('spam')" href="#">{#PLIGG_Visual_AdminPanel_Spam#}</a></li>
-		</ul>
-	</div>
-    </td>
-		<form action="{$my_base_url}{$my_pligg_base}/admin/admin_comments.php" method="get">
-			<td align="right" width="25%">
-				<div class="input-append">
-					<input type="hidden" name="mode" value="search">
-					{if isset($templatelite.get.keyword) && $templatelite.get.keyword neq ""}
-						{assign var=searchboxtext value=$templatelite.get.keyword|sanitize:2}
-					{else}
-						{assign var=searchboxtext value=#PLIGG_Visual_Search_SearchDefaultText#}			
-					{/if}
-					<input type="hidden" name="user" value="{$templatelite.get.user|sanitize:2}">
-					<input type="text" class="form-control col-md-7" name="keyword" value="{$searchboxtext}" onfocus="if(this.value == '{$searchboxtext}') {ldelim}this.value = '';{rdelim}" onblur="if (this.value == '') {ldelim}this.value = '{$searchboxtext}';{rdelim}"><button type="submit" class="btn btn-default">{#PLIGG_Visual_Search_Go#}</button>
-				</div>
-			</td>
-			<td align="right" width="25%">
-				<select name="filter" class="form-control" id="comment_filter" onchange="this.form.submit()">
-					<option value="all" {if $templatelite.get.filter == "all"} selected="selected" {/if}>{#PLIGG_Visual_AdminPanel_All_Comments#}</option>
-					<option value="published" {if $templatelite.get.filter == "published"} selected="selected" {/if}>{#PLIGG_Visual_AdminPanel_Published#}</option>
-					<option value="moderated" {if $templatelite.get.filter == "moderated"} selected="selected" {/if}>{#PLIGG_Visual_AdminPanel_Moderated#}</option>
-					<option value="discard" {if $templatelite.get.filter == "discard"} selected="selected" {/if}>{#PLIGG_Visual_AdminPanel_Discarded#}</option>
-					<option value="spam" {if $templatelite.get.filter == "spam"} selected="selected" {/if}>{#PLIGG_Visual_AdminPanel_Spam#}</option>
-					<option value="all">   ---   </option>
-					<option value="today" {if $templatelite.get.filter == "today"} selected="selected" {/if}>{#PLIGG_Visual_AdminPanel_Today#}</option>
-					<option value="yesterday" {if $templatelite.get.filter == "yesterday"} selected="selected" {/if}>{#PLIGG_Visual_AdminPanel_Yesterday#}</option>
-					<option value="week" {if $templatelite.get.filter == "week"} selected="selected" {/if}>{#PLIGG_Visual_AdminPanel_Week#}</option>
-				</select>
-			</td>
-			<td align="right" width="20%">
-				<select name="pagesize" class="form-control" id="comment_sort" onchange="this.form.submit()">
-					<option value="15" {if isset($pagesize) && $pagesize == 15}selected{/if}>Show 15</option>
-					<option value="30" {if isset($pagesize) && $pagesize == 30}selected{/if}>Show 30</option>
-					<option value="50" {if isset($pagesize) && $pagesize == 50}selected{/if}>Show 50</option>
-					<option value="100" {if isset($pagesize) && $pagesize == 100}selected{/if}>Show 100</option>
-					<option value="200" {if isset($pagesize) && $pagesize == 200}selected{/if}>Show 200</option>
-				</select>
-			</td>
-		</form>
-	</tr>
-</table>
-</br>
+<div class="row management-tools">
+	<div class="col-md-3">
+		<div class="btn-group pull">
+			<a class="btn btn-default dropdown-toggle" href="#" data-toggle="dropdown">
+				<i id="selected_action"></i> {#PLIGG_Visual_AdminPanel_Apply_Changes#} <span class="caret"></span>
+			</a>
+			<ul class="dropdown-menu">
+				<li><a onclick="set_admin_action('published')" href="#">{#PLIGG_Visual_AdminPanel_Publish#}</a></li>
+				<li><a onclick="set_admin_action('moderated')" href="#">{#PLIGG_Visual_AdminPanel_Moderated#}</a></li>
+				<li><a onclick="set_admin_action('discard')" href="#">{#PLIGG_Visual_AdminPanel_Discard#}</a></li>
+				<li><a onclick="set_admin_action('spam')" href="#">{#PLIGG_Visual_AdminPanel_Spam#}</a></li>
+			</ul>
+		</div>
+    </div>
+	
+	<form action="{$my_base_url}{$my_pligg_base}/admin/admin_comments.php" method="get" class="form-search search-bar">
+		<div class="col-md-3">
+			<div class="input-append">
+				<input type="hidden" name="mode" value="search">
+				{if isset($templatelite.get.keyword) && $templatelite.get.keyword neq ""}
+					{assign var=searchboxtext value=$templatelite.get.keyword|sanitize:2}
+				{else}
+					{assign var=searchboxtext value=#PLIGG_Visual_Search_SearchDefaultText#}			
+				{/if}
+				<input type="hidden" name="user" value="{$templatelite.get.user|sanitize:2}">
+				<input type="text" class="form-control search-query" name="keyword" placeholder="{$searchboxtext}">
+				<button type="submit" class="btn btn-primary">{#PLIGG_Visual_Search_Go#}</button>
+			</div>
+		</div>
+		<div class="col-md-3">
+			<select name="filter" class="form-control" id="comment_filter" onchange="this.form.submit()">
+				<option value="all" {if $templatelite.get.filter == "all"} selected="selected" {/if}>{#PLIGG_Visual_AdminPanel_All_Comments#}</option>
+				<option value="published" {if $templatelite.get.filter == "published"} selected="selected" {/if}>{#PLIGG_Visual_AdminPanel_Published#}</option>
+				<option value="moderated" {if $templatelite.get.filter == "moderated"} selected="selected" {/if}>{#PLIGG_Visual_AdminPanel_Moderated#}</option>
+				<option value="discard" {if $templatelite.get.filter == "discard"} selected="selected" {/if}>{#PLIGG_Visual_AdminPanel_Discarded#}</option>
+				<option value="spam" {if $templatelite.get.filter == "spam"} selected="selected" {/if}>{#PLIGG_Visual_AdminPanel_Spam#}</option>
+				<option value="all">   ---   </option>
+				<option value="today" {if $templatelite.get.filter == "today"} selected="selected" {/if}>{#PLIGG_Visual_AdminPanel_Today#}</option>
+				<option value="yesterday" {if $templatelite.get.filter == "yesterday"} selected="selected" {/if}>{#PLIGG_Visual_AdminPanel_Yesterday#}</option>
+				<option value="week" {if $templatelite.get.filter == "week"} selected="selected" {/if}>{#PLIGG_Visual_AdminPanel_Week#}</option>
+			</select>
+		</div>
+		<div class="col-md-3">
+			<select name="pagesize" class="form-control" id="comment_sort" onchange="this.form.submit()">
+				<option value="15" {if isset($pagesize) && $pagesize == 15}selected{/if}>Show 15</option>
+				<option value="30" {if isset($pagesize) && $pagesize == 30}selected{/if}>Show 30</option>
+				<option value="50" {if isset($pagesize) && $pagesize == 50}selected{/if}>Show 50</option>
+				<option value="100" {if isset($pagesize) && $pagesize == 100}selected{/if}>Show 100</option>
+				<option value="200" {if isset($pagesize) && $pagesize == 200}selected{/if}>Show 200</option>
+			</select>
+		</div>
+	</form>
+</div>
 
 <form name="bulk_moderate" id="user_list_form" action="{$my_base_url}{$my_pligg_base}/admin/admin_comments.php?action=bulkmod&page={$templatelite.get.page|sanitize:2}" method="post">
 	<input type="hidden" name="admin_acction"  value="" id="admin_action"/>

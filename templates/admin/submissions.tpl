@@ -72,23 +72,22 @@ function validate_all_user_action(){
 	</div>
 {/if}
 
-<table class="table-condensed">
-	<tr>
-		<td width="30%">
-			<div class="btn-group pull">
-				<a class="btn btn-default dropdown-toggle" href="#" data-toggle="dropdown">
-					<i id="selected_action"></i> {#PLIGG_Visual_AdminPanel_Apply_Changes#} <span class="caret"></span>
-				</a>
-				<ul class="dropdown-menu">
-					<li><a onclick="set_admin_action('published')" href="#">{#PLIGG_Visual_AdminPanel_Publish#}</a></li>
-					<li><a onclick="set_admin_action('new')" href="#">{#PLIGG_Visual_AdminPanel_New#}</a></li>
-					<li><a onclick="set_admin_action('discard')" href="#">{#PLIGG_Visual_AdminPanel_Discard#}</a></li>
-					<li><a onclick="set_admin_action('spam')" href="#">{#PLIGG_Visual_AdminPanel_Spam#}</a></li>
-				</ul>
-			</div>
-		</td>
-		<form action="{$my_base_url}{$my_pligg_base}/admin/admin_links.php" method="get">
-		<td align="right" width="30%">
+<div class="row management-tools">
+	<div class="col-md-3">
+		<div class="btn-group pull">
+			<a class="btn btn-default dropdown-toggle" href="#" data-toggle="dropdown">
+				<i id="selected_action"></i> {#PLIGG_Visual_AdminPanel_Apply_Changes#} <span class="caret"></span>
+			</a>
+			<ul class="dropdown-menu">
+				<li><a onclick="set_admin_action('published')" href="#">{#PLIGG_Visual_AdminPanel_Publish#}</a></li>
+				<li><a onclick="set_admin_action('new')" href="#">{#PLIGG_Visual_AdminPanel_New#}</a></li>
+				<li><a onclick="set_admin_action('discard')" href="#">{#PLIGG_Visual_AdminPanel_Discard#}</a></li>
+				<li><a onclick="set_admin_action('spam')" href="#">{#PLIGG_Visual_AdminPanel_Spam#}</a></li>
+			</ul>
+		</div>
+	</div>
+	<form action="{$my_base_url}{$my_pligg_base}/admin/admin_links.php" method="get" class="form-search search-bar">
+		<div class="col-md-3">
 			<div class="input-append">
 				<input type="hidden" name="mode" value="search">
 				{if isset($templatelite.get.keyword) && $templatelite.get.keyword neq ""}
@@ -97,10 +96,11 @@ function validate_all_user_action(){
 					{assign var=searchboxtext value=#PLIGG_Visual_Search_SearchDefaultText#}			
 				{/if}
 				<input type="hidden" name="user" value="{$templatelite.get.user|sanitize:2}">
-				<input type="text" class="form-control col-md-7" name="keyword" value="{$searchboxtext}" onfocus="if(this.value == '{$searchboxtext}') {ldelim}this.value = '';{rdelim}" onblur="if (this.value == '') {ldelim}this.value = '{$searchboxtext}';{rdelim}"><button type="submit" class="btn btn-default">{#PLIGG_Visual_Search_Go#}</button>
+				<input type="text" class="form-control search-query" name="keyword" placeholder="{$searchboxtext}">
+				<button type="submit" class="btn btn-primary search-button">{#PLIGG_Visual_Search_Go#}</button>
 			</div>
-		</td>
-		<td align="right" width="20%">
+		</div>
+		<div class="col-md-3">
 			<select name="filter" class="form-control" id="submission_filter" onchange="this.form.submit()">
 				<option value="all" {if $templatelite.get.filter == "all"} selected="selected" {/if}>{#PLIGG_Visual_AdminPanel_All#}</option>
 				<option value="published" {if $templatelite.get.filter == "published"} selected="selected" {/if}>{#PLIGG_Visual_AdminPanel_Published#}</option>
@@ -112,8 +112,8 @@ function validate_all_user_action(){
 				<option value="yesterday" {if $templatelite.get.filter == "yesterday"} selected="selected" {/if}>{#PLIGG_Visual_AdminPanel_Yesterday#}</option>
 				<option value="week" {if $templatelite.get.filter == "week"} selected="selected" {/if}>{#PLIGG_Visual_AdminPanel_Week#}</option>
 			</select>
-		</td>
-		<td align="right" width="20%">
+		</div>
+		<div class="col-md-3">
 			<select name="pagesize" class="form-control" id="submission_sort" onchange="this.form.submit()">
 				<option value="15" {if isset($pagesize) && $pagesize == 15}selected{/if}>Show 15</option>
 				<option value="30" {if isset($pagesize) && $pagesize == 30}selected{/if}>Show 30</option>
@@ -121,11 +121,10 @@ function validate_all_user_action(){
 				<option value="100" {if isset($pagesize) && $pagesize == 100}selected{/if}>Show 100</option>
 				<option value="200" {if isset($pagesize) && $pagesize == 200}selected{/if}>Show 200</option>
 			</select>
-		</td>
-		</form>
-	</tr>
-</table>
-<br />
+		</div>
+	</form>
+</div>
+
 <form name="bulk_moderate" id="user_list_form" action="{$my_base_url}{$my_pligg_base}/admin/admin_links.php?action=bulkmod&page={$templatelite.get.page|sanitize:2}" method="post" onsubmit="return validate_all_user_action()">
 	<input type="hidden" name="admin_acction"  value="" id="admin_action"/>
 	{$hidden_token_admin_links_edit}
