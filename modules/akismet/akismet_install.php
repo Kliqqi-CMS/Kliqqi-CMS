@@ -15,7 +15,7 @@
 	  `userid` int(20) NOT NULL default '0',
 	  `linkid` int(20) NOT NULL default '0',
 	  `cmt_rand` int(20) NOT NULL default '0',
-	  `cmt_content` text collate latin1_general_ci NOT NULL,
+	  `cmt_content` text collate utf8_general_ci NOT NULL,
 	  `cmt_date` timestamp NOT NULL default CURRENT_TIMESTAMP,
 	  `cmt_parent` int(20) NOT NULL default '0',
 		PRIMARY KEY  (`auto_id`)

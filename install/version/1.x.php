@@ -263,17 +263,17 @@ if ($old_version < $new_version) {
 	if (!$tableexists) {
 		$sql = "CREATE TABLE `".table_widgets."` (
 			  `id` int(11) NOT NULL auto_increment,
-			  `name` varchar(50) collate utf8_unicode_ci default NULL,
+			  `name` varchar(50) collate utf8_general_ci default NULL,
 			  `version` float NOT NULL,
 			  `latest_version` float NOT NULL,
-			  `folder` varchar(50) collate utf8_unicode_ci default NULL,
+			  `folder` varchar(50) collate utf8_general_ci default NULL,
 			  `enabled` tinyint(1) NOT NULL,
-			  `column` enum('left','right') collate utf8_unicode_ci NOT NULL,
+			  `column` enum('left','right') collate utf8_general_ci NOT NULL,
 			  `position` int(11) NOT NULL,
-			  `display` char(5) collate utf8_unicode_ci NOT NULL,
+			  `display` char(5) collate utf8_general_ci NOT NULL,
 			  PRIMARY KEY  (`id`),
 			  UNIQUE KEY `folder` (`folder`)
-			) ENGINE =MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci";
+			) ENGINE =MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci";
 		$db->query($sql);
 		$db->query("INSERT INTO `".table_widgets."` VALUES (1, 'Admin Panel Tools', 0.1, 0, 'panel_tools', 1, 'left', 4, '')");
 		$db->query("INSERT INTO `".table_widgets."` VALUES (3, 'Statistics', 0.1, 0, 'statistics', 1, 'left', 1, '')");
@@ -398,21 +398,21 @@ if ($old_version < $new_version) {
 		$sql = "CREATE TABLE `".table_groups."` (
 		  `group_id` int(20) NOT NULL auto_increment,
 		  `group_creator` int(20) NOT NULL,
-	      `group_status` enum('Enable','disable') collate latin1_general_ci NOT NULL,
+	      `group_status` enum('Enable','disable') collate utf8_general_ci NOT NULL,
 		  `group_members` int(20) NOT NULL,
 		  `group_date` datetime NOT NULL,
-		  `group_safename` text collate latin1_general_ci NOT NULL,
-		  `group_name` text collate latin1_general_ci NOT NULL,
-		  `group_description` text collate latin1_general_ci NOT NULL,
-		  `group_privacy` enum('private','public','restricted') collate latin1_general_ci NOT NULL,
-		  `group_avatar` varchar(255) collate latin1_general_ci NOT NULL,
+		  `group_safename` text collate utf8_general_ci NOT NULL,
+		  `group_name` text collate utf8_general_ci NOT NULL,
+		  `group_description` text collate utf8_general_ci NOT NULL,
+		  `group_privacy` enum('private','public','restricted') collate utf8_general_ci NOT NULL,
+		  `group_avatar` varchar(255) collate utf8_general_ci NOT NULL,
 	      `group_vote_to_publish` int(20) NOT NULL,
-		  `group_field1` varchar(255) collate latin1_general_ci NOT NULL,
-		  `group_field2` varchar(255) collate latin1_general_ci NOT NULL,
-		  `group_field3` varchar(255) collate latin1_general_ci NOT NULL,
-		  `group_field4` varchar(255) collate latin1_general_ci NOT NULL,
-		  `group_field5` varchar(255) collate latin1_general_ci NOT NULL,
-		  `group_field6` varchar(255) collate latin1_general_ci NOT NULL,
+		  `group_field1` varchar(255) collate utf8_general_ci NOT NULL,
+		  `group_field2` varchar(255) collate utf8_general_ci NOT NULL,
+		  `group_field3` varchar(255) collate utf8_general_ci NOT NULL,
+		  `group_field4` varchar(255) collate utf8_general_ci NOT NULL,
+		  `group_field5` varchar(255) collate utf8_general_ci NOT NULL,
+		  `group_field6` varchar(255) collate utf8_general_ci NOT NULL,
 		  `group_notify_email` tinyint(1) NOT NULL,
 			PRIMARY KEY  (`group_id`),
 			KEY `group_name` (`group_name`(100)),
@@ -737,13 +737,13 @@ if ($old_version < $new_version) {
 	if (!$tableexists) {
 		$sql = "CREATE TABLE `". table_login_attempts ."` (
 			  `login_id` int(11) NOT NULL auto_increment,
-			  `login_username` varchar(100) collate utf8_unicode_ci default NULL,
+			  `login_username` varchar(100) collate utf8_general_ci default NULL,
 			  `login_time` datetime NOT NULL,
-			  `login_ip` varchar(100) collate utf8_unicode_ci default NULL,
+			  `login_ip` varchar(100) collate utf8_general_ci default NULL,
 			  `login_count` int(11) NOT NULL default '0',
 			  PRIMARY KEY  (`login_id`),
 			  UNIQUE KEY `login_username` (`login_ip`,`login_username`)
-			) DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;";
+			) DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;";
 		$db->query($sql);
 	}
 

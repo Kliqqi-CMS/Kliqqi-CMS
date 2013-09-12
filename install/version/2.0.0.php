@@ -102,27 +102,27 @@ if ($old_version < $new_version) {
 	echo '<li>Changed default CAPTCHA to Solve Media</li>';	
 	
 	// Change some user profile fields
-	$sql = "ALTER TABLE ".table_users." CHANGE `user_aim` `user_facebook` VARCHAR( 64 ) CHARACTER SET utf8 COLLATE utf8_unicode_ci NULL DEFAULT NULL;";
+	$sql = "ALTER TABLE ".table_users." CHANGE `user_aim` `user_facebook` VARCHAR( 64 ) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL;";
 	$db->query($sql);
 	$sql = "UPDATE ".table_users." 
 			SET user_facebook='';";
 	$db->query($sql);
-	$sql = "ALTER TABLE ".table_users." CHANGE `user_msn` `user_twitter` VARCHAR( 64 ) CHARACTER SET utf8 COLLATE utf8_unicode_ci NULL DEFAULT NULL;";
+	$sql = "ALTER TABLE ".table_users." CHANGE `user_msn` `user_twitter` VARCHAR( 64 ) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL;";
 	$db->query($sql);
 	$sql = "UPDATE ".table_users." 
 			SET user_twitter='';";
 	$db->query($sql);
-	$sql = "ALTER TABLE ".table_users." CHANGE `user_yahoo` `user_linkedin` VARCHAR( 64 ) CHARACTER SET utf8 COLLATE utf8_unicode_ci NULL DEFAULT NULL;";
+	$sql = "ALTER TABLE ".table_users." CHANGE `user_yahoo` `user_linkedin` VARCHAR( 64 ) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL;";
 	$db->query($sql);
 	$sql = "UPDATE ".table_users." 
 			SET user_linkedin='';";
 	$db->query($sql);
-	$sql = "ALTER TABLE ".table_users." CHANGE `user_gtalk` `user_googleplus` VARCHAR( 64 ) CHARACTER SET utf8 COLLATE utf8_unicode_ci NULL DEFAULT NULL;";
+	$sql = "ALTER TABLE ".table_users." CHANGE `user_gtalk` `user_googleplus` VARCHAR( 64 ) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL;";
 	$db->query($sql);
 	$sql = "UPDATE ".table_users." 
 			SET user_googleplus='';";
 	$db->query($sql);
-	$sql = "ALTER TABLE ".table_users." CHANGE `user_irc` `user_pinterest` VARCHAR( 64 ) CHARACTER SET utf8 COLLATE utf8_unicode_ci NULL DEFAULT NULL;";
+	$sql = "ALTER TABLE ".table_users." CHANGE `user_irc` `user_pinterest` VARCHAR( 64 ) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL;";
 	$db->query($sql);
 	$sql = "UPDATE ".table_users." 
 			SET user_pinterest='';";
@@ -318,6 +318,11 @@ if ($old_version < $new_version) {
 	$db->query($sql);
 	echo '<li>Created FAQ Page</li>';
 
+	// Update version number
+	$sql = "UPDATE `" . table_misc_data . "` SET `data` = '2.0.0' WHERE `name` = 'pligg_version';";
+	$db->query($sql);
+	echo '<li>Updated version number to 2.0.0</li>';
+		
 	// Finished 2.0.0 upgrade
 	echo'</ul></li>';
 }
