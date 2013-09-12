@@ -166,12 +166,12 @@ function validate_all_user_action(){
 			<tr>
 				<th style="text-align:center;vertical-align:middle;"><input type='checkbox' id="selectall_user_ed" name="all1"></th>
 				{checkActionsTpl location="tpl_pligg_admin_users_th_start"}
-				<th style="width:40px;text-align:center;">ID</th>
-				<th>{#PLIGG_Visual_Login_Username#}</th>
-				<th style="text-align:center;">{#PLIGG_Visual_View_User_Level#}</th>
+				<th style="min-width:50px;text-align:center;">ID</th>
+				<th style="min-width:95px;">{#PLIGG_Visual_Login_Username#}</th>
+				<th style="min-width:75px;text-align:center;">{#PLIGG_Visual_View_User_Level#}</th>
 				<th>{#PLIGG_Visual_View_User_Email#}</th>
-				<th style="width:140px">{#PLIGG_Visual_User_Profile_Joined#}</th>
-				<th style="text-align:center;">Status</th>
+				<th style="min-width:85px">{#PLIGG_Visual_User_Profile_Joined#}</th>
+				<th style="min-width:50px;text-align:center;">Status</th>
 				{checkActionsTpl location="tpl_pligg_admin_users_th_end"}
 			</tr>
 		</thead>
@@ -185,7 +185,7 @@ function validate_all_user_action(){
 						{/if} 
 					</td>
 					{checkActionsTpl location="tpl_pligg_admin_users_td_start"}
-					<td style="width:40px;text-align:center;vertical-align:middle;">{$userlist[nr].user_id}</td>
+					<td style="text-align:center;vertical-align:middle;">{$userlist[nr].user_id}</td>
 					<td style="vertical-align:middle;"><img src="{$userlist[nr].Avatar}" style="height:18px;width:18px;" /> <a href = "?mode=view&user={$userlist[nr].user_id}">{$userlist[nr].user_login}</a></td>	
 					<td style="text-align:center;vertical-align:middle;">{$userlist[nr].user_level}</td>
 					<td style="vertical-align:middle;">
