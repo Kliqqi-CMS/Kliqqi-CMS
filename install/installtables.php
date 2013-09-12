@@ -12,18 +12,18 @@ function pligg_createtables($conn) {
 
 	$sql = "CREATE TABLE `" . table_categories . "` (
 	  `category__auto_id` int(11) NOT NULL auto_increment,
-	  `category_lang` varchar(" . strlen($dblang) . ") NOT NULL default " . "'" . $dblang . "',
+	  `category_lang` varchar(" . strlen($dblang) . ") collate utf8_general_ci NOT NULL default " . "'" . $dblang . "',
 	  `category_id` int(11) NOT NULL default '0',
 	  `category_parent` int(11) NOT NULL default '0',
-	  `category_name` varchar(64) NOT NULL default '',
-	  `category_safe_name` varchar(64) NOT NULL default '',
+	  `category_name` varchar(64) collate utf8_general_ci NOT NULL default '',
+	  `category_safe_name` varchar(64) collate utf8_general_ci NOT NULL default '',
 	  `rgt` int(11) NOT NULL default '0',
 	  `lft` int(11) NOT NULL default '0',
 	  `category_enabled` int(11) NOT NULL default '1',
 	  `category_order` int(11) NOT NULL default '0',
-	  `category_desc` varchar(255) NOT NULL,
-	  `category_keywords` varchar(255) NOT NULL,
-	  `category_author_level` enum('normal','moderator','admin') NOT NULL default 'normal',
+	  `category_desc` varchar(255) collate utf8_general_ci NOT NULL,
+	  `category_keywords` varchar(255) collate utf8_general_ci NOT NULL,
+	  `category_author_level` enum('normal','moderator','admin') collate utf8_general_ci NOT NULL default 'normal',
 	  `category_author_group` varchar(255) NOT NULL default '',
 	  `category_votes` varchar(4) NOT NULL default '',
 	  `category_karma` varchar(4) NOT NULL default '',
@@ -47,9 +47,9 @@ function pligg_createtables($conn) {
 	  `comment_user_id` int(20) NOT NULL default '0',
 	  `comment_date` datetime NOT NULL,
 	  `comment_karma` smallint(6) NOT NULL default '0',
-	  `comment_content` text NOT NULL,
+	  `comment_content` text collate utf8_general_ci NOT NULL,
 	  `comment_votes` int(20) NOT NULL default '0',
-	  `comment_status` enum('discard','moderated','published','spam') NOT NULL default 'published',
+	  `comment_status` enum('discard','moderated','published','spam') collate utf8_general_ci NOT NULL default 'published',
 	  PRIMARY KEY  (`comment_id`),
 	  UNIQUE KEY `comments_randkey` (`comment_randkey`,`comment_link_id`,`comment_user_id`,`comment_parent`),
 	  KEY `comment_link_id` (`comment_link_id`, `comment_parent`, `comment_date`),
@@ -80,7 +80,7 @@ function pligg_createtables($conn) {
 	$sql = "CREATE TABLE `" . table_links . "` (
 	  `link_id` int(20) NOT NULL auto_increment,
 	  `link_author` int(20) NOT NULL default '0',
-	  `link_status` enum('discard','new','published','abuse','duplicate','page','spam') NOT NULL default 'discard',
+	  `link_status` enum('discard','new','published','abuse','duplicate','page','spam') collate utf8_general_ci NOT NULL default 'discard',
 	  `link_randkey` int(20) NOT NULL default '0',
 	  `link_votes` int(20) NOT NULL default '0',
 	  `link_reports` int(20) NOT NULL default '0',
@@ -91,28 +91,28 @@ function pligg_createtables($conn) {
 	  `link_published_date` timestamp NOT NULL,
 	  `link_category` int(11) NOT NULL default '0',
 	  `link_lang` int(11) NOT NULL default '1',
-	  `link_url` varchar(200) NOT NULL default '',
-	  `link_url_title` text,
-	  `link_title` text NOT NULL,
-	  `link_title_url` varchar(255) default NULL,
-	  `link_content` mediumtext NOT NULL,
-	  `link_summary` text,
-	  `link_tags` text,
-	  `link_field1` varchar(255) NOT NULL default '',
-	  `link_field2` varchar(255) NOT NULL default '',
-	  `link_field3` varchar(255) NOT NULL default '',
-	  `link_field4` varchar(255) NOT NULL default '',
-	  `link_field5` varchar(255) NOT NULL default '',
-	  `link_field6` varchar(255) NOT NULL default '',
-	  `link_field7` varchar(255) NOT NULL default '',
-	  `link_field8` varchar(255) NOT NULL default '',
-	  `link_field9` varchar(255) NOT NULL default '',
-	  `link_field10` varchar(255) NOT NULL default '',
-	  `link_field11` varchar(255) NOT NULL default '',
-	  `link_field12` varchar(255) NOT NULL default '',
-	  `link_field13` varchar(255) NOT NULL default '',
-	  `link_field14` varchar(255) NOT NULL default '',
-	  `link_field15` varchar(255) NOT NULL default '',
+	  `link_url` varchar(200) collate utf8_general_ci NOT NULL default '',
+	  `link_url_title` text collate utf8_general_ci,
+	  `link_title` text collate utf8_general_ci NOT NULL,
+	  `link_title_url` varchar(255) collate utf8_general_ci default NULL,
+	  `link_content` mediumtext collate utf8_general_ci NOT NULL,
+	  `link_summary` text collate utf8_general_ci,
+	  `link_tags` text collate utf8_general_ci,
+	  `link_field1` varchar(255) collate utf8_general_ci NOT NULL default '',
+	  `link_field2` varchar(255) collate utf8_general_ci NOT NULL default '',
+	  `link_field3` varchar(255) collate utf8_general_ci NOT NULL default '',
+	  `link_field4` varchar(255) collate utf8_general_ci NOT NULL default '',
+	  `link_field5` varchar(255) collate utf8_general_ci NOT NULL default '',
+	  `link_field6` varchar(255) collate utf8_general_ci NOT NULL default '',
+	  `link_field7` varchar(255) collate utf8_general_ci NOT NULL default '',
+	  `link_field8` varchar(255) collate utf8_general_ci NOT NULL default '',
+	  `link_field9` varchar(255) collate utf8_general_ci NOT NULL default '',
+	  `link_field10` varchar(255) collate utf8_general_ci NOT NULL default '',
+	  `link_field11` varchar(255) collate utf8_general_ci NOT NULL default '',
+	  `link_field12` varchar(255) collate utf8_general_ci NOT NULL default '',
+	  `link_field13` varchar(255) collate utf8_general_ci NOT NULL default '',
+	  `link_field14` varchar(255) collate utf8_general_ci NOT NULL default '',
+	  `link_field15` varchar(255) collate utf8_general_ci NOT NULL default '',
 	  `link_group_id` int(20) NOT NULL default '0',
 	  `link_group_status` enum(  'new',  'published',  'discard' ) DEFAULT 'new' NOT NULL,
 	  `link_out` int(11) NOT NULL default '0',
@@ -141,9 +141,9 @@ function pligg_createtables($conn) {
 	  `trackback_status` enum('ok','pendent','error') NOT NULL default 'pendent',
 	  `trackback_modified` timestamp NOT NULL,
 	  `trackback_date` timestamp NULL default NULL,
-	  `trackback_url` varchar(200) NOT NULL default '',
-	  `trackback_title` text,
-	  `trackback_content` text,
+	  `trackback_url` varchar(200) collate utf8_general_ci NOT NULL default '',
+	  `trackback_title` text collate utf8_general_ci,
+	  `trackback_content` text collate utf8_general_ci,
 	  PRIMARY KEY  (`trackback_id`),
 	  UNIQUE KEY `trackback_link_id_2` (`trackback_link_id`,`trackback_type`,`trackback_url`),
 	  KEY `trackback_link_id` (`trackback_link_id`),
@@ -159,33 +159,33 @@ function pligg_createtables($conn) {
 
 	$sql = "CREATE TABLE `" . table_users . "` (
 	  `user_id` int(20) NOT NULL auto_increment,
-	  `user_login` varchar(32) NOT NULL default '',
-	  `user_level` enum('normal','moderator','admin','Spammer') NOT NULL default 'normal',
+	  `user_login` varchar(32) collate utf8_general_ci NOT NULL default '',
+	  `user_level` enum('normal','moderator','admin','Spammer') collate utf8_general_ci NOT NULL default 'normal',
 	  `user_modification` timestamp NOT NULL,
 	  `user_date` timestamp NOT NULL,
-	  `user_pass` varchar(64) NOT NULL default '',
-	  `user_email` varchar(128) NOT NULL default '',
-	  `user_names` varchar(128) NOT NULL default '',
+	  `user_pass` varchar(64) collate utf8_general_ci NOT NULL default '',
+	  `user_email` varchar(128) collate utf8_general_ci NOT NULL default '',
+	  `user_names` varchar(128) collate utf8_general_ci NOT NULL default '',
 	  `user_karma` decimal(10,2) default '0.00',
-	  `user_url` varchar(128) NOT NULL default '',
+	  `user_url` varchar(128) collate utf8_general_ci NOT NULL default '',
 	  `user_lastlogin` timestamp NOT NULL,
-	  `user_facebook` varchar(64) NOT NULL default '',
-	  `user_twitter` varchar(64) NOT NULL default '',
-	  `user_linkedin` varchar(64) NOT NULL default '',
-	  `user_googleplus` varchar(64) NOT NULL default '',
-	  `user_skype` varchar(64) NOT NULL default '',
-	  `user_pinterest` varchar(64) NOT NULL default '',
-	  `public_email` varchar(64) NOT NULL default '',
-	  `user_avatar_source` varchar(255) NOT NULL default '',
-	  `user_ip` varchar(20) default '0',
-	  `user_lastip` varchar(20) default '0',
+	  `user_facebook` varchar(64) collate utf8_general_ci NOT NULL default '',
+	  `user_twitter` varchar(64) collate utf8_general_ci NOT NULL default '',
+	  `user_linkedin` varchar(64) collate utf8_general_ci NOT NULL default '',
+	  `user_googleplus` varchar(64) collate utf8_general_ci NOT NULL default '',
+	  `user_skype` varchar(64) collate utf8_general_ci NOT NULL default '',
+	  `user_pinterest` varchar(64) collate utf8_general_ci NOT NULL default '',
+	  `public_email` varchar(64) collate utf8_general_ci NOT NULL default '',
+	  `user_avatar_source` varchar(255) collate utf8_general_ci NOT NULL default '',
+	  `user_ip` varchar(20) collate utf8_general_ci default '0',
+	  `user_lastip` varchar(20) collate utf8_general_ci default '0',
 	  `last_reset_request` timestamp NOT NULL,
-	  `last_reset_code` varchar(255) default NULL,
-	  `user_location` varchar(255) default NULL,
-	  `user_occupation` varchar(255) default NULL,
-	  `user_categories` VARCHAR(255) NOT NULL default '',
+	  `last_reset_code` varchar(255) collate utf8_general_ci default NULL,
+	  `user_location` varchar(255) collate utf8_general_ci default NULL,
+	  `user_occupation` varchar(255) collate utf8_general_ci default NULL,
+	  `user_categories` VARCHAR(255) collate utf8_general_ci NOT NULL default '',
 	  `user_enabled` tinyint(1) NOT NULL default '1',
-	  `user_language` varchar(32) default NULL,
+	  `user_language` varchar(32) collate utf8_general_ci default NULL,
 	  PRIMARY KEY  (`user_id`),
 	  UNIQUE KEY `user_login` (`user_login`),
 	  KEY `user_email` (`user_email`)
@@ -198,9 +198,9 @@ function pligg_createtables($conn) {
 
 	$sql = "CREATE TABLE `" . table_tags . "` (
 	  `tag_link_id` int(11) NOT NULL default '0',
-	  `tag_lang` varchar(4) NOT NULL default 'en',
+	  `tag_lang` varchar(4) collate utf8_general_ci NOT NULL default 'en',
 	  `tag_date` timestamp NOT NULL,
-	  `tag_words` varchar(64) NOT NULL default '',
+	  `tag_words` varchar(64) collate utf8_general_ci NOT NULL default '',
 	  UNIQUE KEY `tag_link_id` (`tag_link_id`,`tag_lang`,`tag_words`),
 	  KEY `tag_lang` (`tag_lang`,`tag_date`),
 	  KEY `tag_words` (`tag_words`,`tag_link_id`)
@@ -237,15 +237,15 @@ function pligg_createtables($conn) {
 
 	$sql = "CREATE TABLE `" . table_config . "` (
 	  `var_id` int(11) NOT NULL auto_increment,
-	  `var_page` varchar(50) NOT NULL,
-	  `var_name` varchar(100) NOT NULL,
-	  `var_value` varchar(255) NOT NULL,
-	  `var_defaultvalue` varchar(50) NOT NULL,
-	  `var_optiontext` varchar(200) NOT NULL,
-	  `var_title` varchar(200) NOT NULL,
-	  `var_desc` text NOT NULL,
-	  `var_method` varchar(10) NOT NULL,
-	  `var_enclosein` varchar(5) default NULL,
+	  `var_page` varchar(50) collate utf8_general_ci NOT NULL,
+	  `var_name` varchar(100) collate utf8_general_ci NOT NULL,
+	  `var_value` varchar(255) collate utf8_general_ci NOT NULL,
+	  `var_defaultvalue` varchar(50) collate utf8_general_ci NOT NULL,
+	  `var_optiontext` varchar(200) collate utf8_general_ci NOT NULL,
+	  `var_title` varchar(200) collate utf8_general_ci NOT NULL,
+	  `var_desc` text collate utf8_general_ci NOT NULL,
+	  `var_method` varchar(10) collate utf8_general_ci NOT NULL,
+	  `var_enclosein` varchar(5) collate utf8_general_ci default NULL,
 	  PRIMARY KEY  (`var_id`)
 	) ENGINE = MyISAM;";
 //	echo 'Creating table: \'config\'....<BR/>';
@@ -257,7 +257,7 @@ function pligg_createtables($conn) {
 
 	$sql = "CREATE TABLE `" .table_messages. "` (
 	  `idMsg` int(11) NOT NULL auto_increment,
-	  `title` varchar(255) NOT NULL default '',
+	  `title` varchar(255) collate utf8_general_ci NOT NULL default '',
 	  `body` text NOT NULL,
 	  `sender` int(11) NOT NULL default '0',
 	  `receiver` int(11) NOT NULL default '0',
@@ -275,10 +275,10 @@ function pligg_createtables($conn) {
 
 	$sql = "CREATE TABLE `" . table_modules . "` (
 	  `id` int(11) NOT NULL auto_increment,
-	  `name` varchar(50) NOT NULL,
+	  `name` varchar(50) collate utf8_general_ci NOT NULL,
 	  `version` float NOT NULL,
 	  `latest_version` float NOT NULL,
-	  `folder` varchar(50) NOT NULL,
+	  `folder` varchar(50) collate utf8_general_ci NOT NULL,
 	  `enabled` tinyint(1) NOT NULL,
 	  `weight` INT NOT NULL,
 	  PRIMARY KEY  (`id`)
@@ -292,10 +292,10 @@ function pligg_createtables($conn) {
 
 	$sql = "CREATE TABLE `" . table_formulas . "` (
 	  `id` int(11) NOT NULL auto_increment,
-	  `type` varchar(10) NOT NULL,
+	  `type` varchar(10) collate utf8_general_ci NOT NULL,
 	  `enabled` tinyint(1) NOT NULL,
-	  `title` varchar(50) NOT NULL,
-	  `formula` text NOT NULL,
+	  `title` varchar(50) collate utf8_general_ci NOT NULL,
+	  `formula` text collate utf8_general_ci NOT NULL,
 	  PRIMARY KEY  (`id`)
 	) ENGINE = MyISAM;";
 //	echo 'Creating table: \'formulas\'....<BR/>';
@@ -309,7 +309,7 @@ function pligg_createtables($conn) {
 	  `saved_id` int(11) NOT NULL auto_increment,
 	  `saved_user_id` int(11) NOT NULL,
 	  `saved_link_id` int(11) NOT NULL,
-	  `saved_privacy` ENUM( 'private', 'public' ) NOT NULL default 'public',
+	  `saved_privacy` ENUM( 'private', 'public' ) collate utf8_general_ci NOT NULL default 'public',
 	  PRIMARY KEY  (`saved_id`),
 	  KEY `saved_user_id` (  `saved_user_id` )
 	) ENGINE = MyISAM;";
@@ -322,7 +322,7 @@ function pligg_createtables($conn) {
 	$sql = "CREATE TABLE `" . table_old_urls ."` (
 	  `old_id` int(11) NOT NULL auto_increment,
 	  `old_link_id` int(11) NOT NULL,
-	  `old_title_url` varchar(255) NOT NULL,
+	  `old_title_url` varchar(255) collate utf8_general_ci NOT NULL,
 	  PRIMARY KEY  (`old_id`),
 	  KEY `old_title_url` (  `old_title_url` )
 	) ENGINE = MyISAM;";
@@ -333,8 +333,8 @@ function pligg_createtables($conn) {
 	mysql_query( $sql, $conn );
 
 	$sql = "CREATE TABLE `" . table_misc_data . "` (
-		`name` VARCHAR( 20 ) NOT NULL ,
-		`data` TEXT NOT NULL ,
+		`name` VARCHAR( 20 ) collate utf8_general_ci NOT NULL ,
+		`data` TEXT collate utf8_general_ci NOT NULL ,
 		PRIMARY KEY ( `name` )
 		) ENGINE = MyISAM;";
 //	echo 'Creating table: \'Misc Data\'....<br />';
@@ -348,21 +348,21 @@ function pligg_createtables($conn) {
 		$sql = "CREATE TABLE `".table_groups."` (
 	  `group_id` int(20) NOT NULL auto_increment,
 	  `group_creator` int(20) NOT NULL,
-	  `group_status` enum('Enable','disable') collate utf8_unicode_ci NOT NULL,
+	  `group_status` enum('Enable','disable') collate utf8_general_ci NOT NULL,
 	  `group_members` int(20) NOT NULL,
 	  `group_date` datetime NOT NULL,
-	  `group_safename` text collate utf8_unicode_ci NOT NULL,
-	  `group_name` text collate utf8_unicode_ci NOT NULL,
-	  `group_description` text collate utf8_unicode_ci NOT NULL,
-	  `group_privacy` enum('private','public','restricted') collate utf8_unicode_ci NOT NULL,
-	  `group_avatar` varchar(255) collate utf8_unicode_ci NOT NULL,
+	  `group_safename` text collate utf8_general_ci NOT NULL,
+	  `group_name` text collate utf8_general_ci NOT NULL,
+	  `group_description` text collate utf8_general_ci NOT NULL,
+	  `group_privacy` enum('private','public','restricted') collate utf8_general_ci NOT NULL,
+	  `group_avatar` varchar(255) collate utf8_general_ci NOT NULL,
 	  `group_vote_to_publish` int(20) NOT NULL,
-	  `group_field1` varchar(255) collate utf8_unicode_ci NOT NULL,
-	  `group_field2` varchar(255) collate utf8_unicode_ci NOT NULL,
-	  `group_field3` varchar(255) collate utf8_unicode_ci NOT NULL,
-	  `group_field4` varchar(255) collate utf8_unicode_ci NOT NULL,
-	  `group_field5` varchar(255) collate utf8_unicode_ci NOT NULL,
-	  `group_field6` varchar(255) collate utf8_unicode_ci NOT NULL,
+	  `group_field1` varchar(255) collate utf8_general_ci NOT NULL,
+	  `group_field2` varchar(255) collate utf8_general_ci NOT NULL,
+	  `group_field3` varchar(255) collate utf8_general_ci NOT NULL,
+	  `group_field4` varchar(255) collate utf8_general_ci NOT NULL,
+	  `group_field5` varchar(255) collate utf8_general_ci NOT NULL,
+	  `group_field6` varchar(255) collate utf8_general_ci NOT NULL,
 	`group_notify_email` tinyint(1) NOT NULL,
 		PRIMARY KEY  (`group_id`),
 		KEY `group_name` (`group_name`(100)),
@@ -378,8 +378,8 @@ function pligg_createtables($conn) {
 		`member_id` INT( 20 ) NOT NULL auto_increment,
 		`member_user_id` INT( 20 ) NOT NULL ,
 		`member_group_id` INT( 20 ) NOT NULL ,
-		`member_role` ENUM( 'admin', 'normal', 'moderator', 'flagged', 'banned' ) NOT NULL,
-		`member_status` ENUM( 'active', 'inactive') NOT NULL,
+		`member_role` ENUM( 'admin', 'normal', 'moderator', 'flagged', 'banned' ) collate utf8_general_ci NOT NULL,
+		`member_status` ENUM( 'active', 'inactive') collate utf8_general_ci NOT NULL,
 		PRIMARY KEY  (`member_id`),
 		KEY `user_group` (`member_group_id`, `member_user_id`)
 		);";
@@ -406,13 +406,13 @@ function pligg_createtables($conn) {
 
 	$sql = "CREATE TABLE `". table_login_attempts ."` (
 		  `login_id` int(11) NOT NULL auto_increment,
-		  `login_username` varchar(100) collate utf8_unicode_ci default NULL,
+		  `login_username` varchar(100) collate utf8_general_ci default NULL,
 		  `login_time` datetime NOT NULL,
-		  `login_ip` varchar(100) collate utf8_unicode_ci default NULL,
+		  `login_ip` varchar(100) collate utf8_general_ci default NULL,
 		  `login_count` int(11) NOT NULL default '0',
 		  PRIMARY KEY  (`login_id`),
 		  UNIQUE KEY `login_username` (`login_ip`,`login_username`)
-	) DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;";
+	) DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;";
 	mysql_query( $sql, $conn );
 			
 
@@ -422,17 +422,17 @@ function pligg_createtables($conn) {
 
 	$sql = "CREATE TABLE `".table_widgets."` (
 		  `id` int(11) NOT NULL auto_increment,
-		  `name` varchar(50) collate utf8_unicode_ci default NULL,
+		  `name` varchar(50) collate utf8_general_ci default NULL,
 		  `version` float NOT NULL,
 		  `latest_version` float NOT NULL,
-		  `folder` varchar(50) collate utf8_unicode_ci default NULL,
+		  `folder` varchar(50) collate utf8_general_ci default NULL,
 		  `enabled` tinyint(1) NOT NULL,
-		  `column` enum('left','right') collate utf8_unicode_ci NOT NULL,
+		  `column` enum('left','right') collate utf8_general_ci NOT NULL,
 		  `position` int(11) NOT NULL,
-		  `display` char(5) collate utf8_unicode_ci NOT NULL,
+		  `display` char(5) collate utf8_general_ci NOT NULL,
 		  PRIMARY KEY  (`id`),
 		  UNIQUE KEY `folder` (`folder`)
-	) ENGINE =MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci";
+	) ENGINE =MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci";
 	mysql_query( $sql, $conn );
 			
 
@@ -580,132 +580,132 @@ function pligg_createtables($conn) {
 	mysql_query( $sql, $conn );
 
 //	print "<li>Converting tables to UTF-8</li>";
-	$stmts = "ALTER TABLE  `pligg_categories` DEFAULT CHARACTER SET utf8 COLLATE utf8_unicode_ci;
-		ALTER TABLE  `pligg_comments` DEFAULT CHARACTER SET utf8 COLLATE utf8_unicode_ci;
-		ALTER TABLE  `pligg_config` DEFAULT CHARACTER SET utf8 COLLATE utf8_unicode_ci;
-		ALTER TABLE  `pligg_formulas` DEFAULT CHARACTER SET utf8 COLLATE utf8_unicode_ci;
-		ALTER TABLE  `pligg_friends` DEFAULT CHARACTER SET utf8 COLLATE utf8_unicode_ci;
-		ALTER TABLE  `pligg_group_member` DEFAULT CHARACTER SET utf8 COLLATE utf8_unicode_ci;
-		ALTER TABLE  `pligg_group_shared` DEFAULT CHARACTER SET utf8 COLLATE utf8_unicode_ci;
-		ALTER TABLE  `pligg_groups` DEFAULT CHARACTER SET utf8 COLLATE utf8_unicode_ci;
-		ALTER TABLE  `pligg_links` DEFAULT CHARACTER SET utf8 COLLATE utf8_unicode_ci;
-		ALTER TABLE  `pligg_messages` DEFAULT CHARACTER SET utf8 COLLATE utf8_unicode_ci;
-		ALTER TABLE  `pligg_misc_data` DEFAULT CHARACTER SET utf8 COLLATE utf8_unicode_ci;
-		ALTER TABLE  `pligg_modules` DEFAULT CHARACTER SET utf8 COLLATE utf8_unicode_ci;
-		ALTER TABLE  `pligg_redirects` DEFAULT CHARACTER SET utf8 COLLATE utf8_unicode_ci;
-		ALTER TABLE  `pligg_saved_links` DEFAULT CHARACTER SET utf8 COLLATE utf8_unicode_ci;
-		ALTER TABLE  `pligg_tag_cache` DEFAULT CHARACTER SET utf8 COLLATE utf8_unicode_ci;
-		ALTER TABLE  `pligg_tags` DEFAULT CHARACTER SET utf8 COLLATE utf8_unicode_ci;
-		ALTER TABLE  `pligg_totals` DEFAULT CHARACTER SET utf8 COLLATE utf8_unicode_ci;
-		ALTER TABLE  `pligg_trackbacks` DEFAULT CHARACTER SET utf8 COLLATE utf8_unicode_ci;
-		ALTER TABLE  `pligg_users` DEFAULT CHARACTER SET utf8 COLLATE utf8_unicode_ci;
-		ALTER TABLE  `pligg_votes` DEFAULT CHARACTER SET utf8 COLLATE utf8_unicode_ci;
+	$stmts = "ALTER TABLE  `pligg_categories` DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci;
+		ALTER TABLE  `pligg_comments` DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci;
+		ALTER TABLE  `pligg_config` DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci;
+		ALTER TABLE  `pligg_formulas` DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci;
+		ALTER TABLE  `pligg_friends` DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci;
+		ALTER TABLE  `pligg_group_member` DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci;
+		ALTER TABLE  `pligg_group_shared` DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci;
+		ALTER TABLE  `pligg_groups` DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci;
+		ALTER TABLE  `pligg_links` DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci;
+		ALTER TABLE  `pligg_messages` DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci;
+		ALTER TABLE  `pligg_misc_data` DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci;
+		ALTER TABLE  `pligg_modules` DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci;
+		ALTER TABLE  `pligg_redirects` DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci;
+		ALTER TABLE  `pligg_saved_links` DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci;
+		ALTER TABLE  `pligg_tag_cache` DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci;
+		ALTER TABLE  `pligg_tags` DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci;
+		ALTER TABLE  `pligg_totals` DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci;
+		ALTER TABLE  `pligg_trackbacks` DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci;
+		ALTER TABLE  `pligg_users` DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci;
+		ALTER TABLE  `pligg_votes` DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci;
 
 		ALTER TABLE  `pligg_categories` 
-		CHANGE  `category_lang`  `category_lang` VARCHAR( 2 ) CHARACTER SET utf8 COLLATE utf8_unicode_ci DEFAULT  'en',
-		CHANGE  `category_name`  `category_name` VARCHAR( 64 ) CHARACTER SET utf8 COLLATE utf8_unicode_ci,
-		CHANGE  `category_safe_name`  `category_safe_name` VARCHAR( 64 ) CHARACTER SET utf8 COLLATE utf8_unicode_ci,
-		CHANGE  `category_desc`  `category_desc` VARCHAR( 255 ) CHARACTER SET utf8 COLLATE utf8_unicode_ci,
-		CHANGE  `category_keywords`  `category_keywords` VARCHAR( 255 ) CHARACTER SET utf8 COLLATE utf8_unicode_ci,
-		CHANGE  `category_author_group`  `category_author_group` VARCHAR( 255 ) CHARACTER SET utf8 COLLATE utf8_unicode_ci;
+		CHANGE  `category_lang`  `category_lang` VARCHAR( 2 ) CHARACTER SET utf8 COLLATE utf8_general_ci DEFAULT  'en',
+		CHANGE  `category_name`  `category_name` VARCHAR( 64 ) CHARACTER SET utf8 COLLATE utf8_general_ci,
+		CHANGE  `category_safe_name`  `category_safe_name` VARCHAR( 64 ) CHARACTER SET utf8 COLLATE utf8_general_ci,
+		CHANGE  `category_desc`  `category_desc` VARCHAR( 255 ) CHARACTER SET utf8 COLLATE utf8_general_ci,
+		CHANGE  `category_keywords`  `category_keywords` VARCHAR( 255 ) CHARACTER SET utf8 COLLATE utf8_general_ci,
+		CHANGE  `category_author_group`  `category_author_group` VARCHAR( 255 ) CHARACTER SET utf8 COLLATE utf8_general_ci;
 
-		ALTER TABLE  `pligg_comments` CHANGE  `comment_content`  `comment_content` TEXT CHARACTER SET utf8 COLLATE utf8_unicode_ci;
+		ALTER TABLE  `pligg_comments` CHANGE  `comment_content`  `comment_content` TEXT CHARACTER SET utf8 COLLATE utf8_general_ci;
 
-		ALTER TABLE  `pligg_config` CHANGE  `var_page`  `var_page` VARCHAR( 50 ) CHARACTER SET utf8 COLLATE utf8_unicode_ci,
-		CHANGE  `var_name`  `var_name` VARCHAR( 100 ) CHARACTER SET utf8 COLLATE utf8_unicode_ci,
-		CHANGE  `var_value`  `var_value` VARCHAR( 255 ) CHARACTER SET utf8 COLLATE utf8_unicode_ci,
-		CHANGE  `var_defaultvalue`  `var_defaultvalue` VARCHAR( 50 ) CHARACTER SET utf8 COLLATE utf8_unicode_ci,
-		CHANGE  `var_optiontext`  `var_optiontext` VARCHAR( 200 ) CHARACTER SET utf8 COLLATE utf8_unicode_ci,
-		CHANGE  `var_title`  `var_title` VARCHAR( 200 ) CHARACTER SET utf8 COLLATE utf8_unicode_ci,
-		CHANGE  `var_desc`  `var_desc` TEXT CHARACTER SET utf8 COLLATE utf8_unicode_ci,
-		CHANGE  `var_method`  `var_method` VARCHAR( 10 ) CHARACTER SET utf8 COLLATE utf8_unicode_ci,
-		CHANGE  `var_enclosein`  `var_enclosein` VARCHAR( 5 ) CHARACTER SET utf8 COLLATE utf8_unicode_ci DEFAULT NULL;
+		ALTER TABLE  `pligg_config` CHANGE  `var_page`  `var_page` VARCHAR( 50 ) CHARACTER SET utf8 COLLATE utf8_general_ci,
+		CHANGE  `var_name`  `var_name` VARCHAR( 100 ) CHARACTER SET utf8 COLLATE utf8_general_ci,
+		CHANGE  `var_value`  `var_value` VARCHAR( 255 ) CHARACTER SET utf8 COLLATE utf8_general_ci,
+		CHANGE  `var_defaultvalue`  `var_defaultvalue` VARCHAR( 50 ) CHARACTER SET utf8 COLLATE utf8_general_ci,
+		CHANGE  `var_optiontext`  `var_optiontext` VARCHAR( 200 ) CHARACTER SET utf8 COLLATE utf8_general_ci,
+		CHANGE  `var_title`  `var_title` VARCHAR( 200 ) CHARACTER SET utf8 COLLATE utf8_general_ci,
+		CHANGE  `var_desc`  `var_desc` TEXT CHARACTER SET utf8 COLLATE utf8_general_ci,
+		CHANGE  `var_method`  `var_method` VARCHAR( 10 ) CHARACTER SET utf8 COLLATE utf8_general_ci,
+		CHANGE  `var_enclosein`  `var_enclosein` VARCHAR( 5 ) CHARACTER SET utf8 COLLATE utf8_general_ci DEFAULT NULL;
 
-		ALTER TABLE  `pligg_formulas` CHANGE  `type`  `type` VARCHAR( 10 ) CHARACTER SET utf8 COLLATE utf8_unicode_ci,
-		CHANGE  `title`  `title` VARCHAR( 50 ) CHARACTER SET utf8 COLLATE utf8_unicode_ci,
-		CHANGE  `formula`  `formula` TEXT CHARACTER SET utf8 COLLATE utf8_unicode_ci;
+		ALTER TABLE  `pligg_formulas` CHANGE  `type`  `type` VARCHAR( 10 ) CHARACTER SET utf8 COLLATE utf8_general_ci,
+		CHANGE  `title`  `title` VARCHAR( 50 ) CHARACTER SET utf8 COLLATE utf8_general_ci,
+		CHANGE  `formula`  `formula` TEXT CHARACTER SET utf8 COLLATE utf8_general_ci;
 
 		ALTER TABLE  `pligg_groups`
-		CHANGE  `group_safename`  `group_safename` TEXT CHARACTER SET utf8 COLLATE utf8_unicode_ci,
-		CHANGE  `group_name`  `group_name` TEXT CHARACTER SET utf8 COLLATE utf8_unicode_ci,
-		CHANGE  `group_description`  `group_description` TEXT CHARACTER SET utf8 COLLATE utf8_unicode_ci,
+		CHANGE  `group_safename`  `group_safename` TEXT CHARACTER SET utf8 COLLATE utf8_general_ci,
+		CHANGE  `group_name`  `group_name` TEXT CHARACTER SET utf8 COLLATE utf8_general_ci,
+		CHANGE  `group_description`  `group_description` TEXT CHARACTER SET utf8 COLLATE utf8_general_ci,
 		CHANGE  `group_privacy`  `group_privacy` ENUM(  'private',  'public',  'restricted' ) ,
-		CHANGE  `group_avatar`  `group_avatar` VARCHAR( 255 ) CHARACTER SET utf8 COLLATE utf8_unicode_ci,
-		CHANGE  `group_field1`  `group_field1` VARCHAR( 255 ) CHARACTER SET utf8 COLLATE utf8_unicode_ci,
-		CHANGE  `group_field2`  `group_field2` VARCHAR( 255 ) CHARACTER SET utf8 COLLATE utf8_unicode_ci,
-		CHANGE  `group_field3`  `group_field3` VARCHAR( 255 ) CHARACTER SET utf8 COLLATE utf8_unicode_ci,
-		CHANGE  `group_field4`  `group_field4` VARCHAR( 255 ) CHARACTER SET utf8 COLLATE utf8_unicode_ci,
-		CHANGE  `group_field5`  `group_field5` VARCHAR( 255 ) CHARACTER SET utf8 COLLATE utf8_unicode_ci,
-		CHANGE  `group_field6`  `group_field6` VARCHAR( 255 ) CHARACTER SET utf8 COLLATE utf8_unicode_ci;
+		CHANGE  `group_avatar`  `group_avatar` VARCHAR( 255 ) CHARACTER SET utf8 COLLATE utf8_general_ci,
+		CHANGE  `group_field1`  `group_field1` VARCHAR( 255 ) CHARACTER SET utf8 COLLATE utf8_general_ci,
+		CHANGE  `group_field2`  `group_field2` VARCHAR( 255 ) CHARACTER SET utf8 COLLATE utf8_general_ci,
+		CHANGE  `group_field3`  `group_field3` VARCHAR( 255 ) CHARACTER SET utf8 COLLATE utf8_general_ci,
+		CHANGE  `group_field4`  `group_field4` VARCHAR( 255 ) CHARACTER SET utf8 COLLATE utf8_general_ci,
+		CHANGE  `group_field5`  `group_field5` VARCHAR( 255 ) CHARACTER SET utf8 COLLATE utf8_general_ci,
+		CHANGE  `group_field6`  `group_field6` VARCHAR( 255 ) CHARACTER SET utf8 COLLATE utf8_general_ci;
 
-		ALTER TABLE  `pligg_links` CHANGE  `link_url`  `link_url` VARCHAR( 200 ) CHARACTER SET utf8 COLLATE utf8_unicode_ci,
-		CHANGE  `link_url_title`  `link_url_title` TEXT CHARACTER SET utf8 COLLATE utf8_unicode_ci DEFAULT NULL ,
-		CHANGE  `link_title`  `link_title` TEXT CHARACTER SET utf8 COLLATE utf8_unicode_ci,
-		CHANGE  `link_title_url`  `link_title_url` VARCHAR( 255 ) CHARACTER SET utf8 COLLATE utf8_unicode_ci DEFAULT NULL ,
-		CHANGE  `link_content`  `link_content` MEDIUMTEXT CHARACTER SET utf8 COLLATE utf8_unicode_ci,
-		CHANGE  `link_summary`  `link_summary` TEXT CHARACTER SET utf8 COLLATE utf8_unicode_ci DEFAULT NULL ,
-		CHANGE  `link_tags`  `link_tags` TEXT CHARACTER SET utf8 COLLATE utf8_unicode_ci DEFAULT NULL ,
-		CHANGE  `link_field1`  `link_field1` VARCHAR( 255 ) CHARACTER SET utf8 COLLATE utf8_unicode_ci,
-		CHANGE  `link_field2`  `link_field2` VARCHAR( 255 ) CHARACTER SET utf8 COLLATE utf8_unicode_ci,
-		CHANGE  `link_field3`  `link_field3` VARCHAR( 255 ) CHARACTER SET utf8 COLLATE utf8_unicode_ci,
-		CHANGE  `link_field4`  `link_field4` VARCHAR( 255 ) CHARACTER SET utf8 COLLATE utf8_unicode_ci,
-		CHANGE  `link_field5`  `link_field5` VARCHAR( 255 ) CHARACTER SET utf8 COLLATE utf8_unicode_ci,
-		CHANGE  `link_field6`  `link_field6` VARCHAR( 255 ) CHARACTER SET utf8 COLLATE utf8_unicode_ci,
-		CHANGE  `link_field7`  `link_field7` VARCHAR( 255 ) CHARACTER SET utf8 COLLATE utf8_unicode_ci,
-		CHANGE  `link_field8`  `link_field8` VARCHAR( 255 ) CHARACTER SET utf8 COLLATE utf8_unicode_ci,
-		CHANGE  `link_field9`  `link_field9` VARCHAR( 255 ) CHARACTER SET utf8 COLLATE utf8_unicode_ci,
-		CHANGE  `link_field10`  `link_field10` VARCHAR( 255 ) CHARACTER SET utf8 COLLATE utf8_unicode_ci,
-		CHANGE  `link_field11`  `link_field11` VARCHAR( 255 ) CHARACTER SET utf8 COLLATE utf8_unicode_ci,
-		CHANGE  `link_field12`  `link_field12` VARCHAR( 255 ) CHARACTER SET utf8 COLLATE utf8_unicode_ci,
-		CHANGE  `link_field13`  `link_field13` VARCHAR( 255 ) CHARACTER SET utf8 COLLATE utf8_unicode_ci,
-		CHANGE  `link_field14`  `link_field14` VARCHAR( 255 ) CHARACTER SET utf8 COLLATE utf8_unicode_ci,
-		CHANGE  `link_field15`  `link_field15` VARCHAR( 255 ) CHARACTER SET utf8 COLLATE utf8_unicode_ci;
+		ALTER TABLE  `pligg_links` CHANGE  `link_url`  `link_url` VARCHAR( 200 ) CHARACTER SET utf8 COLLATE utf8_general_ci,
+		CHANGE  `link_url_title`  `link_url_title` TEXT CHARACTER SET utf8 COLLATE utf8_general_ci DEFAULT NULL ,
+		CHANGE  `link_title`  `link_title` TEXT CHARACTER SET utf8 COLLATE utf8_general_ci,
+		CHANGE  `link_title_url`  `link_title_url` VARCHAR( 255 ) CHARACTER SET utf8 COLLATE utf8_general_ci DEFAULT NULL ,
+		CHANGE  `link_content`  `link_content` MEDIUMTEXT CHARACTER SET utf8 COLLATE utf8_general_ci,
+		CHANGE  `link_summary`  `link_summary` TEXT CHARACTER SET utf8 COLLATE utf8_general_ci DEFAULT NULL ,
+		CHANGE  `link_tags`  `link_tags` TEXT CHARACTER SET utf8 COLLATE utf8_general_ci DEFAULT NULL ,
+		CHANGE  `link_field1`  `link_field1` VARCHAR( 255 ) CHARACTER SET utf8 COLLATE utf8_general_ci,
+		CHANGE  `link_field2`  `link_field2` VARCHAR( 255 ) CHARACTER SET utf8 COLLATE utf8_general_ci,
+		CHANGE  `link_field3`  `link_field3` VARCHAR( 255 ) CHARACTER SET utf8 COLLATE utf8_general_ci,
+		CHANGE  `link_field4`  `link_field4` VARCHAR( 255 ) CHARACTER SET utf8 COLLATE utf8_general_ci,
+		CHANGE  `link_field5`  `link_field5` VARCHAR( 255 ) CHARACTER SET utf8 COLLATE utf8_general_ci,
+		CHANGE  `link_field6`  `link_field6` VARCHAR( 255 ) CHARACTER SET utf8 COLLATE utf8_general_ci,
+		CHANGE  `link_field7`  `link_field7` VARCHAR( 255 ) CHARACTER SET utf8 COLLATE utf8_general_ci,
+		CHANGE  `link_field8`  `link_field8` VARCHAR( 255 ) CHARACTER SET utf8 COLLATE utf8_general_ci,
+		CHANGE  `link_field9`  `link_field9` VARCHAR( 255 ) CHARACTER SET utf8 COLLATE utf8_general_ci,
+		CHANGE  `link_field10`  `link_field10` VARCHAR( 255 ) CHARACTER SET utf8 COLLATE utf8_general_ci,
+		CHANGE  `link_field11`  `link_field11` VARCHAR( 255 ) CHARACTER SET utf8 COLLATE utf8_general_ci,
+		CHANGE  `link_field12`  `link_field12` VARCHAR( 255 ) CHARACTER SET utf8 COLLATE utf8_general_ci,
+		CHANGE  `link_field13`  `link_field13` VARCHAR( 255 ) CHARACTER SET utf8 COLLATE utf8_general_ci,
+		CHANGE  `link_field14`  `link_field14` VARCHAR( 255 ) CHARACTER SET utf8 COLLATE utf8_general_ci,
+		CHANGE  `link_field15`  `link_field15` VARCHAR( 255 ) CHARACTER SET utf8 COLLATE utf8_general_ci;
 
-		ALTER TABLE  `pligg_messages` CHANGE  `title`  `title` VARCHAR( 255 ) CHARACTER SET utf8 COLLATE utf8_unicode_ci,
-		CHANGE  `body`  `body` TEXT CHARACTER SET utf8 COLLATE utf8_unicode_ci;
+		ALTER TABLE  `pligg_messages` CHANGE  `title`  `title` VARCHAR( 255 ) CHARACTER SET utf8 COLLATE utf8_general_ci,
+		CHANGE  `body`  `body` TEXT CHARACTER SET utf8 COLLATE utf8_general_ci;
 
-		ALTER TABLE  `pligg_misc_data` CHANGE  `name`  `name` VARCHAR( 20 ) CHARACTER SET utf8 COLLATE utf8_unicode_ci,
-		CHANGE  `data`  `data` TEXT CHARACTER SET utf8 COLLATE utf8_unicode_ci;
+		ALTER TABLE  `pligg_misc_data` CHANGE  `name`  `name` VARCHAR( 20 ) CHARACTER SET utf8 COLLATE utf8_general_ci,
+		CHANGE  `data`  `data` TEXT CHARACTER SET utf8 COLLATE utf8_general_ci;
 
-		ALTER TABLE  `pligg_modules` CHANGE  `name`  `name` VARCHAR( 50 ) CHARACTER SET utf8 COLLATE utf8_unicode_ci,
-		CHANGE  `folder`  `folder` VARCHAR( 50 ) CHARACTER SET utf8 COLLATE utf8_unicode_ci;
+		ALTER TABLE  `pligg_modules` CHANGE  `name`  `name` VARCHAR( 50 ) CHARACTER SET utf8 COLLATE utf8_general_ci,
+		CHANGE  `folder`  `folder` VARCHAR( 50 ) CHARACTER SET utf8 COLLATE utf8_general_ci;
 
-		ALTER TABLE  `pligg_redirects` CHANGE  `redirect_old`  `redirect_old` VARCHAR( 255 ) CHARACTER SET utf8 COLLATE utf8_unicode_ci,
-		CHANGE  `redirect_new`  `redirect_new` VARCHAR( 255 ) CHARACTER SET utf8 COLLATE utf8_unicode_ci;
+		ALTER TABLE  `pligg_redirects` CHANGE  `redirect_old`  `redirect_old` VARCHAR( 255 ) CHARACTER SET utf8 COLLATE utf8_general_ci,
+		CHANGE  `redirect_new`  `redirect_new` VARCHAR( 255 ) CHARACTER SET utf8 COLLATE utf8_general_ci;
 
-		ALTER TABLE  `pligg_tag_cache` CHANGE  `tag_words`  `tag_words` VARCHAR( 64 ) CHARACTER SET utf8 COLLATE utf8_unicode_ci;
+		ALTER TABLE  `pligg_tag_cache` CHANGE  `tag_words`  `tag_words` VARCHAR( 64 ) CHARACTER SET utf8 COLLATE utf8_general_ci;
 
-		ALTER TABLE  `pligg_tags` CHANGE  `tag_lang`  `tag_lang` VARCHAR( 4 ) CHARACTER SET utf8 COLLATE utf8_unicode_ci DEFAULT  'en',
-		CHANGE  `tag_words`  `tag_words` VARCHAR( 64 ) CHARACTER SET utf8 COLLATE utf8_unicode_ci;
+		ALTER TABLE  `pligg_tags` CHANGE  `tag_lang`  `tag_lang` VARCHAR( 4 ) CHARACTER SET utf8 COLLATE utf8_general_ci DEFAULT  'en',
+		CHANGE  `tag_words`  `tag_words` VARCHAR( 64 ) CHARACTER SET utf8 COLLATE utf8_general_ci;
 
-		ALTER TABLE  `pligg_totals` CHANGE  `name`  `name` VARCHAR( 10 ) CHARACTER SET utf8 COLLATE utf8_unicode_ci;
+		ALTER TABLE  `pligg_totals` CHANGE  `name`  `name` VARCHAR( 10 ) CHARACTER SET utf8 COLLATE utf8_general_ci;
 
 		ALTER TABLE  `pligg_trackbacks` CHANGE  `trackback_type`  `trackback_type` ENUM(  'in',  'out' ) DEFAULT  'in',
 		CHANGE  `trackback_status`  `trackback_status` ENUM(  'ok',  'pendent',  'error' ) DEFAULT  'pendent',
-		CHANGE  `trackback_url`  `trackback_url` VARCHAR( 200 ) CHARACTER SET utf8 COLLATE utf8_unicode_ci,
-		CHANGE  `trackback_title`  `trackback_title` TEXT CHARACTER SET utf8 COLLATE utf8_unicode_ci DEFAULT NULL ,
-		CHANGE  `trackback_content`  `trackback_content` TEXT CHARACTER SET utf8 COLLATE utf8_unicode_ci DEFAULT NULL;
+		CHANGE  `trackback_url`  `trackback_url` VARCHAR( 200 ) CHARACTER SET utf8 COLLATE utf8_general_ci,
+		CHANGE  `trackback_title`  `trackback_title` TEXT CHARACTER SET utf8 COLLATE utf8_general_ci DEFAULT NULL ,
+		CHANGE  `trackback_content`  `trackback_content` TEXT CHARACTER SET utf8 COLLATE utf8_general_ci DEFAULT NULL;
 
-		ALTER TABLE  `pligg_users` CHANGE  `user_login`  `user_login` VARCHAR( 32 ) CHARACTER SET utf8 COLLATE utf8_unicode_ci,
+		ALTER TABLE  `pligg_users` CHANGE  `user_login`  `user_login` VARCHAR( 32 ) CHARACTER SET utf8 COLLATE utf8_general_ci,
 		CHANGE  `user_level`  `user_level` ENUM(  'normal',  'moderator',  'admin', 'Spammer' ) DEFAULT  'normal',
-		CHANGE  `user_pass`  `user_pass` VARCHAR( 64 ) CHARACTER SET utf8 COLLATE utf8_unicode_ci,
-		CHANGE  `user_email`  `user_email` VARCHAR( 128 ) CHARACTER SET utf8 COLLATE utf8_unicode_ci,
-		CHANGE  `user_names`  `user_names` VARCHAR( 128 ) CHARACTER SET utf8 COLLATE utf8_unicode_ci,
-		CHANGE  `user_url`  `user_url` VARCHAR( 128 ) CHARACTER SET utf8 COLLATE utf8_unicode_ci,
-		CHANGE  `user_facebook`  `user_facebook` VARCHAR( 64 ) CHARACTER SET utf8 COLLATE utf8_unicode_ci,
-		CHANGE  `user_twitter`  `user_twitter` VARCHAR( 64 ) CHARACTER SET utf8 COLLATE utf8_unicode_ci,
-		CHANGE  `user_linkedin`  `user_linkedin` VARCHAR( 64 ) CHARACTER SET utf8 COLLATE utf8_unicode_ci,
-		CHANGE  `user_googleplus`  `user_googleplus` VARCHAR( 64 ) CHARACTER SET utf8 COLLATE utf8_unicode_ci,
-		CHANGE  `user_skype`  `user_skype` VARCHAR( 64 ) CHARACTER SET utf8 COLLATE utf8_unicode_ci,
-		CHANGE  `user_pinterest`  `user_pinterest` VARCHAR( 64 ) CHARACTER SET utf8 COLLATE utf8_unicode_ci,
-		CHANGE  `public_email`  `public_email` VARCHAR( 64 ) CHARACTER SET utf8 COLLATE utf8_unicode_ci,
-		CHANGE  `user_avatar_source`  `user_avatar_source` VARCHAR( 255 ) CHARACTER SET utf8 COLLATE utf8_unicode_ci,
-		CHANGE  `user_ip`  `user_ip` VARCHAR( 20 ) CHARACTER SET utf8 COLLATE utf8_unicode_ci DEFAULT  '0',
-		CHANGE  `user_lastip`  `user_lastip` VARCHAR( 20 ) CHARACTER SET utf8 COLLATE utf8_unicode_ci DEFAULT  '0',
-		CHANGE  `last_reset_code`  `last_reset_code` VARCHAR( 255 ) CHARACTER SET utf8 COLLATE utf8_unicode_ci DEFAULT NULL ,
-		CHANGE  `user_location`  `user_location` VARCHAR( 255 ) CHARACTER SET utf8 COLLATE utf8_unicode_ci DEFAULT NULL ,
-		CHANGE  `user_occupation`  `user_occupation` VARCHAR( 255 ) CHARACTER SET utf8 COLLATE utf8_unicode_ci DEFAULT NULL ,
-		CHANGE  `user_categories`  `user_categories` VARCHAR( 1024 ) CHARACTER SET utf8 COLLATE utf8_unicode_ci DEFAULT  '';";
+		CHANGE  `user_pass`  `user_pass` VARCHAR( 64 ) CHARACTER SET utf8 COLLATE utf8_general_ci,
+		CHANGE  `user_email`  `user_email` VARCHAR( 128 ) CHARACTER SET utf8 COLLATE utf8_general_ci,
+		CHANGE  `user_names`  `user_names` VARCHAR( 128 ) CHARACTER SET utf8 COLLATE utf8_general_ci,
+		CHANGE  `user_url`  `user_url` VARCHAR( 128 ) CHARACTER SET utf8 COLLATE utf8_general_ci,
+		CHANGE  `user_facebook`  `user_facebook` VARCHAR( 64 ) CHARACTER SET utf8 COLLATE utf8_general_ci,
+		CHANGE  `user_twitter`  `user_twitter` VARCHAR( 64 ) CHARACTER SET utf8 COLLATE utf8_general_ci,
+		CHANGE  `user_linkedin`  `user_linkedin` VARCHAR( 64 ) CHARACTER SET utf8 COLLATE utf8_general_ci,
+		CHANGE  `user_googleplus`  `user_googleplus` VARCHAR( 64 ) CHARACTER SET utf8 COLLATE utf8_general_ci,
+		CHANGE  `user_skype`  `user_skype` VARCHAR( 64 ) CHARACTER SET utf8 COLLATE utf8_general_ci,
+		CHANGE  `user_pinterest`  `user_pinterest` VARCHAR( 64 ) CHARACTER SET utf8 COLLATE utf8_general_ci,
+		CHANGE  `public_email`  `public_email` VARCHAR( 64 ) CHARACTER SET utf8 COLLATE utf8_general_ci,
+		CHANGE  `user_avatar_source`  `user_avatar_source` VARCHAR( 255 ) CHARACTER SET utf8 COLLATE utf8_general_ci,
+		CHANGE  `user_ip`  `user_ip` VARCHAR( 20 ) CHARACTER SET utf8 COLLATE utf8_general_ci DEFAULT  '0',
+		CHANGE  `user_lastip`  `user_lastip` VARCHAR( 20 ) CHARACTER SET utf8 COLLATE utf8_general_ci DEFAULT  '0',
+		CHANGE  `last_reset_code`  `last_reset_code` VARCHAR( 255 ) CHARACTER SET utf8 COLLATE utf8_general_ci DEFAULT NULL ,
+		CHANGE  `user_location`  `user_location` VARCHAR( 255 ) CHARACTER SET utf8 COLLATE utf8_general_ci DEFAULT NULL ,
+		CHANGE  `user_occupation`  `user_occupation` VARCHAR( 255 ) CHARACTER SET utf8 COLLATE utf8_general_ci DEFAULT NULL ,
+		CHANGE  `user_categories`  `user_categories` VARCHAR( 1024 ) CHARACTER SET utf8 COLLATE utf8_general_ci DEFAULT  '';";
 	
 	$stmts = explode("\n", $stmts);
 	
