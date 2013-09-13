@@ -311,6 +311,14 @@ text-decoration:underline;
 	min-width:200px;
 }
 
+/************** MANAGE USERS *****************/
+
+.unconfirmed-email {
+	color:#a91e1e;
+}
+.confirmed-email {
+	color:#478920;
+}
 /************** MANAGE SUBMISSIONS *****************/
 /* .table-striped tbody tr:nth-child(2n+1) td, .table-striped tbody tr:nth-child(2n+1) th {background:none;} */
 .tr_moderated {

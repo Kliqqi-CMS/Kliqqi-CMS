@@ -190,9 +190,9 @@ function validate_all_user_action(){
 					<td style="text-align:center;vertical-align:middle;">{$userlist[nr].user_level}</td>
 					<td style="vertical-align:middle;">
 						{if $userlist[nr].user_lastlogin neq "0000-00-00 00:00:00"}
-							<i class="icon icon-ok" title="{#PLIGG_Visual_AdminPanel_Confirmed_Email#}" alt="{#PLIGG_Visual_AdminPanel_Confirmed_Email#}"></i>
+							<i class="icon icon-ok confirmed-email" title="{#PLIGG_Visual_AdminPanel_Confirmed_Email#}" alt="{#PLIGG_Visual_AdminPanel_Confirmed_Email#}"></i>
 						{else}
-							<a data-toggle="modal" href="{$my_base_url}{$my_pligg_base}/admin/admin_user_validate.php?id={$userlist[nr].user_id}" title="{#PLIGG_Visual_AdminPanel_Unconfirmed_Email#}"><i class="icon icon-warning-sign" rel="tooltip" data-placement="left" data-toggle="tooltip" data-original-title="{#PLIGG_Visual_AdminPanel_Unconfirmed_Email#}"></i></a>
+							<a data-toggle="modal" href="{$my_base_url}{$my_pligg_base}/admin/admin_user_validate.php?id={$userlist[nr].user_id}" title="{#PLIGG_Visual_AdminPanel_Unconfirmed_Email#}"><i class="icon icon-warning-sign unconfirmed-email" rel="tooltip" data-placement="left" data-toggle="tooltip" data-original-title="{#PLIGG_Visual_AdminPanel_Unconfirmed_Email#}"></i></a>
 						{/if}
 						<a href="mailto:{$userlist[nr].user_email}" target="_blank">{$userlist[nr].user_email|truncate:25:"...":true}</a>
 					</td>
