@@ -30,9 +30,9 @@
 
 	<hr />
 	<div align="center">
-		<a class="btn btn-primary" href="{$URL_simple_messaging_reply}{$msg_id}"><img src="{$simple_messaging_path}images/reply.png" align="absmiddle" /> {#PLIGG_MESSAGING_Reply#}</a> 
-		<a class="btn btn-default" href="{$URL_simple_messaging_inbox}"><img src="{$simple_messaging_path}images/cross.png" align="absmiddle" /> {#PLIGG_MESSAGING_Close#}</a>
-		<a class="btn btn-danger" href="{$URL_simple_messaging_delmsg}{$msg_id}"><img src="{$simple_messaging_path}images/delete.png" align="absmiddle" /> {#PLIGG_MESSAGING_Delete#}</a> 
+		<a class="btn btn-success" href="{$URL_simple_messaging_reply}{$msg_id}"><i class="icon-reply"></i> {#PLIGG_MESSAGING_Reply#}</a> 
+		<a class="btn btn-default" href="{$URL_simple_messaging_inbox}"><i class="icon-envelope"></i> {#PLIGG_MESSAGING_Close#}</a>
+		<a class="btn btn-danger" href="{$URL_simple_messaging_delmsg}{$msg_id}"><i class="icon-remove"></i> {#PLIGG_MESSAGING_Delete#}</a> 
 	</div>
 </p>
 
