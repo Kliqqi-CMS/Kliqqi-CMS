@@ -7,7 +7,7 @@
 {***********************************************************************************}
 {checkActionsTpl location="tpl_pligg_profile_start"}
 <div style="margin-bottom:10px;" class="row user_navigation_top">
-	<div class="col-md-9">
+	<div class="col-md-9 user_navigation_left">
 		<h1 style="margin-bottom:0px;">
 			{if $UseAvatars neq "0" && $pagename == "user_edit"}
 				<a href="#profileavatar" data-toggle="modal">
@@ -149,20 +149,16 @@
 			{checkActionsTpl location="tpl_user_profile_details_end"}
 		</div>
 	</div>
-	<div id="user_search" class="col-md-3">
-		<div style="float:right;text-align:right;">
-			<form action="{$my_pligg_base}/user.php" method="get" {php} global $URLMethod, $my_base_url, $my_pligg_base; if ($URLMethod==2) print "onsubmit='document.location.href=\"{$my_base_url}{$my_pligg_base}/user/search/\"+encodeURIComponent(this.keyword.value); return false;'";{/php}>
-				<div class="row">
-					<div class="col-md-10">
-						<input type="hidden" name="view" value="search">
-						<input type="text" name="keyword" class="form-control" placeholder="{#PLIGG_Visual_User_Search_Users#}">
-					</div>
-					<div class="col-md-2">
-						<button type="submit" class="btn btn-primary">{#PLIGG_Visual_Search_Go#}</button>
-					</div>
+	<div class="col-md-3 user_navigation_right">
+		<div class="user_search">
+			<form action="{$my_pligg_base}/user.php" class="form-inline" role="form" method="get" {php} global $URLMethod, $my_base_url, $my_pligg_base; if ($URLMethod==2) print "onsubmit='document.location.href=\"{$my_base_url}{$my_pligg_base}/user/search/\"+encodeURIComponent(this.keyword.value); return false;'";{/php}>
+				<input type="hidden" name="view" value="search">
+				<div class="form-group">
+					<input type="text" name="keyword" class="form-control" placeholder="{#PLIGG_Visual_User_Search_Users#}">
 				</div>
+				<button type="submit" class="btn btn-primary">{#PLIGG_Visual_Search_Go#}</button>
 			</form>	
-			<div class="btn-group">
+			<div class="btn-group user_followers">
 				<a class="btn btn-default btn-sm" href="{$user_url_friends}"><i class="icon-user"></i> {$user_following} {#PLIGG_Visual_User_Profile_View_Friends#}</a>
 				<a class="btn btn-default btn-sm" href="{$user_url_friends2}"><i class="icon-user"></i> {$user_followers} {#PLIGG_Visual_User_Profile_Your_Friends#}</a>
                 {if check_for_enabled_module('simple_messaging',2.0) && $is_friend}
@@ -180,8 +176,9 @@
 				{/if}
 			</div>
 		</div>
+		<div class="clearfix"></div>
 	</div>
-	<div style="clear:both;"></div>
+	<div class="clearfix"></div>
 </div>
 {checkActionsTpl location="tpl_user_center_just_below_header"}
 <ul class="nav nav-tabs" id="profiletabs">

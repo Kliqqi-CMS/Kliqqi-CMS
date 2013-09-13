@@ -630,6 +630,18 @@ width:90%;
 .avatar_thumb:hover .edit-avatar {
 display: block;
 }
+.user_navigation_left {
+
+}
+.user_navigation_right {
+
+}
+.user_search {
+
+}
+.user_followers {
+margin-top:10px;
+}
 .checked {
 clear:both;
 }
