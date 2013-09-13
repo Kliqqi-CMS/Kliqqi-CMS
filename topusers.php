@@ -19,6 +19,7 @@ $main_smarty->assign('navbar_where', $navwhere);
 $main_smarty->assign('posttitle', $main_smarty->get_config_vars('PLIGG_Visual_Breadcrumb_TopUsers'));
 
 // figure out what "page" of the results we're on
+$page_size = $top_users_size;
 $offset=(get_current_page()-1)* $page_size;
 
 // put the table headers in an array for the top users tpl file
@@ -74,7 +75,7 @@ if ($users)
 
 $user = new User;
 $rows = $db->get_var("select count(*) as count $from_where $order_by");
-$users = $db->get_results("$select $from_where $order_by LIMIT $offset, 30");
+$users = $db->get_results("$select $from_where $order_by LIMIT $offset, $page_size");
 $users_table = '';
 //echo "$select $from_where $order_by LIMIT $offset, $page_size";
 
