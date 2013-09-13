@@ -199,11 +199,11 @@ function validate_all_user_action(){
 					<td>{$userlist[nr].user_date}</td>
 					<td style="text-align:center;vertical-align:middle;">
 						{if $userlist[nr].user_level eq 'Spammer'}
-							<i class="icon-ban-circle" title="Spammer"></i>
+							<i class="icon-ban-circle" title="{#PLIGG_Visual_AdminPanel_Spam#}"></i> {#PLIGG_Visual_AdminPanel_Spam#}
 						{elseif $userlist[nr].user_enabled eq 1}
-							<i class="icon-user" title="Enabled"></i>
+							<i class="icon-user" title="{#PLIGG_Visual_User_Profile_Enabled#}"></i> {#PLIGG_Visual_User_Profile_Enabled#}
 						{else}
-							<i class="icon-trash" title="Disabled"></i>
+							<i class="icon-trash" title="{#PLIGG_Visual_User_Profile_Disabled#}"></i> {#PLIGG_Visual_User_Profile_Disabled#}
 						{/if}
 					</td>
 					{checkActionsTpl location="tpl_pligg_admin_users_td_end"}
