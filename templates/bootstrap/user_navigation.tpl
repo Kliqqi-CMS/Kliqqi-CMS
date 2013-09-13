@@ -6,7 +6,7 @@
 
 {***********************************************************************************}
 {checkActionsTpl location="tpl_pligg_profile_start"}
-<div class="row" style="margin-bottom:10px;">
+<div style="margin-bottom:10px;" class="row user_navigation_top">
 	<div class="col-md-9">
 		<h1 style="margin-bottom:0px;">
 			{if $UseAvatars neq "0" && $pagename == "user_edit"}
@@ -27,45 +27,47 @@
 							}
 						{/php}
 						<img style="float:left;margin:0 15px 0 0;" src="{$Avatar.large}" style="margin-bottom:4px;" alt="Avatar" />
-						<a href="#profileavatar" data-toggle="modal" class="btn btn-default btn-sm edit-avatar">Edit Avatar</a>
+						<a href="#profileavatar" data-toggle="modal" class="btn btn-default btn-xs edit-avatar">Edit Avatar</a>
 					</div>
 				</a>
 				{* Avatar upload modal *}
-				<div class="modal hide fade" id="profileavatar" style="display: none;">
-					<div class="modal-header">
-						<button data-dismiss="modal" class="close" type="button">&times;</button>
-						<h3>Profile Avatar Upload</h3>
-					</div>
-					<div class="modal-body">
-						<form method="POST" enctype="multipart/form-data" name="image_upload_form">
-						<script type="text/javascript">
-							$('.fileupload').fileupload()
-						</script>
-	
-						<div class="fileupload fileupload-new" data-provides="fileupload">
-							<div class="fileupload-new img-thumbnail">
-								<img src="{$Avatar.large}" title="{#PLIGG_Visual_Profile_CurrentAvatar#}" />
-							</div>
-							<div class="fileupload-preview fileupload-exists img-thumbnail" style="max-width:{$Avatar_Large}px;max-height:{$Avatar_Large}px;"></div>
-							<div>
-								<span class="btn btn-default btn-file">
-									<span class="fileupload-new"><i class="icon icon-picture"></i> Browse</span>
-									<span class="fileupload-exists"><i class="icon icon-picture"></i> Browse</span>
-									<input type="file" class="fileupload" name="image_file"/>
-								</span>
-								<a href="#" class="btn btn-danger fileupload-exists" data-dismiss="fileupload">Remove</a>
-							</div>
-						</div>
-						
-					</div>
-					<div class="modal-footer">
-						<input type="hidden" name="avatar" value="uploaded"/>
-						{$hidden_token_profile_change}
-						<a class="btn btn-default" data-dismiss="modal">{#PLIGG_Visual_View_User_Edit_Cancel#}</a>
-						<input type="submit" name="action" class="btn btn-primary" value="{#PLIGG_Visual_Profile_AvatarUpload#}"/>
-						</form>
-					</div>
-				</div>
+				<div class="modal fade" id="profileavatar">
+					<div class="modal-dialog">
+						<div class="modal-content">
+							<form method="POST" enctype="multipart/form-data" name="image_upload_form">
+								<script type="text/javascript">
+									$('.fileupload').fileupload()
+								</script>
+								<div class="modal-header">
+									<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+									<h4 class="modal-title">{#PLIGG_Visual_Profile_UploadAvatar2#}</h4>
+								</div>
+								<div class="modal-body">
+									<div class="fileupload fileupload-new" data-provides="fileupload">
+										<div class="fileupload-new img-thumbnail">
+											<img src="{$Avatar.large}" title="{#PLIGG_Visual_Profile_CurrentAvatar#}" />
+										</div>
+										<div class="fileupload-preview fileupload-exists img-thumbnail" style="max-width:{$Avatar_Large}px;max-height:{$Avatar_Large}px;"></div>
+										<div>
+											<span class="btn btn-default btn-file">
+												<span class="fileupload-new"><i class="icon icon-picture"></i> Browse</span>
+												<span class="fileupload-exists"><i class="icon icon-picture"></i> Browse</span>
+												<input type="file" class="fileupload" name="image_file"/>
+											</span>
+											<a href="#" class="btn btn-danger fileupload-exists" data-dismiss="fileupload">Remove</a>
+										</div>
+									</div>
+								</div>
+								<div class="modal-footer">
+									<input type="hidden" name="avatar" value="uploaded"/>
+									{$hidden_token_profile_change}
+									<a class="btn btn-default" data-dismiss="modal">{#PLIGG_Visual_View_User_Edit_Cancel#}</a>
+									<input type="submit" name="action" class="btn btn-primary" value="{#PLIGG_Visual_Profile_AvatarUpload#}"/>
+								</div>
+							</form>
+						</div><!-- /.modal-content -->
+					</div><!-- /.modal-dialog -->
+				</div><!-- /.modal -->
 			{elseif $UseAvatars neq "0" && $pagename == "user"}
 				{if $user_login eq $user_logged_in || $isadmin}
 					<a href="{if $UrlMethod == "2"}{$my_base_url}{$my_pligg_base}/user/{$user_login}/edit/?avatar=edit{else}{$my_base_url}{$my_pligg_base}/profile.php?avatar=edit{/if}">
@@ -73,7 +75,7 @@
 				<div class="img-thumbnail avatar_thumb">
 					<img style="float:left;margin:0 15px 0 0;" src="{$Avatar.large}" style="margin-bottom:4px;" alt="Avatar" />
 					{if $user_login eq $user_logged_in || $isadmin}
-						<a class="btn btn-default btn-sm edit-avatar" href="{if $UrlMethod == "2"}{$my_base_url}{$my_pligg_base}/user/{$user_login}/edit/?avatar=edit{else}{$my_base_url}{$my_pligg_base}/profile.php?avatar=edit{/if}">Edit Avatar</a>
+						<a class="btn btn-default btn-xs edit-avatar" href="{if $UrlMethod == "2"}{$my_base_url}{$my_pligg_base}/user/{$user_login}/edit/?avatar=edit{else}{$my_base_url}{$my_pligg_base}/profile.php?avatar=edit{/if}">Edit Avatar</a>
 					{/if}
 				</div>
 				{if $user_login eq $user_logged_in || $isadmin}</a>{/if}

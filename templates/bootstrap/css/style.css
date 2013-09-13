@@ -625,7 +625,7 @@ position: absolute;
 bottom: 0;
 display: none;
 margin: 4px;
-width: 72px;
+width:90%;
 }
 .avatar_thumb:hover .edit-avatar {
 display: block;
