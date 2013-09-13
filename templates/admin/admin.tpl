@@ -6,6 +6,7 @@
 	<link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.no-icons.min.css" rel="stylesheet">
 	<link href="//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.min.css" rel="stylesheet">
 	<link rel="stylesheet" type="text/css" href="{$my_base_url}{$my_pligg_base}/templates/{$the_template}/css/jquery.pnotify.css" media="screen" />
+	<link rel="stylesheet" type="text/css" href="{$my_base_url}{$my_pligg_base}/templates/admin/css/bootstrap-fileupload.min.css" media="screen">
 	<link rel="stylesheet" type="text/css" href="{$my_base_url}{$my_pligg_base}/templates/admin/css/style.css" media="screen">
 	{checkForCss}
 
@@ -24,6 +25,7 @@
 	<script type="text/javascript" src="{$my_base_url}{$my_pligg_base}/templates/admin/js/jquery/jquery.pnotify.js"></script>
 	<script type="text/javascript" src="{$my_base_url}{$my_pligg_base}/templates/admin/js/jquery/jquery.masonry.min.js"></script>
 	<script src="//netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
+	<script type="text/javascript" src="{$my_base_url}{$my_pligg_base}/templates/admin/js/bootstrap-fileupload.min.js"></script>
     <script type="text/javascript" src="{$my_base_url}{$my_pligg_base}/templates/admin/js/jquery/jquery_cookie.js"></script>
     <script type="text/javascript" src="{$my_base_url}{$my_pligg_base}/templates/admin/js/leftmenu.js"></script>
 	 
