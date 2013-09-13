@@ -171,7 +171,7 @@
 					{/if}
 				{elseif $user_login neq $user_logged_in}
 					{if $user_authenticated eq true} 
-						<a  class="btn btn-sm btn-success" href="{$user_url_add}">{#PLIGG_Visual_User_Profile_Add_Friend#}{* {$user_login|capitalize} *}</a>
+						<a class="btn btn-sm btn-success" href="{$user_url_add}">{#PLIGG_Visual_User_Profile_Add_Friend#}{* {$user_login|capitalize} *}</a>
 					{/if}   
 				{/if}
 			</div>
