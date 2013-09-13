@@ -153,7 +153,7 @@ function validate_all_user_action(){
 					<input type='hidden' name='old[{$template_comments[id].comment_id}]' id="comment-{$template_comments[id].comment_id}-old" value='{$template_comments[id].comment_status}'>
 				</td>
 				<td width="240px">{$template_comments[id].comment_date}</td>
-				<td style="text-align:center;vertical-align:middle;">{$template_comments[id].comment_status}</td>
+				<td style="text-align:center;vertical-align:middle;text-transform:capitalize;">{$template_comments[id].comment_status}</td>
 				{checkActionsTpl location="tpl_pligg_admin_comments_td_end"}
 			</tr>
 			{/section}
