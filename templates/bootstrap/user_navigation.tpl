@@ -157,24 +157,26 @@
 					<input type="text" name="keyword" class="form-control" placeholder="{#PLIGG_Visual_User_Search_Users#}">
 				</div>
 				<button type="submit" class="btn btn-primary">{#PLIGG_Visual_Search_Go#}</button>
-			</form>	
-			<div class="btn-group user_followers">
-				<a class="btn btn-default btn-sm" href="{$user_url_friends}"><i class="icon-user"></i> {$user_following} {#PLIGG_Visual_User_Profile_View_Friends#}</a>
-				<a class="btn btn-default btn-sm" href="{$user_url_friends2}"><i class="icon-user"></i> {$user_followers} {#PLIGG_Visual_User_Profile_Your_Friends#}</a>
-                {if check_for_enabled_module('simple_messaging',2.0) && $is_friend}
-					<a class="btn btn-default btn-sm" href="{$my_base_url}{$my_pligg_base}/module.php?module=simple_messaging&view=compose&to={$username}&return={$my_pligg_base}%2Fuser.php%3Flogin%3D{$user_logged_in}%26view%3Dfollowers"><i class="icon-envelope"></i> Send Message</a>
-				{/if}
-				{if $is_friend gt 0}
-					<a href="{$user_url_remove}" class="btn btn-sm btn-danger">{#PLIGG_Unfollow#}{* {$user_login|capitalize} *}</a>
-					{if $user_authenticated eq true}
-						{checkActionsTpl location="tpl_user_center"}
+			</form>
+			{if $Allow_Friends}
+				<div class="btn-group user_followers">
+					<a class="btn btn-default btn-sm" href="{$user_url_friends}"><i class="icon-user"></i> {$user_following} {#PLIGG_Visual_User_Profile_View_Friends#}</a>
+					<a class="btn btn-default btn-sm" href="{$user_url_friends2}"><i class="icon-user"></i> {$user_followers} {#PLIGG_Visual_User_Profile_Your_Friends#}</a>
+					{if check_for_enabled_module('simple_messaging',2.0) && $is_friend}
+						<a class="btn btn-default btn-sm" href="{$my_base_url}{$my_pligg_base}/module.php?module=simple_messaging&view=compose&to={$username}&return={$my_pligg_base}%2Fuser.php%3Flogin%3D{$user_logged_in}%26view%3Dfollowers"><i class="icon-envelope"></i> Send Message</a>
 					{/if}
-				{elseif $user_login neq $user_logged_in}
-					{if $user_authenticated eq true} 
-						<a class="btn btn-sm btn-success" href="{$user_url_add}">{#PLIGG_Visual_User_Profile_Add_Friend#}{* {$user_login|capitalize} *}</a>
-					{/if}   
-				{/if}
-			</div>
+					{if $is_friend gt 0}
+						<a href="{$user_url_remove}" class="btn btn-sm btn-danger">{#PLIGG_Unfollow#}{* {$user_login|capitalize} *}</a>
+						{if $user_authenticated eq true}
+							{checkActionsTpl location="tpl_user_center"}
+						{/if}
+					{elseif $user_login neq $user_logged_in}
+						{if $user_authenticated eq true} 
+							<a class="btn btn-sm btn-success" href="{$user_url_add}">{#PLIGG_Visual_User_Profile_Add_Friend#}{* {$user_login|capitalize} *}</a>
+						{/if}   
+					{/if}
+				</div>
+			{/if}
 		</div>
 		<div class="clearfix"></div>
 	</div>

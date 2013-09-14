@@ -12,7 +12,7 @@
 				<span class="input-group-btn">
 					<input type="hidden" name="view" value="search">
 					<input type="text" name="keyword" class="form-control" placeholder="{#PLIGG_Visual_User_Search_Users#}">
-					<button class="btn btn-default" type="button">Search Accounts</button>
+					<button class="btn btn-primary" type="button">Search Accounts</button>
 				</span>
 			</form>	
 		</div><!-- /input-group -->
@@ -31,7 +31,7 @@
 					<th>{#PLIGG_Visual_Login_Username#}</th>
 					<th>{#PLIGG_Visual_User_Profile_Joined#}</th>
 					<th>{#PLIGG_User_Profile_Social#}</th>
-					<th>Add/Remove</th>
+					{if $Allow_Friends}<th>Add/Remove</th>{/if}
 				</tr>
 			</thead>
 			<tbody>
@@ -67,12 +67,14 @@
 								<a href="http://pinterest.com/{$userlist[nr].user_pinterest}/" title="{$userlist[nr].user_login|capitalize} on Pinterest" rel="nofollow" target="_blank"><img src="{$my_pligg_base}/templates/{$the_template}/img/pinterest_round.png" /></a>
 							{/if}
 						</td>
-						<td style="text-align:center;">{if $userlist[nr].status eq 0}	
-								<a href="{$userlist[nr].add_friend}"><img src="{$my_pligg_base}/templates/{$the_template}/img/user_add.gif" align="absmiddle" border="0" /></a>
-							{else}
-								<a href="{$userlist[nr].remove_friend}"><img src="{$my_pligg_base}/templates/{$the_template}/img/user_delete.gif" align="absmiddle" border="0"/></a>
-							{/if}
-						</td>	
+						{if $Allow_Friends}
+							<td style="text-align:center;">{if $userlist[nr].status eq 0}	
+									<a href="{$userlist[nr].add_friend}"><img src="{$my_pligg_base}/templates/{$the_template}/img/user_add.gif" align="absmiddle" border="0" /></a>
+								{else}
+									<a href="{$userlist[nr].remove_friend}"><img src="{$my_pligg_base}/templates/{$the_template}/img/user_delete.gif" align="absmiddle" border="0"/></a>
+								{/if}
+							</td>
+						{/if}						
 					</tr>
 				{/section}
 			</tbody>
