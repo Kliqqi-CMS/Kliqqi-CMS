@@ -9,9 +9,9 @@ $sql = "SELECT data FROM " . table_misc_data . " WHERE name = 'pligg_version'";
 $pligg_version = $db->get_var($sql);
 
 // Check if you need to run the one time upgrade to Pligg 2.0.0rc1
-if ($pligg_version = '1.2.2') {
+if ($pligg_version == '1.2.2') {
 
-	echo '<li>Performing one-time Pligg 2.0.0 Upgrade<ul>';
+	echo '<li>Performing one-time Pligg 2.0.0rc1 Upgrade<ul>';
 	
 	// Add option to search comment content
     $result = $db->get_results("select * from `" . table_config . "` where `var_name` = 'Search_Comments';");
@@ -38,11 +38,11 @@ if ($pligg_version = '1.2.2') {
 
 	// Change log file locations to new /logs directory
 	$sql = "UPDATE ".table_config." 
-			SET var_value='logs/domain-whitelist.log' 
+			SET var_value='logs/antispam.log' 
 			WHERE var_name='$MAIN_SPAM_RULESET';";
 	$db->query($sql);
 	$sql = "UPDATE ".table_config." 
-			SET var_defaultvalue='logs/domain-whitelist.log' 
+			SET var_defaultvalue='logs/antispam.log' 
 			WHERE var_name='$MAIN_SPAM_RULESET';";
 	$db->query($sql);
 	$sql = "UPDATE ".table_config." 
