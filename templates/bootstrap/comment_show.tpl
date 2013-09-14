@@ -5,7 +5,7 @@
 <li class="media comment">
 	<a id="c{$comment_id}"></a>
 	{checkActionsTpl location="tpl_pligg_story_comments_single_start"}
-	<div class="comment-wrapper clearfix" {if $comment_status neq "published"}style="background-color: #FFFBE4;border:1px solid #DFDFDF;"{/if}>
+	<div class="comment-wrapper {if $comment_status neq "published"}alert alert-warning comment-moderated{/if} clearfix">
 		<div class="pull-left comment_left">
 			{if $UseAvatars neq "0"}<a href="{$user_view_url}"><img src="{$Avatar.large}" class="avatar" alt="{$user_username}" title="{$user_username}" /></a>{/if}      
 			{if $Enable_Comment_Voting eq 1}
@@ -31,8 +31,7 @@
 				</div>
 			{/if}
 		</div>
-		<div class="media-body" id="wholecomment{$comment_id}">
-
+		<div class="media-body comment-content" id="wholecomment{$comment_id}">
 			{if $user_logged_in == $user_userlogin || $isadmin eq 1}
 				<div class="btn-group pull-right admin-links">
 					<a class="btn btn-default dropdown-toggle" data-toggle="dropdown" href="#">
