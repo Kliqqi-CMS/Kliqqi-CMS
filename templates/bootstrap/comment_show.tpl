@@ -40,11 +40,11 @@
 					</a>
 					<ul class="dropdown-menu">
 						{if $isadmin eq 1}
-							<li><a href="{$my_base_url}{$my_pligg_base}/admin/admin_users.php?mode=view&user={$user_userlogin}">{#PLIGG_Visual_Comment_Manage_User#} {$user_userlogin}</a></li>
-							<li><a href="{$edit_comment_url}">{#PLIGG_Visual_Comment_Edit#}</a></li>
-							<li><a href="{$delete_comment_url}">{#PLIGG_Visual_Comment_Delete#}</a></li>
+							<li><a href="{$my_base_url}{$my_pligg_base}/admin/admin_users.php?mode=view&user={$user_userlogin}"><i class="icon icon-user"></i> {#PLIGG_Visual_Comment_Manage_User#} {$user_userlogin}</a></li>
+							<li><a href="{$edit_comment_url}"><i class="icon icon-edit"></i> {#PLIGG_Visual_Comment_Edit#}</a></li>
+							<li><a href="{$delete_comment_url}"><i class="icon icon-trash"></i> {#PLIGG_Visual_Comment_Delete#}</a></li>
 						{elseif $user_logged_in == $user_userlogin}
-							<li><a href="{$edit_comment_url}">{#PLIGG_Visual_Comment_Edit#}</a></li>
+							<li><a href="{$edit_comment_url}"><i class="icon icon-edit"></i> {#PLIGG_Visual_Comment_Edit#}</a></li>
 						{/if}
 						{checkActionsTpl location="tpl_pligg_story_comments_admin"}
 					</ul>
