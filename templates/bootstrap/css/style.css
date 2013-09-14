@@ -472,27 +472,29 @@ padding: 1px 5px;
     border-bottom: 1px solid #EFEFEF;
     margin-bottom: 8px;
 }
+
+.comment_left {
+	text-align:center;
+}
+
+.comment_voting {
+	min-width:90px;
+	margin:5px 5px 10px 0;
+}
+
 .dropdown-menu li {
     border-bottom: none;
     margin-bottom: 0px;
-}
-.comment-left {
-    float: left;
-    margin: 0;
-    width: 5%;
-}
-
-.comment-right {
-	float: left;
-    margin: -5px 0 0 0;
-    width: 95%;
 }
 
 .child-comment{
 	margin-left:30px;
 }
 
-.avatar {}
+.avatar {
+	max-width:64px;
+	max-height:64px;
+}
 
 .comment-data{
 	margin-bottom: 9px;

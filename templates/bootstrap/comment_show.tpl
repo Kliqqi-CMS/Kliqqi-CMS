@@ -2,23 +2,36 @@
 ******** Individual Comment *********
 *************************************}
 <!-- comment_show.tpl -->
-<li class="comment">
+<li class="media comment">
 	<a id="c{$comment_id}"></a>
 	{checkActionsTpl location="tpl_pligg_story_comments_single_start"}
 	<div class="comment-wrapper clearfix" {if $comment_status neq "published"}style="background-color: #FFFBE4;border:1px solid #DFDFDF;"{/if}>
-		<div class="comment-left">
-			{if $UseAvatars neq "0"}<a href="{$user_view_url}"><img src="{$Avatar.small}" align="absmiddle" class="avatar" alt="{$user_username}" title="{$user_username}" /></a>{/if}      
+		<div class="pull-left comment_left">
+			{if $UseAvatars neq "0"}<a href="{$user_view_url}"><img src="{$Avatar.large}" class="avatar" alt="{$user_username}" title="{$user_username}" /></a>{/if}      
 			{if $Enable_Comment_Voting eq 1}
-				<br />
-				<div><a id="cvote-{$comment_id}" class="comment_vote_count">{$comment_votes}</a></div>
-				{if $comment_user_vote_count eq 0 && $current_userid neq $comment_author}
-					<a class="btn btn-xs {if $comment_shakebox_currentuser_votes eq 1}btn-success{else}btn-default{/if}" href="javascript:{$link_shakebox_javascript_votey}"><i class="{if $comment_shakebox_currentuser_votes >= 1}icon-white {/if}icon-thumbs-up"></i></a>
-					<a class="btn btn-xs {if $comment_shakebox_currentuser_reports eq 1}btn-danger{else}btn-default{/if}" href="javascript:{$link_shakebox_javascript_voten}"><i class="{if $comment_shakebox_currentuser_reports >= 1}icon-white {/if}icon-thumbs-down"></i></a>
-				{/if}
-				| 
+				<div class="comment_voting">
+					{if $Enable_Comment_Voting eq 1}
+						{if $comment_shakebox_currentuser_votes eq 0}
+							<!-- Vote For It -->
+							<a class="btn btn-xs btn-default" href="javascript:{$link_shakebox_javascript_votey}"><i class="icon-thumbs-up"></i></a>
+						{else}
+							<!-- Already Voted -->
+							<a class="btn btn-xs btn-success" href="javascript:{$link_shakebox_javascript_unvotey}"><i class="icon-white icon-thumbs-up"></i></a>
+						{/if}
+						<a id="cvote-{$comment_id}" class="btn btn-default btn-xs comment_vote_count" disabled>{$comment_votes}</a>
+						{if $comment_shakebox_currentuser_reports eq 0}
+							<!-- Bury It -->
+							<a class="btn btn-xs btn-default" href="javascript:{$link_shakebox_javascript_voten}"><i class="icon-thumbs-down"></i></a>
+						{else}
+							<!-- Already Buried -->
+							<a class="btn btn-xs btn-danger" href="javascript:{$link_shakebox_javascript_unvoten}"><i class="icon-white icon-thumbs-down"></i></a>
+						{/if}
+					{/if}
+					
+				</div>
 			{/if}
 		</div>
-		<div class="span_comment comment-right" id="wholecomment{$comment_id}">
+		<div class="media-body" id="wholecomment{$comment_id}">
 
 			{if $user_logged_in == $user_userlogin || $isadmin eq 1}
 				<div class="btn-group pull-right admin-links">

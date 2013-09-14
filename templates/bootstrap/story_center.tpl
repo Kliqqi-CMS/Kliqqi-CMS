@@ -50,7 +50,7 @@ var story_link="{$story_url}";
 		{checkActionsTpl location="tpl_pligg_story_comments_start"}
 		<h3>{#PLIGG_Visual_Story_Comments#}</h3>
 		<a name="comments" href="#comments"></a>
-		<ol class="comment-list">
+		<ol class="media-list comment-list">
 			{checkActionsTpl location="tpl_pligg_story_comments_individual_start"}
 				{$the_comments}
 			{checkActionsTpl location="tpl_pligg_story_comments_individual_end"}
