@@ -477,6 +477,13 @@ padding: 1px 5px;
 	color:#5f5f5f;
 }
 
+.media,.media-body {
+	overflow:visible !important;
+}
+.comment-content {
+	margin-left: 48px;
+}
+
 .comment_left {
 	text-align:center;
 }
@@ -508,6 +515,7 @@ padding: 1px 5px;
     font-size: 12px;
     font-weight: bold;
     margin-right: 6px;
+	margin-left: 2px;
 }
 
 .comment-date {
