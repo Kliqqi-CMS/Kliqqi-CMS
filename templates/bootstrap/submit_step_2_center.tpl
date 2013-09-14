@@ -172,9 +172,10 @@
 								// Assign smarty variables to use in the template.
 								$main_smarty->assign('link_submitter', $user->username);
 								$main_smarty->assign('submitter_profile_url', getmyurl('user2', $login, 'profile'));
+								$main_smarty->assign('Avatar_ImgSrc', get_avatar('small', $user->avatar_source, $user->username));
 							{/php}
 							
-							{if $UseAvatars neq "0"}<span id="ls_avatar-{$link_shakebox_index}"><img src="{$Avatar_ImgSrcs}" width="16px" height="16px" alt="" title="Avatar" /></span>{else}<i class="icon-user"></i>{/if}
+							{if $UseAvatars neq "0"}<span id="ls_avatar-{$link_shakebox_index}"><img src="{$Avatar_ImgSrc}" width="16px" height="16px" alt="" title="Avatar" /></span>{else}<i class="icon-user"></i>{/if}
 							<a href="{$submitter_profile_url}">{$link_submitter}</a> 
 							<i class="icon-time"></i>
 							Being Submitted Now
