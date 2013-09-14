@@ -9,7 +9,7 @@
 		<div class="pull-left comment_left">
 			{if $UseAvatars neq "0"}<a href="{$user_view_url}"><img src="{$Avatar.large}" class="avatar" alt="{$user_username}" title="{$user_username}" /></a>{/if}      
 			{if $Enable_Comment_Voting eq 1}
-				<div class="comment_voting">
+				<div class="comment_voting" id="cxvote-{$comment_id}">
 					{if $Enable_Comment_Voting eq 1}
 						{if $comment_shakebox_currentuser_votes eq 0}
 							<!-- Vote For It -->

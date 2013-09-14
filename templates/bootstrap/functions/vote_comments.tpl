@@ -28,7 +28,7 @@ function cvote (user, id, htmlid, md5, value)
 					.attr('href', anchor.attr('href').replace(/cunvote/,'cvote'))
 					.children('i').removeClass('icon-white');
 
-			var anchor = $('#cxvote-'+htmlid+' > .btn:'+(value>0 ? 'first' : 'last'));
+			var anchor = $('#cxvote-'+htmlid+' > .btn.btn-default:'+(value>0 ? 'first' : 'last'));
 			anchor.addClass(value>0 ? 'btn-success' : 'btn-danger')
 				.attr('href', anchor.attr('href').replace(/cvote/,'cunvote'))
 				.children('i').addClass('icon-white');
