@@ -169,7 +169,9 @@ function validate_all_user_action(){
 	</table>
 	<div style="clear:both;"> </div>
 </form>
-<div style="float:right;margin-top:6px;"><a data-toggle="modal" href="{$my_base_url}{$my_pligg_base}/admin/admin_delete_stories.php" class="btn btn-danger" title="{#PLIGG_Visual_AdminPanel_Delete_Stories#}"><i class="icon-trash icon-white"></i> {#PLIGG_Visual_AdminPanel_Delete_Stories#}</a></div>
+<div style="float:right;margin-top:6px;">
+	<a data-toggle="modal" href="{$my_base_url}{$my_pligg_base}/admin/admin_delete_stories.php" class="btn btn-danger"><i class="icon-trash icon-white"></i> {#PLIGG_Visual_AdminPanel_Delete_Stories#}</a>
+</div>
 <div style="clear:both;"> </div>
 <SCRIPT>
 var confirmation = "{#PLIGG_Visual_AdminPanel_Confirm_Killspam#}\n";

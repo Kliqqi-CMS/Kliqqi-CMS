@@ -38,24 +38,27 @@ if ($_SERVER['SERVER_ADDR'])
         $table_list .= $cur_table->Name.", ";
     }
 ?>
-<div class="modal-header">
-	<a class="close" data-dismiss="modal">&times;</a>
-	<h3><?php echo $main_smarty->get_config_vars('PLIGG_Visual_AdminPanel_Optimized') ?></h3>
-</div>
-<div class="modal-body">
-<?php
-    if (!empty($table_list)) {
-        $table_list = substr($table_list, 0, -2);
-        $query = "OPTIMIZE TABLE ".$table_list;
-        mysql_query($query);
-	if (mysql_error())
-		echo '<p>'.mysql_error().'</p>';
-	else
-		echo '<p>'.$main_smarty->get_config_vars("PLIGG_Visual_AdminPanel_Optimized_Message").'</p>';
-    }
-?>
-</div>
-<div class="modal-footer">
-	<a class="btn btn-primary" data-dismiss="modal">Close</a>
-	<!-- <?php echo $main_smarty->get_config_vars('PLIGG_Visual_AdminPanel_Return_Admin') ?> -->
+<div class="modal-dialog">
+	<div class="modal-content">
+		<div class="modal-header">
+			<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+			<h4 class="modal-title"><?php echo $main_smarty->get_config_vars('PLIGG_Visual_AdminPanel_Optimized') ?></h4>
+		</div>
+		<div class="modal-body">
+			<?php
+				if (!empty($table_list)) {
+					$table_list = substr($table_list, 0, -2);
+					$query = "OPTIMIZE TABLE ".$table_list;
+					mysql_query($query);
+				if (mysql_error())
+					echo '<p>'.mysql_error().'</p>';
+				else
+					echo '<p>'.$main_smarty->get_config_vars("PLIGG_Visual_AdminPanel_Optimized_Message").'</p>';
+				}
+			?>
+		</div>
+		<div class="modal-footer">
+			<button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
+		</div>
+	</div><!-- /.modal-content -->
 </div>

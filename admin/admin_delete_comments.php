@@ -55,24 +55,25 @@ $num_rows = mysql_num_rows($result);
 while($comment = mysql_fetch_object($result))
         delete_comment($comment->comment_id);
 ?>
-<div class="modal-header">
-	<a class="close" data-dismiss="modal">&times;</a>
-	<h3><?php echo $main_smarty->get_config_vars('PLIGG_Visual_AdminPanel_Discarded_Comments_Removed') ?></h3>
-</div>
-<div class="modal-body">
-	<?php 
-	$query = "OPTIMIZE TABLE comments";
-	mysql_query($query);
-	if (mysql_error()){
-		echo '<p>'.mysql_error().'</p>';
-	}else{
-		echo '<p><strong>'.$num_rows.'</strong> '.$main_smarty->get_config_vars("PLIGG_Visual_AdminPanel_Discarded_Comments_Removed_Message").'</p>';
-	}
-
-
-	?>
-</div>
-<div class="modal-footer">
-	<a class="btn btn-primary" data-dismiss="modal">Close</a>
-	<!-- <?php echo $main_smarty->get_config_vars('PLIGG_Visual_AdminPanel_Return_Comment_Management') ?> -->
+<div class="modal-dialog">
+	<div class="modal-content">
+		<div class="modal-header">
+			<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+			<h4 class="modal-title"><?php echo $main_smarty->get_config_vars('PLIGG_Visual_AdminPanel_Discarded_Comments_Removed') ?></h4>
+		</div>
+		<div class="modal-body">
+			<?php 
+			$query = "OPTIMIZE TABLE comments";
+			mysql_query($query);
+			if (mysql_error()){
+				echo '<p>'.mysql_error().'</p>';
+			}else{
+				echo '<p><strong>'.$num_rows.'</strong> '.$main_smarty->get_config_vars("PLIGG_Visual_AdminPanel_Discarded_Comments_Removed_Message").'</p>';
+			}
+			?>
+		</div>
+		<div class="modal-footer">
+			<button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
+		</div>
+	</div><!-- /.modal-content -->
 </div>

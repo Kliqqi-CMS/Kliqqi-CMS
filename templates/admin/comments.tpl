@@ -160,10 +160,11 @@ function validate_all_user_action(){
 		{/if}		
 	</table>
 </form>
+
 <div style="float:right;margin:8px 2px 0 0;">
-	<a data-toggle="modal" class="btn btn-danger" href="{$my_base_url}{$my_pligg_base}/admin/admin_delete_comments.php" title="{#PLIGG_Visual_AdminPanel_Delete_Comments#}"><i class="icon-trash icon-white"></i> {#PLIGG_Visual_AdminPanel_Delete_Comments#}</a> 
-	
+	<a data-toggle="modal" class="btn btn-danger" href="{$my_base_url}{$my_pligg_base}/admin/admin_delete_comments.php"><i class="icon-trash icon-white"></i> {#PLIGG_Visual_AdminPanel_Delete_Comments#}</a> 
 </div>
+
 <div style="clear:both;"> </div>
 </form>
 
