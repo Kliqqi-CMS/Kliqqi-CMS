@@ -253,7 +253,7 @@ if (!$errors) {
 		$db->query($sql);
 		
 		// Add Pligg version
-		$sql = "INSERT INTO `" . table_misc_data . "` ( `name` , `data` ) VALUES ('pligg_version', '2.0.0rc3');";
+		$sql = "INSERT INTO `" . table_misc_data . "` ( `name` , `data` ) VALUES ('pligg_version', '2.0.0');";
 		$db->query($sql);
 		
 		//Captcha upgrade:
@@ -265,15 +265,11 @@ if (!$errors) {
 		$db->query($sql);
 		
 	} else {
-		// Get version-specific updates
-		$sql = "SELECT data FROM " . table_misc_data . " WHERE name = 'pligg_version'";
-		$pligg_version = $db->get_var($sql);
-		$old_version = str_replace('.', '' , $pligg_version);
 		
 		include_once('version/1.x.php');
-		include_once('version/2.0.0.php');
+		include_once('version/2.0.0rc1.php');
 		include_once('version/2.0.0rc2.php');
-		include_once('version/2.0.0rc3.php');
+		include_once('version/2.0.0.php');
 		// include_once('version/2.0.1.php');
 	
 	}

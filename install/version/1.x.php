@@ -4,6 +4,12 @@
 // Report all PHP errors
 // error_reporting(E_ALL);
 
+// Check for the current version within each upgrade file
+$sql = "SELECT data FROM " . table_misc_data . " WHERE name = 'pligg_version'";
+$pligg_version = $db->get_var($sql);
+
+// Perform a simple number comparison to get everything below version 1.2.2
+$old_version = str_replace('.', '' , $pligg_version);
 $new_version = '122';
 
 // Check if you need to run the one time 1.x upgrade
@@ -756,6 +762,11 @@ if ($old_version < $new_version) {
 			) ENGINE=MyISAM;";
 		$db->query($sql);
 	}
+	
+	// Update version number
+	$sql = "UPDATE `" . table_misc_data . "` SET `data` = '1.2.2' WHERE `name` = 'pligg_version';";
+	$db->query($sql);
+	echo '<li>Updated version number to 1.2.2</li>';
 	
 	// Finished 1.x upgrade
 	echo'</ul>';
