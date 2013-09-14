@@ -151,10 +151,10 @@ function checkPassword(val){
 							<div class="div_texbox email">
 								<input name="email" type="text" class="form-control" id="email" value="" onchange="checkEmail(this.value)"/>
 							</div>
-							<div style="clear:both;"></div>
-							<label>{#PLIGG_Visual_View_User_Level#}:</label>
-							{if $isadmin}
-							<div class="div_texbox level">
+							{if $amIadmin}
+								<div style="clear:both;"></div>
+								<label>{#PLIGG_Visual_View_User_Level#}:</label>
+								<div class="div_texbox level">
 									<select name="level" class="form-control">
 										<option value="normal">Normal</option>
 										<option value="moderator">Moderator</option>

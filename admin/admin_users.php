@@ -126,8 +126,14 @@ if($canIhaveAccess == 1)
 			$username=trim($db->escape($_POST['username']));
 			$password=trim($db->escape($_POST['password']));
 			$email=trim($db->escape($_POST['email']));
-			$level=trim($db->escape($_POST['level']));
 			$saltedpass=generateHash($password);
+			
+			// Only Admin accounts can create moderators and other admins
+			if ($amIadmin){
+				$level=trim($db->escape($_POST['level']));
+			} else {
+				$level='normal';
+			}
 			
 			if (!isset($username) || strlen($username) < 3) {
 				$main_smarty->assign(username_error, $main_smarty->get_config_vars('PLIGG_Visual_Register_Error_UserTooShort'));			
@@ -148,7 +154,7 @@ if($canIhaveAccess == 1)
 				$main_smarty->assign(password_error, $main_smarty->get_config_vars('PLIGG_Visual_Register_Error_FiveCharPass'));			
 			}
 			else {
-				$db->query("INSERT IGNORE INTO " . table_users . " (user_login, user_level, user_email, user_pass, user_date) VALUES ('$username', '$level', '$email', '$saltedpass', now())");
+				$db->query("INSERT IGNORE INTO " . table_users . " (user_login, user_level, user_email, user_pass, user_date, user_modification, user_lastlogin) VALUES ('$username', '$level', '$email', '$saltedpass', NOW(), NOW(), NOW())");
 				header("Location:  ".my_pligg_base."/admin/admin_users.php");
 				die();
 			}
