@@ -14,11 +14,11 @@
 		<div class="sectiontitle">Search</div>
 	</div>
 	<form action="{$my_pligg_base}/search.php" method="get" name="thisform-search" class="form-inline search-form" role="form" id="thisform-search" {if $urlmethod==2}onsubmit='document.location.href="{$my_base_url}{$my_pligg_base}/search/"+this.search.value.replace(/\//g,"|").replace(/\?/g,"%3F"); return false;'{/if}>
-		<div class="form-group">
-			<input type="text" class="form-control col-md-12" tabindex="20" name="search" id="searchsite" value="{$searchboxtext}" onfocus="if(this.value == some_search) {ldelim}this.value = '';{rdelim}" onblur="if (this.value == '') {ldelim}this.value = some_search;{rdelim}"/>
+		<div class="form-group col-md-8">
+			<input type="text" class="form-control" tabindex="20" name="search" id="searchsite" value="{$searchboxtext}" onfocus="if(this.value == some_search) {ldelim}this.value = '';{rdelim}" onblur="if (this.value == '') {ldelim}this.value = some_search;{rdelim}"/>
 		</div>
-		<div class="form-group">
-			<button type="submit" tabindex="21" class="btn btn-primary col-md-12 custom_nav_search_button" />{#PLIGG_Visual_Search_Go#}</button>
+		<div class="form-group col-md-4">
+			<button type="submit" tabindex="21" class="btn btn-primary custom_nav_search_button" />{#PLIGG_Visual_Search_Go#}</button>
 		</div>
 	</form>
 	<div style="clear:both;"></div>
