@@ -38,11 +38,11 @@ if ($pligg_version = '1.2.2') {
 
 	// Change log file locations to new /logs directory
 	$sql = "UPDATE ".table_config." 
-			SET var_value='logs/antispam.log' 
+			SET var_value='logs/domain-whitelist.log' 
 			WHERE var_name='$MAIN_SPAM_RULESET';";
 	$db->query($sql);
 	$sql = "UPDATE ".table_config." 
-			SET var_defaultvalue='logs/antispam.log' 
+			SET var_defaultvalue='logs/domain-whitelist.log' 
 			WHERE var_name='$MAIN_SPAM_RULESET';";
 	$db->query($sql);
 	$sql = "UPDATE ".table_config." 

@@ -10,7 +10,7 @@ INSERT INTO `config` VALUES (10, 'Tags', '$tags_min_pts', '8', '8', 'number (sho
 INSERT INTO `config` VALUES (11, 'Tags', '$tags_max_pts', '36', '36', 'number', 'Tags Maximum Font Size', '<strong>Only used if Tags are enabled.</strong> How large should the text for the largest tags be.', 'normal', NULL);
 INSERT INTO `config` VALUES (12, 'Tags', '$tags_words_limit', '100', '100', 'number', 'Tag Cloud Word Limit', '<strong>Only used if Tags are enabled.</strong> The most tags to show in the cloud.', 'normal', NULL);
 INSERT INTO `config` VALUES (13, 'AntiSpam', 'CHECK_SPAM', 'false', 'false', 'true / false', 'Enable Spam Checking', 'Checks submitted domains to see if they''re on a blacklist.', 'define', NULL);
-INSERT INTO `config` VALUES (14, 'AntiSpam', '$MAIN_SPAM_RULESET', 'logs/antispam.log', 'antispam.log', 'Text File', 'Main Spam Ruleset', 'What file should be used to check for spam domains?', 'normal', '"');
+INSERT INTO `config` VALUES (14, 'AntiSpam', '$MAIN_SPAM_RULESET', 'logs/domain-whitelist.log', 'logs/domain-whitelist.log', 'Text File', 'Main Spam Ruleset', 'What file should be used to check for spam domains?', 'normal', '"');
 INSERT INTO `config` VALUES (15, 'AntiSpam', '$USER_SPAM_RULESET', 'logs/domain-blacklist.log', 'logs/domain-blacklist.log', 'Text File', 'Local Spam Ruleset', 'What file should Pligg write to if you mark items as spam?', 'normal', '"');
 INSERT INTO `config` VALUES (16, 'AntiSpam', '$SPAM_LOG_BOOK', 'logs/spam.log', 'logs/spam.log', 'Text File', 'Spam Log', 'File to log spam blocks to.', 'normal', '"');
 INSERT INTO `config` VALUES (17, 'Live', 'Enable_Live', 'true', 'true', 'true / false', 'Enable Live', 'Enable the live page.', 'define', NULL);
