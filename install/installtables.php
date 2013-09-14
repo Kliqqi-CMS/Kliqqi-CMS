@@ -525,7 +525,7 @@ function pligg_createtables($conn) {
 	mysql_query( $sql, $conn );
 	$sql = "INSERT INTO `" . table_modules . "` (`id`, `name`, `version`, `latest_version`, `folder`, `enabled`) VALUES (NULL, 'Captcha', 2.1, '', 'captcha', 1);";
 	mysql_query( $sql, $conn );
-	$sql = "INSERT INTO `" . table_modules . "` (`id`, `name`, `version`, `latest_version`, `folder`, `enabled`) VALUES (NULL, 'Simple Private Messaging', 2.1, '', 'simple_messaging', 1);";
+	$sql = "INSERT INTO `" . table_modules . "` (`id`, `name`, `version`, `latest_version`, `folder`, `enabled`) VALUES (NULL, 'Simple Private Messaging', 2.2, '', 'simple_messaging', 1);";
 	mysql_query( $sql, $conn );
 	$sql = "INSERT INTO `" . table_modules . "` (`id`, `name`, `version`, `latest_version`, `folder`, `enabled`) VALUES (NULL, 'Sidebar Stories', 2.0, '', 'sidebar_stories', 1);";
 	mysql_query( $sql, $conn );
