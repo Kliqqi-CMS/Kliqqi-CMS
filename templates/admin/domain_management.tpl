@@ -58,17 +58,23 @@
 		<p>Place high value domains on this list to ensure that they are never accidentally banned through actions like Killspamming.</p>
 		<p>Add a domain to the whitelist, using the form below.</p>
 		
-		<form action="domain_management.php" method="get">
-			<input type="text" name="whitelist_add" id="whitelist_add" placeholder="domain.com">
+		<form action="domain_management.php" method="get" class="form-inline" role="form">
+			<div class="form-group">
+				<input type="text" name="whitelist_add" class="form-control" id="whitelist_add" placeholder="domain.com">
+			</div>
 			<button type="submit" class="btn btn-success whitelistCheck" disabled='disabled' >Add to Whitelist</button>
 		</form>
 
 		{if $whitelist_file|@count != '0'}
-			<ol>
+			<br />
+			<table class="table table-striped table-condensed">
 				{section name=line loop=$whitelist_file}
-					<li><a href="domain_management.php?id=0&list=whitelist&remove={$whitelist_file[line]}">Remove</a> - {$whitelist_file[line]} </li>
+					<tr>
+						<td><a href="domain_management.php?id=0&list=whitelist&remove={$whitelist_file[line]}"><i style="color:#dd1c1c;" class="icon icon-remove"></i></a>
+						&nbsp; {$whitelist_file[line]} </td>
+					</tr>
 				{/section}
-			</ol>
+			</table>
 		{/if}
 		
 	</div>
@@ -78,17 +84,23 @@
 		<p>Place low value domains on this list to prevent users from submitting stories from these domains.</p>
 		<p>Add a domain to the blacklist, using the form below.</p>
 
-		<form action="domain_management.php" method="get">
-			<input type="text" name="blacklist_add" id="blacklist_add" placeholder="domain.com">
+		<form action="domain_management.php" method="get" class="form-inline" role="form">
+			<div class="form-group">
+				<input type="text" name="blacklist_add" class="form-control" id="blacklist_add" placeholder="domain.com">
+			</div>
 			<button type="submit" class="btn btn-danger blacklistCheck" disabled='disabled'>Add to Blacklist</button>
 		</form>
 
 		{if $blacklist_file|@count != '0'}
-			<ol>
+			<br />
+			<table class="table table-striped table-condensed">
 				{section name=line loop=$blacklist_file}
-					<li><a href="domain_management.php?id=0&list=blacklist&remove={$blacklist_file[line]}">Remove</a> - {$blacklist_file[line]} </li>
+					<tr>
+						<td><a href="domain_management.php?id=0&list=blacklist&remove={$blacklist_file[line]}"><i style="color:#dd1c1c;" class="icon icon-remove"></i></a>
+						&nbsp; {$blacklist_file[line]}</td>
+					</tr>
 				{/section}
-			</ol>
+			</table>
 		{/if}
 		
 	</div>
