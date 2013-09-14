@@ -11,6 +11,11 @@ include(mnminclude.'user.php');
 include(mnminclude.'comment.php');
 include(mnminclude.'smartyvariables.php');
 
+if(!Enable_Live) {
+	header("Location: $my_pligg_base/error_404.php");
+	die();
+}
+
 // breadcrumbs and page title
 $navwhere['text1'] = $main_smarty->get_config_vars('PLIGG_Visual_Breadcrumb_Live');
 $navwhere['link1'] = getmyurl('live', '');

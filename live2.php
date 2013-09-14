@@ -6,6 +6,11 @@ $main_smarty = new Smarty;
 include('config.php');
 include(mnminclude.'link.php');
 
+if(!Enable_Live) {
+	header("Location: $my_pligg_base/error_404.php");
+	die();
+}
+
 // number of items to show on the page
 $max_items = items_to_show;
 
