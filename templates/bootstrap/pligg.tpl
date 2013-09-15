@@ -68,9 +68,6 @@
 	
 	<link rel="alternate" type="application/rss+xml" title="RSS 2.0" href="{$my_base_url}{$my_pligg_base}/rss.php"/>
 	<link rel="icon" href="{$my_pligg_base}/favicon.ico" type="image/x-icon"/>
-	{if $pagename eq 'published'}<link rel="canonical" href="{$my_base_url}{$my_pligg_base}/{$navbar_where.text2}/" />{/if}
-	{if $pagename eq 'index'}<link rel="canonical" href="{$my_base_url}{$my_pligg_base}/" />{/if}
-	{if $pagename eq 'story'}<link rel="canonical" href="{$my_base_url}{$my_pligg_base}{$navbar_where.link2}" />{/if}
 	{checkActionsTpl location="tpl_pligg_head_end"}
 </head>
 <body dir="{#PLIGG_Visual_Language_Direction#}" {$body_args} {checkActionsTpl location="tpl_pligg_body_onload"}>
