@@ -18,17 +18,15 @@ text-align:center;
 		<div class="login_form">
 			<h2>{#PLIGG_Visual_Name#}</h2>
 			<form action="{$my_pligg_base}/admin/admin_login.php" method="post">
-				<fieldset>
-					<div class="clearfix login_username">
-						<input type="text" class="form-control" name="username" {if $post_username}value="{$post_username}"{else}placeholder="{#PLIGG_Visual_Register_Username#}{/if}">
-					</div>
-					<div class="clearfix login_password">
-						<input type="password" class="form-control" name="password" placeholder="{#PLIGG_Visual_Register_Password#}">
-					</div>
-					<input type="hidden" name="processlogin" value="1"/>
-					<input type="hidden" name="return" value="{$get.return}"/>
-					<button class="btn btn-primary col-md-12 admin_login_submit" type="submit">{#PLIGG_Visual_Login_LoginButton#}</button>
-				</fieldset>
+				<div class="clearfix login_username">
+					<input type="text" class="form-control" name="username" {if $post_username}value="{$post_username}"{else}placeholder="{#PLIGG_Visual_Register_Username#}{/if}">
+				</div>
+				<div class="clearfix login_password">
+					<input type="password" class="form-control" name="password" placeholder="{#PLIGG_Visual_Register_Password#}">
+				</div>
+				<input type="hidden" name="processlogin" value="1"/>
+				<input type="hidden" name="return" value="{$get.return}"/>
+				<button class="btn btn-primary col-md-12 admin_login_submit" type="submit">{#PLIGG_Visual_Login_LoginButton#}</button>
 			</form>
 		</div>
 	</div>

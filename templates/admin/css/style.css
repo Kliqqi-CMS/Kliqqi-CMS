@@ -377,6 +377,9 @@ text-decoration:underline;
 .login_form {
 
 }
+.login_form h2 {
+	margin-bottom:25px;
+}
 .login_content {
 	width:300px;
     display: table;
