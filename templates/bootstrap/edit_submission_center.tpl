@@ -95,20 +95,20 @@
 	<span class="field-description">{#PLIGG_Visual_Submit2_CatInstruct#}</span>
 	<br />
 	{if $Multiple_Categories}
-		{section name=thecat loop=$cat_array}
-			{$cat_array[thecat].spacercount|repeat_count:'&nbsp;&nbsp;&nbsp;&nbsp;'}
-				 <input type="checkbox" class="form-control" name="category[]" value="{$cat_array[thecat].auto_id}" {if $cat_array[thecat].auto_id == $submit_category  || in_array($cat_array[thecat].auto_id,$submit_additional_cats)}checked{/if}> {$cat_array[thecat].name}<br />							
+		{section name=thecat loop=$submit_cat_array}
+			{$submit_cat_array[thecat].spacercount|repeat_count:'&nbsp;&nbsp;&nbsp;&nbsp;'}
+				 <input type="checkbox" class="form-control" name="category[]" value="{$submit_cat_array[thecat].auto_id}" {if $submit_cat_array[thecat].auto_id == $submit_category  || in_array($submit_cat_array[thecat].auto_id,$submit_additional_cats)}checked{/if}> {$submit_cat_array[thecat].name}<br />							
 		{/section}
 	{else}
 		<select class="form-control" {if $Multiple_Categories}name="category[]" multiple size=10{else}name="category"{/if}>
-			{section name=thecat loop=$cat_array}
-				<option value = "{$cat_array[thecat].auto_id}"{if $cat_array[thecat].auto_id eq $submit_category || in_array($cat_array[thecat].auto_id,$submit_additional_cats)} selected="selected"{/if}>
-				{if $cat_array[thecat].spacercount lt $lastspacer}{$cat_array[thecat].spacerdiff|repeat_count:''}{/if}
-				{if $cat_array[thecat].spacercount gt $lastspacer}{/if}
-				{$cat_array[thecat].spacercount|repeat_count:'&nbsp;&nbsp;&nbsp;'}
-				{$cat_array[thecat].name} 
+			{section name=thecat loop=$submit_cat_array}
+				<option value = "{$submit_cat_array[thecat].auto_id}"{if $submit_cat_array[thecat].auto_id eq $submit_category || in_array($submit_cat_array[thecat].auto_id,$submit_additional_cats)} selected="selected"{/if}>
+				{if $submit_cat_array[thecat].spacercount lt $lastspacer}{$submit_cat_array[thecat].spacerdiff|repeat_count:''}{/if}
+				{if $submit_cat_array[thecat].spacercount gt $lastspacer}{/if}
+				{$submit_cat_array[thecat].spacercount|repeat_count:'&nbsp;&nbsp;&nbsp;'}
+				{$submit_cat_array[thecat].name} 
 				&nbsp;&nbsp;&nbsp;       
-				{assign var=lastspacer value=$cat_array[thecat].spacercount}					
+				{assign var=lastspacer value=$submit_cat_array[thecat].spacercount}					
 				</option>
 			{/section}
 		</select>

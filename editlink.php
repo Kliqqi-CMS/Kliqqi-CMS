@@ -237,8 +237,10 @@ if ($link) {
 
 			include_once(mnminclude.'dbtree.php');
 			$array = tree_to_array(0, table_categories, FALSE);
+			$array = array_values(array_filter($array, "allowToAuthorCat"));
+
 			$main_smarty->assign('lastspacer', 0);
-			$main_smarty->assign('cat_array', $array);
+			$main_smarty->assign('submit_cat_array', $array);
 
 			$canIhaveAccess = 0;
 			$canIhaveAccess = $canIhaveAccess + checklevel('admin');
@@ -290,7 +292,7 @@ else
 //copied directly from submit.php
 function link_errors($linkres)
 {
-	global $main_smarty, $the_template;
+	global $main_smarty, $the_template, $cached_categories;
 	$error = false;
 	
 
@@ -329,6 +331,12 @@ function link_errors($linkres)
 	if(!$linkres->category > 0) {
 		$main_smarty->assign('submit_error', 'nocategory');
 		$error = true;
+	}
+	foreach($cached_categories as $cat) {
+		if($cat->category__auto_id == $linkres->category && !allowToAuthorCat($cat)) { // category does not allow authors of this level
+			$main_smarty->assign('submit_error', 'nocategory');
+			$error = true;
+		}
 	}
 
 	if ($error)

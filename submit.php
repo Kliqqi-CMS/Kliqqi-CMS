@@ -649,35 +649,4 @@ function link_catcha_errors($linkerror)
 	}
 	return $error;
 }
-
-function allowToAuthorCat($cat) {
-	global $current_user, $db;
-
-	$user = new User($current_user->user_id);
-	if($user->level == "admin")
-		return true;
-	else if($user->level == "moderator" && ((is_array($cat) && $cat['authorlevel'] != "admin") || $cat->category_author_level != "admin"))
-		return true;
-	else if((is_array($cat) && $cat['authorlevel'] == "normal") || $cat->category_author_level == "normal")
-	// DB 11/12/08
-	{
-	    $group = is_array($cat) ? $cat['authorgroup'] : $cat->category_author_group;
-	    if (! $group)
-		return true;
-	    else
-	    {
-		$group = "'".preg_replace("/\s*(,\s*)+/","','",$group)."'";
-		$groups = $db->get_row($sql = "SELECT a.* FROM ".table_groups." a, ".table_group_member." b 
-							WHERE   a.group_id=b.member_group_id AND 
-							 	b.member_user_id=$user->id   AND 
-								a.group_status='Enable' AND 
-								b.member_status='active' AND
-								a.group_name IN ($group)");
-		if ($groups->group_id)
-		    return true;
-	    }
-	}
-	/////
-	return false;
-}
 ?>
