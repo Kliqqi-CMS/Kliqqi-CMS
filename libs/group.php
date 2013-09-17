@@ -320,23 +320,29 @@ function member_display($requestID)
 					} else {
 						$member_display .= '<td>'.$member_role.'</td><td><a class="btn btn-default" href="#groupadminlinks-'.$index.'" data-toggle="modal"><i class="icon-edit" title="'.$change_role.'"></i> Edit</a></td><td><a class="btn btn-danger" href="'.my_base_url . my_pligg_base . '/join_group.php?activate=false&group_id='.$requestID.'&user_id='.$member_user_id.'">Deactivate</a></td>';
 					}
-					$member_display .= '<div class="modal hide fade" id="groupadminlinks-'.$index.'" style="display: none;">
-						<div class="modal-header">
-							<button data-dismiss="modal" class="close" type="button">&times;</button>
-							<h3>Group User Management</h3>
-						</div>
-						<div class="modal-body">
-							<a class="btn btn-default" href="'.$member_adminchange_url.'">'.$role_admin.'</a> 
-							<a class="btn btn-default" href="'.$member_normalchange_url.'">'.$role_normal.'</a> 
-							<a class="btn btn-default" href="'.$member_moderatorchange_url.'">'.$role_moderator.'</a> 
-							<hr />
-							<a class="btn btn-warning" href="'.$member_flaggedchange_url.'">'.$role_flagged.'</a> 
-							<a class="btn btn-danger" href="'.$member_bannedchange_url.'">'.$role_banned.'</a>
-						</div>
-						<div class="modal-footer">
-							<a data-dismiss="modal" class="btn btn-primary" href="#">Close</a>
-						</div>
-					</div>';
+					$member_display .= '
+					<div class="modal fade" id="groupadminlinks-'.$index.'">
+						<div class="modal-dialog">
+							<div class="modal-content">
+								<div class="modal-header">
+									<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+									<h4 class="modal-title">Group User Management</h4>
+								</div>
+								<div class="modal-body">
+									<a class="btn btn-default" href="'.$member_adminchange_url.'">'.$role_admin.'</a> 
+									<a class="btn btn-default" href="'.$member_normalchange_url.'">'.$role_normal.'</a> 
+									<a class="btn btn-default" href="'.$member_moderatorchange_url.'">'.$role_moderator.'</a> 
+									<hr />
+									<a class="btn btn-warning" href="'.$member_flaggedchange_url.'">'.$role_flagged.'</a> 
+									<a class="btn btn-danger" href="'.$member_bannedchange_url.'">'.$role_banned.'</a>
+								</div>
+								<div class="modal-footer">
+									<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+								</div>
+							</div><!-- /.modal-content -->
+						</div><!-- /.modal-dialog -->
+					</div><!-- /.modal -->
+					';
 				} else {
 					$member_display .= '<td>&nbsp;</td><td>&nbsp;</td><td><a class="btn btn-success" href="'.my_base_url . my_pligg_base . '/join_group.php?activate=true&group_id='.$requestID.'&user_id='.$member_user_id.'">Activate</a></td>';
 				}
@@ -345,8 +351,8 @@ function member_display($requestID)
 			$member_display .= '</tr>';
 		}
 	}
-		//echo $member_display;
-		$main_smarty->assign('member_display', $member_display);
+	//echo $member_display;
+	$main_smarty->assign('member_display', $member_display);
 }
 //get the new story for groups
 function group_stories($requestID,$catId,$view,$flag=0)
