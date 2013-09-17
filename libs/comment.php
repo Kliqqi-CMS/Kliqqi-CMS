@@ -182,7 +182,7 @@ class Comment {
 		$smarty->assign('user_rank', $ranklist[$this->userkarma]);
 		$smarty->assign('is_anonymous', $vars['is_anonymous']);
 		$smarty->assign('user_extra_fields', $this->extra_field);
-
+		$smarty->assign('link_submitter', $link->username());
 		$smarty->assign('comment_id', $this->id);
 		$smarty->assign('comment_status', $this->status);
 		$smarty->assign('comment_author', $this->author);

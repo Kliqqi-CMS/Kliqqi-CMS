@@ -5,7 +5,7 @@
 <li class="media comment">
 	<a id="c{$comment_id}"></a>
 	{checkActionsTpl location="tpl_pligg_story_comments_single_start"}
-	<div class="comment-wrapper {if $comment_status neq "published"}alert alert-warning comment-moderated{/if} clearfix">
+	<div class="comment-wrapper {if $user_username == $link_submitter}alert alert-success comment-author{/if}{if $comment_votes lt 0}alert alert-danger comment-negative{/if}{if $comment_status neq "published"}alert alert-warning comment-moderated{/if} clearfix">
 		<div class="pull-left comment_left">
 			{if $UseAvatars neq "0"}<a href="{$user_view_url}"><img src="{$Avatar.large}" class="avatar" alt="{$user_username}" title="{$user_username}" /></a>{/if}      
 			{if $Enable_Comment_Voting eq 1}
@@ -70,7 +70,7 @@
 					{/if}
 				</span>
 				{if $comment_votes lt 0}
-					<span class="comment-hide">
+					<span class="label label-danger comment-hide">
 						<span id="show_hide_comment_content-{$comment_id}"> <a href = "javascript://"  onclick="var replydisplay=document.getElementById('comment_content-{$comment_id}').style.display ? '' : 'none'; document.getElementById('comment_content-{$comment_id}').style.display = replydisplay;">{#PLIGG_Visual_Comment_Show_Hide#}</a></span>
 					</span>
 				{/if}

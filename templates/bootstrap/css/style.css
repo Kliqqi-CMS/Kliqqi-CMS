@@ -473,13 +473,16 @@ padding: 1px 5px;
     margin-bottom: 8px;
 }
 
-.comment-moderated {
-	color:#5f5f5f;
+.comment-author p, .comment-negative p , .comment-moderated p {
+	font-size:14px;
+	font-weight:normal;
+	color:#000;
 }
 
 .media,.media-body {
 	overflow:visible !important;
 }
+
 .comment-content {
 	margin-left: 48px;
 }
@@ -527,11 +530,10 @@ padding: 1px 5px;
 }
 
 .comment-hide {
-    border-left: 1px solid #EFEFEF;
-    color: #888888;
-    font-size: 10px;
-    padding: 0 6px;
-    text-transform: uppercase;
+	margin-left:5px;
+}
+.comment-hide a {
+	color:#fff;
 }
 
 .comment-reply {
