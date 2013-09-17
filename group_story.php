@@ -160,7 +160,7 @@ if($_POST["avatar"] == "uploaded")
 
 			$sql = "UPDATE " . table_groups . " set group_avatar='uploaded' WHERE group_id=$idname";
 			$db->query($sql);
-			$main_smarty->assign('Avatar_uploaded', 'Avatar uploaded successfully..');
+			$main_smarty->assign('Avatar_uploaded', 'Avatar uploaded successfully. You may need to refresh the page to see the new image.');
 			/*if($avatar_source != "" && $avatar_source != "useruploaded"){
 				loghack('Updating profile, avatar source is not one of the list options.', 'username: ' . $_POST["username"].'|email: '.$_POST["email"]);
 				$avatar_source == "";

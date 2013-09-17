@@ -61,27 +61,31 @@
 						{$Avatar_uploaded}
 					</div>
 				{/if}
-				{* Avatar upload modal *}
-				<div class="modal hide fade" id="groupavatar" style="display: none;">
-					<form method="POST" enctype="multipart/form-data" name="image_upload_form" action="{$form_action}">
-						<div class="modal-header">
-							<button data-dismiss="modal" class="close" type="button">&times;</button>
-							<h3>Group Avatar Upload</h3>
-						</div>
-						<div class="modal-body">
-							<p>Please choose a image file to represent your group. Our site will resize your image to fit our standards, but we encourage you to crop your image to square dimensions prior to uploading.</p>
-							{$hidden_token_edit_group}
-							<input type="file" name="image_file">
-						</div>
-						<div class="modal-footer">
-							<a data-dismiss="modal" class="btn btn-default" href="#">Close</a>
-							<input type="hidden" name="idname" value="{$group_id}"/>
-							<input type="hidden" name="avatar" value="uploaded"/>
-							<input type="hidden" name="avatarsource" value="useruploaded">
-							<button type="submit" value="{#PLIGG_Visual_Profile_AvatarUpload#}" name="action" class="btn btn-primary"><span class="icon-white icon-picture"></span> {#PLIGG_Visual_Profile_AvatarUpload#}</button>
-						</div>
-					</form>
-				</div>
+				{* Group Avatar Upload Modal *}
+				<div class="modal fade" id="groupavatar">
+					<div class="modal-dialog">
+						<form method="POST" enctype="multipart/form-data" name="image_upload_form" action="{$form_action}">
+							<div class="modal-content">
+								<div class="modal-header">
+									<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+									<h4 class="modal-title">Group Avatar Upload</h4>
+								</div>
+								<div class="modal-body">
+									<p>Please choose a image file to represent your group. Our site will resize your image to fit our standards, but we encourage you to crop your image to square dimensions prior to uploading.</p>
+									{$hidden_token_edit_group}
+									<input type="file" name="image_file">
+								</div>
+								<div class="modal-footer">
+									<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+									<button type="submit" name="action" class="btn btn-primary"><span class="icon-white icon-picture"></span> {#PLIGG_Visual_Profile_AvatarUpload#}</button>
+									<input type="hidden" name="idname" value="{$group_id}"/>
+									<input type="hidden" name="avatar" value="uploaded"/>
+									<input type="hidden" name="avatarsource" value="useruploaded">
+								</div>
+							</div><!-- /.modal-content -->
+						</form>
+					</div><!-- /.modal-dialog -->
+				</div><!-- /.modal -->
 			{/if}
 		{elseif $group_status eq 'disable'}
 			<div class='group_approve'>
