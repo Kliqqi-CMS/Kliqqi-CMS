@@ -489,11 +489,12 @@ function do_pages($total, $page_size, $thepage, $fetch = false) {
 			$query=preg_replace('/^\//','',$query);
 			$query=preg_replace('/\/$/','',$query);
 
-			$output .= '<div class="pagination"><ul>';
+			$output .= '<div class="pagination_wrapper"><ul class="pagination">';
 
 			if($current==1) {
-				$output .= '<li class="active"><a href="#">&#171; '.$main_smarty->get_config_vars("PLIGG_Visual_Page_Previous"). '</a></li>'; } 
-			else {
+				// There are no previous pages, so don't show the "previous" link.
+				//$output .= '<li class="disabled"><span>&#171; '.$main_smarty->get_config_vars("PLIGG_Visual_Page_Previous"). '</span></li>';
+			} else {
 				$i = $current-1;
 				if (pagename == "admin_users") {
 					$output .= '<li><a href="'.my_pligg_base.'/admin/'.pagename.'.php?page='.$i.'">&#171; '.$main_smarty->get_config_vars("PLIGG_Visual_Page_Previous").'</a></li>';
