@@ -106,6 +106,14 @@ class UserAuth {
 		$vars = '';
 		check_actions('logout_success', $vars);
 
+		if (preg_match('/user\.php\?login=(.+)$/', $url, $m)) {
+			$user=new User();
+			$user->username = $m[1];
+			if(!$user->all_stats() || $user->total_links+$user->total_comments==0) 
+				$url = my_pligg_base.'/';
+		}
+			
+
 		header("Cache-Control: no-cache, must-revalidate");
 		if(!strpos($_SERVER['SERVER_SOFTWARE'], "IIS") && !strpos(php_sapi_name(), "cgi") >= 0){
 			if(strlen(sanitize($url, 3)) > 1) {
