@@ -34,7 +34,7 @@ function insert_anonymous_comment(&$vars)
 
 	// DB 04/15/11
 	$vars = array('comment'=>$db->insert_id);
-	check_actions('after_comment_submit', &$vars);
+	check_actions('after_comment_submit', $vars);
 	/////
 
 	// DB 12/17/08
