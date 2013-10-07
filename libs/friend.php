@@ -50,6 +50,9 @@ class Friend {
 						INNER JOIN " . table_users . " ON " . table_friends . ".friend_to = " . table_users . ".user_id 
 						WHERE " . table_friends . ".friend_from=$user_id AND " . table_users . ".user_id != $user_id AND user_enabled=1",
 					     ARRAY_A);
+		foreach ($friends as &$friend) 
+		    if ($db->get_var($sql="SELECT friend_id FROM " . table_friends . " WHERE friend_to=$friend[user_id] AND friend_from='{$current_user->user_id}'")) 
+			$friend['following'] = true;
 		return $friends;
 
 	}
