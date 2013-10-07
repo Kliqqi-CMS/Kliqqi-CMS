@@ -392,7 +392,7 @@ function group_stories($requestID,$catId,$view,$flag=0)
 	
 	
 	if ($view == 'new')
-		$from_where .= " AND link_votes<=$group_vote AND link_status='new'";
+		$from_where .= " AND link_votes<$group_vote AND link_status='new'";
 	else                
 		$from_where .= " AND ((link_votes >= $group_vote AND link_status = 'new') OR link_status = 'published')";
 
