@@ -3,6 +3,7 @@ function joinGroup($group_id,$privacy)
 {
 	global $db, $current_user,$main_smarty,$the_template,$my_base_url,$my_pligg_base;
 	if (!is_numeric($group_id)) die();
+	if (!$current_user->user_id) die();
 
 	// Enforce "Max Joinable Groups" config option
 	if (reached_max_joinable_groups($db, $current_user))
@@ -288,9 +289,9 @@ function member_display($requestID)
 	$role_banned = $main_smarty->get_config_vars("PLIGG_Visual_Group_Role_Banned");
 	$gcreator = get_group_creator($requestID);
 	if($gcreator == $current_user->user_id)
-		$member = $db->get_results("SELECT * FROM " . table_group_member . " WHERE member_group_id = $requestID");
+		$member = $db->get_results("SELECT * FROM " . table_group_member . " WHERE member_group_id = $requestID AND member_user_id!=0");
 	else
-		$member = $db->get_results("SELECT * FROM " . table_group_member . " WHERE member_group_id = $requestID and member_status = 'active'");
+		$member = $db->get_results("SELECT * FROM " . table_group_member . " WHERE member_group_id = $requestID AND member_user_id!=0 and member_status = 'active'");
 	if($member)
 	{
 		foreach($member as $memberid)
