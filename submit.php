@@ -270,8 +270,8 @@ function do_submit1() {
 
 //	$main_smarty->assign('submit_id', $_GET['id']);
 	$main_smarty->assign('submit_title', str_replace('"',"&#034;",$linkres->title));
-	//$main_smarty->assign('submit_content', str_replace("<br />", "\n", $linkres->content));
-	//$main_smarty->assign('storylen', utf8_strlen(str_replace("<br />", "\n", $linkres->content)));
+	$main_smarty->assign('submit_content', str_replace("<br />", "\n", $linkres->content));
+	$main_smarty->assign('storylen', utf8_strlen(str_replace("<br />", "\n", $linkres->content)));
 	$main_smarty->assign('submit_summary', $linkres->link_summary);
 	$main_smarty->assign('submit_group', $linkres->link_group_id);
 	$main_smarty->assign('submit_category', $linkres->category);
