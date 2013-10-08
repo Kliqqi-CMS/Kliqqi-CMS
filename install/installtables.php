@@ -521,7 +521,7 @@ function pligg_createtables($conn) {
 	mysql_query( $sql, $conn );
 
 	echo '<li>Adding default modules</li>';
-	$sql = "INSERT INTO `" . table_modules . "` (`id`, `name`, `version`, `latest_version`, `folder`, `enabled`) VALUES (NULL, 'Admin Modify Language', 2.0, '', 'admin_language', 1);";
+	$sql = "INSERT INTO `" . table_modules . "` (`id`, `name`, `version`, `latest_version`, `folder`, `enabled`) VALUES (NULL, 'Admin Modify Language', 2.1, '', 'admin_language', 1);";
 	mysql_query( $sql, $conn );
 	$sql = "INSERT INTO `" . table_modules . "` (`id`, `name`, `version`, `latest_version`, `folder`, `enabled`) VALUES (NULL, 'Captcha', 2.1, '', 'captcha', 1);";
 	mysql_query( $sql, $conn );

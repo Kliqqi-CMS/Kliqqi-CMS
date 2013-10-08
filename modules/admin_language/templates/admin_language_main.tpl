@@ -35,9 +35,9 @@
 	{elseif $line.section && $line.section!=$lastsection}
 		{assign var=lastsection value=$line.section}
 		</tbody>
-		<thead>	
+		<thead>
 			<tr class="section_head">
-				<th colspan="2">{$lastsection}</th>
+				<th colspan="2"><a href="#{$lastsection|lower|replace:' ':''}" id="{$lastsection|lower|replace:' ':''}">{$lastsection}</a></th>
 			</tr>
 		</thead>
 		<tbody>
