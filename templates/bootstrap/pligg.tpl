@@ -9,6 +9,9 @@
 	
 	<link rel="stylesheet" type="text/css" href="{$my_pligg_base}/templates/{$the_template}/css/bootstrap.no-icons.min.css">
 	<link rel="stylesheet" type="text/css" href="{$my_pligg_base}/templates/{$the_template}/css/font-awesome.min.css">
+	<!--[if IE 7]>
+		<link rel="stylesheet" type="text/css" href="{$my_pligg_base}/templates/{$the_template}/css/font-awesome-ie7.min.css">
+	<![endif]-->
 	
 	<link rel="stylesheet" type="text/css" href="{$my_pligg_base}/templates/{$the_template}/css/jquery.pnotify.css" media="screen" />
 	<link rel="stylesheet" type="text/css" href="{$my_pligg_base}/templates/{$the_template}/css/style.css" media="screen" />
