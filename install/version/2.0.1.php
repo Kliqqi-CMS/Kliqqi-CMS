@@ -13,7 +13,7 @@ if ($pligg_version = '2.0.0') {
 
 	echo '<li>Performing one-time Pligg 2.0.1 Upgrade<ul>';
 	
-	// Remove the Spell Checker from Admin Config
+	// Remove the Custom Avatar Storage Directory Option
 	$sql = "DELETE FROM " . table_config . " 
 			WHERE var_name='User_Upload_Avatar_Folder'";
 	$db->query($sql);
