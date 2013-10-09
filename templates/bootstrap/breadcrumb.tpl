@@ -28,7 +28,7 @@
 		<li class="active">{#PLIGG_Visual_Profile_ModifyProfile#}</li>
 	{/if}
 	{if $pagename eq "user"}
-		<li>{if $user_view neq 'profile'}<a href="{$user_url_personal_data2}">{/if}{$username}{if $user_view neq 'profile'}</a> <span class="divider">/</span></li> {/if}
+		<li>{if $user_view neq 'profile'}<a href="{$user_url_personal_data2}">{/if}{$username}{if $user_view neq 'profile'}</a></li> {/if}
 		{if $user_view neq 'profile'}<li class="active">{$page_header} <a href="{$user_rss, $view_href}" target="_blank"><img src="{$my_pligg_base}/templates/{$the_template}/img/rss.gif" style="margin:-4px 0 0 3px;border:0;"></a></li>{/if}
 	{/if}
 	{if $pagename eq "published" && $get.category eq '' || $pagename eq "index"}<li class="active">{#PLIGG_Visual_Published_News#}{/if}
@@ -41,9 +41,9 @@
 	{elseif isset($get.search)}<li class="active">{#PLIGG_Visual_Search_SearchResults#} &quot;{if $get.search}{$get.search}{else}{$get.date}{/if}&quot;{/if}
 	{if isset($get.q)}<li class="active">{#PLIGG_Visual_Search_SearchResults#} &quot;{$get.q}&quot;{/if} 
 	{if $pagename eq "index" || $pagename eq "published" || $pagename eq "new" || isset($get.search) || isset($get.q)}
-		{if isset($navbar_where.link2) && $navbar_where.link2 neq ""} <span class="divider">/</span> <a href="{$navbar_where.link2}">{$navbar_where.text2}</a>{elseif isset($navbar_where.text2) && $navbar_where.text2 neq ""} <span class="divider">/</span> {$navbar_where.text2}{/if}
-		{if isset($navbar_where.link3) && $navbar_where.link3 neq ""} <span class="divider">/</span> <a href="{$navbar_where.link3}">{$navbar_where.text3}</a>{elseif isset($navbar_where.text3) && $navbar_where.text3 neq ""} <span class="divider">/</span> {$navbar_where.text3}{/if}
-		{if isset($navbar_where.link4) && $navbar_where.link4 neq ""} <span class="divider">/</span> <a href="{$navbar_where.link4}">{$navbar_where.text4}</a>{elseif isset($navbar_where.text4) && $navbar_where.text4 neq ""} <span class="divider">/</span> {$navbar_where.text4}{/if}
+		{if isset($navbar_where.link2) && $navbar_where.link2 neq ""} <li> <a href="{$navbar_where.link2}">{$navbar_where.text2}</a> </li> {elseif isset($navbar_where.text2) && $navbar_where.text2 neq ""} <li> {$navbar_where.text2} </li> {/if}
+		{if isset($navbar_where.link3) && $navbar_where.link3 neq ""} <li> <a href="{$navbar_where.link3}">{$navbar_where.text3}</a> </li> {elseif isset($navbar_where.text3) && $navbar_where.text3 neq ""} <li> {$navbar_where.text3} </li> {/if}
+		{if isset($navbar_where.link4) && $navbar_where.link4 neq ""} <li> <a href="{$navbar_where.link4}">{$navbar_where.text4}</a> </li> {elseif isset($navbar_where.text4) && $navbar_where.text4 neq ""} <li> {$navbar_where.text4} </li> {/if}
 		</li>
 	{/if}
 	{if $posttitle neq "" && $pagename eq "page"}<li>{$posttitle}</li>{/if}
