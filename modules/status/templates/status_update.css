@@ -23,10 +23,9 @@ clear:both;
 .status_search_title {
 margin: 10px 0pt;
 color:#4270BC;
-font-size: 14px;
 }
 .status_search_form {
-
+margin-bottom:15px;
 }
 #status_search {
 
@@ -35,21 +34,12 @@ font-size: 14px;
 font-weight:bold;
 }
 .status_search_input {
-width: 200px;
-padding:2px;
-float:left;
-margin-bottom:10px;
+
 }
 .status_search_submission {
-margin:0 0 0 10px;
-float: left;
+
 }
-.status_seperator {
-margin:0;padding:0;
-width:100%;
-height:1px;
-background:#ccc;
-}
+
 .status_submit {
 margin: 10px 0px;
 }
@@ -57,7 +47,6 @@ margin: 10px 0px;
 .status_submit_title {
 margin: 10px 0pt;
 color:#4270BC;
-font-size: 14px;
 }
 .status_submit_form {
 
@@ -65,9 +54,14 @@ font-size: 14px;
 .status_submit_input {
 }
 .status_submit_submission {
-padding: 5px;
 width: 100px;
-float: right;
+height:54px;
+}
+@-moz-document url-prefix() {
+	/* Mozilla Firefox Tweaks */
+    .status_submit_submission {
+        height:71px;
+    }
 }
 .status_friend_updates {
 
@@ -86,7 +80,7 @@ font-size: 14px;
 margin: 0px 0px 15px 0;
 }
 .status_message_tools {
-margin: 7px 10px 0 0;
+margin: 10px 10px 0 0;
 float: right;
 font-size:0.8em;
 }
@@ -112,6 +106,7 @@ border:0;
 .status_message_time {
 font-size:0.8em;
 float:left;
+margin-top:3px;	
 }
 .status_message_content {
     background-color: #FFFFFF;
