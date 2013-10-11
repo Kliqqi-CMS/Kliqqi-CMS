@@ -200,6 +200,11 @@
 	<script type="text/javascript" src="{$my_pligg_base}/templates/{$the_template}/js/jquery/jquery.pnotify.js"></script>
 	<script type="text/javascript" src="{$my_pligg_base}/templates/{$the_template}/js/jquery/jquery.masonry.min.js"></script>
 	
+	{if $pagename eq 'advancedsearch'}
+		<script type="text/javascript" src="{$my_pligg_base}/templates/{$the_template}/js/bootstrap-datepicker.js"></script>
+		<link type="text/css" rel="stylesheet" media="all" href="{$my_pligg_base}/templates/{$the_template}/css/datepicker.css" />
+	{/if}
+	
     {if $pagename eq "topusers"}
 		<script type="text/javascript" src="{$my_pligg_base}/templates/{$the_template}/js/jquery.tablesorter.js"></script>
 		{literal}

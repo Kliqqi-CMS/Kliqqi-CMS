@@ -130,19 +130,12 @@
 
 			<div class="control-group">
 				<div class="controls">	
-					{include file=$the_template."/date_picker.tpl"}
 					<label for="date" class="control-label">{#PLIGG_Visual_Advanced_Search_Date#}</label>
-					<div class="row">
-						<div class="col-md-5">
-							<input name="date" type="text" class="form-control">
-						</div>
-						<div class="col-md-7">
-							<input type="button" value="{#PLIGG_Visual_Advanced_Search_Select#}" class="btn btn-default col-md-4" onclick="displayDatePicker('date', false, 'ymd', '-');">
-						</div>
-					</div>
+					<div class="input-group" id="date-picker">
+						<input type="text" class="form-control datepicker" name="date" data-provide="datepicker" data-date-format="mm/dd/yyyy">
+					</div><!-- /input-group -->
 				</div>
 			</div>
-			
 			
 		</div>
 		<div style="clear:both;"></div>
