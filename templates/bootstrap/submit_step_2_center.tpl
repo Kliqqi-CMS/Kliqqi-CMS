@@ -63,7 +63,7 @@
 			<div class="control-group">
 				<label for="input01" class="control-label">{#PLIGG_Visual_Submit2_Description#}</label>
 				<div class="controls">
-					<textarea name="bodytext" tabindex="15" rows="6" id="bodytext" class="form-control bodytext col-md-4" maxlength="{$maxStoryLength}" WRAP="SOFT">{if $submit_url_description}{$submit_url_description}{/if}{$submit_content}</textarea>
+					<textarea name="bodytext" tabindex="15" rows="6" class="form-control bodytext col-md-4" id="bodytext" maxlength="{$maxStoryLength}" WRAP="SOFT">{if $submit_url_description}{$submit_url_description}{/if}{$submit_content}</textarea>
 					<br />
 					<p class="help-inline">{#PLIGG_Visual_Submit2_DescInstruct#}</p>
 				</div>
