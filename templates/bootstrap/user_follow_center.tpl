@@ -7,14 +7,14 @@
 <!-- user_follow_center.tpl -->
 {***********************************************************************************}
 {if $user_view eq 'removefriend'}
-	<div class="alert alert-danger">
+	<div class="alert alert-warning">
 		<button class="close" data-dismiss="alert">&times;</button>
 		{#PLIGG_Visual_User_Profile_Friend_Removed#}
 	</div>
 {/if}
 {***********************************************************************************}
 {if $user_view eq 'addfriend'}
-	<div class="alert alert-danger">
+	<div class="alert alert-success">
 		<button class="close" data-dismiss="alert">&times;</button>
 		{#PLIGG_Visual_User_Profile_Friend_Added#}
 	</div>
