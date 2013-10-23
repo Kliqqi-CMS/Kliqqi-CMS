@@ -22,13 +22,12 @@
 			<tr><th colspan="2">{#Pligg_Captcha_Solve_Media#} Settings</th><tr>
 		</thead>
 		<tbody>
-			{*
 			<tr>
 				<td>
 					Public Key: 
 				</td>
 				<td>
-					<input type="text" name="pubkey" size="100" value="{$captcha_pubkey}">
+					<input type="text" class="form-control" name="pubkey" size="100" value="{$captcha_pubkey}">
 				</td>
 			</tr>
 			<tr>
@@ -36,7 +35,7 @@
 					Private Key:
 				</td>
 				<td>
-					<input type="text" name="privkey" size="100" value="{$captcha_privkey}">
+					<input type="text" class="form-control" name="privkey" size="100" value="{$captcha_privkey}">
 				</td>
 			</tr>
 			<tr>
@@ -44,11 +43,10 @@
 					Hash Key:
 				</td>
 				<td>
-					<input type="text" name="hashkey" size="100" value="{$captcha_hashkey}">
+					<input type="text" class="form-control" name="hashkey" size="100" value="{$captcha_hashkey}">
 				</td>
 			</tr>
 			<tr>
-			*}
 				<td>
 					Theme:
 				</td>
