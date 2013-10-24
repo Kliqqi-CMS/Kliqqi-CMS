@@ -86,7 +86,7 @@ function simple_messaging_showpage(){
 					$m = new KMessaging(true);
 					foreach($message as $key => $value) {
 						if ($value == "delete") {
-							$result = $m->DeleteMessege($key,2);
+							$result = $m->DeleteMessage($key,2);
 //							$db->query('DELETE FROM `' . table_messages . '` WHERE `idMsg` = "'.$key.'"');
 						}
 					}
@@ -147,7 +147,7 @@ function simple_messaging_showpage(){
 					$m = new KMessaging(true);
 					foreach($message as $key => $value) {
 						if ($value == "delete") {
-							$result = $m->DeleteMessege($key,1);
+							$result = $m->DeleteMessage($key,1);
 						}
 					}
 					
@@ -312,7 +312,7 @@ function simple_messaging_showpage(){
 
 		$array = messaging_get_message_details($msg_id);
 		$message = new KMessaging(true);
-		$result = $message->DeleteMessege($msg_id);
+		$result = $message->DeleteMessage($msg_id);
 		header('Location: ' . URL_simple_messaging_inbox);
 		die();
 
