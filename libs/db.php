@@ -24,8 +24,8 @@ if(!defined('mnminclude')){header('Location: ../error_404.php');die();}
 			<head>
 				<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 				<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-				<link rel="stylesheet" type="text/css" href="./templates/admin/css/bootstrap.css" media="screen" />
-				<link rel="stylesheet" type="text/css" href="./templates/admin/css/bootstrap-responsive.css">
+				<link rel="stylesheet" type="text/css" href="./templates/admin/css/bootstrap.no-icons.min.css" media="screen" />
+				<link rel="stylesheet" type="text/css" href="./templates/admin/css/font-awesome.min.css">
 				<link rel="stylesheet" type="text/css" href="./templates/admin/css/style.css" media="screen" />
 				<style type="text/css">
 				body {
