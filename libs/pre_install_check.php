@@ -28,8 +28,8 @@ if($do_check == true){
 				<head>
 					<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 					<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-					<link rel="stylesheet" type="text/css" href="./templates/admin/css/bootstrap.css" media="screen" />
-					<link rel="stylesheet" type="text/css" href="./templates/admin/css/bootstrap-responsive.css">
+					<link rel="stylesheet" type="text/css" href="./templates/admin/css/bootstrap.no-icons.min.css" media="screen" />
+					<link rel="stylesheet" type="text/css" href="./templates/admin/css/font-awesome.min.css">
 					<link rel="stylesheet" type="text/css" href="./templates/admin/css/style.css" media="screen" />
 					<style type="text/css">
 					body {
@@ -71,9 +71,9 @@ if($do_check == true){
 					<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.18/jquery-ui.min.js"></script>
 					<link href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.18/themes/smoothness/jquery-ui.css" media="all" rel="stylesheet" type="text/css" />
 					<!--[if lt IE 7]>
-					<script type="text/javascript" src="../templates/admin/js/jquery/jquery.dropdown.js"></script>
+					<script type="text/javascript" src="./templates/admin/js/jquery/jquery.dropdown.js"></script>
 					<![endif]-->
-					<script type="text/javascript" src="../templates/admin/js/bootstrap.js"></script>
+					<script type="text/javascript" src="./templates/admin/js/bootstrap.min.js"></script>
 				</body>
 				</html>';
 			die;

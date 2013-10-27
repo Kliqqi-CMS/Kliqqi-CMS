@@ -206,7 +206,7 @@
 	{/if}
 	
     {if $pagename eq "topusers"}
-		<script type="text/javascript" src="{$my_pligg_base}/templates/{$the_template}/js/jquery.tablesorter.js"></script>
+		<script type="text/javascript" src="{$my_pligg_base}/templates/{$the_template}/js/jquery/jquery.tablesorter.js"></script>
 		{literal}
 			<script type="text/javascript">
 				$(function() {	

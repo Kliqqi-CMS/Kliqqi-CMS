@@ -104,7 +104,7 @@
 				</strong>
 			</td>
 			<td>
-				<a href="{$URL_user, $last_user}" title="{#PLIGG_Visual_AdminPanel_Latest_User#}" class="colorbox_iframe2">{$last_user}</a>
+				<a href="{$URL_user, $last_user}" title="{#PLIGG_Visual_AdminPanel_Latest_User#}">{$last_user}</a>
 			</td>
 		</tr>
 	{/if}

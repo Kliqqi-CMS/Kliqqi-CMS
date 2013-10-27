@@ -27,7 +27,7 @@ $canIhaveAccess = 0;
 $canIhaveAccess = $canIhaveAccess + checklevel('admin');
 $canIhaveAccess = $canIhaveAccess + checklevel('moderator');
 
-$PliggDoc->add_js(my_base_url.my_pligg_base."/templates/admin/js/jquery.tablesorter.js");
+$PliggDoc->add_js(my_base_url.my_pligg_base."/templates/admin/js/jquery/jquery.tablesorter.js");
 
 $PliggDoc->add_js("$(function() {
 				
