@@ -47,9 +47,6 @@
 				{checkActionsTpl location="tpl_pligg_navbar_end"}
 				{if $user_authenticated neq true}
 					<li {if $pagename eq "register"}class="active"{/if}><a href="{$URL_register}"><span>{#PLIGG_Visual_Register#}</span></a></li>
-					{*
-						<li><a data-toggle="modal" href="#registerModal">{#PLIGG_Visual_Register#}</a></li>
-					*}
 					<li {if $pagename eq "login"}class="active"{/if}><a data-toggle="modal" href="#loginModal">{#PLIGG_Visual_Login_Title#}</a>
 				{/if}
 				{if isset($isadmin) && $isadmin eq 1}
