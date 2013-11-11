@@ -17,6 +17,9 @@ if(isset($_REQUEST["role"])){
 	$userid = $_REQUEST["userid"];
 	if(!is_numeric($id) || !is_numeric($userid)){die();}
 	$role = $db->escape($_REQUEST["role"]);
+
+	if ($userid == $current_user->user_id) die();
+
 	$sql = "UPDATE " . table_group_member . " set member_role='".$role."' WHERE member_user_id 	=".$userid." and member_group_id =".$id."";
 	//echo $sql;
 	$db->query($sql);

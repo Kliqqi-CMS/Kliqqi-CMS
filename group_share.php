@@ -19,6 +19,9 @@ if (isset($_GET['link_id']) && isset($_GET['group_id']))
     if (!is_numeric($group_id)) die();
     if (!is_numeric($link_id)) die();
 
+    $role = $db->get_var("SELECT member_role FROM " . table_group_member . " WHERE member_group_id = $group_id AND member_user_id = '".$current_user->user_id ."'" );
+    if ($role == 'banned') die();
+
     $privacy = $db->get_var("SELECT group_privacy FROM " . table_groups . " WHERE group_id = '$group_id';");
     if (($privacy!='private' || isMemberActive($group_id)=='active'))
     {
