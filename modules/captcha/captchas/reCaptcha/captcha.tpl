@@ -19,7 +19,11 @@ var RecaptchaOptions = {
 </style>
 {/literal}
 <div class="control-group{if isset($register_captcha_error)} error{/if}">
-	<label for="input01" class="control-label">CAPTCHA</label>
+	<label for="input01" class="control-label">
+		CAPTCHA 
+		| <a href="javascript:Recaptcha.reload()"><i style="font-size:16px;" class="icon icon-refresh"></i></a>
+		| <a href="javascript:Recaptcha.showhelp()"><i style="font-size:16px;" class="icon icon-info"></i></a></a>
+	</label>
 	<div class="controls">
 		{if isset($register_captcha_error)}
 			<div class="alert alert-error">
@@ -27,14 +31,13 @@ var RecaptchaOptions = {
 				{$register_captcha_error}
 			</div>
 		{/if}
+		<br />
 		<div id="recaptcha_widget" style="display:none">
 			<div id="recaptcha_image"></div>
-			<div class="recaptcha_only_if_incorrect_sol" style="color:red">Incorrect CAPTCHA please try again</div>
-			<input class="col-md-3" style="margin-top:5px;" type="text" id="recaptcha_response_field" name="recaptcha_response_field" />
-			<p class="help-inline">
-				<a href="javascript:Recaptcha.reload()">Get another CAPTCHA</a> &nbsp;&nbsp; | &nbsp;&nbsp;
-				<a href="javascript:Recaptcha.showhelp()">Help</a>
-			</p>
+			<div style="color:red" class="recaptcha_only_if_incorrect_sol">Incorrect CAPTCHA please try again</div>
+			<input style="width:300px;margin-top:5px;" class="form-control col-md-3" type="text" id="recaptcha_response_field" name="recaptcha_response_field" />
+			<br class="clearfix" />
+			<br /><br />
 		</div>
 	</div>
 </div>

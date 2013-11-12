@@ -23,5 +23,6 @@ var ACPuzzleOptions = {
 				echo solvemedia_get_html($publickey);
 			{/php}	
 		</div>
+		<br />
 	</div>
 </div>

@@ -12,11 +12,12 @@
 			<div id="whitehat_image">
 				<img src="{$captcha_path}captchas/WhiteHat/CaptchaSecurityImages.php" />
 			</div>
-			<input class="col-md-3 whitehat_input" type="text" tabindex="10" style="margin:5px 0 0 0;" size="20" name="security_code" />
+			<input style="width:125px;margin:5px 0 0 0;" class="form-control col-md-3 whitehat_input" type="text" tabindex="10" size="20" name="security_code" />
 			<input type="hidden" name="token" value="{$token_registration_captcha}"/>
 			<p class="help-inline whitehat_details">
 				{#Pligg_Captcha_Whitehat_Help#}
 			</p>
+			<br /><br />
 		</div>
 	</div>
 </div>
