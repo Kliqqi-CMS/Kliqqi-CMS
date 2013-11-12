@@ -79,10 +79,10 @@ function validate_all_user_action(){
 				<i id="selected_action"></i> {#PLIGG_Visual_AdminPanel_Apply_Changes#} <span class="caret"></span>
 			</a>
 			<ul class="dropdown-menu">
-				<li><a onclick="set_admin_action('published')" href="#">{#PLIGG_Visual_AdminPanel_Publish#}</a></li>
-				<li><a onclick="set_admin_action('new')" href="#">{#PLIGG_Visual_AdminPanel_New#}</a></li>
-				<li><a onclick="set_admin_action('discard')" href="#">{#PLIGG_Visual_AdminPanel_Discard#}</a></li>
-				<li><a onclick="set_admin_action('spam')" href="#">{#PLIGG_Visual_AdminPanel_Spam#}</a></li>
+				<li><a onclick="set_admin_action('published')" href="#"><i class="fa fa-level-up"></i>{#PLIGG_Visual_AdminPanel_Publish#}</a></li>
+				<li><a onclick="set_admin_action('new')" href="#"><i class="fa fa-level-down"></i>{#PLIGG_Visual_AdminPanel_New#}</a></li>
+				<li><a onclick="set_admin_action('discard')" href="#"><i class="fa fa-trash-o"></i>{#PLIGG_Visual_AdminPanel_Discard#}</a></li>
+				<li><a onclick="set_admin_action('spam')" href="#"><i class="fa fa-ban"></i>{#PLIGG_Visual_AdminPanel_Spam#}</a></li>
 			</ul>
 		</div>
 	</div>
@@ -148,7 +148,7 @@ function validate_all_user_action(){
 			{checkActionsTpl location="tpl_pligg_admin_submissions_td_start"}
 			<td><a href="{$my_base_url}{$my_pligg_base}/admin/admin_users.php?mode=view&user={$template_stories[id].link_author}" title="{$template_stories[id].link_author}'s Articles" id="link-{$template_stories[id].link_id}-author">{$template_stories[id].link_author}</a></td>
 			<td>
-				<a href='{$my_pligg_base}/editlink.php?id={$template_stories[id].link_id}'><i class="icon icon-edit" title="{#PLIGG_Visual_AdminPanel_Page_Edit#}" alt="{#PLIGG_Visual_AdminPanel_Page_Edit#}"></i></a>
+				<a href='{$my_pligg_base}/editlink.php?id={$template_stories[id].link_id}'><i class="fa fa-edit" title="{#PLIGG_Visual_AdminPanel_Page_Edit#}" alt="{#PLIGG_Visual_AdminPanel_Page_Edit#}"></i></a>
 				<a href="{$my_base_url}{$my_pligg_base}/story.php?title={$template_stories[id].link_title_url}" title="{$template_stories[id].link_title|truncate:50:"...":true}" >{$template_stories[id].link_title}</a>
 			</td>
 			<td style="text-align:center;vertical-align:middle;">{$template_stories[id].link_date}</td>
@@ -170,7 +170,7 @@ function validate_all_user_action(){
 	<div style="clear:both;"> </div>
 </form>
 <div style="float:right;margin-top:6px;">
-	<a data-toggle="modal" href="{$my_base_url}{$my_pligg_base}/admin/admin_delete_stories.php" class="btn btn-danger"><i class="icon-trash icon-white"></i> {#PLIGG_Visual_AdminPanel_Delete_Stories#}</a>
+	<a data-toggle="modal" href="{$my_base_url}{$my_pligg_base}/admin/admin_delete_stories.php" class="btn btn-danger"><i class="fa fa-trash fa fa-white"></i> {#PLIGG_Visual_AdminPanel_Delete_Stories#}</a>
 </div>
 <div style="clear:both;"> </div>
 <SCRIPT>

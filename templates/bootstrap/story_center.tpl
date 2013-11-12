@@ -4,10 +4,10 @@
 <!-- story_center.tpl -->
 {$the_story}
 <ul class="nav nav-tabs" id="storytabs">
-	<li class="active"><a data-toggle="tab" href="#comments">{#PLIGG_Visual_Story_Comments#}</a></li>
-	{if count($voter) neq 0}<li><a data-toggle="tab" href="#who_voted">{#PLIGG_Visual_Story_Who_Upvoted#}</a></li>{/if}
-	{if count($downvoter) neq 0}<li><a data-toggle="tab" href="#who_downvoted">{#PLIGG_Visual_Story_Who_Downvoted#}</a></li>{/if}
-	{if count($related_story) neq 0}<li><a data-toggle="tab" href="#related">{#PLIGG_Visual_Story_RelatedStory#}</a></li>{/if}
+	<li class="active"><a data-toggle="tab" href="#comments"><i class="fa fa-comments"></i> {#PLIGG_Visual_Story_Comments#}</a></li>
+	{if count($voter) neq 0}<li><a data-toggle="tab" href="#who_voted"><i class="fa fa-thumbs-up"></i> {#PLIGG_Visual_Story_Who_Upvoted#}</a></li>{/if}
+	{if count($downvoter) neq 0}<li><a data-toggle="tab" href="#who_downvoted"><i class="fa fa-thumbs-down"></i> {#PLIGG_Visual_Story_Who_Downvoted#}</a></li>{/if}
+	{if count($related_story) neq 0}<li><a data-toggle="tab" href="#related"><i class="fa fa-tag"></i> {#PLIGG_Visual_Story_RelatedStory#}</a></li>{/if}
 	{checkActionsTpl location="tpl_pligg_story_tab_end"}
 </ul>
 <script language="javascript">

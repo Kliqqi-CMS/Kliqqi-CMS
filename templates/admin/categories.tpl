@@ -191,8 +191,8 @@ function showdel(id)
 			{/if}
 			{if $cat_array[thecat].spacercount > $submit_lastspacer}<ol class="category_list"></li>{/if}
 			<li id='cat{$cat_array[thecat].auto_id}'>{$cat_array[thecat].name}
-				<a class="category_position" id='up{$cat_array[thecat].auto_id}' onclick="moveup({$cat_array[thecat].auto_id})" {if $cat_array[thecat].first}style='display:none;'{/if}><span class="icon-angle-up"></span></a>
-				<a class="category_position" id='down{$cat_array[thecat].auto_id}' onclick="movedown({$cat_array[thecat].auto_id})" {if $cat_array[thecat].last}style='display:none;'{/if}><span class="icon-angle-down"></span></a>
+				<a class="category_position" id='up{$cat_array[thecat].auto_id}' onclick="moveup({$cat_array[thecat].auto_id})" {if $cat_array[thecat].first}style='display:none;'{/if}><span class="fa fa-angle-up"></span></a>
+				<a class="category_position" id='down{$cat_array[thecat].auto_id}' onclick="movedown({$cat_array[thecat].auto_id})" {if $cat_array[thecat].last}style='display:none;'{/if}><span class="fa fa-angle-down"></span></a>
 			{assign var=submit_lastspacer value=$cat_array[thecat].spacercount}
 		{/if}
 	{/section}

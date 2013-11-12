@@ -50,8 +50,8 @@
 										<div class="fileupload-preview fileupload-exists img-thumbnail" style="max-width:{$Avatar_Large}px;max-height:{$Avatar_Large}px;"></div>
 										<div>
 											<span class="btn btn-default btn-file">
-												<span class="fileupload-new"><i class="icon icon-picture"></i> Browse</span>
-												<span class="fileupload-exists"><i class="icon icon-picture"></i> Browse</span>
+												<span class="fileupload-new"><i class="fa fa-picture"></i> Browse</span>
+												<span class="fileupload-exists"><i class="fa fa-picture"></i> Browse</span>
 												<input type="file" class="fileupload" name="image_file"/>
 											</span>
 											<a href="#" class="btn btn-danger fileupload-exists" data-dismiss="fileupload">Remove</a>
@@ -160,10 +160,10 @@
 			</form>
 			{if $Allow_Friends}
 				<div class="btn-group user_followers">
-					<a class="btn btn-default btn-sm" href="{$user_url_friends}"><i class="icon-user"></i> {$user_following} {#PLIGG_Visual_User_Profile_View_Friends#}</a>
-					<a class="btn btn-default btn-sm" href="{$user_url_friends2}"><i class="icon-user"></i> {$user_followers} {#PLIGG_Visual_User_Profile_Your_Friends#}</a>
+					<a class="btn btn-default btn-sm" href="{$user_url_friends}"><i class="fa fa-user"></i> {$user_following} {#PLIGG_Visual_User_Profile_View_Friends#}</a>
+					<a class="btn btn-default btn-sm" href="{$user_url_friends2}"><i class="fa fa-user"></i> {$user_followers} {#PLIGG_Visual_User_Profile_Your_Friends#}</a>
 					{if check_for_enabled_module('simple_messaging',2.0) && $is_friend}
-						<a class="btn btn-default btn-sm" href="{$my_base_url}{$my_pligg_base}/module.php?module=simple_messaging&view=compose&to={$username}&return={$my_pligg_base}%2Fuser.php%3Flogin%3D{$user_logged_in}%26view%3Dfollowers"><i class="icon-envelope"></i> Send Message</a>
+						<a class="btn btn-default btn-sm" href="{$my_base_url}{$my_pligg_base}/module.php?module=simple_messaging&view=compose&to={$username}&return={$my_pligg_base}%2Fuser.php%3Flogin%3D{$user_logged_in}%26view%3Dfollowers"><i class="fa fa-envelope"></i> Send Message</a>
 					{/if}
 					{if $is_friend gt 0}
 						<a href="{$user_url_remove}" class="btn btn-sm btn-danger">{#PLIGG_Unfollow#}{* {$user_login|capitalize} *}</a>

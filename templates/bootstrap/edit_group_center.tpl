@@ -27,7 +27,7 @@
 					<input type="hidden" name="idname" value="{$group_id}"/>
 					<input type="hidden" name="avatar" value="uploaded"/>
 					<input type="hidden" name="avatarsource" value="useruploaded">
-					<button type="submit" value="{#PLIGG_Visual_Profile_AvatarUpload#}" name="action" class="btn btn-primary"><span class="icon-white icon-picture"></span> {#PLIGG_Visual_Profile_AvatarUpload#}</button>
+					<button type="submit" value="{#PLIGG_Visual_Group_Avatar_Upload#}" name="action" class="btn btn-primary"><i class="fa fa-white fa-picture-o"></i> {#PLIGG_Visual_Group_Avatar_Upload#}</button>
 				</div>
 			</div>
 		</form> 

@@ -70,7 +70,7 @@
 			<table class="table table-striped table-condensed">
 				{section name=line loop=$whitelist_file}
 					<tr>
-						<td><a href="domain_management.php?id=0&list=whitelist&remove={$whitelist_file[line]}"><i style="color:#dd1c1c;" class="icon icon-remove"></i></a>
+						<td><a href="domain_management.php?id=0&list=whitelist&remove={$whitelist_file[line]}"><i style="color:#dd1c1c;" class="fa fa-times"></i></a>
 						&nbsp; {$whitelist_file[line]} </td>
 					</tr>
 				{/section}
@@ -96,7 +96,7 @@
 			<table class="table table-striped table-condensed">
 				{section name=line loop=$blacklist_file}
 					<tr>
-						<td><a href="domain_management.php?id=0&list=blacklist&remove={$blacklist_file[line]}"><i style="color:#dd1c1c;" class="icon icon-remove"></i></a>
+						<td><a href="domain_management.php?id=0&list=blacklist&remove={$blacklist_file[line]}"><i style="color:#dd1c1c;" class="fa fa-times"></i></a>
 						&nbsp; {$blacklist_file[line]}</td>
 					</tr>
 				{/section}

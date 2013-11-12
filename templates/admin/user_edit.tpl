@@ -89,7 +89,7 @@
 			</tr>
 			<tr>
 				<td>
-					<a class="btn btn-default"  href="?mode=view&user={$userdata[nr].user_id}"><i class="icon-chevron-left"></i> {#PLIGG_Visual_View_User_Edit_Cancel#}</a>
+					<a class="btn btn-default"  href="?mode=view&user={$userdata[nr].user_id}"><i class="fa fa-chevron-left"></i> {#PLIGG_Visual_View_User_Edit_Cancel#}</a>
 				</td>
 				<td>
 					{$hidden_token_admin_users_edit}

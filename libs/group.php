@@ -317,9 +317,9 @@ function member_display($requestID)
 			    if ($memberid->member_status=='active') {
 					if($member_user_id == $current_user->user_id) {
 						$main_smarty->assign('is_group_admin', 'true');
-						$member_display .= '<td>'.$member_role.'</td><td><a class="btn btn-default" href="#groupadminlinks-'.$index.'" data-toggle="modal"><i class="icon-edit" title="'.$change_role.'"></i> Edit</a></td><td>&nbsp;</td>';
+						$member_display .= '<td>'.$member_role.'</td><td><a class="btn btn-default" href="#groupadminlinks-'.$index.'" data-toggle="modal"><i class="fa fa-edit" title="'.$change_role.'"></i> Edit</a></td><td>&nbsp;</td>';
 					} else {
-						$member_display .= '<td>'.$member_role.'</td><td><a class="btn btn-default" href="#groupadminlinks-'.$index.'" data-toggle="modal"><i class="icon-edit" title="'.$change_role.'"></i> Edit</a></td><td><a class="btn btn-danger" href="'.my_base_url . my_pligg_base . '/join_group.php?activate=false&group_id='.$requestID.'&user_id='.$member_user_id.'">Deactivate</a></td>';
+						$member_display .= '<td>'.$member_role.'</td><td><a class="btn btn-default" href="#groupadminlinks-'.$index.'" data-toggle="modal"><i class="fa fa-edit" title="'.$change_role.'"></i> Edit</a></td><td><a class="btn btn-danger" href="'.my_base_url . my_pligg_base . '/join_group.php?activate=false&group_id='.$requestID.'&user_id='.$member_user_id.'">Deactivate</a></td>';
 					}
 					$member_display .= '
 					<div class="modal fade" id="groupadminlinks-'.$index.'">

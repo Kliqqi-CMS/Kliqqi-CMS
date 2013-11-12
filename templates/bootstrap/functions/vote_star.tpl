@@ -30,22 +30,22 @@ function vote (user, id, htmlid, md5, value)
 			if (anchor.length)
 				anchor.removeClass(value>0 ? 'btn-danger' : 'btn-success')
 					.attr('href', anchor.attr('href').replace(/unvote/,'vote'))
-					.children('i').removeClass('icon-white');
+					.children('i').removeClass('fa-white');
 
 			var anchor = $('#xvote-'+htmlid+' > a:'+(value>0 ? 'first' : 'last'));
 			anchor.addClass(value>0 ? 'btn-success' : 'btn-danger')
 				.attr('href', anchor.attr('href').replace(/vote/,'unvote'))
-				.children('i').addClass('icon-white');
+				.children('i').addClass('fa-white');
 				
 		     if(value==10){
 			  
 			  like_dislike_text='You like';
-			  notify_icon = 'icon-thumbs-up'
+			  notify_icon = 'fa fa-thumbs-up'
 			 }
 			 else if(value==-10){
 			 	
 			  	like_dislike_text='You dislike';
-				notify_icon = 'icon-thumbs-down';
+				notify_icon = 'fa fa-thumbs-down';
 			  }
 			    
 			 $.pnotify({
@@ -87,7 +87,7 @@ function unvote (user, id, htmlid, md5, value)
 			var anchor = $('#xvote-'+htmlid+' > a:'+(value>0 ? 'first' : 'last'));
 			anchor.removeClass(value>0 ? 'btn-success' : 'btn-danger')
 				.attr('href', anchor.attr('href').replace(/unvote/,'vote'))
-				.children('i').removeClass('icon-white');
+				.children('i').removeClass('fa-white');
 				
 			if(value==10)
 			  like_dislike_text='You removed like';
@@ -98,7 +98,7 @@ function unvote (user, id, htmlid, md5, value)
 								pnotify_text: like_dislike_text+' &quot;'+link_title+'&quot;',
 								pnotify_sticker: false,
 								pnotify_history: false,
-								pnotify_notice_icon: 'icon-thumbs-down'
+								pnotify_notice_icon: 'fa fa-thumbs-down'
 							});	
 						
 

@@ -32,7 +32,7 @@
 
 		<hr />
 		<div align="center">
-			<a class="btn btn-default" href="{$URL_simple_messaging_inbox}"><i class="icon-envelope"></i> {#PLIGG_MESSAGING_Close#}</a>
+			<a class="btn btn-default" href="{$URL_simple_messaging_inbox}"><i class="fa fa-envelope"></i> {#PLIGG_MESSAGING_Close#}</a>
 		</div>
 	</p>
 </div>

@@ -91,9 +91,9 @@
 									echo '<td>';
 									foreach($requires as $requirement){
 										if(check_for_enabled_widget($requirement[0], $requirement[1])){
-											echo '<i class="icon icon-ok" alt="Pass"></i> ';
+											echo '<i class="fa fa-check" alt="Pass"></i> ';
 										} else {
-											echo '<i class="icon icon-remove" alt="Fail"></i> ';
+											echo '<i class="fa fa-times" alt="Fail"></i> ';
 										}
 										echo '' . $requirement[0] . ' Version ' . $requirement[1] .' &nbsp;&nbsp; ';
 									}
@@ -174,9 +174,9 @@
 								echo '<br /><strong>Requires:</strong> ';
 								foreach($requires as $requirement){
 									if(check_for_enabled_widget($requirement[0], $requirement[1])){
-										echo '<i class="icon icon-ok" alt="Pass"></i> ';
+										echo '<i class="fa fa-check" alt="Pass"></i> ';
 									} else {
-										echo '<i class="icon icon-remove" alt="Fail"></i> ';
+										echo '<i class="fa fa-times" alt="Fail"></i> ';
 									}
 									echo '' . $requirement[0] . ' Version ' . $requirement[1] .' &nbsp;&nbsp; ';
 								}
@@ -195,7 +195,7 @@
 	if($action == 'readme'){
 		$widget = sanitize($_REQUEST['widget'],3);
 		echo '<legend>'.$main_smarty->get_config_vars('PLIGG_Visual_AdminPanel_Widget_Readme').'</legend>';
-		echo '<a href="'.my_pligg_base.'/admin/admin_widgets.php"><i class="icon-arrow-left"></i> '.$main_smarty->get_config_vars('PLIGG_Visual_AdminPanel_Widget_Return').'</a><br /><hr />';
+		echo '<a href="'.my_pligg_base.'/admin/admin_widgets.php"><i class="fa fa-caret-left"></i> '.$main_smarty->get_config_vars('PLIGG_Visual_AdminPanel_Widget_Return').'</a><br /><hr />';
 		if(file_exists('../widgets/' . $widget . '/' . $widget . '_readme.htm')){
 			include_once('../widgets/' . $widget . '/' . $widget . '_readme.htm');	
 		} else {

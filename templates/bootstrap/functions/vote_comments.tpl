@@ -26,12 +26,12 @@ function cvote (user, id, htmlid, md5, value)
 			if (anchor.length)
 				anchor.removeClass(value>0 ? 'btn-danger' : 'btn-success')
 					.attr('href', anchor.attr('href').replace(/cunvote/,'cvote'))
-					.children('i').removeClass('icon-white');
+					.children('i').removeClass('fa-white');
 
 			var anchor = $('#cxvote-'+htmlid+' > .btn.btn-default:'+(value>0 ? 'first' : 'last'));
 			anchor.addClass(value>0 ? 'btn-success' : 'btn-danger')
 				.attr('href', anchor.attr('href').replace(/cvote/,'cunvote'))
-				.children('i').addClass('icon-white');
+				.children('i').addClass('fa-white');
 				
 			$('#cvote-'+htmlid).html(data.split('~')[0]);
 		}
@@ -54,7 +54,7 @@ function cunvote (user, id, htmlid, md5, value)
 			var anchor = $('#cxvote-'+htmlid+' > .'+(value<0 ? 'btn-danger' : 'btn-success'));
 			anchor.removeClass(value>0 ? 'btn-success' : 'btn-danger')
 				.attr('href', anchor.attr('href').replace(/cunvote/,'cvote'))
-				.children('i').removeClass('icon-white');
+				.children('i').removeClass('fa-white');
 
 			$('#cvote-'+htmlid).html(data.split('~')[0]);
 		}

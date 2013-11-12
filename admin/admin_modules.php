@@ -158,9 +158,9 @@ if($status=="uninstalled")
 							$req_data.='<li style="line-height:22px;">';
 							if(check_for_enabled_module($requirement[0], $requirement[1]))
 							{
-								$req_data.= '<span class="label label-success" style="padding:3px 5px;"><i class="icon-white icon-ok"></i> ';
+								$req_data.= '<span class="label label-success" style="padding:3px 5px;"><i class="fa fa-white fa-check"></i> ';
 							} else {
-								$req_data.= '<span class="label label-danger" style="padding:3px 5px;"><i class="icon-white icon-remove"></i> ';
+								$req_data.= '<span class="label label-danger" style="padding:3px 5px;"><i class="fa fa-white fa-times"></i> ';
 							}
 							if ($requirement[3])
 							{
@@ -306,9 +306,9 @@ if($status=="uninstalled")
 							$require_data.='<li style="line-height:22px;">';
 							if(check_for_enabled_module($requirement[0], $requirement[1]))
 							{
-								$require_data.= '<span class="label label-success" style="padding:3px 5px;"><i class="icon-white icon-ok"></i> ';
+								$require_data.= '<span class="label label-success" style="padding:3px 5px;"><i class="fa fa-white fa-check"></i> ';
 							} else {
-								$require_data.= '<span class="label label-danger" style="padding:3px 5px;"><i class="icon-white icon-remove"></i> ';
+								$require_data.= '<span class="label label-danger" style="padding:3px 5px;"><i class="fa fa-white fa-times"></i> ';
 							}
 							if ($requirement[3])
 							{

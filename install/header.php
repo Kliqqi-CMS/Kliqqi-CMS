@@ -33,8 +33,8 @@ if($language == 'arabic'){
 	<meta name="Robots" content="none" />
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 	
-	<link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.no-icons.min.css" rel="stylesheet">
-	<link href="//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.min.css" rel="stylesheet">
+	<link href="../templates/admin/css/bootstrap.no-icons.min.css" rel="stylesheet">
+	<link href="../templates/admin/css/font-awesome.min.css" rel="stylesheet">
 	<link rel="stylesheet" type="text/css" href="../templates/admin/css/style.css" media="screen" />
 	<style type="text/css">
 	body {

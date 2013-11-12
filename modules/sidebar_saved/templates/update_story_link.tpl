@@ -32,7 +32,7 @@
 							pnotify_text: message,
 							pnotify_sticker: false,
 							pnotify_history: false,
-							pnotify_notice_icon: 'icon-star'
+							pnotify_notice_icon: 'fa fa-star'
 						});
 						
 						
@@ -44,7 +44,7 @@
 							pnotify_text: message,
 							pnotify_sticker: false,
 							pnotify_history: false,
-							pnotify_notice_icon: 'icon-star-empty'
+							pnotify_notice_icon: 'fa fa-star-o'
 						});
 					}else{
 						var tag = $("<div></div>");

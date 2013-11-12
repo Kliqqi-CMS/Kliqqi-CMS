@@ -146,9 +146,9 @@
 								<div class="votenumber">1</div>
 								<div id="xvote-{$link_shakebox_index}" class="votebutton">
 									<!-- Already Voted -->
-									<a class="btn btn-success"><i class="icon-white icon-thumbs-up"></i></a>
+									<a class="btn btn-success"><i class="fa fa-white fa-thumbs-up"></i></a>
 									<!-- Bury It -->
-									<a class="btn btn-default linkVote_{$link_id}"><i class="icon-thumbs-down"></i></a>
+									<a class="btn btn-default linkVote_{$link_id}"><i class="fa fa-thumbs-down"></i></a>
 								</div><!-- /.votebutton -->
 								{checkActionsTpl location="tpl_pligg_story_votebox_end"}
 							</div><!-- /.vote -->
@@ -175,12 +175,12 @@
 								$main_smarty->assign('Avatar_ImgSrc', get_avatar('small', $user->avatar_source, $user->username));
 							{/php}
 							
-							{if $UseAvatars neq "0"}<span id="ls_avatar-{$link_shakebox_index}"><img src="{$Avatar_ImgSrc}" width="16px" height="16px" alt="" title="Avatar" /></span>{else}<i class="icon-user"></i>{/if}
+							{if $UseAvatars neq "0"}<span id="ls_avatar-{$link_shakebox_index}"><img src="{$Avatar_ImgSrc}" width="16px" height="16px" alt="" title="Avatar" /></span>{else}<i class="fa fa-user"></i>{/if}
 							<a href="{$submitter_profile_url}">{$link_submitter}</a> 
-							<i class="icon-time"></i>
+							<i class="fa fa-time"></i>
 							Being Submitted Now
 							{if $url_short neq "http://" && $url_short neq "://"}
-								<i class="icon-globe"></i>
+								<i class="fa fa-globe"></i>
 								<a href="{$url}" {if $open_in_new_window eq true} target="_blank"{/if}  {if $story_status neq "published"}rel="nofollow"{/if}>{$url_short}</a>
 							{/if}
 						</span>
@@ -201,19 +201,19 @@
 					<div class="story-tools-left">
 						{checkActionsTpl location="tpl_pligg_story_tools_start"}
 						<span id="ls_comments_url-{$link_shakebox_index}">
-							<i class="icon-comment"></i> <span id="linksummaryDiscuss"><a class="comments">{#PLIGG_MiscWords_Discuss#}</a>&nbsp;</span>
+							<i class="fa fa-comment"></i> <span id="linksummaryDiscuss"><a class="comments">{#PLIGG_MiscWords_Discuss#}</a>&nbsp;</span>
 						</span> 
-						<i class="icon-star"></i> <span id="linksummarySaveLink"><a id="add" class="favorite" >{#PLIGG_MiscWords_Save_Links_Save#}</a></span>&nbsp;
+						<i class="fa fa-star"></i> <span id="linksummarySaveLink"><a id="add" class="favorite" >{#PLIGG_MiscWords_Save_Links_Save#}</a></span>&nbsp;
 						<span id="stories-{$link_shakebox_index}" class="label label-success" style="display:none;line-height:1em;">{#PLIGG_MiscWords_Save_Links_Success#}</span>
 						{if $enable_group eq "true" && $user_logged_in}
-							<i class="icon-plus-sign"></i> <span class="group_sharing"><a>{#PLIGG_Visual_Group_Share#}</a></span>
+							<i class="fa fa-group"></i> <span class="group_sharing"><a>{#PLIGG_Visual_Group_Share#}</a></span>
 						{/if}
 						{checkActionsTpl location="tpl_pligg_story_tools_end"}
 					</div>
 					<div class="story-tools-right">
-						<i class="icon-folder-open"></i> <a><span class="category">&nbsp;</span></a>
+						<i class="fa fa-folder"></i> <a><span class="category">&nbsp;</span></a>
 						{if $enable_tags}
-							<i class="icon-tag"></i> <a><span class="tags"></span></a>
+							<i class="fa fa-tag"></i> <a><span class="tags"></span></a>
 						{/if}	
 					 </div><!-- /.story-tools-right -->
 					 <div style="clear:both;"></div>

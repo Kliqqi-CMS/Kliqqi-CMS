@@ -20,7 +20,7 @@ $(document).ready(function(){
 
 <legend>{$module_management_name}</legend>
 {if $action eq "readme"}
-	<a class="btn btn-default" href="admin_modules.php"><i class="icon-arrow-left"></i> {$module_readme_return}</a><hr />
+	<a class="btn btn-default" href="admin_modules.php"><i class="fa fa-caret-left"></i> {$module_readme_return}</a><hr />
 	{if $found eq "yes"}
 		{$readme_content}
 	{else}

@@ -13,18 +13,18 @@
 					{if $Enable_Comment_Voting eq 1}
 						{if $comment_shakebox_currentuser_votes eq 0}
 							<!-- Vote For It -->
-							<a class="btn btn-xs btn-default" href="javascript:{$link_shakebox_javascript_votey}"><i class="icon-thumbs-up"></i></a>
+							<a class="btn btn-xs btn-default" href="javascript:{$link_shakebox_javascript_votey}"><i class="fa fa-thumbs-up"></i></a>
 						{else}
 							<!-- Already Voted -->
-							<a class="btn btn-xs btn-success" href="javascript:{$link_shakebox_javascript_unvotey}"><i class="icon-white icon-thumbs-up"></i></a>
+							<a class="btn btn-xs btn-success" href="javascript:{$link_shakebox_javascript_unvotey}"><i class="fa fa-white fa fa-thumbs-up"></i></a>
 						{/if}
 						<a id="cvote-{$comment_id}" class="btn btn-default btn-xs comment_vote_count" disabled>{$comment_votes}</a>
 						{if $comment_shakebox_currentuser_reports eq 0}
 							<!-- Bury It -->
-							<a class="btn btn-xs btn-default" href="javascript:{$link_shakebox_javascript_voten}"><i class="icon-thumbs-down"></i></a>
+							<a class="btn btn-xs btn-default" href="javascript:{$link_shakebox_javascript_voten}"><i class="fa fa-thumbs-down"></i></a>
 						{else}
 							<!-- Already Buried -->
-							<a class="btn btn-xs btn-danger" href="javascript:{$link_shakebox_javascript_unvoten}"><i class="icon-white icon-thumbs-down"></i></a>
+							<a class="btn btn-xs btn-danger" href="javascript:{$link_shakebox_javascript_unvoten}"><i class="fa fa-white fa fa-thumbs-down"></i></a>
 						{/if}
 					{/if}
 					
@@ -35,16 +35,16 @@
 			{if $user_logged_in == $user_userlogin || $isadmin eq 1}
 				<div class="btn-group pull-right admin-links">
 					<a class="btn btn-default dropdown-toggle" data-toggle="dropdown" href="#">
-					  <i class="icon-cog"></i>
+					  <i class="fa fa-cog"></i>
 					  <span class="caret"></span>
 					</a>
 					<ul class="dropdown-menu">
 						{if $isadmin eq 1}
-							<li><a href="{$my_base_url}{$my_pligg_base}/admin/admin_users.php?mode=view&user={$user_userlogin}"><i class="icon icon-user"></i> {#PLIGG_Visual_Comment_Manage_User#} {$user_userlogin}</a></li>
-							<li><a href="{$edit_comment_url}"><i class="icon icon-edit"></i> {#PLIGG_Visual_Comment_Edit#}</a></li>
-							<li><a href="{$delete_comment_url}"><i class="icon icon-trash"></i> {#PLIGG_Visual_Comment_Delete#}</a></li>
+							<li><a href="{$my_base_url}{$my_pligg_base}/admin/admin_users.php?mode=view&user={$user_userlogin}"><i class="fa fa-user"></i> {#PLIGG_Visual_Comment_Manage_User#} {$user_userlogin}</a></li>
+							<li><a href="{$edit_comment_url}"><i class="fa fa-edit"></i> {#PLIGG_Visual_Comment_Edit#}</a></li>
+							<li><a href="{$delete_comment_url}"><i class="fa fa-trash-o"></i> {#PLIGG_Visual_Comment_Delete#}</a></li>
 						{elseif $user_logged_in == $user_userlogin}
-							<li><a href="{$edit_comment_url}"><i class="icon icon-edit"></i> {#PLIGG_Visual_Comment_Edit#}</a></li>
+							<li><a href="{$edit_comment_url}"><i class="fa fa-edit"></i> {#PLIGG_Visual_Comment_Edit#}</a></li>
 						{/if}
 						{checkActionsTpl location="tpl_pligg_story_comments_admin"}
 					</ul>

@@ -103,11 +103,11 @@ $rename = " must be renamed to ";
 $language_file_count = 0;
 foreach (glob("../languages/*.conf") as $filename) { $language_file_count = $language_file_count+1;}
 if (!glob("../languages/*.conf")) { 
-	echo '<tr><td style="width:20px;" class="bad"><i class="icon icon-remove"></i></td><td>No Language file has been detected! You will need to remove the .default extension from one of these language files:<ul style="margin:0px 0 5px 15px;padding:0;">';
+	echo '<tr><td style="width:20px;" class="bad"><i class="fa fa-times"></i></td><td>No Language file has been detected! You will need to remove the .default extension from one of these language files:<ul style="margin:0px 0 5px 15px;padding:0;">';
 	getfiles("../languages"); // List language files
 	echo '</ul></td></tr>';
 }else{
-    echo "<tr><td style='width:20px;' class='good'><i class='icon icon-ok'></i></td><td>You have renamed ";
+    echo "<tr><td style='width:20px;' class='good'><i class='fa fa-check'></i></td><td>You have renamed ";
 	echo '<a id="langfiles" data-trigger="hover" data-html="true" data-content="<ul>';
 	foreach (glob("../languages/*.conf") as $filename) {
 		echo "<li>$filename</li>";
@@ -118,46 +118,46 @@ if (!glob("../languages/*.conf")) {
 $settings = '../settings.php';
 $settingsdefault = '../settings.php.default';
 if (file_exists($settings)) {
-	echo '<tr><td ckass="good"><i class="icon icon-ok" ></i></td><td>'.$settings.'</td></tr>';
+	echo '<tr><td ckass="good"><i class="fa fa-check" ></i></td><td>'.$settings.'</td></tr>';
 } else {
 	if (file_exists($settingsdefault)) {
-		echo '<tr><td class="bad"><i class="icon icon-remove"></i></td><td>'.$settingsdefault.$rename.$settings.'.</td></tr>';
+		echo '<tr><td class="bad"><i class="fa fa-times"></i></td><td>'.$settingsdefault.$rename.$settings.'.</td></tr>';
 	}
 }
 $dbconnect = '../libs/dbconnect.php';
 $dbconnectdefault = '../libs/dbconnect.php.default';
 if (file_exists($dbconnect)) {
-	echo '<tr><td><i class="icon icon-ok"></i></td><td>'.$dbconnect.'</td></tr>';
+	echo '<tr><td><i class="fa fa-check"></i></td><td>'.$dbconnect.'</td></tr>';
 } else {
 	if (file_exists($dbconnectdefault)) {
-		echo '<tr><td><i class="icon icon-remove"></i></td><td>'.$dbconnectdefault.$rename.$dbconnect.'.</td></tr>';
+		echo '<tr><td><i class="fa fa-times"></i></td><td>'.$dbconnectdefault.$rename.$dbconnect.'.</td></tr>';
 	}
 }
 $bannedips = '../logs/bannedips.log';
 $bannedipsdefault = '../logs.default/bannedips.log';
 if (file_exists($bannedips)) {
-	echo '<tr><td><i class="icon icon-ok"></i></td><td>'.$bannedips.'</td></tr>';
+	echo '<tr><td><i class="fa fa-check"></i></td><td>'.$bannedips.'</td></tr>';
 } else {
 	if (file_exists($bannedipsdefault)) {
-		echo '<tr><td><i class="icon icon-remove"></i></td><td>'.$bannedipsdefault.$rename.$bannedips.'.</td></tr>';
+		echo '<tr><td><i class="fa fa-times"></i></td><td>'.$bannedipsdefault.$rename.$bannedips.'.</td></tr>';
 	}
 }
 $localantispam = '../logs/domain-blacklist.log';
 $localantispamdefault = '../logs.default/domain-blacklist.log';
 if (file_exists($localantispam)) {
-	echo '<tr><td><i class="icon icon-ok"></i></td><td>'.$localantispam.'</td></tr>';
+	echo '<tr><td><i class="fa fa-check"></i></td><td>'.$localantispam.'</td></tr>';
 } else {
 	if (file_exists($localantispamdefault)) {
-		echo '<tr><td><i class="icon icon-remove"></i></td><td>'.$localantispamdefault.$rename.$localantispam.'.</td></tr>';
+		echo '<tr><td><i class="fa fa-times"></i></td><td>'.$localantispamdefault.$rename.$localantispam.'.</td></tr>';
 	}
 }
 $localwhitelist = '../logs/domain-whitelist.log';
 $localwhitelistdefault = '../logs.default/domain-whitelist.log';
 if (file_exists($localwhitelist)) {
-	echo '<tr><td><i class="icon icon-ok"></i></td><td>'.$localwhitelist.'</td></tr>';
+	echo '<tr><td><i class="fa fa-check"></i></td><td>'.$localwhitelist.'</td></tr>';
 } else {
 	if (file_exists($localwhitelistdefault)) {
-		echo '<tr><td><i class="icon icon-remove"></i></td><td>'.$localwhitelistdefault.$rename.$localwhitelist.'.</td></tr>';
+		echo '<tr><td><i class="fa fa-times"></i></td><td>'.$localwhitelistdefault.$rename.$localwhitelist.'.</td></tr>';
 	}
 }
 echo '</tbody></table>';
@@ -165,8 +165,8 @@ echo '</tbody></table>';
 /* This causes a conflict if there is no lang_english.conf language file. */
 /*
 include_once('../config.php');
-if ($URLMethod == 2 && !file_exists('../.htaccess')) { echo '<tr><td><i class="icon icon-remove"></i></td><td>URL Method 2 is enabled in your Admin Panel, but the file .htaccess does not exist! Please rename the file "htaccess.default" to ".htaccess"</td></tr>'; }
-if ((!$my_base_url) || ($my_base_url == '')) { echo '<tr><td><i class="icon icon-remove"></i></td><td>Your Base URL is not set - Visit <a href = "../admin/admin_config.php?page=Location%20Installed">Admin > Config > Location Installed</a> to change your settings. You can also temporarily change the value from ../settings.php if you aren\'t able to access the Admin Panel.</td></tr>'; }
+if ($URLMethod == 2 && !file_exists('../.htaccess')) { echo '<tr><td><i class="fa fa-times"></i></td><td>URL Method 2 is enabled in your Admin Panel, but the file .htaccess does not exist! Please rename the file "htaccess.default" to ".htaccess"</td></tr>'; }
+if ((!$my_base_url) || ($my_base_url == '')) { echo '<tr><td><i class="fa fa-times"></i></td><td>Your Base URL is not set - Visit <a href = "../admin/admin_config.php?page=Location%20Installed">Admin > Config > Location Installed</a> to change your settings. You can also temporarily change the value from ../settings.php if you aren\'t able to access the Admin Panel.</td></tr>'; }
 */
 
 echo '<table class="table table-bordered table-striped">';
@@ -174,58 +174,58 @@ echo '<thead><tr><th colspan="2">Checking <a id="chmod" data-trigger="hover" dat
 echo '<tbody>';
 
 $file='../admin/backup/';
-if (!is_writable($file)) { echo '<tr><td style="width:20px;"><i class="icon icon-remove"></i></td><td>'.$file.' is not writable! Please chmod this directory to 777.</span></td></tr>'; }
-if (is_writable($file)) { echo '<tr><td style="width:20px;"><i class="icon icon-ok"></i></td><td>'.$file.'</span></td></tr>'; }
+if (!is_writable($file)) { echo '<tr><td style="width:20px;"><i class="fa fa-times"></i></td><td>'.$file.' is not writable! Please chmod this directory to 777.</span></td></tr>'; }
+if (is_writable($file)) { echo '<tr><td style="width:20px;"><i class="fa fa-check"></i></td><td>'.$file.'</span></td></tr>'; }
 
 $file='../avatars/groups_uploaded/';
-if (!is_writable($file)) { echo '<tr><td><i class="icon icon-remove"></i></td><td>'.$file.' is not writable! Please chmod this directory to 777.</span></td></tr>'; }
-if (is_writable($file)) { echo '<tr><td><i class="icon icon-ok"></i></td><td>'.$file.'</span></td></tr>'; }
+if (!is_writable($file)) { echo '<tr><td><i class="fa fa-times"></i></td><td>'.$file.' is not writable! Please chmod this directory to 777.</span></td></tr>'; }
+if (is_writable($file)) { echo '<tr><td><i class="fa fa-check"></i></td><td>'.$file.'</span></td></tr>'; }
 
 $file='../avatars/user_uploaded/';
-if (!is_writable($file)) { echo '<tr><td><i class="icon icon-remove"></i></td><td>'.$file.' is not writable! Please chmod this directory to 777.</span></td></tr>'; }
-if (is_writable($file)) { echo '<tr><td><i class="icon icon-ok"></i></td><td>'.$file.'</span></td></tr>'; }
+if (!is_writable($file)) { echo '<tr><td><i class="fa fa-times"></i></td><td>'.$file.' is not writable! Please chmod this directory to 777.</span></td></tr>'; }
+if (is_writable($file)) { echo '<tr><td><i class="fa fa-check"></i></td><td>'.$file.'</span></td></tr>'; }
 
 $file='../cache/';
-if (!is_writable($file)) { echo '<tr><td><i class="icon icon-remove"></i></td><td>'.$file.' is not writable! Please chmod this directory to 777.</span></td></tr>'; }
-if (is_writable($file)) { echo '<tr><td><i class="icon icon-ok"></i></td><td>'.$file.'</span></td></tr>'; }
+if (!is_writable($file)) { echo '<tr><td><i class="fa fa-times"></i></td><td>'.$file.' is not writable! Please chmod this directory to 777.</span></td></tr>'; }
+if (is_writable($file)) { echo '<tr><td><i class="fa fa-check"></i></td><td>'.$file.'</span></td></tr>'; }
 
 $file='../languages/';
-if (!is_writable($file)) { echo '<tr><td><i class="icon icon-remove"></i></td><td>'.$file.' is not writable! Please chmod this directory and all contained files to 777.</span></td></tr>'; }
-if (is_writable($file)) { echo '<tr><td><i class="icon icon-ok"></i></td><td>'.$file.'</span></td></tr>'; }
+if (!is_writable($file)) { echo '<tr><td><i class="fa fa-times"></i></td><td>'.$file.' is not writable! Please chmod this directory and all contained files to 777.</span></td></tr>'; }
+if (is_writable($file)) { echo '<tr><td><i class="fa fa-check"></i></td><td>'.$file.'</span></td></tr>'; }
 
 foreach (glob("../languages/*.conf") as $filename) {
-	if (!is_writable($file)) { echo '<tr><td><i class="icon icon-remove"></i></td><td>'.$filename.' is not writable! Please chmod this file to 777.</span></td></tr>'; }
-	if (is_writable($file)) { echo '<tr><td><i class="icon icon-ok"></i></td><td>'.$filename.'</span></td></tr>'; }
+	if (!is_writable($file)) { echo '<tr><td><i class="fa fa-times"></i></td><td>'.$filename.' is not writable! Please chmod this file to 777.</span></td></tr>'; }
+	if (is_writable($file)) { echo '<tr><td><i class="fa fa-check"></i></td><td>'.$filename.'</span></td></tr>'; }
 }
 
 $file='../logs/bannedips.log';
 if (file_exists($file)) {
-	if (!is_writable($file)) { echo '<tr><td><i class="icon icon-remove"></i></td><td>'.$file.' is not writable! Please chmod this file to 666.</span></td></tr>'; }
-	if (is_writable($file)) { echo '<tr><td><i class="icon icon-ok"></i></td><td>'.$file.'</span></td></tr>'; }
+	if (!is_writable($file)) { echo '<tr><td><i class="fa fa-times"></i></td><td>'.$file.' is not writable! Please chmod this file to 666.</span></td></tr>'; }
+	if (is_writable($file)) { echo '<tr><td><i class="fa fa-check"></i></td><td>'.$file.'</span></td></tr>'; }
 }
 
 $file='../logs/domain-blacklist.log';
 if (file_exists($file)) {
-	if (!is_writable($file)) { echo '<tr><td><i class="icon icon-remove"></i></td><td>'.$file.' is not writable! Please chmod this file to 666.</span></td></tr>'; }
-	if (is_writable($file)) { echo '<tr><td><i class="icon icon-ok"></i></td><td>'.$file.'</span></td></tr>'; }
+	if (!is_writable($file)) { echo '<tr><td><i class="fa fa-times"></i></td><td>'.$file.' is not writable! Please chmod this file to 666.</span></td></tr>'; }
+	if (is_writable($file)) { echo '<tr><td><i class="fa fa-check"></i></td><td>'.$file.'</span></td></tr>'; }
 }
 
 $file='../logs/domain-whitelist.log';
 if (file_exists($file)) {
-	if (!is_writable($file)) { echo '<tr><td><i class="icon icon-remove"></i></td><td>'.$file.' is not writable! Please chmod this file to 666.</span></td></tr>'; }
-	if (is_writable($file)) { echo '<tr><td><i class="icon icon-ok"></i></td><td>'.$file.'</span></td></tr>'; }
+	if (!is_writable($file)) { echo '<tr><td><i class="fa fa-times"></i></td><td>'.$file.' is not writable! Please chmod this file to 666.</span></td></tr>'; }
+	if (is_writable($file)) { echo '<tr><td><i class="fa fa-check"></i></td><td>'.$file.'</span></td></tr>'; }
 }
 
 $file='../libs/dbconnect.php';
 if (file_exists($file)) {
-	if (!is_writable($file)) { echo '<tr><td><i class="icon icon-remove"></i></td><td>'.$file.' is not writable! Please chmod this file to 666.</span></td></tr>'; }
-	if (is_writable($file)) { echo '<tr><td><i class="icon icon-ok"></i></td><td>'.$file.'</span></td></tr>'; }
+	if (!is_writable($file)) { echo '<tr><td><i class="fa fa-times"></i></td><td>'.$file.' is not writable! Please chmod this file to 666.</span></td></tr>'; }
+	if (is_writable($file)) { echo '<tr><td><i class="fa fa-check"></i></td><td>'.$file.'</span></td></tr>'; }
 }
 
 $file='../settings.php';
 if (file_exists($file)) {
-	if (!is_writable($file)) { echo '<tr><td><i class="icon icon-remove"></i></td><td>'.$file.' is not writable! Please chmod this file to 666.</span></td></tr>'; }
-	if (is_writable($file)) { echo '<tr><td><i class="icon icon-ok"></i></td><td>'.$file.'</span></td></tr>'; }
+	if (!is_writable($file)) { echo '<tr><td><i class="fa fa-times"></i></td><td>'.$file.' is not writable! Please chmod this file to 666.</span></td></tr>'; }
+	if (is_writable($file)) { echo '<tr><td><i class="fa fa-check"></i></td><td>'.$file.'</span></td></tr>'; }
 }
 
 echo '<table class="table table-bordered table-striped">';
@@ -236,9 +236,9 @@ echo '<tbody>';
 $phpversion = phpversion();
 echo '<tr><td>';
 if ($phpversion < 5) {
-	echo '<i class="icon icon-remove"></i>';
+	echo '<i class="fa fa-times"></i>';
 } else if ($phpversion > 4) {
-	echo '<i class="icon icon-ok"></i>';
+	echo '<i class="fa fa-check"></i>';
 
 }
 echo '</td><td><a id="phpversion" data-trigger="hover" data-content="Pligg has been tested on both PHP versions 4 and 5. We have designed the content management system based on PHP 5 technologies, so certain problems may occur when using older versions of PHP. We suggest that your server runs a mininum of PHP 5." rel="popover" href="http://us3.php.net/tut.php" data-original-title="PHP Version">PHP Version ('.$phpversion.')</a></td>';
@@ -246,26 +246,26 @@ echo '</tr>';
 
 echo '<tr><td>';
 if ($mysqlversion < 5) {
-	echo '<i class="icon icon-remove"></i>';
+	echo '<i class="fa fa-times"></i>';
 } else if ($mysqlversion > 4) {
-	echo '<i class="icon icon-ok"></i>';
+	echo '<i class="fa fa-check"></i>';
 }
 echo '</td><td><a id="mysqlversion" data-trigger="hover" data-content="Pligg has been tested on both MySQL versions 4 and 5, during that process we have discovered that bugs will occassionally pop up is you are running MySQL 4. For this reason we suggest that you use a server with MySQL 5 or later to run a Pligg CMS website. MySQL 5 has been available for some time now and we hope that most major web hosts now support it. It offers features that are not built into MySQL 4, which we may have used when writing code for Pligg CMS." rel="popover" href="http://dev.mysql.com/doc/" data-original-title="MySQL Version">MySQL Version ('.$mysqlversion.')</a></td>';
 echo '</tr>';
 
-echo '<tr><td style="width:20px;">', function_exists('curl_version') ? '<i class="icon icon-ok"></i></td>' : '<i class="icon icon-remove"></i></td>';
+echo '<tr><td style="width:20px;">', function_exists('curl_version') ? '<i class="fa fa-check"></i></td>' : '<i class="fa fa-times"></i></td>';
 	echo '<td><a id="curlwarning" data-trigger="hover" data-content="cURL is a PHP library that allows Pligg to connect to external websites." rel="popover" href="http://php.net/manual/en/book.curl.php" data-original-title="cURL PHP Extension">cURL</a></td></tr>';
 
-echo '<tr><td>', function_exists('fopen') ? '<i class="icon icon-ok"></i></td>' : '<i class="icon icon-remove"></i></td>';
+echo '<tr><td>', function_exists('fopen') ? '<i class="fa fa-check"></i></td>' : '<i class="fa fa-times"></i></td>';
 	echo '<td><a id="fopenwarning" data-trigger="hover" data-content="The fopen function for PHP allows us to create, read, and manipulate local files." rel="popover" href="http://www.w3schools.com/php/func_filesystem_fopen.asp" data-original-title="fopen PHP Function">fopen</a></td></tr>';
 
-echo '<tr><td>', function_exists('fwrite') ? '<i class="icon icon-ok"></i></td>' : '<i class="icon icon-remove"></i></td>';
+echo '<tr><td>', function_exists('fwrite') ? '<i class="fa fa-check"></i></td>' : '<i class="fa fa-times"></i></td>';
 	echo '<td><a id="fwritewarning" data-trigger="hover" data-content="The fwrite function is used in conjunction with the fopen function. It allows PHP to write to an opened file." rel="popover" href="http://www.w3schools.com/php/func_filesystem_fwrite.asp" data-original-title="fwrite PHP Function">fwrite</td></tr>';
 	
-echo '<tr><td>', file_get_contents(__FILE__) ? '<i class="icon icon-ok"></i></td>' : '<i class="icon icon-remove"></i></td>';
+echo '<tr><td>', file_get_contents(__FILE__) ? '<i class="fa fa-check"></i></td>' : '<i class="fa fa-times"></i></td>';
 	echo '<td><a id="fgetwarning" data-trigger="hover" data-content="The file_get_contents() function for PHP reads a file into a string." rel="popover" href="http://www.w3schools.com/php/func_filesystem_file_get_contents.asp" data-original-title="fgetwarning PHP Function">file_get_contents</a></td></tr>';
 	
-echo '<tr><td>', function_exists('gd_info') ? '<i class="icon icon-ok"></i></td>' : '<i class="icon icon-remove"></i></td>';
+echo '<tr><td>', function_exists('gd_info') ? '<i class="fa fa-check"></i></td>' : '<i class="fa fa-times"></i></td>';
 	echo '<td><a id="gdwarning" data-trigger="hover" data-content="The GD Graphics Library is a graphics software library for dynamically manipulating images. Any images handled by Pligg, like user avatar or group images, use GD to manipulate the file." rel="popover" href="http://php.net/manual/en/book.image.php" data-original-title="GD Graphics Library">GD Graphics Library</a></td></tr>';
 	
 echo '</tbody></table>';

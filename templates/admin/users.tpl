@@ -54,21 +54,21 @@ $(function(){
 
 function set_admin_action(acc){
 	if(acc==1){
-		$("#selected_action").addClass("icon-user");
-		$("#selected_action").removeClass("icon-ban-circle");
-		$("#selected_action").removeClass("icon-trash");
+		$("#selected_action").addClass("fa fa-check-square-o");
+		$("#selected_action").removeClass("fa fa-ban");
+		$("#selected_action").removeClass("fa fa-fa-square-o");
 		$("#admin_action").val(1);
 	}
 	if(acc==2){
-		$("#selected_action").addClass("icon-trash");
-		$("#selected_action").removeClass("icon-user");
-		$("#selected_action").removeClass("icon-ban-circle");
+		$("#selected_action").addClass("fa fa-fa-square-o");
+		$("#selected_action").removeClass("fa fa-check-square-o");
+		$("#selected_action").removeClass("fa fa-ban");
 		$("#admin_action").val(2);
 	}
 	if(acc==3){
-		$("#selected_action").addClass("icon-ban-circle");
-		$("#selected_action").removeClass("icon-trash");
-		$("#selected_action").removeClass("icon-user");
+		$("#selected_action").addClass("fa fa-ban");
+		$("#selected_action").removeClass("fa fa-fa-square-o");
+		$("#selected_action").removeClass("fa fa-check-square-o");
 		$("#admin_action").val(3);
 	}
 	submit_list_form(); 
@@ -102,19 +102,19 @@ function validate_all_user_action(){
 				<ul class="dropdown-menu">
 					<li>
 						<a onclick="set_admin_action('1')" href="#">
-							<i class="icon-user"></i>
+							<i class="fa fa-check-square-o"></i>
 							{#PLIGG_Visual_User_Profile_Enabled#}
 						</a>
 					</li>
 					<li>
 						<a onclick="set_admin_action('2')" href="#">
-							<i class="icon-trash"></i>
+							<i class="fa fa-square-o"></i>
 							{#PLIGG_Visual_User_Profile_Disabled#}
 						</a>
 					</li>
 					<li>
 						<a onclick="set_admin_action('3')" href="#">
-							<i class="icon-ban-circle"></i>
+							<i class="fa fa-ban"></i>
 							{#PLIGG_Visual_KillSpam#}
 						</a>
 					</li>
@@ -190,20 +190,20 @@ function validate_all_user_action(){
 					<td style="text-align:center;vertical-align:middle;">{$userlist[nr].user_level}</td>
 					<td style="vertical-align:middle;">
 						{if $userlist[nr].user_lastlogin neq "0000-00-00 00:00:00"}
-							<i class="icon icon-ok confirmed-email" title="{#PLIGG_Visual_AdminPanel_Confirmed_Email#}" alt="{#PLIGG_Visual_AdminPanel_Confirmed_Email#}"></i>
+							<i class="fa fa-ok confirmed-email" title="{#PLIGG_Visual_AdminPanel_Confirmed_Email#}" alt="{#PLIGG_Visual_AdminPanel_Confirmed_Email#}"></i>
 						{else}
-							<a data-toggle="modal" href="{$my_base_url}{$my_pligg_base}/admin/admin_user_validate.php?id={$userlist[nr].user_id}" title="{#PLIGG_Visual_AdminPanel_Unconfirmed_Email#}"><i class="icon icon-warning-sign unconfirmed-email" rel="tooltip" data-placement="left" data-toggle="tooltip" data-original-title="{#PLIGG_Visual_AdminPanel_Unconfirmed_Email#}"></i></a>
+							<a data-toggle="modal" href="{$my_base_url}{$my_pligg_base}/admin/admin_user_validate.php?id={$userlist[nr].user_id}" title="{#PLIGG_Visual_AdminPanel_Unconfirmed_Email#}"><i class="fa fa-warning-sign unconfirmed-email" rel="tooltip" data-placement="left" data-toggle="tooltip" data-original-title="{#PLIGG_Visual_AdminPanel_Unconfirmed_Email#}"></i></a>
 						{/if}
 						<a href="mailto:{$userlist[nr].user_email}" target="_blank">{$userlist[nr].user_email|truncate:25:"...":true}</a>
 					</td>
 					<td>{$userlist[nr].user_date}</td>
 					<td style="text-align:center;vertical-align:middle;">
 						{if $userlist[nr].user_level eq 'Spammer'}
-							<i class="icon-ban-circle" title="{#PLIGG_Visual_AdminPanel_Spam#}"></i> {#PLIGG_Visual_AdminPanel_Spam#}
+							<i class="fa fa-ban" title="{#PLIGG_Visual_AdminPanel_Spam#}"></i> {#PLIGG_Visual_AdminPanel_Spam#}
 						{elseif $userlist[nr].user_enabled eq 1}
-							<i class="icon-user" title="{#PLIGG_Visual_User_Profile_Enabled#}"></i> {#PLIGG_Visual_User_Profile_Enabled#}
+							<i class="fa fa-check-square-o" title="{#PLIGG_Visual_User_Profile_Enabled#}"></i> {#PLIGG_Visual_User_Profile_Enabled#}
 						{else}
-							<i class="icon-trash" title="{#PLIGG_Visual_User_Profile_Disabled#}"></i> {#PLIGG_Visual_User_Profile_Disabled#}
+							<i class="fa fa-square-o" title="{#PLIGG_Visual_User_Profile_Disabled#}"></i> {#PLIGG_Visual_User_Profile_Disabled#}
 						{/if}
 					</td>
 					{checkActionsTpl location="tpl_pligg_admin_users_td_end"}

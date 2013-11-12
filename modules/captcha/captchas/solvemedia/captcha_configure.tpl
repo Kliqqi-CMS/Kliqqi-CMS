@@ -81,5 +81,5 @@
 	</table>
 </form>
 <br />
-<a class="btn btn-default" href="{$URL_captcha}"><i class="icon icon-arrow-left"></i> Return to the Captcha Settings Page</a>
+<a class="btn btn-default" href="{$URL_captcha}"><i class="fa fa-arrow-left"></i> Return to the Captcha Settings Page</a>
 {config_load file=captcha_pligg_lang_conf}

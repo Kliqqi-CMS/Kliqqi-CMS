@@ -79,10 +79,10 @@ function validate_all_user_action(){
 				<i id="selected_action"></i> {#PLIGG_Visual_AdminPanel_Apply_Changes#} <span class="caret"></span>
 			</a>
 			<ul class="dropdown-menu">
-				<li><a onclick="set_admin_action('published')" href="#">{#PLIGG_Visual_AdminPanel_Publish#}</a></li>
-				<li><a onclick="set_admin_action('moderated')" href="#">{#PLIGG_Visual_AdminPanel_Moderated#}</a></li>
-				<li><a onclick="set_admin_action('discard')" href="#">{#PLIGG_Visual_AdminPanel_Discard#}</a></li>
-				<li><a onclick="set_admin_action('spam')" href="#">{#PLIGG_Visual_AdminPanel_Spam#}</a></li>
+				<li><a onclick="set_admin_action('published')" href="#"><i class="fa fa-check-square-o"></i>{#PLIGG_Visual_AdminPanel_Publish#}</a></li>
+				<li><a onclick="set_admin_action('moderated')" href="#"><i class="fa fa-exclamation-triangle"></i>{#PLIGG_Visual_AdminPanel_Moderated#}</a></li>
+				<li><a onclick="set_admin_action('discard')" href="#"><i class="fa fa-trash-o"></i>{#PLIGG_Visual_AdminPanel_Discard#}</a></li>
+				<li><a onclick="set_admin_action('spam')" href="#"><i class="fa fa-ban"></i>{#PLIGG_Visual_AdminPanel_Spam#}</a></li>
 			</ul>
 		</div>
     </div>
@@ -148,7 +148,7 @@ function validate_all_user_action(){
 				{checkActionsTpl location="tpl_pligg_admin_comments_td_start"}
 				<td><a href="{$my_base_url}{$my_pligg_base}/admin/admin_users.php?mode=view&user={$template_comments[id].comment_author}" title="{$template_comments[id].comment_author}'s Profile" id="comment-{$template_comments[id].comment_id}-author">{$template_comments[id].comment_author}</a></td>
 				<td style="text-align:justify;">
-					<a href="{$my_base_url}{$my_pligg_base}/edit.php?id={$template_comments[id].comment_link_id}&commentid={$template_comments[id].comment_id}"><i class="icon icon-edit" title="{#PLIGG_Visual_AdminPanel_Page_Edit#}" alt="{#PLIGG_Visual_AdminPanel_Page_Edit#}"></i></a>
+					<a href="{$my_base_url}{$my_pligg_base}/edit.php?id={$template_comments[id].comment_link_id}&commentid={$template_comments[id].comment_id}"><i class="fa fa-edit" title="{#PLIGG_Visual_AdminPanel_Page_Edit#}" alt="{#PLIGG_Visual_AdminPanel_Page_Edit#}"></i></a>
 					<a href="{$my_base_url}{$my_pligg_base}/story.php?id={$template_comments[id].comment_link_id}#c{$template_comments[id].comment_id}" title="{$template_comments[id].comment_content_long|truncate:50:"...":true}">{$template_comments[id].comment_content}</a>
 					<input type='hidden' name='old[{$template_comments[id].comment_id}]' id="comment-{$template_comments[id].comment_id}-old" value='{$template_comments[id].comment_status}'>
 				</td>
@@ -162,7 +162,7 @@ function validate_all_user_action(){
 </form>
 
 <div style="float:right;margin:8px 2px 0 0;">
-	<a data-toggle="modal" class="btn btn-danger" href="{$my_base_url}{$my_pligg_base}/admin/admin_delete_comments.php"><i class="icon-trash icon-white"></i> {#PLIGG_Visual_AdminPanel_Delete_Comments#}</a> 
+	<a data-toggle="modal" class="btn btn-danger" href="{$my_base_url}{$my_pligg_base}/admin/admin_delete_comments.php"><i class="fa fa-trash fa fa-white"></i> {#PLIGG_Visual_AdminPanel_Delete_Comments#}</a> 
 </div>
 
 <div style="clear:both;"> </div>

@@ -21,8 +21,8 @@ var RecaptchaOptions = {
 <div class="control-group{if isset($register_captcha_error)} error{/if}">
 	<label for="input01" class="control-label">
 		CAPTCHA 
-		| <a href="javascript:Recaptcha.reload()"><i style="font-size:16px;" class="icon icon-refresh"></i></a>
-		| <a href="javascript:Recaptcha.showhelp()"><i style="font-size:16px;" class="icon icon-info"></i></a></a>
+		| <a href="javascript:Recaptcha.reload()"><i style="font-size:16px;" class="fa fa-refresh"></i></a>
+		| <a href="javascript:Recaptcha.showhelp()"><i style="font-size:16px;" class="fa fa-info"></i></a></a>
 	</label>
 	<div class="controls">
 		{if isset($register_captcha_error)}

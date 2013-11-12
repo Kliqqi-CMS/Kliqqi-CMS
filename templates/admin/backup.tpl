@@ -66,7 +66,7 @@
 				echo "<p>";{/php}{#PLIGG_Visual_View_Backup_Previous#}{php}echo"</p>";
 				echo '<table class="table table-striped table-condensed"><tbody>';
 				for($i=0; $i<count($files); $i++) {
-					echo '<tr><td colspan="4"><a href="./backup/' . $files[$i] . '"><i class="icon icon-download-alt"></i> ' . $files[$i] . '</a></td></tr>';  
+					echo '<tr><td colspan="4"><a href="./backup/' . $files[$i] . '"><i class="fa fa-download"></i> ' . $files[$i] . '</a></td></tr>';  
 				}
 				echo '</tbody></table>';
 			}else{

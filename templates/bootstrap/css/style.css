@@ -73,12 +73,12 @@ hr.soften {
   background-image:      -o-linear-gradient(left, rgba(0,0,0,0), rgba(0,0,0,.1), rgba(0,0,0,0));
   border: 0;
 }
-[class^="icon-"],
-[class*=" icon-"] {
+[class^="fa-"],
+[class*=" fa-"] {
   opacity: 0.5;
   filter: alpha(opacity=50);
 }
-.icon-white {
+.fa-white {
   opacity: 1.0;
   filter: alpha(opacity=100);
 }
@@ -312,6 +312,9 @@ padding:7px 14px;
 .stories {
 margin: 0 0 40px;
 clear:both;
+}
+.admin-links .dropdown-menu>li>a {
+	padding-left:14px;
 }
 .stories .admin-links a.btn, .span_comment .admin-links a.btn  {
 	border-color: transparent;

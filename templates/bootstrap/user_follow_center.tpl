@@ -169,7 +169,7 @@
 					{/php}
 					<tr>
 						<td><img src="{$friend_avatar}" align="absmiddle" /> <a href="{$profileURL}">{$myfriend.user_login}</a></td>
-						{if check_for_enabled_module('simple_messaging',2.0) && $is_friend}<td align="center"><a href="{$my_pligg_base}/module.php?module=simple_messaging&view=compose&return={$templatelite.server.REQUEST_URI|urlencode}&to={$myfriend.user_login}"><span class="btn btn-default"><i class="icon icon-envelope"></i></span></a></td>{/if}
+						{if check_for_enabled_module('simple_messaging',2.0) && $is_friend}<td align="center"><a href="{$my_pligg_base}/module.php?module=simple_messaging&view=compose&return={$templatelite.server.REQUEST_URI|urlencode}&to={$myfriend.user_login}"><span class="btn btn-default"><i class="fa fa-envelope"></i></span></a></td>{/if}
 						{if $user_authenticated eq true && $myfriend.following>0}
 							<td align="center"><a href="{$user_url_remove}" class="btn btn-danger">Unfollow</a></td>
 						{/if}
@@ -209,7 +209,7 @@
 
 					<tr>
 						<td><img src="{$friend_avatar}" align="absmiddle" /> <a href="{$profileURL}">{$myfriend.user_login}</a></td>
-						{if check_for_enabled_module('simple_messaging',2.0) && $is_friend}<td><a href="{$my_pligg_base}/module.php?module=simple_messaging&view=compose&to={$myfriend.user_login}&return={$templatelite.server.REQUEST_URI|urlencode}"><span class="btn btn-default"><i class="icon icon-envelope"></i></span></a></td>{/if}
+						{if check_for_enabled_module('simple_messaging',2.0) && $is_friend}<td><a href="{$my_pligg_base}/module.php?module=simple_messaging&view=compose&to={$myfriend.user_login}&return={$templatelite.server.REQUEST_URI|urlencode}"><span class="btn btn-default"><i class="fa fa-envelope"></i></span></a></td>{/if}
 						{if $user_authenticated eq true}
 							{if $myfriend.is_friend>0}
 								<td><a class="btn btn-danger" href="{$user_url_remove}">Unfollow</a></td>

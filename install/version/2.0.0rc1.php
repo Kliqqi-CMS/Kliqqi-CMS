@@ -316,7 +316,7 @@ if ($pligg_version == '1.2.2') {
 <p>Groups are a way for members with a common interest to collaborate on a specific topic. For example, if you are a person who lives in France, you could create your own group for members in France. Each group is given their own published, new, and shared pages where admins can moderate which content makes it to the group homepage.</p>
 <p>Please be aware that some groups may require membership approval before you become a member.</p>
 <hr />
-<a href=\"#top\"><i class=\"icon icon-arrow-up\" style=\"opacity:1.0;\"></i> Top</a><br /><br />', '', '', 'Frequently Asked Questions,FAQ,Help', 'Frequently Asked Questions', '', '', '', '', '', '', '', '', '', '', '', '', '', 0, 0);";
+<a href=\"#top\"><i class=\"fa fa-arrow-up\" style=\"opacity:1.0;\"></i> Top</a><br /><br />', '', '', 'Frequently Asked Questions,FAQ,Help', 'Frequently Asked Questions', '', '', '', '', '', '', '', '', '', '', '', '', '', 0, 0);";
 	$db->query($sql);
 	echo '<li>Created FAQ Page</li>';
 
