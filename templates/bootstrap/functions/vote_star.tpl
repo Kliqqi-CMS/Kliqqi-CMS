@@ -11,6 +11,9 @@ var PLIGG_Visual_Comment_ThankYou_Rating = "{#PLIGG_Visual_Comment_ThankYou_Rati
 {literal}
 function vote (user, id, htmlid, md5, value)
 {
+    var anchor = $('#xvote-'+htmlid+' > a:'+(value>0 ? 'first' : 'last'));
+    anchor.attr('disabled','disabled');
+
     var url = my_pligg_base + "/vote_total.php";
     var mycontent = "id=" + id + "&user=" + user + "&md5=" + md5 + "&value=" + value;
 	dynamic_class=".linkVote_"+id;
@@ -30,11 +33,13 @@ function vote (user, id, htmlid, md5, value)
 			if (anchor.length)
 				anchor.removeClass(value>0 ? 'btn-danger' : 'btn-success')
 					.attr('href', anchor.attr('href').replace(/unvote/,'vote'))
+					.removeAttr('disabled')
 					.children('i').removeClass('fa-white');
 
 			var anchor = $('#xvote-'+htmlid+' > a:'+(value>0 ? 'first' : 'last'));
 			anchor.addClass(value>0 ? 'btn-success' : 'btn-danger')
 				.attr('href', anchor.attr('href').replace(/vote/,'unvote'))
+				.removeAttr('disabled')
 				.children('i').addClass('fa-white');
 				
 		     if(value==10){
@@ -67,6 +72,9 @@ function vote (user, id, htmlid, md5, value)
 
 function unvote (user, id, htmlid, md5, value)
 {
+    var anchor = $('#xvote-'+htmlid+' > a:'+(value>0 ? 'first' : 'last'));
+    anchor.attr('disabled','disabled');
+
     var url = my_pligg_base + "/vote_total.php";
     var mycontent = "unvote=true&id=" + id + "&user=" + user + "&md5=" + md5 + "&value=" + value;
 	dynamic_class = ".linkVote_"+id;
@@ -87,6 +95,7 @@ function unvote (user, id, htmlid, md5, value)
 			var anchor = $('#xvote-'+htmlid+' > a:'+(value>0 ? 'first' : 'last'));
 			anchor.removeClass(value>0 ? 'btn-success' : 'btn-danger')
 				.attr('href', anchor.attr('href').replace(/unvote/,'vote'))
+				.removeAttr('disabled')
 				.children('i').removeClass('fa-white');
 				
 			if(value==10)

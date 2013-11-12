@@ -11,6 +11,9 @@ var PLIGG_Visual_Comment_ThankYou_Rating = "{#PLIGG_Visual_Comment_ThankYou_Rati
 {literal}
 function cvote (user, id, htmlid, md5, value)
 {
+    var anchor = $('#cxvote-'+htmlid+' > .btn.btn-default:'+(value>0 ? 'first' : 'last'));
+    anchor.attr('disabled','disabled');
+
     var url = my_pligg_base + "/cvote.php";
     var mycontent = "id=" + id + "&user=" + user + "&md5=" + md5 + "&value=" + value;
 
@@ -31,6 +34,7 @@ function cvote (user, id, htmlid, md5, value)
 			var anchor = $('#cxvote-'+htmlid+' > .btn.btn-default:'+(value>0 ? 'first' : 'last'));
 			anchor.addClass(value>0 ? 'btn-success' : 'btn-danger')
 				.attr('href', anchor.attr('href').replace(/cvote/,'cunvote'))
+				.removeAttr('disabled')
 				.children('i').addClass('fa-white');
 				
 			$('#cvote-'+htmlid).html(data.split('~')[0]);
@@ -41,6 +45,9 @@ function cvote (user, id, htmlid, md5, value)
 
 function cunvote (user, id, htmlid, md5, value)
 {
+    var anchor = $('#cxvote-'+htmlid+' > .'+(value<0 ? 'btn-danger' : 'btn-success'));
+    anchor.attr('disabled','disabled');
+
     var url = my_pligg_base + "/cvote.php";
     var mycontent = "unvote=true&id=" + id + "&user=" + user + "&md5=" + md5 + "&value=" + value;
     if (!anonymous_vote && user==0) {
@@ -54,6 +61,7 @@ function cunvote (user, id, htmlid, md5, value)
 			var anchor = $('#cxvote-'+htmlid+' > .'+(value<0 ? 'btn-danger' : 'btn-success'));
 			anchor.removeClass(value>0 ? 'btn-success' : 'btn-danger')
 				.attr('href', anchor.attr('href').replace(/cunvote/,'cvote'))
+				.removeAttr('disabled')
 				.children('i').removeClass('fa-white');
 
 			$('#cvote-'+htmlid).html(data.split('~')[0]);
