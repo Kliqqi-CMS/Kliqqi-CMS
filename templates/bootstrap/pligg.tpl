@@ -170,16 +170,6 @@
 		<!-- START COMMENT VOTING JAVASCRIPT -->
 	{/if}
 
-	{if $anonymous_vote eq "false" and $user_logged_in eq ""}
-		<!-- START MODAL LOGIN FORM -->
-			{include file=$the_template"/modal_login_form.tpl"}
-		<!-- END MODAL LOGIN FORM -->
-	{elseif $votes_per_ip>0 and $user_logged_in eq ""}
-		<!-- START MODAL LOGIN FORM -->
-			{include file=$the_template"/modal_login_form.tpl"}
-		<!-- END MODAL LOGIN FORM -->
-	{/if}
-	
 	{include file=$the_template"/functions/bookmark.tpl"}
 	{checkActionsTpl location="tpl_pligg_body_end"}
 	

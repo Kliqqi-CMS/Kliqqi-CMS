@@ -61,8 +61,8 @@
 					</div>
 					<div id="xvote-{$link_shakebox_index}" class="votebutton">
 						{if $anonymous_vote eq "false" and $user_logged_in eq ""}
-							<a data-toggle="modal" href="#LoginModal" class="btn {if $link_shakebox_currentuser_votes eq 1}btn-success{else}btn-default{/if}"><i class="fa {if $link_shakebox_currentuser_votes eq 1}fa-white {/if}fa-thumbs-up"></i></a>
-							<a data-toggle="modal" href="#LoginModal" class="btn {if $link_shakebox_currentuser_reports eq 1}btn-danger{else}btn-default{/if}"><i class="fa {if $link_shakebox_currentuser_reports eq 1}fa-white {/if}fa-thumbs-down"></i></a>
+							<a data-toggle="modal" href="#loginModal" class="btn {if $link_shakebox_currentuser_votes eq 1}btn-success{else}btn-default{/if}"><i class="fa {if $link_shakebox_currentuser_votes eq 1}fa-white {/if}fa-thumbs-up"></i></a>
+							<a data-toggle="modal" href="#loginModal" class="btn {if $link_shakebox_currentuser_reports eq 1}btn-danger{else}btn-default{/if}"><i class="fa {if $link_shakebox_currentuser_reports eq 1}fa-white {/if}fa-thumbs-down"></i></a>
                         
                         {else}
 							{if $link_shakebox_currentuser_votes eq 0}
