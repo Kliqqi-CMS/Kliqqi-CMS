@@ -820,19 +820,21 @@ font-size:0.85em;
 .login_modal_username { }
 .login_modal_password { }
 .login_modal_remember {
-margin:5px 5px 10px 5px;
+	margin:5px 5px 10px 5px;
 }
 .login_modal_remember_checkbox {
-float:left;
-display:inline;
+	float:left;
+	display:inline;
 }
 .login_modal_remember_label {
-float:left;
-display:inline;
-padding:4px 4px 0 2px;
-font-size:11px;
+	float:left;
+	display:inline;
+	padding:4px 4px 0 2px;
+	font-size:11px;
 }
-.login_modal_login { }
+.login_modal_login {
+	margin-bottom:5px;
+}
 #login_modal_spacer{
 	padding:0;
 	margin-top:8px;

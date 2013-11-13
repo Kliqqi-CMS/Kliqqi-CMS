@@ -215,7 +215,7 @@
 					<div class="modal-body">
 						<div class="control-group">
 							<form id="signin" action="{$URL_login}" method="post">
-								{checkActionsTpl location="tpl_pligg_login_link"}
+								
 								<div style="login_modal_username">
 									<label for="username">{#PLIGG_Visual_Login_Username#}/{#PLIGG_Visual_Register_Email#}</label>
 									<input id="username" name="username" class="form-control" value="{if isset($login_username)}{$login_username}{/if}" title="username" tabindex="1" type="text">
@@ -238,13 +238,13 @@
 									<input type="hidden" name="return" value="{$get.return}"/>
 									<input class="btn btn-primary col-md-12" id="signin_submit" value="{#PLIGG_Visual_Login_LoginButton#}" tabindex="4" type="submit">
 								</div>
+								{checkActionsTpl location="tpl_pligg_login_link"}
 								<hr class="soften" id="login_modal_spacer" />
 								<div class="login_modal_forgot">
 									<a class="btn btn-default col-md-12" id="forgot_password_link" href="{$URL_login}">{#PLIGG_Visual_Login_ForgottenPassword#}?</a>
 								</div>
 							</form>
 						</div>
-
 					</div>
 				</div><!-- /.modal-content -->
 			</div><!-- /.modal-dialog -->
