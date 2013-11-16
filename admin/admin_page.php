@@ -76,7 +76,7 @@ if($page_id){
 							<a class="btn btn-default" href="'.$my_base_url.$my_pligg_base.'/admin/edit_page.php?link_id='.$page_results->link_id.'"><i class="fa fa-edit-o" title="'. $main_smarty->get_config_vars("PLIGG_Visual_AdminPanel_Page_Edit") .'"></i></a>
 						</td>
 						<td class="page_td_delete">
-							<a class="btn btn-danger" onclick="return confirm(\''.$main_smarty->get_config_vars('PLIGG_Visual_Page_Delete_Confirm').'\');" href="'.$my_base_url.$my_pligg_base.'/admin/admin_page.php?link_id='.$page_results->link_id.'&mode=delete"><i class="fa fa-trash" title="'. $main_smarty->get_config_vars("PLIGG_Visual_AdminPanel_Page_Delete") .'"></i></a>
+							<a class="btn btn-danger" onclick="return confirm(\''.$main_smarty->get_config_vars('PLIGG_Visual_Page_Delete_Confirm').'\');" href="'.$my_base_url.$my_pligg_base.'/admin/admin_page.php?link_id='.$page_results->link_id.'&mode=delete"><i class="fa fa-trash-o" title="'. $main_smarty->get_config_vars("PLIGG_Visual_AdminPanel_Page_Delete") .'"></i></a>
 						</td>
 					</tr>';
 	}
