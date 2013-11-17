@@ -178,6 +178,11 @@ if($pligg_category != ''){
 	$main_smarty->assign('index_url_month', getmyurl('index_sort', 'month', $pligg_category));
 	$main_smarty->assign('index_url_year', getmyurl('index_sort', 'year', $pligg_category));
 	$main_smarty->assign('index_url_alltime', getmyurl('index_sort', 'alltime', $pligg_category));
+	
+	$main_smarty->assign('index_url_upvoted', getmyurl('index_sort', 'upvoted', $pligg_category));
+	$main_smarty->assign('index_url_downvoted', getmyurl('index_sort', 'downvoted', $pligg_category));
+	$main_smarty->assign('index_url_commented', getmyurl('index_sort', 'commented', $pligg_category));
+	
 	$main_smarty->assign('cat_url', getmyurl("maincategory"));
 }	
 else {
