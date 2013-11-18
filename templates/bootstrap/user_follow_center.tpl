@@ -156,7 +156,7 @@
 			<thead>
 				<th>{#PLIGG_Visual_User_Profile_Username#}</th>
 				{if check_for_enabled_module('simple_messaging',2.0) && $is_friend}<th>{#PLIGG_Visual_User_Profile_Message#}</th>{/if}
-				{if $user_authenticated eq true}
+				{if $user_authenticated eq true && $myfriend.following>0}
 					<th>{#PLIGG_Visual_User_Profile_Remove_Friend#}</th>
 				{/if}
 			</thead>
@@ -165,7 +165,7 @@
 					{php}
 						$this->_vars['friend_avatar'] = get_avatar('small', $this->_vars['myfriend']['user_avatar_source'], $this->_vars['myfriend']['user_login'], $this->_vars['myfriend']['user_email']);
 						$this->_vars['profileURL'] = getmyurl('user2', $this->_vars['myfriend']['user_login'], 'profile');
-					        $this->_vars['user_url_remove'] = getmyurl('user_friends', $this->_vars['myfriend']['user_login'], 'removefriend');
+					    $this->_vars['user_url_remove'] = getmyurl('user_friends', $this->_vars['myfriend']['user_login'], 'removefriend');
 					{/php}
 					<tr>
 						<td><img src="{$friend_avatar}" align="absmiddle" /> <a href="{$profileURL}">{$myfriend.user_login}</a></td>
