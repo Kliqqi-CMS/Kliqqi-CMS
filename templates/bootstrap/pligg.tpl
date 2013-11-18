@@ -184,7 +184,6 @@
 	<script type="text/javascript" src="{$my_pligg_base}/templates/{$the_template}/js/bootstrap.min.js"></script>
 	<script type="text/javascript" src="{$my_pligg_base}/templates/{$the_template}/js/bootstrap-fileupload.js"></script>
 	<script type="text/javascript" src="{$my_pligg_base}/templates/{$the_template}/js/jquery/jquery.pnotify.min.js"></script>
-	<script type="text/javascript" src="{$my_pligg_base}/templates/{$the_template}/js/jquery/jquery.masonry.min.js"></script>
 	
 	{if $pagename eq 'advancedsearch'}
 		<script type="text/javascript" src="{$my_pligg_base}/templates/{$the_template}/js/bootstrap-datepicker.js"></script>
