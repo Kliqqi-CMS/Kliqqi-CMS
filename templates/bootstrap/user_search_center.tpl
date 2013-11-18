@@ -69,9 +69,9 @@
 						</td>
 						{if $Allow_Friends}
 							<td style="text-align:center;">{if $userlist[nr].status eq 0}	
-									<a href="{$userlist[nr].add_friend}"><img src="{$my_pligg_base}/templates/{$the_template}/img/user_add.gif" align="absmiddle" border="0" /></a>
+									<a href="{$userlist[nr].add_friend}" class="btn btn-success">{#PLIGG_Follow#}</a>
 								{else}
-									<a href="{$userlist[nr].remove_friend}"><img src="{$my_pligg_base}/templates/{$the_template}/img/user_delete.gif" align="absmiddle" border="0"/></a>
+									<a href="{$userlist[nr].remove_friend}" class="btn btn-danger">{#PLIGG_Unfollow#}</a>
 								{/if}
 							</td>
 						{/if}						

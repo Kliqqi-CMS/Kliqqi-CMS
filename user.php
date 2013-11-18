@@ -120,8 +120,8 @@ if ($view == 'search') {
 			if ($val['user_login'] != 'anonymous' || $val['user_lastip'] > 0)
 			{
 				$results[$key]['Avatar'] = get_avatar('small', "", $val['user_login'], $val['user_email']);
-				$results[$key]['add_friend'] = getmyurl('user_add_remove', $val['user_login'], 'addfriend');
-				$results[$key]['remove_friend'] = getmyurl('user_add_remove', $val['user_login'], 'removefriend');
+				$results[$key]['add_friend'] = getmyurl('user_add_remove', 'addfriend', $val['user_login']);
+				$results[$key]['remove_friend'] = getmyurl('user_add_remove', 'removefriend', $val['user_login']);
 				$results[$key]['status'] = $friend->get_friend_status($val['user_id']);
 			}
 			else
