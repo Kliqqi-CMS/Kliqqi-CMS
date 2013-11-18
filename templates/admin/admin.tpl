@@ -133,7 +133,7 @@
 							<div class="accordion-group">
 								<div class="btn btn-default col-md-12 accordion-heading">
 									<span class="accordion-heading-title">
-										<li class="nav-header"><img src="{$my_base_url}{$my_pligg_base}/templates/admin/img/manage.png" width="16px" height="16px" /> {#PLIGG_Visual_AdminPanel_Manage_Nav#}</li>
+										<li class="nav-header"><i class="fa fa-user" /></i>&nbsp; {#PLIGG_Visual_AdminPanel_Manage_Nav#}</li>
 									</span>
 									{if $moderated_total_count neq ''}
 										<span class="badge accordion-heading-alert">
@@ -159,7 +159,7 @@
 							<div class="accordion-group">
 								<div class="btn btn-default col-md-12 accordion-heading">
 									<span class="accordion-heading-title">
-										<li class="nav-header"><img src="{$my_base_url}{$my_pligg_base}/templates/admin/img/configure.png" width="16px" height="16px" /> Settings</li>
+										<li class="nav-header"><i class="fa fa-wrench"></i>&nbsp; Settings</li>
 									</span>
 								</div>
 								<div class="accordion-body " id="CollapseSettings">
@@ -185,7 +185,7 @@
 							<div class="accordion-group">
 								<div class="btn btn-default col-md-12 accordion-heading">
 									<span class="accordion-heading-title">
-										<li class="nav-header"><img src="{$my_base_url}{$my_pligg_base}/templates/admin/img/template.png" width="16px" height="16px" /> Template</li>
+										<li class="nav-header"><i class="fa fa-file-o"></i>&nbsp; Template</li>
 									</span>
 								</div>
 								<div class="accordion-body " id="CollapseTemplate">
@@ -199,7 +199,7 @@
 							<div class="accordion-group">
 								<div class="btn btn-default col-md-12 accordion-heading">
 									<span class="accordion-heading-title">
-										<li class="nav-header"><img src="{$my_base_url}{$my_pligg_base}/templates/admin/img/module.png" width="16px" height="16px" /> Modules</li>
+										<li class="nav-header"><i class="fa fa-cogs"></i>&nbsp; Modules</li>
 									</span>
 									{if $total_update_required_mod neq "0"}
 										<span class="badge accordion-heading-alert">
@@ -218,7 +218,7 @@
 							<div class="accordion-group">
 								<div class="btn btn-default col-md-12 accordion-heading">
 									<span class="accordion-heading-title">
-										<li class="nav-header"><img src="{$my_base_url}{$my_pligg_base}/templates/admin/img/widgets.png" width="16px" height="16px" /> Widgets</li>
+										<li class="nav-header"><i class="fa fa-puzzle-piece"></i>&nbsp; Widgets</li>
 									</span>
 									<span class="badge accordion-heading-alert">
 										<a href="{$my_base_url}{$my_pligg_base}/admin/admin_widgets.php">1</a>

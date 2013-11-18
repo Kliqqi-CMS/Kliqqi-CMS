@@ -13,7 +13,9 @@ float: left;
 .floatright {
 float: right;
 }
-
+.opacity_reset {
+opacity:1 !important;
+}
 .alert-danger, .alert-error{
 background-color: #FFC6C6;
 border-color: #F4A2AD;
@@ -847,11 +849,7 @@ font-size:0.85em;
 #reg_usernamecheckitvalue {}
 #reg_emailcheckitvalue {}
 
-/* for ajax loader */
-.loader{
-background-image:url(../img/ajax-loader.gif);
-background-repeat:no-repeat;
-}
+
 /* for sortable table header in top user page */
 table.tablesorter thead tr .header {
 	background-image: url(../img/bg.gif);
@@ -916,6 +914,12 @@ table.tablesorter thead tr .headerSortDown {
   -moz-border-radius: 0 3px 3px 0;
   border-radius: 0 3px 3px 0;
 }
+
+/************* RSS FEEDS **************/
+.rss_category {
+font-size:1.4em;
+}
+.rss_url {}
 
 /************* RECAPTCHA **************/
 /* Apply the iframe class to any iframes that need to display */

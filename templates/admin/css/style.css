@@ -7,6 +7,10 @@ padding-top:0;
 padding-bottom:0;
 }
 
+.opacity_reset {
+opacity:1 !important;
+}
+
 .btn-primary {
   background-color: #2D6CE0;
 }
@@ -30,7 +34,7 @@ color: #C80700;
 }
 
 .loader{
-background-image:url(../img/ajax-loader2.gif);
+background-image:url(../img/ajax-loader.gif);
 background-repeat:no-repeat;
 }
 
