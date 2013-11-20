@@ -3,7 +3,7 @@
 <fieldset><legend>{#PLIGG_Admin_Snippet_Add_New#}</legend>	
 
 {if $snippet_error}
-	<div class="alert fade in">
+	<div class="alert alert-error fade in">
 		<a data-dismiss="alert" class="close">&times;</a>
 		 {$snippet_error}
 	</div>
