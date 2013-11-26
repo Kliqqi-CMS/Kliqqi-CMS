@@ -1,5 +1,7 @@
 <?php
 
+include_once('internal/Smarty.class.php');
+$main_smarty = new Smarty;
 include('config.php');
 include(mnminclude.'html1.php');
 include(mnminclude.'link.php');
