@@ -523,7 +523,7 @@ function pligg_createtables($conn) {
 	echo '<li>Adding default modules</li>';
 	$sql = "INSERT INTO `" . table_modules . "` (`id`, `name`, `version`, `latest_version`, `folder`, `enabled`) VALUES (NULL, 'Admin Modify Language', 2.1, '', 'admin_language', 1);";
 	mysql_query( $sql, $conn );
-	$sql = "INSERT INTO `" . table_modules . "` (`id`, `name`, `version`, `latest_version`, `folder`, `enabled`) VALUES (NULL, 'Captcha', 2.3, '', 'captcha', 1);";
+	$sql = "INSERT INTO `" . table_modules . "` (`id`, `name`, `version`, `latest_version`, `folder`, `enabled`) VALUES (NULL, 'Captcha', 2.4, '', 'captcha', 1);";
 	mysql_query( $sql, $conn );
 	$sql = "INSERT INTO `" . table_modules . "` (`id`, `name`, `version`, `latest_version`, `folder`, `enabled`) VALUES (NULL, 'Simple Private Messaging', 2.3, '', 'simple_messaging', 1);";
 	mysql_query( $sql, $conn );

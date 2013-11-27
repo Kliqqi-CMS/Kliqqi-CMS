@@ -1,7 +1,7 @@
 {config_load file=captcha_lang_conf}
 {if $submit_error eq 'register_captcha_error'}
 
-	<div class="alert">
+	<div class="alert alert-error">
 		{#PLIGG_Captcha_Incorrect#}
 	</div>
 	

@@ -3,7 +3,7 @@
 <legend>SolveMedia Configuration</legend>
 
 {if isset($msg)}
-	<div class="alert fade in">
+	<div class="alert alert-warning fade in">
 		<a data-dismiss="alert" class="close">&times;</a>
 		{$msg}
 	</div>
@@ -14,8 +14,8 @@
 	<input type="hidden" name="captcha" value="solvemedia">
 	<input type="hidden" name="action" value="configure">
 	
-	{* A 'Public Key', a 'Private Key', and a 'Hash Key' are required. Sign up at the <a href="http://portal.solvemedia.com/portal/public/signup">Solve Media portal</a> to obtain them.<br /> *}
-	To change your Solve Media settings, change the fields below and click on the Save Settings button.<br />
+	<p>Pligg CMS uses special API keys for Solve Media's CAPTCHA which allows us to enable their product across all Pligg domains. These API keys are set by default, so that you don't need to configure anything to make use of Solve Media. Please be aware that we collect a small amount of data about your website related to CAPTCHA impressions and completions. This allows us to keep an eye on how Pligg CAPTCHAs perform. The API key also generates a small profit from embedded CAPTCHAs, which we use to help fund Pligg development.</p>
+	<p>If you would like to use your own Solve Media API keys, enter them in the fields below. You can sign up and find your own API keys from the <a href="http://portal.solvemedia.com/portal/public/signup">Solve Media portal</a> website.</p>
 	<br />
 	<table class="table table-bordered table-striped" cellpadding="0" cellspacing="0">
 		<thead>

@@ -1,7 +1,7 @@
 ﻿<legend>Math Captcha Settings</legend>
 
 {if isset($msg)}
-	<div class="alert fade in">
+	<div class="alert alert-error fade in">
 		<a data-dismiss="alert" class="close">&times;</a>
 		{$msg}
 	</div>
