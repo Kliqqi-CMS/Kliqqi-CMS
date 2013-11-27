@@ -107,7 +107,9 @@
 							<tr>
 								<th>{#PLIGG_Visual_Login_Username#}</th>
 								{checkActionsTpl location="tpl_pligg_profile_friend_th"}
-								{if $user_login eq $user_logged_in}<th>{#PLIGG_Visual_User_Profile_Remove_Friend#}</th>{/if}
+								{if $user_login eq $user_logged_in}
+									<th>{#PLIGG_Visual_User_Profile_Remove_Friend#}</th>
+								{/if}
 							</tr>
 						</thead>
 						<tbody>
@@ -168,10 +170,20 @@
 					    $this->_vars['user_url_remove'] = getmyurl('user_friends', $this->_vars['myfriend']['user_login'], 'removefriend');
 					{/php}
 					<tr>
-						<td><img src="{$friend_avatar}" align="absmiddle" /> <a href="{$profileURL}">{$myfriend.user_login}</a></td>
-						{if check_for_enabled_module('simple_messaging',2.0) && $is_friend}<td align="center"><a href="{$my_pligg_base}/module.php?module=simple_messaging&view=compose&return={$templatelite.server.REQUEST_URI|urlencode}&to={$myfriend.user_login}"><span class="btn btn-default"><i class="fa fa-envelope"></i></span></a></td>{/if}
+						<td>
+							<img src="{$friend_avatar}" align="absmiddle" /> <a href="{$profileURL}">{$myfriend.user_login}</a>
+						</td>
+						{if check_for_enabled_module('simple_messaging',2.0) && $is_friend}
+							<td>
+								<a href="{$my_pligg_base}/module.php?module=simple_messaging&view=compose&return={$templatelite.server.REQUEST_URI|urlencode}&to={$myfriend.user_login}">
+									<span class="btn btn-default"><i class="fa fa-envelope"></i></span>
+								</a>
+							</td>
+						{/if}
 						{if $user_authenticated eq true && $myfriend.following>0}
-							<td align="center"><a href="{$user_url_remove}" class="btn btn-danger">Unfollow</a></td>
+							<td>
+								<a href="{$user_url_remove}" class="btn btn-danger">Unfollow</a>
+							</td>
 						{/if}
 					</tr>
 				{/foreach}
@@ -204,9 +216,8 @@
 						$this->_vars['friend_avatar'] = get_avatar('small', $this->_vars['myfriend']['user_avatar_source'], $this->_vars['myfriend']['user_login'], $this->_vars['myfriend']['user_email']);
 						$this->_vars['profileURL'] = getmyurl('user2', $this->_vars['myfriend']['user_login'], 'profile');
 						$this->_vars['addURL'] = getmyurl('user_friends', $this->_vars['myfriend']['user_login'], 'addfriend');
-					        $this->_vars['user_url_remove'] = getmyurl('user_friends', $this->_vars['myfriend']['user_login'], 'removefriend');
+					    $this->_vars['user_url_remove'] = getmyurl('user_friends', $this->_vars['myfriend']['user_login'], 'removefriend');
 					{/php}
-
 					<tr>
 						<td><img src="{$friend_avatar}" align="absmiddle" /> <a href="{$profileURL}">{$myfriend.user_login}</a></td>
 						{if check_for_enabled_module('simple_messaging',2.0) && $is_friend}<td><a href="{$my_pligg_base}/module.php?module=simple_messaging&view=compose&to={$myfriend.user_login}&return={$templatelite.server.REQUEST_URI|urlencode}"><span class="btn btn-default"><i class="fa fa-envelope"></i></span></a></td>{/if}
