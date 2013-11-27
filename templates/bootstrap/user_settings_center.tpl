@@ -105,7 +105,7 @@
 						{*if count($languages) gt 1*}
 							<tr>
 								<td><label for="name" accesskey="1">{#PLIGG_Visual_User_Profile_Language#}:</label></td>
-								<td><select name='language' class="site_languages" >
+								<td><select name='language' class="form-control site_languages">
 										{foreach from=$languages value=lang}
 											<option {if $lang==$user_language}selected{/if}>{$lang}</option>
 										{/foreach}
@@ -120,7 +120,7 @@
 						{if count($templates) gt 1}
 							<tr>
 								<td><label>{#PLIGG_Visual_User_Setting_Template#}:</label></td>
-								<td><select name='template'>
+								<td><select name="template" class="form-control site_template">
 								{foreach from=$templates item=template}
 									<option {if $template==$current_template}selected{/if}>{$template|capitalize}</option>
 								{/foreach}
