@@ -17,7 +17,7 @@ $(function() {
 	  success: function(html)
 		{
 		  if(html!='OK')
-		  parent.html('<div class="alert alert-block alert-success fade in"><button data-dismiss="alert" class="close">&times;</button>'+html+'<div>');
+		  parent.html('<div class="alert alert-block alert-danger fade in"><button data-dismiss="alert" class="close">&times;</button>'+html+'<div>');
 		  else
 		  parent.html('');
 		  parent.removeClass("loader");
@@ -44,7 +44,7 @@ $(function() {
 	  success: function(html)
 		{
 		  if(html!='OK')
-		  parent.html('<div class="alert alert-block alert-success fade in"><button data-dismiss="alert" class="close">&times;</button>'+html+'<div>');
+		  parent.html('<div class="alert alert-block alert-danger fade in"><button data-dismiss="alert" class="close">&times;</button>'+html+'<div>');
 		  else
 		  parent.html('');
 		  parent.removeClass("loader");
