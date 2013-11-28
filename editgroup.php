@@ -18,6 +18,8 @@ if(isset($_REQUEST['title'])){$requestTitle = $db->escape(strip_tags($_REQUEST['
 
 //check group admin
 $canIhaveAccess = checklevel('admin');
+$canIhaveAccess = checklevel('moderator');
+
 if($current_user->user_id != get_group_creator($requestID) && $canIhaveAccess != 1)
 {
 	//page redirect
@@ -38,55 +40,55 @@ if($_POST["avatar"] == "uploaded")
 {
     $CSRF->check_expired('edit_group');
     if ($CSRF->check_valid(sanitize($_POST['token'], 3), 'edit_group')){
-	$user_image_path = "avatars/groups_uploaded" . "/";
-	$user_image_apath = "/" . $user_image_path;
-	$allowedFileTypes = array("image/jpeg","image/gif","image/png",'image/x-png','image/pjpeg');
-	unset($imagename);
-	$myfile = $_FILES['image_file']['name'];
-	$imagename = basename($myfile);
-	$mytmpfile = $_FILES['image_file']['tmp_name'];
-	if(!in_array($_FILES['image_file']['type'],$allowedFileTypes))
-	{
-		$error['Type'] = 'Only these file types are allowed : jpeg, gif, png';
-	}
- 
-	if(empty($error))
-	{
-		$imagesize = getimagesize($mytmpfile);
-		$width = $imagesize[0];
-		$height = $imagesize[1];
-		$idname = $_POST["idname"];
-		if(!is_numeric($idname)){die();}
-		$imagename = $idname . "_original.jpg";
-		$newimage = $user_image_path . $imagename ;
-		$result = @move_uploaded_file($_FILES['image_file']['tmp_name'], $newimage);
-		if(empty($result))
-			$error["result"] = "There was an error moving the uploaded file.";
-		else {
-			$avatar_source = cleanit($_POST['avatarsource']);
-
-			$sql = "UPDATE " . table_groups . " set group_avatar='uploaded' WHERE group_id=$idname";
-			$db->query($sql);
-			$main_smarty->assign('Avatar_uploaded', 'Avatar uploaded successfully! You may need to refresh the page to see the new image.');
-			/*if($avatar_source != "" && $avatar_source != "useruploaded"){
-				loghack('Updating profile, avatar source is not one of the list options.', 'username: ' . $_POST["username"].'|email: '.$_POST["email"]);
-				$avatar_source == "";
-			}*/
-			//$user->avatar_source=$avatar_source;
-			//$user->store();
+		$user_image_path = "avatars/groups_uploaded" . "/";
+		$user_image_apath = "/" . $user_image_path;
+		$allowedFileTypes = array("image/jpeg","image/gif","image/png",'image/x-png','image/pjpeg');
+		unset($imagename);
+		$myfile = $_FILES['image_file']['name'];
+		$imagename = basename($myfile);
+		$mytmpfile = $_FILES['image_file']['tmp_name'];
+		if(!in_array($_FILES['image_file']['type'],$allowedFileTypes))
+		{
+			$error['Type'] = 'Only these file types are allowed : jpeg, gif, png';
 		}
-	}
-	// create large avatar
-	include mnminclude . "class.pThumb.php";
-	$img=new pThumb();
-	$img->pSetSize(group_avatar_size_width, group_avatar_size_height);
-	$img->pSetQuality(100);
-	$img->pCreate($newimage);
-	$img->pSave($user_image_path . $idname . "_".group_avatar_size_width.".jpg");
-	$img = "";
+	 
+		if(empty($error))
+		{
+			$imagesize = getimagesize($mytmpfile);
+			$width = $imagesize[0];
+			$height = $imagesize[1];
+			$idname = $_POST["idname"];
+			if(!is_numeric($idname)){die();}
+			$imagename = $idname . "_original.jpg";
+			$newimage = $user_image_path . $imagename ;
+			$result = @move_uploaded_file($_FILES['image_file']['tmp_name'], $newimage);
+			if(empty($result))
+				$error["result"] = "There was an error moving the uploaded file.";
+			else {
+				$avatar_source = cleanit($_POST['avatarsource']);
+
+				$sql = "UPDATE " . table_groups . " set group_avatar='uploaded' WHERE group_id=$idname";
+				$db->query($sql);
+				$main_smarty->assign('Avatar_uploaded', 'Avatar uploaded successfully! You may need to refresh the page to see the new image.');
+				/*if($avatar_source != "" && $avatar_source != "useruploaded"){
+					loghack('Updating profile, avatar source is not one of the list options.', 'username: ' . $_POST["username"].'|email: '.$_POST["email"]);
+					$avatar_source == "";
+				}*/
+				//$user->avatar_source=$avatar_source;
+				//$user->store();
+			}
+		}
+		// create large avatar
+		include mnminclude . "class.pThumb.php";
+		$img=new pThumb();
+		$img->pSetSize(group_avatar_size_width, group_avatar_size_height);
+		$img->pSetQuality(100);
+		$img->pCreate($newimage);
+		$img->pSave($user_image_path . $idname . "_".group_avatar_size_width.".jpg");
+		$img = "";
     } else {
     	$CSRF->show_invalid_error(1);
-	exit;
+		exit;
     }
 }
 elseif(isset($_POST["action"]))

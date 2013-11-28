@@ -10,7 +10,7 @@ include(mnminclude.'link.php');
 include(mnminclude.'user.php');
 include(mnminclude.'smartyvariables.php');
 include(mnminclude.'csrf.php');
-			
+
 check_referrer();
 
 // require user to log in
@@ -23,6 +23,9 @@ $main_smarty->assign('amIadmin', $amIadmin);
 
 $canIhaveAccess = 0;
 $canIhaveAccess = $canIhaveAccess + checklevel('admin');
+$canIhaveAccess = $canIhaveAccess + checklevel('moderator');
+
+$is_moderator = checklevel('moderator'); // Moderators have a value of '1' for the variable $is_moderator
 
 if($canIhaveAccess == 0){	
 //	$main_smarty->assign('tpl_center', '/admin/access_denied');
@@ -180,7 +183,12 @@ if($canIhaveAccess == 1) {
 	
 	// show the template
 	$main_smarty->assign('tpl_center', '/admin/comments');
-	$main_smarty->display($template_dir . '/admin/admin.tpl');
+	
+	if ($is_moderator == '1'){
+		$main_smarty->display($template_dir . '/admin/moderator.tpl');
+	} else {
+		$main_smarty->display($template_dir . '/admin/admin.tpl');
+	}
 
 }
 else {

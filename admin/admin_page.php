@@ -21,7 +21,6 @@ $main_smarty->assign('amIadmin', $amIadmin);
 
 $canIhaveAccess = 0;
 $canIhaveAccess = $canIhaveAccess + checklevel('admin');
-$canIhaveAccess = $canIhaveAccess + checklevel('moderator');
 
 if($canIhaveAccess == 0){	
 //	$main_smarty->assign('tpl_center', '/admin/access_denied');

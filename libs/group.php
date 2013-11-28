@@ -236,8 +236,8 @@ function group_display($requestID)
 		//check group admin
 		global $current_user;
 		$canIhaveAccess = $canIhaveAccess + checklevel('admin');
+		$canIhaveAccess = $canIhaveAccess + checklevel('moderator');
 		if($current_user->user_id == $group_creator || $canIhaveAccess == 1){$main_smarty->assign('is_group_admin', 1);}
-		
 		
 		//check member
 		//include_once(mnminclude.'group.php');

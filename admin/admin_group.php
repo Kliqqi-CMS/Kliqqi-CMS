@@ -20,6 +20,9 @@ $main_smarty->assign('amIadmin', $amIadmin);
 
 $canIhaveAccess = 0;
 $canIhaveAccess = $canIhaveAccess + checklevel('admin');
+$canIhaveAccess = $canIhaveAccess + checklevel('moderator');
+
+$is_moderator = checklevel('moderator'); // Moderators have a value of '1' for the variable $is_moderator
 
 if($canIhaveAccess == 0){	
 	header("Location: " . getmyurl('admin_login', $_SERVER['REQUEST_URI']));
@@ -70,5 +73,9 @@ $main_smarty->assign('groups',$db->get_results($sql,ARRAY_A));
 
 // show the template
 $main_smarty->assign('tpl_center', '/admin/groups');
-$main_smarty->display($template_dir . '/admin/admin.tpl');
+if ($is_moderator == '1'){
+	$main_smarty->display($template_dir . '/admin/moderator.tpl');
+} else {
+	$main_smarty->display($template_dir . '/admin/admin.tpl');
+}
 ?>

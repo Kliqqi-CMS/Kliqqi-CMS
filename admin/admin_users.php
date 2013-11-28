@@ -27,6 +27,8 @@ $canIhaveAccess = 0;
 $canIhaveAccess = $canIhaveAccess + checklevel('admin');
 $canIhaveAccess = $canIhaveAccess + checklevel('moderator');
 
+$is_moderator = checklevel('moderator'); // Moderators have a value of '1' for the variable $is_moderator
+
 $PliggDoc->add_js(my_base_url.my_pligg_base."/templates/admin/js/jquery/jquery.tablesorter.js");
 
 $PliggDoc->add_js("$(function() {
@@ -239,7 +241,11 @@ if($canIhaveAccess == 1)
 			$user->username = sanitize($userdata[0]['user_login'], 3);
 			if(!$user->read()) {
 				$main_smarty->assign('tpl_center', '/admin/user_does_not_exist');
-				$main_smarty->display($template_dir . '/admin/admin.tpl');
+				if ($is_moderator == '1'){
+					$main_smarty->display($template_dir . '/admin/moderator.tpl');
+				} else {
+					$main_smarty->display($template_dir . '/admin/admin.tpl');
+				}
 			}
 			
 			// module system hook
@@ -248,7 +254,11 @@ if($canIhaveAccess == 1)
 			
 			// show the template
 			$main_smarty->assign('tpl_center', '/admin/user_view');
-			$main_smarty->display($template_dir . '/admin/admin.tpl');
+			if ($is_moderator == '1'){
+				$main_smarty->display($template_dir . '/admin/moderator.tpl');
+			} else {
+				$main_smarty->display($template_dir . '/admin/admin.tpl');
+			}
 		}
 		
 		if (sanitize($_GET["mode"], 3) == "edit"){ // edit user
@@ -266,7 +276,11 @@ if($canIhaveAccess == 1)
 				$user = sanitize($userdata[0]['user_login'], 3);
 				$main_smarty->assign('user', $user);
 				$main_smarty->assign('tpl_center', '/admin/user_does_not_exist');
-				$main_smarty->display($template_dir . '/admin/admin.tpl');
+				if ($is_moderator == '1'){
+					$main_smarty->display($template_dir . '/admin/moderator.tpl');
+				} else {
+					$main_smarty->display($template_dir . '/admin/admin.tpl');
+				}
 				die;
 			}
 			
@@ -374,7 +388,11 @@ if($canIhaveAccess == 1)
 	
 			// show the template
 			$main_smarty->assign('tpl_center', '/admin/user_edit');
-			$main_smarty->display($template_dir . '/admin/admin.tpl');
+			if ($is_moderator == '1'){
+				$main_smarty->display($template_dir . '/admin/moderator.tpl');
+			} else {
+				$main_smarty->display($template_dir . '/admin/admin.tpl');
+			}
 		}	
 		
 		if (sanitize($_GET["mode"], 3) == "resetpass"){ // reset user password
@@ -469,7 +487,11 @@ if($canIhaveAccess == 1)
 				
 					// show the template
 					$main_smarty->assign('tpl_center', '/admin/user_disable');
-					$main_smarty->display($template_dir . '/admin/admin.tpl');
+					if ($is_moderator == '1'){
+						$main_smarty->display($template_dir . '/admin/moderator.tpl');
+					} else {
+						$main_smarty->display($template_dir . '/admin/admin.tpl');
+					}
 				} else {
 					showmyerror('userdoesntexist');
 				}
@@ -587,7 +609,11 @@ if($canIhaveAccess == 1)
 		
 					// show the template
 					$main_smarty->assign('tpl_center', '/admin/user_killspam');
-					$main_smarty->display($template_dir . '/admin/admin.tpl');
+					if ($is_moderator == '1'){
+						$main_smarty->display($template_dir . '/admin/moderator.tpl');
+					} else {
+						$main_smarty->display($template_dir . '/admin/admin.tpl');
+					}
 				} else {
 					showmyerror('userdoesntexist');
 				}
@@ -659,8 +685,12 @@ if($canIhaveAccess == 1)
 
 			// show the template
 			$main_smarty->assign('tpl_center', '/admin/users');
-			$main_smarty->display($template_dir . '/admin/admin.tpl');		
-		
+			if ($is_moderator == '1'){
+				$main_smarty->display($template_dir . '/admin/moderator.tpl');
+			} else {
+				$main_smarty->display($template_dir . '/admin/admin.tpl');
+			}
+
 		}
 	
 	} else { // No options are selected, so show the list of users.			
@@ -729,7 +759,11 @@ if($canIhaveAccess == 1)
 
 		// show the template
 		$main_smarty->assign('tpl_center', '/admin/users');
-		$main_smarty->display($template_dir . '/admin/admin.tpl');
+		if ($is_moderator == '1'){
+			$main_smarty->display($template_dir . '/admin/moderator.tpl');
+		} else {
+			$main_smarty->display($template_dir . '/admin/admin.tpl');
+		}
 	}
 } else {
 	echo 'You don\'t have permission to view this page.';
@@ -755,6 +789,10 @@ function showmyerror()
 
 	// show the template
 	$main_smarty->assign('tpl_center', '/admin/user_does_not_exist');
-	$main_smarty->display($template_dir . '/admin/admin.tpl');
+	if ($is_moderator == '1'){
+		$main_smarty->display($template_dir . '/admin/moderator.tpl');
+	} else {
+		$main_smarty->display($template_dir . '/admin/admin.tpl');
+	}
 }
 ?>

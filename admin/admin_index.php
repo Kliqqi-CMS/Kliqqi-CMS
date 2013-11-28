@@ -23,6 +23,12 @@ $canIhaveAccess = 0;
 $canIhaveAccess = $canIhaveAccess + checklevel('admin');
 $canIhaveAccess = $canIhaveAccess + checklevel('moderator');
 
+$is_moderator = checklevel('moderator'); // Moderators have a value of '1' for the variable $is_moderator
+if ($is_moderator == '1'){
+	header("Location: ./admin_links.php"); // Redirect moderators to the submissions page, since they can't use the admin homepage widgets
+	die();
+}
+
 if($canIhaveAccess == 0){	
 //	$main_smarty->assign('tpl_center', '/admin/access_denied');
 //	$main_smarty->display($template_dir . '/admin/admin.tpl');		
@@ -143,4 +149,5 @@ if($widgets){
 // show the template
 $main_smarty->assign('tpl_center', '/admin/home');
 $main_smarty->display($template_dir . '/admin/admin.tpl');
+
 ?>
