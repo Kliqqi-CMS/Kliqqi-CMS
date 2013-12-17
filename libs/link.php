@@ -90,7 +90,7 @@ class Link {
 
 		$this->valid = true;
 		$this->url=$url;
-		if(preg_match("'<title>([^<]*?)</title>'i", $this->html, $matches)) {
+		if(preg_match('/<title>(.+)<\/title>/', $this->html, $matches)) {
 			$this->url_title=trim($matches[1]);
 		}
 		if(preg_match("'<meta name=\"description\" content=\"([^<]*?)\"\s?/?>'i", $this->html, $matches)) {
