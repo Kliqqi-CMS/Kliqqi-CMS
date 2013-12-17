@@ -1,6 +1,6 @@
 //<LANG>CA</LANG>
 //<TITLE>Catalan</TITLE>
-//<VERSION>2.0.0</VERSION>
+//<VERSION>2.0.1</VERSION>
 
 //<SECTION>GENERAL</SECTION><ADDED>1.00</ADDED>
 PLIGG_Visual_Name = "Concurs d\'idees - V Jornada Compartim"
@@ -1095,4 +1095,6 @@ PLIGG_Admin_Template_Widget_Description = "Arrossegar i deixar anar els elements
 PLIGG_Visual_UpVoted = "Upvoted"
 PLIGG_Visual_DownVoted = "Downvoted"
 PLIGG_User_Profile_No_Content = "Aquesta pàgina no té contingut per mostrar en aquest moment."
-// End 2.0.0 Language File
+
+// Start 2.0.1 Language File
+// End 2.0.1 Language File

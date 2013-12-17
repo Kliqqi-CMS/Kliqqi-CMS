@@ -1,6 +1,6 @@
 //<LANG>ES</LANG>
 //<TITLE>Español</TITLE>
-//<VERSION>2.0.0</VERSION>
+//<VERSION>2.0.1</VERSION>
 
 //<SECTION>GENERAL</SECTION><ADDED>1.00</ADDED>
 PLIGG_Visual_Name = "Pligg"
@@ -1088,4 +1088,6 @@ PLIGG_Admin_Template_Widget_Description = "Arrastrar y soltar los elementos a co
 PLIGG_Visual_UpVoted = "Apoyada"
 PLIGG_Visual_DownVoted = "Despreciada"
 PLIGG_User_Profile_No_Content = "Esta página no tiene ningún contenido para mostrar en este momento."
-// End 2.0.0 Language File
+
+// Start 2.0.1 Language File
+// End 2.0.1 Language File

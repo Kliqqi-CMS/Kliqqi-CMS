@@ -1,6 +1,6 @@
 //<LANG>IT</LANG>
 //<TITLE>Italiana</TITLE>
-//<VERSION>2.0.0</VERSION>
+//<VERSION>2.0.1</VERSION>
 
 //<SECTION>GENERAL</SECTION><ADDED>1.00</ADDED>
 PLIGG_Visual_Name = "Mio Sito"
@@ -1095,4 +1095,6 @@ PLIGG_Admin_Template_Widget_Description = "Trascinare e rilasciare gli elementi 
 PLIGG_Visual_UpVoted = "Up votato"
 PLIGG_Visual_DownVoted = "Giù votato"
 PLIGG_User_Profile_No_Content = "Questa pagina non ha alcun contenuto da visualizzare in questo momento."
-// End 2.0.0 Language File
+
+// Start 2.0.1 Language File
+// End 2.0.1 Language File

@@ -1,6 +1,6 @@
-//<LANG>CHS</LANG>
+﻿//<LANG>CHS</LANG>
 //<TITLE>简体中文</TITLE>
-//<VERSION>2.0.0</VERSION>
+//<VERSION>2.0.1</VERSION>
 
 //<SECTION>GENERAL</SECTION><ADDED>1.00</ADDED>
 PLIGG_Visual_Name = "我的网站"
@@ -1094,4 +1094,6 @@ PLIGG_Admin_Template_Widget_Description = “下面的项目拖放来管理他�
 PLIGG_Visual_UpVoted = “投赞成票”
 PLIGG_Visual_DownVoted = “Downvoted的”
 PLIGG_User_Profile_No_Content = “此页面并没有任何内容显示在这个时候。”
-// End 2.0.0 Language File
+
+// Start 2.0.1 Language File
+// End 2.0.1 Language File

@@ -1,6 +1,6 @@
 //<LANG>DE</LANG>
 //<TITLE>Deutsch</TITLE>
-//<VERSION>2.0.0</VERSION>
+//<VERSION>2.0.1</VERSION>
 
 //<SECTION>GENERAL</SECTION><ADDED>1.00</ADDED>
 PLIGG_Visual_Name = "Meine Website"
@@ -1094,4 +1094,6 @@ PLIGG_Admin_Template_Widget_Description = "Ziehen Sie die folgenden Punkte, um d
 PLIGG_Visual_UpVoted = "up gewählt"
 PLIGG_Visual_DownVoted = "überstimmt"
 PLIGG_User_Profile_No_Content = "Diese Seite hat keinen Inhalt angezeigt zu diesem Zeitpunkt."
-// End 2.0.0 Language File
+
+// Start 2.0.1 Language File
+// End 2.0.1 Language File
