@@ -55,7 +55,7 @@ if($language == '' && $_POST['submit'] == ''){
 		echo $data;
 	} else {
 	    echo '<div class="alert">';
-		echo 'We just tried to connect to Pligg.com to get all of the language files available for installation, but there was a problem. That\'s okay because we can continue by using the local English version.';
+		echo 'We just tried to get all of the language files available for installation, but there was a problem. That\'s okay because we can continue by using the local English version.';
 		echo '</div>';
 		echo '<a class="btn btn-primary" href = "upgrade.php?language=local">Click to Continue in English</a>';
 	}

@@ -207,6 +207,13 @@ if (!$errors) {
 			$languageContent = str_replace($oldLanguage122 , $content , $languageContent);
 	}
 	
+	if ($old_version < '201'){
+		// No language file changes this release
+		$oldLanguage200 = "// End 2.0.0 Language File";
+		$newLanguage201= "// End 2.0.1 Language File";
+		$languageContent = str_replace($oldLanguage200 , $newLanguage201 , $languageContent);
+	}
+	
 // echo $languageContent;
 
 	// Point to the file that's going to be written to.
@@ -270,7 +277,7 @@ if (!$errors) {
 		include_once('version/2.0.0rc1.php');
 		include_once('version/2.0.0rc2.php');
 		include_once('version/2.0.0.php');
-		// include_once('version/2.0.1.php');
+		include_once('version/2.0.1.php');
 	
 	}
 	
