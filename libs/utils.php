@@ -1,4 +1,5 @@
 <?php
+date_default_timezone_set('UTC');
 
 if(!defined('mnminclude')){header('Location: ../error_404.php');die();}
 
