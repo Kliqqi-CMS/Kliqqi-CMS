@@ -260,7 +260,7 @@ if (!$errors) {
 		$db->query($sql);
 		
 		// Add Pligg version
-		$sql = "INSERT INTO `" . table_misc_data . "` ( `name` , `data` ) VALUES ('pligg_version', '2.0.0');";
+		$sql = "INSERT INTO `" . table_misc_data . "` ( `name` , `data` ) VALUES ('pligg_version', '2.0.1');";
 		$db->query($sql);
 		
 		//Captcha upgrade:
