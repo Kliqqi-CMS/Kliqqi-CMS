@@ -13,6 +13,17 @@ function module_add_action($location, $the_function, $variables, $weight = array
 	}
 }
 
+/**
+ * Remove module action
+ */
+function module_remove_action($location, $the_function)
+{
+	global  $module_actions;
+	if (isset($module_actions[$location][$the_function])) {
+		unset($module_actions[$location][$the_function]);
+	}
+}
+
 function module_add_action_tpl($location, $the_tpl, $weight = array ('weight' => 0) )
 {
 	
