@@ -126,23 +126,37 @@ if( (isset($_POST["processlogin"]) && is_numeric($_POST["processlogin"])) || (is
 				$headers .= "Content-type: text/html; charset=utf-8\r\n";
 	
 			
-					if (mail($to, $subject, $body, $headers))
-					{
-						$main_smarty->assign('user_login', $user->user_login);
-						$main_smarty->assign('profile_url', getmyurl('profile'));
-						$main_smarty->assign('login_url', getmyurl('loginNoVar'));
-	
-						$errorMsg = $main_smarty->get_config_vars("PLIGG_PassEmail_SendSuccess");
-	
-						$db->query('UPDATE `' . table_users . '` SET `last_reset_code` = "'. $saltedlogin . '" WHERE `user_login` = "'.$username.'"');
-						$db->query('UPDATE `' . table_users . '` SET `last_reset_request` = FROM_UNIXTIME('.$times.') WHERE `user_login` = "'.$username.'"');
-						
-						define('pagename', 'login'); 
-						$main_smarty->assign('pagename', pagename);
-						$errorMsg = $main_smarty->get_config_vars('PLIGG_Visual_Password_Sent');
-					}else{
-						$errorMsg = $main_smarty->get_config_vars('PLIGG_Visual_Login_Delivery_Failed');
-					}
+				if(phpnum()>=5)
+				    require("libs/class.phpmailer5.php");
+				else
+				    require("libs/class.phpmailer4.php");	
+				
+				$mail = new PHPMailer();
+				$mail->From = $main_smarty->get_config_vars('PLIGG_PassEmail_From');
+				$mail->FromName = $main_smarty->get_config_vars('PLIGG_PassEmail_Name');
+				$mail->AddAddress($to);
+				$mail->AddReplyTo($main_smarty->get_config_vars('PLIGG_PassEmail_From'));
+				$mail->IsHTML(false);
+				$mail->Subject = $subject;
+				$mail->CharSet = 'utf-8';
+				$mail->Body = $body;
+
+				if(!$mail->Send()) {
+				    $errorMsg = $main_smarty->get_config_vars('PLIGG_Visual_Login_Delivery_Failed');
+				} else {
+				    $main_smarty->assign('user_login', $user->user_login);
+				    $main_smarty->assign('profile_url', getmyurl('profile'));
+				    $main_smarty->assign('login_url', getmyurl('loginNoVar'));
+
+				    $errorMsg = $main_smarty->get_config_vars("PLIGG_PassEmail_SendSuccess");
+
+				    $db->query('UPDATE `' . table_users . '` SET `last_reset_code` = "'. $saltedlogin . '" WHERE `user_login` = "'.$username.'"');
+				    $db->query('UPDATE `' . table_users . '` SET `last_reset_request` = FROM_UNIXTIME('.$times.') WHERE `user_login` = "'.$username.'"');
+
+				    define('pagename', 'login');
+				    $main_smarty->assign('pagename', pagename);
+				    $errorMsg = $main_smarty->get_config_vars('PLIGG_Visual_Password_Sent');
+				}
 				
 			}else{
 				$errorMsg = $main_smarty->get_config_vars('PLIGG_Visual_Password_Sent');
