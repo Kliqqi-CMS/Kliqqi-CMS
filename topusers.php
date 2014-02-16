@@ -74,7 +74,7 @@ if ($users)
     }
 
 $user = new User;
-$rows = $db->get_var("select count(*) as count $from_where $order_by");
+$rows = $db->get_var("select count(DISTINCT user_id) as count $from_where $order_by");
 $users = $db->get_results("$select $from_where $order_by LIMIT $offset, $page_size");
 $users_table = '';
 //echo "$select $from_where $order_by LIMIT $offset, $page_size";
