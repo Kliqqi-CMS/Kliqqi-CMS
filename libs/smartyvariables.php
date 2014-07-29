@@ -42,6 +42,7 @@ $main_smarty->assign('votes_per_ip', votes_per_ip);
 $main_smarty->assign('dblang', $dblang);
 $main_smarty->assign('pligg_language', pligg_language);
 $main_smarty->assign('user_logged_in', $current_user->user_login);
+$main_smarty->assign('user_id', $current_user->user_id);
 $main_smarty->assign('user_level', $current_user->user_level);
 $main_smarty->assign('user_authenticated', $current_user->authenticated);
 $main_smarty->assign('Enable_Tags', Enable_Tags);

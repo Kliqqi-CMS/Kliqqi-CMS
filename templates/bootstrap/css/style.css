@@ -596,9 +596,9 @@ padding:0 5px 0 5px;
 list-style-type:none;
 }
 .sidebar-stories  li{
-	font-size:0.8em;
-	line-height:0.8em;
-	padding:2px 0 8px 0;
+	font-size: 0.8em;
+	line-height: 1.2em;
+	padding: 6px 0 6px 0;
 	border-bottom:1px dotted #eee;
 }
 .sidebar-vote-number {
