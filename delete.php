@@ -131,6 +131,9 @@ if(isset($_REQUEST['link_id'])){
 	$db->query("DELETE FROM ".table_additional_categories." WHERE ac_link_id =".$linkres->id);
 
 	$db->query("DELETE FROM ".table_tag_cache);
+	
+	# Redwine - Sidebar tag cache fix
+	$db->query($sql="INSERT INTO ".table_tag_cache." select tag_words, count(DISTINCT link_id) as count FROM ".table_tags.", ".table_links." WHERE tag_lang='en' and link_id = tag_link_id and (link_status='published' OR link_status='new') GROUP BY tag_words order by count desc");
 
     if ($_SERVER['HTTP_REFERER'] && strpos($_SERVER['HTTP_REFERER'], $my_base_url.$my_pligg_base) === 0){
 		
