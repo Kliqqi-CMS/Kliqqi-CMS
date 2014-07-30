@@ -7,7 +7,7 @@
 	<div class="sectiontitle">{#PLIGG_Visual_What_Is_Pligg#}</div>
 </div>
 <div id="aboutcontent">
-	{#PLIGG_Visual_What_Is_Pligg_Text#}
+	<p>{#PLIGG_Visual_What_Is_Pligg_Text#}</p>
 </div>
 {checkActionsTpl location="tpl_widget_about_end"}
 <!--/about_box.tpl -->
