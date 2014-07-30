@@ -439,7 +439,7 @@ function pligg_createtables($conn) {
 	///////////////////////////////////////////////////////////////////////////
 
 	echo '<li>Setting Pligg Version</li>';
-	$sql = "INSERT INTO `" . table_misc_data . "` ( `name` , `data` ) VALUES ('pligg_version', '2.0.1');";
+	$sql = "INSERT INTO `" . table_misc_data . "` ( `name` , `data` ) VALUES ('pligg_version', '2.0.2');";
 	mysql_query( $sql, $conn );
 	
 	echo '<li>Setting Captcha Method to SolveMedia</li>';

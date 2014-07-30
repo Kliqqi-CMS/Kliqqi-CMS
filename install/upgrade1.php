@@ -122,12 +122,12 @@ if (!$errors) {
 		if($content)
 			$languageContent = str_replace($oldLanguage101 , $content , $languageContent);
 	}
-	
+
 	if ($old_version < '103'){
+		// No language file changes this release
 		$oldLanguage102 = "// End 1.0.2 Language File";
-		$content = file_get_contents('./languages/updates/lang_' . $language . '_update_103.conf');
-		if($content)
-			$languageContent = str_replace($oldLanguage102 , $content , $languageContent);
+		$oldLanguage103= "// End 1.0.3 Language File";
+		$languageContent = str_replace($oldLanguage102 , $oldLanguage103 , $languageContent);
 	}
 	
 	if ($old_version < '104'){
@@ -145,10 +145,10 @@ if (!$errors) {
 	}
 	
 	if ($old_version < '111'){
+		// No language file changes this release
 		$oldLanguage110 = "// End 1.1.0 Language File";
-		$content = file_get_contents('./languages/updates/lang_' . $language . '_update_111.conf');
-		if($content)
-			$languageContent = str_replace($oldLanguage110 , $content , $languageContent);
+		$oldLanguage111= "// End 1.1.1 Language File";
+		$languageContent = str_replace($oldLanguage110 , $oldLanguage111 , $languageContent);
 	}
 
 	if ($old_version < '112'){
@@ -214,6 +214,13 @@ if (!$errors) {
 		$languageContent = str_replace($oldLanguage200 , $newLanguage201 , $languageContent);
 	}
 	
+	if ($old_version < '202'){
+		// No language file changes this release
+		$oldLanguage201 = "// End 2.0.1 Language File";
+		$newLanguage202= "// End 2.0.2 Language File";
+		$languageContent = str_replace($oldLanguage201 , $newLanguage202 , $languageContent);
+	}
+	
 // echo $languageContent;
 
 	// Point to the file that's going to be written to.
@@ -260,7 +267,7 @@ if (!$errors) {
 		$db->query($sql);
 		
 		// Add Pligg version
-		$sql = "INSERT INTO `" . table_misc_data . "` ( `name` , `data` ) VALUES ('pligg_version', '2.0.1');";
+		$sql = "INSERT INTO `" . table_misc_data . "` ( `name` , `data` ) VALUES ('pligg_version', '2.0.2');";
 		$db->query($sql);
 		
 		//Captcha upgrade:
@@ -278,6 +285,7 @@ if (!$errors) {
 		include_once('version/2.0.0rc2.php');
 		include_once('version/2.0.0.php');
 		include_once('version/2.0.1.php');
+		include_once('version/2.0.2.php');
 	
 	}
 	
