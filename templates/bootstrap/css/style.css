@@ -590,23 +590,41 @@ margin-bottom:20px;
 margin:0 0 10px 0;
 padding:0 0 0 20px;
 }
-.sidebar-stories {
+.sidebar-saved {
 margin:0 0 20px 0;
-padding:0 5px 0 5px;
+padding:0 3px;
+list-style-type:none;
+}
+.sidebar-saved  li{
+font-size: 0.8em;
+line-height: 1.2em;
+padding: 8px 0 6px 0;
+border-bottom:1px dotted #eee;
+}
+.sidebar-stories {
+margin:15px 0 20px 0;
+padding:0 3px;
 list-style-type:none;
 }
 .sidebar-stories  li{
-	font-size: 0.8em;
-	line-height: 1.2em;
-	padding: 6px 0 6px 0;
-	border-bottom:1px dotted #eee;
+clear:both;
+font-size: 0.8em;
+margin: 0 0 15px 0;
+line-height: 1em;
+min-height:25px;
+}
+.sidebar-article {
+line-height: 1.2em;
 }
 .sidebar-vote-number {
-font-weight:bold;
-line-height:30px;
-padding:2px 6px;
-margin:0 8px 0 0;
+float:left;
+font-size:1.2em;
+font-weight:normal;
+line-height:24px;
+padding:0 10px;
+margin:-1px 8px 0 0;
 background:#fff;
+color:#8A8A8A;
 border: 1px solid #ccc;
 border: 1px solid rgba(0, 0, 0, 0.15);
 -webkit-border-radius: 4px;
@@ -631,11 +649,87 @@ padding:0 0 0 5px;
 }
 
 /**************** USER PROFILE ******************/
+h1.user_name {
+margin-bottom:0;
+font-size:2.0em;
+}
 #profiletabs {
+font-size:0.8em;
 margin-bottom:20px;
+}
+
+.user_followers .btn-sm {
+font-size:0.8em;
+}
+.user_search {
+	margin-top:8px;
+}
+.user_search form div .form-control{
+	display:inline-block;
+	height:30px;
+	width:75%;
+}
+.user_search form .modal-body button.btn-primary {
+	height:30px;
+	padding:2px 12px;
+	width:23%;
+}
+@media screen and (min-width: 992px) and (max-width: 1199px) { 
+
+}
+@media screen and (min-width: 768px) and (max-width: 992px) { 
+
+}
+
+@media screen and (min-width: 992px) { 
+	#profiletabs {
+	
+	}
+}
+@media screen and (max-width: 720px) { 
+	.nav>li>a {
+		padding:10px 13px;
+	}
+}
+@media screen and (min-width: 768px) and (max-width: 992px) { 
+	#profiletabs {
+	
+	}
+
+}
+@media screen and (max-width: 768px) { 
+	#profiletabs {
+		font-size:0.75em;
+	}
+}
+.white_text {
+color:#FFF;
+opacity:1;
 }
 .profile_settings_save {
 margin:5px 15px 10px 15px;
+}
+.user_navigation_top {
+margin-bottom:10px;
+}
+.user_navigation h1 {
+
+}
+.user_social {
+font-size:0.87em;
+}
+
+.user_details {
+font-size:0.8em;
+line-height:1.3em;
+margin:0 0 2px 4px;
+}
+.user_description_text {
+	color:#6B6B6B;
+}
+.profile_avatar {
+float:left;
+margin:0 15px 0 0;
 }
 .avatar_thumb {
 width: 100px;
@@ -655,16 +749,10 @@ width:90%;
 .avatar_thumb:hover .edit-avatar {
 display: block;
 }
-.user_navigation_left {
 
-}
-.user_navigation_right {
-
-}
-.user_search {
-
-}
 .user_followers {
+float:left;
+clear:both;
 margin-top:10px;
 }
 .checked {
