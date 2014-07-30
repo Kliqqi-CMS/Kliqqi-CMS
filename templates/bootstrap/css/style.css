@@ -650,6 +650,20 @@ padding:0 0 0 5px;
 .simple_messaging_wrapper {
 	margin-bottom:60px;
 }
+.simple_messaging_wrapper h4 {
+margin:15px 0 12px 0;
+padding-bottom:12px;
+border-bottom:1px dotted #ddd;
+}
+.simple_message_menu ul li a {
+color:#4E4E4E;
+font-size:0.85em;
+}
+.simple_message_menu ul.nav-tabs li a{
+padding: 6px 10px 5px 10px;
+}
+table.table thead tr th {font-size:0.75em;}
+table.table tbody tr td div {margin-top:5px;}
 
 /**************** USER PROFILE ******************/
 h1.user_name {
