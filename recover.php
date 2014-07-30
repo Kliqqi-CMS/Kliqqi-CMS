@@ -26,8 +26,8 @@ if($my_pligg_base){
 	if (strpos($_POST['return'],$my_pligg_base)!==0) $_POST['return']=$my_pligg_base . '/';
 }
 
-$id=$_REQUEST['id'];
-$n=$_REQUEST['n'];
+$id=sanitize($_REQUEST['id'], 3);
+$n=sanitize($_REQUEST['n'], 3);
 $username=base64_decode($id);
 $sql="SELECT * FROM `" . table_users . "` where `user_login` = '".$username."' AND `last_reset_request` = FROM_UNIXTIME('".$n."') AND user_level!='Spammer'";
 		
