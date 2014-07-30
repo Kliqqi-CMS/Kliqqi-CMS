@@ -189,6 +189,8 @@ if ($pligg_version == '1.2.2') {
 	echo '<li>Changed group avatar height/width size setting to 100px</li>';
 
 	// Re-create user avatars
+	// This is commented out by default as of the 2.0.2 release because most servers with moderate user databases can't handle regenerating all of the images, causing the update to hang.
+	/*
 	$user_image_path = mnmpath."avatars/user_uploaded" . "/";
 	require_once(mnminclude . "class.pThumb.php");
 	$results = $db->get_results("SELECT * FROM ".table_users);
@@ -215,6 +217,7 @@ if ($pligg_version == '1.2.2') {
 		}
 	}
 	echo '<li>Regenerated user avatars</li>';
+	*/
 
 	// Update User Levels, removing the 'god' level
 	$sql = "UPDATE ".table_users." 
