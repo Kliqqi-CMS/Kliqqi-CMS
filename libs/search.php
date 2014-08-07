@@ -186,25 +186,29 @@ class Search {
 			// like when on the index or new pages.
 			$this->sql = "SELECT link_id, link_votes, link_karma, link_comments $from_where $search_clause GROUP BY link_id $this->orderBy LIMIT $this->offset, $limit";
 		} else if($this->searchTerm == 'upvoted'){
-		
 			$usrclause = "";
 			$group = "GROUP BY link_id";
-			 $this->sql = "SELECT DISTINCT * FROM " . table_links . ", " . table_votes . " WHERE ".$usrclause." vote_link_id=link_id AND vote_value > 0  AND (link_status='published' OR link_status='new') ".$group." ORDER BY link_votes DESC LIMIT $this->offset, $limit"; //link_date
-			
+			if($catId) {
+				$this->sql = "SELECT DISTINCT * FROM " . table_links . ", " . table_votes . " WHERE ".$usrclause." vote_link_id=link_id AND vote_value > 0  AND (link_status='published' OR link_status='new') AND link_category=$catId ".$group." ORDER BY link_votes DESC LIMIT $this->offset, $limit"; //link_date
+			}else{
+				$this->sql = "SELECT DISTINCT * FROM " . table_links . ", " . table_votes . " WHERE ".$usrclause." vote_link_id=link_id AND vote_value > 0  AND (link_status='published' OR link_status='new') ".$group." ORDER BY link_votes DESC LIMIT $this->offset, $limit"; //link_date
+			}
 		} else if($this->searchTerm == 'downvoted'){
-		
 			$usrclause = "";
 			$group = "GROUP BY link_id";
-			
-			$this->sql = "SELECT DISTINCT * FROM " . table_links . ", " . table_votes . " WHERE ".$usrclause." vote_link_id=link_id AND vote_value < 0  AND (link_status='published' OR link_status='new') ".$group." ORDER BY link_votes ASC LIMIT $this->offset, $limit"; //link_date
-			
-		 
+			if($catId) {
+				$this->sql = "SELECT DISTINCT * FROM " . table_links . ", " . table_votes . " WHERE ".$usrclause." vote_link_id=link_id AND vote_value < 0  AND (link_status='published' OR link_status='new') AND link_category=$catId ".$group." ORDER BY link_votes ASC LIMIT $this->offset, $limit"; //link_date
+			}else{
+				$this->sql = "SELECT DISTINCT * FROM " . table_links . ", " . table_votes . " WHERE ".$usrclause." vote_link_id=link_id AND vote_value < 0  AND (link_status='published' OR link_status='new') ".$group." ORDER BY link_votes ASC LIMIT $this->offset, $limit"; //link_date    
+			}
 		} else if($this->searchTerm == "commented"){
-		
 			$usrclause = "";
 			$group = "GROUP BY link_id";
-			
-			$this->sql = "SELECT DISTINCT * FROM " . table_links . ", " . table_comments . " WHERE comment_status='published' ".$usrclause." AND comment_link_id=link_id AND (link_status='published' OR link_status='new') ".$group." ORDER BY link_comments DESC LIMIT $this->offset, $limit";
+			if($catId) {
+				$this->sql = "SELECT DISTINCT * FROM " . table_links . ", " . table_comments . " WHERE comment_status='published' ".$usrclause." AND comment_link_id=link_id AND (link_status='published' OR link_status='new') AND link_category=$catId ".$group." ORDER BY link_comments DESC LIMIT $this->offset, $limit";
+			}else{
+				$this->sql = "SELECT DISTINCT * FROM " . table_links . ", " . table_comments . " WHERE comment_status='published' ".$usrclause." AND comment_link_id=link_id AND (link_status='published' OR link_status='new') ".$group." ORDER BY link_comments DESC LIMIT $this->offset, $limit";
+			}
 		}
 		else{
 			$this->sql = "SELECT link_id, link_date, link_published_date, link_votes, link_karma, link_comments $from_where $search_clause {$this->orderBy}";
