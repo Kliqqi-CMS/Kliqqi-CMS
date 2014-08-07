@@ -139,6 +139,7 @@ function do_submit1() {
 	$url = htmlspecialchars(sanitize($_POST['url'], 3));
 	$url = str_replace('&amp;', '&', $url);  
 	$url = html_entity_decode($url);
+	$url = utf8_decode($url);
 	if (strpos($url,'http')!==0){
 	    $url = "http://$url";
 	}
@@ -193,7 +194,9 @@ function do_submit1() {
 	$main_smarty->assign('Submit_Require_A_URL', Submit_Require_A_URL);
 
 	// check if URL is valid format
-	$pattern = '/^(([\w]+:)?\/\/)?(([\d\w]|%[a-fA-f\d]{2,2})+(:([\d\w]|%[a-fA-f\d]{2,2})+)?@)?([\d\w]([-\d\w]{0,253}[\d\w])?\.)+[\w]{2,4}(:[\d]+)?(\/([-+_~.,\d\w]|%[a-fA-f\d]{2,2})*)*(\??(&?([-+_~.,\d\w]|%[a-fA-f\d]{2,2})=?)*)?(#([-+_~.,\/\d\w]|%[a-fA-f\d]{2,2})*)?$/'; 
+	#$pattern = '/^(([\w]+:)?\/\/)?(([\d\w]|%[a-fA-f\d]{2,2})+(:([\d\w]|%[a-fA-f\d]{2,2})+)?@)?([\d\w]([-\d\w]{0,253}[\d\w])?\.)+[\w]{2,4}(:[\d]+)?(\/([-+_~.,\d\w]|%[a-fA-f\d]{2,2})*)*(\??(&?([-+_~.,\d\w]|%[a-fA-f\d]{2,2})=?)*)?(#([-+_~.,\/\d\w]|%[a-fA-f\d]{2,2})*)?$/'; 
+	$pattern = '/^(([\w]+:)?\/\/)?(([\d\w]|%[a-fA-f\d]{2,2})+(:([\d\w]|%[a-fA-f\d]{2,2})+)?@)?(\d\w?)+[\w]{2,4}(:[\d]+)?(([\/#!+-~.,\d\w]+|%[a-fA-f\d]{2,2}))(\??(&?([-+~.,\d\w]|%[a-fA-f\d]{2,2})=?))?(#([-+_~.,\/\d\w]|%[a-fA-f\d]{2,2}))?$/';
+
 	$isLink = preg_match($pattern, $url); // Returns true if a link
 	
 	if($url == "http://" || $url == ""){
