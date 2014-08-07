@@ -21,7 +21,7 @@ global $the_template, $main_smarty;
 	$ss = new SidebarStories();
 	$ss->orderBy = "link_date DESC"; // newest on top.
 	$ss->pagesize = 5; // the number of items to show in the box.
-	$ss->TitleLengthLimit = 40;
+	$ss->TitleLengthLimit = 60;
 	
 	if(pagename == "index"){
 		$ss->filterToStatus = "new";
