@@ -16,12 +16,13 @@
 			</div>
 			<div class="control-group">
 				<label for="input01" class="control-label">{#PLIGG_Visual_Submit2_Category#}</label>
-				<div class="controls">
+				<div class="controls select-category">
 					{if $Multiple_Categories}
 						{section name=thecat loop=$submit_cat_array}
 							{$submit_cat_array[thecat].spacercount|repeat_count:'&nbsp;&nbsp;&nbsp;&nbsp;'}
-								 <input type="checkbox" class="form-control" name="category[]" value="{$submit_cat_array[thecat].id}" {if $submit_cat_array[thecat].auto_id == $submit_category  || in_array($cat_array[thecat].auto_id,$submit_additional_cats)}checked{/if}> <span class="multi-cat">{$submit_cat_array[thecat].name}</span><br />							
+								 <input type="checkbox" class="form-control" name="category[]" value="{$submit_cat_array[thecat].id}" {if $submit_cat_array[thecat].auto_id == $submit_category  || in_array($cat_array[thecat].auto_id,$submit_additional_cats)}checked{/if}> <span class="multi-cat">{$submit_cat_array[thecat].name}</span>							
 						{/section}
+						<br />
 					{else}
 						<select id="category" class="form-control category" tabindex="2" name="category" onchange="if ($('#category option:selected').val()>0) $('#lp-category').text($('#category option:selected').text()); else $('#lp-category').text('');">
 							<option value="">{#PLIGG_Visual_Submit2_CatInstructSelect#}</option>

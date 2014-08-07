@@ -862,11 +862,32 @@ min-width:240px;
 #summarytext {}
 #bodytext {}
 
+.control-group {
+clear:both;
+}
+
 .help-block, .help-inline {
 font-size:0.8em;
+clear:both;
+padding-top: 5px;
 }
 
 .field-description {}
+
+.select-category {
+margin:2px 0 4px;
+}
+.select-category .form-control {
+width: 25px;
+height: 14px;
+float: left;
+display: inline;
+clear:both;
+}
+.select-category .multi-cat{
+float: left;
+display: inline;
+}
 
 /**************** EDIT SUBMISSION ******************/
 
