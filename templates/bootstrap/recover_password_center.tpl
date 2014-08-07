@@ -22,17 +22,18 @@
 				{/if}
 				<label class="control-label">{#PLIGG_Visual_New_Password#}:</label>
 				<div class="controls">
-					<input type="password" id="reg_password" name="reg_password" value="" size="25" tabindex="14"/>
+					<input type="password" id="reg_password" class="form-control reg_password" name="reg_password" value="" size="25" tabindex="14"/>
 					<p class="help-inline">{#PLIGG_Visual_Register_FiveChar#}</p>
 				</div>
 			</div>
 			<div class="control-group">	
 				<label class="control-label">{#PLIGG_Visual_New_Verify_Password#}: </label>
 				<div class="controls">
-					<input type="password" id="reg_verify" name="reg_password2" value="" size="25" tabindex="15" />
+					<input type="password" id="reg_verify" class="form-control reg_password" name="reg_password2" value="" size="25" tabindex="15" />
 				</div>
 			</div>
-			<div>	
+			<div>
+				<br />
 				<input type="submit" value="Submit" class="btn btn-primary" tabindex="15" />
 			</div>
 			<input type="hidden" name="processrecover" value="1"/>
