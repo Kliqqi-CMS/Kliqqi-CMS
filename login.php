@@ -119,8 +119,8 @@ if( (isset($_POST["processlogin"]) && is_numeric($_POST["processlogin"])) || (is
 				$times= time();		
 						
 				$body = sprintf($main_smarty->get_config_vars("PLIGG_PassEmail_Body"),$main_smarty->get_config_vars("PLIGG_Visual_Name")); 
-				
-				$body .='<a href="'.$my_base_url . $my_pligg_base . '/recover.php?id=' . base64_encode($username). '&n=' .$times.'">'.$my_base_url . $my_pligg_base . '/recover.php?id=' . base64_encode($username). '&n=' . time().'</a>';
+				$body .="\n \n";
+				$body .= $my_base_url . $my_pligg_base . '/recover.php?id=' . base64_encode($username). '&n=' . time();
 	
 				$headers = 'From: ' . $main_smarty->get_config_vars("PLIGG_PassEmail_From") . "\r\n";
 				$headers .= "Content-type: text/html; charset=utf-8\r\n";
