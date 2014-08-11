@@ -26,6 +26,7 @@ color: #C80700;
 	background-color: #2D6CE0;
     border-color: #185ACC;
     color: #FFFFFF;
+	background-image: none;
 }
 .btn-primary:hover,.btn-primary:active {
 	background-color: #185ACC;
