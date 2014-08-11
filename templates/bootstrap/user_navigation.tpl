@@ -99,13 +99,13 @@
 					var string2 = "@";
 					var string3 = "{$email_domain}";
 				//  document.write(string4);
-					document.write("<a href=" + "mail" + "to:" + string1 + string2 + string3 + ">Email</a> | ");
+					document.write("<a href=" + "mail" + "to:" + string1 + string2 + string3 + " id='user_email'>Email</a> | ");
 				//-->
 				</script>
 			{/if}
 			{if $user_url != "" && $user_karma > "20" || $user_login eq $user_logged_in}
 				<i class="fa fa-home"></i>
-				<a href="{$user_url}" target="_blank" rel="nofollow">{$user_url}</a>
+				<a href="{$user_url}" target="_blank" rel="nofollow" id="user_website">{$user_url}</a>
 				<br />
 			{/if}
 			{checkActionsTpl location="tpl_user_profile_details_start"}
