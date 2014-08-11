@@ -683,18 +683,22 @@ margin-bottom:20px;
 font-size:0.8em;
 }
 .user_search {
-	margin-top:8px;
+margin-top:8px;
 }
 .user_search form div .form-control{
-	display:inline-block;
-	height:30px;
-	width:75%;
+display:inline-block;
+height:30px;
+width:75%;
 }
 .user_search form .modal-body button.btn-primary {
-	height:30px;
-	padding:2px 12px;
-	width:23%;
+height:30px;
+padding:2px 12px;
+width:23%;
 }
+#user_search_body tr td {
+vertical-align:middle;
+}
+
 @media screen and (min-width: 992px) and (max-width: 1199px) { 
 
 }
