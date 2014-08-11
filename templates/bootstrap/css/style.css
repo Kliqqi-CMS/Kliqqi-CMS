@@ -31,6 +31,7 @@ color: #C80700;
 	background-color: #185ACC;
     border-color: #2D6CE0;
     color: #FFFFFF;
+	background-image: none;
 }
 
 #nav {
@@ -125,6 +126,7 @@ font-size:1.0em;
     border-color: #185ACC;
     box-shadow: 0 1px 0 rgba(255, 255, 255, 0.1);
     text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.15);
+	background-image:none;
 }
 .custom_header .navbar-collapse {
     border-color: #185ACC;
@@ -141,6 +143,7 @@ font-size:1.0em;
 .custom_header .navbar-nav > .active > a, .custom_header .navbar-nav > .active > a:hover {
     background-color: #185ACC;
     color: #FFFFFF;
+	background-image:none;
 }
 .custom_header .navbar-toggle {
     border-color: #2D6CE0;
@@ -856,7 +859,7 @@ width:40%;
 min-width:240px;
 }
 
-#url {}
+#url {width:100%;}
 #title {}
 #tags {}
 #summarytext {}
