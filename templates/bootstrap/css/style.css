@@ -170,6 +170,7 @@ font-size:1.0em;
 margin: 7px 4px;
 }
 /********************* CATEGORY MENU ********************/
+#categories li.selected {}
 
 .subhead {
     margin-bottom: 9px;
