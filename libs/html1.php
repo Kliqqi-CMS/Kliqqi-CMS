@@ -680,7 +680,7 @@ function getmyurl($x, $var1="", $var2="", $var3="") {
 		elseif ($x == "edit") $ret = "/edit.php?id=" . $var1 . "&amp;commentid=" . $var2;
 		elseif ($x == "user") $ret = "/user.php?login=" . $var1 . ($var2 ? '&amp;view='.$var2 : '');
 		elseif ($x == "user_inbox") $ret = "/user.php?view=" . $var1;
-		elseif ($x == "user_add_remove") $ret = "/user.php?login=" . $var1. "&amp;view=" . $var2;
+		elseif ($x == "user_add_remove") $ret = "/user.php?login=" . $var2. "&amp;view=" . $var1;
 		elseif ($x == "user_add_links") $ret = "/user_add_remove_links.php?action=add&amp;link=" . $var1;
 		elseif ($x == "user_remove_links") $ret = "/user_add_remove_links.php?action=remove&amp;link=" . $var1;
 		elseif ($x == "user_friends") $ret = "/user.php?login=" . $var1. "&amp;view=" . $var2;
