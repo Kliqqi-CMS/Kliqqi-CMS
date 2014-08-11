@@ -128,7 +128,7 @@
 										{checkActionsTpl location="tpl_pligg_profile_friend_td"}
 										{if $user_login eq $user_logged_in}
 											<td>
-												<a class="btn btn-danger" href="{$user_url_remove}">Unfollow</a>
+												<a class="btn btn-sm btn-danger" href="{$user_url_remove}">Unfollow</a>
 											</td>
 										{/if}
 									</tr>
@@ -161,6 +161,9 @@
 				{if $user_authenticated eq true && $myfriend.following>0}
 					<th>{#PLIGG_Visual_User_Profile_Remove_Friend#}</th>
 				{/if}
+				{if $Allow_Friends neq "0"}
+					<th>{#PLIGG_Visual_User_Profile_Add_Friend#}</th>
+				{/if}
 			</thead>
 			<tbody>
 				{foreach from=$following item=myfriend}
@@ -176,13 +179,13 @@
 						{if check_for_enabled_module('simple_messaging',2.0) && $is_friend}
 							<td>
 								<a href="{$my_pligg_base}/module.php?module=simple_messaging&view=compose&return={$templatelite.server.REQUEST_URI|urlencode}&to={$myfriend.user_login}">
-									<span class="btn btn-default"><i class="fa fa-envelope"></i></span>
+									<span class="btn btn-sm btn-default"><i class="fa fa-envelope"></i></span>
 								</a>
 							</td>
 						{/if}
 						{if $user_authenticated eq true && $myfriend.following>0}
 							<td>
-								<a href="{$user_url_remove}" class="btn btn-danger">Unfollow</a>
+								<a href="{$user_url_remove}" class="btn btn-sm btn-danger">Unfollow</a>
 							</td>
 						{/if}
 					</tr>
@@ -206,7 +209,7 @@
 						<th>{#PLIGG_Visual_User_Profile_Message#}</th>
 					{/if}
 					{if $user_authenticated eq true}
-						<th>Add/Remove</th>
+						<th>{#PLIGG_Visual_User_Profile_Add_Friend#}</th>
 					{/if}
 				</tr>
 			</thead>
@@ -220,12 +223,12 @@
 					{/php}
 					<tr>
 						<td><img src="{$friend_avatar}" align="absmiddle" /> <a href="{$profileURL}">{$myfriend.user_login}</a></td>
-						{if check_for_enabled_module('simple_messaging',2.0) && $is_friend}<td><a href="{$my_pligg_base}/module.php?module=simple_messaging&view=compose&to={$myfriend.user_login}&return={$templatelite.server.REQUEST_URI|urlencode}"><span class="btn btn-default"><i class="fa fa-envelope"></i></span></a></td>{/if}
+						{if check_for_enabled_module('simple_messaging',2.0) && $is_friend}<td><a href="{$my_pligg_base}/module.php?module=simple_messaging&view=compose&to={$myfriend.user_login}&return={$templatelite.server.REQUEST_URI|urlencode}"><span class="btn btn-sm btn-default"><i class="fa fa-envelope"></i></span></a></td>{/if}
 						{if $user_authenticated eq true}
 							{if $myfriend.is_friend>0}
-								<td><a class="btn btn-danger" href="{$user_url_remove}">Unfollow</a></td>
+								<td><a class="btn btn-sm btn-danger" href="{$user_url_remove}">Unfollow</a></td>
 							{else}
-								<td><a class="btn btn-success" href="{$addURL}">{#PLIGG_Visual_User_Profile_Add_Friend#}</a></td>
+								<td><a class="btn btn-sm btn-success" href="{$addURL}">{#PLIGG_Visual_User_Profile_Add_Friend#}</a></td>
 							{/if}
 						{/if}
 					</tr>
