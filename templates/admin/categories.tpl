@@ -13,7 +13,7 @@ function showdel(id)
 </script>
 {/literal}
 <div class="tabbable tabs-left"><!--Parent of the Accordion--> 
-	<ul class="nav nav-tabs">
+	<ul class="nav nav-tabs admin-category-tabs">
 		{section name=thecat loop=$cat_array start=1}
 			{if $cat_array[thecat].auto_id neq 0}
 				<li class="{if $templatelite.section.thecat.index==1}active{/if}"><a data-toggle="tab" href="#cat-{$cat_array[thecat].auto_id}">{$cat_array[thecat].name}</a></li>

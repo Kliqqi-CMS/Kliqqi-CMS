@@ -233,6 +233,9 @@ text-decoration:underline;
 	width: 100%;
 	display:none;
 }
+.accordion-inner > li:first-child {
+margin-top:30px;
+}
 
 .accordion-inner > li > a {
   margin-left: -15px;
@@ -286,6 +289,10 @@ text-decoration:underline;
 
 .accordion_headings:hover {
 	background:#0a508a;
+}
+
+.admin-category-tabs li{
+	font-size:0.8em;
 }
 
 .accordion_child {
@@ -389,16 +396,19 @@ text-decoration:underline;
 .page_td_title, .page_th_title {
 	width:80%;
 	min-width:200px;
+	vertical-align:middle !important;
 }
 .page_td_edit, .page_th_edit {
 	width:10%;
 	min-width:90px;
 	text-align:center;
+	vertical-align:middle;
 }
 .page_td_delete, .page_th_delete {
 	width:10%;
 	min-width:100px;
 	text-align:center;
+	vertical-align:middle;
 }
 
 /* LOGIN PAGE */
