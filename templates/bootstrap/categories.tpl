@@ -14,7 +14,7 @@
 					{if $cat_array[thecat].spacercount > $submit_lastspacer}
 						<ul class="dropdown-menu {if $cat_array[thecat].principlecat eq 0}sub-menu{/if} sub-menu-show sub-menu-hide">
 					{/if}
-					<li class="category_item{if $cat_array[thecat].principlecat neq 0} dropdown{/if}{if $request_category eq $cat_array[thecat].safename} selected{/if}">
+					<li class="category_item{if $cat_array[thecat].principlecat neq 0} dropdown{/if}{if $request_category eq $cat_array[thecat].safename} active{/if}">
 						<a {if $cat_array[thecat].principlecat neq 0} class="dropdown-toggle active"{/if} href="{if $pagename eq "new" || $groupview eq "new"}{$URL_newcategory, $cat_array[thecat].safename}{else}{$URL_maincategory, $cat_array[thecat].safename}{/if}{if $urlmethod==2}/{/if}">{$cat_array[thecat].name} {if $cat_array[thecat].principlecat neq 0}<b class="caret"></b>{/if}</a>
 					{if $cat_array[thecat].principlecat eq 0}
 						</li>
