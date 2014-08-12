@@ -1095,3 +1095,18 @@ font-size:1.4em;
 /************* RECAPTCHA **************/
 /* Apply the iframe class to any iframes that need to display */
 iframe.iframe {display:block} 
+
+/************* ADVANCED SEARCH **************/
+.form-group div div label.active {
+background-color:#5CB85C;
+border-color: #3E8F3E;
+color: #fff;
+text-shadow: none;
+}
+#advanced_search_submit {
+margin-left:15px;
+}
+.datepicker table tr td.active:active, .datepicker table tr td.active:hover:active, .datepicker table tr td.active.disabled:active, .datepicker table tr td.active.disabled:hover:active, .datepicker table tr td.active.active, .datepicker table tr td.active:hover.active, .datepicker table tr td.active.disabled.active, .datepicker table tr td.active.disabled:hover.active {
+background-color:#5CB85C !important;
+background-image:none;
+}
