@@ -7,7 +7,6 @@
 	{checkActionsTpl location="tpl_pligg_story_comments_single_start"}
 	<div class="comment-wrapper {if $user_username == $link_submitter}alert alert-success comment-author{/if}{if $comment_votes lt 0}alert alert-danger comment-negative{/if}{if $comment_status neq "published"}alert alert-warning comment-moderated{/if} clearfix">
 		<div class="pull-left comment_left">
-			{if $UseAvatars neq "0"}<a href="{$user_view_url}"><img src="{$Avatar.large}" class="avatar" alt="{$user_username}" title="{$user_username}" /></a>{/if}      
 			{if $Enable_Comment_Voting eq 1}
 				<div class="comment_voting" id="cxvote-{$comment_id}">
 					{if $Enable_Comment_Voting eq 1}
@@ -30,6 +29,11 @@
 					
 				</div>
 			{/if}
+			{if $UseAvatars neq "0"}
+				<div class="comment_avatar">
+					<a href="{$user_view_url}"><img src="{$Avatar.small}" class="avatar" alt="{$user_username}" title="{$user_username}" /></a>
+				</div>
+			{/if}      
 		</div>
 		<div class="media-body comment-content" id="wholecomment{$comment_id}">
 			{if $user_logged_in == $user_userlogin || $isadmin eq 1}

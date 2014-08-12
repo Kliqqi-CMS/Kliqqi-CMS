@@ -133,6 +133,54 @@
 					<i class="fa fa-globe"></i>
 					<a href="{$url}" {if $open_in_new_window eq true} target="_blank"{/if}  {if $story_status neq "published"}rel="nofollow"{/if}>{$url_short}</a>
 				{/if}
+				{checkActionsTpl location="tpl_pligg_story_tools_start"}
+				&nbsp;
+				<span id="ls_comments_url-{$link_shakebox_index}">
+					{if $story_comment_count eq 0}
+						<i class="fa fa-comment"></i> <span id="linksummaryDiscuss"><a href="{$story_url}#discuss" class="comments">{#PLIGG_MiscWords_Discuss#}</a>&nbsp;</span>
+					{/if}
+					{if $story_comment_count eq 1}
+						<i class="fa fa-comment"></i> <span id="linksummaryHasComment"><a href="{$story_url}#comments" class="comments2">{$story_comment_count} {#PLIGG_MiscWords_Comment#}</a>&nbsp;</span>
+					{/if}
+					{if $story_comment_count gt 1}
+						<i class="fa fa-comment"></i> <span id="linksummaryHasComment"><a href="{$story_url}#comments" class="comments2">{$story_comment_count} {#PLIGG_MiscWords_Comments#}</a>&nbsp;</span>
+					{/if}
+				</span> 
+				{if $user_logged_in}  
+					<iframe height="0px;" width="0px;" frameborder="0" name="add_stories"></iframe>
+					{if $link_mine eq 0}
+						<i class="fa fa-star"></i> <span id="linksummarySaveLink">
+						<a id="add" linkid="{$link_id}" title="{$title_short}" class="favorite" >{#PLIGG_MiscWords_Save_Links_Save#}</a>
+					{else}
+						<i class="fa fa-star-o"></i> <span id="linksummaryRemoveLink">
+						<a id="remove" linkid="{$link_id}" title="{$title_short}" class="favorite" >{#PLIGG_MiscWords_Save_Links_Remove#}</a>
+					{/if}
+					</span>&nbsp;
+					<span id="stories-{$link_shakebox_index}" class="label label-success" style="display:none;line-height:1em;">{#PLIGG_MiscWords_Save_Links_Success#}</span>
+				{/if}
+				{if $link_shakebox_currentuser_votes eq 1 && $link_shakebox_currentuser_reports eq 1}
+					<i class="fa fa-minus-sign"></i> 
+					<span id="linksummaryUnvote"><a href="javascript:{$link_shakebox_javascript_unvote}">{#PLIGG_Visual_Unvote_For_It#}</a></span>&nbsp; 
+				{/if}
+				{if $enable_group eq "true" && $user_logged_in}
+					<span class="group-tool-wrapper">
+						<i class="fa fa-group"></i> 
+						<span class="group_sharing"><a href="javascript://" onclick="{if $get_group_membered}var replydisplay=document.getElementById('group_share-{$link_shakebox_index}').style.display ? '' : 'none';document.getElementById('group_share-{$link_shakebox_index}').style.display = replydisplay;{else}alert('{#PLIGG_Visual_No_Groups#}');{/if}">{#PLIGG_Visual_Group_Share#}</a></span>
+						<span id = "group_share-{$link_shakebox_index}" style="display:none;">
+							<div class="group-share-popup">{$get_group_membered}</div>
+						</span>
+					</span>
+				{/if}
+				{checkActionsTpl location="tpl_pligg_story_tools_end"}
+				<iframe height="0" width="0" frameborder="0" name="story_status" class="invisible"></iframe>
+				<span id="stories_status-{$link_shakebox_index}" style="display:none;">
+					<a target="story_status" href="{$group_story_links_publish}" onclick="show_hide_user_links(document.getElementById('story_status_success-{$link_shakebox_index}'))">{#PLIGG_Visual_AdminPanel_Published#}</a>
+					<a target="story_status" href="{$group_story_links_new}" onclick="show_hide_user_links(document.getElementById('story_status_success-{$link_shakebox_index}'))">{#PLIGG_Visual_AdminPanel_New#}</a>
+					<a target="story_status" href="{$group_story_links_discard}" onclick="show_hide_user_links(document.getElementById('story_status_success-{$link_shakebox_index}'))">{#PLIGG_Visual_AdminPanel_Discard#}</a>
+				</span>
+				<span id="story_status_success-{$link_shakebox_index}" class="label label-success" style="display:none;">
+					{#PLIGG_MiscWords_Save_Links_Success#}
+				</span>
 			</span>
 		</div><!-- /.title -->
 	</div> <!-- /.headline -->
@@ -175,58 +223,6 @@
 			{if $pagename eq "story"}{checkActionsTpl location="tpl_pligg_story_body_end_full"}{else}{checkActionsTpl location="tpl_pligg_story_body_end"}{/if}
 		{/if}
 	</div><!-- /.storycontent -->
-	<div class="storyfooter">
-		<div class="story-tools-left">
-			{checkActionsTpl location="tpl_pligg_story_tools_start"}
-			<span id="ls_comments_url-{$link_shakebox_index}">
-				{if $story_comment_count eq 0}
-					<i class="fa fa-comment"></i> <span id="linksummaryDiscuss"><a href="{$story_url}#discuss" class="comments">{#PLIGG_MiscWords_Discuss#}</a>&nbsp;</span>
-				{/if}
-				{if $story_comment_count eq 1}
-					<i class="fa fa-comment"></i> <span id="linksummaryHasComment"><a href="{$story_url}#comments" class="comments2">{$story_comment_count} {#PLIGG_MiscWords_Comment#}</a>&nbsp;</span>
-				{/if}
-				{if $story_comment_count gt 1}
-					<i class="fa fa-comment"></i> <span id="linksummaryHasComment"><a href="{$story_url}#comments" class="comments2">{$story_comment_count} {#PLIGG_MiscWords_Comments#}</a>&nbsp;</span>
-				{/if}
-			</span> 
-			{if $user_logged_in}  
-				<iframe height="0px;" width="0px;" frameborder="0" name="add_stories"></iframe>
-				{if $link_mine eq 0}
-					<i class="fa fa-star"></i> <span id="linksummarySaveLink">
-					<a id="add" linkid="{$link_id}" title="{$title_short}" class="favorite" >{#PLIGG_MiscWords_Save_Links_Save#}</a>
-				{else}
-					<i class="fa fa-star-o"></i> <span id="linksummaryRemoveLink">
-					<a id="remove" linkid="{$link_id}" title="{$title_short}" class="favorite" >{#PLIGG_MiscWords_Save_Links_Remove#}</a>
-				{/if}
-				</span>&nbsp;
-				<span id="stories-{$link_shakebox_index}" class="label label-success" style="display:none;line-height:1em;">{#PLIGG_MiscWords_Save_Links_Success#}</span>
-			{/if}
-			{if $link_shakebox_currentuser_votes eq 1 && $link_shakebox_currentuser_reports eq 1}
-				<i class="fa fa-minus-sign"></i> 
-				<span id="linksummaryUnvote"><a href="javascript:{$link_shakebox_javascript_unvote}">{#PLIGG_Visual_Unvote_For_It#}</a></span>&nbsp; 
-			{/if}
-			{if $enable_group eq "true" && $user_logged_in}
-				<span class="group-tool-wrapper">
-					<i class="fa fa-group"></i> 
-					<span class="group_sharing"><a href="javascript://" onclick="{if $get_group_membered}var replydisplay=document.getElementById('group_share-{$link_shakebox_index}').style.display ? '' : 'none';document.getElementById('group_share-{$link_shakebox_index}').style.display = replydisplay;{else}alert('{#PLIGG_Visual_No_Groups#}');{/if}">{#PLIGG_Visual_Group_Share#}</a></span>
-					<span id = "group_share-{$link_shakebox_index}" style="display:none;">
-						<div class="group-share-popup">{$get_group_membered}</div>
-					</span>
-				</span>
-			{/if}
-			{checkActionsTpl location="tpl_pligg_story_tools_end"}
-			<iframe height="0" width="0" frameborder="0" name="story_status" class="invisible"></iframe>
-			<span id="stories_status-{$link_shakebox_index}" style="display:none;">
-				<a target="story_status" href="{$group_story_links_publish}" onclick="show_hide_user_links(document.getElementById('story_status_success-{$link_shakebox_index}'))">{#PLIGG_Visual_AdminPanel_Published#}</a>
-				<a target="story_status" href="{$group_story_links_new}" onclick="show_hide_user_links(document.getElementById('story_status_success-{$link_shakebox_index}'))">{#PLIGG_Visual_AdminPanel_New#}</a>
-				<a target="story_status" href="{$group_story_links_discard}" onclick="show_hide_user_links(document.getElementById('story_status_success-{$link_shakebox_index}'))">{#PLIGG_Visual_AdminPanel_Discard#}</a>
-			</span>
-			<span id="story_status_success-{$link_shakebox_index}" class="label label-success" style="display:none;">
-				{#PLIGG_MiscWords_Save_Links_Success#}
-			</span>
-		</div>
-		<div style="clear:both;"></div>
-	</div><!-- /.storyfooter -->
 	{checkActionsTpl location="tpl_link_summary_end"}
 </div><!-- /.stories -->
 {checkActionsTpl location="tpl_pligg_story_end"}

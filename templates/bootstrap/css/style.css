@@ -1,8 +1,19 @@
 @charset "UTF-8";
 /* CSS Document */
-
+p {
+font-size: 0.85em;
+}
 a:hover {
 text-decoration:none;
+}
+h3{
+font-size:1.4em;
+}
+h2{
+font-size: 1.8em;
+}
+h1{
+font-size:2.1em;
 }
 .clearboth {
 clear:both;
@@ -279,6 +290,9 @@ margin: 7px 4px;
 .dropdown:hover .dropdown-menu {
     display: block;
 }
+.nav-tabs {
+	font-size:0.85em;
+}
 .nav-tabs .dropdown-menu, .nav-pills .dropdown-menu, .navbar .dropdown-menu {
     margin-top: 0;
 }
@@ -321,73 +335,74 @@ margin: 0 0 40px;
 clear:both;
 }
 .admin-links .dropdown-menu>li>a {
-	padding-left:14px;
+padding-left:14px;
 }
 .stories .admin-links a.btn, .span_comment .admin-links a.btn  {
-	border-color: transparent;
-	background: none;
-	box-shadow: none;
+border-color: transparent;
+background: none;
+box-shadow: none;
 }
 .stories .admin-links a.btn:hover, .span_comment .admin-links a.btn:hover {
-	background-color: #f5f5f5;
-	background-image: -moz-linear-gradient(top, #ffffff, #e6e6e6);
-	background-image: -ms-linear-gradient(top, #ffffff, #e6e6e6);
-	background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#ffffff), to(#e6e6e6));
-	background-image: -webkit-linear-gradient(top, #ffffff, #e6e6e6);
-	background-image: -o-linear-gradient(top, #ffffff, #e6e6e6);
-	background-image: linear-gradient(top, #ffffff, #e6e6e6);
-	background-repeat: repeat-x;
-	filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ffffff', endColorstr='#e6e6e6', GradientType=0);
-	border-color: #e6e6e6 #e6e6e6 #bfbfbf;
-	border-color: rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.25);
-	*background-color: #e6e6e6;
-	/* Darken IE7 buttons by default so they stand out more given they won't have borders */
+background-color: #f5f5f5;
+background-image: -moz-linear-gradient(top, #ffffff, #e6e6e6);
+background-image: -ms-linear-gradient(top, #ffffff, #e6e6e6);
+background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#ffffff), to(#e6e6e6));
+background-image: -webkit-linear-gradient(top, #ffffff, #e6e6e6);
+background-image: -o-linear-gradient(top, #ffffff, #e6e6e6);
+background-image: linear-gradient(top, #ffffff, #e6e6e6);
+background-repeat: repeat-x;
+filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ffffff', endColorstr='#e6e6e6', GradientType=0);
+border-color: #e6e6e6 #e6e6e6 #bfbfbf;
+border-color: rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.25);
+*background-color: #e6e6e6;
+/* Darken IE7 buttons by default so they stand out more given they won't have borders */
 
-	filter: progid:DXImageTransform.Microsoft.gradient(enabled = false);
-	border: 1px solid #cccccc;
-	*border: 0;
-	border-bottom-color: #b3b3b3;
-	-webkit-border-radius: 4px;
-	-moz-border-radius: 4px;
-	border-radius: 4px;
-	-webkit-box-shadow: inset 1px 0 0 rgba(255,255,255,.125), inset 0 1px 0 rgba(255,255,255,.2), 0 1px 2px rgba(0,0,0,.05);
+filter: progid:DXImageTransform.Microsoft.gradient(enabled = false);
+border: 1px solid #cccccc;
+*border: 0;
+border-bottom-color: #b3b3b3;
+-webkit-border-radius: 4px;
+-moz-border-radius: 4px;
+border-radius: 4px;
+-webkit-box-shadow: inset 1px 0 0 rgba(255,255,255,.125), inset 0 1px 0 rgba(255,255,255,.2), 0 1px 2px rgba(0,0,0,.05);
 	-moz-box-shadow: inset 1px 0 0 rgba(255,255,255,.125), inset 0 1px 0 rgba(255,255,255,.2), 0 1px 2px rgba(0,0,0,.05);
-	box-shadow: inset 1px 0 0 rgba(255,255,255,.125), inset 0 1px 0 rgba(255,255,255,.2), 0 1px 2px rgba(0,0,0,.05);
+		box-shadow: inset 1px 0 0 rgba(255,255,255,.125), inset 0 1px 0 rgba(255,255,255,.2), 0 1px 2px rgba(0,0,0,.05);
 }
 .stories .admin-links a.btn:active,
 .stories .admin-links.open a.btn,
 .span_comment .admin-links a.btn:active ,
 .span_comment .admin-links.open a.btn  {
-	background-color: #e6e6e6;
-	background-color: #d9d9d9 \9;
-	background-image: none;
-	outline: 0;
-	-webkit-box-shadow: inset 0 2px 4px rgba(0,0,0,.15), 0 1px 2px rgba(0,0,0,.05);
+background-color: #e6e6e6;
+background-color: #d9d9d9 \9;
+background-image: none;
+outline: 0;
+-webkit-box-shadow: inset 0 2px 4px rgba(0,0,0,.15), 0 1px 2px rgba(0,0,0,.05);
 	-moz-box-shadow: inset 0 2px 4px rgba(0,0,0,.15), 0 1px 2px rgba(0,0,0,.05);
-	box-shadow: inset 0 2px 4px rgba(0,0,0,.15), 0 1px 2px rgba(0,0,0,.05);
-	border-color: #e6e6e6 #e6e6e6 #bfbfbf;
-	border-color: rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.25);
-	border: 1px solid #cccccc;
-	*border: 0;
-	border-bottom-color: #b3b3b3;
+		box-shadow: inset 0 2px 4px rgba(0,0,0,.15), 0 1px 2px rgba(0,0,0,.05);
+border-color: #e6e6e6 #e6e6e6 #bfbfbf;
+border-color: rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.25);
+border: 1px solid #cccccc;
+*border: 0;
+border-bottom-color: #b3b3b3;
 }
 .title h2 {
-	font-size:24px;
-	margin-bottom: 7px;
+font-size: 1.5em;
+margin-bottom: 2px;
 } 
 .subtext {
-	display: block;
-	font-size: 10px;
-	line-height:10px;
-	color: #aaa;
+display: block;
+font-size: 10px;
+line-height:10px;
+color: #aaa;
 }
 .news-body-text {
-	padding:0 10px;
+font-size:0.85em;
+padding:2px 10px 0 10px;
 }
 .storyfooter {
-padding:0 10px;
-margin:6px 0 25px 0;
-font-size: 10px;
+padding: 0 10px;
+margin: 8px 0 5px 0;
+font-size: 0.7em;
 }
 .story-tools-left {
 float:left;
@@ -420,7 +435,7 @@ position:absolute;
 display:block;
 background:#fff;
 padding:10px 15px;
-font-size:12px;
+font-size:0.85em;
 white-space:nowrap;
 border-radius: 4px;
 box-shadow: 0 1px 2px rgba(0,0,0,.5);
@@ -439,7 +454,8 @@ content: "...";
 
 /**************** VOTE ******************/
 .votebox{
-margin: 1px 14px 0px 10px;
+margin: 3px 12px 0px 10px;
+padding-bottom: 2px;
 float:left;
 background:#fff;
 -webkit-border-radius: 4px;
@@ -451,14 +467,14 @@ min-width: 62px;
 .votebox-new{}
 .votebox-published {}
 .vote {
-padding:4px 3px;
+padding:4px 4px 2px 4px;
 }
 .votenumber {
 font-size:2.0em;
 text-align:center;
 line-height:1.3;
 font-weight: bold;
-margin:0 0 4px;
+margin: 0 0 2px;
 padding:0;
 }
 .votebutton {
@@ -474,84 +490,90 @@ padding: 1px 5px;
 /**************** COMMENTS ******************/
 .span_comment {}
 .comment-list {
-    list-style: none outside none;
-    margin: 10px 0 20px;
+list-style: none outside none;
+margin: 10px 0 20px;
 }
 
 .comment-list li {
-    border-bottom: 1px solid #EFEFEF;
-    margin-bottom: 8px;
+border-bottom: 1px solid #EFEFEF;
+margin-bottom: 8px;
 }
 
 .comment-author p, .comment-negative p , .comment-moderated p {
-	font-size:14px;
-	font-weight:normal;
-	color:#000;
+font-size: 0.85em;
+font-weight:normal;
+color:#000;
 }
 
 .media,.media-body {
-	overflow:visible !important;
+overflow:visible !important;
 }
 
 .comment-content {
-	margin-left: 48px;
+margin-left: 48px;
 }
 
 .comment_left {
-	text-align:center;
+text-align:center;
 }
 
 .comment_voting {
-	min-width:90px;
-	margin:5px 5px 10px 0;
+float:left;
+min-width:90px;
+margin:7px 5px 10px 0;
 }
-
+.comment_avatar {
+float:left;
+display:inline-block;
+margin:1px 4px 0 2px;
+}
 .dropdown-menu li {
-    border-bottom: none;
-    margin-bottom: 0px;
+border-bottom: none;
+margin-bottom: 0px;
 }
 
 .child-comment{
-	margin-left:30px;
+margin-left:30px;
 }
 
 .avatar {
-	max-width:64px;
-	max-height:64px;
+max-width:32px;
+max-height:32px;
 }
 
 .comment-data{
-	margin-bottom: 9px;
+margin-bottom: 2px;
 }
 
 .comment-author {
-    font-size: 12px;
-    font-weight: bold;
-    margin-right: 6px;
-	margin-left: 2px;
+font-size:0.9em;
+font-weight: bold;
+margin-right: 6px;
+margin-left: 2px;
+text-transform: uppercase;
 }
 
 .comment-date {
-    border-left: 1px solid #EFEFEF;
-    color: #888888;
-    font-size: 10px;
-    padding: 0 6px;
-    text-transform: uppercase;
+border-left: 1px solid #EFEFEF;
+color: #888888;
+font-size:0.9em;
+padding: 0 6px;
+text-transform: uppercase;
 }
 
 .comment-hide {
-	margin-left:5px;
+margin-left:5px;
 }
 .comment-hide a {
-	color:#fff;
+color:#fff;
 }
 
 .comment-reply {
-    border-left: 1px solid #EFEFEF;
-    color: #888888;
-    font-size: 10px;
-    padding: 0 6px;
-    text-transform: uppercase;
+border-left: 1px solid #EFEFEF;
+color: #888888;
+font-size:0.9em;
+padding: 0 6px;
+text-transform: uppercase;
 }
 
 .comment-hover {}
@@ -578,7 +600,6 @@ padding:0;
 }
 .headline {
 font-size:1em;
-margin:0 0 10px 0;
 }
 .sectiontitle {
 font-size:1.4em;
@@ -592,7 +613,7 @@ margin-bottom:15px;
 margin-bottom:20px;
 }
 #aboutcontent p{
-font-size:0.9em;
+font-size:0.85em;
 }
 #navlist{
 margin:0 0 10px 0;
