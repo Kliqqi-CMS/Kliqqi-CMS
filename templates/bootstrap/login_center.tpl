@@ -22,10 +22,10 @@
 				<input type="password" name="password" class="form-control" tabindex="2" /><br />
 				<input type="hidden" name="processlogin" value="1"/>
 				<input type="hidden" name="return" value="{$get.return}"/>
-				<div class="col-sm-6">
+				<div class="login-submit">
 					<input type="submit" value="{#PLIGG_Visual_Login_LoginButton#}" class="btn btn-primary" tabindex="4" />
 				</div>
-				<div class="col-sm-6">
+				<div class="login-remember">
 					<input type="checkbox" class="col-sm-offset-2" name="persistent" tabindex="3" /> {#PLIGG_Visual_Login_Remember#}
 				</div>
 			</form>
