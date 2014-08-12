@@ -171,7 +171,7 @@
 		{$hidden_token_profile_change}
 		<input type="hidden" name="process" value="1">
 		<input type="hidden" name="user_id" value="{$user_id}">	
-		<input type="submit" name="save_profile" value="{#PLIGG_Visual_Profile_Save#}" class="btn btn-primary btn-lg profile_settings_save" tabindex="16">
+		<input type="submit" name="save_profile" value="{#PLIGG_Visual_Profile_Save#}" class="btn btn-primary profile_settings_save" tabindex="16">
 	</div>
 </form>
 {checkActionsTpl location="tpl_pligg_profile_end"}
