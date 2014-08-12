@@ -67,7 +67,7 @@
 			</div>
 		</form>
 	</div><!--/.register-left -->
-	<div class="col-md-6 register-right">
+	<div class="col-md-8 register-right">
 		<h2>{#PLIGG_Visual_Register_Description_Title#}</h2>
 		<p>{#PLIGG_Visual_Register_Description_Paragraph#}
 			<ul>
