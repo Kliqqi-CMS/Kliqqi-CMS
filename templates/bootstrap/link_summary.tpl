@@ -27,7 +27,7 @@
 		</div>		
 	{/if}
 	{checkActionsTpl location="tpl_pligg_story_start"}
-	<div class="headline">
+	<div class="story_data">
 		{if $Voting_Method eq 2}
 			<h4 id="ls_title-{$link_shakebox_index}">
 				<ul class='star-rating{$star_class}' id="xvotes-{$link_shakebox_index}">
@@ -183,7 +183,7 @@
 				</span>
 			</span>
 		</div><!-- /.title -->
-	</div> <!-- /.headline -->
+	</div> <!-- /.story_data -->
 	<div class="storycontent">
 		{checkActionsTpl location="tpl_link_summary_pre_story_content"}
 		{if $pagename eq "story"}{checkActionsTpl location="tpl_pligg_story_body_start_full"}{else}{checkActionsTpl location="tpl_pligg_story_body_start"}{/if}
