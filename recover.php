@@ -28,7 +28,9 @@ if($my_pligg_base){
 
 $id=sanitize($_REQUEST['id'], 3);
 $n=sanitize($_REQUEST['n'], 3);
-$username=base64_decode($id);
+$idTemp=base64_decode($id);
+$username=sanitize($idTemp ,3);
+
 $sql="SELECT * FROM `" . table_users . "` where `user_login` = '".$username."' AND `last_reset_request` = FROM_UNIXTIME('".$n."') AND user_level!='Spammer'";
 		
 $user = $db->get_row($sql);
