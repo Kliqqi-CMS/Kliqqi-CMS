@@ -244,6 +244,7 @@
 								<div class="login_modal_forgot">
 									<a class="btn btn-default col-md-12" id="forgot_password_link" href="{$URL_login}">{#PLIGG_Visual_Login_ForgottenPassword#}?</a>
 								</div>
+								<div class="clearboth"></div>
 							</form>
 						</div>
 					</div>
