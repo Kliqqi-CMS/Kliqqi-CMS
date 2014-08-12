@@ -23,7 +23,7 @@
 		{if $pagename eq "live_published"}<li class="active">{#PLIGG_Visual_Breadcrumb_Published#}</li>{/if}
 		{if $pagename eq "live_comments"}<li class="active">{#PLIGG_Visual_Breadcrumb_Comments#}</li>{/if}
 	{if $pagename eq "advancedsearch"}<li class="active">{#PLIGG_Visual_Search_Advanced#}</li>{/if}
-	{if $pagename eq "profile"}
+	{if $pagename eq "profile" || $pagename eq "user_edit"}
 		<li><a href="{$URL_userNoVar}">{$user_login}</a></li> 
 		<li class="active">{#PLIGG_Visual_Profile_ModifyProfile#}</li>
 	{/if}
