@@ -140,7 +140,6 @@
 		</div>
 		<div style="clear:both;"></div>
 		<div class="form-actions">
-			<br />
 			<input name="adv" type="hidden" value="1" />		
 			<input name="advancesearch" value="Search " type="submit" class="btn btn-primary" id="advanced_search_submit" />
 		</div>

@@ -1028,7 +1028,7 @@ font-size:0.85em;
 .login_modal_forgot { }
 
 /************** REGISTER ***************/
-.reg_submit { margin-top:10px; }
+.reg_submit {}
 #reg_usernamecheckitvalue {}
 #reg_emailcheckitvalue {}
 
