@@ -19,7 +19,7 @@ function checkall()
 	$settings = get_status_settings();
 	$this->_vars['settings'] = $settings;
 {/php}
-<div class="col-md-4">
+<div class="col-md-4 masonry_wrapper">
 	<table class="table table-bordered table-striped">
 		<thead class="table_title">
 			<tr>

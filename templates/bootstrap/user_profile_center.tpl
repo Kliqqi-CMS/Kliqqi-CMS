@@ -12,7 +12,7 @@
 			{checkActionsTpl location="tpl_pligg_profile_info_start"}
 			{checkActionsTpl location="tpl_pligg_profile_info_middle"}
 			<div id="stats" class="col-md-6">
-				<table class="table table-bordered table-striped">
+				<table class="table table-bordered table-striped vertical-align">
 					<thead class="table_title">
 						<tr>
 							<th colspan="2">{#PLIGG_Visual_User_Profile_User_Stats#}</th>
@@ -66,11 +66,11 @@
 			</div>
 			{if $enable_group eq "true"}
 				<div id="groups" class="col-md-6">
-					<table class="table table-bordered table-striped">
+					<table class="table table-bordered table-striped vertical-align">
 						<thead class="table_title">
 							<tr>
-								<th>Group Name</th>
-								<th style="width:60px;text-align:center;">Members</th>
+								<th>{#PLIGG_Visual_AdminPanel_Group_Name#}</th>
+								{if $group_display neq ''}<th style="width:60px;text-align:center;">{#PLIGG_Visual_Group_Member#}</th>{/if}
 							</tr>
 						<tbody>
 							{if $group_display eq ''}
@@ -88,13 +88,16 @@
 			{/if}
 			{if $Allow_Friends neq "0"}
 				<div id="following" class="col-md-6">
-					<table class="table table-bordered table-striped">
+					<table class="table table-bordered table-striped vertical-align">
 						<thead class="table_title">
 							<tr>
-								<th>{#PLIGG_Visual_Login_Username#}</th>
+								<th>{#PLIGG_Visual_User_Profile_Friends#}</th>
 								{checkActionsTpl location="tpl_pligg_profile_friend_th"}
-								{if $user_login eq $user_logged_in}
-									<th>{#PLIGG_Visual_User_Profile_Remove_Friend#}</th>
+								{if check_for_enabled_module('simple_messaging',2.0) && $user_logged_in && $following}
+									<th>{#PLIGG_Visual_User_Profile_Message#}</th>
+								{/if}
+								{if $user_authenticated eq true}
+									<th>{#PLIGG_Visual_User_Profile_Add_Friend#} / {#PLIGG_Visual_User_Profile_Remove_Friend#}</th>
 								{/if}
 							</tr>
 						</thead>
@@ -105,17 +108,33 @@
 										$this->_vars['friend_avatar'] = get_avatar('small', $this->_vars['myfriend']['user_avatar_source'], $this->_vars['myfriend']['user_login'], $this->_vars['myfriend']['user_email']);
 										$this->_vars['profileURL'] = getmyurl('user2', $this->_vars['myfriend']['user_login'], 'profile');
 										$this->_vars['removeURL'] = getmyurl('user_add_remove', 'removefriend', $this->_vars['myfriend']['user_login']);
+										$this->_vars['addURL'] = getmyurl('user_add_remove', 'addfriend', $this->_vars['myfriend']['user_login']);
 									{/php}
 									<tr>
 										<td>
 											<a href="{$profileURL}"><img src="{$friend_avatar}" style="text-decoration:none;border:0;"/></a>
 											<a href="{$profileURL}">{$myfriend.user_login}</a>
 										</td>
-										{checkActionsTpl location="tpl_pligg_profile_friend_td"}
-										{if $user_login eq $user_logged_in}
-											<td>
-												<a class="btn btn-danger" href="{$removeURL}">Unfollow</a>
+										{if $user_authenticated eq true && $myfriend.is_mutual eq 'mutual'}
+											<td style="text-align:center">
+												<a href="{$my_pligg_base}/module.php?module=simple_messaging&view=compose&return={$templatelite.server.REQUEST_URI|urlencode}&to={$myfriend.user_login}" class="btn btn-default"><i class="fa fa-envelope"></i></a>
 											</td>
+										{elseif $user_authenticated eq true}
+											<td>&nbsp;</td>
+										{else}
+											
+										{/if}
+										{checkActionsTpl location="tpl_pligg_profile_friend_td"}										
+										{if $user_authenticated eq true && $myfriend.is_mutual eq 'mutual' || $myfriend.is_mutual eq 'following'}
+											<td>
+												<a class="btn btn-danger" href="{$removeURL}">{#PLIGG_Visual_User_Profile_Remove_Friend#}</a>
+											</td>
+										{elseif $user_authenticated neq true}
+										
+										{else}
+											<td>
+												<a class="btn btn-success" href="{$addURL}">{#PLIGG_Visual_User_Profile_Add_Friend#}</a>
+											</td>											
 										{/if}
 									</tr>
 								{/foreach}

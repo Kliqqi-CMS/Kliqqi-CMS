@@ -28,8 +28,12 @@
 		<li class="active">{#PLIGG_Visual_Profile_ModifyProfile#}</li>
 	{/if}
 	{if $pagename eq "user"}
-		<li>{if $user_view neq 'profile'}<a href="{$user_url_personal_data2}">{/if}{$username}{if $user_view neq 'profile'}</a></li> {/if}
-		{if $user_view neq 'profile'}<li class="active">{$page_header} <a href="{$user_rss, $view_href}" target="_blank"><i class="fa fa-rss-square opacity_reset" style="color:#EEA639;"></i></a></li>{/if}
+		{if $user_view eq 'search'}
+			<li>{#PLIGG_Visual_User_Search_Users#}</li>
+		{else}
+			<li>{if $user_view neq 'profile'}<a href="{$user_url_personal_data2}">{/if}{$username}{if $user_view neq 'profile'}</a></li> {/if}
+			{if $user_view neq 'profile'}<li class="active">{$page_header} <a href="{$user_rss, $view_href}" target="_blank"><i class="fa fa-rss-square opacity_reset" style="color:#EEA639;"></i></a></li>{/if}
+		{/if}
 	{/if}
 	{if $pagename eq "published" && $get.category eq '' || $pagename eq "index"}<li class="active">{#PLIGG_Visual_Published_News#}{/if}
 	{if $pagename eq "new" && $get.category eq ''}<li class="active">{#PLIGG_Visual_Pligg_Queued#}{/if}

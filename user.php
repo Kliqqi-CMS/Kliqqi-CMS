@@ -113,16 +113,20 @@ if ($view == 'search') {
 
 	if ($keyword) 
 	{
-		$searchsql = "SELECT * FROM " . table_users . " where (user_login LIKE '%".$keyword."%' OR public_email LIKE '%".$keyword."%') AND user_level!='Spammer' ";
+		$searchsql = "SELECT * FROM " . table_users . " where ((user_login LIKE '%".$keyword."%' AND user_login !='".$current_user->user_login."') OR public_email LIKE '%".$keyword."%') AND user_level!='Spammer' ";
 		$results = $db->get_results($searchsql);
 		$results = object_2_array($results);
 		foreach($results as $key => $val){
 			if ($val['user_login'] != 'anonymous' || $val['user_lastip'] > 0)
 			{
 				$results[$key]['Avatar'] = get_avatar('small', "", $val['user_login'], $val['user_email']);
-				$results[$key]['add_friend'] = getmyurl('user_add_remove', 'addfriend', $val['user_login']);
-				$results[$key]['remove_friend'] = getmyurl('user_add_remove', 'removefriend', $val['user_login']);
 				$results[$key]['status'] = $friend->get_friend_status($val['user_id']);
+				if ($results[$key]['status'] =='' || $results[$key]['status'] == 'follower') {
+					$results[$key]['add_friend'] = getmyurl('user_add_remove', 'addfriend', $val['user_login']);
+				}elseif ($results[$key]['status'] == 'following' || $results[$key]['status'] =='mutual') {
+					$results[$key]['remove_friend'] = getmyurl('user_add_remove', 'removefriend', $val['user_login']);
+				}
+				
 			}
 			else
 			unset ($results[$key]);
