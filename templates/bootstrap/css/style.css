@@ -98,6 +98,13 @@ hr.soften {
   filter: alpha(opacity=100);
 }
 
+.form-actions {
+	background: #F9F9F9;
+	padding: 10px;
+	border-top: 1px solid #DDD;
+	margin-top:5px;
+}
+
 .show_full_content {
 display:inline;
 }
