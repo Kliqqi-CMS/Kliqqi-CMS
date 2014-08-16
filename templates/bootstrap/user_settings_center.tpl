@@ -11,7 +11,7 @@
 	<div id="profile_container" class="js-masonry">
 		{checkActionsTpl location="tpl_user_edit_fields"}
 		{checkActionsTpl location="tpl_pligg_profile_info_middle"}
-		<div class="col-md-4 masonry_wrapper">
+		<div class=" masonry_wrapper">
 			<table class="table table-bordered table-striped">
 				<thead class="table_title">
 					<tr>
@@ -53,7 +53,7 @@
 				</tbody>
 			</table>
 		</div>
-		<div class="col-md-4 masonry_wrapper">
+		<div class=" masonry_wrapper">
 			<table class="table table-bordered table-striped">	
 				<thead class="table_title">
 					<tr>
@@ -90,7 +90,7 @@
 			</table>
 		</div>
 		{checkActionsTpl location="tpl_pligg_profile_settings_start"}		
-		<div class="col-md-4 masonry_wrapper">
+		<div class=" masonry_wrapper">
 			<table class="table table-bordered table-striped">
 				<thead class="table_title">
 					<tr>
@@ -142,7 +142,7 @@
 			</table>
 		</div>
 		{checkActionsTpl location="tpl_pligg_profile_settings_end"}
-		<div class="col-md-4 masonry_wrapper">
+		<div class=" masonry_wrapper">
 			<table class="table table-bordered table-striped">
 				<thead class="table_title">
 					<tr>

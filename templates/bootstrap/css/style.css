@@ -764,6 +764,11 @@ opacity:1;
 .profile_settings_save {
 margin:5px 15px 10px 15px;
 }
+.masonry_wrapper {
+	width:33.33333%;
+	min-width:250px;
+	padding:0 8px 8px 8px;
+}
 .user_navigation_top {
 margin-bottom:10px;
 }

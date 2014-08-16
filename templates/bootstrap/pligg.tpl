@@ -283,18 +283,9 @@
 		</script>
 	{/literal}
 
-	{if $pagename eq "profile"}
+	{if $pagename eq "profile" || $pagename eq "user_edit"}
 		{* Masonry JavaScript *}
-		{literal}
-			<script>
-			var container = document.querySelector('#profile_container');
-			var msnry = new Masonry( container, {
-			  // options
-			  columnWidth: 200,
-			  itemSelector: '.masonry_wrapper'
-			});
-			</script>
-		{/literal}
+		<script type="text/javascript" src="{$my_pligg_base}/templates/{$the_template}/js/masonry.min.js"></script>	
 	{/if}
 </body>
 </html>
