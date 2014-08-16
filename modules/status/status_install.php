@@ -1,7 +1,7 @@
 <?php
 	$module_info['name'] = 'Status Update Module';
 	$module_info['desc'] = 'Adds features to turn profile pages into a service similar to Twitter.';
-	$module_info['version'] = '1.4';
+	$module_info['version'] = '1.5';
 	$module_info['settings_url'] = '../module.php?module=status';
 	$module_info['homepage_url'] = 'http://pligg.com/downloads/module/status-update-module/';
 	$module_info['update_url'] = 'http://pligg.com/downloads/module/status-update-module/version/';
