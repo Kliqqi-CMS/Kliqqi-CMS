@@ -21,8 +21,8 @@ if(!defined('mnminclude')){header('Location: ../error_404.php');die();}
 		$value = $row->var_value;
 		if ($row->var_method == "normal"){
 			$pligg_vars[$row->var_name] = $value;
-		}
-		if ($row->var_method == "define"){
+			if ($main_smarty) $main_smarty->assign(str_replace("$","",$row->var_name), $value);
+		}elseif ($row->var_method == "define"){
 			if($row->var_name != 'table_prefix'){
 				$thenewval = $value;
 				if($row->var_enclosein == ""){
@@ -30,14 +30,18 @@ if(!defined('mnminclude')){header('Location: ../error_404.php');die();}
 						$thenewval = true;
 					} elseif($value == "false"){
 						$thenewval = false;
+					} else {
+						$thenewval = $value;
 					}
 				} else {
 					$thenewval = $value;
 				}
 				define($row->var_name, $thenewval);
+				if ($main_smarty) $main_smarty->assign($row->var_name, $thenewval);
 			}
+		}else{
+			if ($main_smarty) $main_smarty->assign($row->var_name, $value);
 		}
-		if ($main_smarty) $main_smarty->assign($row->var_name, $thenewval);
 	}
 	$db->cache_queries = false;
 
