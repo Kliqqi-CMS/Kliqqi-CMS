@@ -16,7 +16,7 @@
 			</div>
 			<div class="control-group">
 				<label for="input01" class="control-label">{#PLIGG_Visual_Submit2_Category#}</label>
-				<div class="controls select-category">
+				<div class="controls select-category{if $Multiple_Categories} multi-select-category{/if}">
 					{if $Multiple_Categories}
 						{section name=thecat loop=$submit_cat_array}
 							{$submit_cat_array[thecat].spacercount|repeat_count:'&nbsp;&nbsp;&nbsp;&nbsp;'}

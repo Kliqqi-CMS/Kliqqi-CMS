@@ -927,7 +927,7 @@ padding-top: 5px;
 .select-category {
 margin:2px 0 4px;
 }
-.select-category .form-control {
+.multi-select-category .form-control {
 width: 25px;
 height: 14px;
 float: left;
