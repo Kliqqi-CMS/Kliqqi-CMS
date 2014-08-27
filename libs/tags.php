@@ -80,7 +80,7 @@ class TagCloud {
 		$catId = $this->filterCategory;
 		$child_cats = '';
 		// do we also search the subcategories? 
-		if(! Independent_Subcategories){
+		if( Independent_Subcategories == true){
 			$child_array = '';
 
 			// get a list of all children and put them in $child_array.
@@ -112,7 +112,7 @@ class TagCloud {
             if(isset($catId)){
                 $child_cats = '';
                 // do we also search the subcategories? 
-		if (! Independent_Subcategories){
+		if( Independent_Subcategories == true){
                     $child_array = '';
                     // get a list of all children and put them in $child_array.
                     children_id_to_array($child_array, table_categories, $catId);
