@@ -132,6 +132,9 @@
 				{if $url_short neq "http://" && $url_short neq "://"}
 					<i class="fa fa-globe"></i>
 					<a href="{$url}" {if $open_in_new_window eq true} target="_blank"{/if}  {if $story_status neq "published"}rel="nofollow"{/if}>{$url_short}</a>
+				{else}
+					<i class="fa fa-globe"></i>
+					{$No_URL_Name}
 				{/if}
 				{checkActionsTpl location="tpl_pligg_story_tools_start"}
 				&nbsp;
