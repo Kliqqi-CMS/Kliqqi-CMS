@@ -1028,13 +1028,13 @@ class Link {
 			}
 		}
 
-		if(($this->status == 'new' || $this->status == 'discard') && buries_to_spam>0 && $this->reports>=buries_to_spam) {
+		/*if(($this->status == 'new' || $this->status == 'discard') && buries_to_spam>0 && $this->reports>=buries_to_spam) {
 			$this->status='discard';
 			$this->store_basic();
 
 			$vars = array('link_id' => $this->id);
 			check_actions('story_spam', $vars);
-		}
+		}*/
 	}
 
 	function category_votes() {
@@ -1158,12 +1158,12 @@ class Link {
 	function evaluate_formulas ()
 	{
 		global $db;
-		
-		$res = $db->get_results("select * from " . table_formulas . " where type = 'report' and enabled = 1;");
-		if (!$res) return;
-		foreach ($res as $formula) {
-			$reports = $this->count_all_votes("< 0");
-			$votes = $this->count_all_votes("> 0");
+		if (buries_to_spam == 1) {
+			$res = $db->get_results("select * from " . table_formulas . " where type = 'report' and enabled = 1;");
+			if (!$res) return;
+			foreach ($res as $formula) {
+				$reports = $this->count_all_votes("< 0");
+				$votes = $this->count_all_votes("> 0");
 
 			$from = $this->date;
 			$now = time();
@@ -1179,9 +1179,10 @@ class Link {
 				$this->status = 'discard';
 				$this->store_basic();
 
-				$vars = array('link_id' => $this->id);
-				check_actions('story_discard', $vars);
-			} 
+					$vars = array('link_id' => $this->id);
+					check_actions('story_discard', $vars);
+				} 
+			}
 		}
 		
 	}
