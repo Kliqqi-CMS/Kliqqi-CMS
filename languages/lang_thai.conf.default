@@ -695,6 +695,7 @@ PLIGG_Visual_Vote_AlreadyVoted = "คุณโหวตให้เว็บน�
 PLIGG_Visual_Groups = "กลุ่ม"
 PLIGG_Visual_Group = "กลุ่ม"
 PLIGG_Visual_Submit_A_New_Group = "สร้างกลุ่มใหม่"
+PLIGG_Visual_Submit_A_New_Group_Error = "ขออภัยคุณได้พบหรือเกินจำนวนกลุ่มที่คุณสามารถสร้าง!"
 PLIGG_Visual_Submit_Group_Title = "ชื่อกลุ่ม"
 PLIGG_Visual_Submit_Group_Description = "คำอธิบายกลุ่ม"
 PLIGG_Visual_Submit_Group_vote_to_publish = "เผยแพร่เฉพาะที่โหวตแล้ว"

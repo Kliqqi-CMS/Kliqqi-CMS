@@ -93,6 +93,17 @@ function get_group_creator($group_id)
 	$creator = $db->get_row("SELECT group_creator FROM " . table_groups . " WHERE group_id = $gid");
 	return $creator->group_creator;
 }
+//returns if current user is group Admin or Group Moderator
+function get_group_roles($group_id)
+{
+	global $db,$current_user;
+	if (!is_numeric($group_id)) die();
+
+	$gid = $group_id;
+	$role = $db->get_row("SELECT member_role FROM " . table_group_member . " WHERE member_group_id =". $gid . " AND member_user_id =".$current_user->user_id . " AND member_status ='active'");
+	return $role->member_role;
+}
+
 //to return name from userid
 function get_group_username($uid)
 {
@@ -235,9 +246,20 @@ function group_display($requestID)
 		
 		//check group admin
 		global $current_user;
-		$canIhaveAccess = $canIhaveAccess + checklevel('admin');
-		$canIhaveAccess = $canIhaveAccess + checklevel('moderator');
-		if($current_user->user_id == $group_creator || $canIhaveAccess == 1){$main_smarty->assign('is_group_admin', 1);}
+		//$canIhaveAccess = $canIhaveAccess + checklevel('admin');
+		//$canIhaveAccess = $canIhaveAccess + checklevel('moderator');
+		if($current_user->user_id == $group_creator){$main_smarty->assign('is_group_admin', 1);}
+		// Get the Group Admin/Moderator to use the assigned permissions
+		$gr_roles = get_group_roles($requestID);
+		$is_gr_Admin = 0;
+		$is_gr_Moderator = 0;
+		if ($gr_roles == "admin") {
+			$is_gr_Admin = 1;
+		}elseif ($gr_roles == "moderator") {
+			$is_gr_Moderator = 1;
+		}
+		$main_smarty->assign('is_gr_Admin', $is_gr_Admin);
+		$main_smarty->assign('is_gr_Moderator', $is_gr_Moderator);
 		
 		//check member
 		//include_once(mnminclude.'group.php');
@@ -281,6 +303,19 @@ function member_display($requestID)
 	global $db,$main_smarty,$current_user;
 	if (!is_numeric($requestID)) die();
 
+$isAdmin = $main_smarty->get_template_vars('isAdmin');
+$isModerator = $main_smarty->get_template_vars('isModerator');
+$main_smarty->assign('isAdmin', $isAdmin);
+$main_smarty->assign('isModerator', $isModerator);
+$gr_roles = get_group_roles($requestID);
+$is_gr_Admin = 0;
+$is_gr_Moderator = 0;
+if ($gr_roles == "admin") {
+	$is_gr_Admin = 1;
+}elseif ($gr_roles == "moderator") {
+	$is_gr_Moderator = 1;
+}
+
 	$change_role = $main_smarty->get_config_vars("PLIGG_Visual_Group_Change_Role");
 	$role_normal = $main_smarty->get_config_vars("PLIGG_Visual_Group_Role_Normal");
 	$role_admin = $main_smarty->get_config_vars("PLIGG_Visual_Group_Role_Admin");
@@ -288,7 +323,7 @@ function member_display($requestID)
 	$role_flagged = $main_smarty->get_config_vars("PLIGG_Visual_Group_Role_Flagged");
 	$role_banned = $main_smarty->get_config_vars("PLIGG_Visual_Group_Role_Banned");
 	$gcreator = get_group_creator($requestID);
-	if($gcreator == $current_user->user_id)
+	if($gcreator == $current_user->user_id || $isAdmin == '1' || $is_gr_Admin == '1' || $is_gr_Moderator == '1')
 		$member = $db->get_results("SELECT * FROM " . table_group_member . " WHERE member_group_id = $requestID AND member_user_id!=0");
 	else
 		$member = $db->get_results("SELECT * FROM " . table_group_member . " WHERE member_group_id = $requestID AND member_user_id!=0 and member_status = 'active'");
@@ -312,41 +347,51 @@ function member_display($requestID)
 			$group_member_avatar = get_avatar('small', "", "", "", $member_user_id);
 			
 			$member_display .= '<tr><td><a href="' . $group_member_url . '" class="group_member"><img src="' . $group_member_avatar . '" alt="' . $member_name . '" align="absmiddle" /></a></td><td><a href="' . $group_member_url . '" class="group_member">' . $member_name . '</a></td>';
-			if($gcreator == $current_user->user_id)
+			if($gcreator == $current_user->user_id || $isAdmin == '1' || $is_gr_Admin == '1' || $is_gr_Moderator == '1')
 			{
 			    if ($memberid->member_status=='active') {
-					if($member_user_id == $current_user->user_id) {
-						$main_smarty->assign('is_group_admin', 'true');
-						$member_display .= '<td>'.$member_role.'</td><td><a class="btn btn-default" href="#groupadminlinks-'.$index.'" data-toggle="modal"><i class="fa fa-edit" title="'.$change_role.'"></i> Edit</a></td><td>&nbsp;</td>';
-					} else {
-						$member_display .= '<td>'.$member_role.'</td><td><a class="btn btn-default" href="#groupadminlinks-'.$index.'" data-toggle="modal"><i class="fa fa-edit" title="'.$change_role.'"></i> Edit</a></td><td><a class="btn btn-danger" href="'.my_base_url . my_pligg_base . '/join_group.php?activate=false&group_id='.$requestID.'&user_id='.$member_user_id.'">Deactivate</a></td>';
+					if($gcreator == $current_user->user_id || $is_gr_Admin == '1') {
+						if($member_user_id == $current_user->user_id) {
+							$main_smarty->assign('is_group_admin', 'true');
+							$member_display .= '<td>'.$member_role.'</td><td></td><td></td>';
+						} else {
+							$member_display .= '<td>'.$member_role.'</td><td><a class="btn btn-default" href="#groupadminlinks-'.$index.'" data-toggle="modal"><i class="fa fa-edit" title="'.$change_role.'"></i> Edit</a></td><td><a class="btn btn-danger" href="'.my_base_url . my_pligg_base . '/join_group.php?activate=false&group_id='.$requestID.'&user_id='.$member_user_id.'">Deactivate</a></td>';
+						}
+						$member_display .= '
+						<div class="modal fade" id="groupadminlinks-'.$index.'">
+							<div class="modal-dialog">
+								<div class="modal-content">
+									<div class="modal-header">
+										<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+										<h4 class="modal-title">Group User Management</h4>
+									</div>
+									<div class="modal-body">
+										<a class="btn btn-default" href="'.$member_adminchange_url.'">'.$role_admin.'</a> 
+										<a class="btn btn-default" href="'.$member_normalchange_url.'">'.$role_normal.'</a> 
+										<a class="btn btn-default" href="'.$member_moderatorchange_url.'">'.$role_moderator.'</a> 
+										<hr />
+										<a class="btn btn-warning" href="'.$member_flaggedchange_url.'">'.$role_flagged.'</a> 
+										<a class="btn btn-danger" href="'.$member_bannedchange_url.'">'.$role_banned.'</a>
+									</div>
+									<div class="modal-footer">
+										<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+									</div>
+								</div><!-- /.modal-content -->
+							</div><!-- /.modal-dialog -->
+						</div><!-- /.modal -->
+						';
+					}else{
+						$member_display .= '<td>'.$member_role.'</td><td>&nbsp;</td><td>&nbsp;</td>';
 					}
-					$member_display .= '
-					<div class="modal fade" id="groupadminlinks-'.$index.'">
-						<div class="modal-dialog">
-							<div class="modal-content">
-								<div class="modal-header">
-									<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-									<h4 class="modal-title">Group User Management</h4>
-								</div>
-								<div class="modal-body">
-									<a class="btn btn-default" href="'.$member_adminchange_url.'">'.$role_admin.'</a> 
-									<a class="btn btn-default" href="'.$member_normalchange_url.'">'.$role_normal.'</a> 
-									<a class="btn btn-default" href="'.$member_moderatorchange_url.'">'.$role_moderator.'</a> 
-									<hr />
-									<a class="btn btn-warning" href="'.$member_flaggedchange_url.'">'.$role_flagged.'</a> 
-									<a class="btn btn-danger" href="'.$member_bannedchange_url.'">'.$role_banned.'</a>
-								</div>
-								<div class="modal-footer">
-									<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-								</div>
-							</div><!-- /.modal-content -->
-						</div><!-- /.modal-dialog -->
-					</div><!-- /.modal -->
-					';
 				} else {
+					if($gcreator == $current_user->user_id || $is_gr_Admin == '1' || $is_gr_Moderator == '1') {
 					$member_display .= '<td>&nbsp;</td><td>&nbsp;</td><td><a class="btn btn-success" href="'.my_base_url . my_pligg_base . '/join_group.php?activate=true&group_id='.$requestID.'&user_id='.$member_user_id.'">Activate</a></td>';
+					}else{
+						$member_display .= '<td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td>';
+					}
 				}
+			}else{
+				$member_display .= '<td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td>';
 			}
 				$index=$index+1;
 			$member_display .= '</tr>';
@@ -393,9 +438,9 @@ function group_stories($requestID,$catId,$view,$flag=0)
 	
 	
 	if ($view == 'new')
-		$from_where .= " AND link_votes<$group_vote AND link_status='new'";
+		$from_where .= " AND link_votes<$group_vote AND link_group_status='new'";
 	else                
-		$from_where .= " AND ((link_votes >= $group_vote AND link_status = 'new') OR link_status = 'published')";
+		$from_where .= " AND ((link_votes >= $group_vote AND link_group_status = 'new') OR link_group_status = 'published')";
 
 	$offset = (get_current_page()-1)*$page_size;
 	if($flag==1){

@@ -27,6 +27,21 @@ $main_smarty->assign('auto_approve_group', auto_approve_group);
 // make sure user is logged in
 force_authentication();
 $current_user_level = $current_user->user_level;
+// Check if the user didn't exceed the max number of creating groups.
+$numGr = $db->get_var("SELECT count(*) FROM `tut_groups` WHERE `group_creator` = " . $current_user->user_id);
+$max_user_groups_allowed = $main_smarty->get_template_vars('max_user_groups_allowed');
+if ($numGr >= $max_user_groups_allowed) {
+	$errors = $main_smarty->get_config_vars('PLIGG_Visual_Submit_A_New_Group_Error');
+	$main_smarty->assign('error', $errors);
+// pagename
+define('pagename', 'submit_groups');
+$main_smarty->assign('pagename', pagename);
+
+// show the template
+$main_smarty->assign('tpl_center', $the_template . '/submit_groups_center');
+$main_smarty->display($the_template . '/pligg.tpl');
+exit;
+}
 if(enable_group == "true" && (group_submit_level == $current_user_level || group_submit_level == 'normal' || $current_user_level == 'admin'))
 //if(enable_group == "true" && group_allow == 1)
 {
@@ -87,7 +102,7 @@ if(enable_group == "true" && (group_submit_level == $current_user_level || group
 		//echo 'sdgfdsgds'.$in_id;
 		
 		//to make group creator a member
-		$insert_member = "INSERT IGNORE INTO ". table_group_member ." (`member_user_id` , `member_group_id`, `member_role`) VALUES (".$group_author.", ".$in_id.",'moderator' )";
+		$insert_member = "INSERT IGNORE INTO ". table_group_member ." (`member_user_id` , `member_group_id`, `member_role`) VALUES (".$group_author.", ".$in_id.",'admin' )";
 		$db->query($insert_member);
 		
 		if(isset($_POST['group_mailer']))

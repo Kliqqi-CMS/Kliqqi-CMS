@@ -303,7 +303,7 @@ function do_submit1() {
 		$group_membered = $db->get_results("SELECT group_id,group_name FROM " . table_groups . " 
 							LEFT JOIN ".table_group_member." ON member_group_id=group_id
 							WHERE member_user_id = $current_user->user_id AND group_status = 'Enable' AND member_status='active'
-							ORDER BY group_name ASC");
+							 AND (member_role != 'banned' && member_role != 'flagged') ORDER BY group_name ASC");
 		if ($group_membered)
 		{
 			$output .= "<select name='link_group_id' tabindex='3' class='form-control submit_group_select'>";

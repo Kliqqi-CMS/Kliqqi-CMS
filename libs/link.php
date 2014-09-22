@@ -575,12 +575,33 @@ class Link {
 		$smarty->assign('Avatar', $avatars = get_avatar('all', "", "", "", $this->userid));
 		$smarty->assign('Avatar_ImgSrc', $avatars['large']);
 		$smarty->assign('Avatar_ImgSrcs', $avatars['small']);
+		
+		// Get the Group creator/Admin/Moderator to use the assigned permissions, when $this->link_group_id is greater than 0 
+		$is_gr_Creator = 0;
+		$is_gr_Admin = 0;
+		$is_gr_Moderator = 0;
+		if ($this->link_group_id > 0) {
+			$g_creator = $db->get_row("SELECT group_creator FROM " . table_groups . " WHERE group_id =". $this->link_group_id);
+			if ($g_creator->group_creator == $current_user->user_id) {
+				$is_gr_Creator = 1;
+			}
+			$ismember = $db->get_row("SELECT member_role FROM " . table_group_member . " WHERE member_group_id =". $this->link_group_id . " AND member_user_id =".$current_user->user_id . " AND member_status ='active'");
+			if ($ismember->member_role != "") {
+				if ($ismember->member_role == "admin") {
+					$is_gr_Admin = 1;
+				}elseif ($ismember->member_role == "moderator") {
+					$is_gr_Moderator = 1;
+				}
+			}
+		}
+		$smarty->assign('is_gr_Creator', $is_gr_Creator);
+		$smarty->assign('is_gr_Admin', $is_gr_Admin);
+		$smarty->assign('is_gr_Moderator', $is_gr_Moderator);
 
-		$canIhaveAccess = 0;
-		$canIhaveAccess = $canIhaveAccess + checklevel('admin');
-		$canIhaveAccess = $canIhaveAccess + checklevel('moderator');
-		if($canIhaveAccess == 1)
-			{$smarty->assign('isadmin', 'yes');}
+		// We need the user_level to determine the site wide Admin & Moderators to give access according to their permissions
+		global $main_smarty;
+			$smarty->assign('isAdmin', $main_smarty->get_template_vars('isAdmin'));
+			$smarty->assign('isModerator', $main_smarty->get_template_vars('isModerator'));
 
 		if($this->check_friends == true){
 			// For Friends //

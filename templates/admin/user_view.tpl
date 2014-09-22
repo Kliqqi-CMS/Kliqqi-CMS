@@ -53,7 +53,7 @@
 			{checkActionsTpl location="tpl_pligg_admin_user_view_tr_end"}
 		</tbody>
 	</table>	
-	{if $amIadmin}		
+	{if $amIadmin eq '1'}		
 		<a class="btn btn-primary" href="?mode=edit&user_id={$userdata[nr].user_id}">{#PLIGG_Visual_View_User_Edit_Data#}</a>
 		{if $user_logged_in neq $userdata[nr].user_login && $userdata[nr].user_id neq '1'}
 			{if $userdata[nr].user_enabled}
@@ -62,6 +62,10 @@
 				<a class="btn btn-success" href="?mode=enable&user={$userdata[nr].user_login}">{#PLIGG_Visual_View_User_Enable#}</a>
 			{/if}
 			<a class="btn btn-danger" href="?mode=killspam&user={$userdata[nr].user_login}&id={$userdata[nr].user_id}">{#PLIGG_Visual_View_User_Killspam#}</a>
+		{/if}
+	{elseif $isModerator eq '1'}
+		{if $userdata[nr].user_enabled eq '0'}
+			<a class="btn btn-success" href="?mode=enable&user={$userdata[nr].user_login}">{#PLIGG_Visual_View_User_Enable#}</a>
 		{/if}
 	{/if}
 {sectionelse}

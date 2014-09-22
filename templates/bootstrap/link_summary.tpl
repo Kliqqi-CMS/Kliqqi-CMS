@@ -4,21 +4,25 @@
 <!-- link_summary.tpl -->
 {checkActionsTpl location="tpl_link_summary_start"}
 <div class="stories" id="xnews-{$link_shakebox_index}" {* if $link_shakebox_currentuser_reports gt 0} style="opacity:0.5;filter:alpha(opacity = 50)"{/if *}>
-	{if $isadmin || $user_logged_in eq $link_submitter}
+	{if $isAdmin eq '1' || $isModerator eq '1' || $user_logged_in eq $link_submitter || $is_gr_Creator eq '1' || $is_gr_Admin eq '1' || $is_gr_Moderator eq '1'}
 		<div class="btn-group pull-right admin-links">
 			<a class="btn btn-default dropdown-toggle" data-toggle="dropdown" href="#">
 			  <i class="fa fa-cog"></i>
 			  <span class="caret"></span>
 			</a>
 			<ul class="dropdown-menu">
-				{if $user_logged_in eq $link_submitter || $isadmin}<li><a href="{$story_edit_url}"><i class="fa fa-pencil"></i> {#PLIGG_Visual_LS_Admin_Edit#}</a></li>{/if}
-				{if $isadmin}
+				<li><a href="{$story_edit_url}"><i class="fa fa-pencil"></i> {#PLIGG_Visual_LS_Admin_Edit#}</a></li>
+				{if $isAdmin eq '1' || $isModerator eq '1'}
 					<li><a href="{$story_admin_url}"><i class="fa fa-arrows-v"></i> {#PLIGG_Visual_LS_Admin_Status#}</a></li>
+					{if $isAdmin eq '1'}
 					<li><a href="{$my_base_url}{$my_pligg_base}/admin/admin_users.php?mode=view&user={$link_submitter}"><i class="fa fa-user"></i> {#PLIGG_Visual_Comment_Manage_User#} {$link_submitter}</a></li>
+					{/if}
 				{/if}
 				{checkActionsTpl location="tpl_link_summary_admin_links"}
+				{if $isAdmin eq '1' || $isModerator eq '1' || $is_gr_Creator eq '1' || $is_gr_Admin eq '1' || $is_gr_Moderator eq '1'}
 				{if $link_group_id neq 0}<li><a target="story_status" href="javascript://" onclick="show_hide_user_links(document.getElementById('stories_status-{$link_shakebox_index}'));"><i class="fa fa-group"></i> {#PLIGG_Visual_Group_Story_Status#}</a></li>{/if}
-				{if $isadmin}
+				{/if}
+				{if $isAdmin eq '1'}
 					<li><a href="{$my_pligg_base}/admin/admin_users.php?mode=killspam&user={$link_submitter}"><i class="fa fa-ban"></i> {#PLIGG_Visual_View_User_Killspam#}</a></li>
 					<li><a href="{$my_pligg_base}/delete.php?link_id={$link_id}"><i class="fa fa-trash-o"></i> {#PLIGG_Visual_AdminPanel_Discard#}</a></li>
 				{/if}

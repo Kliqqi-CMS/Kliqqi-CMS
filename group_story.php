@@ -12,11 +12,18 @@ if(isset($_REQUEST['id'])){$requestID = strip_tags($_REQUEST['id']);}
 if(!is_numeric($requestID)){$requestID = 0;}
 if($_REQUEST['title'])
 {
+	//Modified code to save one extra query on LINE 48
 	$requestTitle = $db->escape(strip_tags($_REQUEST['title']));
 	//$requestTitle = sanitize($_GET['title'], 3);
-	$requestID = $db->get_var("SELECT group_id FROM " . table_groups . " WHERE group_safename = '".$requestTitle."';");
+	$requestInfo = $db->get_row("SELECT * FROM " . table_groups . " WHERE group_safename = '".$requestTitle."';");
 } elseif ($requestID)
-	$requestTitle = $db->get_var("SELECT group_safename FROM " . table_groups . " WHERE group_id = '".$requestID."';");
+	$requestInfo = $db->get_row("SELECT * FROM " . table_groups . " WHERE group_id = '".$requestID."';");
+		// get the group safe name
+		$requestTitle = $requestInfo->group_safename;
+		// get the group id
+		$requestID = $requestInfo->group_id;
+		// get the group privcy
+		$privacy = $requestInfo->group_privacy;
 // find the name of the current category
 if(isset($_REQUEST['category'])){
 	$thecat = get_cached_category_data('category_safe_name', sanitize($_REQUEST['category'], 1));
@@ -32,19 +39,34 @@ $navwhere['text2'] = $thecat;
 $main_smarty->assign('posttitle', $requestTitle);
 $main_smarty = do_sidebar($main_smarty);
 
+// get the Site and group roles to establish the permissions
+$isAdmin = $main_smarty->get_template_vars('isAdmin');
+$isModerator = $main_smarty->get_template_vars('isModerator');
+$main_smarty->assign('isAdmin', $isAdmin);
+$main_smarty->assign('isModerator', $isModerator);
+$is_gr_creator = get_group_creator($requestID);
+$main_smarty->assign('is_gr_creator', $is_gr_creator);
+$gr_roles = get_group_roles($requestID);
+$is_gr_Admin = 0;
+$is_gr_Moderator = 0;
+if ($gr_roles == "admin") {
+	$is_gr_Admin = 1;
+}elseif ($gr_roles == "moderator") {
+	$is_gr_Moderator = 1;
+}
 
 // pagename
 define('pagename', 'group_story'); 
 
 $main_smarty->assign('pagename', pagename); 
 
-$privacy = $db->get_var("SELECT group_privacy FROM " . table_groups . " WHERE group_id = '$requestID';");
+//$privacy = $db->get_var("SELECT group_privacy FROM " . table_groups . " WHERE group_id = '$requestID';");
 $view = sanitize(sanitize($_REQUEST["view"],1),3);
 if($requestID > 0)
 {
 	//For Infinit scrolling and continue reading option 
 	
-    if (($privacy!='private' || isMemberActive($requestID)=='active'))
+    if ($is_gr_creator == '1' || $isAdmin == '1' || $isModerator == '1' || $is_gr_Admin == '1' || $is_gr_Moderator == '1' || isMemberActive($requestID)=='active')
     {
 		 $main_smarty->assign('group_shared_rows', group_shared($requestID,$catID,1));
 		 $main_smarty->assign('group_published_rows', group_stories($requestID,$catID,'published',1));
@@ -70,7 +92,7 @@ if($requestID > 0)
 				
         }
     }
-    else
+    elseif (($privacy!='private' || isMemberActive($requestID)=='active'))
     {
 	$main_smarty->assign('group_shared_display', $main_smarty->get_config_vars('PLIGG_Visual_Group_Is_Private'));
 	$main_smarty->assign('group_new_display', $main_smarty->get_config_vars('PLIGG_Visual_Group_Is_Private'));

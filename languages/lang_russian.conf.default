@@ -706,6 +706,7 @@ PLIGG_Visual_Vote_AlreadyVoted = "Вы уже голосовали за эту �
 PLIGG_Visual_Groups = "Группы"
 PLIGG_Visual_Group = "Группа"
 PLIGG_Visual_Submit_A_New_Group = "Создать группу"
+PLIGG_Visual_Submit_A_New_Group_Error = "К сожалению, вы достигли или превысили количество групп, которые можно создать!"
 PLIGG_Visual_Submit_Group_Title = "Имя группы"
 PLIGG_Visual_Submit_Group_Description = "Описание группы"
 PLIGG_Visual_Submit_Group_vote_to_publish = "Число голосов для публикации"
