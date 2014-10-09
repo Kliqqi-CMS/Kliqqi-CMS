@@ -120,10 +120,13 @@ function insert_comment () {
 			$main_smarty->display($the_template . '/pligg.tpl');
 			exit;
 		}
-		
-		$comment->store();
 		$vars['comment'] = $comment->id;
+		$vars = array('comment'=>&$comment);
 		check_actions( 'after_comment_edit', $vars ) ;
+		if($vars['comment']->status)
+		    $comment->status = $vars['comment']->status;
+		$comment->store();
+		
 		header('Location: ' . getmyurl('story', sanitize($_POST['link_id'], 3)));
 		die;
 	}

@@ -36,14 +36,15 @@ if(defined('mnminclude')){
 	if( do_we_load_module() ) {		
 
 		module_add_action('story_insert_comment', 'spam_trigger_comment','');
-		module_add_action('after_comment_edit', 'spam_trigger_comment_submit','');        		     
+		module_add_action('after_comment_edit', 'spam_trigger_comment','');        		     
 		module_add_action_tpl('tpl_pligg_story_comments_individual_end', spam_trigger_tpl_path . 'comments.tpl');
 		include_once(mnmmodules . 'spam_trigger/spam_trigger_main.php');
 	}
 
 	$include_in_pages = array('editlink');
 	if( do_we_load_module() ) {		
-		module_add_action('edit_link_hook', 'spam_trigger_editlink','');        		        
+		module_add_action('edit_link_hook', 'spam_trigger_editlink','');  
+		module_add_action_tpl('tpl_pligg_content_start', spam_trigger_tpl_path . 'story.tpl');
 		include_once(mnmmodules . 'spam_trigger/spam_trigger_main.php');
 	}
 

@@ -531,7 +531,7 @@ function do_submit3() {
 
 	$vars = array('linkres'=>&$linkres);
 	check_actions('do_submit3', $vars);
-
+	$linkres->status = $vars['linkres']->status;
 	if ($vars['linkres']->status=='discard')
 	{
 		$vars = array('link_id' => $linkres->id);
