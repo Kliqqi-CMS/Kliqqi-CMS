@@ -30,7 +30,7 @@
 				<td>{$group.group_privacy}</td>
 				<td>{$group.group_date}</td>
 				<td style="text-align:center;"><a class="btn btn-default" href='../editgroup.php?id={$group.group_id}' rel="width:800,height:700"><i class="fa fa-edit" alt="{#PLIGG_Visual_AdminPanel_Group_Edit#}" title="{#PLIGG_Visual_AdminPanel_Group_Edit#}"></i></a></td>
-				<td style="text-align:center;"><a class="btn btn-danger" onclick='return confirm("{#PLIGG_Visual_Group_Delete_Confirm#}");' href='?mode=delete&group_id={$group.group_id}'><i class="fa fa-trash-o" alt="{#PLIGG_Visual_AdminPanel_Group_Delete#}" title="{#PLIGG_Visual_AdminPanel_Group_Delete#}"></i></a></td>
+				<td style="text-align:center;">{if $amIadmin eq '1'}<a class="btn btn-danger" onclick='return confirm("{#PLIGG_Visual_Group_Delete_Confirm#}");' href='?mode=delete&group_id={$group.group_id}'><i class="fa fa-trash-o" alt="{#PLIGG_Visual_AdminPanel_Group_Delete#}" title="{#PLIGG_Visual_AdminPanel_Group_Delete#}"></i></a>{/if}</td>
 				{checkActionsTpl location="tpl_pligg_admin_groups_td_end?"}
 			</tr>
 		{/foreach}

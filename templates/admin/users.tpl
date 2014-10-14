@@ -106,6 +106,7 @@ function validate_all_user_action(){
 							{#PLIGG_Visual_User_Profile_Enabled#}
 						</a>
 					</li>
+					{if $amIadmin eq '1'}
 					<li>
 						<a onclick="set_admin_action('2')" href="#">
 							<i class="fa fa-square-o"></i>
@@ -118,6 +119,7 @@ function validate_all_user_action(){
 							{#PLIGG_Visual_KillSpam#}
 						</a>
 					</li>
+					{/if}
 				</ul>
 			</div>
 		</div>
@@ -189,12 +191,15 @@ function validate_all_user_action(){
 					<td style="vertical-align:middle;"><img src="{$userlist[nr].Avatar}" style="height:18px;width:18px;" /> <a href = "?mode=view&user={$userlist[nr].user_id}">{$userlist[nr].user_login}</a></td>	
 					<td style="text-align:center;vertical-align:middle;">{$userlist[nr].user_level}</td>
 					<td style="vertical-align:middle;">
+						{*Only display email field to Site Admins*}
+						{if $amIadmin eq '1'}
 						{if $userlist[nr].user_lastlogin neq "0000-00-00 00:00:00"}
 							<i class="fa fa-check confirmed-email" title="{#PLIGG_Visual_AdminPanel_Confirmed_Email#}" alt="{#PLIGG_Visual_AdminPanel_Confirmed_Email#}"></i>
 						{else}
 							<a data-toggle="modal" href="{$my_base_url}{$my_pligg_base}/admin/admin_user_validate.php?id={$userlist[nr].user_id}" title="{#PLIGG_Visual_AdminPanel_Unconfirmed_Email#}"><i class="fa fa-warning unconfirmed-email" rel="tooltip" data-placement="left" data-toggle="tooltip" data-original-title="{#PLIGG_Visual_AdminPanel_Unconfirmed_Email#}"></i></a>
 						{/if}
 						<a href="mailto:{$userlist[nr].user_email}" target="_blank">{$userlist[nr].user_email|truncate:25:"...":true}</a>
+						{/if}
 					</td>
 					<td>{$userlist[nr].user_date}</td>
 					<td style="text-align:center;vertical-align:middle;">
@@ -212,10 +217,13 @@ function validate_all_user_action(){
 		</tbody>
 	</table>
 </form>
+{*Only Site Admins can create users accounts*}
+{if $isAdmin eq '1'}
 {include file="/admin/user_create.tpl"}
 <div style="float:right;margin:8px 2px 0 0;">
 	<a class="btn btn-success"  href="#createUserForm-modal" data-toggle="modal" title="{#PLIGG_Visual_AdminPanel_New_User#}">{#PLIGG_Visual_AdminPanel_New_User#}</a>
 </div>
+{/if}
 <div style="clear:both;"></div>
 
 <SCRIPT>

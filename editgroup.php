@@ -16,11 +16,33 @@ if(isset($_REQUEST['id'])){$requestID = strip_tags($_REQUEST['id']);}
 if(!is_numeric($requestID)){$requestID = 0;}
 if(isset($_REQUEST['title'])){$requestTitle = $db->escape(strip_tags($_REQUEST['title']));}
 
-//check group admin
-$canIhaveAccess = checklevel('admin');
-$canIhaveAccess = checklevel('moderator');
+// We need the user_level to determine the site wide Admin & Moderators to give access according to their permissions
+global $main_smarty;
+$isAdmin = $main_smarty->get_template_vars('isAdmin');
+$isModerator = $main_smarty->get_template_vars('isModerator');
+$main_smarty->assign('isAdmin', $isAdmin);
+$main_smarty->assign('isModerator', $isModerator);
 
-if($current_user->user_id != get_group_creator($requestID) && $canIhaveAccess != 1)
+//Check if the logged in user is the group creator
+$is_gr_creator = 0;
+$gr_creator = get_group_creator($requestID);
+if ($gr_creator == $current_user->user_id) {
+	$is_gr_creator = 1;
+}
+$main_smarty->assign(is_gr_creator, $is_gr_creator);
+
+//check if the logged in user is the group Admin or Moderator
+$role = get_group_roles($requestID);
+$is_gr_Admin = 0;
+$is_gr_Moderator = 0;
+if ($role == "admin") {
+	$is_gr_Admin = 1;
+}elseif ($role == "moderator") {
+	$is_gr_Moderator = 1;
+}
+$main_smarty->assign('is_gr_Admin', $is_gr_Admin);
+$main_smarty->assign('is_gr_Moderator', $is_gr_Moderator);
+if($is_gr_creator != 1 && $isAdmin != 1 && $isModerator != 1 && $is_gr_Admin != 1 && $is_gr_Moderator != 1)
 {
 	//page redirect
 	$redirect = '';

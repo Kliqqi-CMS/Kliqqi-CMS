@@ -50,10 +50,14 @@
 					{/if}
 				{/if}
 			{/if}
-			{if $is_group_admin eq '1'}
+			{*Provide permissions according to Group Roles and Site level Roles - Group Moderator cannot edit the group info or image*}
+			{if $is_group_admin eq '1' || $isAdmin eq '1' || $isModerator eq '1' || $is_gr_Admin eq '1'}
 				<a class="btn btn-default" href="{$group_edit_url}"><i class="fa fa-edit"></i> {#PLIGG_Visual_Group_Text_edit#}</a>
 				<a class="btn btn-default" href="#groupavatar" data-toggle="modal"><i class="fa fa-picture-o"></i> {#PLIGG_Visual_Group_Avatar_Upload#}</a>
+				{*Only Group Creator and Site Admin can delete a group*}
+				{if $is_group_admin eq '1' || $isAdmin eq '1'}
 				<a class="btn btn-danger" onclick="return confirm('{#PLIGG_Visual_Group_Delete_Confirm#}')" href={$group_delete_url}><i class="fa fa-white fa-trash-o"></i> {#PLIGG_Visual_Group_Text_Delete#}</a>
+				{/if}
 				{if $Avatar_uploaded neq ''}
 					<br />
 					<div class="alert alert-warning">

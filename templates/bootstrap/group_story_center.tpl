@@ -63,11 +63,9 @@
 					<tr>
 						<th style="width:32px">&nbsp;</th>
 						<th>Username</th>
-						{if $is_group_admin}
 							<th style="width:100px;">Role</th>
 							<th style="width:75px;">Edit</th>
 							<th style="width:105px;">Activation</th>
-						{/if}
 					</tr>
 				</thead>
 				<tbody>

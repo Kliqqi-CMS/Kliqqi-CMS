@@ -764,7 +764,7 @@ function getmyurl($x, $var1="", $var2="", $var3="") {
 		elseif ($x == "group_sort") $ret = "/groups.php?sortby=".$var1.$var2;
 		elseif ($x == "user_add_links_private") $ret = "/user_add_remove_links.php?action=addprivate&amp;link=" . $var1;
 		elseif ($x == "user_add_links_public") $ret = "/user_add_remove_links.php?action=addpublic&amp;link=" . $var1;
-		elseif ($x == "group_story_links_publish") $ret = "/join_group.php?action=publish&amp;link=" . $var1;
+		elseif ($x == "group_story_links_publish") $ret = "/join_group.php?action=published&amp;link=" . $var1;
 		elseif ($x == "group_story_links_new") $ret = "/join_group.php?action=new&amp;link=" . $var1;
 		elseif ($x == "group_story_links_discard") $ret = "/join_group.php?action=discard&amp;link=" . $var1;
 		elseif ($x == "admin_categories_tasks") $ret = "/admin_categories_tasks.php?action=" . $var1;

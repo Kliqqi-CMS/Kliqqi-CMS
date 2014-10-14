@@ -303,7 +303,7 @@ function do_submit1() {
 		$group_membered = $db->get_results("SELECT group_id,group_name FROM " . table_groups . " 
 							LEFT JOIN ".table_group_member." ON member_group_id=group_id
 							WHERE member_user_id = $current_user->user_id AND group_status = 'Enable' AND member_status='active'
-							ORDER BY group_name ASC");
+							 AND (member_role != 'banned' && member_role != 'flagged') ORDER BY group_name ASC");
 		if ($group_membered)
 		{
 			$output .= "<select name='link_group_id' tabindex='3' class='form-control submit_group_select'>";
@@ -425,7 +425,7 @@ function do_submit2() {
 	}
 
 	$linkres->store();
-	tags_insert_string($linkres->id, $dblang, $linkres->tags);
+
 
 	if (link_errors($linkres)) {
 		return;
@@ -514,7 +514,7 @@ function do_submit2() {
 
 // submit step 3
 function do_submit3() {
-	global $db;
+	global $db, $dblang;
 
 	$linkres=new Link;
 	$linkres->id = sanitize($_POST['id'], 3);
@@ -531,7 +531,7 @@ function do_submit3() {
 
 	$vars = array('linkres'=>&$linkres);
 	check_actions('do_submit3', $vars);
-
+	$linkres->status = $vars['linkres']->status;
 	if ($vars['linkres']->status=='discard')
 	{
 		$vars = array('link_id' => $linkres->id);
@@ -546,7 +546,7 @@ function do_submit3() {
 
 	$linkres->store_basic();
 	$linkres->check_should_publish();
-	
+	tags_insert_string($linkres->id, $dblang, $linkres->tags);
 	if(isset($_POST['trackback']) && sanitize($_POST['trackback'], 3) != '') {
 		require_once(mnminclude.'trackback.php');
 		$trackres = new Trackback;

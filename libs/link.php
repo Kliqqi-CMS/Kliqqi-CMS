@@ -207,12 +207,7 @@ class Link {
 
 		if($this->id===0) {
 		
-			if(buries_to_spam == 0) {
-			
-				$sql = "INSERT IGNORE INTO " . table_links . " (link_author, link_randkey, link_category, link_date, link_published_date, link_votes, link_karma, link_title, link_content ,link_group_id) VALUES ($link_author, $link_randkey, $link_category, FROM_UNIXTIME($link_date), FROM_UNIXTIME($link_published_date), $link_votes, $link_karma, '', '',$link_group_id)";
-			} else {
-				$sql = "INSERT IGNORE INTO " . table_links . " (link_author, link_status, link_randkey, link_category, link_date, link_published_date, link_votes, link_karma, link_title, link_content ,link_group_id) VALUES ($link_author, '$link_status', $link_randkey, $link_category, FROM_UNIXTIME($link_date), FROM_UNIXTIME($link_published_date), $link_votes, $link_karma, '', '',$link_group_id)";
-			}
+			$sql = "INSERT IGNORE INTO " . table_links . " (link_author, link_status, link_randkey, link_category, link_date, link_published_date, link_votes, link_karma, link_title, link_content ,link_group_id) VALUES ($link_author, '$link_status', $link_randkey, $link_category, FROM_UNIXTIME($link_date), FROM_UNIXTIME($link_published_date), $link_votes, $link_karma, '', '',$link_group_id)";
 				
 			if($this->debug == true){
 				echo '<hr>store_basic:Insert:' . $sql . '<hr>';
@@ -221,11 +216,7 @@ class Link {
 			$this->id = $db->insert_id;
 		} else {
 		// update
-			if(buries_to_spam == 0) {
-                 	$sql = "UPDATE " . table_links . " set `link_reports`=$link_reports, `link_comments`=$link_comments, link_author=$link_author, link_status='$link_status', link_randkey=$link_randkey, link_category='$link_category', link_modified=NULL, link_date=FROM_UNIXTIME($link_date), link_published_date=FROM_UNIXTIME($link_published_date), link_votes=$link_votes, link_karma=$link_karma, link_group_id=$link_group_id WHERE link_id=$this->id";
-                        } else {
-	                 $sql = "UPDATE " . table_links . " set `link_reports`=$link_reports, `link_comments`=$link_comments, link_author=$link_author, link_randkey=$link_randkey, link_category='$link_category', link_modified=NULL, link_date=FROM_UNIXTIME($link_date), link_published_date=FROM_UNIXTIME($link_published_date), link_votes=$link_votes, link_karma=$link_karma, link_group_id=$link_group_id WHERE link_id=$this->id";
-                        }
+           	$sql = "UPDATE " . table_links . " set `link_reports`=$link_reports, `link_comments`=$link_comments, link_author=$link_author, link_status='$link_status', link_randkey=$link_randkey, link_category='$link_category', link_modified=NULL, link_date=FROM_UNIXTIME($link_date), link_published_date=FROM_UNIXTIME($link_published_date), link_votes=$link_votes, link_karma=$link_karma, link_group_id=$link_group_id WHERE link_id=$this->id";
 
 			if($this->debug == true){
 				echo '<hr>store_basic:Update:' . $sql . '<hr>';
@@ -584,12 +575,33 @@ class Link {
 		$smarty->assign('Avatar', $avatars = get_avatar('all', "", "", "", $this->userid));
 		$smarty->assign('Avatar_ImgSrc', $avatars['large']);
 		$smarty->assign('Avatar_ImgSrcs', $avatars['small']);
+		
+		// Get the Group creator/Admin/Moderator to use the assigned permissions, when $this->link_group_id is greater than 0 
+		$is_gr_Creator = 0;
+		$is_gr_Admin = 0;
+		$is_gr_Moderator = 0;
+		if ($this->link_group_id > 0) {
+			$g_creator = $db->get_row("SELECT group_creator FROM " . table_groups . " WHERE group_id =". $this->link_group_id);
+			if ($g_creator->group_creator == $current_user->user_id) {
+				$is_gr_Creator = 1;
+			}
+			$ismember = $db->get_row("SELECT member_role FROM " . table_group_member . " WHERE member_group_id =". $this->link_group_id . " AND member_user_id =".$current_user->user_id . " AND member_status ='active'");
+			if ($ismember->member_role != "") {
+				if ($ismember->member_role == "admin") {
+					$is_gr_Admin = 1;
+				}elseif ($ismember->member_role == "moderator") {
+					$is_gr_Moderator = 1;
+				}
+			}
+		}
+		$smarty->assign('is_gr_Creator', $is_gr_Creator);
+		$smarty->assign('is_gr_Admin', $is_gr_Admin);
+		$smarty->assign('is_gr_Moderator', $is_gr_Moderator);
 
-		$canIhaveAccess = 0;
-		$canIhaveAccess = $canIhaveAccess + checklevel('admin');
-		$canIhaveAccess = $canIhaveAccess + checklevel('moderator');
-		if($canIhaveAccess == 1)
-			{$smarty->assign('isadmin', 'yes');}
+		// We need the user_level to determine the site wide Admin & Moderators to give access according to their permissions
+		global $main_smarty;
+			$smarty->assign('isAdmin', $main_smarty->get_template_vars('isAdmin'));
+			$smarty->assign('isModerator', $main_smarty->get_template_vars('isModerator'));
 
 		if($this->check_friends == true){
 			// For Friends //
@@ -1037,13 +1049,13 @@ class Link {
 			}
 		}
 
-		if(($this->status == 'new' || $this->status == 'discard') && buries_to_spam>0 && $this->reports>=buries_to_spam) {
+		/*if(($this->status == 'new' || $this->status == 'discard') && buries_to_spam>0 && $this->reports>=buries_to_spam) {
 			$this->status='discard';
 			$this->store_basic();
 
 			$vars = array('link_id' => $this->id);
 			check_actions('story_spam', $vars);
-		}
+		}*/
 	}
 
 	function category_votes() {
@@ -1167,12 +1179,12 @@ class Link {
 	function evaluate_formulas ()
 	{
 		global $db;
-		
-		$res = $db->get_results("select * from " . table_formulas . " where type = 'report' and enabled = 1;");
-		if (!$res) return;
-		foreach ($res as $formula) {
-			$reports = $this->count_all_votes("< 0");
-			$votes = $this->count_all_votes("> 0");
+		if (buries_to_spam == 1) {
+			$res = $db->get_results("select * from " . table_formulas . " where type = 'report' and enabled = 1;");
+			if (!$res) return;
+			foreach ($res as $formula) {
+				$reports = $this->count_all_votes("< 0");
+				$votes = $this->count_all_votes("> 0");
 
 			$from = $this->date;
 			$now = time();
@@ -1188,9 +1200,10 @@ class Link {
 				$this->status = 'discard';
 				$this->store_basic();
 
-				$vars = array('link_id' => $this->id);
-				check_actions('story_discard', $vars);
-			} 
+					$vars = array('link_id' => $this->id);
+					check_actions('story_discard', $vars);
+				} 
+			}
 		}
 		
 	}

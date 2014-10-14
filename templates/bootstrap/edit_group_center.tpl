@@ -2,7 +2,7 @@
 ******** Edit Group Template ********
 *************************************}
 <!-- edit_group_center.tpl -->
-{if $is_group_admin eq '1'}
+{if $is_gr_creator eq '1' || $isAdmin eq '1' || $isModerator eq '1' || $is_gr_Admin eq '1' || $is_gr_Moderator eq '1'}
 	{if $errors}
 		<div class="alert alert-warning">
 			<button class="close" data-dismiss="alert">&times;</button>
