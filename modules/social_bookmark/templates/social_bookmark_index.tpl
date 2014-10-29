@@ -1,7 +1,7 @@
 {checkActionsTpl location="tpl_pligg_module_social_bookmark_start"}
 {config_load file=social_bookmark_lang_conf}
 <span id="linksummaryAddLink">
-	&nbsp;<i class="fa fa-share-alt"></i> <a href="javascript://" onclick="var replydisplay=document.getElementById('addto-{$link_shakebox_index}').style.display ? '' : 'none';document.getElementById('addto-{$link_shakebox_index}').style.display = replydisplay;"> {#Social_Bookmark_AddTo#}</a>&nbsp;
+	&nbsp;<i class="fa fa-share-alt"></i> <a href="javascript://" onclick="var replydisplay=document.getElementById('addto-{$link_shakebox_index}').style.display ? '' : 'none';document.getElementById('addto-{$link_shakebox_index}').style.display = replydisplay;"> {#Social_Bookmark_AddTo#}</a>
 </span>
 <span id="addto-{$link_shakebox_index}" style="display:none">
 <div style="position:absolute;display:block;background:#fff;padding:10px;margin:10px 0 0 100px;font-size:12px;border:2px solid #000;z-index:999;">
