@@ -13,18 +13,19 @@ if (version_compare($pligg_version, '2.0.2') <= 0) {
 
 	echo '<li>Performing one-time Pligg 2.0.3 Upgrade<ul>';
 	
-	
 	$sql = "UPDATE ".table_config." 
 			SET `var_title` = 'Negative Votes Story Discard' 
 			WHERE `var_name` = 'buries_to_spam';";
-    $db->query($sql);
-	echo '<li>Updated the title for the "Negative Votes Story Discard" feature</li>';	
-	
+    $db->query($sql);	
 	$sql = "UPDATE `" . table_config . "` 
 			SET `var_desc` = 'If set to 1, stories with enough down votes will be discarded. The formula for determining what gets buried is stored in the database table table_formulas. It defaults to discarding stories with 3 times more downvotes than upvotes.'
 			WHERE `var_name` = 'buries_to_spam';";
 	$db->query($sql);
-	echo '<li>Updated the description for the "Negative Votes Story Discard" feature</li>';	
+	$sql = "UPDATE ".table_config." 
+			SET `var_optiontext` = '1 = on / 0 = off' 
+			WHERE `var_name` = 'buries_to_spam';";
+    $db->query($sql);	
+	echo '<li>Updated the title and description for the "Negative Votes Story Discard" feature</li>';	
 	
 	// Update version number
 	$sql = "UPDATE `" . table_misc_data . "` SET `data` = '2.0.3' WHERE `name` = 'pligg_version';";
