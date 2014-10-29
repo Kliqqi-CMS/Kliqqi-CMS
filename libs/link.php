@@ -207,12 +207,7 @@ class Link {
 
 		if($this->id===0) {
 		
-			if(buries_to_spam == 0) {
-			
-				$sql = "INSERT IGNORE INTO " . table_links . " (link_author, link_randkey, link_category, link_date, link_published_date, link_votes, link_karma, link_title, link_content ,link_group_id) VALUES ($link_author, $link_randkey, $link_category, FROM_UNIXTIME($link_date), FROM_UNIXTIME($link_published_date), $link_votes, $link_karma, '', '',$link_group_id)";
-			} else {
-				$sql = "INSERT IGNORE INTO " . table_links . " (link_author, link_status, link_randkey, link_category, link_date, link_published_date, link_votes, link_karma, link_title, link_content ,link_group_id) VALUES ($link_author, '$link_status', $link_randkey, $link_category, FROM_UNIXTIME($link_date), FROM_UNIXTIME($link_published_date), $link_votes, $link_karma, '', '',$link_group_id)";
-			}
+			$sql = "INSERT IGNORE INTO " . table_links . " (link_author, link_status, link_randkey, link_category, link_date, link_published_date, link_votes, link_karma, link_title, link_content ,link_group_id) VALUES ($link_author, '$link_status', $link_randkey, $link_category, FROM_UNIXTIME($link_date), FROM_UNIXTIME($link_published_date), $link_votes, $link_karma, '', '',$link_group_id)";
 				
 			if($this->debug == true){
 				echo '<hr>store_basic:Insert:' . $sql . '<hr>';
@@ -220,13 +215,8 @@ class Link {
 			$db->query($sql);
 			$this->id = $db->insert_id;
 		} else {
-		// update
-			if(buries_to_spam == 0) {
-                 	$sql = "UPDATE " . table_links . " set `link_reports`=$link_reports, `link_comments`=$link_comments, link_author=$link_author, link_status='$link_status', link_randkey=$link_randkey, link_category='$link_category', link_modified=NULL, link_date=FROM_UNIXTIME($link_date), link_published_date=FROM_UNIXTIME($link_published_date), link_votes=$link_votes, link_karma=$link_karma, link_group_id=$link_group_id WHERE link_id=$this->id";
-                        } else {
-	                 $sql = "UPDATE " . table_links . " set `link_reports`=$link_reports, `link_comments`=$link_comments, link_author=$link_author, link_randkey=$link_randkey, link_category='$link_category', link_modified=NULL, link_date=FROM_UNIXTIME($link_date), link_published_date=FROM_UNIXTIME($link_published_date), link_votes=$link_votes, link_karma=$link_karma, link_group_id=$link_group_id WHERE link_id=$this->id";
-                        }
 
+			$sql = "UPDATE " . table_links . " set `link_reports`=$link_reports, `link_comments`=$link_comments, link_author=$link_author, link_status='$link_status', link_randkey=$link_randkey, link_category='$link_category', link_modified=NULL, link_date=FROM_UNIXTIME($link_date), link_published_date=FROM_UNIXTIME($link_published_date), link_votes=$link_votes, link_karma=$link_karma, link_group_id=$link_group_id WHERE link_id=$this->id";
 			if($this->debug == true){
 				echo '<hr>store_basic:Update:' . $sql . '<hr>';
 			}
@@ -1037,6 +1027,7 @@ class Link {
 			}
 		}
 
+		/*
 		if(($this->status == 'new' || $this->status == 'discard') && buries_to_spam>0 && $this->reports>=buries_to_spam) {
 			$this->status='discard';
 			$this->store_basic();
@@ -1044,6 +1035,7 @@ class Link {
 			$vars = array('link_id' => $this->id);
 			check_actions('story_spam', $vars);
 		}
+		*/
 	}
 
 	function category_votes() {
@@ -1168,29 +1160,30 @@ class Link {
 	{
 		global $db;
 		
-		$res = $db->get_results("select * from " . table_formulas . " where type = 'report' and enabled = 1;");
-		if (!$res) return;
-		foreach ($res as $formula) {
-			$reports = $this->count_all_votes("< 0");
-			$votes = $this->count_all_votes("> 0");
+		if (buries_to_spam == 1) {
+			$res = $db->get_results("select * from " . table_formulas . " where type = 'report' and enabled = 1;");
+			if (!$res) return;
+			foreach ($res as $formula) {
+				$reports = $this->count_all_votes("< 0");
+				$votes = $this->count_all_votes("> 0");
+				$from = $this->date;
+				$now = time();
+				$diff=$now-$from;
+				$hours=($diff/3600);
+				$hours_since_submit = intval($hours * 100) / 100;
 
-			$from = $this->date;
-			$now = time();
-			$diff=$now-$from;
-			$hours=($diff/3600);
-			$hours_since_submit = intval($hours * 100) / 100;
+				$evalthis = 'if (' . $formula->formula . '){return "1";}else{return "0";}';
+				if(eval($evalthis) == 1 && $this->status!='spam'){
+					totals_adjust_count($this->status, -1);
+					totals_adjust_count('discard', 1);
 
-			$evalthis = 'if (' . $formula->formula . '){return "1";}else{return "0";}';
-			if(eval($evalthis) == 1 && $this->status!='spam'){
-				totals_adjust_count($this->status, -1);
-				totals_adjust_count('discard', 1);
+					$this->status = 'discard';
+					$this->store_basic();
 
-				$this->status = 'discard';
-				$this->store_basic();
-
-				$vars = array('link_id' => $this->id);
-				check_actions('story_discard', $vars);
-			} 
+					$vars = array('link_id' => $this->id);
+					check_actions('story_discard', $vars);
+				}
+			}
 		}
 		
 	}

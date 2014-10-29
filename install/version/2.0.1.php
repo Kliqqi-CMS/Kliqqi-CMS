@@ -9,7 +9,7 @@ $sql = "SELECT data FROM " . table_misc_data . " WHERE name = 'pligg_version'";
 $pligg_version = $db->get_var($sql);
 
 // Check if you need to run the one time upgrade to Pligg 2.0.1
-if ($pligg_version = '2.0.0') {
+if (version_compare($pligg_version, '2.0.0') <= 0) {
 
 	echo '<li>Performing one-time Pligg 2.0.1 Upgrade<ul>';
 	
@@ -27,6 +27,5 @@ if ($pligg_version = '2.0.0') {
 	// Finished 2.0.1 upgrade
 	echo'</ul></li>';
 }
-
 	
 ?>

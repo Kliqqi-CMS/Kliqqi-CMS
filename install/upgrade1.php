@@ -221,6 +221,13 @@ if (!$errors) {
 		$languageContent = str_replace($oldLanguage201 , $newLanguage202 , $languageContent);
 	}
 	
+	if ($old_version < '203'){
+		// No language file changes this release
+		$oldLanguage202 = "// End 2.0.2 Language File";
+		$newLanguage203= "// End 2.0.3 Language File";
+		$languageContent = str_replace($oldLanguage202 , $newLanguage203 , $languageContent);
+	}
+	
 // echo $languageContent;
 
 	// Point to the file that's going to be written to.
@@ -267,7 +274,7 @@ if (!$errors) {
 		$db->query($sql);
 		
 		// Add Pligg version
-		$sql = "INSERT INTO `" . table_misc_data . "` ( `name` , `data` ) VALUES ('pligg_version', '2.0.2');";
+		$sql = "INSERT INTO `" . table_misc_data . "` ( `name` , `data` ) VALUES ('pligg_version', '2.0.3');";
 		$db->query($sql);
 		
 		//Captcha upgrade:
@@ -286,7 +293,8 @@ if (!$errors) {
 		include_once('version/2.0.0.php');
 		include_once('version/2.0.1.php');
 		include_once('version/2.0.2.php');
-	
+		include_once('version/2.0.3.php');
+		
 	}
 	
 	echo '<li>Regenerating the totals table</li>';

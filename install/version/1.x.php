@@ -144,7 +144,7 @@ if ($old_version < $new_version) {
 	if (count($result) == 0) {
 		$db->query("INSERT INTO `" . table_config . "` ( `var_id` , `var_page` , `var_name` , `var_value` , `var_defaultvalue` , `var_optiontext` , `var_title` , `var_desc` , `var_method` , `var_enclosein` ) VALUES (NULL, 'Voting', 'buries_to_spam', '0', '0', 'number', 'Negative votes to remove submission', 'Number of negative votes before story is sent to discard state. <b>0</b> = disable feature.', 'define', NULL);");
 	} else {
-		$db->query("UPDATE `" . table_config . "` SET var_title='Negative votes to remove submission', var_desc='Number of negative votes before story is sent to discard state. <b>0</b> = disable feature.' WHERE var_name='buries_to_spam'");
+		$db->query("UPDATE `" . table_config . "` SET var_title='Negative Votes Story Discard', var_desc='If set to 1, stories with enough down votes will be discarded. The formula for determining what gets buried is stored in the database table table_formulas. It defaults to discarding stories with 3 times more downvotes than upvotes.' WHERE var_name='buries_to_spam'");
 	}
 
 	$result = $db->get_results("select * from `" . table_config . "` where `var_name` = 'comment_buries_spam';");
