@@ -370,7 +370,7 @@ function group_stories($requestID,$catId,$view,$flag=0)
         {
 		$child_cats = '';
 		// do we also search the subcategories? 
-		if(! Independent_Subcategories){
+		if( Independent_Subcategories == true){
 			$child_array = '';
 
 			// get a list of all children and put them in $child_array.
@@ -447,7 +447,7 @@ function group_shared($requestID,$catId,$flag=0)
         {
 		$child_cats = '';
 		// do we also search the subcategories? 
-		if(! Independent_Subcategories){
+		if( Independent_Subcategories == true){
 			$child_array = '';
 
 			// get a list of all children and put them in $child_array.

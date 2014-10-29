@@ -129,7 +129,7 @@ class Search {
 			if($catId){
 				$child_cats = '';
 				// do we also search the subcategories? 
-				if(! Independent_Subcategories){
+				if( Independent_Subcategories == true){
 					$child_array = '';
 
 					// get a list of all children and put them in $child_array.
