@@ -1,5 +1,5 @@
 <?php
-set_time_limit(120);
+set_time_limit(180);
 ini_set('session.gc_maxlifetime', 3600);
 
 include_once('internal/Smarty.class.php');
@@ -428,7 +428,6 @@ function do_submit2() {
 	}
 
 	$linkres->store();
-	tags_insert_string($linkres->id, $dblang, $linkres->tags);
 
 	if (link_errors($linkres)) {
 		return;
@@ -517,7 +516,7 @@ function do_submit2() {
 
 // submit step 3
 function do_submit3() {
-	global $db;
+	global $db, $dblang;
 
 	$linkres=new Link;
 	$linkres->id = sanitize($_POST['id'], 3);
@@ -549,6 +548,8 @@ function do_submit3() {
 
 	$linkres->store_basic();
 	$linkres->check_should_publish();
+
+	tags_insert_string($linkres->id, $dblang, $linkres->tags);
 	
 	if(isset($_POST['trackback']) && sanitize($_POST['trackback'], 3) != '') {
 		require_once(mnminclude.'trackback.php');
