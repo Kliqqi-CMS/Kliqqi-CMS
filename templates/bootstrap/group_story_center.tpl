@@ -58,6 +58,7 @@
 			<div style="clear:both;"></div>
 			{$group_story_pagination}
 		{elseif $groupview eq "members"}
+			<br />
 			<table class="table table-bordered table-striped">
 				<thead>
 					<tr>
