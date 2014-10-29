@@ -199,7 +199,7 @@ function save_text_to_html($string) {
 }
 
 function text_to_html($string) {
-	return preg_replace('/([hf][tps]{2,4}:\/\/[^ \t\n\r]+[^ .\t,\n\r\(\)"\'])/', '<a href="$1">$1</a>', $string);
+    return preg_replace('/([hf][tps]{2,4}:\/\/[^ \t\n\r]+[^ .\<br \/\>\t,\n\r\(\)"\'])/', '<a href="$1">$1</a>', $string);
 }
 
 function check_integer($which) {
