@@ -70,14 +70,14 @@
 								<a class="btn btn-default linkVote_{$link_id}" {if $vote_from_this_ip neq 0 and $user_logged_in eq ""} data-toggle="modal" href="#LoginModal" {else} href="javascript:{$link_shakebox_javascript_vote}" {/if} title="{$title_short}" ><i class="fa fa-thumbs-up"></i></a>
 							{elseif $link_shakebox_currentuser_votes eq 1}
 								<!-- Already Voted -->
-								<a class="btn btn-success linkVote_{$link_id}" href="javascript:{$link_shakebox_javascript_unvote}" title="{$title_short}"><i class="fa fa-white fa-thumbs-up"></i></a>
+								<a class="btn btn-default btn-success linkVote_{$link_id}" href="javascript:{$link_shakebox_javascript_unvote}" title="{$title_short}"><i class="fa fa-white fa-thumbs-up"></i></a>
 							{/if}
 							{if $link_shakebox_currentuser_reports eq 0}
 								<!-- Bury It -->
 								<a class="btn btn-default linkVote_{$link_id}" {if $report_from_this_ip neq 0 and $user_logged_in eq ""} data-toggle="modal" href="#LoginModal" {else} href="javascript:{$link_shakebox_javascript_report}" {/if} title="{$title_short}" ><i class="fa fa-thumbs-down"></i></a>
 							{elseif $link_shakebox_currentuser_reports eq 1}
 								<!-- Already Buried -->
-								<a class="btn btn-danger linkVote_{$link_id}"   href="javascript:{$link_shakebox_javascript_unbury}" title="{$title_short}" }><i class="fa fa-white fa-thumbs-down"></i></a>
+								<a class="btn btn-default btn-danger linkVote_{$link_id}"   href="javascript:{$link_shakebox_javascript_unbury}" title="{$title_short}" }><i class="fa fa-white fa-thumbs-down"></i></a>
 							{/if}
 						{/if}
 						<!-- Votes: {$link_shakebox_currentuser_votes} Buries: {$link_shakebox_currentuser_reports} -->
