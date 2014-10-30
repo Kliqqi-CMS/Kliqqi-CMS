@@ -245,9 +245,28 @@ class Search {
 				
 			//search category
 			if( $this->s_cat != 0 ){
-				if (Multiple_Categories)
-					$mult_sql = " OR ac_cat_id = '".$db->escape($this->s_cat)."'";
-				$search_AND_params[] = "( ".table_links.".link_category = '".$db->escape($this->s_cat)."' $mult_sql)";
+				$catId = $this->s_cat;
+				if($catId){
+					$child_cats = '';
+					// do we also search the subcategories? 
+					if( Independent_Subcategories == true){
+						$child_array = '';
+						// get a list of all children and put them in $child_array.
+						children_id_to_array($child_array, table_categories, $catId);
+						if ($child_array != '') {
+							// build the sql
+							foreach($child_array as $child_cat_id) {
+								$mult_sql .= " OR `link_category` = " . $child_cat_id . " ";
+								
+								if (Multiple_Categories)
+									$mult_sql .= " OR ac_cat_id = " . $child_cat_id . " ";
+							}
+						}
+					}
+					if (Multiple_Categories)
+						$mult_sql .= " OR ac_cat_id = '".$db->escape($this->s_cat)."'";
+					$search_AND_params[] = "( ".table_links.".link_category = '".$db->escape($this->s_cat)."' $mult_sql)";
+				}
 			}
 						
 			//search tags
