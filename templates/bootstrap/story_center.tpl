@@ -2,6 +2,7 @@
 ****** Story Wrapper Template *******
 *************************************}
 <!-- story_center.tpl -->
+{checkActionsTpl location="tpl_pligg_content_start"}
 {$the_story}
 <ul class="nav nav-tabs" id="storytabs">
 	<li class="active"><a data-toggle="tab" href="#comments"><i class="fa fa-comments"></i> {#PLIGG_Visual_Story_Comments#}</a></li>
