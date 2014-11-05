@@ -57,7 +57,7 @@ function spam_trigger_editlink()
 {
 	global $db, $current_user, $linkres;
 
-	if (checklevel('moderator') || checklevel('admin')) return;
+	//if (checklevel('moderator') || checklevel('admin')) return;
 	if (!is_numeric($_POST['id'])) return;
 
 	$settings = get_spam_trigger_settings();
@@ -88,7 +88,7 @@ function spam_trigger_do_submit3($vars)
 {
 	global $db, $current_user;
 
-	if (checklevel('moderator') || checklevel('admin')) return;
+	//if (checklevel('moderator') || checklevel('admin')) return;
 	$linkres = $vars['linkres'];
 	if (!$linkres->id) return;
 
@@ -100,19 +100,19 @@ function spam_trigger_do_submit3($vars)
 	{
 		$_SESSION['spam_trigger_story_error'] = 'deleted';
 		spam_trigger_killspam($current_user->user_id);
-		$linkres->status = 'spam';
+		$vars['linkres']->status = 'spam';
 	}
 	// discard story
 	elseif ($settings['spam_medium'] && !spam_trigger_check($str, $settings['spam_medium']))
 	{
 		$_SESSION['spam_trigger_story_error'] = 'discarded';
-		$linkres->status = 'discard';
+		$vars['linkres']->status = 'discard';
 	}
 	// set status to moderated
 	elseif ($settings['spam_light'] && !spam_trigger_check($str, $settings['spam_light']))
 	{
 		$_SESSION['spam_trigger_story_error'] = 'moderated';
-		$linkres->status = 'moderated';
+		$vars['linkres']->status = 'moderated';
 	}
 }
 
@@ -126,21 +126,22 @@ function spam_trigger_comment($vars)
 	// Killspam user
 	if ($settings['spam_hard'] && !spam_trigger_check($str, $settings['spam_hard']))
 	{
-		$_SESSION['spam_trigger_story_error'] = 'deleted';
+		$_SESSION['spam_trigger_comment_error'] = 'deleted';
 		spam_trigger_killspam($current_user->user_id);
 		$vars['error'] = 1;
 	}
 	// delete comment
 	elseif ($settings['spam_medium'] && !spam_trigger_check($str, $settings['spam_medium']))
 	{
-		$_SESSION['spam_trigger_story_error'] = 'deleted';
+		$_SESSION['spam_trigger_comment_error'] = 'deleted';
 		$vars['error'] = 1;
+		$vars['comment']->status = 'discard';
 	}
 	// set status to moderated
 	elseif ($settings['spam_light'] && !spam_trigger_check($str, $settings['spam_light']))
 	{
 		$_SESSION['spam_trigger_comment_error'] = 'moderated';
-		$vars['status'] = 'moderated';
+		$vars['comment']->status = 'moderated';
 	}
 }
 

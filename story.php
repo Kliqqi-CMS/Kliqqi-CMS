@@ -266,7 +266,7 @@ function get_comments ($fetch = false, $parent = 0, $comment_id=0, $show_parent=
 function insert_comment () {
 	global $link, $db, $current_user, $main_smarty, $the_template, $story_url;
 
-        check_actions('story_insert_comment',$vars);
+        
 		$main_smarty->assign('TheComment',$_POST['comment_content']);
 		
 	if($vars['error'] == true){
@@ -335,8 +335,10 @@ function insert_comment () {
 		
 		$comment->randkey=sanitize($_POST['randkey'], 3);
 		$comment->author=sanitize($_POST['user_id'], 3);
-		if($vars['status'])
-		    $comment->status = $vars['status'];
+		$vars = array('comment'=>&$comment);
+		check_actions('story_insert_comment',$vars);
+		if($vars['comment']->status)
+		    $comment->status = $vars['comment']->status;
 		$comment->store();
 		$vars['comment'] = $comment->id;
 		check_actions( 'after_comment_submit', $vars ) ;
