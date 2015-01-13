@@ -1096,4 +1096,7 @@ PLIGG_Visual_DownVoted = “Downvoted的”
 PLIGG_User_Profile_No_Content = “此页面并没有任何内容显示在这个时候。”
 
 // Start 2.0.1 Language File
-// End 2.0.1 Language File
+// Start 2.0.2 Language File
+// Start 2.0.3 Language File
+PLIGG_Visual_Submit2_Cancel = "Cancel"
+// End 2.0.3 Language File

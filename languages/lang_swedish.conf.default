@@ -1090,4 +1090,7 @@ PLIGG_Visual_DownVoted = "Nedröstad"
 PLIGG_User_Profile_No_Content = "Denna sida har inte något innehåll att visas vid denna tid."
 
 // Start 2.0.1 Language File
-// End 2.0.1 Language File
+// Start 2.0.2 Language File
+// Start 2.0.3 Language File
+PLIGG_Visual_Submit2_Cancel = "Avbryt"
+// End 2.0.3 Language File

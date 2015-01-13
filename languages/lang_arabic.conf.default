@@ -1097,3 +1097,7 @@ PLIGG_User_Profile_No_Content = "ليس لديها هذه الصفحة أي مح
 
 // Start 2.0.1 Language File
 // End 2.0.1 Language File
+
+// Start 2.0.3 Language File
+PLIGG_Visual_Submit2_Cancel = "Cancel"
+// End 2.0.3 Language File

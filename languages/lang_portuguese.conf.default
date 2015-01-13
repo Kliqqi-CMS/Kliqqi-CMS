@@ -1,6 +1,6 @@
 //<LANG>PT</LANG>
 //<TITLE>Portuguese</TITLE>
-//<VERSION>2.0.2</VERSION>
+//<VERSION>2.0.3</VERSION>
 
 //<SECTION>GENERAL</SECTION><ADDED>1.00</ADDED>
 PLIGG_Visual_Name = "Meu Site"
@@ -1093,5 +1093,8 @@ PLIGG_User_Profile_No_Content = "Esta página não possui conteúdo para ser exi
 
 // Start 2.0.1 Language File
 // Start 2.0.2 Language File
-// End 2.0.2 Language File
+// Start 2.0.3 Language File
+PLIGG_Visual_Submit2_Cancel = "Cancelar"
+// End 2.0.3 Language File
+
 
