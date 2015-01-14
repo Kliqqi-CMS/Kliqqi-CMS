@@ -130,8 +130,8 @@ PLIGG_Visual_Login_NewUsers = "Registrar uma Conta"
 PLIGG_Visual_Login_NewUsersA = "Novo usuário? "
 PLIGG_Visual_Login_NewUsersB = "Criar uma nova conta"
 PLIGG_Visual_Login_NewUsersC = " para fazer parte em tudo o que esse site oferece. É rápido, fácil e principalmente, grátis."
-PLIGG_Visual_Login_ForgottenPassword = "Esqueceu a "
-PLIGG_Visual_Login_EmailChangePass = "Esqueceu a senha? Forneça o seu e-mail e enviaremos instruções para redefini-la."
+PLIGG_Visual_Login_ForgottenPassword = "Senha Esquecida"
+PLIGG_Visual_Login_EmailChangePass = "Esqueceu a senha? Forneça o seu e-mail e enviaremos as instruções para redefini-la."
 PLIGG_Visual_Login_Delivery_Failed = "A entrega da mensagem falhou"
 PLIGG_Visual_Login_Does_Not_Exist = "Oops, o usuário ou endereço de e-mail não existe"
 PLIGG_Visual_Login_Error = "ERRO - Usuário ou Senha Incorreta"
@@ -954,7 +954,7 @@ PLIGG_Visual_Comment_Delete = "Remover"
 PLIGG_Visual_Register_Thankyou = "Obrigado por se registrar <strong>%s</strong>!<br />Favor verificar seu e-mail (pastas caixa de entrada e spam) para o link de ativação.<br />"
 PLIGG_Visual_Register_Noemail = "Não recebeu o e-mail de ativação?"
 PLIGG_Visual_Register_ToDo = "<ul><li>Às vezes pode demorar um pouco para o e-mail chegar.</li><li>Favor verificar se o endereço de e-mail exibido acima está correto. Se estiver errado, registre-se novamente.</li> <li>Verifique sua caixa de spam, o e-mail pode ter sido filtrado como lixo.</li><li>Se você continuar tendo problemas com sua ativação, contate-nos em <span style='color:#c00;'>%s</span> e nós ficaremos felizes em ajudá-lo.</li>"
-PLIGG_Visual_KillSpam_Selected = "KillSpam Selected" //TODO
+PLIGG_Visual_KillSpam_Selected = "KillSpam Selecionado" //TODO
 PLIGG_Visual_Disable_Selected = "Desabilitar os selecionados"
 PLIGG_Visual_Enable_Selected = "Habilitar os selecionados"
 PLIGG_Visual_User_Profile_Status = "Status"
@@ -981,7 +981,7 @@ PLIGG_Visual_AdminPanel_Unconfirmed_Email = "Endereço de e-mail não confirmado
 PLIGG_Visual_AdminPanel_Apply_Changes = "Aplicar mudanças"
 PLIGG_Visual_AdminPanel_Spam = "Spam"
 PLIGG_Visual_Validate_Confirmation = "Tem certeza que quer confirmar este endereço de e-mail?"
-PLIGG_Config_Buries_Mark_Spam = "Marcar Enterrados como SpamBuries to Mark as Spam" //TODO revisar
+PLIGG_Config_Buries_Mark_Spam = "Marcar enterrados como Spam" //TODO revisar
 PLIGG_Config_Comment_Mark_Spam = "Marcar comentários enterrados como Spam” //TODO revisar: Buries to Mark Comment as Spam"
 PLIGG_Login_Incorrect_Attempts = "Seu computador enviou informações da conta incorretamente mais de %s vezes. Você precisa esperar %s segundos antes de fazer login novamente. Se você precisar redefinir sua senha, utilize a área Senha Esquecida acima para requisitar uma nova senha."
 PLIGG_Login_Max_Attempts = "Muitas tentativas de login. Favor tentar novamente em %s segundos"
@@ -1032,22 +1032,22 @@ PLIGG_Visual_Advanced_Search_Date = "Data:"
 PLIGG_Visual_Advanced_Search_Select = "Selecione"
 PLIGG_Visual_Advanced_Search_This_Month = "Este mês"
 PLIGG_Visual_Advanced_Search_Close = "Fechar"
-PLIGG_Visual_Rank = "Posição" //Rank
+PLIGG_Visual_Rank = "Posição"
 
 // Start 1.1.3 Language File
-PLIGG_Visual_AdminPanel_Category_Karma = "Karma to publish" //TODO
+PLIGG_Visual_AdminPanel_Category_Karma = "Karma necessário para publicar"
 
 // Start 1.1.4 Language File
 PLIGG_Visual_Meta_Keywords = "Notícias,Artigos,Artigos,Votar,Publicar,Social,Redes,Grupos,Novo,Comentários,Tags,aoVivo" //News,Stories,Articles,Vote,Publish,Social,Networking,Groups,Submit,New,Comments,Tags,Live"
 
-PLIGG_Visual_Story_Preview = "Story Preview" //TODO
+PLIGG_Visual_Story_Preview = "Pré-visualização do Artigo"
 PLIGG_Visual_Submit2Errors_InvalidURL_Specify = "Você deve especificar um URL"
 
 // Start 1.2.0 Language File
 PLIGG_Visual_User_Profile_Language = "Língua"
 PLIGG_Visual_404_Error = "Erro 404"
 PLIGG_Visual_Search_Too_Short = "Desculpe, você precisa fornecer 3 ou mais caracteres no campo de busca. Favor tentar novamente."
-PLIGG_Visual_Group_Search_Groups = "Search Groups" //TODO buscar grupos ou grupos de busca?
+PLIGG_Visual_Group_Search_Groups = "Buscar Grupos"
 PLIGG_Visual_Comment_Current_User_Username = "você"
 PLIGG_Visual_Comment_Manage_User = "Gerenciar"
 PLIGG_Visual_Comment_Manage_Unregistered = "Não registrado"
@@ -1058,9 +1058,9 @@ PLIGG_Visual_AdminPanel_Subcategory_Move = "Mover sub-categorias para um nível 
 PLIGG_Visual_AdminPanel_Subcategory_Delete = "Remover sub-categorias"
 
 // Start 2.0.0 Language File
-PLIGG_Visual_Story_Who_Upvoted = "Who Upvoted" //TODO
-PLIGG_Visual_Story_Who_Downvoted = "Who Downvoted" //TODO
-PLIGG_Visual_Story_Who_Downvoted_Story = "Who Downvoted this Story" //TODO
+PLIGG_Visual_Story_Who_Upvoted = "Quem votou a favor"
+PLIGG_Visual_Story_Who_Downvoted = "Quem votou contra" 
+PLIGG_Visual_Story_Who_Downvoted_Story = "Quem votou contra este artigo"
 PLIGG_Maintenance_Mode = "Modo de Manutenção"
 PLIGG_Maintenance_Admin_Warning="<strong>Aviso!</strong> Modo de Manutenção ativo. Remova o arquivo .maintenance de seu diretório Pligg para desabilitar."
 PLIGG_Visual_New_Password = "Nova senha"
@@ -1068,7 +1068,7 @@ PLIGG_Visual_New_Verify_Password = "Confirme a nova senha"
 PLIGG_Password_Invalid_URL="O link que você clicou é inválido ou incompleto."
 PLIGG_Visual_Resend_Email = "Seu e-mail não foi validado ainda. Favor fornecer seu endereço de e-mail aqui para reenviar a mensagem de confirmação::"
 PLIGG_Visual_Email_Sent = "Se o endereço de e-mail existir em nossa base de dados, você receberá um e-mail de confirmação em breve."
-PLIGG_Submit3Errors_Short_Tags = "Tags line is too short" //TODO
+PLIGG_Submit3Errors_Short_Tags = "A linha de Tags é muito curta"
 PLIGG_Visual_Profile_UsernameUpdated = "Seu nome de usuário foi atualizado"
 Pligg_Profile_No_Membership = "Este usuário ainda não é membro de nenhum dos grupos."
 PLIGG_Visual_User_Profile_People = "Pessoas"
@@ -1085,15 +1085,18 @@ PLIGG_No_More_Articles = "Não foram encontrados mais artigos"
 PLIGG_Follow = "Seguir"
 PLIGG_Unfollow = "Parar de seguir"
 PLIGG_Visual_AdminPanel_Backup_None = "Não foram gerados backups ainda! Comece clicando em um dos botões acima"
-PLIGG_Admin_Template_Widget_Title = "Template Widget Management" //TODO
+PLIGG_Admin_Template_Widget_Title = "Gerenciamento de Templates de Widgets"
 PLIGG_Admin_Template_Widget_Description = "Arraste e solte os itens abaixo para gerenciar sua ordem de exibição na barra lateral de template"
-PLIGG_Visual_UpVoted = "Upvoted" //TODO
-PLIGG_Visual_DownVoted = "Downvoted" //TODO
+PLIGG_Visual_UpVoted = "Apoiado" 
+PLIGG_Visual_DownVoted = "Depreciado"
 PLIGG_User_Profile_No_Content = "Esta página não possui conteúdo para ser exibido neste momento."
 
 // Start 2.0.1 Language File
 // Start 2.0.2 Language File
 // Start 2.0.3 Language File
+PLIGG_Visual_Sort = "Ordenar"
+PLIGG_Visual_Most = "Mais"
+PLIGG_Visual_Search_Search = "Busca"
 PLIGG_Visual_Submit2_Cancel = "Cancelar"
 // End 2.0.3 Language File
 
