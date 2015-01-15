@@ -182,6 +182,11 @@
 	<script type="text/javascript" src="{$my_pligg_base}/templates/{$the_template}/js/jquery/jquery.dropdown.js"></script>
 	<![endif]-->
 	
+	<!--[if lt IE 9]>
+    <script type='text/javascript' src="{$my_pligg_base}/templates/{$the_template}/js/html5shiv.min.js"></script>
+    <script type='text/javascript' src="{$my_pligg_base}/templates/{$the_template}/js/respond.min.js"></script>
+    <![endif]--> 
+	
 	<script type="text/javascript" src="{$my_pligg_base}/templates/{$the_template}/js/registration_verify.js"></script>
 	<script type="text/javascript" src="{$my_pligg_base}/templates/{$the_template}/js/bootstrap.min.js"></script>
 	<script type="text/javascript" src="{$my_pligg_base}/templates/{$the_template}/js/bootstrap-fileupload.js"></script>
