@@ -26,7 +26,7 @@
 				{/if}
 				{if $Auto_scroll == '2'}
 					<li class="dropdown">
-						<a data-toggle="dropdown" class="dropdown-toggle" href="#">More <b class="caret"></b></a>
+						<a data-toggle="dropdown" class="dropdown-toggle" href="#">{#PLIGG_Visual_More#} <b class="caret"></b></a>
 						<ul class="dropdown-menu">
 							<li><a href="{$URL_advancedsearch}">{#PLIGG_Visual_Search_Advanced#}</a> 
 							{if $Enable_Live}
