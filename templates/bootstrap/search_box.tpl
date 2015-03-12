@@ -11,7 +11,7 @@
 </script>
 <div class="search">
 	<div class="headline">
-		<div class="sectiontitle">Search</div>
+		<div class="sectiontitle">{#PLIGG_Visual_Search#}</div>
 	</div>
 
 	<form action="{$my_pligg_base}/search.php" method="get" name="thisform-search" class="form-inline search-form" role="form" id="thisform-search" {if $urlmethod==2}onsubmit='document.location.href="{$my_base_url}{$my_pligg_base}/search/"+this.search.value.replace(/\//g,"|").replace(/\?/g,"%3F"); return false;'{/if}>
