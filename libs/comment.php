@@ -322,7 +322,7 @@ class Comment {
 
 				$vars = array('comment_id' => $this->id);
 				check_actions('comment_spam', $vars);
-
+				require_once(mnminclude.'link.php');
 				$link = new Link;
 				$link->id=$this->link;
 				$link->read();
