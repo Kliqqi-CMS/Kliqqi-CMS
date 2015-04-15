@@ -168,6 +168,7 @@ window.onload = function(){
 	width: 250px;
 	border-radius:7px; -moz-border-radius:7px; -webkit-border-radius:7px;
 }
+td {word-wrap:break-word;}
 </style>
 {/literal}
 
@@ -175,14 +176,16 @@ window.onload = function(){
 
 	<p style="margin-bottom:10px;">The last {$limit_size} users to sign in:</p>
 	<div style="margin:3px 0 12px 0;">
-	
-	<table>
+	<!-- To give the table the same style as the other widgets. nice and neat -->
+	<table class="table table-condensed table-striped" style="margin-bottom:0;">
 			{php}
-							
+				// Inside PHP, we need to reference the global variables in order to use them to get the full path
+				global $my_base_url,$my_pligg_base;
+					
 				mysql_connect(localhost,EZSQL_DB_USER,EZSQL_DB_PASSWORD);
 				@mysql_select_db(EZSQL_DB_NAME) or die( "Unable to select database");
 				
-				$query  = "SELECT user_date, user_lastlogin, user_login, user_email, user_ip, user_enabled, user_lastip FROM pligg_users ORDER BY user_lastlogin DESC Limit ". $this->get_template_vars('limit_size');
+				$query  = "SELECT user_date, user_lastlogin, user_login, user_email, user_ip, user_enabled, user_lastip FROM ".table_prefix."users ORDER BY user_lastlogin DESC Limit ". $this->get_template_vars('limit_size');
 				$result = mysql_query($query);
 				
 				$record = 1;
@@ -195,15 +198,15 @@ window.onload = function(){
 					
 					if($user_enabled=1){
 						echo "<tr>";
-							echo "<td><span style=\"font-weight: bold; font-size: 12px; color: ";
+							echo "<td><span style=\"font-weight: bold; font-size: 10px; color: ";
 							if($userdate<=$lastWeek){ 
 								echo "#069";
 							}else{
 								echo "#F09";
 							}
-							echo "\">{$row['user_login']}</span></td>";
+							echo "\"><a href=\"{$my_base_url}{$my_pligg_base}/user/{$row['user_login']}\" target=\"_blank\">{$row['user_login']}</a></span></td>";
 							echo "<td><span class=\"ttip\" id=\"ttip{$record}\"> ".rel_time($row['user_lastlogin'])."</span>";
-							echo "<div  id=\"tttip{$record}\" class=\"info\"><table><tr><td><strong>Last in:</strong></td><td>{$row['user_lastlogin']}</td></tr><tr><td><strong>Email:</strong></td><td>{$row['user_email']}</td></tr><tr><td><strong>Registered:</strong></td><td>{$row['user_date']}</td></tr><tr><td><strong>IP:</strong></td><td>{$row['user_ip']}</td></tr><tr><td><strong>Recent IP:</strong></td><td>{$row['user_lastip']}</td></tr></table></div></td>";
+							echo "<table style=\"table-layout: fixed; width: 100%\"><tr><td><strong>Last in:</strong></td><td>{$row['user_lastlogin']}</td></tr><tr><td><strong>Email:</strong></td><td>{$row['user_email']}</td></tr><tr><td><strong>Registered:</strong></td><td>{$row['user_date']}</td></tr><tr><td><strong>IP:</strong></td><td>{$row['user_ip']}</td></tr><tr><td><strong>Recent IP:</strong></td><td>{$row['user_lastip']}</td></tr></table></td>";
 						echo "</tr>";
 					}
 					$record=$record+1;
