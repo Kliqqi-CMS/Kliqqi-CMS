@@ -185,29 +185,63 @@ class Search {
 		if($this->searchTerm == "" && $this->url == ""){
 			// like when on the index or new pages.
 			$this->sql = "SELECT link_id, link_votes, link_karma, link_comments $from_where $search_clause GROUP BY link_id $this->orderBy LIMIT $this->offset, $limit";
+			####### This is the first attempt to fix the bugs in the below 3 sorts methods. We will tidy and optimize the code later when we determine that 
+			####### it is bugs free ~ redwinefireplace #######
+			####### We are constructing the entire query at once, taking into consideration:
+			####### Fixed the sort by Upvoted, Downvoted and Commented.
+			####### 1- Now the pagination is accurate and no more blank pages.
+			####### 2- Each of the above sort reflects the result of the page from where they were requested (I.e. from index page, returns the results of 
+			####### links with 'published' status. and from New page, with status = 'new.
+			####### 3- Private groups links no longer show in the result unless the logged in user is a member in those groups. It is filtered in the
+			####### if ($group_list) { statement that creates a list of groups ids in which the user is member. ~ redwinefireplace
 		} else if($this->searchTerm == 'upvoted'){
 			$usrclause = "";
 			$group = "GROUP BY link_id";
 			if($catId) {
-				$this->sql = "SELECT DISTINCT * FROM " . table_links . ", " . table_votes . " WHERE ".$usrclause." vote_link_id=link_id AND vote_value > 0  AND (link_status='published' OR link_status='new') AND link_category=$catId ".$group." ORDER BY link_votes DESC LIMIT $this->offset, $limit"; //link_date
+				$from_where = "FROM " . table_links. " LEFT JOIN " . table_categories . " ON " . table_links . ".link_category =" . table_categories. ".category_id LEFT JOIN " . table_votes . " ON (" . table_links . ".link_id =" . table_votes. ".vote_link_id AND " . table_votes. ".vote_value > 0)  LEFT JOIN " . table_groups. " ON " . table_links. ".link_group_id =" . table_groups . ".group_id LEFT JOIN " . table_additional_categories . " ON " . table_additional_categories . ".ac_link_id=" . table_links. ".link_id WHERE " . table_links. ".link_status='" . $this->filterToStatus . "' AND " . table_links. ".link_votes >0 AND (" . table_links . ".link_category=" .$catId . " OR " . table_additional_categories . ".ac_cat_id =" . $catId . ") AND " . table_votes . ".vote_type='links' AND (" . table_groups . ".group_privacy!='private' OR ISNULL(" . table_groups . ".group_privacy))";
+				if ($group_list) {
+					$from_where = str_replace("ISNULL(".table_groups.".group_privacy))", "ISNULL(".table_groups.".group_privacy) OR ".table_groups.".group_id IN($group_list))", $from_where);
+				}
+				$this->sql = "SELECT DISTINCT * $from_where $group ORDER BY link_votes DESC LIMIT $this->offset, $limit";
 			}else{
-				$this->sql = "SELECT DISTINCT * FROM " . table_links . ", " . table_votes . " WHERE ".$usrclause." vote_link_id=link_id AND vote_value > 0  AND (link_status='published' OR link_status='new') ".$group." ORDER BY link_votes DESC LIMIT $this->offset, $limit"; //link_date
+				$from_where = "FROM " . table_links. " LEFT JOIN " . table_votes . " ON (" . table_links . ".link_id =" . table_votes. ".vote_link_id AND " . table_votes. ".vote_value > 0)  LEFT JOIN " . table_groups. " ON " . table_links. ".link_group_id =" . table_groups . ".group_id LEFT JOIN " . table_additional_categories . " ON " . table_additional_categories . ".ac_link_id=" . table_links. ".link_id WHERE " . table_links. ".link_status='" . $this->filterToStatus . "' AND " . table_links. ".link_votes >0 AND " . table_votes . ".vote_type='links' AND (" . table_groups . ".group_privacy!='private' OR ISNULL(" . table_groups . ".group_privacy))";
+				if ($group_list) {
+					$from_where = str_replace("ISNULL(".table_groups.".group_privacy))", "ISNULL(".table_groups.".group_privacy) OR ".table_groups.".group_id IN($group_list))", $from_where);
+				}
+				$this->sql = "SELECT DISTINCT * $from_where $group ORDER BY link_votes DESC LIMIT $this->offset, $limit";
 			}
 		} else if($this->searchTerm == 'downvoted'){
 			$usrclause = "";
 			$group = "GROUP BY link_id";
 			if($catId) {
-				$this->sql = "SELECT DISTINCT * FROM " . table_links . ", " . table_votes . " WHERE ".$usrclause." vote_link_id=link_id AND vote_value < 0  AND (link_status='published' OR link_status='new') AND link_category=$catId ".$group." ORDER BY link_votes ASC LIMIT $this->offset, $limit"; //link_date
+				$from_where = "FROM " . table_links. " LEFT JOIN " . table_categories . " ON " . table_links . ".link_category =" . table_categories. ".category_id LEFT JOIN " . table_votes . " ON (" . table_links . ".link_id =" . table_votes. ".vote_link_id AND " . table_votes. ".vote_value < 0)  LEFT JOIN " . table_groups. " ON " . table_links. ".link_group_id =" . table_groups . ".group_id LEFT JOIN " . table_additional_categories . " ON " . table_additional_categories . ".ac_link_id=" . table_links. ".link_id WHERE " . table_links. ".link_status='" . $this->filterToStatus . "' AND (" . table_links . ".link_category=" .$catId . " OR " . table_additional_categories . ".ac_cat_id =" . $catId . ") AND " . table_votes . ".vote_type='links' AND (" . table_groups . ".group_privacy!='private' OR ISNULL(" . table_groups . ".group_privacy))";
+				if ($group_list) {
+					$from_where = str_replace("ISNULL(".table_groups.".group_privacy))", "ISNULL(".table_groups.".group_privacy) OR ".table_groups.".group_id IN($group_list))", $from_where);
+				}
+				$this->sql = "SELECT DISTINCT * $from_where $group ORDER BY link_votes ASC LIMIT $this->offset, $limit";
 			}else{
-				$this->sql = "SELECT DISTINCT * FROM " . table_links . ", " . table_votes . " WHERE ".$usrclause." vote_link_id=link_id AND vote_value < 0  AND (link_status='published' OR link_status='new') ".$group." ORDER BY link_votes ASC LIMIT $this->offset, $limit"; //link_date    
+				$from_where = "FROM " . table_links. " LEFT JOIN " . table_votes . " ON (" . table_links . ".link_id =" . table_votes. ".vote_link_id AND " . table_votes. ".vote_value < 0)  LEFT JOIN " . table_groups. " ON " . table_links. ".link_group_id =" . table_groups . ".group_id LEFT JOIN " . table_additional_categories . " ON " . table_additional_categories . ".ac_link_id=" . table_links. ".link_id WHERE " . table_links. ".link_status='" . $this->filterToStatus . "' AND " . table_votes . ".vote_type='links' AND (" . table_groups . ".group_privacy!='private' OR ISNULL(" . table_groups . ".group_privacy))";
+				if ($group_list) {
+					$from_where = str_replace("ISNULL(".table_groups.".group_privacy))", "ISNULL(".table_groups.".group_privacy) OR ".table_groups.".group_id IN($group_list))", $from_where);
+				}
+				$this->sql = "SELECT DISTINCT * $from_where $group ORDER BY link_votes ASC LIMIT $this->offset, $limit";
 			}
 		} else if($this->searchTerm == "commented"){
 			$usrclause = "";
 			$group = "GROUP BY link_id";
 			if($catId) {
-				$this->sql = "SELECT DISTINCT * FROM " . table_links . ", " . table_comments . " WHERE comment_status='published' ".$usrclause." AND comment_link_id=link_id AND (link_status='published' OR link_status='new') AND link_category=$catId ".$group." ORDER BY link_comments DESC LIMIT $this->offset, $limit";
+				$from_where = "FROM " . table_links. " LEFT JOIN " . table_categories . " ON " . table_links . ".link_category =" . table_categories. ".category_id LEFT JOIN " . table_comments . " ON " . table_links . ".link_id =" . table_comments. ".comment_link_id LEFT JOIN " . table_groups. " ON " . table_links. ".link_group_id =" . table_groups . ".group_id LEFT JOIN " . table_additional_categories . " ON " . table_additional_categories . ".ac_link_id=" . table_links. ".link_id WHERE " . table_links. ".link_status='" . $this->filterToStatus . "' AND (" . table_links . ".link_category=" .$catId . " OR " . table_additional_categories . ".ac_cat_id =" . $catId . ") AND " . table_comments . ".comment_status='published' AND (" . table_groups . ".group_privacy!='private' OR ISNULL(" . table_groups . ".group_privacy))";
+				if ($group_list) {
+					$from_where = str_replace("ISNULL(".table_groups.".group_privacy))", "ISNULL(".table_groups.".group_privacy) OR ".table_groups.".group_id IN($group_list))", $from_where);
+				}
+				$this->sql = "SELECT DISTINCT * $from_where $group ORDER BY link_comments DESC LIMIT $this->offset, $limit";
 			}else{
-				$this->sql = "SELECT DISTINCT * FROM " . table_links . ", " . table_comments . " WHERE comment_status='published' ".$usrclause." AND comment_link_id=link_id AND (link_status='published' OR link_status='new') ".$group." ORDER BY link_comments DESC LIMIT $this->offset, $limit";
+				
+				$from_where = "FROM " . table_links. " LEFT JOIN " . table_comments . " ON " . table_links . ".link_id =" . table_comments. ".comment_link_id LEFT JOIN " . table_groups. " ON " . table_links. ".link_group_id =" . table_groups . ".group_id LEFT JOIN " . table_additional_categories . " ON " . table_additional_categories . ".ac_link_id=" . table_links. ".link_id WHERE " . table_links. ".link_status='" . $this->filterToStatus . "' AND " . table_comments . ".comment_status='published' AND (" . table_groups . ".group_privacy!='private' OR ISNULL(" . table_groups . ".group_privacy))";
+				if ($group_list) {
+					$from_where = str_replace("ISNULL(".table_groups.".group_privacy))", "ISNULL(".table_groups.".group_privacy) OR ".table_groups.".group_id IN($group_list))", $from_where);
+				}
+				$this->sql = "SELECT DISTINCT * $from_where $group ORDER BY link_comments DESC LIMIT $this->offset, $limit";
 			}
 		}
 		else{
