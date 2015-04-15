@@ -135,16 +135,17 @@
 			</td>
 			<td>
 				{php}
-					function find_SQL_Version() {
-						$output = shell_exec('mysql -V');
-						preg_match('@[0-9]+\.[0-9]+\.[0-9]+@', $output, $version);
-						if ($version[0] != ''){
-							return $version[0];
-						}else{
-							return 'Unknown';
-						}
+					$link = mysqli_connect(localhost,EZSQL_DB_USER,EZSQL_DB_PASSWORD);
+					/* check connection */
+					if (mysqli_connect_errno()) {
+						printf("Connect failed: %s\n", mysqli_connect_error());
+						exit();
 					}
-					echo find_SQL_Version();
+					$my_sql = mysqli_get_server_info($link);
+					// $my_sql returns will be something like the version and -log (5.5.24-log). we have to just grab the version number
+					$my_sql_version = substr($my_sql, 0, strpos($my_sql, "-"));
+					echo $my_sql_version;
+					mysqli_close($link);
 				{/php}
 			</td>
 		</tr>
