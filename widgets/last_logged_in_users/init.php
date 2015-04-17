@@ -11,7 +11,11 @@ $widget['homepage_url'] = '';
 ////////////////////////////////////////////////////////////////////
 
 // Fetch Size
-$limit_size = get_misc_data('limit_size');
+/* get_misc_data('limit_size') does not work because there is no such value in the misc table,
+we have to set it here otherwise the it was breaking the query because the query was LIMIT and no limit values.
+*/ 
+//$limit_size = get_misc_data('limit_size');
+$limit_size = 5;
 
 if ($_REQUEST['widget']=='setting_limit'){
     if(isset($_REQUEST['limit_size'])){

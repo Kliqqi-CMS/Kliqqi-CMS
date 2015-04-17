@@ -7,9 +7,9 @@
 	{checkActionsTpl location="tpl_pligg_story_comments_single_start"}
 	<div class="comment-wrapper {if $user_username == $link_submitter}alert alert-success comment-author{/if}{if $comment_votes lt 0}alert alert-danger comment-negative{/if}{if $comment_status neq "published"}alert alert-warning comment-moderated{/if} clearfix">
 		<div class="pull-left comment_left">
-			{if $Enable_Comment_Voting eq 1}
+			{if $Enable_Comment_Voting eq true}
 				<div class="comment_voting" id="cxvote-{$comment_id}">
-					{if $Enable_Comment_Voting eq 1}
+					{if $Enable_Comment_Voting eq true}
 						{if $comment_shakebox_currentuser_votes eq 0}
 							<!-- Vote For It -->
 							<a class="btn btn-xs btn-default" href="javascript:{$link_shakebox_javascript_votey}"><i class="fa fa-thumbs-up"></i></a>

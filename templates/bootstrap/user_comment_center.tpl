@@ -69,7 +69,7 @@
 			</span>
 		</div>
 		<div class="user_comment_content">
-			{if $Enable_Comment_Voting eq 1}
+			{if $Enable_Comment_Voting eq true}
 				{if $comment_user_vote_count eq 0 && $current_userid neq $comment_author}
 					<span id="ratebuttons-{$comment_id}">	  
 						<a href="javascript:{$link_shakebox_javascript_voten}" style='text-decoration:none;'>- </a> 
