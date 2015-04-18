@@ -70,7 +70,12 @@ function karma_do_submit3(&$vars)
 
 
 	$settings = get_karma_settings();
-        $db->query("UPDATE " . table_users . " SET user_karma=user_karma+'{$settings['submit_story']}' WHERE user_id={$current_user->user_id}");
+	//***** To also update the user_karma with the value of "Voted on an article" when the auto vote is set to true upon story submission *****
+	if (auto_vote == true) {
+        $db->query("UPDATE " . table_users . " SET user_karma=user_karma+'{$settings['submit_story']}' + '{$settings['story_vote']}' WHERE user_id={$current_user->user_id}");
+	}else{
+		$db->query("UPDATE " . table_users . " SET user_karma=user_karma+'{$settings['submit_story']}' WHERE user_id={$current_user->user_id}");
+	}
 
 /*	// Check if other module turned the story to 'discard' or 'spam' state
 	$linkres = $vars['linkres'];

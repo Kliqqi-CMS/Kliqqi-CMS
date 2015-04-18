@@ -974,8 +974,9 @@ class Link {
 			$this->store_basic();
 			$this->check_should_publish();
 			
-			$vars = array('vote' => $this);
-			check_actions('link_insert_vote_post', $vars);		
+			/***** This code was to update the user_karma with the value of "Voted on an article" when the auto vote is set to true upon story submission. It was causing double update of the user_karma upon voting. We provisioned a new code in /module/karma_main.php in the karma_do_submit3 function *****/
+			//$vars = array('vote' => $this);
+			//check_actions('link_insert_vote_post', $vars);		
 			
 			return true;
 		}
