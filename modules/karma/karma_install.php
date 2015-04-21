@@ -12,7 +12,7 @@
 	$module_info['db_sql'][] =  "INSERT  into " . table_misc_data . " (name,data) VALUES ('karma_submit_comment','+10')";
 	$module_info['db_sql'][] =  "INSERT  into " . table_misc_data . " (name,data) VALUES ('karma_story_publish','+50')";
 	$module_info['db_sql'][] =  "INSERT  into " . table_misc_data . " (name,data) VALUES ('karma_story_vote','+1')";
-	$module_info['db_sql'][] =  "INSERT  into " . table_misc_data . " (name,data) VALUES ('karma_story_unvote','-5')";
+	$module_info['db_sql'][] =  "INSERT  into " . table_misc_data . " (name,data) VALUES ('karma_story_unvote','-1')";
 	$module_info['db_sql'][] =  "INSERT  into " . table_misc_data . " (name,data) VALUES ('karma_comment_vote','0')";
 	$module_info['db_sql'][] =  "INSERT  into " . table_misc_data . " (name,data) VALUES ('karma_story_discard','-250')";
 	$module_info['db_sql'][] =  "INSERT  into " . table_misc_data . " (name,data) VALUES ('karma_story_spam','-10000')";

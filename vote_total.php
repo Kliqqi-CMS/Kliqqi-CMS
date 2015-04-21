@@ -12,25 +12,30 @@ include(mnminclude.'smartyvariables.php');
 class LinkTotal extends Link {
 
 	function remove_vote($user=0, $value=10) {
-		parent::remove_vote($user, $value);
-
-		$vote = new Vote;
-		$vote->type='links';
-		$vote->link=$this->id;
-		if(Voting_Method == 2){
-			$this->votes=$vote->rating("!=0");
-			$this->votecount=$vote->count("!=0");
-			$this->reports = $this->count_all_votes("<0");
-		}
-		else
+		if (parent::remove_vote($user, $value))
 		{
-			$this->reports = $this->count_all_votes("<0");
-			$this->votes   = $vote->count()-$this->reports;
+
+			$vote = new Vote;
+			$vote->type='links';
+			$vote->link=$this->id;
+			if(Voting_Method == 2){
+				$this->votes=$vote->rating("!=0");
+				$this->votecount=$vote->count("!=0");
+				$this->reports = $this->count_all_votes("<0");
+			}
+			else
+			{
+				$this->reports = $this->count_all_votes("<0");
+				$this->votes   = $vote->count()-$this->reports;
+			}
+			$this->store_basic();
+			
+			$vars = array('link' => $this);
+			check_actions('link_remove_vote_post', $vars);
+
+			return true;
 		}
-		$this->store_basic();
-		
-		$vars = array('link' => $this);
-		check_actions('link_remove_vote_post', $vars);	
+		return false;
 	}
 	
 	function insert_vote($user=0, $value=10) {
@@ -106,8 +111,8 @@ if(is_numeric($post_id) && $post_id > 0){
 	        (votes_per_ip > 0 && $link->votes_from_ip() + $link->reports_from_ip() >= votes_per_ip)) {
 			//error($main_smarty->get_config_vars('PLIGG_Visual_Vote_AlreadyVoted').$link->votes($current_user->user_id, $value).'/'.$value);
 	    }*/
-		
-	    $link->remove_vote($current_user->user_id, -$value);
+			// ***** The remove_vote was to offset the double update of insert_vote that was wrongly done. We don't need it *****
+	    //$link->remove_vote($current_user->user_id, -$value);
 	    $link->insert_vote($current_user->user_id, $value);
 	}
 
