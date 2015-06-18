@@ -9,7 +9,7 @@ include_once '../settings.php';
 
 if ($_GET['language'])
     $language = addslashes(strip_tags($_GET['language']));
-	
+
 if($language == 'arabic'){
 	include_once('./languages/lang_arabic.php');
 } elseif($language == 'catalan'){
@@ -55,7 +55,7 @@ if($language == '' && $_POST['submit'] == ''){
 	}
 
 	include ('footer.php');
-	
+
 	die();
 
 } else {
@@ -91,11 +91,11 @@ if (!$errors) {
 		</form>';
     } else { //they clicked yes!
 	$include='../config.php';
-	if (file_exists($include)) { 
+	if (file_exists($include)) {
 		include_once($include);
 		include(mnminclude.'html1.php');
 	}
-	
+
 	// Get Pligg CMS Version as $old_version
 	$tableexists = checkfortable(table_misc_data);
 	if ($tableexists) {
@@ -103,7 +103,7 @@ if (!$errors) {
 		$pligg_version = $db->get_var($sql);
 		$old_version = str_replace('.', '' , $pligg_version);
 	}
-	
+
 	// Language File Upgrade
 	$languageContent = '../languages/lang_' . $language . '.conf';
 	$languageContent = file_get_contents($languageContent);
@@ -129,21 +129,21 @@ if (!$errors) {
 		$oldLanguage103= "// End 1.0.3 Language File";
 		$languageContent = str_replace($oldLanguage102 , $oldLanguage103 , $languageContent);
 	}
-	
+
 	if ($old_version < '104'){
 		$oldLanguage103 = "// End 1.0.3 Language File";
 		$content = file_get_contents('./languages/updates/lang_' . $language . '_update_104.conf');
 		if($content)
 			$languageContent = str_replace($oldLanguage103 , $content , $languageContent);
 	}
-	
+
 	if ($old_version < '105'){
 		$oldLanguage104 = "// End 1.0.4 Language File";
 		$content = file_get_contents('./languages/updates/lang_' . $language . '_update_105.conf');
 		if($content)
 			$languageContent = str_replace($oldLanguage104 , $content , $languageContent);
 	}
-	
+
 	if ($old_version < '111'){
 		// No language file changes this release
 		$oldLanguage110 = "// End 1.1.0 Language File";
@@ -157,7 +157,7 @@ if (!$errors) {
 		if($content)
 			$languageContent = str_replace($oldLanguage111 , $content , $languageContent);
 	}
-	
+
 	if ($old_version < '113'){
 		$oldLanguage112 = "// End 1.1.2 Language File";
 		$content = file_get_contents('./languages/updates/lang_' . $language . '_update_113.conf');
@@ -171,21 +171,21 @@ if (!$errors) {
 		if($content)
 			$languageContent = str_replace($oldLanguage113 , $content , $languageContent);
 	}
-	
+
 	if ($old_version < '115'){
 		$oldLanguage114 = "// End 1.1.4 Language File";
 		$content = file_get_contents('./languages/updates/lang_' . $language . '_update_115.conf');
 		if($content)
 			$languageContent = str_replace($oldLanguage114 , $content , $languageContent);
 	}
-	
+
 	if ($old_version < '120'){
 		$oldLanguage115 = "// End 1.1.5 Language File";
 		$content = file_get_contents('./languages/updates/lang_' . $language . '_update_120.conf');
 		if($content)
 			$languageContent = str_replace($oldLanguage115 , $content , $languageContent);
 	}
-	
+
 	if ($old_version < '121'){
 		$oldLanguage120 = "// End 1.2.0 Language File";
 		$content = file_get_contents('./languages/updates/lang_' . $language . '_update_121.conf');
@@ -199,35 +199,35 @@ if (!$errors) {
 		$newLanguage122= "// End 1.2.2 Language File";
 		$languageContent = str_replace($oldLanguage121 , $newLanguage122 , $languageContent);
 	}
-	
+
 	if ($old_version < '200'){
 		$oldLanguage122 = "// End 1.2.2 Language File";
 		$content = file_get_contents('./languages/updates/lang_' . $language . '_update_200.conf');
 		if($content)
 			$languageContent = str_replace($oldLanguage122 , $content , $languageContent);
 	}
-	
+
 	if ($old_version < '201'){
 		// No language file changes this release
 		$oldLanguage200 = "// End 2.0.0 Language File";
 		$newLanguage201= "// End 2.0.1 Language File";
 		$languageContent = str_replace($oldLanguage200 , $newLanguage201 , $languageContent);
 	}
-	
+
 	if ($old_version < '202'){
 		// No language file changes this release
 		$oldLanguage201 = "// End 2.0.1 Language File";
 		$newLanguage202= "// End 2.0.2 Language File";
 		$languageContent = str_replace($oldLanguage201 , $newLanguage202 , $languageContent);
 	}
-	
+
 	if ($old_version < '203'){
 		// No language file changes this release
 		$oldLanguage202 = "// End 2.0.2 Language File";
 		$newLanguage203= "// End 2.0.3 Language File";
 		$languageContent = str_replace($oldLanguage202 , $newLanguage203 , $languageContent);
 	}
-	
+
 // echo $languageContent;
 
 	// Point to the file that's going to be written to.
@@ -256,7 +256,7 @@ if (!$errors) {
 	// End Language File Upgrade
 
 	echo '<p>'.$lang['UpgradingTables'] . '<ul>';
-    
+
 	$tableexists = checkfortable(table_misc_data);
 	if ($tableexists) {
 	// Get version-specific updates
@@ -264,7 +264,7 @@ if (!$errors) {
 		$pligg_version = $db->get_var($sql);
 		$old_version = str_replace('.', '' , $pligg_version);
 	}
-		
+
 	if (!$tableexists) {
 		$sql = "CREATE TABLE `" . table_misc_data . "` (
 			`name` VARCHAR( 20 ) NOT NULL ,
@@ -272,21 +272,21 @@ if (!$errors) {
 			PRIMARY KEY ( `name` )
 			) ENGINE = MyISAM;";
 		$db->query($sql);
-		
+
 		// Add Pligg version
 		$sql = "INSERT INTO `" . table_misc_data . "` ( `name` , `data` ) VALUES ('pligg_version', '2.0.3');";
 		$db->query($sql);
-		
+
 		//Captcha upgrade:
 		$sql = "INSERT INTO `" . table_misc_data . "` ( `name` , `data` ) VALUES ('captcha_method', 'solvemedia');";
 		$db->query($sql);
-		$sql = "INSERT INTO `" . table_misc_data . "` ( `name` , `data` ) VALUES ('reCaptcha_pubkey', '6LfwKQQAAAAAAPFCNozXDIaf8GobTb7LCKQw54EA');";
+		$sql = "INSERT INTO `" . table_misc_data . "` ( `name` , `data` ) VALUES ('reCaptcha_pubkey', '');";
 		$db->query($sql);
-		$sql = "INSERT INTO `" . table_misc_data . "` ( `name` , `data` ) VALUES ('reCaptcha_prikey', '6LfwKQQAAAAAALQosKUrE4MepD0_kW7dgDZLR5P1');";
+		$sql = "INSERT INTO `" . table_misc_data . "` ( `name` , `data` ) VALUES ('reCaptcha_prikey', '');";
 		$db->query($sql);
-		
+
 	} else {
-		
+
 		include_once('version/1.x.php');
 		include_once('version/2.0.0rc1.php');
 		include_once('version/2.0.0rc2.php');
@@ -294,12 +294,12 @@ if (!$errors) {
 		include_once('version/2.0.1.php');
 		include_once('version/2.0.2.php');
 		include_once('version/2.0.3.php');
-		
+
 	}
-	
+
 	echo '<li>Regenerating the totals table</li>';
 	totals_regenerate();
-	
+
 	echo '<li>Clearing /cache directory</li>';
 	include_once('../internal/Smarty.class.php');
 	$smarty = new Smarty;
@@ -308,23 +308,23 @@ if (!$errors) {
 	$smarty->template_dir = "../templates";
 	$smarty->config_dir = "..";
 	$smarty->clear_compiled_tpl();
-	
+
 	include(mnminclude.'admin_config.php');
 	$config = new pliggconfig;
 	$config->create_file("../settings.php");
-	
+
 	echo '</ul></p><div class="alert alert-info">' . $lang['IfNoError'] . '</div></p>';
 
     //end of if post submit is Yes.
     }
 //end of no errors
 }
-else { 
+else {
 	echo DisplayErrors($errors);
 	echo '<p>' . $lang['PleaseFix'] . '</p>';
 }
 
-echo '</div>'; // .well	
+echo '</div>'; // .well
 
 $include='footer.php'; if (file_exists($include)) { include_once($include); }
 ?>

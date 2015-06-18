@@ -1,5 +1,8 @@
 <?php
 
+// composer autoloading
+require_once('vendor/autoload.php');
+
 ini_set('include_path', '.');
 
 define('LOG_FILE','logs/error.log'); // Used by the Admin Panel error log file viewer
@@ -37,7 +40,7 @@ if ($main_smarty)
     foreach ($_GET as $k => $v)
 	$get[$k] = stripslashes(htmlentities(strip_tags($v),ENT_QUOTES,'UTF-8'));
     $get['return'] = addslashes($get['return']);
-    $main_smarty->assign('get',$get);           
+    $main_smarty->assign('get',$get);
 }
 
 // CSFR/XSFR protection
@@ -66,7 +69,7 @@ function sanit($var){
 if ($my_base_url == ''){
 
 	define('my_base_url', "http://" . $_SERVER["HTTP_HOST"]);
-	
+
 	if(isset($_REQUEST['action'])){
 		$action = sanit($_REQUEST['action']);
 	} else {
@@ -75,7 +78,7 @@ if ($my_base_url == ''){
 
 	$pos = strrpos($_SERVER["SCRIPT_NAME"], "/");
 	$path = substr($_SERVER["SCRIPT_NAME"], 0, $pos);
-	
+
 	if ($path == "/"){
 		$path = "";
 	}
@@ -92,13 +95,13 @@ define('urlmethod', $URLMethod);
 
 if(isset($_COOKIE['template'])){
 	$thetemp = str_replace('..','',sanit($_COOKIE['template']));
-} 
+}
 
 // template check
 $file = dirname(__FILE__) . '/templates/' . $thetemp . "/pligg.tpl";
 unset($errors);
-if (!file_exists($file)) { 
-	$errors[]='You may have typed the template name wrong or "'. $thetemp . '" does not exist. Click <a href = "admin/admin_config.php?page=Template">here</a> to fix it.'; 
+if (!file_exists($file)) {
+	$errors[]='You may have typed the template name wrong or "'. $thetemp . '" does not exist. Click <a href = "admin/admin_config.php?page=Template">here</a> to fix it.';
 }
 
 if (isset($errors)) {
@@ -106,13 +109,13 @@ if (isset($errors)) {
 	$thetemp = "bootstrap";
 	$file = dirname(__FILE__) . '/templates/' . $thetemp . "/pligg.tpl";
 	if (!file_exists($file)) {
-		echo 'The default template "Bootstrap" does not exist anymore. Please fix this by reuploading the Bootstrap template!'; 
+		echo 'The default template "Bootstrap" does not exist anymore. Please fix this by reuploading the Bootstrap template!';
 		die();
 	}
 
 	foreach ($errors as $error) {
 		$output.="<p><b>Error:</b> $error</p>\n";
-	}	
+	}
 
 	if (strpos($_SERVER['SCRIPT_NAME'], "admin_config.php") == 0 && strpos($_SERVER['SCRIPT_NAME'], "login.php") == 0){
 		echo "<p><b>Error:</b> $error</p>\n";
@@ -159,7 +162,7 @@ include_once mnminclude.'define_tables.php';
 	$cached_users = array();
 
 	// a simple cache type system for the totals table
-	// functions related to this are in /libs/html1.php	
+	// functions related to this are in /libs/html1.php
 	$cached_totals = array();
 	$cached_votes = array();
 	$cached_links = array();
