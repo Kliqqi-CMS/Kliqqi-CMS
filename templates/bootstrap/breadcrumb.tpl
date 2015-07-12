@@ -57,7 +57,7 @@
 		<div class="btn-group pull-right breadcrumb-right">
 			<ul class="nav nav-pills">
 				<li class="dropdown pull-right">
-					<a href="#" data-toggle="dropdown" class="dropdown-toggle">Sort <span class="caret"></span></a>
+					<a href="#" data-toggle="dropdown" class="dropdown-toggle">{#PLIGG_Visual_Sort#} <span class="caret"></span></a>
 					<ul class="dropdown-menu" id="menu1">
 						{if $pagename eq "published" || $pagename eq "index" || $pagename eq "new" || $pagename eq "search"}
 						
@@ -69,21 +69,21 @@
 							
 							{*if $user_logged_in*}
 								{if $setmeka eq "upvoted"}
-									<li id="active" href="{$index_url_upvoted}"><a href="{$index_url_upvoted}" id="current"><span class="active">Most {#PLIGG_Visual_UpVoted#}</span></a></li>
+									<li id="active" href="{$index_url_upvoted}"><a href="{$index_url_upvoted}" id="current"><span class="active">{#PLIGG_Visual_Most#} {#PLIGG_Visual_UpVoted#}</span></a></li>
 								{else}
-									<li><a href="{$index_url_upvoted}">Most {#PLIGG_Visual_UpVoted#}</a></li>
+									<li><a href="{$index_url_upvoted}">{#PLIGG_Visual_Most#} {#PLIGG_Visual_UpVoted#}</a></li>
 								{/if}
 								
 								{if $setmeka eq "downvoted"}
-									<li id="active" href="{$index_url_downvoted}"><a href="{$index_url_downvoted}" id="current"><span class="active">Most {#PLIGG_Visual_DownVoted#}</span></a></li>
+									<li id="active" href="{$index_url_downvoted}"><a href="{$index_url_downvoted}" id="current"><span class="active">{#PLIGG_Visual_Most#} {#PLIGG_Visual_DownVoted#}</span></a></li>
 								{else}
-									<li><a href="{$index_url_downvoted}">Most {#PLIGG_Visual_DownVoted#}</a></li>
+									<li><a href="{$index_url_downvoted}">{#PLIGG_Visual_Most#} {#PLIGG_Visual_DownVoted#}</a></li>
 								{/if}
 								
 								{if $setmeka eq "commented"}
-									<li id="active" href="{$index_url_commented}"><a href="{$index_url_commented}" id="current"><span class="active">Most {#PLIGG_Visual_User_NewsCommented#}</span></a></li>
+									<li id="active" href="{$index_url_commented}"><a href="{$index_url_commented}" id="current"><span class="active">{#PLIGG_Visual_Most#} {#PLIGG_Visual_User_NewsCommented#}</span></a></li>
 								{else}
-									<li><a href="{$index_url_commented}">Most {#PLIGG_Visual_User_NewsCommented#}</a></li>
+									<li><a href="{$index_url_commented}">{#PLIGG_Visual_Most#} {#PLIGG_Visual_User_NewsCommented#}</a></li>
 								{/if}
 							{*/if*}
 						{/if}
