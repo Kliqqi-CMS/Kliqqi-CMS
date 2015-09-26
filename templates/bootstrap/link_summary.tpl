@@ -107,7 +107,7 @@
 			<span class="subtext">
 				{if $UseAvatars neq "0"}<span id="ls_avatar-{$link_shakebox_index}"><img src="{$Avatar_ImgSrcs}" width="16px" height="16px" alt="" title="Avatar" /></span>{else}<i class="fa fa-user"></i>{/if}
 				<a href="{$submitter_profile_url}">{$link_submitter}{if $submitter_rank neq ''} (#{$submitter_rank}){/if}</a> 
-				<i class="fa fa-time"></i>
+				<i class="fa fa-clock-o"></i>
 				{$link_submit_timeago} {#PLIGG_Visual_Comment_Ago#}
 				
 				<i class="fa fa-folder"></i> 
