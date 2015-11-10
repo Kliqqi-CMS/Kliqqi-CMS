@@ -45,7 +45,28 @@ if ($link) {
 		// DB 11/11/08
 		if ($current_user->user_level != "admin" && $current_user->user_level != "moderator" && limit_time_to_edit!=0 && (time()-$link->date)/60 > edit_time_limit)
 		{
-			echo "<br /><br />" . sprintf($main_smarty->get_config_vars('PLIGG_Visual_EditLink_Timeout'),edit_time_limit) . "<br/ ><br /><a href=".my_base_url.my_pligg_base.">".$main_smarty->get_config_vars('PLIGG_Visual_Name')." </a>";
+			$main_smarty->assign('submit_error', 'cantedit');
+				/* Redwine: we want to redirect the user to the page they came from when they click the back button and not to the editlink page, otherwise they will get stuck on the error page in an infinite loop. */
+				$toredirect = $_SERVER['HTTP_REFERER'];
+				$main_smarty->assign('toredirect', $toredirect);
+				/* Redwine: we need the value of edit_time_limit to pass it to the submit_errors_center.tpl because the value of PLIGG_Visual_EditLink_Timeout in the tpl file displays literally as "You cannot edit link after %s minutes." */
+				$edit_time_limit = edit_time_limit;
+				$main_smarty->assign('edit_time', $edit_time_limit);
+				
+				$error = true;
+				if ($error) {
+					$main_smarty->assign('tpl_center', $the_template . '/submit_errors_center');
+					$main_smarty->assign('link_id', $_GET['id']);
+			
+					// pagename
+					define('pagename', 'editlink'); 
+					$main_smarty->assign('pagename', pagename);
+					
+					// show the template
+					$main_smarty->display($the_template . '/pligg.tpl');
+				}
+			return $error;
+			
 			exit;
 		}
 		/////

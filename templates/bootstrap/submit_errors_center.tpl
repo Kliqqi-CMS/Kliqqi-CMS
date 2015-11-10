@@ -6,6 +6,15 @@
 	{************************************
 	******* Submit Step 2 Errors ********
 	*************************************}
+	{if $submit_error eq 'cantedit'}
+		<div class="alert alert-danger">
+		<p>You cannot edit link after {$edit_time} minutes!</p>
+			<br/>
+			<form id="thisform">
+				<input type="button" onclick="gPageIsOkToExit=true; document.location.href='{$toredirect}';" value="{#PLIGG_Visual_Submit3Errors_Back#}" class="btn btn-primary" />
+			</form>
+		</div>
+	{/if}
 	{if $submit_error eq 'invalidurl'}
 		<div class="alert alert-danger">
 			<p>{#PLIGG_Visual_Submit2Errors_InvalidURL#}{if $submit_url eq "http://"}. {#PLIGG_Visual_Submit2Errors_InvalidURL_Specify#}{else}: {$submit_url}{/if}</p>

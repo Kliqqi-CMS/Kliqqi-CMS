@@ -160,12 +160,12 @@
 				{if check_for_enabled_module('simple_messaging',2.0) && $is_friend && $user_login neq $user_logged_in}
 					<a class="btn btn-default btn-sm" href="{$my_base_url}{$my_pligg_base}/module.php?module=simple_messaging&view=compose&to={$username}&return={$my_pligg_base}%2Fuser.php%3Flogin%3D{$user_logged_in}%26view%3Dfollowers"><i class="fa fa-envelope"></i> Send Message</a>
 				{/if}
-				{if $is_friend && $user_login neq $user_logged_in || $is_mutual}
+				{if ($is_friend eq "following" || $is_friend eq "mutual") && $user_login neq $user_logged_in || $is_mutual}
 					<a href="{$user_url_remove}" class="btn btn-sm btn-danger">{#PLIGG_Unfollow#} {$user_login|capitalize} </a>
 					{if $user_authenticated eq true}
 						{checkActionsTpl location="tpl_user_center"}
 					{/if}
-				{elseif $user_authenticated eq true && $user_login neq $user_logged_in && !$is_friend}
+				{elseif ($is_friend eq "" || $is_friend eq "follower") && $user_login neq $user_logged_in && !$is_mutual}
 					<a class="btn btn-sm btn-success" href="{$user_url_add}">{#PLIGG_Visual_User_Profile_Add_Friend#} {$user_login|capitalize}</a>
 				{/if}
 				<a class="btn btn-primary btn-sm" href="#user_search_modal" data-toggle="modal"><i class="fa fa-search white_text"></i></a>

@@ -109,7 +109,7 @@
 				<input type="hidden" name="phase" value="2" />
 				<input type="hidden" name="randkey" value="{$randkey}" />
 				<input type="hidden" name="id" value="{$submit_id}" />
-				<button class="btn btn-default" tabindex="30" ONCLICK="history.go(-1)">Cancel</button>
+				<button class="btn btn-default" tabindex="30" onclick="history.go(-1); return false;">Cancel</button>
 				{checkActionsTpl location="tpl_pligg_submit_step2_end"}
 				<input class="btn btn-primary" tabindex="31" type="submit" value="{#PLIGG_Visual_Submit2_Continue#}" />
 			</div>

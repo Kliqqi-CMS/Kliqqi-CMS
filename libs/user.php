@@ -389,14 +389,16 @@ function killspam($id)
 	    }
 
 	ban_ip($user->user_ip,$user->user_lastip);
-
-	$results = $db->get_results("SELECT * FROM `" . table_groups . "` WHERE group_creator = '$id'");
-	if ($results)
-	    foreach ($results as $result)
-	    {
-		$db->query('DELETE FROM `' . table_group_member . '` WHERE member_group_id = '.$result->group_id);
-		$db->query('DELETE FROM `' . table_group_shared . '` WHERE share_group_id = '.$result->group_id);
-	    }
+	/* Redwine: LINE 393 checks if the user is a group(s) creator **** obsolete query */
+	//$results = $db->get_results("SELECT * FROM `" . table_groups . "` WHERE group_creator = '$id'"); /**** OBSOLETE ****/
+	/* Redwine: Deletes the user from the table group_member **** as is, it only deletes the user from group_member where the user is the group creator and keeps them as members in other groups if they joined multiple groups. */
+	//if ($results)
+	//    foreach ($results as $result)
+	//    {
+	/* Redwine: we have to remove the query above and the iteration through its result in order and change the delete query to ensure that the spam user is removed from all groups that he created or just a member in */
+		$db->query('DELETE FROM `' . table_group_member . '` WHERE member_user_id = '.$id);
+		$db->query('DELETE FROM `' . table_group_shared . '` WHERE share_user_id = '.$id);
+	//    }
 	$db->query("DELETE FROM `" . table_groups . "` WHERE group_creator = '$id'");
 
 	$results = $db->get_results("SELECT vote_id,vote_link_id FROM `" . table_votes . "` WHERE `vote_user_id` = $id");
