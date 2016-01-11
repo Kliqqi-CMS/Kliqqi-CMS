@@ -24,7 +24,9 @@ if ($_POST['id'])
 	if($_POST['number'] > get_misc_data('upload_maxnumber')) die("Too many files");
 
 	// Remove old file and thumbnails with same number
-	$sql = "SELECT * FROM ".table_prefix."files WHERE ".($isadmin ? "" : "file_user_id='{$current_user->user_id}' AND")." file_link_id='{$_POST['id']}' AND file_number='{$_POST['number']}' AND file_comment_id='$_POST[comment]'";
+	$comment = mysql_escape_string($_POST[comment]);
+	
+	$sql = "SELECT * FROM ".table_prefix."files WHERE ".($isadmin ? "" : "file_user_id='{$current_user->user_id}' AND")." file_link_id='{$_POST['id']}' AND file_number='{$_POST['number']}' AND file_comment_id='$comment'";
     	if ($files = $db->get_results($sql))
 	    foreach ($files as $row)
 	    {
@@ -33,7 +35,7 @@ if ($_POST['id'])
 		else
 		    @unlink("$thumb_dir/{$row->file_name}");
 	    }
-	$sql = "DELETE FROM ".table_prefix."files WHERE ".($isadmin ? "" : "file_user_id='{$current_user->user_id}' AND")." file_link_id='{$_POST['id']}' AND file_number='{$_POST['number']}' AND file_comment_id='$_POST[comment]'";
+	$sql = "DELETE FROM ".table_prefix."files WHERE ".($isadmin ? "" : "file_user_id='{$current_user->user_id}' AND")." file_link_id='{$_POST['id']}' AND file_number='{$_POST['number']}' AND file_comment_id='$comment'";
 	$db->query($sql); 
 
 	// Save unique file ID
